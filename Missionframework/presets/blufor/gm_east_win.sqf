@@ -22,6 +22,7 @@ crewman_classname = "gm_gc_army_crew_mpiaks74nk_80_blk";                // This 
 pilot_classname = "gm_gc_army_crew_mpiaks74nk_80_blk";                  // This defines the pilot for helicopters.
 KP_liberation_little_bird_classname = "gm_gc_bgs_p601";                 // Little birds replaced with unimog for container transportation.
 KP_liberation_boat_classname = "B_Boat_Transport_01_F";                 // These are the boats which spawn at the stern of the Freedom.
+KP_liberation_loadoutbox_classname = "B_supplyCrate_F";                 // These are the box contains loadout
 KP_liberation_truck_classname = "gm_gc_army_ural4320_cargo";            // These are the trucks which are used in the logistic convoy system.
 KP_liberation_small_storage_building = "ContainmentArea_02_sand_F";     // A small storage area for resources.
 KP_liberation_large_storage_building = "ContainmentArea_01_sand_F";     // A large storage area for resources.

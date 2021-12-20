@@ -24,6 +24,7 @@ crewman_classname = "CUP_O_sla_Crew";                                   // This 
 pilot_classname = "CUP_O_sla_Pilot";                                    // This defines the pilot for helicopters.
 KP_liberation_little_bird_classname = "CUP_O_UH1H_slick_SLA";           // These are the little birds which spawn on the Freedom or at Chimera bas
 KP_liberation_boat_classname = "CUP_O_PBX_SLA";                         // These are the boats which spawn at the stern of the Freedom.
+KP_liberation_loadoutbox_classname = "B_supplyCrate_F";                     // These are the box contains loadout
 KP_liberation_truck_classname = "CUP_O_Ural_Open_SLA";                  // These are the trucks which are used in the logistic convoy system.
 KP_liberation_small_storage_building = "ContainmentArea_02_sand_F";     // A small storage area for resources.
 KP_liberation_large_storage_building = "ContainmentArea_01_sand_F";     // A large storage area for resources.

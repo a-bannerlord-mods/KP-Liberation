@@ -2518,6 +2518,34 @@
             <Korean>-- 사용 권한</Korean>
             <Czech>-- PRAVOMOCE</Czech>
         </Key>
+        <Key ID="STR_QUALIFICATIONS_ACTION">
+            <Original>-- QUALIFICATIONS</Original>
+            <French>-- QUALIFICATIONS</French>
+            <German>-- RECHTE</German>
+            <Spanish>-- PERMISOS</Spanish>
+            <Russian>-- РАЗРЕШЕНИЯ</Russian>
+            <Italian>-- PERMESSI</Italian>
+            <Chinesesimp>-- 权限</Chinesesimp>
+            <Chinese>-- 權限</Chinese>
+            <Turkish>-- YETKİLER</Turkish>
+            <Portuguese>-- PERMISSÕES</Portuguese>
+            <Korean>-- 사용 권한</Korean>
+            <Czech>-- PRAVOMOCE</Czech>
+        </Key>
+        <Key ID="STR_QUALIFICATIONS_TITLE">
+            <Original>QUALIFICATIONS MANAGEMENT</Original>
+            <French>GESTION DES PERMISSIONS</French>
+            <German>Rechteverwaltung</German>
+            <Spanish>GESTIÓN DE PERMISOS</Spanish>
+            <Russian>УПРАВЛЕНИЕ РАЗРЕШЕНИЯМИ</Russian>
+            <Italian>GESTIONE PERMESSI</Italian>
+            <Chinesesimp>权限管理</Chinesesimp>
+            <Chinese>權限管理</Chinese>
+            <Turkish>YETKİ YÖNETİMİ</Turkish>
+            <Portuguese>GESTÃO DE PERMISSÕES</Portuguese>
+            <Korean>사용 권한 설정</Korean>
+            <Czech>MANAŽER PRAVOMOCÍ</Czech>
+        </Key>
         <Key ID="STR_SAVE_CHANGES">
             <Original>Save Changes</Original>
             <French>Sauvegarder</French>

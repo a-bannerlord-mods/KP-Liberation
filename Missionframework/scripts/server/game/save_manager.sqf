@@ -75,6 +75,8 @@ combat_readiness = 0;
 GRLIB_all_fobs = [];
 // Player permissions data
 GRLIB_permissions = [];
+// Player qualification data
+GRLIB_qualifications = [];
 // Vehicle unlock links
 GRLIB_vehicle_to_military_base_links = [];
 // Enemy weight for anti infantry
@@ -196,6 +198,7 @@ if (!isNil "_saveData") then {
         _allMines                                   = _saveData param [19, []];
         _allCrates                                  = _saveData param [20, []];
         KPLIB_sectorTowers                          = _saveData param [21, []];
+        GRLIB_qualifications                        = _saveData param [22, []];
 
         stats_ammo_produced                         = _stats select  0;
         stats_ammo_spent                            = _stats select  1;
@@ -544,6 +547,7 @@ if ((_lockedVehCount < (count sectors_military)) && (_lockedVehCount < (count el
 
 publicVariable "GRLIB_vehicle_to_military_base_links";
 publicVariable "GRLIB_permissions";
+publicVariable "GRLIB_qualifications";
 save_is_loaded = true; publicVariable "save_is_loaded";
 
 [format ["----- Saved data loaded - Time needed: %1 seconds", diag_tickTime - _start], "SAVE"] call KPLIB_fnc_log;

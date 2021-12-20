@@ -54,6 +54,15 @@ KPLIB_objectInits = [
         }
     ],
 
+    // Add limited Arsnal to loadout box
+    [
+        [KP_liberation_loadoutbox_classname],
+        {
+            _this call jn_fnc_arsenal_addInitialArsenalItems;
+            [_this, []] call jn_fnc_arsenal_initPersistent; 
+        }
+    ],
+
     // Add FOB building damage handler override and repack action
     [
         [FOB_typename],

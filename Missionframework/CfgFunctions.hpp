@@ -61,6 +61,7 @@ class KPLIB {
         class getWeaponComponents       {};
         class handlePlacedZeusObject    {};
         class hasPermission             {};
+        class hasQualification          {};
         class initSectors               {};
         class isBigtownActive           {};
         class isClassUAV                {};

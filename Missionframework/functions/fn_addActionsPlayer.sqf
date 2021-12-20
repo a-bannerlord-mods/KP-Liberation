@@ -98,27 +98,28 @@ _player addAction [
     "
 ];
 
-// Arsenal
-_player addAction [
-    ["<t color='#FFFF00'>", localize "STR_ARSENAL_ACTION", "</t><img size='2' image='res\ui_arsenal.paa'/>"] joinString "",
-    "scripts\client\actions\open_arsenal.sqf",
-    nil,
-    -740,
-    false,
-    true,
-    "",
-    "
-        isNull (objectParent _originalTarget)
-        && {alive _originalTarget}
-        && {
-            _originalTarget getVariable ['KPLIB_fobDist', 99999] < 20
-            || {_originalTarget getVariable ['KPLIB_isNearArsenal', false]}
-            || {_originalTarget getVariable ['KPLIB_isNearMobRespawn', false]}
-            || {_originalTarget getVariable ['KPLIB_isNearStart', false]}
-        }
-        && {build_confirmed isEqualTo 0}
-    "
-];
+//to remove
+// // Arsenal
+// _player addAction [
+//     ["<t color='#FFFF00'>", localize "STR_ARSENAL_ACTION", "</t><img size='2' image='res\ui_arsenal.paa'/>"] joinString "",
+//     "scripts\client\actions\open_arsenal.sqf",
+//     nil,
+//     -740,
+//     false,
+//     true,
+//     "",
+//     "
+//         isNull (objectParent _originalTarget)
+//         && {alive _originalTarget}
+//         && {
+//             _originalTarget getVariable ['KPLIB_fobDist', 99999] < 20
+//             || {_originalTarget getVariable ['KPLIB_isNearArsenal', false]}
+//             || {_originalTarget getVariable ['KPLIB_isNearMobRespawn', false]}
+//             || {_originalTarget getVariable ['KPLIB_isNearStart', false]}
+//         }
+//         && {build_confirmed isEqualTo 0}
+//     "
+// ];
 
 // Build
 _player addAction [
@@ -329,6 +330,24 @@ _player addAction [
     "
         GRLIB_permissions_param
         && {_originalTarget getVariable ['KPLIB_hasDirectAccess', false]}
+        && {alive _originalTarget}
+        && {build_confirmed isEqualTo 0}
+    "
+];
+
+
+// qualifications
+_player addAction [
+    ["<t color='#FF8000'>", localize "STR_QUALIFICATIONS_ACTION", "</t><img size='2' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/>"] joinString "",
+    "scripts\client\commander\open_qualification.sqf",
+    nil,
+    -840,
+    false,
+    true,
+    "",
+    "
+        
+        {_originalTarget getVariable ['KPLIB_hasDirectAccess', false]}
         && {alive _originalTarget}
         && {build_confirmed isEqualTo 0}
     "

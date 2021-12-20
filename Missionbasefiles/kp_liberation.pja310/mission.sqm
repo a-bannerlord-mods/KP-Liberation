@@ -12,7 +12,7 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=3220;
+		nextID=3226;
 	};
 	class MarkerIDProvider
 	{
@@ -20,14 +20,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=601;
+		nextID=651;
 	};
 	class Camera
 	{
-		pos[]={5934.5747,218.62636,545.2832};
-		dir[]={-0.099994548,-0.54459286,-0.83271825};
-		up[]={-0.064929396,0.83870059,-0.54070836};
-		aside[]={-0.99286717,-7.4505806e-009,0.11922558};
+		pos[]={5936.8643,38.040157,262.17523};
+		dir[]={0.41290852,-0.46556893,0.782803};
+		up[]={0.21721402,0.88500941,0.4117994};
+		aside[]={0.88450694,-2.4755718e-007,-0.4665556};
 	};
 };
 binarizationWanted=0;
@@ -284,7 +284,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=472;
+		items=473;
 		class Item0
 		{
 			dataType="Marker";
@@ -22160,6 +22160,46 @@ class Mission
 			type="Empty";
 			id=3219;
 			atlOffset=-5.8498688;
+		};
+		class Item472
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={5931.0889,24.117216,278.99823};
+				angles[]={0,4.712389,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				name="loadout_0";
+			};
+			id=3220;
+			type="Land_ClutterCutter_small_F";
+			atlOffset=0.58867455;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 	};
 	class Connections
