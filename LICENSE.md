@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2015 [GreuhZbug](https://github.com/GreuhZbug), [Wyqer](https://github.com/Wyqer)
+Copyright (c) 2021 Ahmed Salah
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

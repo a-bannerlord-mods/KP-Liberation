@@ -57,7 +57,6 @@ if(isServer) then {
     GET_PARAM(GRLIB_resources_multiplier, "ResourcesMultiplier", 3);
     GET_PARAM_BOOL(KP_liberation_arsenal_type, "ArsenalType", 0);
     GET_PARAM_BOOL(KPLIB_directArsenal, "DirectArsenal", 0);
-    GET_PARAM_BOOL(KP_liberation_playermenu, "PlayerMenu", 1);
     GET_PARAM(KP_liberation_victoryCondition, "VictoryCondition", 0);
 
     // Deactivate BI Revive when ACE Medical is running
@@ -109,8 +108,7 @@ if(isServer) then {
     GET_PARAM_BOOL(GRLIB_use_whitelist, "Whitelist", 0);
     GET_PARAM(KP_liberation_restart, "ServerRestart", 0);
 
-    GREUH_allow_mapmarkers = KP_liberation_mapmarkers; publicVariable "GREUH_allow_mapmarkers";
-    GREUH_allow_platoonview = KP_liberation_mapmarkers; publicVariable "GREUH_allow_platoonview";
+   
 
     KP_serverParamsFetched = true;
     publicVariable "KP_serverParamsFetched";
@@ -308,10 +306,6 @@ if (!isDedicated && hasInterface) then {
 
     _param = localize "STR_PARAMS_DIRECTARSENAL";
     _value = if (KPLIB_directArsenal) then {localize "STR_PARAMS_ENABLED";} else {localize "STR_PARAMS_DISABLED";};
-    _text = _text + format ["<font color='#ff8000'>%1</font><br />%2<br /><br />", _param, _value];
-
-    _param = localize "STR_PARAMS_PLAYERMENU";
-    _value = if (KP_liberation_playermenu) then {localize "STR_PARAMS_PLAYERMENU_KP";} else {localize "STR_PARAMS_PLAYERMENU_GREUH";};
     _text = _text + format ["<font color='#ff8000'>%1</font><br />%2<br /><br />", _param, _value];
 
     _param = localize "STR_PARAMS_VICTORYCONDITION";
