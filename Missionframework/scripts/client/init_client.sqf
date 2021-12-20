@@ -104,3 +104,7 @@ if (player isEqualTo ([] call KPLIB_fnc_getCommander)) then {
         };
     };
 };
+
+//INC_undercover init
+player setVariable ["isSneaky",true,true];
+[player] execVM "modules\INC_undercover\Scripts\initUCR.sqf";

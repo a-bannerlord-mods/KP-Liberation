@@ -23,9 +23,14 @@ params [
     ["_side", GRLIB_side_friendly, [sideEmpty]]
 ];
 
-private _amount = _side countSide ((_pos nearEntities ["Man", _radius]) select {!(captive _x) && ((getpos _x) select 2 < 500)});
+private _amount = _side countSide ((_pos nearEntities ["Man", _radius]) select {!(captive _x) && ((getpos _x) select 2 < 800)});
 {
     _amount = _amount + (_side countSide (crew _x));
-} forEach ((_pos nearEntities [["Car", "Tank", "Air", "Boat"], _radius]) select {((getpos _x) select 2 < 500) && count (crew _x) > 0});
+} forEach ((_pos nearEntities [["Car", "Tank", "Air", "Boat"], _radius]) select {((getpos _x) select 2 < 800) && count (crew _x) > 0});
+
+//civ  players
+if (_side ==GRLIB_side_friendly) then {
+    _amount = _amount + (civilian countSide ((_pos nearEntities ["Man", _radius]) select {isplayer _x  && ((getpos _x) select 2 < 800)}));
+};
 
 _amount
