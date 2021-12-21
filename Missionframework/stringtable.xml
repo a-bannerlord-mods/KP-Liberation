@@ -6362,6 +6362,14 @@
             <Korean>-- 전초기지 주변 정리</Korean>
             <Czech>-- Vymazat zónu FOB</Czech>
         </Key>
+        <Key ID="STR_SET_RADIO_CHANNELS_ACTION">
+            <Original>Set Default Radio Channels</Original>
+            <Spanish>-- Limpiar área de FOB</Spanish>
+            <Russian>-- Очистить зону FOB</Russian>
+            <German>-- FOB Gebiet räumen</German>
+            <Korean>-- 전초기지 주변 정리</Korean>
+            <Czech>-- Vymazat zónu FOB</Czech>
+        </Key>
         <Key ID="STR_FOB_REPACKAGE_HINT">
             <Original>FOB repackaged.\nPossibly created clearance will be reverted upon server restart.</Original>
             <German>FOB eingepackt.\nEventuelle Gebietsräumung wird zum Serverneustart rückgängig gemacht.</German>

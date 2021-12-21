@@ -127,3 +127,5 @@ execVM "scripts\server\offloading\group_diag.sqf";
 if (KP_liberation_restart > 0) then {
     execVM "scripts\server\game\server_restart.sqf";
 };
+
+execVM "scripts\server\playerdata\player_data_events.sqf";

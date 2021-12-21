@@ -44,9 +44,12 @@ private _veh = objNull;
         _veh allowDamage true;
         _veh setVariable ["KP_liberation_preplaced", true, true];
         [_veh] call KPLIB_fnc_addObjectInit;
+        deleteVehicle _placeholder;
     };
 } forEach [
     ["littlebird_", KP_liberation_little_bird_classname],
     ["boat_", KP_liberation_boat_classname],
-    ["loadout_", KP_liberation_loadoutbox_classname]
+    ["loadout_", KP_liberation_loadoutbox_classname],
+    ["radioSetter_", "Static_Radio_Black_3"],
+    ["commandLab_", "Land_Laptop_03_black_F"]
 ];

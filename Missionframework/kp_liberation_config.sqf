@@ -536,6 +536,7 @@ KP_liberation_allowed_items_extension = [
     "UK3CB_BAF_Javelin_Launcher"
 ];
 
+
 /* - Configuration settings for crates transported by vehicles.
 Format = ["classname", distance behind vehicle to unload crate, attachTo positions for each box],    */
 KPLIB_transportConfigs = [
@@ -1127,3 +1128,19 @@ GRLIB_blufor_cap = (GRLIB_blufor_cap * GRLIB_unitcap) min 100;
 GRLIB_sector_cap = GRLIB_sector_cap * GRLIB_unitcap;
 GRLIB_battlegroup_cap = GRLIB_battlegroup_cap * GRLIB_unitcap;
 GRLIB_patrol_cap = GRLIB_patrol_cap * GRLIB_unitcap;
+
+KP_liberation_qualifications = [
+    ["Rifleman","Qualified enough to carry a rifle in the battlefield",{}],
+    ["Medic","Qualified enough to provide emergency medical treatment at a point of wounding in a combat",{_this setUnitTrait ["Medic", true];}],
+    ["Engineer","Qualified enough to partially repair vehicles with toolkit",{_this setUnitTrait ["Engineer", true];}],
+    ["EOD","Qualified enough to defuse mines and handle all explosives",{_this setUnitTrait ["explosiveSpecialist", true];}],
+    ["Marksman","Skilled enough in precision shooting using DMRs",{}],
+    ["Sniper","Skilled enough in precision shooting using Snipers",{}],
+    ["Autorifleman","Skilled enough handling heavy weapons",{}],
+    ["AT","Skilled enough handling anti-tank weapons",{}],
+    ["AA","Skilled enough handling anti-air weapons",{}],
+    ["Drone Operator","Skilled enough handling remote controlled vehicles",{_this setUnitTrait ["UAVHacker ", true];}],
+    ["JTAC","Qualified enough to directs the action of combat aircraft engaged in close air support and other offensive air operations from a forward position",{}],
+    ["Special Force","Qualified enough to operate in overt combat, front-line reconnaissance and raiding, rather than long range reconnaissance and unconventional warfare.",{}],
+    ["Officer","Qualified enough to lead teams on the battlefield",{}]
+];

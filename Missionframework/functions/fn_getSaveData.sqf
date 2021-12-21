@@ -205,5 +205,6 @@ private _weights = [
     _allMines,
     _allCrates,
     KPLIB_sectorTowers,
-    GRLIB_qualifications
+    GRLIB_qualifications,
+    GRLIB_players_data
 ] // return

@@ -299,7 +299,7 @@ switch (_operation) do {
 				sleep 1;
 
 				[[_recruitedCiv,_groupLead],"addConcealActions"] call INCON_ucr_fnc_ucrMain;
-				[[_recruitedCiv],"INC_undercover\Scripts\initUCR.sqf"] remoteExec ["execVM",_groupLead];
+				[[_recruitedCiv],"modules\INC_undercover\Scripts\initUCR.sqf"] remoteExec ["execVM",_groupLead];
 
 				_recruitedCiv setCombatMode "GREEN";
 			};

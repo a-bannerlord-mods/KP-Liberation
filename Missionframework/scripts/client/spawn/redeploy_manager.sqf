@@ -3,6 +3,9 @@
 #define DEPLOY_BUTTON_IDC 202
 
 KPLIB_respawnPositionsList = [];
+KPLIB_firstTimeRespawn = true;
+
+
 fullmap = 0;
 private _old_fullmap = 0;
 private _oldsel = -999;
@@ -15,6 +18,10 @@ waitUntil {!isNil "GRLIB_all_fobs"};
 waitUntil {!isNil "blufor_sectors"};
 waitUntil {!isNil "save_is_loaded"};
 waitUntil {save_is_loaded};
+waitUntil {!isNil "lastplayerjoineddata"};
+
+private _lastPlayerPos = lastplayerjoineddata select 0;
+private _lastPlayerGear = lastplayerjoineddata select 1;
 
 private _spawn_str = "";
 
@@ -40,7 +47,7 @@ while {true} do {
     _old_fullmap = 0;
 
     GRLIB_force_redeploy = false;
-
+    
 
 
     createDialog "liberation_deploy";
@@ -91,26 +98,32 @@ while {true} do {
 
     while {dialog && alive player && deploy == 0} do {
         // ARRAY - [[NAME, POSITION(, OBJECT)], ...]
-        KPLIB_respawnPositionsList = [[_basenamestr, getposATL startbase]];
 
+        if (count _lastPlayerPos > 0 && KPLIB_firstTimeRespawn ) then {
+            KPLIB_respawnPositionsList = [["Last Known Postion", _lastPlayerPos]];
+        }
+        else
         {
-            KPLIB_respawnPositionsList pushBack [
-                format ["FOB %1 - %2", (military_alphabet select _forEachIndex), mapGridPosition _x],
-                _x
-            ];
-        } forEach GRLIB_all_fobs;
+            KPLIB_respawnPositionsList = [[_basenamestr, getposATL startbase]];
+            {
+                KPLIB_respawnPositionsList pushBack [
+                    format ["FOB %1 - %2", (military_alphabet select _forEachIndex), mapGridPosition _x],
+                    _x
+                ];
+            } forEach GRLIB_all_fobs;
 
-        if (KP_liberation_mobilerespawn) then {
-            if (KP_liberation_respawn_time <= time) then {
-                private _mobileRespawns = [] call KPLIB_fnc_getMobileRespawns;
+            if (KP_liberation_mobilerespawn) then {
+                if (KP_liberation_respawn_time <= time) then {
+                    private _mobileRespawns = [] call KPLIB_fnc_getMobileRespawns;
 
-                {
-                    KPLIB_respawnPositionsList pushBack [
-                        format ["%1 - %2", localize "STR_RESPAWN_TRUCK", mapGridPosition getPosATL _x],
-                        getPosATL _x,
-                        _x
-                    ];
-                } forEach _mobileRespawns
+                    {
+                        KPLIB_respawnPositionsList pushBack [
+                            format ["%1 - %2", localize "STR_RESPAWN_TRUCK", mapGridPosition getPosATL _x],
+                            getPosATL _x,
+                            _x
+                        ];
+                    } forEach _mobileRespawns
+                };
             };
         };
 
@@ -119,8 +132,10 @@ while {true} do {
             lbAdd [DEPLOY_LIST_IDC, (_x select 0)];
         } foreach KPLIB_respawnPositionsList;
 
+        
+        
         if (lbCurSel DEPLOY_LIST_IDC == -1) then {
-             lbSetCurSel [201, 0];
+            lbSetCurSel [201, 0];
         };
 
         if (lbCurSel DEPLOY_LIST_IDC != _oldsel) then {
@@ -191,14 +206,13 @@ while {true} do {
             player setposATL [((_destpos select 0) + 5) - (random 10),((_destpos select 1) + 5) - (random 10),(_destpos select 2)];
         };
 
-        // if ((lbCurSel 203) > 0) then {
-        //     private _selectedLoadout = _loadouts_data select ((lbCurSel 203) - 1);
-        //     if (KP_liberation_ace && KP_liberation_arsenal_type) then {
-        //         player setUnitLoadout (_selectedLoadout select 1);
-        //     } else {
-        //         [player, [profileNamespace, _selectedLoadout]] call BIS_fnc_loadInventory;
-        //     };
-        // };
+        [player] call KPLIB_fnc_setUnitTraits;
+
+        if (count _lastPlayerGear > 0 && KPLIB_firstTimeRespawn ) then {
+            [player, _lastPlayerGear] call KPLIB_fnc_setLoadout;
+        };
+
+        KPLIB_firstTimeRespawn= false;        
     };
 
     respawn_camera cameraEffect ["Terminate","back"];
@@ -219,9 +233,9 @@ while {true} do {
         };
     };
 
-    if (KP_liberation_arsenalUsePreset) then {
-        [_backpack] call KPLIB_fnc_checkGear;
-    };
+    // if (KP_liberation_arsenalUsePreset) then {
+    //     [_backpack] call KPLIB_fnc_checkGear;
+    // };
 
     if (KP_liberation_mobilerespawn && (KP_liberation_respawn_time > time)) then {
         hint format [localize "STR_RESPAWN_COOLDOWN_HINT", ceil ((KP_liberation_respawn_time - time) / 60)];

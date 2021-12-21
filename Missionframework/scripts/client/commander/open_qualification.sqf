@@ -40,7 +40,7 @@ _players_array pushback ["Default", localize "STR_DEFAULT", 0];
 private _idx = 2;
 
 {
-    if (!((name _x) in ["HC1", "HC2", "HC3"])) then {
+    if (!((name _x) in ["HC0","HC1", "HC2", "HC3", "HC4", "HC5"])) then {
         private _nextplayer = _x;
 
         private _displayname = "";
@@ -83,18 +83,22 @@ _idx = _idx + 1;
     _control ctrlSetFontHeight fontsize;
     _control ctrlCommit 0;
 
-    [_idx, 1, 0, "Rifleman", localize "STR_PERMISSIONS_TOOLTIP_LIGHT"] call qualifications_create_activetext;
-    [_idx, 2, 1, "Medic", localize "STR_PERMISSIONS_TOOLTIP_LIGHT"] call qualifications_create_activetext;
-    [_idx, 3, 2, "Engineer", localize "STR_PERMISSIONS_TOOLTIP_ARMORED"] call qualifications_create_activetext;
-    [_idx, 4, 3, "EOD", localize "STR_PERMISSIONS_TOOLTIP_ARMORED"] call qualifications_create_activetext;
-    [_idx, 5, 4, "Marksman", localize "STR_PERMISSIONS_TOOLTIP_AIR"] call qualifications_create_activetext;
-    [_idx, 6, 5, "Sniper", localize "STR_PERMISSIONS_TOOLTIP_AIR"] call qualifications_create_activetext;
-    [_idx, 7, 6, "Autorifleman", localize "STR_PERMISSIONS_TOOLTIP_RECYCLING"] call qualifications_create_activetext;
-    [_idx, 8, 7, "AT/AA", localize "STR_PERMISSIONS_TOOLTIP_CONSTRUCTION"] call qualifications_create_activetext;
-    [_idx, 9, 8, "Drone Op", localize "STR_PERMISSIONS_TOOLTIP_MISC"] call qualifications_create_activetext;
-    [_idx, 10, 9, "JTAC", localize "STR_PERMISSIONS_TOOLTIP_MISC"] call qualifications_create_activetext;
-    [_idx, 11, 10, "Special Force", localize "STR_PERMISSIONS_TOOLTIP_LIGHT"] call qualifications_create_activetext;
-    [_idx, 12, 11, "Officer", localize "STR_PERMISSIONS_TOOLTIP_LIGHT"] call qualifications_create_activetext;
+    {
+        [_idx, _forEachIndex+1, _forEachIndex , _x select 0 , _x select 1] call qualifications_create_activetext;
+    } forEach KP_liberation_qualifications;
+
+    // [_idx, 1, 0, "Rifleman", localize "STR_PERMISSIONS_TOOLTIP_LIGHT"] call qualifications_create_activetext;
+    // [_idx, 2, 1, "Medic", localize "STR_PERMISSIONS_TOOLTIP_LIGHT"] call qualifications_create_activetext;
+    // [_idx, 3, 2, "Engineer", localize "STR_PERMISSIONS_TOOLTIP_ARMORED"] call qualifications_create_activetext;
+    // [_idx, 4, 3, "EOD", localize "STR_PERMISSIONS_TOOLTIP_ARMORED"] call qualifications_create_activetext;
+    // [_idx, 5, 4, "Marksman", localize "STR_PERMISSIONS_TOOLTIP_AIR"] call qualifications_create_activetext;
+    // [_idx, 6, 5, "Sniper", localize "STR_PERMISSIONS_TOOLTIP_AIR"] call qualifications_create_activetext;
+    // [_idx, 7, 6, "Autorifleman", localize "STR_PERMISSIONS_TOOLTIP_RECYCLING"] call qualifications_create_activetext;
+    // [_idx, 8, 7, "AT/AA", localize "STR_PERMISSIONS_TOOLTIP_CONSTRUCTION"] call qualifications_create_activetext;
+    // [_idx, 9, 8, "Drone Op", localize "STR_PERMISSIONS_TOOLTIP_MISC"] call qualifications_create_activetext;
+    // [_idx, 10, 9, "JTAC", localize "STR_PERMISSIONS_TOOLTIP_MISC"] call qualifications_create_activetext;
+    // [_idx, 11, 10, "Special Force", localize "STR_PERMISSIONS_TOOLTIP_LIGHT"] call qualifications_create_activetext;
+    // [_idx, 12, 11, "Officer", localize "STR_PERMISSIONS_TOOLTIP_LIGHT"] call qualifications_create_activetext;
 
     // _control = (findDisplay 5119) ctrlCreate ["RscButton", ((10 * _idx) + 111) + 7, (findDisplay 5119) displayCtrl 9969];
     // _control ctrlSetPosition [((0.075 * 7) - 0.02) * safeZoneW, ((_idx * 0.025) * safezoneH) + 0.0025, (0.035 * safeZoneW), 0.022  * safezoneH];
@@ -175,7 +179,12 @@ while {dialog && alive player} do {
         qualifications_playerid = -1;
         qualifications_toset = -1;
     };
-
+    _indexes= [];
+    {
+        _indexes pushBack (_forEachIndex + 1);
+        
+    } forEach KP_liberation_qualifications;
+    
     {
         private _nextplayer = _x;
         {
@@ -192,7 +201,7 @@ while {dialog && alive player} do {
                         _control ctrlSetTextColor color_denied;
                         _control ctrlSetActiveColor color_denied;
                     };
-                } foreach [1, 2, 3, 4, 5, 6, 7 ,8 ,9 ,10,11,12 ];
+                } foreach _indexes;
             };
         } foreach _modify_qualifications;
 

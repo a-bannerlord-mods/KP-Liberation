@@ -40,7 +40,7 @@ _players_array pushback ["Default", localize "STR_DEFAULT", 0];
 private _idx = 2;
 
 {
-    if (!((name _x) in ["HC1", "HC2", "HC3"])) then {
+    if (!((name _x) in ["HC0","HC1", "HC2", "HC3", "HC4", "HC5"])) then {
         private _nextplayer = _x;
 
         private _displayname = "";

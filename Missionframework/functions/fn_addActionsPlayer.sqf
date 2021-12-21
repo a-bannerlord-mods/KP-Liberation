@@ -35,6 +35,8 @@ _player addAction [
     "
         alive _originalTarget
         && {_originalTarget getVariable ['KPLIB_isNearStart', false]}
+        && typeof cursorObject in ['Land_Laptop_03_black_F']
+        && cursorObject distance player < 5
     "
 ];
 
@@ -56,6 +58,8 @@ _player addAction [
             || {_originalTarget getVariable ['KPLIB_isNearStart', false]}
         }
         && {build_confirmed isEqualTo 0}
+        && typeof cursorObject in ['Land_Laptop_03_black_F']
+        && cursorObject distance player < 5
     "
 ];
 
@@ -97,29 +101,6 @@ _player addAction [
         && {build_confirmed isEqualTo 0}
     "
 ];
-
-//to remove
-// // Arsenal
-// _player addAction [
-//     ["<t color='#FFFF00'>", localize "STR_ARSENAL_ACTION", "</t><img size='2' image='res\ui_arsenal.paa'/>"] joinString "",
-//     "scripts\client\actions\open_arsenal.sqf",
-//     nil,
-//     -740,
-//     false,
-//     true,
-//     "",
-//     "
-//         isNull (objectParent _originalTarget)
-//         && {alive _originalTarget}
-//         && {
-//             _originalTarget getVariable ['KPLIB_fobDist', 99999] < 20
-//             || {_originalTarget getVariable ['KPLIB_isNearArsenal', false]}
-//             || {_originalTarget getVariable ['KPLIB_isNearMobRespawn', false]}
-//             || {_originalTarget getVariable ['KPLIB_isNearStart', false]}
-//         }
-//         && {build_confirmed isEqualTo 0}
-//     "
-// ];
 
 // Build
 _player addAction [
@@ -163,6 +144,8 @@ _player addAction [
             || {[5] call KPLIB_fnc_hasPermission}
         }
         && {build_confirmed isEqualTo 0}
+        && typeof cursorObject in ['Land_Laptop_03_black_F']
+        && cursorObject distance player < 5
     "
 ];
 
@@ -332,6 +315,8 @@ _player addAction [
         && {_originalTarget getVariable ['KPLIB_hasDirectAccess', false]}
         && {alive _originalTarget}
         && {build_confirmed isEqualTo 0}
+        && typeof cursorObject in ['Land_Laptop_03_black_F']
+        && cursorObject distance player < 5
     "
 ];
 
@@ -346,10 +331,11 @@ _player addAction [
     true,
     "",
     "
-        
-        {_originalTarget getVariable ['KPLIB_hasDirectAccess', false]}
+        _originalTarget getVariable ['KPLIB_hasDirectAccess', false]
         && {alive _originalTarget}
         && {build_confirmed isEqualTo 0}
+        && typeof cursorObject in ['Land_Laptop_03_black_F']
+        && cursorObject distance player < 5
     "
 ];
 
@@ -388,5 +374,9 @@ _player addAction [
         && {build_confirmed isEqualTo 0}
     "
 ];
+
+
+_player execVM "compatibility\add_compatibility_actions.sqf";
+
 
 true

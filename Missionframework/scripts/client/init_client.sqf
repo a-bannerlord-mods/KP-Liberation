@@ -54,7 +54,7 @@ if (KP_liberation_mapmarkers) then {execVM "scripts\client\markers\huron_marker.
 execVM "scripts\client\markers\sector_manager.sqf";
 execVM "scripts\client\markers\spot_timer.sqf";
 execVM "scripts\client\misc\broadcast_squad_colors.sqf";
-execVM "scripts\client\misc\init_arsenal.sqf";
+//execVM "scripts\client\misc\init_arsenal.sqf";
 execVM "scripts\client\misc\permissions_warning.sqf";
 if (!KP_liberation_ace) then {execVM "scripts\client\misc\resupply_manager.sqf";};
 execVM "scripts\client\misc\secondary_jip.sqf";
@@ -65,6 +65,8 @@ execVM "scripts\client\spawn\redeploy_manager.sqf";
 execVM "scripts\client\ui\ui_manager.sqf";
 execVM "scripts\client\ui\tutorial_manager.sqf";
 execVM "scripts\client\markers\update_production_sites.sqf";
+
+execVM "scripts\client\playerdata\player_data_events.sqf";
 
 player addMPEventHandler ["MPKilled", {_this spawn kill_manager;}];
 player addEventHandler ["GetInMan", {[_this select 2] spawn kp_fuel_consumption;}];
@@ -108,3 +110,4 @@ if (player isEqualTo ([] call KPLIB_fnc_getCommander)) then {
 //INC_undercover init
 player setVariable ["isSneaky",true,true];
 [player] execVM "modules\INC_undercover\Scripts\initUCR.sqf";
+

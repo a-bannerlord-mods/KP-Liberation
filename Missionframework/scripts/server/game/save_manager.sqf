@@ -77,6 +77,8 @@ GRLIB_all_fobs = [];
 GRLIB_permissions = [];
 // Player qualification data
 GRLIB_qualifications = [];
+// Player data
+GRLIB_players_data = [];
 // Vehicle unlock links
 GRLIB_vehicle_to_military_base_links = [];
 // Enemy weight for anti infantry
@@ -199,6 +201,8 @@ if (!isNil "_saveData") then {
         _allCrates                                  = _saveData param [20, []];
         KPLIB_sectorTowers                          = _saveData param [21, []];
         GRLIB_qualifications                        = _saveData param [22, []];
+        GRLIB_players_data                          = _saveData param [23, []];
+
 
         stats_ammo_produced                         = _stats select  0;
         stats_ammo_spent                            = _stats select  1;

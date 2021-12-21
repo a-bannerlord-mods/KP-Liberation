@@ -15,6 +15,5 @@ class server_sector {
 
 class server_support {
     file = "scripts\server\support";
-
     class createSuppModules             {};
 };

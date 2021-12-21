@@ -12,7 +12,7 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=3226;
+		nextID=3235;
 	};
 	class MarkerIDProvider
 	{
@@ -20,14 +20,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=651;
+		nextID=701;
 	};
 	class Camera
 	{
-		pos[]={5936.8643,38.040157,262.17523};
-		dir[]={0.41290852,-0.46556893,0.782803};
-		up[]={0.21721402,0.88500941,0.4117994};
-		aside[]={0.88450694,-2.4755718e-007,-0.4665556};
+		pos[]={5814.4653,25.153557,298.10791};
+		dir[]={0,-0.70710683,0.70710683};
+		up[]={0,0.70710677,0.70710677};
+		aside[]={0.99999994,0,-0};
 	};
 };
 binarizationWanted=0;
@@ -71,13 +71,15 @@ addons[]=
 	"A3_Structures_F_Items_Electronics",
 	"A3_Signs_F",
 	"ace_interaction",
-	"ace_cargo"
+	"ace_cargo",
+	"A3_Props_F_Enoch_Military_Camps",
+	"A3_Misc_F_Helpers"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=19;
+		items=21;
 		class Item0
 		{
 			className="A3_Ui_F";
@@ -211,11 +213,26 @@ class AddonsMetaData
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
+		class Item19
+		{
+			className="A3_Props_F_Enoch";
+			name="Arma 3 Contact Platform - Decorative and Mission Objects";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item20
+		{
+			className="A3_Misc_F";
+			name="Arma 3 - 3D Aids and Helpers";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
 	};
 };
 dlcs[]=
 {
-	"Jets"
+	"Jets",
+	"Contact"
 };
 randomSeed=4729305;
 class ScenarioData
@@ -284,7 +301,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=473;
+		items=476;
 		class Item0
 		{
 			dataType="Marker";
@@ -22166,17 +22183,114 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={5931.0889,24.117216,278.99823};
-				angles[]={0,4.712389,0};
+				position[]={5923.7598,24.07744,287.32565};
+				angles[]={-0,1.5785664,-0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=3227;
+			type="Land_PortableDesk_01_black_F";
+			atlOffset=0.057161331;
+		};
+		class Item473
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={5923.8018,24.893356,286.48999};
+				angles[]={0,4.7465734,-0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				name="commandLab_0";
+			};
+			id=3231;
+			type="Sign_Arrow_Yellow_F";
+			atlOffset=0.88654137;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item474
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={5923.8101,24.893356,288.17999};
+				angles[]={0,4.7368064,-0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				name="RadioSetter_0";
+			};
+			id=3233;
+			type="Sign_Arrow_Yellow_F";
+			atlOffset=0.88654137;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item475
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={5931.0098,23.901356,279.09698};
+				angles[]={0,6.2315235,0};
 			};
 			side="Empty";
 			class Attributes
 			{
 				name="loadout_0";
 			};
-			id=3220;
-			type="Land_ClutterCutter_small_F";
-			atlOffset=0.58867455;
+			id=3234;
+			type="Sign_Arrow_Yellow_F";
+			atlOffset=61.161999;
 			class CustomAttributes
 			{
 				class Attribute0
