@@ -203,6 +203,18 @@ class Params {
         texts[] = {""};
         default = "";
     };
+    class EnableSaveLoadout {
+        title = $STR_PARAMS_SAVELOADOUT;
+        values[] = {0, 1};
+        texts[] = {$STR_PARAMS_DISABLED, $STR_PARAMS_ENABLED};
+        default = 1;
+    };
+    class EnableSaveLocation {
+        title = $STR_PARAMS_SAVELOCATION;
+        values[] = {0, 1};
+        texts[] = {$STR_PARAMS_DISABLED, $STR_PARAMS_ENABLED};
+        default = 1;
+    };
     class Fatigue {
         title = $STR_PARAMS_FATIGUE;
         values[] = {0, 1};

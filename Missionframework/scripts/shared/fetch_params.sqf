@@ -78,6 +78,8 @@ if(isServer) then {
 
     // Gameplay Options
     ["--- Gameplay Options ---", "PARAM"] call KPLIB_fnc_log;
+    GET_PARAM_BOOL(GRLIB_enableSaveLoadout, "EnableSaveLoadout", 1);
+    GET_PARAM_BOOL(GRLIB_enableSaveLocation, "EnableSaveLocation", 1);
     GET_PARAM_BOOL(GRLIB_fatigue, "Fatigue", 1);
     GET_PARAM_BOOL(KPLIB_sway, "WeaponSway", 1);
     GET_PARAM_BOOL(KP_liberation_arsenalUsePreset, "ArsenalUsePreset", 1);
@@ -108,7 +110,6 @@ if(isServer) then {
     GET_PARAM_BOOL(GRLIB_use_whitelist, "Whitelist", 0);
     GET_PARAM(KP_liberation_restart, "ServerRestart", 0);
 
-   
 
     KP_serverParamsFetched = true;
     publicVariable "KP_serverParamsFetched";
@@ -359,6 +360,15 @@ if (!isDedicated && hasInterface) then {
         _value = str bis_reviveParam_forceRespawnDuration;
         _text = _text + format ["<font color='#ff8000'>%1</font><br />%2<br /><br />", _param, _value];
     };
+    
+
+    _param = localize "STR_PARAMS_SAVELOADOUT";
+    _value = if (GRLIB_enableSaveLoadout) then {localize "STR_PARAMS_ENABLED";} else {localize "STR_PARAMS_DISABLED";};
+    _text = _text + format ["<font color='#ff8000'>%1</font><br />%2<br /><br />", _param, _value];
+
+    _param = localize "STR_PARAMS_SAVELOCATION";
+    _value = if (GRLIB_enableSaveLocation) then {localize "STR_PARAMS_ENABLED";} else {localize "STR_PARAMS_DISABLED";};
+    _text = _text + format ["<font color='#ff8000'>%1</font><br />%2<br /><br />", _param, _value];
 
     _param = localize "STR_PARAMS_FATIGUE";
     _value = if (GRLIB_fatigue) then {localize "STR_PARAMS_ENABLED";} else {localize "STR_PARAMS_DISABLED";};

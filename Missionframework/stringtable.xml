@@ -1486,6 +1486,34 @@
             <Korean>군수물자 생산 비율</Korean>
             <Czech>Násobitel zdrojů</Czech>
         </Key>
+        <Key ID="STR_PARAMS_SAVELOADOUT">
+            <Original>Save Player Loadout</Original>
+            <French>Stamina</French>
+            <German>Ausdauer</German>
+            <Spanish>Estamina</Spanish>
+            <Russian>Усталость</Russian>
+            <Italian>Stamina</Italian>
+            <Chinesesimp>体力</Chinesesimp>
+            <Chinese>體力</Chinese>
+            <Turkish>Stamina</Turkish>
+            <Portuguese>Vigor (stamina)</Portuguese>
+            <Korean>체력</Korean>
+            <Czech>Výdrž</Czech>
+        </Key>
+        <Key ID="STR_PARAMS_SAVELOCATION">
+            <Original>Save Player Location</Original>
+            <French>Stamina</French>
+            <German>Ausdauer</German>
+            <Spanish>Estamina</Spanish>
+            <Russian>Усталость</Russian>
+            <Italian>Stamina</Italian>
+            <Chinesesimp>体力</Chinesesimp>
+            <Chinese>體力</Chinese>
+            <Turkish>Stamina</Turkish>
+            <Portuguese>Vigor (stamina)</Portuguese>
+            <Korean>체력</Korean>
+            <Czech>Výdrž</Czech>
+        </Key>
         <Key ID="STR_PARAMS_FATIGUE">
             <Original>Stamina</Original>
             <French>Stamina</French>

@@ -104,7 +104,7 @@ while {true} do {
     while {dialog && alive player && deploy == 0} do {
         // ARRAY - [[NAME, POSITION(, OBJECT)], ...]
 
-        if (count _lastPlayerPos > 0 && KPLIB_firstTimeRespawn ) then {
+        if (count _lastPlayerPos > 0 && KPLIB_firstTimeRespawn && GRLIB_enableSaveLocation) then {
             KPLIB_respawnPositionsList = [["Last Known Postion", _lastPlayerPos]];
         }
         else
@@ -213,7 +213,7 @@ while {true} do {
 
         [player] call KPLIB_fnc_setUnitTraits;
 
-        if (count _lastPlayerGear > 0 && KPLIB_firstTimeRespawn ) then {
+        if (count _lastPlayerGear > 0 && KPLIB_firstTimeRespawn  && GRLIB_enableSaveLoadout) then {
             [player, _lastPlayerGear] call KPLIB_fnc_setLoadout;
         };
 
