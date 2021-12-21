@@ -26,6 +26,18 @@ waitUntil {save_is_loaded};
 private _placeholder = objNull;
 private _spawnPos = [];
 private _veh = objNull;
+
+_all_startvehicle_spawn =[
+    ["littlebird_", KP_liberation_little_bird_classname],
+    ["boat_", KP_liberation_boat_classname],
+    ["loadout_", KP_liberation_loadoutbox_classname],
+    ["commandLab_",  (KP_liberation_Command_Devices select 0)]
+];
+
+_compatibility_start_vehicle  = call compile preprocessFileLineNumbers "compatibility\add_compatibility_start_vehicle.sqf";
+_all_startvehicle_spawn append  _compatibility_start_vehicle;
+
+
 {
     _x params ["_id", "_classname"];
 
@@ -35,8 +47,8 @@ private _veh = objNull;
         _veh = _classname createVehicle [_spawnPos select 0, _spawnPos select 1, (_spawnPos select 2) + 0.2];
         _veh enableSimulationGlobal false;
         _veh allowDamage false;
-        _veh setDir (getDir _placeholder);
         _veh setPosATL _spawnPos;
+        _veh setDir (getDir _placeholder);
         [_veh] call KPLIB_fnc_clearCargo;
         sleep 0.5;
         _veh enableSimulationGlobal true;
@@ -44,12 +56,6 @@ private _veh = objNull;
         _veh allowDamage true;
         _veh setVariable ["KP_liberation_preplaced", true, true];
         [_veh] call KPLIB_fnc_addObjectInit;
-        deleteVehicle _placeholder;
+        //deleteVehicle _placeholder;
     };
-} forEach [
-    ["littlebird_", KP_liberation_little_bird_classname],
-    ["boat_", KP_liberation_boat_classname],
-    ["loadout_", KP_liberation_loadoutbox_classname],
-    ["radioSetter_", "Static_Radio_Black_3"],
-    ["commandLab_", "Land_Laptop_03_black_F"]
-];
+} forEach _all_startvehicle_spawn;

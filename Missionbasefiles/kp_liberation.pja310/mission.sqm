@@ -12,7 +12,7 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=3235;
+		nextID=3266;
 	};
 	class MarkerIDProvider
 	{
@@ -24,10 +24,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={5814.4653,25.153557,298.10791};
-		dir[]={-1.2363449e-007,-0.70710683,0.70710683};
-		up[]={-1.2363449e-007,0.70710671,0.70710683};
-		aside[]={1,0,1.7484557e-007};
+		pos[]={5931.7153,26.385408,276.92001};
+		dir[]={-0.13239904,-0.6019913,0.78745866};
+		up[]={-0.099814817,0.79850024,0.5936597};
+		aside[]={0.98616397,6.0885213e-008,0.16580772};
 	};
 };
 binarizationWanted=0;
@@ -72,14 +72,13 @@ addons[]=
 	"A3_Signs_F",
 	"ace_interaction",
 	"ace_cargo",
-	"A3_Props_F_Enoch_Military_Camps",
-	"A3_Misc_F_Helpers"
+	"A3_Props_F_Enoch_Military_Camps"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=21;
+		items=20;
 		class Item0
 		{
 			className="A3_Ui_F";
@@ -217,13 +216,6 @@ class AddonsMetaData
 		{
 			className="A3_Props_F_Enoch";
 			name="Arma 3 Contact Platform - Decorative and Mission Objects";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item20
-		{
-			className="A3_Misc_F";
-			name="Arma 3 - 3D Aids and Helpers";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -22200,17 +22192,17 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={5923.8018,24.893356,286.48999};
-				angles[]={0,4.7465734,-0};
+				position[]={5923.8018,24.976097,286.48999};
+				angles[]={0,1.5699316,-0};
 			};
 			side="Empty";
 			class Attributes
 			{
 				name="commandLab_0";
 			};
-			id=3231;
-			type="Sign_Arrow_Yellow_F";
-			atlOffset=0.88654137;
+			id=3256;
+			type="Land_ClutterCutter_small_F";
+			atlOffset=0.45561028;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -22232,7 +22224,26 @@ class Mission
 						};
 					};
 				};
-				nAttributes=1;
+				class Attribute1
+				{
+					property="hideObject";
+					expression="if !(is3DEN) then {_this hideobjectglobal _value;};";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=2;
 			};
 		};
 		class Item474
@@ -22240,17 +22251,17 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={5923.8101,24.893356,288.17999};
-				angles[]={0,4.7368064,-0};
+				position[]={5923.8101,25.167095,288.17999};
+				angles[]={0,1.5860984,-0};
 			};
 			side="Empty";
 			class Attributes
 			{
-				name="RadioSetter_0";
+				name="tfar_radioSetter_0";
 			};
-			id=3233;
-			type="Sign_Arrow_Yellow_F";
-			atlOffset=0.88654137;
+			id=3257;
+			type="Land_ClutterCutter_small_F";
+			atlOffset=0.64660835;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -22272,7 +22283,26 @@ class Mission
 						};
 					};
 				};
-				nAttributes=1;
+				class Attribute1
+				{
+					property="hideObject";
+					expression="if !(is3DEN) then {_this hideobjectglobal _value;};";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=2;
 			};
 		};
 		class Item475
@@ -22280,17 +22310,17 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={5931.0098,23.901356,279.09698};
-				angles[]={0,6.2315235,0};
+				position[]={5931.1709,24.191097,279.26401};
+				angles[]={0,3.1413496,-0};
 			};
 			side="Empty";
 			class Attributes
 			{
 				name="loadout_0";
 			};
-			id=3234;
-			type="Sign_Arrow_Yellow_F";
-			atlOffset=61.161999;
+			id=3258;
+			type="Land_ClutterCutter_small_F";
+			atlOffset=0.66255569;
 			class CustomAttributes
 			{
 				class Attribute0

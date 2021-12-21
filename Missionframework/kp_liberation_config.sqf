@@ -3,6 +3,15 @@
     https://github.com/KillahPotatoes/KP-Liberation
 */
 
+KP_liberation_Command_Devices =  [
+"Land_Laptop_03_black_F", 
+"Land_Laptop_03_olive_F", 
+"Land_Laptop_03_sand_F", 
+"Land_Laptop_02_unfolded_F", 
+"Laptop_EP1", 
+"Item_Laptop_Unfolded"
+];
+
 // Vehicle classnames which also function as ACE medical vehicles.
 KP_liberation_medical_vehicles = [
     "B_T_Truck_01_medical_F",

@@ -1,4 +1,4 @@
-version=53;
+version=54;
 class EditorData
 {
 	moveGridStep=1;
@@ -6,29 +6,35 @@ class EditorData
 	scaleGridStep=1;
 	autoGroupingDist=10;
 	toggles=1;
+	mods[]=
+	{
+		"3denEnhanced"
+	};
 	class ItemIDProvider
 	{
-		nextID=883;
+		nextID=887;
 	};
 	class LayerIndexProvider
 	{
-		nextID=72;
+		nextID=76;
 	};
 	class Camera
 	{
-		pos[]={2850.9531,397.45599,185.48643};
-		dir[]={0.49854454,-0.52520555,0.68980193};
-		up[]={0.30787823,0.85069817,0.42599288};
-		aside[]={0.81057203,-6.1321771e-007,-0.58582431};
+		pos[]={2889.1987,373.36029,256.16156};
+		dir[]={0.27805594,-0.55712247,0.78249568};
+		up[]={0.18654329,0.83043033,0.52496386};
+		aside[]={0.94227731,0,-0.33483353};
 	};
 };
 binarizationWanted=0;
+sourceName="kp_liberation";
 addons[]=
 {
 	"A3_Ui_F",
 	"A3_Modules_F_Curator_Curator",
 	"A3_Modules_F",
 	"A3_Characters_F",
+	"ace_explosives",
 	"CUP_Misc3_Config",
 	"A3_Structures_F_Mil_Shelters",
 	"A3_Structures_F_EPA_Civ_Constructions",
@@ -41,11 +47,15 @@ addons[]=
 	"A3_Structures_F_Civ_Garbage",
 	"A3_Structures_F_Heli_Items_Luggage",
 	"A3_Structures_F_Civ_Camping",
+	"ace_dragging",
+	"ace_sitting",
 	"A3_Structures_F_Items_Vessels",
+	"ace_cargo",
 	"A3_Structures_F_EPA_Mil_Scrapyard",
 	"A3_Structures_F_Heli_Civ_Market",
 	"A3_Structures_F_Ind_Cargo",
 	"A3_Structures_F_Heli_Ind_Machines",
+	"ace_field_rations",
 	"A3_Structures_F_Items_Electronics",
 	"A3_Structures_F_EPA_Items_Food",
 	"A3_Structures_F_Mil_Cargo",
@@ -56,13 +66,14 @@ addons[]=
 	"A3_Structures_F_Heli_Items_Airport",
 	"A3_Supplies_F_Heli_Fuel",
 	"CUP_Editor_Plants_Config",
-	"A3_Structures_F_System"
+	"A3_Structures_F_System",
+	"A3_Props_F_Enoch_Military_Camps"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=16;
+		items=22;
 		class Item0
 		{
 			className="A3_Ui_F";
@@ -93,79 +104,126 @@ class AddonsMetaData
 		};
 		class Item4
 		{
+			className="ace_explosives";
+			name="ACE3 - Explosives";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
+		};
+		class Item5
+		{
 			className="CUP_Misc3_Config";
 			name="CUP_Misc3_Config";
 		};
-		class Item5
+		class Item6
 		{
 			className="A3_Structures_F_Mil";
 			name="Arma 3 - Military Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item6
+		class Item7
 		{
 			className="A3_Structures_F_EPA";
 			name="Arma 3 Survive Episode - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item7
+		class Item8
 		{
 			className="CUP_WarfareBuildings";
 			name="CUP_WarfareBuildings";
 		};
-		class Item8
+		class Item9
 		{
 			className="CUP_StandaloneTerrains_Core_Faction";
 			name="CUP_StandaloneTerrains_Core_Faction";
 		};
-		class Item9
+		class Item10
 		{
 			className="CUP_Editor_A2_Roads_Config";
 			name="CUP_Editor_A2_Roads_Config";
 		};
-		class Item10
+		class Item11
 		{
 			className="A3_Structures_F_Heli";
 			name="Arma 3 Helicopters - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item11
+		class Item12
 		{
 			className="A3_Structures_F";
 			name="Arma 3 - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item12
+		class Item13
+		{
+			className="ace_dragging";
+			name="ACE3 - Dragging";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
+		};
+		class Item14
+		{
+			className="ace_sitting";
+			name="ACE3 - Sitting";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
+		};
+		class Item15
+		{
+			className="ace_cargo";
+			name="ACE3 - Cargo";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
+		};
+		class Item16
 		{
 			className="A3_Structures_F_Ind";
 			name="Arma 3 - Industrial Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item13
+		class Item17
+		{
+			className="ace_field_rations";
+			name="ACE3 - Field Rations";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
+		};
+		class Item18
 		{
 			className="A3_Structures_F_EPC";
 			name="Arma 3 Win Episode - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item14
+		class Item19
 		{
 			className="A3_Supplies_F_Heli";
 			name="Arma 3 Helicopters - Ammoboxes and Supplies";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item15
+		class Item20
 		{
 			className="CUP_Editor_Plants_Config";
 			name="CUP_Editor_Plants_Config";
 		};
+		class Item21
+		{
+			className="A3_Props_F_Enoch";
+			name="Arma 3 Contact Platform - Decorative and Mission Objects";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
 	};
+};
+dlcs[]=
+{
+	"Heli",
+	"Contact"
 };
 randomSeed=7986313;
 class ScenarioData
@@ -234,7 +292,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=358;
+		items=362;
 		class Item0
 		{
 			dataType="Marker";
@@ -8282,6 +8340,7 @@ class Mission
 					};
 					id=860;
 					type="CamoNet_BLUFOR_open_F";
+					atlOffset=-0.045166016;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -8391,7 +8450,7 @@ class Mission
 				};
 			};
 			id=594;
-			atlOffset=-0.063446045;
+			atlOffset=-0.069091797;
 		};
 		class Item283
 		{
@@ -12538,6 +12597,180 @@ class Mission
 			};
 			id=794;
 			type="CUP_t_PistaciaL2s_EP1";
+		};
+		class Item358
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={2893.0752,359.15677,270.50848};
+				angles[]={0,0.072053425,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				name="loadout_0";
+			};
+			id=883;
+			type="Land_ClutterCutter_small_F";
+			atlOffset=0.79342651;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item359
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={2904.8645,362.15222,263.42419};
+				angles[]={0,4.7676764,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				name="commandLab_0";
+			};
+			id=884;
+			type="Land_ClutterCutter_small_F";
+			atlOffset=0.49551392;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="hideObject";
+					expression="if !(is3DEN) then {_this hideobjectglobal _value;};";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=2;
+			};
+		};
+		class Item360
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={2904.832,362.47784,261.73471};
+				angles[]={0,1.6089735,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				name="tfar_radioSetter_0";
+			};
+			id=885;
+			type="Land_ClutterCutter_small_F";
+			atlOffset=0.82113647;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="hideObject";
+					expression="if !(is3DEN) then {_this hideobjectglobal _value;};";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=2;
+			};
+		};
+		class Item361
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={2904.8799,361.21365,262.66721};
+				angles[]={-0,4.7345386,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+			};
+			id=886;
+			type="Land_PortableDesk_01_black_F";
+			atlOffset=0.79345703;
 		};
 	};
 	class Connections

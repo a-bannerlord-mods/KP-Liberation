@@ -1,4 +1,4 @@
-version=53;
+version=54;
 class EditorData
 {
 	moveGridStep=1;
@@ -6,9 +6,13 @@ class EditorData
 	scaleGridStep=1;
 	autoGroupingDist=10;
 	toggles=513;
+	mods[]=
+	{
+		"3denEnhanced"
+	};
 	class ItemIDProvider
 	{
-		nextID=70;
+		nextID=74;
 	};
 	class MarkerIDProvider
 	{
@@ -16,27 +20,30 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={4182.7393,470.39172,4286.0283};
-		dir[]={-0.017634494,-0.77135551,0.63616693};
-		up[]={-0.021373879,0.63638836,0.77107179};
-		aside[]={0.99961811,-2.8499926e-007,0.027708896};
+		pos[]={4078.9331,53.432224,4653.5342};
+		dir[]={-0.8318128,-0.54543406,-0.10308762};
+		up[]={-0.54131728,0.83813411,-0.067086242};
+		aside[]={-0.12299139,-4.5157503e-007,0.99242145};
 	};
 };
 binarizationWanted=0;
+sourceName="kp_liberation_devkit";
 addons[]=
 {
 	"A3_Ui_F",
 	"A3_Modules_F_Curator_Curator",
 	"A3_Modules_F",
 	"A3_Characters_F",
+	"ace_explosives",
 	"A3_Structures_F_System",
-	"A3_Structures_F_Mil_Cargo"
+	"A3_Structures_F_Mil_Cargo",
+	"A3_Props_F_Enoch_Military_Camps"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=6;
+		items=8;
 		class Item0
 		{
 			className="A3_Ui_F";
@@ -67,19 +74,37 @@ class AddonsMetaData
 		};
 		class Item4
 		{
+			className="ace_explosives";
+			name="ACE3 - Explosives";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
+		};
+		class Item5
+		{
 			className="A3_Structures_F";
 			name="Arma 3 - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item5
+		class Item6
 		{
 			className="A3_Structures_F_Mil";
 			name="Arma 3 - Military Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
+		class Item7
+		{
+			className="A3_Props_F_Enoch";
+			name="Arma 3 Contact Platform - Decorative and Mission Objects";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
 	};
+};
+dlcs[]=
+{
+	"Contact"
 };
 randomSeed=1898175;
 class ScenarioData
@@ -107,7 +132,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=36;
+		items=40;
 		class Item0
 		{
 			dataType="Marker";
@@ -2787,6 +2812,180 @@ class Mission
 			b=2500;
 			id=69;
 			atlOffset=-5;
+		};
+		class Item36
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4300.0166,5.7934875,4656.0933};
+				angles[]={0,1.5893737,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				name="loadout_0";
+			};
+			id=70;
+			type="Land_ClutterCutter_small_F";
+			atlOffset=0.79348755;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item37
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4300.9731,6.463829,4629.3926};
+				angles[]={0,1.5931151,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				name="commandLab_0";
+			};
+			id=71;
+			type="Land_ClutterCutter_small_F";
+			atlOffset=0.57689428;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="hideObject";
+					expression="if !(is3DEN) then {_this hideobjectglobal _value;};";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=2;
+			};
+		};
+		class Item38
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4300.9497,6.5070114,4631.082};
+				angles[]={0,4.717597,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				name="tfar_radioSetter_0";
+			};
+			id=72;
+			type="Land_ClutterCutter_small_F";
+			atlOffset=0.62007666;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="hideObject";
+					expression="if !(is3DEN) then {_this hideobjectglobal _value;};";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=2;
+			};
+		};
+		class Item39
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4300.9155,5.4438882,4630.2271};
+				angles[]={-0,1.5599772,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=73;
+			type="Land_PortableDesk_01_black_F";
 		};
 	};
 	class Connections
