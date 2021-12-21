@@ -34,9 +34,8 @@ if (isClass(configFile >> "CfgPatches" >> "task_force_radio") && KPLIB_Enable_TF
     true,
     "",
     "
-        {alive _originalTarget}
-        && typeof cursorObject in ['Static_Radio_Black_3']
-        && cursorObject distance player < 5
+            typeof cursorObject in ['Static_Radio_Black_3']
+        &&  cursorObject distance player < 5
     "
 ];
 

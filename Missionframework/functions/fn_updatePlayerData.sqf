@@ -38,4 +38,3 @@ if (!((name _player) in ["HC0","HC1", "HC2", "HC3", "HC4", "HC5"])) then {
 			GRLIB_players_data pushback [_playerUID, _displayname, _data]; 
 		}; 
 }; 
-systemChat "Player Data Saved";

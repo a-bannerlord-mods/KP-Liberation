@@ -1,4 +1,7 @@
 waitUntil {!isNil "GRLIB_players_data"};
+waitUntil {!isNil "save_is_loaded"};
+waitUntil {save_is_loaded};
+
 
 SendPlayerData = {
     params ["_owner","_uid"];
@@ -11,9 +14,10 @@ SendPlayerData = {
 			_data = (GRLIB_players_data select _index) select 2;
 	} else { 
 			GRLIB_players_data pushback [_uid, "", _data]; 
-	}; 
-    lastplayerjoineddata = _data;
-    _owner publicVariableClient "lastplayerjoineddata";
+	};
+    _playerVarName = "player"+ _uid +"data";
+    missionNamespace setVariable [_playerVarName, _data];
+    _owner publicVariableClient _playerVarName;
 };
 
 addMissionEventHandler ["HandleDisconnect", {

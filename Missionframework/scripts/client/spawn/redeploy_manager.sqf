@@ -18,10 +18,15 @@ waitUntil {!isNil "GRLIB_all_fobs"};
 waitUntil {!isNil "blufor_sectors"};
 waitUntil {!isNil "save_is_loaded"};
 waitUntil {save_is_loaded};
-waitUntil {!isNil "lastplayerjoineddata"};
 
-private _lastPlayerPos = lastplayerjoineddata select 0;
-private _lastPlayerGear = lastplayerjoineddata select 1;
+_playerVarName = "player"+ getPlayerUID player +"data";
+
+waitUntil {!isNil _playerVarName};
+
+_lastplayerjoineddata = missionNamespace getVariable [_playerVarName,[[],[],[]]];
+
+private _lastPlayerPos = _lastplayerjoineddata select 0;
+private _lastPlayerGear = _lastplayerjoineddata select 1;
 
 private _spawn_str = "";
 
