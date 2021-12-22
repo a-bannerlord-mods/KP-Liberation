@@ -2546,33 +2546,47 @@
             <Korean>-- 사용 권한</Korean>
             <Czech>-- PRAVOMOCE</Czech>
         </Key>
+        <Key ID="STR_SAVE_PROGRESS_ACTION">
+            <Original>-- SAVE PROGRESS</Original>
+            <French>-- SAVE PROGRESS</French>
+            <German>-- SAVE PROGRESS</German>
+            <Spanish>-- SAVE PROGRESS</Spanish>
+            <Russian>-- SAVE PROGRESS</Russian>
+            <Italian>-- SAVE PROGRESS</Italian>
+            <Chinesesimp>-- SAVE PROGRESS</Chinesesimp>
+            <Chinese>-- SAVE PROGRESS</Chinese>
+            <Turkish>-- SAVE PROGRESS</Turkish>
+            <Portuguese>-- SAVE PROGRESS</Portuguese>
+            <Korean>-- SAVE PROGRESS</Korean>
+            <Czech>-- SAVE PROGRESS</Czech>
+        </Key>
         <Key ID="STR_QUALIFICATIONS_ACTION">
             <Original>-- QUALIFICATIONS</Original>
             <French>-- QUALIFICATIONS</French>
-            <German>-- RECHTE</German>
-            <Spanish>-- PERMISOS</Spanish>
-            <Russian>-- РАЗРЕШЕНИЯ</Russian>
-            <Italian>-- PERMESSI</Italian>
-            <Chinesesimp>-- 权限</Chinesesimp>
-            <Chinese>-- 權限</Chinese>
-            <Turkish>-- YETKİLER</Turkish>
-            <Portuguese>-- PERMISSÕES</Portuguese>
-            <Korean>-- 사용 권한</Korean>
-            <Czech>-- PRAVOMOCE</Czech>
+            <German>-- QUALIFICATIONS</German>
+            <Spanish>-- QUALIFICATIONS</Spanish>
+            <Russian>-- QUALIFICATIONS</Russian>
+            <Italian>-- QUALIFICATIONS</Italian>
+            <Chinesesimp>-- QUALIFICATIONS</Chinesesimp>
+            <Chinese>-- QUALIFICATIONS</Chinese>
+            <Turkish>-- QUALIFICATIONS</Turkish>
+            <Portuguese>-- QUALIFICATIONS</Portuguese>
+            <Korean>-- QUALIFICATIONS</Korean>
+            <Czech>-- QUALIFICATIONS</Czech>
         </Key>
         <Key ID="STR_QUALIFICATIONS_TITLE">
             <Original>QUALIFICATIONS MANAGEMENT</Original>
-            <French>GESTION DES PERMISSIONS</French>
-            <German>Rechteverwaltung</German>
-            <Spanish>GESTIÓN DE PERMISOS</Spanish>
-            <Russian>УПРАВЛЕНИЕ РАЗРЕШЕНИЯМИ</Russian>
-            <Italian>GESTIONE PERMESSI</Italian>
-            <Chinesesimp>权限管理</Chinesesimp>
-            <Chinese>權限管理</Chinese>
-            <Turkish>YETKİ YÖNETİMİ</Turkish>
-            <Portuguese>GESTÃO DE PERMISSÕES</Portuguese>
-            <Korean>사용 권한 설정</Korean>
-            <Czech>MANAŽER PRAVOMOCÍ</Czech>
+            <French>QUALIFICATIONS MANAGEMENT</French>
+            <German>QUALIFICATIONS MANAGEMENT</German>
+            <Spanish>QUALIFICATIONS MANAGEMENT</Spanish>
+            <Russian>QUALIFICATIONS MANAGEMENT</Russian>
+            <Italian>QUALIFICATIONS MANAGEMENT</Italian>
+            <Chinesesimp>QUALIFICATIONS MANAGEMENT</Chinesesimp>
+            <Chinese>QUALIFICATIONS MANAGEMENT</Chinese>
+            <Turkish>QUALIFICATIONS MANAGEMENT</Turkish>
+            <Portuguese>QUALIFICATIONS MANAGEMENT</Portuguese>
+            <Korean>QUALIFICATIONS MANAGEMENT</Korean>
+            <Czech>QUALIFICATIONS MANAGEMENT</Czech>
         </Key>
         <Key ID="STR_SAVE_CHANGES">
             <Original>Save Changes</Original>
