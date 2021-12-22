@@ -29,10 +29,10 @@ if (missionNamespace getVariable ["kp_liberation_saving", false]) exitWith {
 
 kp_liberation_saving = true;
 
+//Save all players data
 {
-    // Current result is saved in variable _x
-    
-} forEach array;
+    [_x] call KPLIB_fnc_updatePlayerData;
+} forEach allplayers;
 
 private _saveData = [] call KPLIB_fnc_getSaveData;
 
