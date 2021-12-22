@@ -219,6 +219,7 @@ GRLIB_recycling_percentage = 0.5;                                       // Perce
 KP_liberation_production_interval = 30;                                 // Time in minutes until a production process is finished, when resources multiplier is set to 1.
 
 GRLIB_sector_size = 1000;                                               // Range to activate a sector.
+GRLIB_long_range_sector_spawn_radius_multiplier = 3;                    // Range multiplier to activate long range sectors like SAM and mortar.
 GRLIB_capture_size = 175;                                               // Range to capture a sector.
 GRLIB_defended_buildingpos_part = 0.4;                                  // Multiplier for defenders in buildings.
 GRLIB_battlegroup_size = 6;                                             // Size of enemy battlegroups.

@@ -23,6 +23,7 @@ sectors_factory = [];
 sectors_military = [];
 sectors_opfor = [];
 sectors_tower = [];
+sectors_longRange = [];
 
 {
     switch (true) do {

@@ -12,11 +12,11 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=3266;
+		nextID=3268;
 	};
 	class MarkerIDProvider
 	{
-		nextID=2;
+		nextID=3;
 	};
 	class LayerIndexProvider
 	{
@@ -24,10 +24,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={20210.277,24.293539,281.62628};
-		dir[]={-0.67790067,-0.50105643,-0.53795278};
-		up[]={-0.39248991,0.86541468,-0.31146309};
-		aside[]={-0.62161279,0,0.78332484};
+		pos[]={2052.9248,25.340677,852.3877};
+		dir[]={0,-0.70710683,0.70710683};
+		up[]={0,0.70710677,0.70710677};
+		aside[]={0.99999994,0,-0};
 	};
 };
 binarizationWanted=0;
@@ -293,7 +293,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=476;
+		items=477;
 		class Item0
 		{
 			dataType="Marker";
@@ -22344,6 +22344,17 @@ class Mission
 				};
 				nAttributes=1;
 			};
+		};
+		class Item476
+		{
+			dataType="Marker";
+			position[]={747.29199,0.0070000002,1361.937};
+			name="military_26";
+			text="Bachala Island barracks";
+			type="o_support";
+			colorName="ColorEAST";
+			id=3266;
+			atlOffset=-15.041389;
 		};
 	};
 	class Connections

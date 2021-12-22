@@ -20,8 +20,15 @@
 params [
     ["_pos", [0, 0, 0], [[]], [2, 3]],
     ["_radius", 100, [0]],
-    ["_side", GRLIB_side_friendly, [sideEmpty]]
+    ["_side", GRLIB_side_friendly, [sideEmpty]],
+    ["_sector",""]
 ];
+
+if (_sector!="") then {
+    if (_sector in sectors_longRange) then {
+        _radius = _radius * GRLIB_long_range_sector_spawn_radius_multiplier;
+    };
+};
 
 private _amount = _side countSide ((_pos nearEntities ["Man", _radius]) select {!(captive _x) && ((getpos _x) select 2 < 800)});
 {
