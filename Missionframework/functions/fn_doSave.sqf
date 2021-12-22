@@ -29,6 +29,11 @@ if (missionNamespace getVariable ["kp_liberation_saving", false]) exitWith {
 
 kp_liberation_saving = true;
 
+{
+    // Current result is saved in variable _x
+    
+} forEach array;
+
 private _saveData = [] call KPLIB_fnc_getSaveData;
 
 // Write data in the server profileNamespace
