@@ -12,7 +12,7 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=3268;
+		nextID=3271;
 	};
 	class MarkerIDProvider
 	{
@@ -24,10 +24,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={2052.9248,25.340677,852.3877};
-		dir[]={0,-0.70710683,0.70710683};
-		up[]={0,0.70710677,0.70710677};
-		aside[]={0.99999994,0,-0};
+		pos[]={5552.5024,17.482088,7822.4463};
+		dir[]={0.90728289,-0.33528292,0.25385597};
+		up[]={0.3228893,0.94211233,0.090343639};
+		aside[]={0.26945293,3.4575351e-008,-0.96302593};
 	};
 };
 binarizationWanted=0;
@@ -293,7 +293,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=477;
+		items=478;
 		class Item0
 		{
 			dataType="Marker";
@@ -22355,6 +22355,16 @@ class Mission
 			colorName="ColorEAST";
 			id=3266;
 			atlOffset=-15.041389;
+		};
+		class Item477
+		{
+			dataType="Marker";
+			position[]={5566.9771,9.0860815,7824.0005};
+			name="mortar";
+			text="Mortar Installation";
+			type="o_mortar";
+			colorName="ColorEAST";
+			id=3268;
 		};
 	};
 	class Connections

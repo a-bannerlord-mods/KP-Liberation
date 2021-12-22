@@ -260,6 +260,33 @@ KP_liberation_resistance_at_chance = 20;                                // Chanc
 KP_liberation_resistance_sector_chance = 35;                            // Chance that a guerilla squad will join an ongoing sector attack.
 KP_liberation_resistance_ambush_chance = 25;                            // Chance that some guerilla units will spawn in blufor sectors for an ambush, if reputation is low.
 
+
+//AI artillery config
+RydFFE_Active = true;
+RydFFE_Manual = false;
+RydFFE_NoControl = [];
+RydFFE_ArtyShells = 1;
+RydFFE_Interval = 10;
+RydFFE_2PhWithoutFO = false;
+RydFFE_OnePhase = false;
+RydFFE_Amount = 6;
+RydFFE_Acc = 3;
+RydFFE_Safe = 250;
+RydFFE_Monogamy = true;
+
+RydFFE_FOAccGain = 0.8;
+RydFFE_FOClass =	[];
+
+RydFFE_Add_SPMortar = [];
+RydFFE_Add_Mortar = [];
+RydFFE_Add_Rocket = [];
+RydFFE_Add_Other = [];
+RydFFE_IowaMode = false;
+
+RydFFE_Debug = false;
+RydFFE_ShellView = false;
+
+
 // Array of worldName values.
 // When playing on this map, it'll create a clearance (remove terrain objects) in a 15m radius around the battlegroup/reinforcements spawnpoint.
 KP_liberation_battlegroup_clearance = [

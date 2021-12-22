@@ -58,3 +58,7 @@ if (isServer) then {
     KPLIB_initServer = true;
     publicVariable "KPLIB_initServer";
 };
+
+
+//AI artillery
+[] execVM "modules\RYD_FFE\FFE.sqf";
