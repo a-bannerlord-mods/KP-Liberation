@@ -1153,3 +1153,8 @@ KP_liberation_qualifications = [
     ["Special Force","Qualified enough to operate in overt combat, front-line reconnaissance and raiding, rather than long range reconnaissance and unconventional warfare.",{}],
     ["Officer","Qualified enough to lead teams on the battlefield",{}]
 ];
+
+
+//Technical Config 
+
+GRLIB_replaceRespawnButtonWithRedeploy =true;

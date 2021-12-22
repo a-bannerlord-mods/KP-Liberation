@@ -87,6 +87,7 @@ class KPLIB {
         class swapInventory             {};
         class updatePlayerData          {};
         class setUnitTraits             {};
+        class onPause                   {};
     };
     class functions_curator {
         file = "functions\curator";

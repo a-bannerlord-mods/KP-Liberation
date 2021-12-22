@@ -64,25 +64,29 @@ _player addAction [
 ];
 
 // Redeploy
-_player addAction [
-    ["<t color='#80FF80'>", localize "STR_DEPLOY_ACTION", "</t><img size='2' image='res\ui_redeploy.paa'/>"] joinString "",
-    {GRLIB_force_redeploy = true;},
-    nil,
-    -720,
-    false,
-    true,
-    "",
-    "
-        isNull (objectParent _originalTarget)
-        && {alive _originalTarget}
-        && {
-            _originalTarget getVariable ['KPLIB_fobDist', 99999] < 20
-            || {_originalTarget getVariable ['KPLIB_isNearMobRespawn', false]}
-            || {_originalTarget getVariable ['KPLIB_isNearStart', false]}
-        }
-        && {build_confirmed isEqualTo 0}
-    "
-];
+if (!GRLIB_replaceRespawnButtonWithRedeploy) then {
+
+    _player addAction [
+        ["<t color='#80FF80'>", localize "STR_DEPLOY_ACTION", "</t><img size='2' image='res\ui_redeploy.paa'/>"] joinString "",
+        {GRLIB_force_redeploy = true;},
+        nil,
+        -720,
+        false,
+        true,
+        "",
+        "
+            isNull (objectParent _originalTarget)
+            && {alive _originalTarget}
+            && {
+                _originalTarget getVariable ['KPLIB_fobDist', 99999] < 20
+                || {_originalTarget getVariable ['KPLIB_isNearMobRespawn', false]}
+                || {_originalTarget getVariable ['KPLIB_isNearStart', false]}
+            }
+            && {build_confirmed isEqualTo 0}
+        "
+    ];
+};
+
 
 // Squad management
 _player addAction [
