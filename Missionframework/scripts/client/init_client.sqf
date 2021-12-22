@@ -69,6 +69,7 @@ execVM "scripts\client\ui\tutorial_manager.sqf";
 execVM "scripts\client\markers\update_production_sites.sqf";
 
 execVM "scripts\client\playerdata\player_data_events.sqf";
+execVM "scripts\client\misc\clear_player_diary.sqf";
 
 player addMPEventHandler ["MPKilled", {_this spawn kill_manager;}];
 player addEventHandler ["GetInMan", {[_this select 2] spawn kp_fuel_consumption;}];
