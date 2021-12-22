@@ -67,8 +67,8 @@ _allArty = RydFFE_SPMortar + RydFFE_Mortar + RydFFE_Rocket;
 foreach RydFFE_Other;
 
 
-[] call compile preprocessFile "RYD_FFE\FFE_fnc.sqf";
-Shellview = compile preprocessFile "RYD_FFE\Shellview.sqf";
+[] call compile preprocessFile "modules\RYD_FFE\FFE_fnc.sqf";
+Shellview = compile preprocessFile "modules\RYD_FFE\Shellview.sqf";
 
 _allArty = [_allArty] call RydFFE_AutoConfig;
 
@@ -180,15 +180,15 @@ while {RydFFE_Active} do
 								if not (_gp in _friends) then
 									{
 									_friends pushBack _gp;
-									if ((toLower (typeOf (leader _x))) in RydFFE_FOClass) then
+									if ( ((count RydFFE_FOClass) == 0) or ((toLower (typeOf (leader _x))) in RydFFE_FOClass)) then
 										{
-										if ((count RydFFE_FO) > 0) then
-											{
+										//if ((count RydFFE_FO) > 0) then
+											//{
 											if not (_gp in RydFFE_FO) then
 												{
 												RydFFE_FO pushBack _gp
 												}
-											}
+											//}
 										}
 									}
 								}
@@ -209,12 +209,14 @@ while {RydFFE_Active} do
 							{
 							if (((count RydFFE_FO) == 0) or (_x in RydFFE_FO)) then
 								{
-								_FOs =[_x,_eVeh] call Group_Can_See;
-								if ((_x knowsAbout _eVeh) >= 0.05 && count _FOs > 0) then
+								//_FOs =[_x,_eVeh] call Group_Can_See;
+								if ((_x knowsAbout _eVeh) >= 0.05 
+								//&& count _FOs > 0
+								) then
 									{
 									if not (_eVeh in _knEnemies) then
 										{
-										_eVeh setVariable ["RydFFE_MyFO",(_FOs select 0)];
+										_eVeh setVariable ["RydFFE_MyFO",(leader _x)];
 										_knEnemies pushBack _eVeh
 										}
 									}
