@@ -283,8 +283,8 @@ RydFFE_Add_Rocket = [];
 RydFFE_Add_Other = [];
 RydFFE_IowaMode = false;
 
-RydFFE_Debug = true;
-RydFFE_ShellView = true;
+RydFFE_Debug = false;
+RydFFE_ShellView = false;
 
 
 // Array of worldName values.
