@@ -28,6 +28,9 @@ if (_sector!="") then {
     if (_sector in sectors_longRange) then {
         _radius = _radius * GRLIB_long_range_sector_spawn_radius_multiplier;
     };
+    if (_sector in sectors_heavyArtillery && combat_readiness > RydFFE_Heavy_Artillery_Enable_On_Combat_Readiness_Above) then {
+        _radius = _radius * 3;
+    };
 };
 
 private _amount = _side countSide ((_pos nearEntities ["Man", _radius]) select {!(captive _x) && ((getpos _x) select 2 < 800)});

@@ -88,6 +88,8 @@ class KPLIB {
         class updatePlayerData          {};
         class setUnitTraits             {};
         class onPause                   {};
+        class combatReadinessUpdated    {}; 
+        class removeUselessSectorMarkers    {};
     };
     class functions_curator {
         file = "functions\curator";

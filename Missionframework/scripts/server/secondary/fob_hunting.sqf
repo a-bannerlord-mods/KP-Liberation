@@ -128,6 +128,8 @@ waitUntil {
 };
 
 combat_readiness = round (combat_readiness * GRLIB_secondary_objective_impact);
+[] call KPLIB_fnc_combatReadinessUpdated;
+
 stats_secondary_objectives = stats_secondary_objectives + 1;
 sleep 1;
 [] spawn KPLIB_fnc_doSave;

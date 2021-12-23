@@ -22,7 +22,8 @@ params [
     ["_pos", [0, 0, 0], [[]], [2, 3]],
     ["_classname", "", [""]],
     ["_precise", false, [false]],
-    ["_rndDir", true, [false]]
+    ["_rndDir", true, [false]],
+    ["_grp", grpNull, [grpNull]]
 ];
 
 if (_pos isEqualTo [0, 0, 0]) exitWith {["No or zero pos given"] call BIS_fnc_error; objNull};
@@ -80,7 +81,9 @@ if (_classname in opfor_choppers) then {
 if (_classname in militia_vehicles) then {
     [_newvehicle] call KPLIB_fnc_spawnMilitiaCrew;
 } else {
-    private _grp = createGroup [GRLIB_side_enemy, true];
+    if (_grp == grpNull) then {
+        _grp = createGroup [GRLIB_side_enemy, true];
+    };
     private _crew = units (createVehicleCrew _newvehicle);
     _crew joinSilent _grp;
     sleep 0.1;

@@ -137,5 +137,17 @@ KPLIB_objectInits = [
             _this allowFleeing 0;
         },
         true
+    ],
+    // Disable enable Radars based on combat_readiness
+    [
+        (opfor_SAM apply {_x select 0}),
+        {
+            if (combat_readiness > KP_Radars_Enable_On_Combat_Readiness_Above) then {
+                _this setvehicleRadar 1;
+            } else {
+                _this setvehicleRadar 0;
+            };
+        },
+        true
     ]
 ];

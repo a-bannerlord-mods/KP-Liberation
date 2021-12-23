@@ -146,3 +146,20 @@ opfor_air = [
     "RHS_Su25SM_vvsc",                                                  // Su-25
     "RHS_Su25SM_KH29_vvsc"                                              // Su-25 (KH29)
 ];
+
+// Enemy SAM sites 
+opfor_SAM = [
+    //["RadarClass","LauncherClass"]
+    ["O_Radar_System_02_F","O_SAM_System_04_F"]
+];
+
+
+// Enemy light Artillery  (mortars)
+opfor_light_artillery = [
+    "rhs_2b14_82mm_vmf"
+];
+
+// Enemy heavy Artillery 
+opfor_heavy_artillery = [
+    "LOP_TKA_BM21"
+];

@@ -153,3 +153,20 @@ opfor_air = [
     "CUP_B_SU34_CDF",                                                   // Su-34
     "CUP_B_Su25_Dyn_CDF"                                                // Su-25 Frogfoot
 ];
+
+// Enemy SAM sites 
+opfor_SAM = [
+    //["RadarClass","LauncherClass"]
+    ["O_Radar_System_02_F","O_SAM_System_04_F"]
+];
+
+
+// Enemy light Artillery  (mortars)
+opfor_light_artillery = [
+    "O_Mortar_01_F"
+];
+
+// Enemy heavy Artillery 
+opfor_heavy_artillery = [
+    "O_MBT_02_arty_F"
+];

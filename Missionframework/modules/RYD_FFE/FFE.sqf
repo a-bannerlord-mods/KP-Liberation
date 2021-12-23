@@ -6,7 +6,7 @@ missionNameSpace setVariable ["RydFFE_FiredShells",[]];
 if (isNil "RydFFE_Active") then {RydFFE_Active = true};
 if (isNil "RydFFE_Manual") then {RydFFE_Manual = false};
 if (isNil "RydFFE_NoControl") then {RydFFE_NoControl = []};
-if (isNil "RydFFE_ArtyShells") then {RydFFE_ArtyShells = 1};
+if (isNil "RydFFE_ArtyShells") then {RydFFE_ArtyShells = 5};
 if (isNil "RydFFE_Interval") then {RydFFE_Interval = 10};
 if (isNil "RydFFE_Debug") then {RydFFE_Debug = false};
 if (isNil "RydFFE_FO") then {RydFFE_FO = []};
@@ -55,8 +55,11 @@ if (isNil "RydFFE_Add_Other") then {RydFFE_Add_Other = []};
 if (isNil "RydFFE_IowaMode") then {RydFFE_IowaMode = false};
 
 RydFFE_SPMortar = ["o_mbt_02_arty_f","b_mbt_01_arty_f"] + RydFFE_Add_SPMortar;
-RydFFE_Mortar = ["i_mortar_01_f","o_mortar_01_f","b_g_mortar_01_f","b_mortar_01_f"] + RydFFE_Add_Mortar;
+RydFFE_Mortar = ["i_mortar_01_f","b_mortar_01_f"] + RydFFE_Add_Mortar;
 RydFFE_Rocket = ["b_mbt_01_mlrs_f"] + RydFFE_Add_Rocket;
+RydFFE_Ace_Mortar = ["o_mortar_01_f","o_g_mortar_01_f"];
+RydFFE_rhs_Mortar = ["rhs_2b14_82mm_vmf","rhsgref_tla_2b14","rhs_2b14_82mm_vdv","rhs_2b14_82mm_msv","rhsgref_ins_2b14"];
+RydFFE_UK3CB_Mortar = ["UK3CB_AAF_O_2b14_82mm", "UK3CB_ADA_O_2b14_82mm", "UK3CB_ADR_O_2b14_82mm", "UK3CB_ADG_O_2b14_82mm", "UK3CB_ADG_O_2b14_82mm_ISL", "UK3CB_ADE_O_2b14_82mm", "UK3CB_ADM_O_2b14_82mm", "UK3CB_ARD_O_2b14_82mm", "UK3CB_CHD_O_2b14_82mm", "UK3CB_CHD_W_O_2b14_82mm", "UK3CB_CW_SOV_O_Early_2b14_82mm", "UK3CB_CW_SOV_O_Early_VDV_2b14_82mm", "UK3CB_CW_SOV_O_Late_2b14_82mm", "UK3CB_CW_SOV_O_Late_VDV_2b14_82mm", "UK3CB_KDF_O_2b14_82mm", "UK3CB_NAP_O_2b14_82mm", "UK3CB_NFA_O_2b14_82mm", "UK3CB_TKM_O_2b14_82mm", "UK3CB_TKA_O_2b14_82mm"];
 RydFFE_Other = [] + RydFFE_Add_Other;
 
 _allArty = RydFFE_SPMortar + RydFFE_Mortar + RydFFE_Rocket;
@@ -70,7 +73,7 @@ foreach RydFFE_Other;
 [] call compile preprocessFile "modules\RYD_FFE\FFE_fnc.sqf";
 Shellview = compile preprocessFile "modules\RYD_FFE\Shellview.sqf";
 
-_allArty = [_allArty] call RydFFE_AutoConfig;
+//_allArty = [_allArty] call RydFFE_AutoConfig;
 
 _civF = ["civ_f","civ","civ_ru","bis_tk_civ","bis_civ_special"];
 _sides = [west,east,resistance];
@@ -113,8 +116,19 @@ Group_Can_See = {
 while {RydFFE_Active} do
 	{
 	if (RydFFE_Manual) then {waitUntil {sleep 0.1;((RydFFE_Fire) or not (RydFFE_Manual))};RydFFE_Fire = false};
-
+	waitUntil {sleep 3;(combat_readiness > RydFFE_Light_Artillery_Enable_On_Combat_Readiness_Above) or (combat_readiness > RydFFE_Heavy_Artillery_Enable_On_Combat_Readiness_Above) };
+	_allArty = [];
+	if (combat_readiness > RydFFE_Light_Artillery_Enable_On_Combat_Readiness_Above) then {
+		_allArty = _allArty + opfor_light_artillery;
+	};
+	if (combat_readiness > RydFFE_Heavy_Artillery_Enable_On_Combat_Readiness_Above) then {
+		_allArty = _allArty + opfor_heavy_artillery;
+	};
+	_allArty = [_allArty] call RydFFE_AutoConfig;
+	_allArty  = _allArty apply {toLower _x} ;
 		{
+		
+		
 		_side = _x;
 
 		_eSides = [sideEnemy];
@@ -242,9 +256,26 @@ while {RydFFE_Active} do
 				}
 			foreach _knEnemies;
 
-			[_artyGroups,RydFFE_ArtyShells] call RYD_ArtyPrep;
 
-			[_artyGroups,_knEnemies,_enArmor,_friends,RydFFE_Debug,RydFFE_Amount] call RYD_CFF
+			artyGroups =_artyGroups;
+			artyknEnemies = _knEnemies;
+			artyenArmor = _enArmor;
+			artyfriends = _friends;
+
+			[_artyGroups,RydFFE_ArtyShells] call RYD_ArtyPrep;
+			_amount = RydFFE_Amount;
+
+			switch (true) do {
+				case (combat_readiness > 30): {_amount = _amount +1 };
+				case (combat_readiness > 40): {_amount = _amount +1 };
+				case (combat_readiness > 50): {_amount = _amount +1 };
+				case (combat_readiness > 60): {_amount = _amount +1 };
+				case (combat_readiness > 70): {_amount = _amount +1 };
+				case (combat_readiness > 80): {_amount = _amount +1 };
+				case (combat_readiness > 90): {_amount = _amount +1 };
+			};
+
+			[_artyGroups,_knEnemies,_enArmor,_friends,RydFFE_Debug,_amount] call RYD_CFF
 			}
 		}
 	foreach [east];
@@ -272,5 +303,4 @@ while {RydFFE_Active} do
 	_shells = _shells - [0];
 	missionNameSpace setVariable ["RydFFE_FiredShells",_shells];
 	
-	_allArty = [_allArty] call RydFFE_AutoConfig
 	};

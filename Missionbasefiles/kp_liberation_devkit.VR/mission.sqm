@@ -12,7 +12,7 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=74;
+		nextID=77;
 	};
 	class MarkerIDProvider
 	{
@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={4078.9331,53.432224,4653.5342};
-		dir[]={-0.8318128,-0.54543406,-0.10308762};
-		up[]={-0.54131728,0.83813411,-0.067086242};
-		aside[]={-0.12299139,-4.5157503e-007,0.99242145};
+		pos[]={4830.2153,30,4608.1387};
+		dir[]={-7.7889708e-006,-0.70710683,0.70710683};
+		up[]={-7.7889708e-006,0.70710677,0.70710677};
+		aside[]={0.99999994,0,1.1015271e-005};
 	};
 };
 binarizationWanted=0;
@@ -132,7 +132,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=40;
+		items=43;
 		class Item0
 		{
 			dataType="Marker";
@@ -2519,40 +2519,37 @@ class Mission
 		class Item20
 		{
 			dataType="Marker";
-			position[]={4500,0,4500};
+			position[]={4726.1406,5,4540.1938};
 			name="capture";
 			text="city";
 			type="n_art";
 			colorName="ColorEAST";
 			id=54;
-			atlOffset=-5;
 		};
 		class Item21
 		{
 			dataType="Marker";
-			position[]={4500,0,4550};
+			position[]={4726.1406,5,4590.1938};
 			name="military";
 			text="military";
 			type="o_support";
 			colorName="ColorEAST";
 			id=55;
-			atlOffset=-5;
 		};
 		class Item22
 		{
 			dataType="Marker";
-			position[]={4500,0,4450};
+			position[]={4726.1406,5,4490.1938};
 			name="factory";
 			text="factory";
 			type="loc_Fuelstation";
 			colorName="ColorEAST";
 			id=56;
-			atlOffset=-5;
 		};
 		class Item23
 		{
 			dataType="Marker";
-			position[]={4500,0,4400};
+			position[]={4726.1406,0,4440.1938};
 			name="bigtown";
 			text="capital";
 			type="n_service";
@@ -2566,13 +2563,12 @@ class Mission
 		class Item24
 		{
 			dataType="Marker";
-			position[]={4500,0,4600};
+			position[]={4726.1406,5,4640.1938};
 			name="tower";
 			text="Radio Tower";
 			type="loc_Transmitter";
 			colorName="ColorEAST";
 			id=58;
-			atlOffset=-5;
 		};
 		class Item25
 		{
@@ -2977,7 +2973,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={4300.9155,5.4438882,4630.2271};
-				angles[]={-0,1.5599772,0};
+				angles[]={0,1.5599772,0};
 			};
 			side="Empty";
 			flags=4;
@@ -2986,6 +2982,36 @@ class Mission
 			};
 			id=73;
 			type="Land_PortableDesk_01_black_F";
+		};
+		class Item40
+		{
+			dataType="Marker";
+			position[]={4725.5962,5,4699.8047};
+			name="SAM_3";
+			text="SAM Site";
+			type="o_antiair";
+			colorName="ColorEAST";
+			id=74;
+		};
+		class Item41
+		{
+			dataType="Marker";
+			position[]={4726.7832,5,4768.6748};
+			name="light_artillery";
+			text="Light Artillery";
+			type="o_mortar";
+			colorName="ColorEAST";
+			id=75;
+		};
+		class Item42
+		{
+			dataType="Marker";
+			position[]={4727.8086,5,4838.1831};
+			name="heavy_artillery";
+			text="Heavy Artillery";
+			type="o_art";
+			colorName="ColorEAST";
+			id=76;
 		};
 	};
 	class Connections

@@ -147,3 +147,20 @@ opfor_air = [
     "B_Plane_CAS_01_dynamicLoadout_F",                                  // A-10D Thunderbolt II (CAS)
     "B_Plane_Fighter_01_F"                                              // F/A-181 Black Wasp II
 ];
+
+// Enemy SAM sites 
+opfor_SAM = [
+    //["RadarClass","LauncherClass"]
+    ["O_Radar_System_02_F","O_SAM_System_04_F"]
+];
+
+
+// Enemy light Artillery  (mortars)
+opfor_light_artillery = [
+    "O_Mortar_01_F"
+];
+
+// Enemy heavy Artillery 
+opfor_heavy_artillery = [
+    "O_MBT_02_arty_F"
+];

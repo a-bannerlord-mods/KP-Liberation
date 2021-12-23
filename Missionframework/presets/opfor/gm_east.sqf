@@ -135,3 +135,20 @@ opfor_choppers = [
 opfor_air = [
     "len_l39_nva"                                                       // Aero L-39
 ];
+
+// Enemy SAM sites 
+opfor_SAM = [
+    //["RadarClass","LauncherClass"]
+    ["O_Radar_System_02_F","O_SAM_System_04_F"]
+];
+
+
+// Enemy light Artillery  (mortars)
+opfor_light_artillery = [
+    "O_Mortar_01_F"
+];
+
+// Enemy heavy Artillery 
+opfor_heavy_artillery = [
+    "O_MBT_02_arty_F"
+];

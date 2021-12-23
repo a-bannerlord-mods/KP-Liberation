@@ -140,3 +140,21 @@ opfor_air = [
     "O_Plane_CAS_02_dynamicLoadout_F",                                  // To-199 Neophron (CAS)
     "O_Plane_Fighter_02_F"                                              // To-201 Shikra
 ];
+
+
+// Enemy SAM sites 
+opfor_SAM = [
+    //["RadarClass","LauncherClass"]
+    ["O_Radar_System_02_F","O_SAM_System_04_F"]
+];
+
+
+// Enemy light Artillery  (mortars)
+opfor_light_artillery = [
+    "UK3CB_NAP_O_2b14_82mm"
+];
+
+// Enemy heavy Artillery 
+opfor_heavy_artillery = [
+    "O_MBT_02_arty_F"
+];

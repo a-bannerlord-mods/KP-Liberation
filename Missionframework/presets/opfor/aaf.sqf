@@ -164,3 +164,20 @@ opfor_air = [
     "I_Plane_Fighter_03_dynamicLoadout_F",                              // L-159
     "I_Plane_Fighter_04_F"                                              // Gripen
 ];
+
+
+// Enemy SAM sites 
+opfor_SAM = [
+    //["RadarClass","LauncherClass"]
+    ["O_Radar_System_02_F","O_SAM_System_04_F"]
+];
+
+
+// Enemy light Artillery  (mortars)
+opfor_light_artillery = [
+];
+
+// Enemy heavy Artillery 
+opfor_heavy_artillery = [
+    "O_MBT_02_arty_F"
+];

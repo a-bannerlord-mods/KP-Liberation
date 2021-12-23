@@ -68,6 +68,7 @@ if (alive _hvt) then {
     if (KP_liberation_civinfo_debug > 0) then {["civinfo_task.sqf -> Task despawned", "CIVINFO"] remoteExecCall ["KPLIB_fnc_log", 2];};
 } else {
     combat_readiness = round (combat_readiness * 0.6);
+    [] call KPLIB_fnc_combatReadinessUpdated;
     if (!isServer) then {
         publicVariableServer "combat_readiness";
     };

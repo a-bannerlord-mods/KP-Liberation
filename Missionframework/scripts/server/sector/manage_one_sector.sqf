@@ -166,6 +166,64 @@ if ((!(_sector in blufor_sectors)) && (([markerPos _sector, [_opforcount] call K
         _building_ai_max = 0;
     };
 
+    if (_sector in sectors_SAM && (count opfor_SAM) > 0) then {
+        _samSystem = selectrandom opfor_SAM;
+        if ((count _samSystem) == 2) then {
+            _squad1 = ([] call KPLIB_fnc_getSquadComp);
+            if (combat_readiness > 30) then {_squad2 = ([] call KPLIB_fnc_getSquadComp);};
+            if (GRLIB_unitcap >= 1.5) then {_squad3 = ([] call KPLIB_fnc_getSquadComp);};
+
+            if((random 100) > 95) then {_vehtospawn pushback ([] call KPLIB_fnc_getAdaptiveVehicle);};
+
+            _spawncivs = false;
+
+            //Radars
+            _vehtospawn pushBack (_samSystem select 0);
+            _vehtospawn pushBack (_samSystem select 0);
+
+            //launchers
+            _vehtospawn pushBack (_samSystem select 1);
+            _vehtospawn pushBack (_samSystem select 1);
+            _vehtospawn pushBack (_samSystem select 1);
+            _vehtospawn pushBack (_samSystem select 1);
+
+            _building_ai_max = 0;
+        };
+    };
+
+    if (_sector in sectors_lightArtillery && (count opfor_light_artillery) > 0) then {
+
+            _light_artillerySystem = selectrandom opfor_light_artillery;
+            _squad1 = ([] call KPLIB_fnc_getSquadComp);
+            if (combat_readiness > 60) then {_squad2 = ([] call KPLIB_fnc_getSquadComp);};
+            if (GRLIB_unitcap >= 1.5) then {_squad3 = ([] call KPLIB_fnc_getSquadComp);};
+
+            if((random 100) > 95) then {_vehtospawn pushback ([] call KPLIB_fnc_getAdaptiveVehicle);};
+
+            _spawncivs = false;
+
+            //artillery
+            _vehtospawn pushBack _light_artillerySystem;
+            _vehtospawn pushBack _light_artillerySystem;
+            _vehtospawn pushBack _light_artillerySystem;
+            
+            _building_ai_max = 0;
+        
+    };
+
+    if (_sector in sectors_heavyArtillery && (count opfor_heavy_artillery) > 0) then {
+
+            _heavy_artillerySystem = selectrandom opfor_heavy_artillery;
+            _spawncivs = false;
+
+            //artillery
+            _vehtospawn pushBack _heavy_artillerySystem;
+            _vehtospawn pushBack _heavy_artillerySystem;
+            
+            _building_ai_max = 0;
+        
+    };
+    
     _vehtospawn = _vehtospawn select {!(isNil "_x")};
 
     if (KP_liberation_sectorspawn_debug > 0) then {[format ["Sector %1 (%2) - manage_one_sector calculated -> _infsquad: %3 - _squad1: %4 - _squad2: %5 - _squad3: %6 - _squad4: %7 - _vehtospawn: %8 - _building_ai_max: %9", (markerText _sector), _sector, _infsquad, (count _squad1), (count _squad2), (count _squad3), (count _squad4), (count _vehtospawn), _building_ai_max], "SECTORSPAWN"] remoteExecCall ["KPLIB_fnc_log", 2];};
@@ -173,14 +231,22 @@ if ((!(_sector in blufor_sectors)) && (([markerPos _sector, [_opforcount] call K
     if (_building_ai_max > 0 && GRLIB_adaptive_opfor) then {
         _building_ai_max = round (_building_ai_max * ([] call KPLIB_fnc_getOpforFactor));
     };
-
+    _g = createGroup [GRLIB_side_enemy, true];
     {
-        _vehicle = [_sectorpos, _x] call KPLIB_fnc_spawnVehicle;
-        [group ((crew _vehicle) select 0),_sectorpos] spawn add_defense_waypoints;
+        _vehicle= objNull;
+        if ( _sector in sectors_lightArtillery ||  _sector in sectors_heavyArtillery || _sector in sectors_SAM ) then {
+            _vehicle = [_sectorpos, _x,false,true,_g] call KPLIB_fnc_spawnVehicle;
+        }else{
+            _vehicle = [_sectorpos, _x] call KPLIB_fnc_spawnVehicle;
+            [group ((crew _vehicle) select 0),_sectorpos] spawn add_defense_waypoints;
+            
+        };
         _managed_units pushback _vehicle;
         {_managed_units pushback _x;} foreach (crew _vehicle);
         sleep 0.25;
     } forEach _vehtospawn;
+    
+    
 
     if (_building_ai_max > 0) then {
         _allbuildings = (nearestObjects [_sectorpos, ["House"], _building_range]) select {alive _x};

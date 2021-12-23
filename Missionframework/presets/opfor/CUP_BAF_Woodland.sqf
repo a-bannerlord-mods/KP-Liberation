@@ -167,3 +167,20 @@ opfor_air = [
     "CUP_B_F35B_Stealth_BAF",                                           // F-35B Lightning II (Stealth)
     "CUP_B_GR9_DYN_GB"                                                  // Harrier GR.9
 ];
+
+// Enemy SAM sites 
+opfor_SAM = [
+    //["RadarClass","LauncherClass"]
+    ["O_Radar_System_02_F","O_SAM_System_04_F"]
+];
+
+
+// Enemy light Artillery  (mortars)
+opfor_light_artillery = [
+    "O_Mortar_01_F"
+];
+
+// Enemy heavy Artillery 
+opfor_heavy_artillery = [
+    "O_MBT_02_arty_F"
+];

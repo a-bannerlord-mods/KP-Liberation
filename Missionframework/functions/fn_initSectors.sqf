@@ -23,6 +23,9 @@ sectors_factory = [];
 sectors_military = [];
 sectors_opfor = [];
 sectors_tower = [];
+sectors_SAM= [];
+sectors_lightArtillery= [];
+sectors_heavyArtillery= [];
 sectors_longRange = [];
 
 {
@@ -34,6 +37,21 @@ sectors_longRange = [];
         case (_x find "opfor_airspawn" == 0): {sectors_airspawn pushBack _x;};
         case (_x find "opfor_point" == 0): {sectors_opfor pushBack _x;};
         case (_x find "tower" == 0): {sectors_tower pushBack _x; if (isServer) then {_x setMarkerText format ["%1 %2",markerText _x, mapGridPosition (markerPos _x)];}; sectors_allSectors pushBack _x;};
+        case (_x find "SAM" == 0): {
+                sectors_SAM pushBack _x; 
+                sectors_longRange  pushBack _x; 
+                sectors_allSectors pushBack _x;
+            };
+        case (_x find "light_artillery" == 0): {
+                sectors_lightArtillery pushBack _x; 
+                sectors_longRange  pushBack _x; 
+                sectors_allSectors pushBack _x;
+            };
+        case (_x find "heavy_artillery" == 0): {
+                    sectors_heavyArtillery pushBack _x; 
+                    sectors_longRange  pushBack _x; 
+                    sectors_allSectors pushBack _x;
+            };
     };
 } forEach allMapMarkers;
 
