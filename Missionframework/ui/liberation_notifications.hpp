@@ -13,6 +13,13 @@ class CfgNotifications {
         color[] = { 0, 1, 0, 1 };
         sound = "taskSucceeded";
     };
+    class lib_sector_destroyed: lib_default_notification {
+        title = $STR_NOTIFICATION_SECTORDESTROYED_TITLE;
+        description = $STR_NOTIFICATION_SECTORDESTROYED_TEXT;
+        iconPicture = "res\notif\ui_notif_sec_cap.paa";
+        color[] = { 0, 1, 0, 1 };
+        sound = "taskSucceeded";
+    };
     class lib_sector_attacked: lib_default_notification {
         title = $STR_NOTIFICATION_SECTORATTACKED_TITLE;
         description = $STR_NOTIFICATION_SECTORATTACKED_TEXT;

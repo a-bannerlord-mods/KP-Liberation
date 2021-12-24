@@ -5,7 +5,11 @@ if ( isNil "sector_timer" ) then { sector_timer = 0 };
 params [ "_sector", "_status" ];
 
 if ( _status == 0 ) then {
-    [ "lib_sector_captured", [ markerText _sector ] ] call BIS_fnc_showNotification;
+    if (_sector in sectors_destroyable) then {
+        [ "lib_sector_destroyed", [ markerText _sector ] ] call BIS_fnc_showNotification;
+    } else {
+        [ "lib_sector_captured", [ markerText _sector ] ] call BIS_fnc_showNotification;
+    };
 };
 
 if ( _status == 1 ) then {
@@ -27,4 +31,9 @@ if ( _status == 3 ) then {
 };
 
 { _x setMarkerColorLocal GRLIB_color_enemy; } foreach (sectors_allSectors - blufor_sectors);
-{ _x setMarkerColorLocal GRLIB_color_friendly; } foreach blufor_sectors;
+{ 
+    _x setMarkerColorLocal GRLIB_color_friendly; 
+    if (_sector in sectors_destroyable) then {
+        _x setMarkerAlphaLocal 0; 
+    };
+} foreach blufor_sectors;

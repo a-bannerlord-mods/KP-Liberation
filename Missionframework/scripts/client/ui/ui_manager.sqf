@@ -156,12 +156,19 @@ while {true} do {
                 _bar ctrlCommit ([0, 2] select ctrlShown _bar);
 
                 (_overlay displayCtrl (205)) ctrlSetText (markerText _nearest_active_sector);
-                {(_overlay displayCtrl (_x)) ctrlShow true;} forEach _sectorcontrols;
+                
+                if (_nearest_active_sector in sectors_destroyable && _nearest_active_sector in blufor_sectors) then {
+                        {(_overlay displayCtrl (_x)) ctrlShow false;} forEach _sectorcontrols;
+                        "zone_capture" setmarkerposlocal markers_reset;
+                    } else {
+                        {(_overlay displayCtrl (_x)) ctrlShow true;} forEach _sectorcontrols;
+                    };
                 if (_nearest_active_sector in blufor_sectors) then {
                     (_overlay displayCtrl (205)) ctrlSetTextColor [0,0.3,1.0,1];
                 } else {
                     (_overlay displayCtrl (205)) ctrlSetTextColor [0.85,0,0,1];
                 };
+
 
                 "zone_capture" setMarkerSizeLocal [ _zone_size,_zone_size ];
             } else {

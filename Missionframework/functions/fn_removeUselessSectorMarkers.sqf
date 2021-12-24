@@ -15,11 +15,16 @@ Returns:
 nothing
 */
 
+waitUntil {!isNil "save_is_loaded"};
+waitUntil {save_is_loaded};
+
+
 if ((count (opfor_heavy_artillery select {
     isClass (configFile >> "Cfgvehicles">>_x);
 })) <= 0 ) then {
 	
     sectors_longRange =  sectors_longRange - sectors_heavyArtillery; 
+	sectors_destroyable = sectors_destroyable - sectors_heavyArtillery; 
     sectors_allSectors  = sectors_allSectors - sectors_heavyArtillery; 
 	{
 		deleteMarker _x;
@@ -31,6 +36,7 @@ if ((count (opfor_light_artillery select {
     isClass (configFile >> "Cfgvehicles">>_x);
 })) <= 0 ) then {
 	sectors_longRange =  sectors_longRange - sectors_lightArtillery; 
+	sectors_destroyable = sectors_destroyable - sectors_lightArtillery; 
     sectors_allSectors  = sectors_allSectors - sectors_lightArtillery; 
 	{
 		deleteMarker _x;
@@ -43,9 +49,18 @@ if ((count (opfor_SAM select {
     isClass (configFile >> "Cfgvehicles">>(_x select 0) ) &&  isClass (configFile >> "Cfgvehicles">>(_x select 1))
 })) <= 0 ) then {
 	sectors_longRange =  sectors_longRange - sectors_SAM; 
+	sectors_destroyable = sectors_destroyable - sectors_SAM; 
     sectors_allSectors  = sectors_allSectors - sectors_SAM; 
 	{
 		deleteMarker _x;
 	} forEach sectors_SAM;
 	sectors_SAM =[] ; 
 };
+
+
+// hide destroyed sectors
+{
+	if (_x in sectors_destroyable) then {
+		_x setMarkerAlpha 0; 
+	};
+} forEach blufor_sectors;

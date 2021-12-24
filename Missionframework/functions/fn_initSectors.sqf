@@ -27,7 +27,7 @@ sectors_SAM= [];
 sectors_lightArtillery= [];
 sectors_heavyArtillery= [];
 sectors_longRange = [];
-
+sectors_destroyable = [];
 {
     switch (true) do {
         case (_x find "bigtown" == 0): {sectors_bigtown pushBack _x; sectors_allSectors pushBack _x;};
@@ -40,16 +40,19 @@ sectors_longRange = [];
         case (_x find "SAM" == 0): {
                 sectors_SAM pushBack _x; 
                 sectors_longRange  pushBack _x; 
+                sectors_destroyable  pushBack _x;
                 sectors_allSectors pushBack _x;
             };
         case (_x find "light_artillery" == 0): {
                 sectors_lightArtillery pushBack _x; 
                 sectors_longRange  pushBack _x; 
+                sectors_destroyable  pushBack _x;
                 sectors_allSectors pushBack _x;
             };
         case (_x find "heavy_artillery" == 0): {
                     sectors_heavyArtillery pushBack _x; 
                     sectors_longRange  pushBack _x; 
+                    sectors_destroyable  pushBack _x;
                     sectors_allSectors pushBack _x;
             };
     };

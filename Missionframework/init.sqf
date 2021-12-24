@@ -15,14 +15,16 @@ if (!isServer) then {waitUntil {!isNil "KPLIB_initServer"};};
 [] call compileFinal preprocessFileLineNumbers "compatibility\compatibility_config.sqf";
 [] call compileFinal preprocessFileLineNumbers "presets\init_presets.sqf";
 [] call compileFinal preprocessFileLineNumbers "kp_objectInits.sqf";
-[] call KPLIB_fnc_removeUselessSectorMarkers;
+
 
 
 [] call compileFinal preprocessFileLineNumbers "scripts\shared\init_shared.sqf";
 
 if (isServer) then {
     [] call compileFinal preprocessFileLineNumbers "scripts\server\init_server.sqf";
+    [] spawn KPLIB_fnc_removeUselessSectorMarkers;
 };
+
 
 if (!isDedicated && !hasInterface && isMultiplayer) then {
     execVM "scripts\server\offloading\hc_manager.sqf";

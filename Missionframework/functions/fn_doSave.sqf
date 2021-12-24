@@ -22,7 +22,7 @@ if (!isServer) exitWith {false};
 if (!KPLIB_init) exitWith {
     ["Framework is not initalized, skipping save!", "SAVE"] call KPLIB_fnc_log;
     if (!isnil "commandant") then {
-        "Framework is not initalized, skipping save!" remoteExec ["hint",owner commandant];
+        "Framework is not initalized, skipping save!" remoteExec ["hint",commandant];
     };
     false
 };
@@ -30,7 +30,7 @@ if (!KPLIB_init) exitWith {
 if (missionNamespace getVariable ["kp_liberation_saving", false]) exitWith {
     ["Saving already in progress, skipping save!", "SAVE"] call KPLIB_fnc_log;
     if (!isnil "commandant") then {
-        "Saving already in progress, skipping save!" remoteExec ["hint",owner commandant];
+        "Saving already in progress, skipping save!" remoteExec ["hint",commandant];
     };
     false
 };
@@ -49,7 +49,7 @@ profileNamespace setVariable [GRLIB_save_key, str _saveData];
 saveProfileNamespace;
 
 if (!isnil "commandant") then {
-        "Players and Progress Saved Successfully!" remoteExec ["hint",owner commandant];
+        "Players and Progress Saved Successfully!" remoteExec ["hint",commandant];
 };
 
 kp_liberation_saving = false;

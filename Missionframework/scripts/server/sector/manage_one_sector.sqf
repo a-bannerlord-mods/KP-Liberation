@@ -308,8 +308,35 @@ if ((!(_sector in blufor_sectors)) && (([markerPos _sector, [_opforcount] call K
     private _activationTime = time;
     // sector lifetime loop
     while {!_stopit} do {
+        
+        _sector_alive_devices = [];
+
+        //check if all radars/launchers destroyed 
+        if (_sector in sectors_SAM ) then {
+            _sector_alive_devices append (_managed_units select {
+                alive _x 
+                && (toLower (typeof _x)) in (opfor_SAM apply {toLower (_x select 0)}) 
+            });
+            _sector_alive_devices append (_managed_units select {
+                alive _x 
+                && (toLower (typeof _x)) in (opfor_SAM apply {toLower (_x select 1)}) 
+            });
+        };
+
+         //check if artillery destroyed
+        if (_sector in sectors_heavyArtillery || _sector in sectors_lightArtillery) then {
+            _sector_alive_devices append (_managed_units select {
+                alive _x 
+                && (toLower (typeof _x)) in (opfor_heavy_artillery apply {toLower (_x)}) 
+            });
+            _sector_alive_devices append (_managed_units select {
+                alive _x 
+                && (toLower (typeof _x)) in (opfor_light_artillery apply {toLower (_x)}) 
+            });
+        };
+        
         // sector was captured
-        if (([_sectorpos, _local_capture_size] call KPLIB_fnc_getSectorOwnership == GRLIB_side_friendly) && (GRLIB_endgame == 0)) then {
+        if ((count _sector_alive_devices) == 0 && ([_sectorpos, _local_capture_size] call KPLIB_fnc_getSectorOwnership == GRLIB_side_friendly) && (GRLIB_endgame == 0)) then {
             if (isServer) then {
                 [_sector] spawn sector_liberated_remote_call;
             } else {
