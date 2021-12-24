@@ -214,7 +214,8 @@ while {true} do {
         [player] call KPLIB_fnc_setUnitTraits;
 
         if (count _lastPlayerGear > 0 && KPLIB_firstTimeRespawn  && GRLIB_enableSaveLoadout) then {
-            [player, _lastPlayerGear] call KPLIB_fnc_setLoadout;
+            //[player, _lastPlayerGear] call KPLIB_fnc_setLoadout;
+            player setUnitLoadout _lastPlayerGear;
         };
 
         KPLIB_firstTimeRespawn= false;        

@@ -19,8 +19,11 @@
 params ["_player"];
 if (!((name _player) in ["HC0","HC1", "HC2", "HC3", "HC4", "HC5"])) then { 
 		_playerUID = getPlayerUID _player; 
+		//_loadout =[_player] call KPLIB_fnc_getLoadout;
 
-		_data = [getPosATL _player, [_player] call KPLIB_fnc_getLoadout,[]]; 
+		_loadout = getUnitLoadout _player;
+
+		_data = [getPosATL _player, _loadout,[]]; 
 
 		private _displayname = ""; 
 		_all_players_uids =[]; 
