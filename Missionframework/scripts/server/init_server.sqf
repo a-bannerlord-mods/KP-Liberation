@@ -129,3 +129,5 @@ if (KP_liberation_restart > 0) then {
 };
 
 execVM "scripts\server\playerdata\player_data_events.sqf";
+
+[] call compileFinal preprocessFileLineNumbers "compatibility\compatibility_server_init.sqf";

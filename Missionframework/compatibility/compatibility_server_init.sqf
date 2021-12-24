@@ -1,0 +1,1 @@
+_this execVM "compatibility\simplex_support_services\init_server.sqf";
