@@ -323,7 +323,7 @@ if(hasInterface)then{
 		("Rearm Loadout"),
         {
 			pr _object = _this select 0;
-			[_object] execVM "JeroenArsenal\JNA\fn_arsenal_RearmInventory.sqf";
+			[_object] execVM "modules\JeroenArsenal\JNA\fn_arsenal_RearmInventory.sqf";
 			
 		},
         [],

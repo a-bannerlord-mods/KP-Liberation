@@ -414,7 +414,6 @@ switch _mode do {
     ///////////////////////////////////////////////////////////////////////////////////////////
     case "TabSelectLeft": {
         params["_display","_index"];
-
         pr _ctrlList = _display displayctrl (IDC_RSCDISPLAYARSENAL_LIST + _index);
         //create list
         ["UpdateListGui",[ _display,_ctrlList,_index]] call jn_fnc_arsenal;
@@ -428,6 +427,13 @@ switch _mode do {
         //TODO sort (add select current item to sort?)
 
         ["ListSelectCurrent",[_display,_index]] call jn_fnc_arsenal;
+
+        switch (_index) do {
+            case IDC_RSCDISPLAYARSENAL_TAB_PRIMARYWEAPON: { player selectWeapon  primaryWeapon player;};
+            case IDC_RSCDISPLAYARSENAL_TAB_HANDGUN: { player selectWeapon  handgunWeapon player;};
+            case IDC_RSCDISPLAYARSENAL_TAB_SECONDARYWEAPON: {player selectWeapon  secondaryWeapon player; };
+            default {  player selectWeapon  primaryWeapon player;};
+        };
 
         //show selected, disable others
         {
@@ -560,7 +566,6 @@ switch _mode do {
             IDC_RSCDISPLAYARSENAL_FRAMERIGHT,
             IDC_RSCDISPLAYARSENAL_BACKGROUNDRIGHT
         ];
-
         //["updateItemInfo",[_display,_ctrlList, _index]] call jn_fnc_arsenal;
     };
 
@@ -1062,8 +1067,11 @@ switch _mode do {
             _displayNameCurrent = _dataCurrent select 2;
             if(_item isEqualTo _itemCurrent)exitWith{
                 _l_found = _l;
+                if (_amountCurrent != -1) exitwith {
+
+                
                 if(_amount == -1)then{
-                    _amount = -1;//unlimited remove //updated
+                    _amount = 0;//unlimited remove //updated
                 }else{
                     if(_amountCurrent == -1)then{
                         _amount = -1;
@@ -1089,6 +1097,7 @@ switch _mode do {
                     _data = str [_item,_amount,_displayNameCurrent];
                     if _type then{_ctrlList lnbsetdata [[_l,0],_data]}else{_ctrlList lbsetdata [_l,_data]};
                     ["UpdateItemGui",[_display,_ctrlList,_index,_l_found]] call jn_fnc_arsenal;
+                };
                 };
             };
         };
@@ -1390,6 +1399,7 @@ switch _mode do {
     case "SelectItem": {
 
         params ["_display","_ctrlList","_index"];
+        
         pr _cursel = lbcursel _ctrlList;
         pr _type = (ctrltype _ctrlList == 102);
         pr _dataStr = if _type then{_ctrlList lnbData [_cursel,0]}else{_ctrlList lbdata _cursel};
@@ -1817,7 +1827,13 @@ switch _mode do {
                 //handled in "buttonCargo"
             };
         };
-
+        if (
+                _index==IDC_RSCDISPLAYARSENAL_TAB_PRIMARYWEAPON
+                || _index==IDC_RSCDISPLAYARSENAL_TAB_SECONDARYWEAPON
+                || _index==IDC_RSCDISPLAYARSENAL_TAB_HANDGUN
+        ) then {
+            ['TabSelectRight',[_display,IDC_RSCDISPLAYARSENAL_TAB_ITEMOPTIC]] call jn_fnc_arsenal;
+        };
         ["updateItemInfo",[ _display,_ctrlList,_index]] call jn_fnc_arsenal;
         ["HighlightMissingIcons",[_display,_index]] call jn_fnc_arsenal;
 
@@ -1882,7 +1898,10 @@ switch _mode do {
             pr _mass = _ctrlList lbvalue (_r * _columns);
             pr _alpha = [1.0,0.25] select (_mass > parseNumber (str _load));
             pr _color = [[1,1,1,_alpha],[1,0.5,0,_alpha]] select _isIncompatible;
-            if(_grayout)then{_color = [1,1,0,0.60];};
+            if(_grayout)then
+            {
+                _color = [1,1,0,0.60];
+            };
             _ctrlList lnbsetcolor [[_r,1],_color];
             _ctrlList lnbsetcolor [[_r,2],_color];
             _text = _ctrlList lnbtext [_r,1];
@@ -1956,12 +1975,23 @@ switch _mode do {
                     };
                     _canAdd = false;
                     _container = switch _selected do{
+                    
                         case IDC_RSCDISPLAYARSENAL_TAB_UNIFORM: {_canAdd = player canAddItemToUniform _item; uniformContainer player};
-                        case IDC_RSCDISPLAYARSENAL_TAB_VEST: {_canAdd = player canAddItemToVest _item; vestContainer player;};
+                        case IDC_RSCDISPLAYARSENAL_TAB_VEST: {
+                            _canAdd = player canAddItemToVest _item; 
+                            //work around to fix some bugged vests
+                            if (!_canAdd && isclass (configfile >> "CfgMagazines" >> _item) && loadvest player < 0.99) then {
+                                _canAdd = true;
+                            };
+
+                            vestContainer player;};
                         case IDC_RSCDISPLAYARSENAL_TAB_BACKPACK: {_canAdd = player canAddItemToBackpack _item; backpackContainer player;};
                     };
                     if(_canAdd)then{
                         _container addMagazineAmmoCargo [_item,1,_count];
+                        if (_selected == IDC_RSCDISPLAYARSENAL_TAB_VEST && loadvest player > 1) then {
+                            player removeitemfromvest _item; 
+                        };
                     };
                 }else{
                     switch _selected do{
@@ -2381,7 +2411,11 @@ switch _mode do {
             //--- Tab to browse tabs
             case (_key == DIK_TAB): {
             };
-
+            
+             //--- Copy Loadout
+            case (_key == DIK_C): {
+                // copy loadout
+            };
 
 
             //--- Save
@@ -2440,8 +2474,7 @@ switch _mode do {
 
     ///////////////////////////////////////////////////////////////////////////////////////////
     case "buttonDefaultGear":{
-    
-        execVM "JeroenArsenal\JNA\fn_arsenal_applyInventory.sqf";
+        execVM "modules\JeroenArsenal\JNA\fn_arsenal_applyInventory.sqf";
         // pr _object = UINamespace getVariable "jn_object";
 
         // /////////////////////////////////////////////////////////////////////////////////
@@ -2563,7 +2596,7 @@ switch _mode do {
 
      ///////////////////////////////////////////////////////////////////////////////////////////
     case "buttonRearmGear":{
-        execVM "JeroenArsenal\JNA\fn_arsenal_RearmInventory.sqf";
+        execVM "modules\JeroenArsenal\JNA\fn_arsenal_RearmInventory.sqf";
         // pr _object = UINamespace getVariable "jn_object";
 
         // /////////////////////////////////////////////////////////////////////////////////

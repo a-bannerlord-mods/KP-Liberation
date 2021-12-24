@@ -227,21 +227,11 @@ pr _reportMissing = "";
 	pr _name = _x select 0;
 	pr _amount = _x select 1;
 
-	_type =_item call jn_fnc_arsenal_itemType;
-	_xCfg = switch _type do {
-            case IDC_RSCDISPLAYARSENAL_TAB_BACKPACK:    {configfile >> "cfgvehicles"    >> _item};
-            case IDC_RSCDISPLAYARSENAL_TAB_GOGGLES:     {configfile >> "cfgglasses"     >> _item};
-            case IDC_RSCDISPLAYARSENAL_TAB_CARGOMAG;
-            case IDC_RSCDISPLAYARSENAL_TAB_CARGOMAGALL;
-            case IDC_RSCDISPLAYARSENAL_TAB_CARGOTHROW;
-            case IDC_RSCDISPLAYARSENAL_TAB_CARGOPUT:    {configfile >> "cfgmagazines"   >> _item};
-            case IDC_RSCDISPLAYARSENAL_TAB_CARGOMISC:   {configfile >> "cfgweapons"     >> _item};
-            default                                     {configfile >> "cfgweapons"     >> _item};
-        };
-        _isClassExist= isClass _xCfg;
-        if(_isClassExist) then {
-			_name = gettext (_xCfg >> "displayName");
-		}; 
+	_xCfg = _name call jn_fnc_arsenal_getConfigClass;
+    _isClassExist= isClass _xCfg;
+    if(_isClassExist) then {
+		_name = gettext (_xCfg >> "displayName");
+	}; 
 
 	_reportMissing = _reportMissing + _name + " (" + (str _amount) + "x)\n";
 }forEach _arrayMissing;

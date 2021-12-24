@@ -50,6 +50,8 @@ class JN {
 		class arsenal_addInitialArsenalItems {};
 		class arsenal_hasItemPermission {};
 		class arsenal_addLoadAction {};
+		class arsenal_getConfigClass {};
+		class arsenal_getCompatibleMagazines {};
 	};
 	
 };

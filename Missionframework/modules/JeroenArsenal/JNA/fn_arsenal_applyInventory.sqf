@@ -441,21 +441,11 @@ if!(_reportReplaced isEqualTo "")then{
 pr _reportMissing = "";
 {
 	_name = _x select 0;
-	_type =_item call jn_fnc_arsenal_itemType;
-	_xCfg = switch _type do {
-            case 5:    {configfile >> "cfgvehicles"    >> _item};
-            case 7:     {configfile >> "cfgglasses"     >> _item};
-            case 21;
-            case 26;
-            case 22;
-            case 23:    {configfile >> "cfgmagazines"   >> _item};
-            case 24:   {configfile >> "cfgweapons"     >> _item};
-            default                                     {configfile >> "cfgweapons"     >> _item};
-        };
-        _isClassExist= isClass _xCfg;
-        if(_isClassExist) then {
-			_name = gettext (_xCfg >> "displayName");
-		}; 
+	_xCfg = _name call jn_fnc_arsenal_getConfigClass;
+    _isClassExist= isClass _xCfg;
+    if(_isClassExist) then {
+		_name = gettext (_xCfg >> "displayName");
+	}; 
         
 
 	pr _amount = _x select 1;
@@ -470,52 +460,3 @@ if!(_reportTotal isEqualTo "")then{
 	titleText[_reportTotal, "PLAIN"];
 };
 
-
-/* Indexes in the array correspond to these tabs:	DO NOT UNCOMMENT THIS BIT. THESE ARE ALREADY DEFINED
-	IDC_RSCDISPLAYARSENAL_TAB_PRIMARYWEAPON		0
-	IDC_RSCDISPLAYARSENAL_TAB_SECONDARYWEAPON	1
-	IDC_RSCDISPLAYARSENAL_TAB_HANDGUN			2
-	IDC_RSCDISPLAYARSENAL_TAB_UNIFORM			3
-	IDC_RSCDISPLAYARSENAL_TAB_VEST				4
-	IDC_RSCDISPLAYARSENAL_TAB_BACKPACK			5
-	IDC_RSCDISPLAYARSENAL_TAB_HEADGEAR			6
-	IDC_RSCDISPLAYARSENAL_TAB_GOGGLES			7
-	IDC_RSCDISPLAYARSENAL_TAB_NVGS				8
-	IDC_RSCDISPLAYARSENAL_TAB_BINOCULARS		9
-	IDC_RSCDISPLAYARSENAL_TAB_MAP				10
-	IDC_RSCDISPLAYARSENAL_TAB_GPS				11
-	IDC_RSCDISPLAYARSENAL_TAB_RADIO				12
-	IDC_RSCDISPLAYARSENAL_TAB_COMPASS			13
-	IDC_RSCDISPLAYARSENAL_TAB_WATCH				14
-	IDC_RSCDISPLAYARSENAL_TAB_FACE				15
-	IDC_RSCDISPLAYARSENAL_TAB_VOICE				16
-	IDC_RSCDISPLAYARSENAL_TAB_INSIGNIA			17
-	IDC_RSCDISPLAYARSENAL_TAB_ITEMOPTIC			18
-	IDC_RSCDISPLAYARSENAL_TAB_ITEMACC			19
-	IDC_RSCDISPLAYARSENAL_TAB_ITEMMUZZLE		20
-	IDC_RSCDISPLAYARSENAL_TAB_ITEMBIPOD			25
-	IDC_RSCDISPLAYARSENAL_TAB_CARGOMAG			21
-	IDC_RSCDISPLAYARSENAL_TAB_CARGOTHROW		22
-	IDC_RSCDISPLAYARSENAL_TAB_CARGOPUT			23
-	IDC_RSCDISPLAYARSENAL_TAB_CARGOMISC			24
-	IDC_RSCDISPLAYARSENAL_TAB_CARGOMAGALL		26
-*/
-/*
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-[
-	"13",
-	[
-		["U_BG_Guerilla2_3",["30Rnd_65x39_caseless_green","30Rnd_65x39_caseless_green","30Rnd_65x39_caseless_green"]],
-		["",[]],
-		["B_Carryall_oli",["30Rnd_65x39_caseless_green","30Rnd_65x39_caseless_green","30Rnd_65x39_caseless_green","30Rnd_65x39_caseless_green","30Rnd_65x39_caseless_green","30Rnd_65x39_caseless_green","30Rnd_65x39_caseless_green","30Rnd_65x39_caseless_green","30Rnd_65x39_caseless_green","30Rnd_65x39_caseless_green","30Rnd_65x39_caseless_green","30Rnd_65x39_caseless_green","30Rnd_65x39_caseless_green","30Rnd_65x39_caseless_green"]],
-		"H_Beret_blk",
-		"G_Bandanna_blk",
-		"Binocular",
-		["arifle_TRG21_F",["","","",""],""],
-		["launch_I_Titan_F",["","","",""],"Titan_AA"],
-		["",["","","",""],""],
-		["ItemMap","ItemCompass","ItemWatch","ItemRadio","ItemGPS","NVGoggles"],
-		["GreekHead_A3_01","Male01GRE",""]
-	]
-]
-*/
