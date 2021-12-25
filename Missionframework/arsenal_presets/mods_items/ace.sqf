@@ -28,10 +28,10 @@ GRLIB_ace_arsenal_Facegear =[
 ];
 GRLIB_ace_arsenal_nightvision =[
     //ace
-    ["ACE_NVG_Gen1",["Rifleman"],000],                                                 // NV Goggles (Gen1)
-    ["ACE_NVG_Gen2",["Rifleman"],000],                                                 // NV Goggles (Gen2)
-    ["ACE_NVG_Gen4",["Rifleman"],000],                                                 // NV Goggles (Gen4)
-    ["ACE_NVG_Wide",["Rifleman"],000]                                                  // NV Goggles (Wide)
+    ["ACE_NVG_Gen1","Night Vision",["Rifleman"],000],                                                 // NV Goggles (Gen1)
+    ["ACE_NVG_Gen2","Night Vision",["Rifleman"],000],                                                 // NV Goggles (Gen2)
+    ["ACE_NVG_Gen4","Night Vision",["Rifleman"],000],                                                 // NV Goggles (Gen4)
+    ["ACE_NVG_Wide","Night Vision",["Rifleman"],000]                                                  // NV Goggles (Wide)
 ];
 GRLIB_ace_arsenal_rangefinders =[
 ];
