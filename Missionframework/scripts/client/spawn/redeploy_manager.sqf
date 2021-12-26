@@ -221,6 +221,10 @@ while {true} do {
             player setUnitLoadout _lastPlayerGear;
         };
 
+        if (count _lastPlayerGear == 0 && KPLIB_firstTimeRespawn) then{
+            player forceAddUniform GRLIB_default_uniform;
+        };
+
         KPLIB_firstTimeRespawn= false;        
     };
 
