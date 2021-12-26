@@ -975,7 +975,7 @@
         </Key>
         <Key ID="STR_NOTIFICATION_SECTORDESTROYED_TEXT">
             <Original>Hostiles forces reporting they had %1 destroyed.</Original>
-            <French>Our forces have destroyed %1.</French>
+            <French>Hostiles forces reporting they had %1 destroyed.</French>
             <German>Our forces have destroyed %1.</German>
             <Spanish>Our forces have destroyed %1.</Spanish>
             <Russian>Our forces have destroyed %1..</Russian>
@@ -1169,7 +1169,7 @@
             <Czech>FOB ZNIČENO</Czech>
         </Key>
         <Key ID="STR_NOTIFICATION_FOBLOST_TEXT">
-            <Original>Hostiles forces reporting they destroyed FOB %1 !</Original>
+            <Original>Hostiles forces reporting they destroyed our FOB %1 !</Original>
             <French>La FOB %1 a été détruite !</French>
             <German>FOB %1 wurde zerstört!</German>
             <Spanish>La FOB %1 ha sido destruida!</Spanish>
@@ -1196,7 +1196,7 @@
             <Czech>NEPŘÁTELSKÉ JEDNOTKY PŘICHÁZEJÍ</Czech>
         </Key>
         <Key ID="STR_NOTIFICATION_BATTLEGROUP_TEXT">
-            <Original>Hostile forces spotted near %1.</Original>
+            <Original>Hostile forces reported they are starting to patrol area around %1.</Original>
             <French>Forces hostiles repérées près de %1.</French>
             <German>Gegnerische Truppen nahe %1 gesichtet.</German>
             <Spanish>Fuerzas hosstiles avistadas cerca de %1</Spanish>

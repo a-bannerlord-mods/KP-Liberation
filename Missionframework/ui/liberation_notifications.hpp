@@ -9,35 +9,35 @@ class CfgNotifications {
     class lib_sector_captured: lib_default_notification {
         title = $STR_NOTIFICATION_RADIOINTERCEPTED_TITLE;
         description = $STR_NOTIFICATION_SECTORCAPTURED_TEXT;
-        iconPicture = "res\notif\ui_notif_sec_cap.paa";
+        iconPicture = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa";
         color[] = { 0, 1, 0, 1 };
         sound = "taskSucceeded";
     };
     class lib_sector_destroyed: lib_default_notification {
         title = $STR_NOTIFICATION_RADIOINTERCEPTED_TITLE;
         description = $STR_NOTIFICATION_SECTORDESTROYED_TEXT;
-        iconPicture = "res\notif\ui_notif_sec_cap.paa";
+        iconPicture = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa";
         color[] = { 0, 1, 0, 1 };
         sound = "taskSucceeded";
     };
     class lib_sector_attacked: lib_default_notification {
-        title = $STR_NOTIFICATION_SECTORATTACKED_TITLE;
+        title = $STR_NOTIFICATION_RADIOINTERCEPTED_TITLE;
         description = $STR_NOTIFICATION_SECTORATTACKED_TEXT;
-        iconPicture = "res\notif\ui_notif_sec_una.paa";
+        iconPicture = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa";
         color[] = { 1, 1, 0, 1 };
         sound = "taskCanceled";
     };
     class lib_sector_lost: lib_default_notification {
-        title = $STR_NOTIFICATION_SECTORLOST_TITLE;
+        title = $STR_NOTIFICATION_RADIOINTERCEPTED_TITLE;
         description = $STR_NOTIFICATION_SECTORLOST_TEXT;
-        iconPicture = "res\notif\ui_notif_sec_los.paa";
+        iconPicture = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa";
         color[] = { 1, 0, 0, 1 };
         sound = "taskFailed";
     };
     class lib_sector_safe: lib_default_notification {
         title = $STR_NOTIFICATION_RADIOINTERCEPTED_TITLE;
         description = $STR_NOTIFICATION_SECTORSAFE_TEXT;
-        iconPicture = "res\notif\ui_notif_sec_saf.paa";
+        iconPicture = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa";
         color[] = { 0, 0.35, 1, 1 };
         sound = "taskUpdated";
         priority = 3;
@@ -52,7 +52,7 @@ class CfgNotifications {
     class lib_fob_safe: lib_default_notification {
         title = $STR_NOTIFICATION_RADIOINTERCEPTED_TITLE;
         description = $STR_NOTIFICATION_FOBSAFE_TEXT;
-        iconPicture = "res\notif\ui_notif_fob_sec.paa";
+        iconPicture = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa";
         color[] = { 0, 0.35, 1, 1 };
         sound = "taskUpdated";
         priority = 3;
@@ -60,21 +60,21 @@ class CfgNotifications {
     class lib_fob_attacked: lib_default_notification {
         title = $STR_NOTIFICATION_RADIOINTERCEPTED_TITLE;
         description = $STR_NOTIFICATION_FOBATTACKED_TEXT;
-        iconPicture = "res\notif\ui_notif_fob_und.paa";
+        iconPicture = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa";
         color[] = { 1, 1, 0, 1 };
         sound = "taskCanceled";
     };
     class lib_fob_lost: lib_default_notification {
         title = $STR_NOTIFICATION_RADIOINTERCEPTED_TITLE;
         description = $STR_NOTIFICATION_FOBLOST_TEXT;
-        iconPicture = "res\notif\ui_notif_fob_los.paa";
+        iconPicture = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa";
         color[] = { 1, 0, 0, 1 };
         sound = "taskFailed";
     };
     class lib_battlegroup: lib_default_notification {
-        title = $STR_NOTIFICATION_BATTLEGROUP_TITLE;
+        title = $STR_NOTIFICATION_RADIOINTERCEPTED_TITLE;
         description = $STR_NOTIFICATION_BATTLEGROUP_TEXT;
-        iconPicture = "res\notif\ui_notif_bgp.paa";
+        iconPicture = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa";
         color[] = { 1, 0, 0, 1 };
         sound = "taskFailed";
     };
