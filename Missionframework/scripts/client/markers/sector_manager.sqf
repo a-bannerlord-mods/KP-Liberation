@@ -12,6 +12,10 @@ private _cfg = configFile >> "cfgVehicles";
     _marker setMarkerTextLocal (getText (_cfg >> _vehicle >> "displayName"));
     _marker setMarkerColorLocal GRLIB_color_enemy;
     _marker setMarkerTypeLocal "mil_pickup";
+    if (GRLIB_hideMarkers) then {
+    {
+        _marker setMarkerAlphaLocal 0 ;
+    }
     _vehicle_unlock_markers pushback [_marker, _base];
 } forEach GRLIB_vehicle_to_military_base_links;
 

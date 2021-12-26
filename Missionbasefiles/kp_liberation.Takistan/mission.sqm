@@ -25,9 +25,8 @@ class EditorData
 	class Camera
 	{
 		pos[]={8486.1924,505.94803,1005.5374};
-		dir[]={-1.2363449e-007,-0.70710683,0.70710683};
-		up[]={-1.2363449e-007,0.70710671,0.70710683};
-		aside[]={1,0,1.7484557e-007};
+		dir[]={0,-0.70710683,0.70710683};
+		up[]={0,0.70710671,0.70710683};
 	};
 };
 binarizationWanted=0;
@@ -7065,7 +7064,6 @@ class Mission
 					};
 					id=982;
 					type="Land_BottlePlastic_V2_F";
-					atlOffset=-0.13265991;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -7107,7 +7105,6 @@ class Mission
 					};
 					id=983;
 					type="Land_BottlePlastic_V2_F";
-					atlOffset=-0.13265991;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -7149,7 +7146,6 @@ class Mission
 					};
 					id=984;
 					type="Land_BottlePlastic_V2_F";
-					atlOffset=-0.13265991;
 					class CustomAttributes
 					{
 						class Attribute0

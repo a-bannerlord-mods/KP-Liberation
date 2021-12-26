@@ -78,6 +78,7 @@ if(isServer) then {
 
     // Gameplay Options
     ["--- Gameplay Options ---", "PARAM"] call KPLIB_fnc_log;
+    GET_PARAM_BOOL(GRLIB_hideMarkers, "HideMarkers", 0);
     GET_PARAM_BOOL(GRLIB_enableSaveLoadout, "EnableSaveLoadout", 1);
     GET_PARAM_BOOL(GRLIB_enableSaveLocation, "EnableSaveLocation", 1);
     GET_PARAM_BOOL(GRLIB_fatigue, "Fatigue", 1);
@@ -361,6 +362,10 @@ if (!isDedicated && hasInterface) then {
         _text = _text + format ["<font color='#ff8000'>%1</font><br />%2<br /><br />", _param, _value];
     };
     
+
+    _param = localize "STR_PARAMS_HIDEMARKERS";
+    _value = if (GRLIB_hideMarkers) then {localize "STR_PARAMS_ENABLED";} else {localize "STR_PARAMS_DISABLED";};
+    _text = _text + format ["<font color='#ff8000'>%1</font><br />%2<br /><br />", _param, _value];
 
     _param = localize "STR_PARAMS_SAVELOADOUT";
     _value = if (GRLIB_enableSaveLoadout) then {localize "STR_PARAMS_ENABLED";} else {localize "STR_PARAMS_DISABLED";};

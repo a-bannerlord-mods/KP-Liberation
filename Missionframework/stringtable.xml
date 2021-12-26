@@ -1514,33 +1514,47 @@
             <Korean>군수물자 생산 비율</Korean>
             <Czech>Násobitel zdrojů</Czech>
         </Key>
+         <Key ID="STR_PARAMS_HIDEMARKERS">
+            <Original>Hide Markers By Default</Original>
+            <French>Hide Markers By Default</French>
+            <German>Hide Markers By Default</German>
+            <Spanish>Hide Markers By Default</Spanish>
+            <Russian>Hide Markers By Default</Russian>
+            <Italian>Hide Markers By Default</Italian>
+            <Chinesesimp>Hide Markers By Default</Chinesesimp>
+            <Chinese>Hide Markers By Default</Chinese>
+            <Turkish>Stamina</Turkish>
+            <Portuguese>Hide Markers By Default</Portuguese>
+            <Korean>Hide Markers By Default</Korean>
+            <Czech>Výdrž</Czech>
+        </Key>
         <Key ID="STR_PARAMS_SAVELOADOUT">
             <Original>Save Player Loadout</Original>
-            <French>Stamina</French>
-            <German>Ausdauer</German>
-            <Spanish>Estamina</Spanish>
-            <Russian>Усталость</Russian>
-            <Italian>Stamina</Italian>
-            <Chinesesimp>体力</Chinesesimp>
-            <Chinese>體力</Chinese>
-            <Turkish>Stamina</Turkish>
-            <Portuguese>Vigor (stamina)</Portuguese>
-            <Korean>체력</Korean>
-            <Czech>Výdrž</Czech>
+            <French>Save Player Loadout</French>
+            <German>Save Player Loadout</German>
+            <Spanish>Save Player Loadout</Spanish>
+            <Russian>Save Player Loadout</Russian>
+            <Italian>Save Player Loadout</Italian>
+            <Chinesesimp>Save Player Loadout</Chinesesimp>
+            <Chinese>Save Player Loadout</Chinese>
+            <Turkish>Save Player Loadout</Turkish>
+            <Portuguese>Save Player Loadout</Portuguese>
+            <Korean>Save Player Loadout</Korean>
+            <Czech>Save Player Loadout</Czech>
         </Key>
         <Key ID="STR_PARAMS_SAVELOCATION">
             <Original>Save Player Location</Original>
-            <French>Stamina</French>
-            <German>Ausdauer</German>
-            <Spanish>Estamina</Spanish>
-            <Russian>Усталость</Russian>
-            <Italian>Stamina</Italian>
-            <Chinesesimp>体力</Chinesesimp>
-            <Chinese>體力</Chinese>
-            <Turkish>Stamina</Turkish>
-            <Portuguese>Vigor (stamina)</Portuguese>
-            <Korean>체력</Korean>
-            <Czech>Výdrž</Czech>
+            <French>Save Player Location</French>
+            <German>Save Player Location</German>
+            <Spanish>Save Player Location</Spanish>
+            <Russian>Save Player Location</Russian>
+            <Italian>Save Player Location</Italian>
+            <Chinesesimp>Save Player Location</Chinesesimp>
+            <Chinese>Save Player Location</Chinese>
+            <Turkish>Save Player Location</Turkish>
+            <Portuguese>Save Player Location</Portuguese>
+            <Korean>Save Player Location</Korean>
+            <Czech>Save Player Location</Czech>
         </Key>
         <Key ID="STR_PARAMS_FATIGUE">
             <Original>Stamina</Original>

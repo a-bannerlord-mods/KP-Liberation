@@ -18,6 +18,11 @@ nothing
 waitUntil {!isNil "save_is_loaded"};
 waitUntil {save_is_loaded};
 
+if (GRLIB_hideMarkers) then {
+	{
+		_x setMarkerAlpha 0; 
+	} forEach sectors_allSectors;
+};
 
 if ((count (opfor_heavy_artillery select {
     isClass (configFile >> "Cfgvehicles">>_x);
@@ -64,3 +69,5 @@ if ((count (opfor_SAM select {
 		_x setMarkerAlpha 0; 
 	};
 } forEach blufor_sectors;
+
+

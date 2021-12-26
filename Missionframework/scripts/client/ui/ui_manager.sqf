@@ -168,6 +168,10 @@ while {true} do {
                 } else {
                     (_overlay displayCtrl (205)) ctrlSetTextColor [0.85,0,0,1];
                 };
+                if (GRLIB_hideMarkers) then {
+                    "zone_capture" setmarkerposlocal markers_reset;
+                    {(_overlay displayCtrl (_x)) ctrlShow false;} forEach _sectorcontrols;
+                };
 
 
                 "zone_capture" setMarkerSizeLocal [ _zone_size,_zone_size ];

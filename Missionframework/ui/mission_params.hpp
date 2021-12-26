@@ -203,6 +203,12 @@ class Params {
         texts[] = {""};
         default = "";
     };
+    class HideMarkers {
+        title = $STR_PARAMS_HIDEMARKERS;
+        values[] = {0, 1};
+        texts[] = {$STR_PARAMS_DISABLED, $STR_PARAMS_ENABLED};
+        default = 0;
+    };
     class EnableSaveLoadout {
         title = $STR_PARAMS_SAVELOADOUT;
         values[] = {0, 1};
