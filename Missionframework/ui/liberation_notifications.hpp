@@ -7,14 +7,14 @@ class CfgNotifications {
         priority = 5;
     };
     class lib_sector_captured: lib_default_notification {
-        title = $STR_NOTIFICATION_SECTORCAPTURED_TITLE;
+        title = $STR_NOTIFICATION_RADIOINTERCEPTED_TITLE;
         description = $STR_NOTIFICATION_SECTORCAPTURED_TEXT;
         iconPicture = "res\notif\ui_notif_sec_cap.paa";
         color[] = { 0, 1, 0, 1 };
         sound = "taskSucceeded";
     };
     class lib_sector_destroyed: lib_default_notification {
-        title = $STR_NOTIFICATION_SECTORDESTROYED_TITLE;
+        title = $STR_NOTIFICATION_RADIOINTERCEPTED_TITLE;
         description = $STR_NOTIFICATION_SECTORDESTROYED_TEXT;
         iconPicture = "res\notif\ui_notif_sec_cap.paa";
         color[] = { 0, 1, 0, 1 };
@@ -35,7 +35,7 @@ class CfgNotifications {
         sound = "taskFailed";
     };
     class lib_sector_safe: lib_default_notification {
-        title = $STR_NOTIFICATION_SECTORSAFE_TITLE;
+        title = $STR_NOTIFICATION_RADIOINTERCEPTED_TITLE;
         description = $STR_NOTIFICATION_SECTORSAFE_TEXT;
         iconPicture = "res\notif\ui_notif_sec_saf.paa";
         color[] = { 0, 0.35, 1, 1 };
@@ -50,7 +50,7 @@ class CfgNotifications {
         sound = "taskUpdated";
     };
     class lib_fob_safe: lib_default_notification {
-        title = $STR_NOTIFICATION_FOBSAFE_TITLE;
+        title = $STR_NOTIFICATION_RADIOINTERCEPTED_TITLE;
         description = $STR_NOTIFICATION_FOBSAFE_TEXT;
         iconPicture = "res\notif\ui_notif_fob_sec.paa";
         color[] = { 0, 0.35, 1, 1 };
@@ -58,14 +58,14 @@ class CfgNotifications {
         priority = 3;
     };
     class lib_fob_attacked: lib_default_notification {
-        title = $STR_NOTIFICATION_FOBATTACKED_TITLE;
+        title = $STR_NOTIFICATION_RADIOINTERCEPTED_TITLE;
         description = $STR_NOTIFICATION_FOBATTACKED_TEXT;
         iconPicture = "res\notif\ui_notif_fob_und.paa";
         color[] = { 1, 1, 0, 1 };
         sound = "taskCanceled";
     };
     class lib_fob_lost: lib_default_notification {
-        title = $STR_NOTIFICATION_FOBLOST_TITLE;
+        title = $STR_NOTIFICATION_RADIOINTERCEPTED_TITLE;
         description = $STR_NOTIFICATION_FOBLOST_TEXT;
         iconPicture = "res\notif\ui_notif_fob_los.paa";
         color[] = { 1, 0, 0, 1 };

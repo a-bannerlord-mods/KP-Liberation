@@ -917,6 +917,20 @@
             <Korean>취소</Korean>
             <Czech>Zrušit</Czech>
         </Key>
+         <Key ID="STR_NOTIFICATION_RADIOINTERCEPTED_TITLE">
+            <Original>Enemy Radio Intercepted</Original>
+            <French>SECTEUR CAPTURE</French>
+            <German>SEKTOR EINGENOMMEN</German>
+            <Spanish>SECTOR CAPTURADO</Spanish>
+            <Russian>СЕКТОР ЗАХВАЧЕН</Russian>
+            <Italian>SETTORE CATTURATO</Italian>
+            <Chinesesimp>战区已占领</Chinesesimp>
+            <Chinese>戰區已占領</Chinese>
+            <Turkish>SEKTÖR ELE GEÇİRİLDİ</Turkish>
+            <Portuguese>SETOR CAPTURADO</Portuguese>
+            <Korean>거점 점령</Korean>
+            <Czech>SEKTOR ZABRÁN</Czech>
+        </Key>
         <Key ID="STR_NOTIFICATION_SECTORCAPTURED_TITLE">
             <Original>SECTOR CAPTURED</Original>
             <French>SECTEUR CAPTURE</French>
@@ -932,7 +946,7 @@
             <Czech>SEKTOR ZABRÁN</Czech>
         </Key>
         <Key ID="STR_NOTIFICATION_SECTORCAPTURED_TEXT">
-            <Original>Our forces have captured %1.</Original>
+            <Original>Hostiles forces reporting they are retreating from %1 leaving it under our control</Original>
             <French>Nos forces ont capturé %1.</French>
             <German>Unsere Truppen haben %1 eingenommen.</German>
             <Spanish>Nuestras fuerzas han capturado %1</Spanish>
@@ -960,7 +974,7 @@
             <Czech>SECTOR DESTROYED</Czech>
         </Key>
         <Key ID="STR_NOTIFICATION_SECTORDESTROYED_TEXT">
-            <Original>Our forces have destroyed %1.</Original>
+            <Original>Hostiles forces reporting they had %1 destroyed.</Original>
             <French>Our forces have destroyed %1.</French>
             <German>Our forces have destroyed %1.</German>
             <Spanish>Our forces have destroyed %1.</Spanish>
@@ -988,7 +1002,7 @@
             <Czech>SEKTOR POD ÚTOKEM</Czech>
         </Key>
         <Key ID="STR_NOTIFICATION_SECTORATTACKED_TEXT">
-            <Original>Hostiles forces are attacking %1!</Original>
+            <Original>Hostiles forces reporting they start attacking %1!</Original>
             <French>Des forces hostiles attaquent %1!</French>
             <German>Gegnerische Truppen greifen %1 an!</German>
             <Spanish>Fuerzas hostiles están atacando %1</Spanish>
@@ -1016,7 +1030,7 @@
             <Czech>SEKTOR ZTRACEN</Czech>
         </Key>
         <Key ID="STR_NOTIFICATION_SECTORLOST_TEXT">
-            <Original>We have lost control over %1!</Original>
+            <Original>Enemies reporting that they captured %1!</Original>
             <French>Nous avons perdu le contrôle de %1!</French>
             <German>Wir haben die Kontrolle über %1 verloren!</German>
             <Spanish>Hemos perdido el control sobre %1!</Spanish>
@@ -1044,7 +1058,7 @@
             <Czech>SEKTOR ZABEZPEČEN</Czech>
         </Key>
         <Key ID="STR_NOTIFICATION_SECTORSAFE_TEXT">
-            <Original>%1 is no longer under threat.</Original>
+            <Original>Hostiles forces reporting they are retreating from %1 its now safe</Original>
             <French>%1 n'est plus menacé(e).</French>
             <German>%1 ist außer Gefahr.</German>
             <Spanish>%1 ya no está bajo amenaza.</Spanish>
@@ -1100,7 +1114,7 @@
             <Czech>FOB ZABEZPEČENO</Czech>
         </Key>
         <Key ID="STR_NOTIFICATION_FOBSAFE_TEXT">
-            <Original>FOB %1 is no longer under threat.</Original>
+            <Original>Hostiles forces reporting they are retreating from attacking FOB %1 its no longer under threat.</Original>
             <French>La FOB %1 n'est plus menacée.</French>
             <German>FOB %1 ist außer Gefahr.</German>
             <Spanish>FOB %1 ya no está bajo amenaza</Spanish>
@@ -1127,7 +1141,7 @@
             <Czech>FOB POD ÚTOKEM</Czech>
         </Key>
         <Key ID="STR_NOTIFICATION_FOBATTACKED_TEXT">
-            <Original>FOB %1 is under attack!</Original>
+            <Original>Hostiles forces reporting they start attacking FOB %1!</Original>
             <French>La FOB %1 est attaquée !</French>
             <German>FOB %1 wird angegriffen !</German>
             <Spanish>FOB %1 está bajo ataque!</Spanish>
@@ -1155,7 +1169,7 @@
             <Czech>FOB ZNIČENO</Czech>
         </Key>
         <Key ID="STR_NOTIFICATION_FOBLOST_TEXT">
-            <Original>FOB %1 has been destroyed!</Original>
+            <Original>Hostiles forces reporting they destroyed FOB %1 !</Original>
             <French>La FOB %1 a été détruite !</French>
             <German>FOB %1 wurde zerstört!</German>
             <Spanish>La FOB %1 ha sido destruida!</Spanish>
