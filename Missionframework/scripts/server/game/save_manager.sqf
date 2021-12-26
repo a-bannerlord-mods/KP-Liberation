@@ -33,7 +33,7 @@ if (hasInterface) then {
 };
 
 // All classnames of objects which should be saved
-KPLIB_classnamesToSave = [toLower FOB_typename, toLower huron_typename];
+KPLIB_classnamesToSave append [toLower FOB_typename, toLower huron_typename];
 
 /*
     --- Locals ---
@@ -72,7 +72,7 @@ blufor_sectors = [];
 // Enemy combat readiness (0-100)
 combat_readiness = 0;
 // All FOBs
-GRLIB_all_fobs = [];
+GRLIB_all_fobs = [(getposATL startbase)];
 // Player permissions data
 GRLIB_permissions = [];
 // Player qualification data
@@ -112,9 +112,11 @@ KPLIB_classnamesToSave append KPLIB_b_allVeh_classes;
 // Add opfor and civilian vehicles for saving
 KPLIB_classnamesToSave append KPLIB_o_allVeh_classes;
 KPLIB_classnamesToSave append civilian_vehicles;
+KPLIB_classnamesToSave append KP_liberation_Command_Devices;
 
 // Remove duplicates
 KPLIB_classnamesToSave = KPLIB_classnamesToSave arrayIntersect KPLIB_classnamesToSave;
+
 
 /*
     --- Statistic Variables ---
@@ -167,7 +169,7 @@ stats_vehicles_recycled = 0;
 
 // Get possible save data
 private _saveData = profileNamespace getVariable GRLIB_save_key;
-
+KPLIB_firstTime = isNil "_saveData";
 // Load save data, when retrieved
 if (!isNil "_saveData") then {
 
@@ -292,7 +294,7 @@ if (!isNil "_saveData") then {
         stats_fobs_lost                             = _stats select 26;
         stats_readiness_earned                      = _stats select 27;
     };
-
+    
     // Extract weigths from collection array
     infantry_weight = _weights select 0;
     armor_weight = _weights select 1;
@@ -328,7 +330,7 @@ if (!isNil "_saveData") then {
     private _object = objNull;
     {
         // Fetch data of saved object
-        _x params ["_class", "_pos", "_vecDir", "_vecUp", ["_hasCrew", false]];
+        _x params ["_class", "_pos", "_vecDir", "_vecUp", ["_hasCrew", false],["_extraData", []]];
 
         // This will be removed if we reach a 0.96.7 due to more released Arma 3 DLCs until we finish 0.97.0
         if !(((_saveData select 0) select 0) isEqualType 0) then {
@@ -383,14 +385,23 @@ if (!isNil "_saveData") then {
             if ((unitIsUAV _object) || _hascrew) then {
                 [_object] call KPLIB_fnc_forceBluforCrew;
             };
+
+            [_object,_extraData] call KPLIB_fnc_setObjectExtraDataFromSave;
         };
     } forEach _objectsToSave;
 
     // Re-enable physics on the spawned objects
     {
-        _x enableSimulation true;
-        _x setdamage 0;
-        _x allowdamage true;
+        _obj= _x;
+        _obj enableSimulation true;
+        _obj allowdamage true;
+        _previousDamage = _obj getVariable ["previousDamage" ,[]];
+        if (count _previousDamage > 0) then {
+            {_obj setHitIndex [_forEachIndex, _x]} forEach _previousDamage;
+        } else {
+            _obj setdamage 0; 
+        };
+        
     } forEach _spawnedObjects;
     ["Saved buildings and vehicles placed", "SAVE"] call KPLIB_fnc_log;
 

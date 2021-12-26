@@ -157,11 +157,11 @@ while { true } do {
 
                 _near_objects = (_truepos nearobjects ["AllVehicles", _dist]) ;
                 _near_objects = _near_objects + (_truepos nearobjects [FOB_box_typename, _dist]);
-                _near_objects = _near_objects + (_truepos nearobjects [Arsenal_typename, _dist]);
+                _near_objects = _near_objects + (_truepos nearobjects [KP_liberation_loadoutbox_classname, _dist]);
 
                 _near_objects_25 = (_truepos nearobjects ["AllVehicles", 50]) ;
                 _near_objects_25 = _near_objects_25 + (_truepos nearobjects [FOB_box_typename, 50]);
-                _near_objects_25 = _near_objects_25 + (_truepos nearobjects [Arsenal_typename, 50]);
+                _near_objects_25 = _near_objects_25 + (_truepos nearobjects [KP_liberation_loadoutbox_classname, 50]);
 
                 if(	buildtype != 6 ) then {
                     _near_objects = _near_objects + (_truepos nearobjects ["Static", _dist]);

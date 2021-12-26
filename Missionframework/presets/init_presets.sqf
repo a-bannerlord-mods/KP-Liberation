@@ -99,6 +99,17 @@ KPLIB_b_allSquads = [
     [blufor_squad_para,200,0,0]
 ];
 
+
+
+KP_liberation_Command_Devices =  [
+"Land_Laptop_03_black_F", 
+"Land_Laptop_03_olive_F", 
+"Land_Laptop_03_sand_F", 
+"Land_Laptop_02_unfolded_F", 
+"Laptop_EP1", 
+"Item_Laptop_Unfolded"
+];
+
 // Squad names for build menu
 squads_names = [
     localize "STR_LIGHT_RIFLE_SQUAD",
@@ -237,14 +248,15 @@ KPLIB_crates            = [KP_liberation_supply_crate, KP_liberation_ammo_crate,
 KPLIB_airSlots          = [KP_liberation_heli_slot_building, KP_liberation_plane_slot_building];
 KPLIB_storageBuildings  = [KP_liberation_small_storage_building, KP_liberation_large_storage_building];
 KPLIB_upgradeBuildings  = [KP_liberation_recycle_building, KP_liberation_air_vehicle_building, KP_liberation_heli_slot_building, KP_liberation_plane_slot_building];
-KPLIB_aiResupplySources append [Respawn_truck_typename, huron_typename, Arsenal_typename];
+KPLIB_aiResupplySources append [Respawn_truck_typename, huron_typename, KP_liberation_loadoutbox_classname];
+
 
 KPLIB_crates            = KPLIB_crates              apply {toLower _x};
 KPLIB_airSlots          = KPLIB_airSlots            apply {toLower _x};
 KPLIB_storageBuildings  = KPLIB_storageBuildings    apply {toLower _x};
 KPLIB_upgradeBuildings  = KPLIB_upgradeBuildings    apply {toLower _x};
 KPLIB_aiResupplySources = KPLIB_aiResupplySources   apply {toLower _x};
-
+KP_liberation_Command_Devices = KP_liberation_Command_Devices apply {toLower _x};
 /*
     Classname collections
 */
@@ -313,7 +325,7 @@ KPLIB_typeAirClasses   = +KPLIB_b_air_classes;
 } forEach (KPLIB_b_support_classes + [toLower huron_typename]);
 
 // Military alphabet used for FOBs and convois
-military_alphabet = ["Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India", "Juliet", "Kilo", "Lima", "Mike", "November", "Oscar", "Papa", "Quebec", "Romeo", "Sierra", "Tango", "Uniform", "Victor", "Whiskey", "X-Ray", "Yankee", "Zulu"];
+military_alphabet = ["StartBase","Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India", "Juliet", "Kilo", "Lima", "Mike", "November", "Oscar", "Papa", "Quebec", "Romeo", "Sierra", "Tango", "Uniform", "Victor", "Whiskey", "X-Ray", "Yankee", "Zulu"];
 
 // Misc variables
 markers_reset = [99999,99999,0];

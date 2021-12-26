@@ -1,7 +1,18 @@
 private [ "_tutorial_titles", "_tutorial_pages", "_current_page", "_old_page", "_dialog" ];
 
+
 if ( isNil "howtoplay" ) then { howtoplay = 0; };
 
+
+_current_page = 0;
+_old_page = -99;
+
+while { true } do {
+    waitUntil { sleep 0.3; howtoplay == 1 };
+    waitUntil { !dialog };
+    sleep 0.1;
+
+    
 _tutorial_titles = [
     localize "STR_TUTO_TITLE1",
     localize "STR_TUTO_TITLE2",
@@ -14,6 +25,7 @@ _tutorial_titles = [
     localize "STR_TUTO_TITLE9",
     localize "STR_TUTO_TITLE10"
 ];
+_tutorial_titles append (KPLIB_Tutorials_Articles apply {_x select 0});
 
 _tutorial_pages = [
     "STR_TUTO_TEXT1",
@@ -27,14 +39,7 @@ _tutorial_pages = [
     "STR_TUTO_TEXT9",
     "STR_TUTO_TEXT10"
 ];
-
-_current_page = 0;
-_old_page = -99;
-
-while { true } do {
-    waitUntil { sleep 0.3; howtoplay == 1 };
-    waitUntil { !dialog };
-    sleep 0.1;
+_tutorial_pages append (KPLIB_Tutorials_Articles apply {_x select 1});
 
     _dialog = createDialog "liberation_tutorial";
     if ( !cinematic_camera_started ) then {
@@ -53,7 +58,13 @@ while { true } do {
         _current_page = lbCurSel 513;
         if ( _current_page != _old_page ) then {
             ctrlSetText [ 514, _tutorial_titles select _current_page ];
-            ((findDisplay 5353) displayCtrl (515)) ctrlSetStructuredText parseText localize (_tutorial_pages select _current_page);
+            _current_Articles  = _tutorial_pages select _current_page;
+            if ((_current_Articles find "STR_") == -1) then {
+                ((findDisplay 5353) displayCtrl (515)) ctrlSetStructuredText (composeText  [parseText _current_Articles]);
+            } else {
+                ((findDisplay 5353) displayCtrl (515)) ctrlSetStructuredText (parseText  (localize _current_Articles));
+            };
+            
             _old_page = _current_page;
         };
         sleep 0.2;

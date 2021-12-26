@@ -44,7 +44,7 @@ while {true} do {
 
     // Is near an arsenal object
     if (KP_liberation_mobilearsenal) then {
-        player setVariable ["KPLIB_isNearArsenal", !(((player nearObjects [Arsenal_typename, 5]) select {getObjectType _x >= 8}) isEqualTo [])];
+        player setVariable ["KPLIB_isNearArsenal", !(((player nearObjects [KP_liberation_loadoutbox_classname, 5]) select {getObjectType _x >= 8}) isEqualTo [])];
     };
 
     // Is near a mobile respawn

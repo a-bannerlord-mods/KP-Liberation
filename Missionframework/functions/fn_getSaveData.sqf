@@ -35,7 +35,11 @@ private _allBlueGroups = allGroups select {
 private ["_fobPos", "_fobObjects", "_grpUnits", "_fobMines"];
 {
     _fobPos = _x;
-    _fobObjects = (_fobPos nearObjects (GRLIB_fob_range * 1.2)) select {
+    _range = GRLIB_fob_range;
+    if (_fobPos isEqualTo (getposATL startbase)) then {
+        _range = 350;
+    };
+    _fobObjects = (_fobPos nearObjects (_range * 1.2)) select {
         ((toLower (typeof _x)) in KPLIB_classnamesToSave) &&        // Exclude classnames which are not in the presets
         {alive _x} &&                                               // Exclude dead or broken objects
         {getObjectType _x >= 8} &&                                  // Exclude preplaced terrain objects
@@ -90,7 +94,8 @@ private ["_savedPos", "_savedVecDir", "_savedVecUp", "_class", "_hasCrew"];
         (!(_class in civilian_vehicles) || {_x getVariable ["KPLIB_seized", false]}) &&
         (!((toLower _class) in KPLIB_o_allVeh_classes) || {_x getVariable ["KPLIB_captured", false]})
     ) then {
-        _objectsToSave pushBack [_class, _savedPos, _savedVecDir, _savedVecUp, _hasCrew];
+        _extraData = [_x] call KPLIB_fnc_getObjectExtraDataToSave;
+        _objectsToSave pushBack [_class, _savedPos, _savedVecDir, _savedVecUp, _hasCrew,_extraData];
     };
 } forEach _allObjects;
 

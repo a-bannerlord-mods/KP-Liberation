@@ -1,7 +1,28 @@
+
+// TFAR
 KPLIB_Enable_TFAR_compatibility = true;
 
-KPLIB_TFAR_Default_SR_Channels =["130.1","131.1","132.1","133.1","134.1","135.1","136.1","137.1"];
-KPLIB_TFAR_Default_LR_Channels =["41.1""42.1","43.1","44.1","45.1","46.1","47.1","48.1"];
+KPLIB_TFAR_Default_SR_Channels =[
+	["130.1","Base/FOB Communications"],
+	["131.1","Infantry"],
+	["132.1","Recon"],
+	["133.1","Armoured"],
+	["134.1","Army Alternate"],
+	["135.1","Saka Fire Team"],
+	["136.1","Saka Squad Team"],
+	["137.1","Airforce"]
+	];
+	
+KPLIB_TFAR_Default_LR_Channels =[
+["40.1","HQ COMMAND NETWORK"],
+["41.1","Airforce"],
+["42.1","Infantry"],
+["43.1","Recon"],
+["44.1","Armoured"],
+["45.1","Saka"],
+["46.1","Not Used"],
+["47.1","Brodcast"]
+];
 
 KPLIB_TFAR_Set_Default_Channels_Device = [
 	"Land_Computer_01_black_F", 
@@ -20,3 +41,6 @@ KPLIB_TFAR_Set_Default_Channels_Device = [
 	"Static_Radio_Tan_1", 
 	"Static_Radio_Tan_2", 
 	"Static_Radio_Tan_3"];
+
+KPLIB_classnamesToSave append KPLIB_TFAR_Set_Default_Channels_Device;
+

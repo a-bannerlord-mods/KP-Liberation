@@ -104,6 +104,12 @@ class KPLIB {
 
         class overlayUpdateResources    {};
     };
+    class functions_data {
+        file = "functions\data";
+
+        class getObjectExtraDataToSave  {};
+        class setObjectExtraDataFromSave  {};
+    };
     #include "scripts\client\CfgFunctions.hpp"
     #include "scripts\server\CfgFunctions.hpp"
 };

@@ -58,7 +58,9 @@ KPLIB_objectInits = [
     [
         [KP_liberation_loadoutbox_classname],
         {
-            _this call jn_fnc_arsenal_addInitialArsenalItems;
+            if (KPLIB_firstTime) then {
+                _this call jn_fnc_arsenal_addInitialArsenalItems;
+            };
             [_this, []] call jn_fnc_arsenal_initPersistent; 
         }
     ],
@@ -72,18 +74,6 @@ KPLIB_objectInits = [
                 params ["_fob"];
                 waitUntil {sleep 0.1; time > 0};
                 [_fob] remoteExecCall ["KPLIB_fnc_addActionsFob", 0, _fob];
-            };
-        }
-    ],
-
-    // Add ViV action to Arsenal crate
-    [
-        [Arsenal_typename],
-        {
-            [_this] spawn {
-                params ["_arsenal"];
-                waitUntil {sleep 0.1; time > 0};
-                [_arsenal] remoteExecCall ["KPLIB_fnc_setLoadableViV", 0, _arsenal];
             };
         }
     ],

@@ -4886,18 +4886,18 @@
             <Czech>Osvoboďte oblast od nepřátelského útisku. Strategie je klíčová! Hodně štěstí vojáci.</Czech>
         </Key>
         <Key ID="STR_TUTO_TITLE1">
-            <Original>1. Introduction</Original>
-            <French>1. Introduction</French>
-            <German>1. Einführung</German>
-            <Spanish>1. Introducción</Spanish>
-            <Russian>1. Введение</Russian>
-            <Italian>1. Introduzione</Italian>
-            <Chinesesimp>1. 介绍</Chinesesimp>
-            <Chinese>1. 介紹</Chinese>
-            <Turkish>1. Giriş</Turkish>
-            <Portuguese>1. Introdução</Portuguese>
-            <Korean>1. 소개</Korean>
-            <Czech>1. Instrukce</Czech>
+            <Original>Introduction</Original>
+            <French>Introduction</French>
+            <German>Einführung</German>
+            <Spanish>Introducción</Spanish>
+            <Russian>Введение</Russian>
+            <Italian>Introduzione</Italian>
+            <Chinesesimp>介绍</Chinesesimp>
+            <Chinese>介紹</Chinese>
+            <Turkish>Giriş</Turkish>
+            <Portuguese>Introdução</Portuguese>
+            <Korean>소개</Korean>
+            <Czech>Instrukce</Czech>
         </Key>
         <Key ID="STR_TUTO_TEXT1">
             <Original>&lt;br/&gt;&lt;br/&gt;Hello gentlemen and welcome to the region, enemy forces have surprised us with a brutal and overwhelming offensive. They now have complete control of the region but with your efforts, that won't last long.&lt;br/&gt; &lt;br/&gt;Our primary objective is simple: liberate the region from enemy control!&lt;br/&gt; &lt;br/&gt;The road to victory will be long and dangerous. You will have to retake many sectors and acquire the necessary resources to improve the quantity and quality of friendly forces engaged in this campaign.&lt;br/&gt; &lt;br/&gt;Moreover, enemy forces will most certainly react to our advance. You will have to engage in secondary operations to weaken a foe that fights with higher numbers and better equipment than you do.&lt;br/&gt; &lt;br/&gt;In your efforts you will need the support of the local population, so always double-check what you're firing at!&lt;br/&gt; &lt;br/&gt;Questions? HQ out.&lt;br/&gt; &lt;br/&gt;</Original>
@@ -4913,18 +4913,18 @@
             <Czech>&lt;br/&gt;&lt;br/&gt;Dobrý den, dámy a pánové, vitejte v oblasti. Jednotky OPFOR nás překvapily brutálním a ohromujícím útokem. Nyní mají vládu nad celým ostrovem, ale díky vaší snaze, ne na dlouho.&lt;br/&gt; &lt;br/&gt;Náš cíl je jednoduchý, osvobodit oblast od nepřátelského útisku.&lt;br/&gt; &lt;br/&gt;Cesta za vítězstvím bude dlouhá a nebezpečná. Musíme dobýt mnoho území a získat důležité zdroje k vylepšení a posílení BLUFOR jednotek operujících v tomto tažení.&lt;br/&gt; &lt;br/&gt;Navíc, jednotky OPFOR budou s největší pravděpodobností reagovat na váš postup. Budete muset splnit mnoho vedlejších úkolu k oslabení nepřátelské přesily s lepším vybavením.&lt;br/&gt; &lt;br/&gt;Ve svém úsilí budete potřebovat podporu místního obyvatelstva, takže se vždy ujistěte, po čem střílíte.&lt;br/&gt; &lt;br/&gt;Otázky? HQ konči.&lt;br/&gt; &lt;br/&gt;</Czech>
         </Key>
         <Key ID="STR_TUTO_TITLE2">
-            <Original>2. Starting the campaign!</Original>
-            <French>2. Débuter la campagne</French>
-            <German>2. Starten der Kampagne</German>
-            <Spanish>2. Comenzando la campaña</Spanish>
-            <Russian>2. С чего начать</Russian>
+            <Original>Starting the campaign!</Original>
+            <French>Débuter la campagne</French>
+            <German>Starten der Kampagne</German>
+            <Spanish>Comenzando la campaña</Spanish>
+            <Russian>С чего начать</Russian>
             <Italian>2 .Inizio della Campagna</Italian>
-            <Chinesesimp>2. 开始战役！</Chinesesimp>
-            <Chinese>1. 開始戰役！</Chinese>
-            <Turkish>2. Göreve başlamak</Turkish>
-            <Portuguese>2. Iniciando a campanha!</Portuguese>
-            <Korean>2. 전투시작</Korean>
-            <Czech>2. Začátek kampaně</Czech>
+            <Chinesesimp>开始战役！</Chinesesimp>
+            <Chinese>開始戰役！</Chinese>
+            <Turkish>Göreve başlamak</Turkish>
+            <Portuguese>Iniciando a campanha!</Portuguese>
+            <Korean>전투시작</Korean>
+            <Czech>Začátek kampaně</Czech>
         </Key>
         <Key ID="STR_TUTO_TEXT2">
             <Original>&lt;br/&gt;&lt;br/&gt;You begin the campaign either onboard the USS Freedom, or at Chimera base, safe zones the enemy won't dare to attack. Your first choice is to choose where you want to deploy. At first you can only deploy at your starting position but as you progress, more options will become available such as Forward Operating Bases (FOB) and mobile respawns.&lt;br/&gt; &lt;br/&gt;At your starting position you can choose your equipment from a complete Arsenal. You will also find your first FOB packaged inside a container, the Spartan-01 helicopter and a few other small transport helicopters.&lt;br/&gt; &lt;br/&gt;You will have to ferry that container with the Spartan-01 (or choose to start with the first FOB already built). You can deploy this first FOB wherever you want (as long as you're 1km from the starting position and 300m from any sector), so it's up to you to choose the right place to start your campaign offensive.&lt;br/&gt; &lt;br/&gt;</Original>
@@ -4940,18 +4940,18 @@
             <Czech>&lt;br/&gt;&lt;br/&gt;Zahájíte kampaň buď na palubě USS Freedom, nebo na základně Chimera, v bezpečných zónách, které se nepřítel neodváží zaútočit. První volbou je vybrat, kam chcete nasadit. Zpočátku se můžete nasadit pouze na vaší výchozí pozici, ale jak postupujete, budou k dispozici další možnosti, jako jsou Forward Operating Bases (FOB) a mobilní respawns.&lt;br/&gt; &lt;br/&gt;Na své počáteční pozici si můžete vybrat vybavení z kompletního Arsenalu. Také najdete svůj první FOB zabalený v kontejneru, vrtulník Spartan-01 a několik dalších malých transportních vrtulníků.&lt;br/&gt; &lt;br/&gt;Budete se muset přepravit s pomocí Spartan-01 (nebo se rozhodnete začít  s první postavenou FOB již postavenou). Tento první FOB můžete nasadit kamkoli budete chtít (pokud jste 1 km od výchozí pozice a 300 m od jakéhokoli sektoru), takže je na vás, abyste vybrali správné místo pro zahájení ofenzivy.&lt;br/&gt; &lt;br/&gt;</Czech>
         </Key>
         <Key ID="STR_TUTO_TITLE3">
-            <Original>3. Objective</Original>
-            <French>3. Objectif</French>
-            <German>3. Ziele</German>
-            <Spanish>3. Objetivo</Spanish>
-            <Russian>3. Цели и задачи</Russian>
-            <Italian>3. Obiettivi</Italian>
-            <Chinesesimp>3. 目标</Chinesesimp>
-            <Chinese>3. 目標</Chinese>
-            <Turkish>3. Objektifler</Turkish>
-            <Portuguese>3. Objetivo</Portuguese>
-            <Korean>3. 작전 목표</Korean>
-            <Czech>3. Cíle</Czech>
+            <Original>Objective</Original>
+            <French>Objectif</French>
+            <German>Ziele</German>
+            <Spanish>Objetivo</Spanish>
+            <Russian>Цели и задачи</Russian>
+            <Italian>Obiettivi</Italian>
+            <Chinesesimp>目标</Chinesesimp>
+            <Chinese>目標</Chinese>
+            <Turkish>Objektifler</Turkish>
+            <Portuguese>Objetivo</Portuguese>
+            <Korean>작전 목표</Korean>
+            <Czech>Cíle</Czech>
         </Key>
         <Key ID="STR_TUTO_TEXT3">
             <Original>&lt;br/&gt;&lt;br/&gt;The primary objective of this campaign is to remove enemy forces from the region entirely. To achieve this, you will have to liberate ALL major cities within the region! This is the only victory condition for the campaign but those cities are tough nuts to crack with only limited resources at your disposal and a well established enemy force. &lt;br/&gt; &lt;br/&gt;To succeed, you will have to capture large number of different sectors, each with their own use.&lt;br/&gt; &lt;br/&gt;</Original>
@@ -4966,18 +4966,18 @@
             <Czech>&lt;br/&gt;&lt;br/&gt;Hlavním úkolem je vyhnat jednotky OPFOR z oblasti. K dosažení, budete muset obsadit všechna hlavní města v oblasti. Toto je jediná podmínka vítězství kampaně.&lt;br/&gt; &lt;br/&gt;Ale tyto města budou oříšek, máte k dispozici jen omezené zdroje a města jsou obsazená po zuby ozbrojenými jednotkami OPFOR. &lt;br/&gt; &lt;br/&gt;Aby jste uspěly, budete muset obsadit mnoho jiných sektorů, každý za jiným účelem.&lt;br/&gt; &lt;br/&gt;</Czech>
         </Key>
         <Key ID="STR_TUTO_TITLE4">
-            <Original>4. Sectors</Original>
-            <French>4. Secteurs</French>
-            <German>4. Sektoren</German>
-            <Spanish>4. Sectores</Spanish>
-            <Russian>4. Секторы</Russian>
-            <Italian>4. Settori</Italian>
-            <Chinesesimp>4. 战区</Chinesesimp>
-            <Chinese>4. 戰區</Chinese>
-            <Turkish>4. Sektörler</Turkish>
-            <Portuguese>4. Setores</Portuguese>
-            <Korean>4. 거점</Korean>
-            <Czech>4. Sektory</Czech>
+            <Original>Sectors</Original>
+            <French>Secteurs</French>
+            <German>Sektoren</German>
+            <Spanish>Sectores</Spanish>
+            <Russian>Секторы</Russian>
+            <Italian>Settori</Italian>
+            <Chinesesimp>战区</Chinesesimp>
+            <Chinese>戰區</Chinese>
+            <Turkish>Sektörler</Turkish>
+            <Portuguese>Setores</Portuguese>
+            <Korean>거점</Korean>
+            <Czech>Sektory</Czech>
         </Key>
         <Key ID="STR_TUTO_TEXT4">
             <Original>&lt;br/&gt;&lt;br/&gt;Sectors are split into 5 different types:&lt;br/&gt; &lt;br/&gt;- Points of Interest (PoI): Generally small to medium sized villages/towns. While strategically unimportant, these places are where the citizens of the region live and as such are key in obtaining their trust and sympathy.&lt;br/&gt; &lt;br/&gt;- Factories: Across the region you will find civilian factories under enemy control. These factories are specialized at creating one of the three resources (Supplies, Ammo, and Fuel), but can later be upgraded to produce all 3. As such they are a very strategic first target!&lt;br/&gt; &lt;br/&gt;- Military Bases: Home to large amounts of highly equipped enemy forces, these installations are heavily defended and will require large and well co-ordinated assaults if you have any hope in capturing them! Capturing these bases will enable us to deploy stronger assets in the region and are critical to your success.&lt;br/&gt; &lt;br/&gt;- Radio Towers (RT): When under enemy control, RTs will be used to call in reinforcements when a nearby sector is attacked by our own forces. The reaction time of the reinforcements will depend on the distance between the tower and the sector. When under friendly control, the towers will give useful map intel on hostile troop movements in the vicinity by intercepting their radio communications.&lt;br/&gt; &lt;br/&gt;- Major Cities: There are several major cities in the region. When all are under friendly control, we will most certainly have beaten back the enemy to a point where they cannot re-establish control. This is your primary objective.&lt;br/&gt; &lt;br/&gt;</Original>
@@ -4992,18 +4992,18 @@
             <Czech>&lt;br/&gt;&lt;br/&gt;Sektory jsou rozděleny na 5 různých typů:&lt;br/&gt; &lt;br/&gt;- Body zajmu: obvykle malá a střední města, strategicky nedůležitá místa, kde žijí místní civilisté v klidu a harmonii.&lt;br/&gt; &lt;br/&gt;- Vojenské základny: plné jednotek OPFOR, tyhle základny jsou dobře bráněny a vyžadují silný a koordinovaný útok. Zajmutí těchto základen nám dovolí nasadit do boje novou techniku, která je kritická k našemu vítězství.&lt;br/&gt; &lt;br/&gt;- Továrny: Napříč celou oblastí mužete najít civilní továrny pod nepřátelskou kontrolou. Tyto továrny se specializují na výrobu jedné ze tří surovin (Zásoby, Munice, Palivo), ale později je lze vylepšit aby produkovaly všechny tři suroviny najednou. Jako takové jsou strategicky našim první cílem.&lt;br/&gt; &lt;br/&gt;- Rádiové věže: pod kontrolou OPFOR jednotek, slouží k přivolání posil do blízkých sektorů pod útokem. Rychlost reakce posil je dána vzdáleností radiové věže od sektoru. Ale pod kontrolou NATO jednotek, poskytují věže informace o pohybu nepřátelských jednotek v okolí za pomoci rádiové komunikace.&lt;br/&gt; &lt;br/&gt;- Hlavní města: V oblasti je několik Hlavních Měst. Pokud jsou všechna pod kontrolou NATO, vyhráváte.&lt;br/&gt; &lt;br/&gt;</Czech>
         </Key>
         <Key ID="STR_TUTO_TITLE5">
-            <Original>5. Resources</Original>
-            <French>5. Ressources</French>
-            <German>5. Ressourcen</German>
-            <Spanish>5. Recursos</Spanish>
-            <Russian>5. Ресурсы</Russian>
-            <Italian>5. Risorse</Italian>
-            <Chinesesimp>5. 资源</Chinesesimp>
-            <Chinese>5. 资源</Chinese>
-            <Turkish>5. Kaynaklar</Turkish>
-            <Portuguese>5. Recursos</Portuguese>
-            <Korean>5. 군수물자</Korean>
-            <Czech>5. Zdroje</Czech>
+            <Original>Resources</Original>
+            <French>Ressources</French>
+            <German>Ressourcen</German>
+            <Spanish>Recursos</Spanish>
+            <Russian>Ресурсы</Russian>
+            <Italian>Risorse</Italian>
+            <Chinesesimp>资源</Chinesesimp>
+            <Chinese>资源</Chinese>
+            <Turkish>Kaynaklar</Turkish>
+            <Portuguese>Recursos</Portuguese>
+            <Korean>군수물자</Korean>
+            <Czech>Zdroje</Czech>
         </Key>
         <Key ID="STR_TUTO_TEXT5">
             <Original>&lt;br/&gt;&lt;br/&gt;In this campaign you have to manage, store and protect three types of resources:&lt;br/&gt;&lt;br/&gt;&lt;t color='#00ff00'&gt;SUPPLIES:&lt;/t&gt; These are the most essential. Without supplies, you will be unable to deploy additional soldiers or requisition any military hardware. As such, HQ recommends prioritising these first!&lt;br/&gt; &lt;br/&gt;&lt;t color='#ff0000'&gt;AMMUNITION:&lt;/t&gt; Used to stock armed vehicles such as APCs and MBTs as well as elite (and heavily armed) soldiers.&lt;br/&gt; &lt;br/&gt;&lt;t color = '#ffff00'&gt;FUEL:&lt;/t&gt; Every vehicle needs fuel, some being more thirsty than others.&lt;br/&gt; &lt;br/&gt;You may come across all three resources in any sector but for a considerable and constant supply, you must capture Factory sectors! Once captured, factories require a storage area (scroll menu action) and then they can immediately begin producing their intended resource. If you can afford it, any factory can be upgraded to produce the other two resources as well. &lt;br/&gt; &lt;br/&gt;</Original>
@@ -5018,18 +5018,18 @@
             <Czech>&lt;br/&gt;&lt;br/&gt;V této kampani musíte spravovat, ukládat a chránit tři typy zdrojů:&lt;br/&gt; &lt;br/&gt;&lt;t color ='#00ff00'&gt;SUROVINY:&lt;/t&gt; Toto jsou nejdůležitější. Bez spotřebního materiálu nebudete moci nasadit další vojáky ani zabavit vojenskou techniku. Velitelství jako takové doporučuje prioritu těchto prvních!&lt;br/&gt; &lt;br/&gt;&lt;t color ='#ff0000' &gt;MUNICE:&lt;/t&gt;Používá se k zásobě ozbrojených vozidel, jako jsou APC a MBT, stejně jako elity (a těžce vyzbrojení) vojáci.&lt;br/&gt; &lt;br/&gt;&lt;t color = '#ffff00'&gt;PALIVO:&lt;/t&gt;Každé vozidlo potřebuje palivo, některé jsou více žíznivé než ostatní.&lt;br/&gt; &lt;br/&gt;Možná narazíte na všechny tři zdroje v jakémkoli sektoru, ale pro značnou a stálou dodávku musíte zachytit tovární sektory! Jakmile jsou továrny zachyceny, vyžadují úložný prostor (akce nabídky posouvání) a poté mohou okamžitě začít vyrábět zamýšlený zdroj. Pokud si to můžete dovolit, může být každá továrna upgradována tak, aby vytvořila další dva zdroje. &lt;br/&gt; &lt;br/&gt;</Czech>
         </Key>
         <Key ID="STR_TUTO_TITLE6">
-            <Original>6. Alert Level</Original>
-            <French>6. Niveau d'alerte</French>
-            <German>6. Alarmstatus</German>
-            <Spanish>6. Nivel de alerta</Spanish>
-            <Russian>6. Уровень обеспокоенности</Russian>
-            <Italian>6. Livello di Allerta</Italian>
-            <Chinesesimp>6. 警戒等级</Chinesesimp>
-            <Chinese>6. 威脅度</Chinese>
-            <Turkish>6. Uyarı Seviyesi</Turkish>
-            <Portuguese>6. Nível de Alerta</Portuguese>
-            <Korean>6. 경고수준</Korean>
-            <Czech>6. Úroveň pohotovosti</Czech>
+            <Original>Alert Level</Original>
+            <French>Niveau d'alerte</French>
+            <German>Alarmstatus</German>
+            <Spanish>Nivel de alerta</Spanish>
+            <Russian>Уровень обеспокоенности</Russian>
+            <Italian>Livello di Allerta</Italian>
+            <Chinesesimp>警戒等级</Chinesesimp>
+            <Chinese>威脅度</Chinese>
+            <Turkish>Uyarı Seviyesi</Turkish>
+            <Portuguese>Nível de Alerta</Portuguese>
+            <Korean>경고수준</Korean>
+            <Czech>Úroveň pohotovosti</Czech>
         </Key>
         <Key ID="STR_TUTO_TEXT6">
             <Original>&lt;br/&gt;&lt;br/&gt;The enemy won't let you liberate all of its brand new territory without a reaction. When you begin the campaign, hostile forces will only be composed of the garrisons inside military bases. However as you become more threatening by liberating more and more sectors, they will start calling in more reinforcements and equipment to counter you.&lt;br/&gt; &lt;br/&gt;To limit the enemies operational capabilities, you will have to fulfill secondary objectives that will consist of destroying their logistical bases and raiding their convoys. This is not required to win the campaign but if you ignore the alert level for too long, you're in for quite a lot of resistance.&lt;br/&gt; &lt;br/&gt;</Original>
@@ -5044,18 +5044,18 @@
             <Czech>&lt;br/&gt;&lt;br/&gt;Jednotky OPFOR vás nenechají obsazovat nové sektory bez jakékoliv reakce. Na začátku kampaně jsou nepřátelé schováni pouze v nepřátelských základnách. Nebezpečí však vzrůstá s každým obsazeným sektorem, jednotky OPFOR si častěji přivolají posily, vozidla a jiné vybavení proti vám.&lt;br/&gt; &lt;br/&gt;Ke snížení nebezpečí musíte plnit vedlejší mise, například zničení logistické základny. Tohle není nutné k vyhrání kampaně a však pokud budete ignorovat vzrůstající nebezpečí, mohou přijít velké problémy.&lt;br/&gt; &lt;br/&gt;</Czech>
         </Key>
         <Key ID="STR_TUTO_TITLE7">
-            <Original>7. Construction</Original>
-            <French>7. Construction</French>
-            <German>7. Konstruktion</German>
-            <Spanish>7. Construcción</Spanish>
-            <Russian>7. Строительство</Russian>
-            <Italian>7. Construzioni</Italian>
-            <Chinesesimp>7. 建造</Chinesesimp>
-            <Chinese>7. 建造</Chinese>
-            <Turkish>7. İnşa etmek</Turkish>
-            <Portuguese>7. Construção</Portuguese>
-            <Korean>7. 건설(배치) </Korean>
-            <Czech>7. Stavění</Czech>
+            <Original>Construction</Original>
+            <French>Construction</French>
+            <German>Konstruktion</German>
+            <Spanish>Construcción</Spanish>
+            <Russian>Строительство</Russian>
+            <Italian>Construzioni</Italian>
+            <Chinesesimp>建造</Chinesesimp>
+            <Chinese>建造</Chinese>
+            <Turkish>İnşa etmek</Turkish>
+            <Portuguese>Construção</Portuguese>
+            <Korean>건설(배치) </Korean>
+            <Czech>Stavění</Czech>
         </Key>
         <Key ID="STR_TUTO_TEXT7">
             <Original>&lt;br/&gt;&lt;br/&gt;To help you succeed in your endeavors, you have a construction capability at every FOB that allows you to deploy infantry, vehicles, defenses, fortifications and so on to your specific location.&lt;br/&gt; &lt;br/&gt;Although infantry, vehicles and defenses will cost resources, fortifications such as structures, sandbags and walls will not.&lt;br/&gt; &lt;br/&gt;The construction system will be available when you are within 100 meters of any FOB.&lt;br/&gt; &lt;br/&gt;</Original>
@@ -5070,18 +5070,18 @@
             <Czech>&lt;br/&gt;&lt;br/&gt;Abyste uspěly ve své snaze, máte možnost stavět jednotky, vozidla a opevnění. Samozřejmě v závislosti na zdrojích.&lt;br/&gt; &lt;br/&gt;Ačkoli pěchota, vozidla a obrana budou stát zdroje, opevnění, jako jsou budovy, pytle s pískem a zdi, nikoliv.&lt;br/&gt; &lt;br/&gt;Systém stavění je dostupný do 100 metrů od FOB. Tehdy se vám objeví možnost stavět v kontextové nabídce.&lt;br/&gt; &lt;br/&gt;</Czech>
         </Key>
         <Key ID="STR_TUTO_TITLE8">
-            <Original>8. Deploying another FOB</Original>
-            <French>8. Déployer une autre FOB</French>
-            <German>8. Errichtung einer weiteren FOB</German>
-            <Spanish>8. Desplegar otra FOB</Spanish>
-            <Russian>8. Развёртывание новой FOB</Russian>
-            <Italian>8. Costruire un'altra FOB</Italian>
-            <Chinesesimp>8. 部署更多前哨</Chinesesimp>
-            <Chinese>8. 部署更多前線基地</Chinese>
-            <Turkish>8. Başka bir FOB kurmak</Turkish>
-            <Portuguese>8. Instalando outra FOB</Portuguese>
-            <Korean>8. 전초기지(FOB)</Korean>
-            <Czech>8. Zřízení FOB</Czech>
+            <Original>Deploying another FOB</Original>
+            <French>Déployer une autre FOB</French>
+            <German>Errichtung einer weiteren FOB</German>
+            <Spanish>Desplegar otra FOB</Spanish>
+            <Russian>Развёртывание новой FOB</Russian>
+            <Italian>Costruire un'altra FOB</Italian>
+            <Chinesesimp>部署更多前哨</Chinesesimp>
+            <Chinese>部署更多前線基地</Chinese>
+            <Turkish>Başka bir FOB kurmak</Turkish>
+            <Portuguese>Instalando outra FOB</Portuguese>
+            <Korean>전초기지(FOB)</Korean>
+            <Czech>Zřízení FOB</Czech>
         </Key>
         <Key ID="STR_TUTO_TEXT8">
             <Original>&lt;br/&gt;&lt;br/&gt;To build a brand new FOB, go to the construction menu and then the logistics tab and build a FOB container or a FOB truck (the same thing, only with wheels). Then you can position the FOB container/truck where you want to deploy your shiny new FOB. However, be aware that you can't build a FOB within 1km of your starting position, within 300m of any sector, or within 2km of any other FOB.&lt;br/&gt; &lt;br/&gt;That would simply be redundant!&lt;br/&gt; &lt;br/&gt;</Original>
@@ -5096,18 +5096,18 @@
             <Czech>&lt;br/&gt;&lt;br/&gt;K postavení nového FOB, jděte do stavebního menu a pote do logistické záložky, poté postavte FOB kontejner nebo FOB náklaďák (to je to samé ale na kolech).&lt;br/&gt; &lt;br/&gt;Poté přesuňte kontejner na místo kde rozložíte z brusu nové FOB. Mějte se však na pozoru, FOB nelze postavit uvnitř obsazeného sektoru nebo ve vzdálenosti 2km od jiného FOB a 1km od startovní základny.&lt;br/&gt; &lt;br/&gt;To by bylo prostě zbytečné!&lt;br/&gt; &lt;br/&gt;</Czech>
         </Key>
         <Key ID="STR_TUTO_TITLE9">
-            <Original>9. Secondary Objectives</Original>
-            <French>9. Missions secondaires</French>
-            <German>9. Sekundäre Ziele</German>
-            <Spanish>9. Objetivos secundarios</Spanish>
-            <Russian>9. Дополнительные задания</Russian>
-            <Italian>9. Obiettivi Secondari</Italian>
-            <Chinesesimp>9. 次要目标</Chinesesimp>
-            <Chinese>9. 次要目標</Chinese>
-            <Turkish>9. İkincil Objektifler</Turkish>
-            <Portuguese>9. Objetivos Secundários</Portuguese>
-            <Korean>9. 부차적인 임무</Korean>
-            <Czech>9. Vedlejší úkoly</Czech>
+            <Original>Secondary Objectives</Original>
+            <French>Missions secondaires</French>
+            <German>Sekundäre Ziele</German>
+            <Spanish>Objetivos secundarios</Spanish>
+            <Russian>Дополнительные задания</Russian>
+            <Italian>Obiettivi Secondari</Italian>
+            <Chinesesimp>次要目标</Chinesesimp>
+            <Chinese>次要目標</Chinese>
+            <Turkish>İkincil Objektifler</Turkish>
+            <Portuguese>Objetivos Secundários</Portuguese>
+            <Korean>부차적인 임무</Korean>
+            <Czech>Vedlejší úkoly</Czech>
         </Key>
         <Key ID="STR_TUTO_TEXT9">
             <Original>&lt;br/&gt;&lt;br/&gt;When you capture sectors, sometimes the few hostiles forces remaining will surrender. You can then capture those prisoners and take them back to a nearby FOB to be interrogated.&lt;br/&gt; &lt;br/&gt;That interrogation, executed in the utmost respect of the Geneva Convention, will allow you to obtain information which can be used to reveal the rough position of an enemy logistics base, enemy convoy or friendly search and rescue.&lt;br/&gt; &lt;br/&gt;After going there you will need to find the exact position of your target, then use any means at your disposal to complete your objective. Succeeding at this task will be rewarded, reducing the alert level consequently and with it the efficiency of all hostile forces.&lt;br/&gt; &lt;br/&gt;</Original>
@@ -5122,18 +5122,18 @@
             <Czech>&lt;br/&gt;&lt;br/&gt;Když obsadíte sektor, někdy se stane že některé nepřátelské jednotky zůstanou a vzdají se. Ty můžete zajmout a převést do nejbližší FOB kde budou vyslechnuti.&lt;br/&gt; &lt;br/&gt;Z výslechu, z úcty k Ženevským konvencím, můžete zjistit vice nebo méně přesné informace o nepřátelských logistických základnách, nepřátelských konvojích nebo o spojeneckých zajatcích.&lt;br/&gt; &lt;br/&gt;Poté, co tam půjdete, budete muset najít přesnou polohu vašeho cíle, a pak pomocí jakýchkoli prostředků, které máte k dispozici, dokončete svůj úkol. Úspěch v tomto úkolu bude odměněn, čímž se sníží úroveň pohotovosti a tím i účinnost všech nepřátelských sil.&lt;br/&gt; &lt;br/&gt;</Czech>
         </Key>
         <Key ID="STR_TUTO_TITLE10">
-            <Original>10. Commanding</Original>
-            <French>10. Commandement</French>
-            <German>10. Oberkommando</German>
-            <Spanish>10. Comandancia</Spanish>
-            <Russian>10. Командование</Russian>
-            <Italian>10. Comando</Italian>
-            <Chinesesimp>10. 指挥</Chinesesimp>
-            <Chinese>10. 指挥</Chinese>
-            <Turkish>10. Komuta etmek</Turkish>
-            <Portuguese>10. Comandando</Portuguese>
-            <Korean>10. 지휘 및 기타정보</Korean>
-            <Czech>10. Velení</Czech>
+            <Original>Commanding</Original>
+            <French>Commandement</French>
+            <German>Oberkommando</German>
+            <Spanish>Comandancia</Spanish>
+            <Russian>Командование</Russian>
+            <Italian>Comando</Italian>
+            <Chinesesimp>指挥</Chinesesimp>
+            <Chinese>指挥</Chinese>
+            <Turkish>Komuta etmek</Turkish>
+            <Portuguese>Comandando</Portuguese>
+            <Korean>지휘 및 기타정보</Korean>
+            <Czech>Velení</Czech>
         </Key>
         <Key ID="STR_TUTO_TEXT10">
             <Original>&lt;br/&gt;&lt;br/&gt;When a player uses the Commander role, they get access to the Zeus interface by pressing the corresponding key (Y by default). This interface allows the commanding of friendly forces in 3D or map view.&lt;br/&gt; &lt;br/&gt;Moreover the commander gets additional build options that will allow them to obtain crewed vehicles or entire pre-made squads.&lt;br/&gt; &lt;br/&gt;This role is now mandatory, as it provides direct access to the management of production sectors and AI logistics. Given that you are positioned by a FOB, you will see the options "Production Settings" and "Logistic Overview".&lt;br/&gt; &lt;br/&gt; The first enables the ability to decide which Factory produces which specific resources, as well as a detailed current overview.&lt;br/&gt; &lt;br/&gt; The latter allows you to command an AI logitical convoy, where you may "Add" logistical groups, purchase any amount of trucks per group and command them to move specific amounts of resources across the region for you.&lt;br/&gt; &lt;br/&gt;</Original>

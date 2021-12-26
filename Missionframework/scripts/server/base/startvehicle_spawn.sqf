@@ -20,42 +20,52 @@
     Refer to: https://github.com/KillahPotatoes/KP-Liberation/wiki/EN_ImportantHints#commas-inside-an-array
 */
 
-waitUntil {!isNil "save_is_loaded"};
-waitUntil {save_is_loaded};
+waitUntil {
+    !isNil "save_is_loaded"
+};
+waitUntil {
+    save_is_loaded
+};
 
 private _placeholder = objNull;
 private _spawnPos = [];
 private _veh = objNull;
 
-_all_startvehicle_spawn =[
-    ["littlebird_", KP_liberation_little_bird_classname],
-    ["boat_", KP_liberation_boat_classname],
-    ["loadout_", KP_liberation_loadoutbox_classname],
-    ["commandLab_",  (KP_liberation_Command_Devices select 0)]
-];
+if (KPLIB_firstTime) then {
+    _all_startvehicle_spawn = [
+        ["littlebird_", KP_liberation_little_bird_classname],
+        ["boat_", KP_liberation_boat_classname],
+        ["loadout_", KP_liberation_loadoutbox_classname],
+        ["commandLab_", (KP_liberation_Command_Devices select 0)]
+    ];
+    _compatibility_start_vehicle = call compile preprocessFileLineNumbers "compatibility\add_compatibility_start_vehicle.sqf";
+    _all_startvehicle_spawn append _compatibility_start_vehicle;
 
-_compatibility_start_vehicle  = call compile preprocessFileLineNumbers "compatibility\add_compatibility_start_vehicle.sqf";
-_all_startvehicle_spawn append  _compatibility_start_vehicle;
+    {
+        _x params["_id", "_classname"];
 
-
-{
-    _x params ["_id", "_classname"];
-
-    for [{_i = 0}, {!isNil ([_id, _i] joinString "")}, {_i = _i + 1}] do {
-        _placeholder = missionNamespace getVariable ([_id, _i] joinString "");
-        _spawnPos = getPosATL _placeholder;
-        _veh = _classname createVehicle [_spawnPos select 0, _spawnPos select 1, (_spawnPos select 2) + 0.2];
-        _veh enableSimulationGlobal false;
-        _veh allowDamage false;
-        _veh setPosATL _spawnPos;
-        _veh setDir (getDir _placeholder);
-        [_veh] call KPLIB_fnc_clearCargo;
-        sleep 0.5;
-        _veh enableSimulationGlobal true;
-        _veh setDamage 0;
-        _veh allowDamage true;
-        _veh setVariable ["KP_liberation_preplaced", true, true];
-        [_veh] call KPLIB_fnc_addObjectInit;
-        //deleteVehicle _placeholder;
-    };
-} forEach _all_startvehicle_spawn;
+        for [{
+            _i = 0
+        }, {!isNil([_id, _i] joinString "")
+        }, {
+            _i = _i + 1
+        }] do {
+            _placeholder = missionNamespace getVariable([_id, _i] joinString "");
+            _spawnPos = getPosATL _placeholder;
+            _veh = _classname createVehicle[_spawnPos select 0, _spawnPos select 1, (_spawnPos select 2) + 0.2];
+            _veh enableSimulationGlobal false;
+            _veh allowDamage false;
+            _veh setPosATL _spawnPos;
+            _veh setDir(getDir _placeholder);
+            [_veh] call KPLIB_fnc_clearCargo;
+            sleep 0.5;
+            _veh enableSimulationGlobal true;
+            _veh setDamage 0;
+            _veh allowDamage true;
+            //_veh setVariable["KP_liberation_preplaced", true, true];
+            [_veh] call KPLIB_fnc_addObjectInit;
+            deleteVehicle _placeholder;
+        };
+    }
+    forEach _all_startvehicle_spawn;
+};

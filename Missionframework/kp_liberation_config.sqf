@@ -3,14 +3,6 @@
     https://github.com/KillahPotatoes/KP-Liberation
 */
 
-KP_liberation_Command_Devices =  [
-"Land_Laptop_03_black_F", 
-"Land_Laptop_03_olive_F", 
-"Land_Laptop_03_sand_F", 
-"Land_Laptop_02_unfolded_F", 
-"Laptop_EP1", 
-"Item_Laptop_Unfolded"
-];
 
 // Vehicle classnames which also function as ACE medical vehicles.
 KP_liberation_medical_vehicles = [
@@ -184,8 +176,9 @@ KP_liberation_preset_civilians = 0;
 13 = CSAT Hex arsenal preset
 14 = CSAT Green Hex arsenal preset
 15 = AAF arsenal preset
-16 = LDF arsenal preset */
-KP_liberation_arsenal = 0;
+16 = LDF arsenal preset 
+17 = EAF arsenal preset */
+KP_liberation_arsenal = 17;
 
 /* - Fuel consumption settings.
 Time in minutes till a full tank depletes whilst the vehicle is standing still with a running engine. */
@@ -1187,3 +1180,7 @@ KP_Radars_Enable_On_Combat_Readiness_Above = 20;
 //Technical Config 
 
 GRLIB_replaceRespawnButtonWithRedeploy =true;
+
+KPLIB_classnamesToSave = [];
+
+KPLIB_Tutorials_Articles = [];

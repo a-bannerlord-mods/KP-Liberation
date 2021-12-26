@@ -10,15 +10,15 @@ if (isClass(configFile >> "CfgPatches" >> "task_force_radio") && KPLIB_Enable_TF
             // set short-range radio
             if (!isnil TFAR_fnc_activeSwradio) then {
 				{
-					[(call TFAR_fnc_activeSwradio), _forEachIndex, _x] call TFAR_fnc_setChannelFrequency;
-				} forEach KPLIB_TFAR_Default_SR_Channels;
+					[(call TFAR_fnc_activeSwradio), _forEachIndex +1, _x] call TFAR_fnc_setChannelFrequency;
+				} forEach (KPLIB_TFAR_Default_SR_Channels apply {_x select 0});
             };
             
             // set long-range radio
             if (!isnil TFAR_fnc_activeLrradio) then {
 				{
-					[(call TFAR_fnc_activeLrradio), _forEachIndex, _x] call TFAR_fnc_setChannelFrequency;
-				} forEach KPLIB_TFAR_Default_LR_Channels;
+					[(call TFAR_fnc_activeLrradio), _forEachIndex +1, _x] call TFAR_fnc_setChannelFrequency;
+				} forEach (KPLIB_TFAR_Default_LR_Channels apply {_x select 0});
             };
             
             hint "The radio channels have been set successfully.";

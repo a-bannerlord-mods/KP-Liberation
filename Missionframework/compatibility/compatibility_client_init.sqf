@@ -1,0 +1,1 @@
+_this execVM "compatibility\tfar\init_client.sqf";

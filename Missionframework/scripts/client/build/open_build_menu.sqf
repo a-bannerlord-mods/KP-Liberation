@@ -53,7 +53,7 @@ while {dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 
                 switch (_classnamevar) do {
                     case FOB_box_typename: {_entrytext = localize "STR_FOBBOX";};
-                    case Arsenal_typename: {if (KP_liberation_mobilearsenal) then {_entrytext = localize "STR_ARSENAL_BOX";};};
+                    case KP_liberation_loadoutbox_classname: {if (KP_liberation_mobilearsenal) then {_entrytext = localize "STR_ARSENAL_BOX";};};
                     case Respawn_truck_typename: {if (KP_liberation_mobilerespawn) then {_entrytext = localize "STR_RESPAWN_TRUCK";};};
                     case FOB_truck_typename: {_entrytext = localize "STR_FOBTRUCK";};
                     case "Flag_White_F": {_entrytext = localize "STR_INDIV_FLAG";};
