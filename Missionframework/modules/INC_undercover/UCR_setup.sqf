@@ -32,22 +32,22 @@ _globalSuspicionModifier = 1;           //Scales the level of suspicion of enemi
 
 //-------------------------Civilian Disguise settings-------------------------
 
-_civFactions = ["CIV_F","CFP_C_AFRISLAMIC","CFP_C_AFRCHRISTIAN","CIV_F_EUROPE","CIV_F_AFRICA","CIV_F_ASIA","CIV_F_TANOA","LOP_TAK_Civ","Civ_egypt","Ambient"]; //Array of factions whose vests are safe for undercover units to wear
+_civFactions = KPLIB_civ_factions; //Array of factions whose vests are safe for undercover units to wear
 
 //(Array of classnames) Safe vests (on top of the specific factions above - useful if faction has randomisation script or to add items that are not used by the faction)
 _civilianVests = [];
 
 //(Array of classnames) Safe uniforms (on top of the specific factions above - useful if faction has randomisation script or to add items that are not used by the faction)
-_civilianUniforms = [];
+_civilianUniforms = KPLIB_civ_uniform;
 
 //(Array of classnames) Safe headgear (will automatically include civilian headgear classes - useful if faction has randomisation script or to add items that are not used by the faction)
-_civilianHeadgear = [];
+_civilianHeadgear = KPLIB_civ_headwear;
 
 //(Array of classnames) Safe backpacks (will automatically include civilian backpack classes - useful if faction has randomisation script or to add items that are not used by the faction)
-_civilianBackpacks = [];
+_civilianBackpacks = KPLIB_civ_backbag;
 
 //(Array of classnames) Safe vehicles to drive in (automatically includes vehicles from the civilian factions above).
-_civilianVehicleArray = [];
+_civilianVehicleArray = civilian_vehicles;
 
 _HMDallowed = false; //(Bool - true or false) Are HMDs (night vision goggles etc.) safe to wear for units pretending to be civilians? Set to false if wearing HMDs will cause suspicion (must be stored in backpack).
 
@@ -55,7 +55,7 @@ _noOffRoad = true; //Civilian vehicles driving at speed more than 50 meters from
 
 
 //-------------------------Enemy Disguise settings-------------------------
-_incogFactions = ["OPF_F","OPF_T_F","O_Egypt","LOP_ISTS_OPF","EDF_Ethiopian_Defence_Force"]; //Array of enemy factions whose items and vehicles will allow the player to impersonate the enemy
+_incogFactions = KPLIB_o_inf_factions; //Array of enemy factions whose items and vehicles will allow the player to impersonate the enemy
 
  //Names of additional markers for areas that would be considered trespassing (any with "INC_tre" - case sensitive - somewhere in the marker name will automatically be included)
 _trespassMarkers = [];
@@ -72,7 +72,7 @@ _incognitoBackpacks = [];
 //(Array of classnames) Safe uniforms (on top of the specific factions above - useful if faction has randomisation script or to add items that are not used by the faction)
 _incognitoUniforms = [];
 
-_incogVehArray = ["O_Egypt_Land_Rover_M2_01","O_Egypt_Land_Rover_SPG_01","O_Egypt_Nissan_PKM_01","O_Egypt_Offroad_M2_01","O_Egypt_Offroad_SPG_01","LOP_ISTS_OPF_T72BA","LOP_ISTS_OPF_T55","LOP_ISTS_OPF_T34","LOP_ISTS_OPF_BMP1","LOP_ISTS_OPF_BMP2","LOP_ISTS_OPF_BTR60","LOP_ISTS_OPF_M113_W","LOP_ISTS_OPF_ZSU234"]; //(Array of classnames) Additional incognito vehicles (vehicles from the faction above will automatically count, as will all _highSecVehicles)
+_incogVehArray = KPLIB_o_allVeh_classes; //(Array of classnames) Additional incognito vehicles (vehicles from the faction above will automatically count, as will all _highSecVehicles)
 
 
 
@@ -120,4 +120,4 @@ _civWpnArray = ["arifle_AKS_F","arifle_AKM_F","hgun_Pistol_01_F","hgun_Rook40_F"
 _civItemArray = ["ACE_Cellphone","ACE_Banana","ACE_Flashlight_KSF1","ACE_SpraypaintBlack","itemRadio","ACE_RangeCard","ACE_key_civ","ACE_key_lockpick","ACE_fieldDressing","IEDUrbanSmall_F","IEDUrbanSmall_F"];
 
 //Civilian backpack classes (array of classnames)
-_civPackArray = ["B_FieldPack_blk","B_FieldPack_cbr","B_FieldPack_khk","B_FieldPack_oucamo","B_Carryall_cbr"];
+_civPackArray = KPLIB_civ_backbag;

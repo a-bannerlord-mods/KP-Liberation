@@ -1083,6 +1083,18 @@ GRLIB_arsenal_other = [
 ];
 
 
+
+{
+    GRLIB_arsenal_uniforms pushBack  [_x, "Civilians Items", [], 000, -1],
+} forEach KPLIB_civ_uniform;
+{
+    GRLIB_arsenal_headgear pushBack  [_x, "Civilians Items", [], 000, -1],
+} forEach KPLIB_civ_headwear;
+{
+    GRLIB_arsenal_backpacks pushBack  [_x, "Civilians Items", [], 000, -1],
+} forEach KPLIB_civ_backbag;
+
+
 GRLIB_arsenal_items = GRLIB_arsenal_uniforms + GRLIB_arsenal_Headgear + GRLIB_arsenal_Vests + GRLIB_arsenal_Facegear +
     GRLIB_arsenal_nightvision + GRLIB_arsenal_rangefinders + GRLIB_arsenal_maps + GRLIB_arsenal_compass + GRLIB_arsenal_watchs + GRLIB_arsenal_terminal + GRLIB_arsenal_radio +
     GRLIB_arsenal_optics + GRLIB_arsenal_flashlaser + GRLIB_arsenal_bipods + GRLIB_arsenal_muzzles + GRLIB_arsenal_HandGrenade + GRLIB_arsenal_explosives +

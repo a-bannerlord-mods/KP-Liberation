@@ -310,6 +310,90 @@ KPLIB_o_allVeh_classes = KPLIB_o_allVeh_classes arrayIntersect KPLIB_o_allVeh_cl
 KPLIB_o_inf_classes = [opfor_sentry, opfor_rifleman, opfor_grenadier, opfor_squad_leader, opfor_team_leader, opfor_marksman, opfor_machinegunner, opfor_heavygunner, opfor_medic, opfor_rpg, opfor_at, opfor_aa, opfor_officer, opfor_sharpshooter, opfor_sniper,opfor_engineer];
 KPLIB_o_inf_classes = KPLIB_o_inf_classes apply {toLower _x};
 
+
+KPLIB_civ_factions = [];
+KPLIB_civ_uniform = [];
+KPLIB_civ_headwear = [];
+KPLIB_civ_backbag = [];
+
+{
+    _cfg = configFile >> "CfgVehicles" >> _x;
+    if (isclass _cfg) then {
+        _faction = getText(_cfg >> "faction");
+        _headgearList = getArray(_cfg >> "headgearList");
+        _uniformClass = getText(_cfg >> "uniformClass");
+        _backpackClass = getText(_cfg >> "backpack");
+
+        if !(_faction == "") then {
+            KPLIB_civ_factions pushBack _faction;
+        };
+
+
+        {
+            if (typeName _x == "STRING") then {
+                if  (_x != "") then {
+                    KPLIB_civ_headwear pushBack _x;
+                };
+            };
+        } forEach _headgearList;
+
+        if !(_uniformClass == "") then {
+            KPLIB_civ_uniform pushBack _uniformClass;
+        };
+        if !(_backpackClass == "") then {
+            KPLIB_civ_backbag pushBack _backpackClass;
+        };
+    };
+}
+forEach civilians;
+
+KPLIB_o_inf_factions = [];
+KPLIB_o_inf_weapons = [];
+KPLIB_o_inf_uniforms = [];
+KPLIB_o_inf_headwears = [];
+KPLIB_o_inf_backbags = [];
+
+{
+    //linkedItems[] = {"V_PlateCarrierIA2_dgtl","H_HelmetIA","ItemGPS","ItemMap","ItemCompass","ItemWatch","ItemRadio","NVGoggles_INDEP"};
+    _cfg = configFile >> "CfgVehicles" >> _x;
+    if (isclass _cfg) then {
+        _headgearList = getArray(_cfg >> "headgearList");
+        _weapons = getArray(_cfg >> "weapons");
+        _faction = getText(_cfg >> "faction");
+        _uniformClass = getText(_cfg >> "uniformClass");
+        _backpackClass = getText(_cfg >> "backpack");
+
+        if !(_faction == "") then {
+            KPLIB_o_inf_factions pushBack _faction;
+        };
+
+        {
+            if (typeName _x == "STRING") then {
+                if  (_x != "") then {
+                    KPLIB_o_inf_headwears pushBack _x;
+                };
+            };
+        } forEach _headgearList;
+
+        {
+            if (typeName _x == "STRING") then {
+                if  (_x != "" && _x !=  "Throw" && _x != "Put") then {
+                    KPLIB_o_inf_weapons pushBack _x;
+                };
+            };
+        } forEach _weapons;
+
+        if !(_uniformClass == "") then {
+            KPLIB_o_inf_uniforms pushBack _uniformClass;
+        };
+        if !(_backpackClass == "") then {
+            KPLIB_o_inf_backbags pushBack _backpackClass;
+        };
+    };
+}
+forEach KPLIB_o_inf_classes;
+
+
 /*
     Vehicle type permission arrays
 */

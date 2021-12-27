@@ -105,7 +105,6 @@ switch (_operation) do {
 			case true: {
 
 				[_unit, [
-
 					"<t color='#334FFF'>Conceal weapons</t>", {
 
 						params ["_unit"];
@@ -263,44 +262,44 @@ switch (_operation) do {
 				};
 			}];
 
-			[_unit, [
+			// [_unit, [
 
-				"<t color='#F70707'>GROUP GO LOUD</t>", {
-					params ["_unit"];
+			// 	"<t color='#F70707'>GROUP GO LOUD</t>", {
+			// 		params ["_unit"];
 
-					{
-						if (!isPlayer _x) then {
+			// 		{
+			// 			if (!isPlayer _x) then {
 
-							_x enableAI "AUTOTARGET";
-							_x setCombatMode "YELLOW";
-							_x setBehaviour "COMBAT";
-							_x setUnitPos "AUTO";
+			// 				_x enableAI "AUTOTARGET";
+			// 				_x setCombatMode "YELLOW";
+			// 				_x setBehaviour "COMBAT";
+			// 				_x setUnitPos "AUTO";
 
-							_x suppressFor 10;
+			// 				_x suppressFor 10;
 
-							[_x] spawn {
-								params ["_unit"];
+			// 				[_x] spawn {
+			// 					params ["_unit"];
 
-								_wpnArray = ((weapons _unit) select {
-									(_x isKindOf ['Rifle', configFile >> 'CfgWeapons']) ||
-									{_x isKindOf ['Pistol', configFile >> 'CfgWeapons']}
-								});
+			// 					_wpnArray = ((weapons _unit) select {
+			// 						(_x isKindOf ['Rifle', configFile >> 'CfgWeapons']) ||
+			// 						{_x isKindOf ['Pistol', configFile >> 'CfgWeapons']}
+			// 					});
 
-								for "_i" from 1 to (count _wpnArray) do {
-									[[_unit],"unConcealWeapon"] call INCON_ucr_fnc_gearHandler;
-									sleep 3;
-								};
+			// 					for "_i" from 1 to (count _wpnArray) do {
+			// 						[[_unit],"unConcealWeapon"] call INCON_ucr_fnc_gearHandler;
+			// 						sleep 3;
+			// 					};
 
-								sleep 2;
+			// 					sleep 2;
 
-								_x suppressFor 10;
-							};
-						};
-					} forEach (units _unit);
+			// 					_x suppressFor 10;
+			// 				};
+			// 			};
+			// 		} forEach (units _unit);
 
-				},[],4,false,true,"","(_this == _target) &&  {(count units _this > 1)}"
+			// 	},[],4,false,true,"","(_this == _target) &&  {(count units _this > 1)}"
 
-			]] remoteExec ["addAction", _groupLead];
+			// ]] remoteExec ["addAction", _groupLead];
 		};
 
 		if ((_dismiss || {!(_unit getVariable ["INC_notDismissable",false])}) && {_unit != leader _unit} && {!isPlayer _unit}) then {

@@ -32,6 +32,9 @@ if (isServer) then {
         private _nearby_bigtown = sectors_bigtown select {!(_x in blufor_sectors) && (_unit distance (markerpos _x) < 250)};
         if (count _nearby_bigtown > 0) then {
             combat_readiness = combat_readiness + (0.5 * GRLIB_difficulty_modifier);
+            if (isServer) then {
+                [] call KPLIB_fnc_combatReadinessUpdated;
+            }; 
             stats_readiness_earned = stats_readiness_earned + (0.5 * GRLIB_difficulty_modifier);
             if (combat_readiness > 100.0 && GRLIB_difficulty_modifier < 2) then {combat_readiness = 100.0};
         };
@@ -170,6 +173,7 @@ if (isServer) then {
 // Body/Wreck deletion after cleanup delay
 if (isServer && !isplayer _unit) then {
     sleep GRLIB_cleanup_delay;
+    systemChat "Deleting Body";
     hidebody _unit;
     sleep 10;
     deleteVehicle _unit;
