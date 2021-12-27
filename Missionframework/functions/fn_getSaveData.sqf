@@ -36,10 +36,7 @@ private ["_fobPos", "_fobObjects", "_grpUnits", "_fobMines"];
 {
     _fobPos = _x;
     _range = GRLIB_fob_range;
-    if (_fobPos isEqualTo (getposATL startbase)) then {
-        _range = 350;
-    };
-    _fobObjects = (_fobPos nearObjects (_range * 1.2)) select {
+    _fobObjects = (_fobPos nearObjects (_range * 2)) select {
         ((toLower (typeof _x)) in KPLIB_classnamesToSave) &&        // Exclude classnames which are not in the presets
         {alive _x} &&                                               // Exclude dead or broken objects
         {getObjectType _x >= 8} &&                                  // Exclude preplaced terrain objects

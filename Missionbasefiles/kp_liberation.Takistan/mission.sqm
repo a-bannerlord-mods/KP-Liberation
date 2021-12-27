@@ -12,11 +12,11 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=1218;
+		nextID=1219;
 	};
 	class MarkerIDProvider
 	{
-		nextID=1;
+		nextID=2;
 	};
 	class LayerIndexProvider
 	{
@@ -24,10 +24,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={8190.6606,317.50482,2079.9617};
-		dir[]={0.34224311,-0.44845599,0.8256864};
-		up[]={0.17171653,0.89380437,0.41427803};
-		aside[]={0.92378765,7.1435352e-008,-0.38290584};
+		pos[]={8343.9092,403.63422,2053.6426};
+		dir[]={-0.62787575,-0.71160561,0.31527984};
+		up[]={-0.63593727,0.70257556,0.31932768};
+		aside[]={0.44874489,9.6770236e-009,0.89366698};
 	};
 };
 binarizationWanted=0;
@@ -14006,7 +14006,7 @@ class Mission
 						{
 							dataType="Trigger";
 							position[]={10411.641,256.85999,6373.0254};
-							angle=3.8752296;
+							angle=3.8752294;
 							class Attributes
 							{
 								name="gate_trigger_1";
