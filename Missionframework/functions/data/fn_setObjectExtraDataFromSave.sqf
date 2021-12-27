@@ -45,6 +45,21 @@ _class = tolower (typeof _obj);
     if ((_x select 0) == "driver_radio_settings") then {
         _obj setVariable ["driver_radio_settings" ,(_x select 1),true];
     };
+    
+     //container items
+    if ((_x select 0) == "container_items") then {
+        [_obj,(_x select 1)] call KPLIB_fnc_setContainersItems;
+    };
+
+    //vehicle ammo
+    if ((_x select 0) == "vehicle_ammo") then {
+        [_obj,(_x select 1)] call KPLIB_fnc_setVehicleLoadout;
+    };
+
+    //vehicle pylon
+    if ((_x select 0) == "vehicle_pylon") then {
+        [_obj,(_x select 1)] call KPLIB_fnc_setVehiclePylon;
+    };
 } forEach _data;
 
 

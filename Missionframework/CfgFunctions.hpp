@@ -108,7 +108,13 @@ class KPLIB {
         file = "functions\data";
 
         class getObjectExtraDataToSave  {};
-        class setObjectExtraDataFromSave  {};
+        class setObjectExtraDataFromSave{};
+        class getContainersItems        {};
+        class setContainersItems        {};
+        class getVehicleLoadout         {};
+        class setVehicleLoadout         {};
+        class getVehiclePylon           {};
+        class setVehiclePylon           {};
     };
     #include "scripts\client\CfgFunctions.hpp"
     #include "scripts\server\CfgFunctions.hpp"
