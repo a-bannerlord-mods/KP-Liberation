@@ -9,14 +9,17 @@
 */
 
 params["_weapon"]; 
-_usableMagazines = [];
+_usableMagazines = []; 
 
-_cfgWeapon = configfile >> "cfgweapons" >> _weapon;
-{
-    _cfgMuzzle = if (_x == "this") then {_cfgWeapon} else {_cfgWeapon >> _x};
-    {
-        _usableMagazines pushBackUnique _x;
-    } foreach getarray (_cfgMuzzle >> "magazines");
-} foreach getarray (_cfgWeapon >> "muzzles");
 
+_cfgWeapon = configfile >> "cfgweapons" >> _weapon; 
+{ 
+	_cfgMuzzle = if (_x == "this") then {_cfgWeapon} else {_cfgWeapon >> _x}; 
+	{ 
+		_usableMagazines pushBackUnique _x; 
+	} foreach getarray (_cfgMuzzle >> "magazines"); 
+} foreach getarray (_cfgWeapon >> "muzzles"); 
+
+_usableMagazines = _usableMagazines + ([_weapon] call BIS_fnc_compatibleMagazines); 
+_usableMagazines =  _usableMagazines arrayIntersect _usableMagazines ;
 _usableMagazines

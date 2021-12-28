@@ -1,0 +1,3 @@
+
+    #define HALs_DEF_FUNCTIONS
+	#undef HALs_DEF_FUNCTIONS

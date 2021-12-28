@@ -228,9 +228,14 @@ switch _mode do {
         ["ReplaceBaseItems",[_display]] call jn_fnc_arsenal;
         ["customEvents",[_display]] call jn_fnc_arsenal;
         ["CreateListAll", [_display]] call jn_fnc_arsenal;
-        ['showMessage',[_display,"Ahmed Limited Arsenal"]] call jn_fnc_arsenal;
+        ['showMessage',[_display,"Limited Arsenal"]] call jn_fnc_arsenal;
         ["HighlightMissingIcons",[_display]] call jn_fnc_arsenal;
 		
+        _edit = _display ctrlCreate ["RscEdit", 645];
+	    _edit ctrlSetPosition [0 ,safeZoneY ,1,0.04];
+	    _edit ctrlSetBackgroundColor [0,0,0,1];
+	    _edit ctrlCommit 0;
+
         ["jn_fnc_arsenal"] call BIS_fnc_endLoadingScreen;
     };
 

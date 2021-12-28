@@ -1,12 +1,6 @@
-_mags = GRLIB_arsenal_magazines apply { [(_x select 0) ,(_x select 4)]}; 
 
-{ 
-	_numberAvailable = -1; 
-	_wmags = [ (_x select 0) ] call jn_fnc_arsenal_getCompatibleMagazines; 
-	_mags =_mags +(_wmags  apply { [_x  , _numberAvailable ]}); 
-} forEach (GRLIB_arsenal_weapons_primary select {(_x select 5)});
-
-
+waitUntil {!isNil "GRLIB_arsenal_initiated"};
+waitUntil {GRLIB_arsenal_initiated};
 //[cursorObject] call jn_fnc_arsenal_addInitialArsenalItems
 _items = [
 //Weapons	
@@ -60,7 +54,7 @@ GRLIB_arsenal_weapons_primary apply { [(_x select 0) ,(_x select 4)]}
 //bipods
 ,GRLIB_arsenal_bipods apply { [(_x select 0) ,( _x select 4)]}
 //mags
-,_mags
+,GRLIB_arsenal_magazines apply { [(_x select 0) ,(_x select 4)]}
 ];
 
 // _names= [];

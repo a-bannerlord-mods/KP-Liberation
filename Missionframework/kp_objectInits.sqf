@@ -77,7 +77,6 @@ KPLIB_objectInits = [
             };
         }
     ],
-
     // Add storage type variable to built storage areas (only for FOB built/loaded ones)
     [
         [KP_liberation_small_storage_building, KP_liberation_large_storage_building],

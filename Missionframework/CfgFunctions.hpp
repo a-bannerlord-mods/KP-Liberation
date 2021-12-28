@@ -104,6 +104,10 @@ class KPLIB {
 
         class overlayUpdateResources    {};
     };
+    class functions_items {
+        file = "functions\items";
+        class calculateMagValue    {};
+    };
     class functions_data {
         file = "functions\data";
 

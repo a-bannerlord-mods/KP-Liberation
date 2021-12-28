@@ -331,6 +331,38 @@ _player addAction [
     "
 ];
 
+
+// Resupply Store
+_player addAction [
+    ["<t color='#FFFF00'>", "-- Open Resupply Store", "</t>"] joinString "",
+    {
+        params ["_trader", "_caller", "_actionId", "_arguments"];
+		[cursorObject] call HALs_store_fnc_openStore;
+    },
+    nil,
+    -760,
+    false,
+    true,
+    "",
+    "
+        isNull (objectParent _originalTarget)
+        && {alive _originalTarget}
+        && {
+            _originalTarget getVariable ['KPLIB_fobDist', 99999] < 20
+            || {_originalTarget getVariable ['KPLIB_isNearStart', false]}
+        }
+        && {
+            _originalTarget getVariable ['KPLIB_hasDirectAccess', false]
+            || {[5] call KPLIB_fnc_hasPermission}
+        }
+        && {build_confirmed isEqualTo 0}
+        && cursorObject == supplies_radio
+        && cursorObject distance player < 5
+    "
+];
+
+
+
 // Permissions
 _player addAction [
     ["<t color='#FF8000'>", localize "STR_COMMANDER_ACTION", "</t><img size='2' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/>"] joinString "",

@@ -21,7 +21,7 @@ switch (KP_liberation_arsenal) do {
     case  17: {[] call compileFinal preprocessFileLineNumbers "arsenal_presets\eaf.sqf";};
     default  {GRLIB_arsenal_weapons = [];GRLIB_arsenal_magazines = [];GRLIB_arsenal_items = [];GRLIB_arsenal_backpacks = [];};
 };
-
+[] call compileFinal preprocessFileLineNumbers "arsenal_presets\arsenal_items_init.sqf";
 if (typeOf player == "VirtualSpectator_F") exitWith {
     execVM "scripts\client\markers\empty_vehicles_marker.sqf";
     execVM "scripts\client\markers\fob_markers.sqf";
@@ -119,3 +119,4 @@ if (player isEqualTo ([] call KPLIB_fnc_getCommander)) then {
 player setVariable ["isSneaky",true,true];
 [player] execVM "modules\INC_undercover\Scripts\initUCR.sqf";
 
+[supplies_radio, "supplies"] spawn HALs_store_fnc_addTrader; 

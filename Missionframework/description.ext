@@ -213,6 +213,10 @@ onPauseScript[] = {"KPLIB_fnc_onPause"};
     ----- Config Includes -----
 */
 
+#define HALs_DEF_INIT
+	#include "modules\HALs\Addons\main\config.hpp"
+#undef HALs_DEF_INIT
+
 class CfgDebriefing {
     #include "KPLIB_debriefs.hpp"
 };
@@ -232,6 +236,9 @@ class CfgFunctions {
     #include "CfgFunctions.hpp"
     #include "modules\INC_undercover\cfgFunctions.hpp"
     #include "modules\JeroenArsenal\functions.hpp"
+    #define HALs_DEF_FUNCTIONS
+	#include "modules\HALs\Addons\main\config.hpp"
+	#undef HALs_DEF_FUNCTIONS
 };
 
 class CfgRespawnTemplates {

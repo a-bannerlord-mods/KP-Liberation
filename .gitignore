@@ -54,3 +54,10 @@ Temporary Items
 # KP-Steam
 steam_appid.txt
 kp_steam*.log
+Missionbasefiles/kp_liberation.Takistan/mission.sqm
+Missionframework/scripts/client/build/do_resupply.sqf
+Missionframework/scripts/client/build/open_resupply_menu.sqf
+Missionframework/ui/liberation_build.hpp
+Missionframework/ui/liberation_interface.hpp
+Missionframework/ui/liberation_resupply.hpp
+Missionframework/ui/standard_controls.hpp

@@ -12,7 +12,7 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=1219;
+		nextID=1225;
 	};
 	class MarkerIDProvider
 	{
@@ -20,14 +20,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=98;
+		nextID=140;
 	};
 	class Camera
 	{
-		pos[]={8343.9092,403.63422,2053.6426};
-		dir[]={-0.62787211,-0.71160132,0.31527796};
-		up[]={-0.63593102,0.70258349,0.31932461};
-		aside[]={0.4487409,1.4901161e-008,0.89366192};
+		pos[]={8258.4541,308.19553,2124.1912};
+		dir[]={-0.51024836,-0.50584334,0.69553512};
+		up[]={-0.29920954,0.86262536,0.40786168};
+		aside[]={0.8063004,-1.4901161e-008,0.59150636};
 	};
 };
 binarizationWanted=0;
@@ -70,13 +70,15 @@ addons[]=
 	"A3_Props_F_Enoch_Military_Camps",
 	"A3_Structures_F_Walls",
 	"A3_Structures_F_Bootcamp_Items_Electronics",
-	"A3_Structures_F_Heli_Items_Electronics"
+	"A3_Structures_F_Heli_Items_Electronics",
+	"Static_Radios",
+	"A3_Props_F_Enoch_Military_Equipment"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=20;
+		items=21;
 		class Item0
 		{
 			className="A3_Ui_F";
@@ -211,12 +213,19 @@ class AddonsMetaData
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
+		class Item20
+		{
+			className="Static_Radios";
+			name="Static_Radios";
+		};
 	};
 };
 dlcs[]=
 {
 	"Heli",
-	"Contact"
+	"Contact",
+	" Static_Radios",
+	"Enoch"
 };
 randomSeed=7986313;
 class ScenarioData
@@ -6983,6 +6992,7 @@ class Mission
 					};
 					id=982;
 					type="Land_BottlePlastic_V2_F";
+					atlOffset=-0.13265991;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -7024,6 +7034,7 @@ class Mission
 					};
 					id=983;
 					type="Land_BottlePlastic_V2_F";
+					atlOffset=-0.13265991;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -7065,6 +7076,7 @@ class Mission
 					};
 					id=984;
 					type="Land_BottlePlastic_V2_F";
+					atlOffset=-0.13265991;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -7296,8 +7308,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={8242.4209,297.12381,2122.8862};
-						angles[]={0,4.8177266,0};
+						position[]={8242.04,297.12381,2126.6465};
+						angles[]={0,3.8301945,0};
 					};
 					side="Empty";
 					flags=5;
@@ -7538,14 +7550,15 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={8252.1758,299.91541,2131.6836};
-						angles[]={0,6.0240455,0};
+						position[]={8252.1758,299.91541,2131.6841};
+						angles[]={0,6.0240388,0};
 					};
 					side="Empty";
 					flags=4;
 					class Attributes
 					{
 						skill=0.2;
+						init="[this, ""weapon""] call HALs_store_fnc_addTrader; ";
 					};
 					id=997;
 					type="Land_Cargo_HQ_V3_F";
@@ -13702,125 +13715,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={8247.7744,297.52863,2134.2854};
-				angles[]={0,2.9607949,0};
-			};
-			side="Empty";
-			flags=4;
-			class Attributes
-			{
-				name="commandLab_0";
-			};
-			id=1137;
-			type="Land_ClutterCutter_small_F";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="allowDamage";
-					expression="_this allowdamage _value;";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"BOOL"
-								};
-							};
-							value=0;
-						};
-					};
-				};
-				class Attribute1
-				{
-					property="hideObject";
-					expression="if !(is3DEN) then {_this hideobjectglobal _value;};";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"BOOL"
-								};
-							};
-							value=0;
-						};
-					};
-				};
-				nAttributes=2;
-			};
-		};
-		class Item296
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={8249.4248,297.52863,2134.6497};
-				angles[]={0,6.0852776,0};
-			};
-			side="Empty";
-			flags=4;
-			class Attributes
-			{
-				name="tfar_radioSetter_0";
-			};
-			id=1138;
-			type="Land_ClutterCutter_small_F";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="allowDamage";
-					expression="_this allowdamage _value;";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"BOOL"
-								};
-							};
-							value=0;
-						};
-					};
-				};
-				class Attribute1
-				{
-					property="hideObject";
-					expression="if !(is3DEN) then {_this hideobjectglobal _value;};";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"BOOL"
-								};
-							};
-							value=0;
-						};
-					};
-				};
-				nAttributes=2;
-			};
-		};
-		class Item297
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={8248.5059,297.08557,2134.478};
+				position[]={8248.9443,297.08557,2134.9631};
 				angles[]={0,2.9276576,0};
 			};
 			side="Empty";
@@ -13831,7 +13726,7 @@ class Mission
 			id=1139;
 			type="Land_PortableDesk_01_black_F";
 		};
-		class Item298
+		class Item296
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -13887,7 +13782,7 @@ class Mission
 				nAttributes=2;
 			};
 		};
-		class Item299
+		class Item297
 		{
 			dataType="Layer";
 			name="Bar Gate (self opening)";
@@ -14006,7 +13901,7 @@ class Mission
 						{
 							dataType="Trigger";
 							position[]={10411.641,256.85999,6373.0254};
-							angle=3.8752289;
+							angle=3.8752241;
 							class Attributes
 							{
 								name="gate_trigger_1";
@@ -14030,7 +13925,7 @@ class Mission
 			id=1144;
 			atlOffset=-192.65759;
 		};
-		class Item300
+		class Item298
 		{
 			dataType="Object";
 			class PositionInfo
@@ -14069,7 +13964,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item301
+		class Item299
 		{
 			dataType="Object";
 			class PositionInfo
@@ -14108,7 +14003,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item302
+		class Item300
 		{
 			dataType="Object";
 			class PositionInfo
@@ -14147,7 +14042,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item303
+		class Item301
 		{
 			dataType="Object";
 			class PositionInfo
@@ -14186,7 +14081,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item304
+		class Item302
 		{
 			dataType="Object";
 			class PositionInfo
@@ -14225,7 +14120,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item305
+		class Item303
 		{
 			dataType="Object";
 			class PositionInfo
@@ -14264,7 +14159,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item306
+		class Item304
 		{
 			dataType="Object";
 			class PositionInfo
@@ -14303,7 +14198,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item307
+		class Item305
 		{
 			dataType="Object";
 			class PositionInfo
@@ -14342,7 +14237,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item308
+		class Item306
 		{
 			dataType="Object";
 			class PositionInfo
@@ -14381,7 +14276,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item309
+		class Item307
 		{
 			dataType="Object";
 			class PositionInfo
@@ -14398,7 +14293,7 @@ class Mission
 			id=1127;
 			type="Land_ClutterCutter_small_F";
 		};
-		class Item310
+		class Item308
 		{
 			dataType="Object";
 			class PositionInfo
@@ -14414,7 +14309,7 @@ class Mission
 			id=1214;
 			type="Land_WaterCooler_01_new_F";
 		};
-		class Item311
+		class Item309
 		{
 			dataType="Object";
 			class PositionInfo
@@ -14453,6 +14348,42 @@ class Mission
 				};
 				nAttributes=1;
 			};
+		};
+		class Item310
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={8248.9736,297.6246,2134.9651};
+				angles[]={0,6.0920715,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				name="supplies_radio";
+			};
+			id=1223;
+			type="Static_Radio_Black_3";
+			atlOffset=0.00015258789;
+		};
+		class Item311
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={8248.1768,297.69644,2134.729};
+				angles[]={0,6.0949688,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				name="command_lapptop";
+			};
+			id=1224;
+			type="Land_Laptop_03_black_F";
+			atlOffset=0.00039672852;
 		};
 	};
 	class Connections
