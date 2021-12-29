@@ -243,6 +243,10 @@ if ((!(_sector in blufor_sectors)) && (([markerPos _sector, [_opforcount] call K
         };
         _managed_units pushback _vehicle;
         {_managed_units pushback _x;} foreach (crew _vehicle);
+        if ((_vehicle isKindOf "Tank")|| (_vehicle isKindOf "Car")) then {
+                    _vehicle forceFlagtexture opfor_flag_texture;
+        };
+
         sleep 0.25;
     } forEach _vehtospawn;
     

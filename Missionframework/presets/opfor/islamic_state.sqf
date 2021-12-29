@@ -9,6 +9,7 @@
 */
 
 // Enemy infantry classes
+opfor_flag_texture = "po_main\data\UI\flags\flag_isis_co.paa";
 opfor_officer = "LOP_ISTS_OPF_Infantry_SL";                             // Officer (Warlord)
 opfor_squad_leader = "LOP_ISTS_OPF_Infantry_SL";                        // Squad Leader (Warlord)
 opfor_team_leader = "LOP_ISTS_OPF_Infantry_TL";                         // Team Leader (Chief)

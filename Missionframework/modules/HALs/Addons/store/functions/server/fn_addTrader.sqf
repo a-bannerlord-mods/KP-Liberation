@@ -23,7 +23,14 @@ params [
 
 if (!isServer) exitWith {false};
 
+[_trader,_traderType,_target]  spawn {
+	waitUntil {!isNil "KPLIB_initServer"};
 try {
+	params [
+	["_trader", objNull, [objNull]],
+	["_traderType", "", [""]],
+	["_target", 0, [0, objNull, "", sideUnknown, grpNull, []]]
+];
 	if (!isNil {_trader getVariable "HALs_store_trader_type"}) then {throw ["Trader already initialised"]};
 	if (isNull _trader) then {throw ["Trader cannot be null"]};
 	if (!alive _trader) then {throw ["Trader cannot be dead"]};
@@ -80,4 +87,6 @@ try {
 	[_exception] call HALs_fnc_log;
 	[_exception select 0] call BIS_fnc_error;
 	false
+};
+
 };

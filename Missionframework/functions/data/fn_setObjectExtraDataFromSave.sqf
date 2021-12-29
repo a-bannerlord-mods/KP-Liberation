@@ -60,6 +60,11 @@ _class = tolower (typeof _obj);
     if ((_x select 0) == "vehicle_pylon") then {
         [_obj,(_x select 1)] call KPLIB_fnc_setVehiclePylon;
     };
+    
+    //vehicle flag
+    if ((_x select 0) == "forced_flag_texture") then {
+        _obj forceFlagTexture (_x select 1);
+    };
 } forEach _data;
 
 

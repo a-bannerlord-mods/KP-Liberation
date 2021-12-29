@@ -38,7 +38,7 @@ private _pos = getPos _storage;
 
 {
     while {_x > 0} do {
-        _amount = 100 min _x;
+        _amount = 500 min _x;
         _x = _x - _amount;
 
         _crate = [

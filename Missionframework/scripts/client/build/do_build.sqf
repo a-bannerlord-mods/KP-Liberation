@@ -309,6 +309,10 @@ while { true } do {
                     _vehicle setpos _truepos;
                 };
 
+                if ((_vehicle isKindOf "Tank")  || (_vehicle isKindOf "Car")) then {
+                    _vehicle forceFlagtexture blufor_flag_texture;
+                };
+
                 [_vehicle] call KPLIB_fnc_addObjectInit;
 
                 [_vehicle] call KPLIB_fnc_clearCargo;

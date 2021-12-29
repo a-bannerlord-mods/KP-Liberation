@@ -68,4 +68,9 @@ if (count _d > 0 ) then {
     _data pushBack ["driver_radio_settings",_d];
 };
 
+_forcedFlagTexture = getForcedFlagTexture _obj; 
+if (_forcedFlagTexture!=  "" ) then {
+    _data pushBack ["forced_flag_texture",_forcedFlagTexture];
+};
+
 _data

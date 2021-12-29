@@ -39,6 +39,7 @@ switch (KP_liberation_preset_blufor) do {
     case 28: {[] call compileFinal preprocessFileLineNumbers "presets\blufor\sfp_wdl.sqf";};
     case 29: {[] call compileFinal preprocessFileLineNumbers "presets\blufor\sfp_des.sqf";};
     case 30: {[] call compileFinal preprocessFileLineNumbers "presets\blufor\enoch.sqf";};
+    case 31: {[] call compileFinal preprocessFileLineNumbers "presets\blufor\EAF.sqf";};
     default  {[] call compileFinal preprocessFileLineNumbers "presets\blufor\custom.sqf";};
 };
 
@@ -243,9 +244,14 @@ KPLIB_o_squadAir    = [opfor_squad_leader, opfor_medic, opfor_machinegunner, opf
 /*
     Liberation specific collections
 */
+KP_liberation_heli_slot_building_list = [KP_liberation_heli_slot_building,"Land_HelipadCircle_F","Land_HelipadCivil_F", "Land_HelipadRescue_F", "Land_HelipadSquare_F", "HeliH", "HeliHCivil", "Heli_H_civil", "HeliHEmpty", "HeliHRescue", "Heli_H_rescue"];
+KP_liberation_heli_slot_building_list = KP_liberation_heli_slot_building_list arrayIntersect KP_liberation_heli_slot_building_list;
+KP_liberation_plane_slot_building_list= [KP_liberation_plane_slot_building,"Land_Hangar_F", "Land_TentHangar_V1_F", "Land_Airport_01_hangar_F", "Land_Mil_hangar_EP1", "Land_Ss_hangard", "Land_Ss_hangar"];
+KP_liberation_plane_slot_building_list = KP_liberation_plane_slot_building_list arrayIntersect KP_liberation_plane_slot_building_list;
+
 KPLIB_buildList         = [[], infantry_units, light_vehicles, heavy_vehicles, air_vehicles, static_vehicles, buildings, support_vehicles, KPLIB_b_allSquads];
 KPLIB_crates            = [KP_liberation_supply_crate, KP_liberation_ammo_crate, KP_liberation_fuel_crate];
-KPLIB_airSlots          = [KP_liberation_heli_slot_building, KP_liberation_plane_slot_building];
+KPLIB_airSlots          = KP_liberation_heli_slot_building_list+KP_liberation_plane_slot_building_list;
 KPLIB_storageBuildings  = [KP_liberation_small_storage_building, KP_liberation_large_storage_building];
 KPLIB_upgradeBuildings  = [KP_liberation_recycle_building, KP_liberation_air_vehicle_building, KP_liberation_heli_slot_building, KP_liberation_plane_slot_building];
 KPLIB_aiResupplySources append [Respawn_truck_typename, huron_typename, KP_liberation_loadoutbox_classname];

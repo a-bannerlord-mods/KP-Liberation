@@ -40,6 +40,9 @@ while { GRLIB_endgame == 0 } do {
         } else {
             _vehicle_object = [_sector_spawn_pos, [] call KPLIB_fnc_getAdaptiveVehicle] call KPLIB_fnc_spawnVehicle;
         };
+        if ((_vehicle_object isKindOf "Tank")|| (_vehicle_object isKindOf "Car")) then {
+                    _vehicle_object forceFlagtexture opfor_flag_texture;
+        };
 
         sleep 0.5;
         _grp = group ((crew _vehicle_object) select 0);

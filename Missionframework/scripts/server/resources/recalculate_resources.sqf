@@ -26,10 +26,16 @@ while {true} do {
     private _local_infantry_cap = 50 * GRLIB_resources_multiplier;
 
     {
-        private _fob_buildings = _x nearobjects GRLIB_fob_range;
+        private _fob_buildings = [];
+        if (_forEachIndex == 0) then {
+            _fob_buildings = _x nearobjects (GRLIB_fob_range * 2);
+        } else {
+            _fob_buildings = _x nearobjects GRLIB_fob_range;
+        };
+        
         private _storage_areas = _fob_buildings select {(_x getVariable ["KP_liberation_storage_type",-1]) == 0};
-        private _heliSlots = {(typeOf _x) == KP_liberation_heli_slot_building;} count _fob_buildings;
-        private _planeSlots = {(typeOf _x) == KP_liberation_plane_slot_building;} count _fob_buildings;
+        private _heliSlots = {(typeOf _x) in KP_liberation_heli_slot_building_list;} count _fob_buildings;
+        private _planeSlots = {(typeOf _x) in KP_liberation_plane_slot_building_list;} count _fob_buildings;
         private _hasAirBuilding = {(typeOf _x) == KP_liberation_air_vehicle_building;} count _fob_buildings;
         if (_hasAirBuilding > 0) then {_hasAirBuilding = true;} else {_hasAirBuilding = false;};
         private _hasRecBuilding = {(typeOf _x) == KP_liberation_recycle_building;} count _fob_buildings;

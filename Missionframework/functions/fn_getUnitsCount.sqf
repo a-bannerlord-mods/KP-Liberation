@@ -23,7 +23,7 @@ params [
     ["_side", GRLIB_side_friendly, [sideEmpty]],
     ["_sector",""]
 ];
-
+_high = 200;
 if (_sector!="") then {
     if (_sector in sectors_longRange) then {
         _radius = _radius * GRLIB_long_range_sector_spawn_radius_multiplier;
@@ -31,16 +31,19 @@ if (_sector!="") then {
     if (_sector in sectors_heavyArtillery && combat_readiness > RydFFE_Heavy_Artillery_Enable_On_Combat_Readiness_Above) then {
         _radius = _radius * 3;
     };
+    if (_sector in sectors_SAM) then {
+        _high = _high * 2;
+    };
 };
 
-private _amount = _side countSide ((_pos nearEntities ["Man", _radius]) select {!(captive _x) && ((getpos _x) select 2 < 800)});
+private _amount = _side countSide ((_pos nearEntities ["Man", _radius]) select {!(captive _x) && ((getpos _x) select 2 < _high)});
 {
     _amount = _amount + (_side countSide (crew _x));
-} forEach ((_pos nearEntities [["Car", "Tank", "Air", "Boat"], _radius]) select {((getpos _x) select 2 < 800) && count (crew _x) > 0});
+} forEach ((_pos nearEntities [["Car", "Tank", "Air", "Boat"], _radius]) select {((getpos _x) select 2 < _high) && count (crew _x) > 0});
 
 //civ  players
 if (_side ==GRLIB_side_friendly) then {
-    _amount = _amount + (civilian countSide ((_pos nearEntities ["Man", _radius]) select {isplayer _x  && ((getpos _x) select 2 < 800)}));
+    _amount = _amount + (civilian countSide ((_pos nearEntities ["Man", _radius]) select {isplayer _x  && ((getpos _x) select 2 < _high)}));
 };
 
 _amount
