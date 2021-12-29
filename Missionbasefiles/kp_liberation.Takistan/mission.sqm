@@ -6992,7 +6992,6 @@ class Mission
 					};
 					id=982;
 					type="Land_BottlePlastic_V2_F";
-					atlOffset=-0.13265991;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -7034,7 +7033,6 @@ class Mission
 					};
 					id=983;
 					type="Land_BottlePlastic_V2_F";
-					atlOffset=-0.13265991;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -7076,7 +7074,6 @@ class Mission
 					};
 					id=984;
 					type="Land_BottlePlastic_V2_F";
-					atlOffset=-0.13265991;
 					class CustomAttributes
 					{
 						class Attribute0

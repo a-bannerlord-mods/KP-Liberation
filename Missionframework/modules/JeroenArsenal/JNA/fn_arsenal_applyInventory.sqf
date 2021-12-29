@@ -59,7 +59,7 @@ pr _dataList = _object getVariable "jna_dataList";
 
 
 
-pr _inventory  = parseSimpleArray '[["eaf_full_private_inf_uniform",["ACE_EarPlugs","ACE_EntrenchingTool","G_CBRN_M04_Hood","ACE_Flashlight_MX991","rhs_1PN138","ACE_Canteen"]],["rhsusf_mbav_rifleman",["ACE_quikclot","ACE_quikclot","ACE_quikclot","ACE_quikclot","ACE_quikclot","ACE_quikclot","ACE_quikclot","ACE_quikclot","ACE_quikclot","ACE_quikclot","ACE_tourniquet","ACE_tourniquet","ACE_splint","ACE_splint","ACE_splint","ACE_splint","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","eaf_foul_can","eaf_foul_can","eaf_fig_jam","eaf_fig_jam","eaf_fig_jam","eaf_fig_jam","eaf_water_bottle","eaf_beef_can","eaf_beef_can","ACE_CableTie","ACE_CableTie","ACE_CableTie","ACE_bodyBag","SmokeShell","SmokeShell","ACE_M84","CUP_30Rnd_762x39_AK47_M","CUP_30Rnd_762x39_AK47_M","CUP_30Rnd_762x39_AK47_M","CUP_30Rnd_762x39_AK47_M","CUP_30Rnd_762x39_AK47_M"]],["",[]],"eaf_metal_helmet","","Binocular",["eaf_maadi",["","","",""],"CUP_30Rnd_762x39_AK47_M"],["",["","","",""],""],["",["","","",""],""],["ItemMap","ItemCompass","ItemWatch","tf_anprc152_1","ItemGPS"],["WhiteHead_17","ace_novoice",""]]';
+pr _inventory  = parseSimpleArray GRLIB_default_loadout;
 player setVariable ["loadout_template",_inventory,true]; 
 
 //copyToClipboard str _inventory;

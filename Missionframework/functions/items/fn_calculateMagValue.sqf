@@ -152,4 +152,4 @@ if ( _type isEqualTo "Rocket") then {
     _cost = _cost +30 ;
 };      
 
-ceil ( _cost* (_magazinecount/5))
+ceil ( _cost* (_magazinecount/10))

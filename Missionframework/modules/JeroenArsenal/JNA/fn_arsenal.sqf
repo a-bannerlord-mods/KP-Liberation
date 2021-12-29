@@ -192,6 +192,8 @@ switch _mode do {
 		pr _object = UINamespace getVariable "jn_object";
 		_object setVariable ["jna_dataList",_jna_dataList];
 		
+        [] call jn_fnc_arsenal_getitemswithPermission;
+        
         ["Open",[nil,_object,player,false]] call bis_fnc_arsenal;
     };
 	
@@ -1116,21 +1118,12 @@ switch _mode do {
 
         _hasItem =  [player, _item] call BIS_fnc_hasItem;
         
-        _hasItemPermission = [_item]  call jn_fnc_arsenal_hasItemPermission;
+        _hasItemPermission = (tolower _item) in ItemsWithPermission;
 
         if(!_hasItemPermission&&!_hasItem) exitWith{}; 
+        _xCfg = _item call jn_fnc_arsenal_getConfigClass;
+        _isClassExist= _xCfg != configNull;
 
-        pr _xCfg = switch _index do {
-            case IDC_RSCDISPLAYARSENAL_TAB_BACKPACK:    {configfile >> "cfgvehicles"    >> _item};
-            case IDC_RSCDISPLAYARSENAL_TAB_GOGGLES:     {configfile >> "cfgglasses"     >> _item};
-            case IDC_RSCDISPLAYARSENAL_TAB_CARGOMAG;
-            case IDC_RSCDISPLAYARSENAL_TAB_CARGOMAGALL;
-            case IDC_RSCDISPLAYARSENAL_TAB_CARGOTHROW;
-            case IDC_RSCDISPLAYARSENAL_TAB_CARGOPUT:    {configfile >> "cfgmagazines"   >> _item};
-            case IDC_RSCDISPLAYARSENAL_TAB_CARGOMISC:   {configfile >> "cfgweapons"     >> _item};
-            default                                     {configfile >> "cfgweapons"     >> _item};
-        };
-        _isClassExist= isClass _xCfg;
         if(!_isClassExist) exitWith{}; 
         pr _displayName = gettext (_xCfg >> "displayName");
         pr _data = str [_item,_amount,_displayName];
@@ -2469,7 +2462,9 @@ switch _mode do {
 
 		["RestoreTFAR"] call jn_fnc_arsenal;
 
-        
+        _cost = [player] call jn_fnc_arsenal_calculateLoadoutCost; 
+        hint ("Your Current Loadout costs " + (str _cost )+ " Supply point");
+
         //remove missing item message
         titleText["", "PLAIN"];
         ["SavetoServer",_object] call jn_fnc_arsenal;

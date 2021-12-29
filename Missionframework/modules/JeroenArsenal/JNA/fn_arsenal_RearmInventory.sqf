@@ -146,7 +146,7 @@ pr _backpackItems = _inventory select 2 select 1;
 				};
 				call {
 
-                  _hasItemPermission =  [_item] call  jn_fnc_arsenal_hasItemPermission;
+                  _hasItemPermission =  (tolower _item) in ItemsWithPermission;
      if (_hasItemPermission) then {
 		if ([_item, _itemCounts select _index] call jn_fnc_arsenal_itemCount == -1) exitWith {
 						if (_container canAdd [_item, 1]) then {

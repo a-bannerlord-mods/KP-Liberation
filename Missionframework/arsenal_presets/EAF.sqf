@@ -1,20 +1,20 @@
 GRLIB_default_uniform = "eaf_full_private_inf_uniform";
-
+GRLIB_default_loadout = [["eaf_full_private_inf_uniform",["ACE_EntrenchingTool","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_quikclot","ACE_quikclot","ACE_quikclot","ACE_splint","ACE_splint","ACE_splint","ACE_tourniquet","ACE_tourniquet","ACE_EarPlugs","ACE_CableTie","ACE_CableTie","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_packingBandage","ACE_packingBandage","ACE_packingBandage","ACE_packingBandage","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_quikclot","ACE_quikclot","ACE_quikclot","ACE_quikclot","ACE_quikclot","ACE_quikclot","ACE_quikclot"]],["rhsusf_mbav_rifleman",["eaf_beef_can","eaf_foul_can","eaf_foul_can","eaf_fig_jam","eaf_fig_jam","eaf_water_bottle","ACE_Canteen","rhs_30Rnd_762x39mm","rhs_30Rnd_762x39mm","rhs_30Rnd_762x39mm","rhs_30Rnd_762x39mm","rhs_30Rnd_762x39mm","rhs_30Rnd_762x39mm","rhs_30Rnd_762x39mm","SmokeShell","SmokeShell","SmokeShell","ACE_M84","HandGrenade"]],["",[]],"eaf_metal_helmet","","Binocular",["uk3cb_ak47n",["rhs_acc_dtkakm","rhs_acc_2dpZenit","rhs_acc_ekp8_02",""],"rhs_30Rnd_762x39mm"],["",["","","",""],""],["rhsusf_weap_m9",["","","",""],""],["ItemMap","ItemCompass","ItemWatch","tf_anprc152_2","ItemGPS"],["WhiteHead_17","ace_novoice",""]];
 // [Classname,catagory",[array of permitted qualifications],cost (-1 for autocost),initial amount (-1 for infinite),auto add magazine, auto add attachment]
 // ["UK3CB_BAF_AT4_CS_AP_Launcher","Weapons",["Antitank"],000,-1,true,true]
 GRLIB_arsenal_weapons_primary = [
     ["rhs_weap_akms", "assultRifle", ["Rifleman"], 22, 50, true, true], //AKMS
     ["uk3cb_ak47n", "assultRifle", ["Rifleman"], 20, 50, true, true], //AK-47N
     ["rhs_weap_akm_zenitco01_b33", "assultRifle", ["Rifleman"], 50, 20, true, true],
-    ["rhs_weap_akmn_gp25_npz", "assultRifle", ["Grenade launcher"], 70, 10, true, true],
+    ["rhs_weap_akmn_gp25_npz", "assultRifle", ["GL"], 70, 10, true, true],
     ["rhs_weap_ak103_zenitco01_b33", "assultRifle", ["Rifleman"], 70, 5, true, true], //AK-103 (Zenitco/B-33)
-    ["rhs_weap_ak103_gp25_npz", "assultRifle", ["Grenade launcher"], 80, 5, true, true], //AK-103 (GP-25/B-13)
+    ["rhs_weap_ak103_gp25_npz", "assultRifle", ["GL"], 80, 5, true, true], //AK-103 (GP-25/B-13)
     ["rhs_weap_ak104_zenitco01_b33", "assultRifle", ["Rifleman"], 40, 10, true, true], //AK-104 (Zenitco/B-33)
     ["rhs_weap_m4a1", "assultRifle", ["Rifleman"], 40, 10, true, true], //M4A1 PIP
     ["drg_arx160", "assultRifle", ["Rifleman"], 60, 30, true, true], //Beretta ARX160A1
-    ["drg_arx160_gls", "assultRifle", ["Grenade launcher"], 70, 10, true, true], //Beretta ARX160A1 GL
+    ["drg_arx160_gls", "assultRifle", ["GL"], 70, 10, true, true], //Beretta ARX160A1 GL
     ["JAS_SIG516_14_5_CTR_Tan", "assultRifle", ["Rifleman"], 100, 0, true, true], //SIG516 14.5inch Tactical Patrol CTR Stock(Tan)
-    ["UK3CB_MP5N_UGL", "smgs", ["Grenade launcher"], 50, 15, true, true], //HK MP5N UGL
+    ["UK3CB_MP5N_UGL", "smgs", ["GL"], 50, 15, true, true], //HK MP5N UGL
     ["UK3CB_MP5N", "smgs", ["Rifleman"], 30, 5, true, true], //HK MP5N
     ["rhsusf_weap_MP7A2_grip3", "smgs", ["Rifleman"], 40, 10, true, true], //MP7A2
     // ["rhs_weap_hk416d10", "smgs", ["Rifleman"], -1, -1, true, true],
@@ -40,8 +40,8 @@ GRLIB_arsenal_weapons_primary = [
     ["srifle_LRR_F", "sniper", ["Sniper"], 300, 0, true, true], //M200 Intervention
     ["rhs_weap_m82a1", "sniper", ["Sniper"], 400, 0, true, true], //M82A1
     ["rhs_weap_t5000", "sniper", ["Sniper"], 200, 5, true, true], //T-5000
-    ["rhs_weap_m32", "launchers", ["Grenade launcher"], 80, 5, true, true], //M32 MGL
-    ["CUP_glaunch_6G30", "launchers", ["Grenade launcher"], 60, 0, true, true] //6G30
+    ["rhs_weap_m32", "launchers", ["GL"], 80, 5, true, true], //M32 MGL
+    ["CUP_glaunch_6G30", "launchers", ["GL"], 60, 0, true, true] //6G30
 
 ];
 GRLIB_arsenal_weapons_secondary = [
@@ -64,14 +64,14 @@ GRLIB_arsenal_weapons_handgun = [
     ["hlc_pistol_P226US", "handguns", ["Rifleman"], 30, 0, true, true],
     ["rhsusf_weap_m1911a1", "handguns", ["Rifleman"], 10, 30, true, true],
     ["rhsusf_weap_glock17g4", "handguns", ["Rifleman"],20, 20, true, true],
-    ["rhs_weap_M320", "handguns", ["Grenade launcher"], 30, 20, true, true],
+    ["rhs_weap_M320", "handguns", ["GL"], 30, 20, true, true],
     ["hgun_Pistol_heavy_01_F", "handguns", ["Rifleman"], 30, 5, true, true]
     //,["CUP_hgun_CZ75", "Weapons", ["Rifleman"], -1, -1, true, true]
 ];
 // [Classname,catagory",[array of permitted qualifications],cost (-1 for autocost),initial amount (-1 for infinite)]
 // ["SatchelCharge_Remote_Mag","explosives",["Rifleman"],000,-1]
 GRLIB_arsenal_magazines = [
-    ["ACE_HuntIR_M203", "Magazine", ["Rifleman"], 50, 5],
+    ["ACE_HuntIR_M203", "Magazine", ["Special Force"], 50, 5],
     ["Vorona_HEAT", "Magazine", ["Rifleman"], 180, 2],
     ["Vorona_HE", "Magazine", ["Rifleman"], 150, 4]
 ];
@@ -80,34 +80,34 @@ GRLIB_arsenal_uniforms = [
     ["eaf_full_private_inf_uniform", "uniforms", ["Rifleman"], 4, 100],
     ["eaf_shirt_private_inf_uniform", "uniforms", ["Rifleman"], 4, 20],
     ["eaf_ss_private_inf_uniform", "uniforms", ["Rifleman"], 4, 20],
-    ["eaf_2lt_inf_uniform", "uniforms", ["Rifleman"], 6, 40],
-    ["eaf_1lt_inf_uniform", "uniforms", ["Rifleman"], 6, 40],
-    ["eaf_cap_inf_uniform", "uniforms", ["Rifleman"], 6, 40],
-    ["eaf_maj_inf_uniform", "uniforms", ["Rifleman"], 6, 40],
+    ["eaf_2lt_inf_uniform", "uniforms", ["Officer"], 6, 40],
+    ["eaf_1lt_inf_uniform", "uniforms", ["Officer"], 6, 40],
+    ["eaf_cap_inf_uniform", "uniforms", ["Officer"], 6, 40],
+    ["eaf_maj_inf_uniform", "uniforms", ["Officer"], 6, 40],
     ["eaf_full_private_cav_uniform", "uniforms", ["Rifleman"], 5, 100],
     ["eaf_shirt_private_cav_uniform", "uniforms", ["Rifleman"], 5, 20],
     ["eaf_ss_private_cav_uniform", "uniforms", ["Rifleman"], 5, 20],
-    ["eaf_2lt_cav_uniform", "uniforms", ["Rifleman"], 6, 40],
-    ["eaf_1lt_cav_uniform", "uniforms", ["Rifleman"], 6, 40],
-    ["eaf_cap_cav_uniform", "uniforms", ["Rifleman"], 6, 40],
-    ["eaf_maj_cav_uniform", "uniforms", ["Rifleman"], 6, 40],
+    ["eaf_2lt_cav_uniform", "uniforms", ["Officer"], 6, 40],
+    ["eaf_1lt_cav_uniform", "uniforms", ["Officer"], 6, 40],
+    ["eaf_cap_cav_uniform", "uniforms", ["Officer"], 6, 40],
+    ["eaf_maj_cav_uniform", "uniforms", ["Officer"], 6, 40],
     ["eaf_full_private_recon_uniform", "uniforms", ["Rifleman"], 4, 100],
     ["eaf_shirt_private_recon_uniform", "uniforms", ["Rifleman"], 4, 20],
     ["eaf_ss_private_recon_uniform", "uniforms", ["Rifleman"], 4, 20],
-    ["eaf_2lt_recon_uniform", "uniforms", ["Rifleman"], 6, 40],
-    ["eaf_1lt_recon_uniform", "uniforms", ["Rifleman"], 6, 40],
-    ["eaf_cap_recon_uniform", "uniforms", ["Rifleman"], 6, 40],
-    ["eaf_maj_recon_uniform", "uniforms", ["Rifleman"], 6, 40],
+    ["eaf_2lt_recon_uniform", "uniforms", ["Officer"], 6, 40],
+    ["eaf_1lt_recon_uniform", "uniforms", ["Officer"], 6, 40],
+    ["eaf_cap_recon_uniform", "uniforms", ["Officer"], 6, 40],
+    ["eaf_maj_recon_uniform", "uniforms", ["Officer"], 6, 40],
     ["eaf_full_private_saka_uniform", "uniforms", ["Rifleman"], 5, 100],
     ["eaf_shirt_private_saka_uniform", "uniforms", ["Rifleman"], 5, 20],
     ["eaf_ss_private_saka_uniform", "uniforms", ["Rifleman"], 5, 20],
     ["eaf_full_sp_saka_uniform", "uniforms", ["Rifleman"], 10, 40],
-    ["eaf_2lt_saka_uniform", "uniforms", ["Rifleman"], 6, -1],
-    ["eaf_1lt_saka_uniform", "uniforms", ["Rifleman"], 6, -1],
-    ["eaf_cap_saka_uniform", "uniforms", ["Rifleman"], 6, -1],
-    ["eaf_maj_saka_uniform", "uniforms", ["Rifleman"], 6, -1],
-    ["eaf_ltc_saka_uniform", "uniforms", ["Rifleman"], 6, -1],
-    ["eaf_col_saka_uniform", "uniforms", ["Rifleman"], 6, -1],
+    ["eaf_2lt_saka_uniform", "uniforms", ["Officer"], 6, -1],
+    ["eaf_1lt_saka_uniform", "uniforms", ["Officer"], 6, -1],
+    ["eaf_cap_saka_uniform", "uniforms", ["Officer"], 6, -1],
+    ["eaf_maj_saka_uniform", "uniforms", ["Officer"], 6, -1],
+    ["eaf_ltc_saka_uniform", "uniforms", ["Officer"], 6, -1],
+    ["eaf_col_saka_uniform", "uniforms", ["Officer"], 6, -1],
     ["CAPPA_camo", "uniforms", ["Rifleman"], 10, 10],
     ["CWU27P_EAF_AH64", "uniforms", ["Rifleman"], 10, 10],
     ["CWU27P_EAF_BLACKHAWK", "uniforms", ["Rifleman"], 10, 10],
@@ -122,12 +122,12 @@ GRLIB_arsenal_uniforms = [
     ["AF_Unif_AIR", "uniforms", ["Rifleman"], 5, 10],
     ["AF_Unif_AIR2", "uniforms", ["Rifleman"], 5, 10],
     ["AF_Unif_AIR_c", "uniforms", ["Rifleman"], 5, 10],
-    ["2LT_camo", "uniforms", ["Rifleman"], 5, 6],
-    ["1LT_camo", "uniforms", ["Rifleman"], 5, 6],
-    ["CAP_camo", "uniforms", ["Rifleman"], 5, 6],
-    ["MAJ_camo", "uniforms", ["Rifleman"], 5, 6],
-    ["LTC_camo", "uniforms", ["Rifleman"], 5, 6],
-    ["COL_camo", "uniforms", ["Rifleman"], 5, 6],
+    ["2LT_camo", "uniforms", ["Officer"], 5, 6],
+    ["1LT_camo", "uniforms", ["Officer"], 5, 6],
+    ["CAP_camo", "uniforms", ["Officer"], 5, 6],
+    ["MAJ_camo", "uniforms", ["Officer"], 5, 6],
+    ["LTC_camo", "uniforms", ["Officer"], 5, 6],
+    ["COL_camo", "uniforms", ["Officer"], 5, 6],
     ["TB_Unif_saka", "uniforms", ["Rifleman"], 8, 10],
     ["TB_Unif_saka_J", "uniforms", ["Rifleman"], 8, 10],
     ["TB_Unif_saka_JC", "uniforms", ["Rifleman"], 8, 10],
@@ -154,9 +154,9 @@ GRLIB_arsenal_headgear = [
     ["gear_ballcap_SAKA_01", "headgear", ["Rifleman"],2 , 10],
     ["gear_patrolcap_SAKA_02", "headgear", ["Rifleman"], 2, 10],
     ["CFP_BoonieHat_DCU", "headgear", ["Rifleman"], 3, 10],
-    ["beret", "headgear", ["Rifleman"], 4, 20],
+    ["beret", "headgear", ["Officer"], 4, 20],
     ["FIR_JHMCS", "headgear", ["Rifleman"], 20, 5],
-    ["rhsusf_cvc_ess", "headgear", ["Rifleman"], 000, -1]
+    ["rhsusf_cvc_ess", "headgear", ["Rifleman"], 8, 20]
 ];
 
 GRLIB_arsenal_vests = [
@@ -164,7 +164,7 @@ GRLIB_arsenal_vests = [
     ["rhsusf_mbav_medic", "vests", ["Medic"], 40, 10],
     ["rhsusf_mbav_mg", "vests", ["Autorifleman"], 50, 10],
     ["rhsusf_mbav_light", "vests", ["Rifleman"], 35, 20],
-    ["rhsusf_mbav_grenadier", "vests", ["Grenade launcher"], 45, 10],
+    ["rhsusf_mbav_grenadier", "vests", ["GL"], 45, 10],
     ["rhsusf_mbav_rifleman", "vests", ["Rifleman"], 40, 20],
     ["CPC_103gpcoy", "vests", ["Rifleman"], 25, -1],
     ["CPC_103gprgr", "vests", ["Rifleman"], 25, -1],
@@ -226,10 +226,10 @@ GRLIB_arsenal_nightvision = [
 
 GRLIB_arsenal_rangefinders = [
     ["Binocular", "navigation", ["Rifleman"], 2, 100],
-    ["rhsusf_bino_m24", "navigation", ["Rifleman"], 5, 0],
-    ["Rangefinder", "navigation", ["Rifleman"], 5, 0],
-    ["ACE_Vector", "navigation", ["Rifleman"], 12, 10],
-    ["Laserdesignator", "navigation", ["Rifleman"], 15, 10],
+    ["rhsusf_bino_m24", "navigation", ["Rifleman"], 3, 20],
+    ["Rangefinder", "navigation", ["Special Force","JTAC","Officer"], 8, 10],
+    ["ACE_Vector", "navigation", ["Special Force","JTAC"], 12, 10],
+    ["Laserdesignator", "navigation", ["Special Force","JTAC"], 15, 10],
     ["Nikon_DSLR_HUD", "navigation", ["Rifleman"], 3, 10]
 ];
 
@@ -238,11 +238,11 @@ GRLIB_arsenal_maps = [
 ];
 GRLIB_arsenal_watchs = [
     ["ItemWatch", "navigation", ["Rifleman"], 1, 100],
-    ["ACE_Altimeter", "navigation", ["Rifleman"], 10, 10]
+    ["ACE_Altimeter", "navigation", ["Special Force"], 10, 10]
 ];
 GRLIB_arsenal_terminal = [
     ["ItemGPS", "navigation", ["Rifleman"], 3, 100],
-    ["B_UavTerminal", "drones", ["Rifleman"], 20, 10]
+    ["B_UavTerminal", "drones", ["Drone Operator"], 20, 10]
 ];
 GRLIB_arsenal_radio = [
     ["tf_anprc152", "communications", ["Rifleman"], 2, 100]
@@ -405,23 +405,23 @@ GRLIB_arsenal_HandGrenade = [
     ["rhssaf_mag_brd_m83_red", "handGrenade", ["Rifleman"], 4, 20],
     ["SmokeShellPurple", "handGrenade", ["Rifleman"], 4, 20],
     ["HandGrenade", "handGrenade", ["Rifleman"], 6, 40],
-    ["MS_Strobe_Mag_1", "handGrenade", ["Rifleman"], 5, 30],
-    ["MS_Strobe_Mag_2", "handGrenade", ["Rifleman"], 5, 30]
+    ["MS_Strobe_Mag_1", "handGrenade", ["Special Force"], 5, 30],
+    ["MS_Strobe_Mag_2", "handGrenade", ["Special Force"], 5, 30]
 ];
 
 
 GRLIB_arsenal_explosives = [
-    ["SatchelCharge_Remote_Mag", "explosives", ["Rifleman"], 40, 10],
-    ["DemoCharge_Remote_Mag", "explosives", ["Rifleman"], 20, 20],
-    ["AMP_Breaching_Charge_Mag", "explosives", ["Rifleman"], 10, 20],
-    ["ATMine_Range_Mag", "explosives", ["Rifleman"], 50, 10],
-    ["APERSMine_Range_Mag", "explosives", ["Rifleman"], 000, -1],
-    ["rhsusf_mine_m14_mag", "explosives", ["Rifleman"], 000, -1],
-    ["APERSTripMine_Wire_Mag", "explosives", ["Rifleman"], 000, -1],
-    ["APERSBoundingMine_Range_Mag", "explosives", ["Rifleman"], 000, -1],
-    ["SLAMDirectionalMine_Wire_Mag", "explosives", ["Rifleman"], 000, -1],
-    ["ClaymoreDirectionalMine_Remote_Mag", "explosives", ["Rifleman"], 000, -1],
-    ["rhs_mine_M3_tripwire_mag", "explosives", ["Rifleman"], 10, 30]
+    ["SatchelCharge_Remote_Mag", "explosives", ["EOD"], 40, 10],
+    ["DemoCharge_Remote_Mag", "explosives", ["EOD"], 20, 20],
+    ["AMP_Breaching_Charge_Mag", "explosives", ["EOD"], 10, 20],
+    ["ATMine_Range_Mag", "explosives", ["EOD"], 50, 10],
+    ["APERSMine_Range_Mag", "explosives", ["EOD"], 000, -1],
+    ["rhsusf_mine_m14_mag", "explosives", ["EOD"], 000, -1],
+    ["APERSTripMine_Wire_Mag", "explosives", ["EOD"], 000, -1],
+    ["APERSBoundingMine_Range_Mag", "explosives", ["EOD"], 000, -1],
+    ["SLAMDirectionalMine_Wire_Mag", "explosives", ["EOD"], 000, -1],
+    ["ClaymoreDirectionalMine_Remote_Mag", "explosives", ["EOD"], 000, -1],
+    ["rhs_mine_M3_tripwire_mag", "explosives", ["EOD"], 10, 30]
 ];
 
 
@@ -448,22 +448,22 @@ GRLIB_arsenal_backpacks = [
 ];
 
 GRLIB_arsenal_other = [
-    ["ACE_MapTools", "navigation", ["Rifleman"], 2, 50],
-    ["ACE_microDAGR", "navigation", ["Rifleman"], 10, 30],
+    ["ACE_MapTools", "navigation", ["Special Force"], 2, 50],
+    ["ACE_microDAGR", "navigation", ["Special Force"], 10, 30],
     ["ACE_EntrenchingTool", "tools", ["Rifleman"], 2, 10],
-    ["ACE_Fortify", "tools", ["Rifleman"], 2, 20],
-    ["ToolKit", "engineering", ["Rifleman"], 20, 30],
-    ["ACE_wirecutter", "engineering", ["Rifleman"], 3, 10],
-    ["ACE_DefusalKit", "engineering", ["Rifleman"], 5, 10],
-    ["MineDetector", "engineering", ["Rifleman"], 15, 10],
-    ["ACE_M26_Clacker", "engineering", ["Rifleman"], 20, 10],
-    ["ACE_Clacker", "engineering", ["Rifleman"], 50, 20],
-    ["ItemAndroid", "communications", ["Rifleman"], 20, 10],
-    ["ItemcTab", "communications", ["Rifleman"], 50, 5],
+    ["ACE_Fortify", "tools", ["Engineer"], 2, 20],
+    ["ToolKit", "engineering", ["Engineer"], 20, 30],
+    ["ACE_wirecutter", "engineering", ["EOD"], 3, 10],
+    ["ACE_DefusalKit", "engineering", ["EOD"], 5, 10],
+    ["MineDetector", "engineering", ["EOD"], 15, 10],
+    ["ACE_M26_Clacker", "engineering", ["EOD"], 20, 10],
+    ["ACE_Clacker", "engineering", ["EOD"], 50, 20],
+    ["ItemAndroid", "communications", ["Special Force"], 20, 10],
+    ["ItemcTab", "communications", ["Officer"], 50, 5],
     ["ACE_CableTie", "others", ["Rifleman"], 1, 100],
-    ["ACE_UAVBattery", "drones", ["Rifleman"], 5, 20],
-    ["ITC_Land_B_AR2i_Packed", "drones", ["Rifleman"], 600, 5],
-    ["sps_black_hornet_01_Static_F", "drones", ["Rifleman"], 200, 10],
+    ["ACE_UAVBattery", "drones", ["Drone Operator"], 5, 20],
+    ["ITC_Land_B_AR2i_Packed", "drones", ["Drone Operator"], 600, 5],
+    ["sps_black_hornet_01_Static_F", "drones", ["Drone Operator"], 200, 10],
     ["eaf_beef_can", "foods", ["Rifleman"], 3, 100],
     ["eaf_foul_can", "foods", ["Rifleman"], 2, 200],
     ["eaf_fig_jam", "foods", ["Rifleman"], 1, 200],
@@ -473,7 +473,7 @@ GRLIB_arsenal_other = [
     ["ACE_EarPlugs", "others", ["Rifleman"], 1, 200],
     ["ACE_Flashlight_MX991", "others", ["Rifleman"], 5, 50],
     ["ACE_Flashlight_XL50", "others", ["Rifleman"], 5, 50],
-    ["ACE_RangeCard", "tools", ["Rifleman"], 5, 20],
+    ["ACE_RangeCard", "tools", ["Sniper","Marksman"], 5, 20],
     ["ACE_rope12", "others", ["Rifleman"], 5, 10],
     ["ACE_rope15", "others", ["Rifleman"], 8, 10],
     ["ACE_rope18", "others", ["Rifleman"], 10, 10],
@@ -481,46 +481,46 @@ GRLIB_arsenal_other = [
     ["ACE_rope36", "others", ["Rifleman"], 15, 10],
     ["ACE_Tripod", "tools", ["Rifleman"], 15, 10],
     ["tfw_rf3080Item", "tools", ["Rifleman"], 000, -1],
-    ["ACE_elasticBandage", "medical", ["Rifleman"], 5, 100],
-    ["kat_guedel", "medical", ["Rifleman"], 3, 100],
+    ["ACE_elasticBandage", "medical", ["Medic"], 5, 100],
+    ["kat_guedel", "medical", ["Medic"], 3, 100],
     ["ACE_packingBandage", "medical", ["Rifleman"], 4, 100],
     ["ACE_quikclot", "medical", ["Rifleman"], 3, 100],
     ["ACE_fieldDressing", "medical", ["Rifleman"], 2, 100],
-    ["ACE_morphine", "medical", ["Rifleman"], 3, 100],
-    ["ACE_epinephrine", "medical", ["Rifleman"], 3, 100],
-    ["ACE_bloodIV", "medical", ["Rifleman"], 6, 100],
-    ["ACE_bloodIV_250", "medical", ["Rifleman"], 1, 100],
-    ["ACE_bloodIV_500", "medical", ["Rifleman"], 3, 100],
-    ["ACE_salineIV", "medical", ["Rifleman"], 6, 100],
-    ["ACE_salineIV_250", "medical", ["Rifleman"], 1, 100],
-    ["ACE_salineIV_500", "medical", ["Rifleman"], 3, 100],
-    ["ACE_plasmaIV", "medical", ["Rifleman"], 6, 100],
-    ["ACE_plasmaIV_250", "medical", ["Rifleman"], 1, 100],
-    ["ACE_plasmaIV_500", "medical", ["Rifleman"], 3, 100],
-    ["kat_accuvac", "medical", ["Rifleman"], 000, -1],
-    ["kat_larynx", "medical", ["Rifleman"], 000, -1],
+    ["ACE_morphine", "medical", ["Medic"], 3, 100],
+    ["ACE_epinephrine", "medical", ["Medic"], 3, 100],
+    ["ACE_bloodIV", "medical", ["Medic"], 6, 100],
+    ["ACE_bloodIV_250", "medical", ["Medic"], 1, 100],
+    ["ACE_bloodIV_500", "medical", ["Medic"], 3, 100],
+    ["ACE_salineIV", "medical", ["Medic"], 6, 100],
+    ["ACE_salineIV_250", "medical", ["Medic"], 1, 100],
+    ["ACE_salineIV_500", "medical", ["Medic"], 3, 100],
+    ["ACE_plasmaIV", "medical", ["Medic"], 6, 100],
+    ["ACE_plasmaIV_250", "medical", ["Medic"], 1, 100],
+    ["ACE_plasmaIV_500", "medical", ["Medic"], 3, 100],
+    ["kat_accuvac", "medical", ["Medic"], 000, -1],
+    ["kat_larynx", "medical", ["Medic"], 000, -1],
     ["ACE_splint", "medical", ["Rifleman"], 3, 100],
     ["ACE_tourniquet", "medical", ["Rifleman"], 2, 100],
-    ["ACE_personalAidKit", "medical", ["Rifleman"], 000, -1],
-    ["ACE_surgicalKit", "medical", ["Rifleman"], 5, 100],
-    ["ACE_ATNAA", "medical", ["Rifleman"], 000, -1],
-    ["kat_X_AED", "medical", ["Rifleman"], 000, -1],
-    ["kat_chestSeal", "medical", ["Rifleman"], 000, -1],
-    ["kat_aatKit", "medical", ["Rifleman"], 000, -1],
-    ["kat_Pulseoximeter", "medical", ["Rifleman"], 000, -1],
-    ["ACE_ATragMX", "tools", ["Rifleman"], 10, 5],
-    ["ACE_Kestrel4500", "tools", ["Rifleman"], 8, 5],
+    ["ACE_personalAidKit", "medical", ["Medic"], 000, -1],
+    ["ACE_surgicalKit", "medical", ["Medic"], 5, 100],
+    ["ACE_ATNAA", "medical", ["Medic"], 000, -1],
+    ["kat_X_AED", "medical", ["Medic"], 000, -1],
+    ["kat_chestSeal", "medical", ["Medic"], 000, -1],
+    ["kat_aatKit", "medical", ["Medic"], 000, -1],
+    ["kat_Pulseoximeter", "medical", ["Medic"], 000, -1],
+    ["ACE_ATragMX", "tools", ["Sniper","Marksman"], 10, 5],
+    ["ACE_Kestrel4500", "tools", ["Sniper","Marksman"], 8, 5],
     ["ACE_IR_Strobe_Item", "tools", ["Rifleman"], 5, 20],
-    ["ACE_adenosine", "medical", ["Rifleman"], 000, -1],
-    ["kat_AED", "medical", ["Rifleman"], 000, -1],
-    ["ItemcTabHCam", "tools", ["Rifleman"], 12, 10],
-    ["kat_stethoscope", "medical", ["Rifleman"], 000, -1],
-    ["MRH_TacticalDisplay", "tools", ["Rifleman"], 100, 5],
-    ["tfw_blade", "tools", ["Rifleman"], 5, 0],
-    ["tfw_whip", "tools", ["Rifleman"], 5, 0],
-    ["tfw_dd", "tools", ["Rifleman"], 5, 0],
-    ["MRH_FoldedSatcomAntenna", "tools", ["Rifleman"], 50, 5],
-    ["ITC_Land_B_RemoteGLTD_Packed", "tools", ["Rifleman"], 50, 5],
-    ["ACE_HuntIR_monitor", "tools", ["Rifleman"], 100, 5],
-    ["MRH_BluForTransponder", "tools", ["Rifleman"], 30, 5]
+    ["ACE_adenosine", "medical", ["Medic"], 000, -1],
+    ["kat_AED", "medical", ["Medic"], 000, -1],
+    ["ItemcTabHCam", "tools", ["Special Force"], 12, 10],
+    ["kat_stethoscope", "medical", ["Medic"], 000, -1],
+    ["MRH_TacticalDisplay", "tools", ["Officer"], 100, 5],
+    ["tfw_blade", "tools", ["JTAC"], 5, 0],
+    ["tfw_whip", "tools", ["JTAC"], 5, 0],
+    ["tfw_dd", "tools", ["JTAC"], 5, 0],
+    ["MRH_FoldedSatcomAntenna", "tools", ["JTAC"], 50, 5],
+    ["ITC_Land_B_RemoteGLTD_Packed", "tools", ["Special Force"], 50, 5],
+    ["ACE_HuntIR_monitor", "tools", ["Special Force"], 100, 5],
+    ["MRH_BluForTransponder", "tools", ["Special Force"], 30, 5]
 ];

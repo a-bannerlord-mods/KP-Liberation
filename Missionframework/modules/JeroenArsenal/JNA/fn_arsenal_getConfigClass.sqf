@@ -10,7 +10,7 @@
 	Config path <CONFIG>
 
 	Example:
-	[primaryWeapon player] call jn_fnc_arsenal_getConfigClass;
+	primaryWeapon player call jn_fnc_arsenal_getConfigClass;
 __________________________________________________________________*/
 params [
 	["_configName", "", [""]]

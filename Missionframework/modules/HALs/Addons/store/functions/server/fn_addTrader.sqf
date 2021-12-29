@@ -23,9 +23,6 @@ params [
 
 if (!isServer) exitWith {false};
 
-waitUntil {!isNil "GRLIB_arsenal_initiated"};
-
-
 try {
 	if (!isNil {_trader getVariable "HALs_store_trader_type"}) then {throw ["Trader already initialised", __LINE__]};
 	if (isNull _trader) then {throw ["Trader cannot be null", __LINE__]};

@@ -1,24 +1,20 @@
-// [_item] call call jn_fnc_arsenal_hasItemPermission;
+// [_item] call jn_fnc_arsenal_hasItemPermission;
 params ["_item"];
+_item = tolower _item;
+if !(_item in GRLIB_arsenal_items) exitwith { 
+	true 
+}; 
 
-if(_item in [
-"Binocular","ItemWatch","ItemCompass","tf_anprc152","ItemMap","ItemGPS",
-//items
-"ACE_Fortify","ACE_EntrenchingTool","eaf_beef_can","eaf_foul_can","eaf_fig_jam","eaf_water_bottle","ACE_Canteen","ACE_Flashlight_MX991","ACE_rope12","ACE_rope15","ACE_rope27","ACE_rope36","ACE_rope18","ACE_EarPlugs",
-//headgear
-"eaf_recon_patrolcap","eaf_cav_patrolcap","eaf_inf_patrolcap","eaf_metal_helmet","eaf_camo_helmet"
-])exitwith {true};
+_hasperm =false;
+_requirments = (GRLIB_arsenal_items get _item) select 1; 
+if (count _requirments == 0 ) exitwith { 
+	_hasperm = true ;
+};
 
+{ 
+	if ([_x] call KPLIB_fnc_hasQualification) exitwith { 
+		_hasperm = true ;
+	};
+} forEach _requirments; 
 
-_isMedic = player getUnitTrait "Medic";
-_isEngineer = player getUnitTrait "Engineer";
-_isAntitank = player getUnitTrait "Antitank";
-_isMarksman = player getUnitTrait "Marksman";
-_isAutorifleman = player getUnitTrait "Autorifleman";
-_isDroneOperator = player getUnitTrait "DroneOperator";
-_isJTAC = player getUnitTrait "JTAC ";
-
-
-_isOfficer = player getUnitTrait "Officer";
-
-true
+_hasperm

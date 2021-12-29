@@ -1164,7 +1164,7 @@ KP_liberation_qualifications = [
     ["Engineer","Qualified enough to partially repair vehicles with toolkit",{_this setUnitTrait ["Engineer", true];}],
     ["EOD","Qualified enough to defuse mines and handle all explosives",{_this setUnitTrait ["explosiveSpecialist", true];}],
     ["Marksman","Skilled enough in precision shooting using DMRs",{}],
-    ["Grenade launcher","Skilled enough in use GLs",{}],
+    ["GL","Skilled enough in use GLs",{}],
     ["Sniper","Skilled enough in precision shooting using Snipers",{}],
     ["Autorifleman","Skilled enough handling heavy weapons",{}],
     ["AT","Skilled enough handling anti-tank weapons",{}],

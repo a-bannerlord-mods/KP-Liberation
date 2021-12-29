@@ -23,7 +23,7 @@ qualifications_create_activetext = compile '
     params ["_idx", "_column", "_permission", "_text", "_tooltip"];
 
     private _control = (findDisplay 5119) ctrlCreate ["RscActiveText", ((10 * _idx) + 111) + _column, (findDisplay 5119) displayCtrl 9969];
-    _control ctrlSetPosition [0.042 * _column * safeZoneW, (_idx * 0.025) * safezoneH, 0.042 * safeZoneW, 0.025  * safezoneH];
+    _control ctrlSetPosition [0.035 * _column * safeZoneW, (_idx * 0.025) * safezoneH, 0.035 * safeZoneW, 0.025  * safezoneH];
     _control ctrlSetText _text;
     _control ctrlSetFontHeight fontsize;
     _control ctrlSetTooltip _tooltip;
@@ -87,34 +87,6 @@ _idx = _idx + 1;
         [_idx, _forEachIndex+1, _forEachIndex , _x select 0 , _x select 1] call qualifications_create_activetext;
     } forEach KP_liberation_qualifications;
 
-    // [_idx, 1, 0, "Rifleman", localize "STR_PERMISSIONS_TOOLTIP_LIGHT"] call qualifications_create_activetext;
-    // [_idx, 2, 1, "Medic", localize "STR_PERMISSIONS_TOOLTIP_LIGHT"] call qualifications_create_activetext;
-    // [_idx, 3, 2, "Engineer", localize "STR_PERMISSIONS_TOOLTIP_ARMORED"] call qualifications_create_activetext;
-    // [_idx, 4, 3, "EOD", localize "STR_PERMISSIONS_TOOLTIP_ARMORED"] call qualifications_create_activetext;
-    // [_idx, 5, 4, "Marksman", localize "STR_PERMISSIONS_TOOLTIP_AIR"] call qualifications_create_activetext;
-    // [_idx, 6, 5, "Sniper", localize "STR_PERMISSIONS_TOOLTIP_AIR"] call qualifications_create_activetext;
-    // [_idx, 7, 6, "Autorifleman", localize "STR_PERMISSIONS_TOOLTIP_RECYCLING"] call qualifications_create_activetext;
-    // [_idx, 8, 7, "AT/AA", localize "STR_PERMISSIONS_TOOLTIP_CONSTRUCTION"] call qualifications_create_activetext;
-    // [_idx, 9, 8, "Drone Op", localize "STR_PERMISSIONS_TOOLTIP_MISC"] call qualifications_create_activetext;
-    // [_idx, 10, 9, "JTAC", localize "STR_PERMISSIONS_TOOLTIP_MISC"] call qualifications_create_activetext;
-    // [_idx, 11, 10, "Special Force", localize "STR_PERMISSIONS_TOOLTIP_LIGHT"] call qualifications_create_activetext;
-    // [_idx, 12, 11, "Officer", localize "STR_PERMISSIONS_TOOLTIP_LIGHT"] call qualifications_create_activetext;
-
-    // _control = (findDisplay 5119) ctrlCreate ["RscButton", ((10 * _idx) + 111) + 7, (findDisplay 5119) displayCtrl 9969];
-    // _control ctrlSetPosition [((0.075 * 7) - 0.02) * safeZoneW, ((_idx * 0.025) * safezoneH) + 0.0025, (0.035 * safeZoneW), 0.022  * safezoneH];
-    // _control ctrlSetText (localize "STR_PERMISSIONS_ALL");
-    // _control ctrlSetFontHeight fontsize;
-    // _control ctrlSetTooltip (localize "STR_PERMISSIONS_TOOLTIP_ALL");
-    // buttonSetAction [ ((10 * _idx) + 111) + 7, format ["qualifications_playerid = %1; qualifications_toset = 666;", _idx]];
-    // _control ctrlCommit 0;
-
-    // _control = (findDisplay 5119) ctrlCreate ["RscButton", ((10 * _idx) + 111) + 8, (findDisplay 5119) displayCtrl 9969];
-    // _control ctrlSetPosition [((0.075 * 7) + 0.02) * safeZoneW, (_idx * 0.025) * safezoneH + 0.0025, 0.035 * safeZoneW, 0.022  * safezoneH];
-    // _control ctrlSetText (localize "STR_PERMISSIONS_NONE");
-    // _control ctrlSetFontHeight fontsize;
-    // _control ctrlSetTooltip (localize "STR_PERMISSIONS_TOOLTIP_NONE");
-    // buttonSetAction [((10 * _idx) + 111) + 8, format ["qualifications_playerid = %1; qualifications_toset = 999;", _idx]];
-    // _control ctrlCommit 0;
 
 } foreach _players_array;
 
@@ -140,16 +112,27 @@ while {dialog && alive player} do {
             _player_idx = _player_uids find _player_uid;
 
             if (qualifications_toset == 666) then {
-                _player_qualifications = [true, true, true, true, true, true,true, true, true, true, true, true];
+                _player_qualifications = [];
+                {
+                    _player_qualifications pushBack true;
+                    
+                } forEach KP_liberation_qualifications;
             };
             if (qualifications_toset == 999) then {
-                _player_qualifications = [false, false, false, false, false, false,false, false, false, false], false, false;
+                _player_qualifications = [];
+                {
+                    _player_qualifications pushBack false;
+                    
+                } forEach KP_liberation_qualifications;
             };
 
             if (_player_idx == -1) then {
 
                 if (qualifications_toset != 666 && qualifications_toset != 999) then {
-                    _player_qualifications = [false, false, false, false, false, false,false, false, false, false, false, false];
+                _player_qualifications = [];
+                    {
+                        _player_qualifications pushBack false;
+                    } forEach KP_liberation_qualifications;
                     _player_qualifications set [qualifications_toset, true];
                 };
 
