@@ -37,7 +37,7 @@ private ["_fobPos", "_fobObjects", "_grpUnits", "_fobMines"];
     _fobPos = _x;
     _range = GRLIB_fob_range;
     if (_forEachIndex == 0) then {
-            _range = GRLIB_fob_range *2;
+            _range = GRLIB_fob_range *2.5;
         };
     _fobObjects = (_fobPos nearObjects (_range * 1.3)) select {
         ((toLower (typeof _x)) in KPLIB_classnamesToSave) &&        // Exclude classnames which are not in the presets

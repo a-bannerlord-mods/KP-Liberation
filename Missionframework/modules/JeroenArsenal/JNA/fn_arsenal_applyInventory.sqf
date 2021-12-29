@@ -59,7 +59,7 @@ pr _dataList = _object getVariable "jna_dataList";
 
 
 
-pr _inventory  = parseSimpleArray GRLIB_default_loadout;
+pr _inventory  = GRLIB_default_loadout;
 player setVariable ["loadout_template",_inventory,true]; 
 
 //copyToClipboard str _inventory;

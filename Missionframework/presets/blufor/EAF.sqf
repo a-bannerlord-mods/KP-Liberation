@@ -32,6 +32,10 @@ KP_liberation_little_bird_classname = "EAF_uh60";              // These are the 
 KP_liberation_boat_classname = "B_Boat_Transport_01_F";                 // These are the boats which spawn at the stern of the Freedom.
 KP_liberation_loadoutbox_classname = "B_supplyCrate_F";                 // These are the box contains loadout
 
+KP_liberation_civ_car_classname = "LOP_TAK_Civ_Hatchback";  
+KP_liberation_car_armed_classname = "rhsusf_m1043_d_s_m2"; 
+KP_liberation_car_unarmed_classname = "rhsusf_m1043_d_s"; 
+
 KP_liberation_truck_classname = "RHS_Ural_Open_Flat_MSV_01";            // These are the trucks which are used in the logistic convoy system.
 KP_liberation_truck_ammo_classname = "rhs_gaz66_ammo_vdv"; 
 KP_liberation_truck_fuel_classname = "RHS_Ural_Fuel_VV_01"; 

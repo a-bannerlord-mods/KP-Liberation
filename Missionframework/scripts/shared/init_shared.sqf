@@ -27,6 +27,7 @@ remote_call_endgame = compileFinal preprocessFileLineNumbers "scripts\client\rem
 remote_call_prisonner = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_prisonner.sqf";
 remote_call_intel = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_intel.sqf";
 remote_call_incoming = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_incoming.sqf";
+remote_call_qualifications_updated = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_qualifications_updated.sqf";
 
 civinfo_notifications = compileFinal preprocessFileLineNumbers "scripts\client\civinformant\civinfo_notifications.sqf";
 civinfo_escort = compileFinal preprocessFileLineNumbers "scripts\client\civinformant\civinfo_escort.sqf";

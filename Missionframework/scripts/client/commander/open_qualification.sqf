@@ -193,6 +193,7 @@ while {dialog && alive player} do {
     if (save_changes == 1) then {
         GRLIB_qualifications = +_modify_qualifications;
         publicVariable "GRLIB_qualifications";
+        [] remoteExec ["remote_call_qualifications_updated", -2];
         closeDialog 0;
     };
 
