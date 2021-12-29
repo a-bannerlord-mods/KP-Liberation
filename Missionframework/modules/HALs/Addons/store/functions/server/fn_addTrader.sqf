@@ -31,14 +31,6 @@ try {
 	if (_traderType isEqualTo "") then {throw ["No Trader type"]};
 	if (!isClass (missionConfigFile >> "cfgHALsAddons" >> "cfgHALsStore" >> "stores" >> _traderType)) then {throw ["Invalid Trader type"]};
 
-	//private _type = {typeOf _trader isKindOf [_x, configFile >> "cfgVehicles"]} count ["CAManBase", "Car_F", "ReammoBox_F"];
-	//if (_type isEqualto 0) then {throw ["Trader is not TypeOf: ['CAManBase', 'Car_F', 'ReammoBox_F']"]};
-
-	// private _categories = [
-	// 	getArray (missionConfigFile >> "cfgHALsAddons" >> "cfgHALsStore" >> "stores" >> _traderType >> "categories"),
-	// 	{getText (missionConfigFile >> "cfgHALsAddons" >> "cfgHALsStore" >> "categories" >> _x >> "displayname")},
-	// 	true
-	// ] call HALs_fnc_sortArray;
    	private _categories = getArray (missionConfigFile >> "cfgHALsAddons" >> "cfgHALsStore" >> "stores" >> _traderType >> "categories");
 	private _classes = [];
 	private _stocks = [];

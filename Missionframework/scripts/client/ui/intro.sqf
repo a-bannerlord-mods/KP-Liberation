@@ -1,4 +1,4 @@
-titleText ["Loading... ", "BLACK FADED", 0];
+titleText ["", "PLAIN", 0];
 
 if ( isNil "cinematic_camera_started" ) then { cinematic_camera_started = false };
 sleep 0.5;
