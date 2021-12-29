@@ -18,8 +18,10 @@ params [
 	["_classname", "", [""]]
 ];
 
-private _stocks = _trader getVariable ["HALs_store_trader_stocks", []];
-private _idx = _stocks find (toLower _classname);
+// private _stocks = _trader getVariable ["HALs_store_trader_stocks", []];
+// private _idx = _stocks find (toLower _classname);
 
-if (_idx isEqualTo -1) exitWith {-1};
-(_stocks select (_idx + 1)) max 0
+// if (_idx isEqualTo -1) exitWith {-1};
+// (_stocks select (_idx + 1)) max 0
+
+100000000000000

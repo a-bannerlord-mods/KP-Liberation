@@ -27,7 +27,7 @@ if (!isNil "HALs_store_debug") exitWith {};
 	]
 ] call HALs_fnc_getModuleSettings;
 
-missionNamespace setVariable ["HALs_store_getNearbyVehicles", compileFinal '
+missionNamespace setVariable ["HALs_store_getNearbyVehicles", compile '
 	params [
 		["_trader", objNull, [objNull]],
 		["_types", [KP_liberation_loadoutbox_classname], [[]]],
@@ -35,5 +35,5 @@ missionNamespace setVariable ["HALs_store_getNearbyVehicles", compileFinal '
 	];
 
 	private _vehicles = nearestObjects [_trader, _types, _radius, true];
-	_vehicles select {local _x && {abs speed _x < 1 && {alive _x && isNil {_x getVariable "HALs_store_trader_type"}}}};
+	_vehicles select {alive _x && isNil {_x getVariable "HALs_store_trader_type"}};
 ', true];

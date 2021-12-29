@@ -130,4 +130,8 @@ if (KP_liberation_restart > 0) then {
 
 execVM "scripts\server\playerdata\player_data_events.sqf";
 
+[supplies_radio, "supplies"] spawn HALs_store_fnc_addTrader; 
+
+
 [] call compileFinal preprocessFileLineNumbers "compatibility\compatibility_server_init.sqf";
+

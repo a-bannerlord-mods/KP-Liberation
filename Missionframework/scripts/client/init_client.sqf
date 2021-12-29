@@ -112,11 +112,10 @@ if (player isEqualTo ([] call KPLIB_fnc_getCommander)) then {
 };
 
 
-[] call compileFinal preprocessFileLineNumbers "compatibility\compatibility_client_init.sqf";
+[] call compile preprocessFile "compatibility\compatibility_client_init.sqf";
 
 
 //INC_undercover init
 player setVariable ["isSneaky",true,true];
 [player] execVM "modules\INC_undercover\Scripts\initUCR.sqf";
 
-[supplies_radio, "supplies"] spawn HALs_store_fnc_addTrader; 
