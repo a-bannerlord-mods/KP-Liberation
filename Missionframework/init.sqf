@@ -10,18 +10,18 @@ if (isDedicated) then {debug_source = "Server";} else {debug_source = name playe
 
 [] call KPLIB_fnc_initSectors;
 if (!isServer) then {waitUntil {!isNil "KPLIB_initServer"};};
-[] call compileFinal preprocessFileLineNumbers "scripts\shared\fetch_params.sqf";
-[] call compileFinal preprocessFileLineNumbers "kp_liberation_config.sqf";
-[] call compileFinal preprocessFileLineNumbers "compatibility\compatibility_config.sqf";
-[] call compileFinal preprocessFileLineNumbers "presets\init_presets.sqf";
-[] call compileFinal preprocessFileLineNumbers "kp_objectInits.sqf";
+[] call compile preprocessFileLineNumbers "scripts\shared\fetch_params.sqf";
+[] call compile preprocessFileLineNumbers "kp_liberation_config.sqf";
+[] call compile preprocessFileLineNumbers "compatibility\compatibility_config.sqf";
+[] call compile preprocessFileLineNumbers "presets\init_presets.sqf";
+[] call compile preprocessFileLineNumbers "kp_objectInits.sqf";
+[] call compileFinal preprocessFileLineNumbers "arsenal_presets\arsenal_items_init.sqf";
 
 
-
-[] call compileFinal preprocessFileLineNumbers "scripts\shared\init_shared.sqf";
+[] call compile preprocessFileLineNumbers "scripts\shared\init_shared.sqf";
 
 if (isServer) then {
-    [] call compileFinal preprocessFileLineNumbers "scripts\server\init_server.sqf";
+    [] call compile preprocessFileLineNumbers "scripts\server\init_server.sqf";
     [] spawn KPLIB_fnc_removeUselessSectorMarkers;
 };
 
@@ -43,7 +43,7 @@ if (!isDedicated && hasInterface) then {
 
     waitUntil {alive player};
     if (debug_source != name player) then {debug_source = name player};
-    [] call compileFinal preprocessFileLineNumbers "scripts\client\init_client.sqf";
+    [] call compile preprocessFileLineNumbers "scripts\client\init_client.sqf";
 } else {
     setViewDistance 1600;
 };

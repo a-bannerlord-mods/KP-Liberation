@@ -1,27 +1,8 @@
 titleText ["Loading... ", "BLACK FADED", 600];
 
 [] call compileFinal preprocessFileLineNumbers "scripts\client\misc\init_markers.sqf";
-switch (KP_liberation_arsenal) do {
-    case  1: {[] call compileFinal preprocessFileLineNumbers "arsenal_presets\custom.sqf";};
-    case  2: {[] call compileFinal preprocessFileLineNumbers "arsenal_presets\rhsusaf.sqf";};
-    case  3: {[] call compileFinal preprocessFileLineNumbers "arsenal_presets\3cbBAF.sqf";};
-    case  4: {[] call compileFinal preprocessFileLineNumbers "arsenal_presets\gm_west.sqf";};
-    case  5: {[] call compileFinal preprocessFileLineNumbers "arsenal_presets\gm_east.sqf";};
-    case  6: {[] call compileFinal preprocessFileLineNumbers "arsenal_presets\csat.sqf";};
-    case  7: {[] call compileFinal preprocessFileLineNumbers "arsenal_presets\unsung.sqf";};
-    case  8: {[] call compileFinal preprocessFileLineNumbers "arsenal_presets\sfp.sqf";};
-    case  9: {[] call compileFinal preprocessFileLineNumbers "arsenal_presets\bwmod.sqf";};
-    case  10: {[] call compileFinal preprocessFileLineNumbers "arsenal_presets\vanilla_nato_mtp.sqf";};
-    case  11: {[] call compileFinal preprocessFileLineNumbers "arsenal_presets\vanilla_nato_tropic.sqf";};
-    case  12: {[] call compileFinal preprocessFileLineNumbers "arsenal_presets\vanilla_nato_wdl.sqf";};
-    case  13: {[] call compileFinal preprocessFileLineNumbers "arsenal_presets\vanilla_csat_hex.sqf";};
-    case  14: {[] call compileFinal preprocessFileLineNumbers "arsenal_presets\vanilla_csat_ghex.sqf";};
-    case  15: {[] call compileFinal preprocessFileLineNumbers "arsenal_presets\vanilla_aaf.sqf";};
-    case  16: {[] call compileFinal preprocessFileLineNumbers "arsenal_presets\vanilla_ldf.sqf";};
-    case  17: {[] call compileFinal preprocessFileLineNumbers "arsenal_presets\eaf.sqf";};
-    default  {GRLIB_arsenal_weapons = [];GRLIB_arsenal_magazines = [];GRLIB_arsenal_items = [];GRLIB_arsenal_backpacks = [];};
-};
-[] call compileFinal preprocessFileLineNumbers "arsenal_presets\arsenal_items_init.sqf";
+
+
 if (typeOf player == "VirtualSpectator_F") exitWith {
     execVM "scripts\client\markers\empty_vehicles_marker.sqf";
     execVM "scripts\client\markers\fob_markers.sqf";
