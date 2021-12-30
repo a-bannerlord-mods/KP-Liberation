@@ -73,4 +73,11 @@ if (_forcedFlagTexture!=  "" ) then {
     _data pushBack ["forced_flag_texture",_forcedFlagTexture];
 };
 
+//arsinal items
+_customname = _obj getVariable ["ace_cargo_customname",""];
+if (_customname!="") then {
+    _data pushBack ["ace_cargo_customname",_customname];
+};
+
+
 _data

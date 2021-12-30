@@ -72,7 +72,12 @@ switch (_mode) do {
 
 		// Get all nearby vehicles that we can sell to
 		HALs_store_vehicles = ([_trader] call HALs_store_getNearbyVehicles) apply {
-			[typeOf _x, format ["%1 (%2m)", getText(configFile >> "cfgVehicles" >> typeOf _x >> "displayName"), (_x distance2D _trader) toFixed 0], "", _x]	
+			_name = getText(configFile >> "cfgVehicles" >> typeOf _x >> "displayName");
+			_customname = _x getVariable ["ace_cargo_customname",""];
+			if (_customname!="") then {
+    			_name = _customname;
+			};
+			[typeOf _x, format ["%1 (%2m)", _name, (_x distance2D _trader) toFixed 0], "", _x]	
 		};
 		
 		// Process all items and store in trader

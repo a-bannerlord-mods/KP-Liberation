@@ -40,7 +40,12 @@ _class = tolower (typeof _obj);
     if ((_x select 0) == "jna_dataList") then {
         _obj setVariable ["jna_dataList" ,(_x select 1),true];
     };
-    
+
+    //ace_cargo_customname
+    if ((_x select 0) == "ace_cargo_customname") then {
+        _obj setVariable ["ace_cargo_customname" ,(_x select 1),true];
+    };
+
     //driver_radio_settings
     if ((_x select 0) == "driver_radio_settings") then {
         _obj setVariable ["driver_radio_settings" ,(_x select 1),true];
