@@ -11,24 +11,28 @@ GRLIB_arsenal_weapons_handgun;
             _cfgMagazine = configFile >> "Cfgmagazines" >> _x;
             _magazinecount = getNumber (_cfgMagazine >> "count");
             _count=0;
+            _roles = ["Rifleman"];
             switch (true) do {
                 case (_magazinecount <2 && _magazinecount >0): {
-                    _count= 8;
+                    _roles = ["Rifleman"];
                 };
-                case (_magazinecount <31 && _magazinecount >2) : {
-                    _count = 20 *_magazinecount;
+                case (_magazinecount <21 && _magazinecount >2) : {
+                    _roles = ["Marksman","Sniper"];
+                };
+                case (_magazinecount <31 && _magazinecount >21) : {
+                    _roles = ["Rifleman"];
                 };
                 case (_magazinecount <51 && _magazinecount >31) : {
-                    _count = 10 *_magazinecount;
+                    _roles = ["Autorifleman"];
                 };
                 case (_magazinecount >51) : {
-                    _count = 5 *_magazinecount;
+                    _roles = ["Autorifleman"];
                 };
                 default {
                     _count = 0;
                 };
             };
-            GRLIB_arsenal_magazines pushBack [_x, "magazines", ["Rifleman"], _cost, _count];
+            GRLIB_arsenal_magazines pushBack [_x, "magazines",_roles , _cost, _count];
         };
     } forEach _wmags;
 } forEach (GRLIB_arsenal_all_weapons select {

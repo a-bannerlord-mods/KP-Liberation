@@ -1,5 +1,5 @@
 GRLIB_default_uniform = "eaf_full_private_inf_uniform";
-GRLIB_default_loadout = [["eaf_full_private_inf_uniform",["ACE_EntrenchingTool","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_quikclot","ACE_quikclot","ACE_quikclot","ACE_splint","ACE_splint","ACE_splint","ACE_tourniquet","ACE_tourniquet","ACE_EarPlugs","ACE_CableTie","ACE_CableTie","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_packingBandage","ACE_packingBandage","ACE_packingBandage","ACE_packingBandage","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_quikclot","ACE_quikclot","ACE_quikclot","ACE_quikclot","ACE_quikclot","ACE_quikclot","ACE_quikclot"]],["rhsusf_mbav_rifleman",["eaf_beef_can","eaf_foul_can","eaf_foul_can","eaf_fig_jam","eaf_fig_jam","eaf_water_bottle","ACE_Canteen","rhs_30Rnd_762x39mm","rhs_30Rnd_762x39mm","rhs_30Rnd_762x39mm","rhs_30Rnd_762x39mm","rhs_30Rnd_762x39mm","rhs_30Rnd_762x39mm","rhs_30Rnd_762x39mm","SmokeShell","SmokeShell","SmokeShell","ACE_M84","HandGrenade"]],["",[]],"eaf_metal_helmet","","Binocular",["uk3cb_ak47n",["rhs_acc_dtkakm","rhs_acc_2dpZenit","rhs_acc_ekp8_02",""],"rhs_30Rnd_762x39mm"],["",["","","",""],""],["rhsusf_weap_m9",["","","",""],""],["ItemMap","ItemCompass","ItemWatch","tf_anprc152_2","ItemGPS"],["WhiteHead_17","ace_novoice",""]];
+GRLIB_default_loadout = [["eaf_full_private_inf_uniform",["ACE_EntrenchingTool","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_fieldDressing","ACE_quikclot","ACE_quikclot","ACE_quikclot","ACE_quikclot","ACE_quikclot","ACE_quikclot","ACE_quikclot","ACE_quikclot","ACE_quikclot","ACE_quikclot","ACE_splint","ACE_splint","ACE_splint","ACE_tourniquet","ACE_tourniquet","ACE_EarPlugs","ACE_CableTie","ACE_CableTie","ACE_packingBandage","ACE_packingBandage","ACE_packingBandage","ACE_packingBandage"]],["rhsusf_mbav_rifleman",["eaf_beef_can","eaf_foul_can","eaf_foul_can","eaf_fig_jam","eaf_fig_jam","eaf_water_bottle","ACE_Canteen","rhs_30Rnd_762x39mm","rhs_30Rnd_762x39mm","rhs_30Rnd_762x39mm","rhs_30Rnd_762x39mm","rhs_30Rnd_762x39mm","rhs_30Rnd_762x39mm","rhs_30Rnd_762x39mm","SmokeShell","SmokeShell","SmokeShell","ACE_M84","HandGrenade"]],["",[]],"eaf_metal_helmet","","Binocular",["uk3cb_ak47n",["rhs_acc_dtkakm","rhs_acc_2dpZenit","rhs_acc_ekp8_02",""],"rhs_30Rnd_762x39mm"],["",["","","",""],""],["",["","","",""],""],["ItemMap","ItemCompass","ItemWatch","tf_anprc152_4","ItemGPS"],["WhiteHead_17","ace_novoice",""]];
 // [Classname,catagory",[array of permitted qualifications],cost (-1 for autocost),initial amount (-1 for infinite),auto add magazine, auto add attachment]
 // ["UK3CB_BAF_AT4_CS_AP_Launcher","Weapons",["Antitank"],000,-1,true,true]
 GRLIB_arsenal_weapons_primary = [
@@ -73,7 +73,47 @@ GRLIB_arsenal_weapons_handgun = [
 GRLIB_arsenal_magazines = [
     ["ACE_HuntIR_M203", "Magazine", ["Special Force"], 50, 5],
     ["Vorona_HEAT", "Magazine", ["Rifleman"], 180, 2],
-    ["Vorona_HE", "Magazine", ["Rifleman"], 150, 4]
+    ["Vorona_HE", "Magazine", ["Rifleman"], 150, 4],
+    ["rhs_30Rnd_762x39mm_bakelite","Magazine",["Rifleman"],4,6000],
+    ["30Rnd_762x39_Mag_F","Magazine",["Rifleman"],11,6000],
+    ["rhs_30Rnd_762x39mm_polymer","Magazine",["Rifleman"],4,6000],
+    ["rhs_mag_30Rnd_556x45_M855A1_Stanag","Magazine",["Rifleman"],5,3000],
+    ["rhs_30Rnd_762x39mm","Magazine",["Rifleman"],4,3000],
+    ["UK3CB_9x30Rnd","Magazine",["Rifleman"],33,600],
+    ["rhsusf_mag_40Rnd_46x30_FMJ","Magazine",["Rifleman"],4,600],
+    ["rhs_10Rnd_762x54mmR_7N1","Magazine",["Rifleman"],2,1200],
+	["rhsusf_20Rnd_762x51_SR25_m118_special_Mag","Magazine",["Rifleman"],4,1200],
+    ["rhsusf_20Rnd_762x51_SR25_m62_Mag","Magazine",["Rifleman"],8,600],
+	["20Rnd_762x51_Mag","Magazine",["Rifleman"],4,1200],
+	["ace_20rnd_762x51_mag_tracer","Magazine",["Rifleman"],8,800],
+	["rhs_100Rnd_762x54mmR","Magazine",["Rifleman"],16,6000],
+	["UK3CB_RPK_75Rnd_Drum","Magazine",["Rifleman"],29,6000],
+	["rhsusf_200Rnd_556x45_box","Magazine",["Rifleman"],28,6000],
+	["rhsusf_100Rnd_762x51","Magazine",["Rifleman"],16,6000],
+	["7Rnd_408_Mag","Magazine",["Rifleman"],3,100],
+	["rhsusf_mag_10Rnd_STD_50BMG_M33","Magazine",["Rifleman"],4,100],
+	["rhs_5Rnd_338lapua_t5000","Magazine",["Rifleman"],4,100],
+	["rhs_rpg7_PG7VL_mag","Magazine",["Rifleman"],8,20],
+	["rhs_rpg7_PG7V_mag","Magazine",["Rifleman"],8,20],
+	["rhs_rpg7_PG7VM_mag","Magazine",["Rifleman"],8,20],
+	["rhs_rpg7_PG7VS_mag","Magazine",["Rifleman"],8,20],
+	["RPG32_F","Magazine",["Rifleman"],6,20],
+	["RPG32_HE_F","Magazine",["Rifleman"],7,20],
+	["rhs_mag_9k38_rocket","Magazine",["Rifleman"],14,20],
+	["rhs_fim92_mag","Magazine",["Rifleman"],17,20],
+	["rhsusf_mag_15Rnd_9x19_JHP","Magazine",["Rifleman"],2,1500],
+	["rhsusf_mag_7x45acp_MHP","Magazine",["Rifleman"],1,1500],
+	["rhsusf_mag_17Rnd_9x19_JHP","Magazine",["Rifleman"],2,1500],
+	["rhs_mag_M441_HE","Magazine",["Rifleman"],3,20],
+	["rhs_mag_M433_HEDP","Magazine",["Rifleman"],4,10],
+	["rhs_mag_M583A1_white","Magazine",["Rifleman"],3,100],
+	["rhs_mag_M585_white_cluster","Magazine",["Rifleman"],1,40],
+	["1Rnd_Smoke_Grenade_shell","Magazine",["Rifleman"],3,100],
+	["1Rnd_SmokeYellow_Grenade_shell","Magazine",["Rifleman"],3,40],
+	["1Rnd_SmokeRed_Grenade_shell","Magazine",["Rifleman"],3,40],
+	["1Rnd_SmokeBlue_Grenade_shell","Magazine",["Rifleman"],2,40],
+	["1Rnd_SmokeGreen_Grenade_shell","Magazine",["Rifleman"],3,40],
+	["ace_10rnd_762x54_tracer_mag","Magazine",["Rifleman"],4,40]
 ];
 
 GRLIB_arsenal_uniforms = [
@@ -207,14 +247,10 @@ GRLIB_arsenal_vests = [
 ];
 
 GRLIB_arsenal_facegear = [
-    ["UK3CB_G_Balaclava2_DES", "facegear", ["Rifleman"], 000, -1],
-    ["rhsusf_shemagh_gogg_tan", "facegear", ["Rifleman"], 000, -1],
-    ["rhsusf_shemagh2_gogg_tan", "facegear", ["Rifleman"], 000, -1],
-    ["rhsusf_shemagh_tan", "facegear", ["Rifleman"], 000, -1],
-    ["rhsusf_shemagh2_tan", "facegear", ["Rifleman"], 000, -1],
-    ["VSM_Balaclava2_tan_Goggles", "facegear", ["Rifleman"], 000, -1],
-    ["VSM_balaclava2_Black", "facegear", ["Rifleman"], 000, -1],
-    ["G_CBRN_M04_Hood", "facegear", ["Rifleman"], 000, -1]
+    ["UK3CB_G_Balaclava2_DES", "facegear", ["Rifleman"], 3, 15],
+    ["VSM_Balaclava2_tan_Goggles", "facegear", ["Rifleman"],3, 10],
+    ["VSM_balaclava2_Black", "facegear", ["Rifleman"], 2, 10],
+    ["G_CBRN_M04_Hood", "facegear", ["Rifleman"], 3, 15]
 ];
 
 
@@ -252,150 +288,136 @@ GRLIB_arsenal_compass = [
 ];
 
 GRLIB_arsenal_optics = [
-    ["CUP_optic_AIMM_MICROT1_BLK", "optics", ["Rifleman"], 000, -1],
-    ["Tier1_ATACR18_Geissele_Docter_Black_PIP", "optics", ["Rifleman"], 000, -1],
-    ["optic_AMS", "optics", ["Rifleman"], 000, -1],
-    ["optic_Aco", "optics", ["Rifleman"], 000, -1],
-    ["CUP_optic_CompM4", "optics", ["Rifleman"], 000, -1],
-    ["ACE_optic_LRPS_PIP", "optics", ["Rifleman"], 000, -1],
-    ["rhs_acc_pgo7v2", "optics", ["Rifleman"], 000, -1],
-    ["rhs_acc_pgo7v3", "optics", ["Rifleman"], 000, -1],
-    ["FHQ_optic_AC11704_tan", "optics", ["Rifleman"], 000, -1],
-    ["CUP_optic_LeupoldMk4_20x40_LRT", "optics", ["Rifleman"], 000, -1],
-    ["FHQ_optic_AC11704", "optics", ["Rifleman"], 000, -1],
-    ["rhs_acc_ekp1", "optics", ["Rifleman"], 000, -1],
-    ["hlc_optic_ZF95Base", "optics", ["Rifleman"], 000, -1],
-    ["CUP_optic_Elcan_SpecterDR_KF_RMR", "optics", ["Rifleman"], 000, -1],
-    ["CUP_optic_ZeissZPoint", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_ACOG_RMR", "optics", ["Rifleman"], 000, -1],
-    ["hsusf_acc_ACOG2_USMC", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_ACOG3_USMC", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_ACOG_USMC", "optics", ["Rifleman"], 000, -1],
-    ["rhsgref_acc_l1a1_anpvs2", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_anpvs27", "optics", ["Rifleman"], 000, -1],
-    ["rhs_acc_dh520x56", "optics", ["Rifleman"], 000, -1],
-    ["rhs_acc_ekp8_02", "optics", ["Rifleman"], 000, -1],
-    ["rhs_acc_ekp8_18", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_g33_T1", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_g33_xps3", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_g33_xps3_tan", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_eotech_552", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_eotech_552_d", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_compm4", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_M8541", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_M8541_d", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_M8541_low", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_M8541_low_d", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_M8541_low_wd", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_M8541_mrds", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_premier_low", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_premier_anpvs27", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_premier", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_premier_mrds", "optics", ["Rifleman"], 000, -1],
-    ["rhsgref_mg42_acc_AAsight", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_LEUPOLDMK4", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_LEUPOLDMK4_2", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_LEUPOLDMK4_d", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_LEUPOLDMK4_wd", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_LEUPOLDMK4_2_d", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_LEUPOLDMK4_2_mrds", "optics", ["Rifleman"], 000, -1],
-    ["optic_MRD", "optics", ["Rifleman"], 000, -1],
-    ["optic_MRD_black", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_mrds", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_mrds_fwd", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_mrds_c", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_mrds_fwd_c", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_nxs_3515x50_md", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_nxs_3515x50f1_h58", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_nxs_3515x50f1_md", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_nxs_3515x50f1_h58_sun", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_nxs_3515x50f1_md_sun", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_nxs_5522x56_md", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_nxs_5522x56_md_sun", "optics", ["Rifleman"], 000, -1],
-    ["rhs_acc_okp7_dovetail", "optics", ["Rifleman"], 000, -1],
-    ["rhs_acc_pgo7v", "optics", ["Rifleman"], 000, -1],
-    ["rhs_acc_pgo7v2", "optics", ["Rifleman"], 000, -1],
-    ["rhs_acc_okp7_picatinny", "optics", ["Rifleman"], 000, -1],
-    ["rhs_acc_pgo7v3", "optics", ["Rifleman"], 000, -1],
-    ["rhs_acc_pkas", "optics", ["Rifleman"], 000, -1],
-    ["rhs_acc_pso1m2", "optics", ["Rifleman"], 000, -1],
-    ["rhs_acc_pso1m21", "optics", ["Rifleman"], 000, -1],
-    ["uk3cb_optic_artel_m14", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_RM05_fwd", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_RX01_NoFilter", "optics", ["Rifleman"], 000, -1],
-    ["rhsgref_acc_RX01_NoFilter_camo", "optics", ["Rifleman"], 000, -1],
-    ["rhsgref_acc_RX01_camo", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_RX01", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_RX01_NoFilter_tan", "optics", ["Rifleman"], 000, -1],
-    ["rhs_weap_optic_smaw", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_su230", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_su230_c", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_su230_mrds", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_su230_mrds_c", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_T1_low", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_T1_high", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_ACOG_MDO", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_su230a_mrds_c", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_su230a_mrds", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_su230a_c", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_su230a", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_T1_low_fwd", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_ACOG_d", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_ACOG_wd", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_ACOG_RMR", "optics", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_eotech_xps3", "optics", ["Rifleman"], 000, -1]
+ ["rhsusf_acc_eotech_xps3", "optics", ["Rifleman"], 2, 30], //XPS3  (0.0731915) 
+ ["rhsusf_acc_T1_low_fwd", "optics", ["Rifleman"], 2, 50], //SU-278/PVS LT661 (Forward)  (0.0310638) 
+ ["optic_Aco", "optics", ["Rifleman"], 2, 30], //C-More Railway (Red)  (0.0731915) 
+ ["rhsusf_acc_su230a", "optics", ["Rifleman"], 2, 30], //SU-230A/PVS  (0.0731915) 
+ ["rhs_acc_okp7_picatinny", "optics", ["Rifleman"], 2, 50], //OKP7 (Picatinny)  (0.0310638) 
+ ["rhs_acc_okp7_dovetail", "optics", ["Rifleman"], 2, 50], //OKP7  (0.0310638) 
+ ["rhs_acc_ekp1", "optics", ["Rifleman"], 2, 50], //EKP-1S-03  (0.0310638) 
+ ["hlc_optic_ZF95Base", "optics", ["Rifleman"], 2, 50], //Kahles ZF95  (0.0394894) 
+ ["rhsusf_acc_ACOG_MDO", "optics", ["Rifleman"], 2, 50], //SU-260/P (MDO)  (0.0310638) 
+ ["rhsusf_acc_RM05_fwd", "optics", ["Rifleman"], 2, 50], //RM05 RMR LT726 (Forward)  (0.0310638) 
+ ["rhs_weap_optic_smaw", "optics", ["Rifleman"], 2, 50], //SMAW sight  (0.01) 
+ ["rhsusf_acc_mrds_fwd_c", "optics", ["Rifleman"], 2, 30], //MRDS Coyote (Forward)  (0.0731915) 
+ ["optic_MRD_black", "optics", ["Rifleman"], 2, 50], //MRD (Black)  (0.01) 
+ ["rhsusf_acc_anpvs27", "optics", ["Rifleman"], 2, 50], //AN/PVS-27  (0.0310638) 
+ ["optic_MRD", "optics", ["Rifleman"], 2, 50], //MRD  (0.01) 
+ ["rhs_acc_ekp8_02", "optics", ["Rifleman"], 2, 50], //EKP-8-02  (0.0310638) 
+ ["rhs_acc_ekp8_18", "optics", ["Rifleman"], 2, 50], //EKP-8-18  (0.0310638) 
+ ["rhsusf_acc_g33_T1", "optics", ["Rifleman"], 2, 30], //G33 + SU-278/PVS  (0.0731915) 
+ ["rhsusf_acc_g33_xps3", "optics", ["Rifleman"], 2, 30], //G33 + XPS3  (0.0731915) 
+ ["rhsusf_acc_g33_xps3_tan", "optics", ["Rifleman"], 2, 30], //G33 + XPS3 (Tan)  (0.0731915) 
+ ["rhsgref_mg42_acc_AAsight", "optics", ["Rifleman"], 2, 50], //MG42 AA Sight  (0.0310638) 
+ ["rhsusf_acc_T1_low", "optics", ["Rifleman"], 2, 50], //SU-278/PVS LT661  (0.0310638) 
+ ["rhsusf_acc_mrds_c", "optics", ["Rifleman"], 2, 30], //MRDS Coyote  (0.0731915) 
+ ["rhsusf_acc_su230a_c", "optics", ["Rifleman"], 2, 30], //SU-230A/PVS Coyote  (0.0731915) 
+ ["rhsusf_acc_su230a_mrds", "optics", ["Rifleman"], 2, 30], //SU-230A/PVS MRDS  (0.0731915) 
+ ["rhsusf_acc_su230a_mrds_c", "optics", ["Rifleman"], 2, 30], //SU-230A/PVS MRDS Coyote  (0.0731915) 
+ ["rhsusf_acc_su230_c", "optics", ["Rifleman"], 2, 30], //SU-230/PVS Coyote  (0.0731915) 
+ ["rhsusf_acc_mrds_fwd", "optics", ["Rifleman"], 2, 30], //MRDS (Forward)  (0.0731915) 
+ ["rhsusf_acc_su230_mrds_c", "optics", ["Rifleman"], 2, 30], //SU-230/PVS MRDS Coyote  (0.0731915) 
+ ["rhsusf_acc_su230_mrds", "optics", ["Rifleman"], 2, 30], //SU-230/PVS MRDS  (0.0731915) 
+ ["rhsusf_acc_su230", "optics", ["Rifleman"], 2, 30], //SU-230/PVS  (0.0731915) 
+ ["rhsusf_acc_mrds", "optics", ["Rifleman"], 2, 30], //MRDS  (0.0731915) 
+ ["rhsusf_acc_eotech_552", "optics", ["Rifleman"], 2, 25], //M552 CCO  (0.115319) 
+ ["rhsusf_acc_compm4", "optics", ["Rifleman"], 2, 25], //M68 CCO  (0.115319) 
+ ["rhsgref_acc_l1a1_anpvs2", "optics", ["Rifleman"], 2, 25], //AN/PVS-2  (0.115319) 
+ ["rhsusf_acc_eotech_552_d", "optics", ["Rifleman"], 2, 25], //M552 CCO (Desert)  (0.115319) 
+ ["rhsusf_acc_T1_high", "optics", ["Rifleman"], 2, 25], //SU-278/PVS LT660  (0.115319) 
+ ["rhsgref_acc_RX01_camo", "optics", ["Rifleman"], 2, 25], //RX01 Camo Reflex  (0.115319) 
+ ["rhsusf_acc_RX01", "optics", ["Rifleman"], 2, 25], //RX01 Reflex  (0.115319) 
+ ["rhsusf_acc_RX01_NoFilter", "optics", ["Rifleman"], 2, 25], //RX01 (w/o Filter)  (0.115319) 
+ ["rhsgref_acc_RX01_NoFilter_camo", "optics", ["Rifleman"], 2, 25], //RX01 Camo (w/o Filter)  (0.115319) 
+ ["rhs_acc_pkas", "optics", ["Rifleman"], 2, 25], //PK-AS  (0.115319) 
+ ["rhsusf_acc_RX01_NoFilter_tan", "optics", ["Rifleman"], 2, 25], //RX01 Tan (w/o Filter)  (0.115319) 
+ ["rhs_acc_pso1m21", "optics", ["Rifleman"], 3, 18], //PSO-1M2-1  (0.165872) 
+ ["uk3cb_optic_artel_m14", "optics", ["Rifleman"], 6, 11], //Redfield AR-TEL  (0.368085) 
+ ["rhs_acc_dh520x56", "optics", ["Rifleman"], 7, 10], //DH 5-20x56  (0.410213) 
+ ["rhsusf_acc_ACOG3_USMC", "optics", ["Rifleman"], 7, 10], //AN/PVQ-31A (ARD/Lens Cover)  (0.410213) 
+ ["rhsusf_acc_LEUPOLDMK4_2", "optics", ["Rifleman"], 7, 10], //Mk. 4 ER/T 6.5-20x M5  (0.410213) 
+ ["rhsusf_acc_LEUPOLDMK4_d", "optics", ["Rifleman"], 7, 10], //Mk. 4 M3 (Desert)  (0.410213) 
+ ["rhsusf_acc_LEUPOLDMK4", "optics", ["Rifleman"], 7, 10], //Mk. 4 ER/T 3.5-10x M3  (0.410213) 
+ ["rhsusf_acc_ACOG_USMC", "optics", ["Rifleman"], 7, 10], //AN/PVQ-31A RCO  (0.410213) 
+ ["rhsusf_acc_ACOG_RMR", "optics", ["Rifleman"], 7, 10], //TA31RCO-RMR  (0.410213) 
+ ["rhs_acc_pgo7v3", "optics", ["AT"], 7, 10], //PGO-7V3  (0.410213) 
+ ["rhs_acc_pgo7v", "optics", ["AT"], 7, 10], //PGO-7V  (0.410213) 
+ ["rhs_acc_pgo7v2", "optics", ["AT"], 7, 10], //PGO-7V2  (0.410213) 
+ ["rhs_acc_pgo7v2", "optics", ["AT"], 7, 10], //PGO-7V2  (0.410213) 
+ ["rhs_acc_pgo7v3", "optics", ["AT"], 7, 10], //PGO-7V3  (0.410213) 
+ ["rhsusf_acc_LEUPOLDMK4_2_d", "optics", ["Rifleman"], 7, 10], //Mk. 4 M5 (Desert)  (0.410213) 
+ ["rhs_acc_pso1m2", "optics", ["Rifleman"], 7, 10], //PSO-1M2  (0.410213) 
+ ["rhsusf_acc_LEUPOLDMK4_wd", "optics", ["Rifleman"], 7, 10], //Mk. 4 M3 (Woodland)  (0.410213) 
+ ["rhsusf_acc_LEUPOLDMK4_2_mrds", "optics", ["Rifleman"], 7, 10], //Mk. 4 M5 (MRDS)  (0.410213) 
+ ["rhsusf_acc_ACOG_wd", "optics", ["Rifleman"], 7, 10], //TA31RCO (Woodland)  (0.410213) 
+ ["rhsusf_acc_ACOG_RMR", "optics", ["Rifleman"], 7, 10], //TA31RCO-RMR  (0.410213) 
+ ["rhsusf_acc_ACOG_d", "optics", ["Rifleman"], 7, 10], //TA31RCO (Desert)  (0.410213) 
+ ["Tier1_ATACR18_Geissele_Docter_Black_PIP", "optics", ["Rifleman"], 8, 10], //Nightforce 1-8x24 ATACR/GAM/Docter III  (0.494468) 
+ ["rhsusf_acc_M8541_mrds", "optics", ["Rifleman"], 10, 10], //M8541 (MRDS)  (0.620851) 
+ ["rhsusf_acc_M8541_low", "optics", ["Rifleman"], 10, 10], //M8541 (low mount)  (0.620851) 
+ ["rhsusf_acc_M8541_low_wd", "optics", ["Rifleman"], 10, 10], //M8541 (low mount/Woodland)  (0.620851) 
+ ["rhsusf_acc_M8541", "optics", ["Rifleman"], 10, 10], //M8541  (0.620851) 
+ ["rhsusf_acc_M8541_d", "optics", ["Rifleman"], 10, 10], //M8541 (Desert)  (0.620851) 
+ ["rhsusf_acc_M8541_low_d", "optics", ["Rifleman"], 10, 10], //M8541 (low mount/Desert)  (0.620851) 
+ ["rhsusf_acc_premier_anpvs27", "optics", ["Rifleman"], 12, 10], //M8541A + AN/PVS-27  (0.747234) 
+ ["rhsusf_acc_premier", "optics", ["Rifleman"], 12, 10], //M8541A SSDS  (0.747234) 
+ ["rhsusf_acc_premier_mrds", "optics", ["Rifleman"], 12, 10], //M8541A SSDS (MRDS)  (0.747234) 
+ ["rhsusf_acc_premier_low", "optics", ["Rifleman"], 12, 10], //M8541A (low mount)  (0.747234) 
+ ["rhsusf_acc_nxs_3515x50_md", "optics", ["Rifleman"], 12, 10], //NXS 3.5-15x50 (mil-dot)  (0.747234) 
+ ["rhsusf_acc_nxs_5522x56_md_sun", "optics", ["Rifleman"], 12, 10], //NXS 5.5-22x56 (sunshade/mil-dot)  (0.747234) 
+ ["rhsusf_acc_nxs_3515x50f1_h58", "optics", ["Rifleman"], 12, 10], //NXS 3.5-15x50 F1 (H58)  (0.747234) 
+ ["rhsusf_acc_nxs_3515x50f1_md_sun", "optics", ["Rifleman"], 12, 10], //NXS 3.5-15x50 F1 (sunshade/mil-dot)  (0.747234) 
+ ["rhsusf_acc_nxs_3515x50f1_md", "optics", ["Rifleman"], 12, 10], //NXS 3.5-15x50 F1 (mil-dot)  (0.747234) 
+ ["rhsusf_acc_nxs_3515x50f1_h58_sun", "optics", ["Rifleman"], 12, 10], //NXS 3.5-15x50 F1 (sunshade/H58)  (0.747234) 
+ ["rhsusf_acc_nxs_5522x56_md", "optics", ["Rifleman"], 12, 10], //NXS 5.5-22x56 (mil-dot)  (0.747234) 
+ ["optic_AMS", "optics", ["Rifleman"], 13, 10], //US Optics MR-10 (Black)  (0.831489) 
+ ["ACE_optic_LRPS_PIP", "optics", ["Rifleman"], 15, 10] //Nightforce NXS (PIP)  (1) 
 ];
 
 GRLIB_arsenal_flashlaser = [
-    ["rhsusf_acc_anpeq15", "pointers", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_anpeq15A", "pointers", ["Rifleman"], 000, -1],
-    ["rhs_acc_perst3_2dp_light_h", "pointers", ["Rifleman"], 000, -1],
-    ["JAS_SFDBAL_Charlie_516_TOP_Blk", "pointers", ["Rifleman"], 000, -1],
-    ["rhs_acc_2dpZenit_ris", "pointers", ["Rifleman"], 000, -1],
-    ["CUP_Mxx_camo", "pointers", ["Rifleman"], 000, -1],
-    ["CUP_acc_Glock17_Flashlight", "pointers", ["Rifleman"], 000, -1],
-    ["hlc_acc_DBALPL", "pointers", ["Rifleman"], 000, -1],
-    ["CUP_acc_LLM01_F", "pointers", ["Rifleman"], 000, -1],
-    ["CUP_acc_XM8_light_module", "pointers", ["Rifleman"], 000, -1],
-    ["acc_flashlight", "pointers", ["Rifleman"], 000, -1],
-    ["rhs_acc_perst1ik", "pointers", ["Rifleman"], 000, -1],
-    ["rhs_acc_2dpZenit", "pointers", ["Rifleman"], 000, -1]
+    ["rhs_acc_perst3_2dp_light_h", "pointers", ["Rifleman"], 1, 100],
+    ["acc_flashlight", "pointers", ["Rifleman"], 2, 50],
+    ["rhs_acc_2dpZenit", "pointers", ["Rifleman"], 2, 20],
+    ["rhs_acc_2dpZenit_ris", "pointers", ["Rifleman"], 3, 20],
+    ["rhs_acc_perst1ik", "pointers", ["Rifleman"], 5, 10],
+    ["rhsusf_acc_anpeq15A", "pointers", ["Rifleman"], 6,20],
+    ["rhsusf_acc_anpeq15", "pointers", ["Rifleman"], 8, 10],
+    ["acc_pointer_IR", "pointers", ["Rifleman"], 8, 10],
+    ["hlc_acc_DBALPL", "pointers", ["Rifleman"], 5, 10]
 ];
 
 GRLIB_arsenal_bipods = [
-    ["rhsusf_acc_grip2", "underbarrel", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_saw_bipod", "underbarrel", ["Rifleman"], 000, -1],
-    ["JAS_SIG516_Rail_Cover_Right", "underbarrel", ["Rifleman"], 000, -1],
-    ["CUP_bipod_VLTOR_Modpod", "underbarrel", ["Rifleman"], 000, -1],
-    ["CUP_bipod_VLTOR_Modpod_black", "underbarrel", ["Rifleman"], 000, -1],
-    ["dzn_tripod_rifle", "underbarrel", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_grip3", "underbarrel", ["Rifleman"], 000, -1]
+    ["rhsusf_acc_grip1", "underbarrel", ["Rifleman"], 1, 20],
+    ["rhsusf_acc_grip2", "underbarrel", ["Rifleman"], 2, 15],
+    ["rhsusf_acc_grip3", "underbarrel", ["Rifleman"], 3, 10],
+    ["bipod_01_F_snd", "underbarrel", ["Rifleman"], 4, 30],
+    ["bipod_01_F_blk", "underbarrel", ["Rifleman"], 4, 30],
+    ["rhsusf_acc_saw_bipod", "underbarrel", ["Rifleman"], 4, 20]
 ];
 
 GRLIB_arsenal_muzzles = [
-    ["rhs_acc_tgpv2", "muzzles", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_aac_762sd_silencer", "muzzles", ["Rifleman"], 000, -1],
-    ["muzzle_snds_M", "muzzles", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_SR25S", "muzzles", ["Rifleman"], 000, -1],
-    ["rhs_acc_dtk4screws", "muzzles", ["Rifleman"], 000, -1],
-    ["uk3cb_muzzle_snds_g3", "muzzles", ["Rifleman"], 000, -1],
-    ["rhs_acc_dtk", "muzzles", ["Rifleman"], 000, -1],
-    ["rhs_acc_pgs64", "muzzles", ["Rifleman"], 000, -1],
-    ["rhs_acc_dtkakm", "muzzles", ["Rifleman"], 000, -1],
-    ["hlc_muzzle_556NATO_rotexiiic_tan", "muzzles", ["Rifleman"], 000, -1],
-    ["muzzle_snds_m_snd_F", "muzzles", ["Rifleman"], 000, -1],
-    ["CUP_muzzle_snds_KZRZP_SVD", "muzzles", ["Rifleman"], 000, -1],
-    ["rhs_acc_pbs1", "muzzles", ["Rifleman"], 000, -1],
-    ["muzzle_snds_B", "muzzles", ["Rifleman"], 000, -1],
-    ["hlc_muzzle_TiRant9S", "muzzles", ["Rifleman"], 000, -1],
-    ["uk3cb_muzzle_snds_mp5", "muzzles", ["Rifleman"], 000, -1],
-    ["rhsusf_acc_rotex_mp7", "muzzles", ["Rifleman"], 000, -1],
-    ["CUP_muzzle_snds_AWM", "muzzles", ["Rifleman"], 000, -1],
-    ["hlc_muzzle_snds_ROTEX3P", "muzzles", ["Rifleman"], 000, -1],
-    ["CUP_muzzle_mfsup_SCAR_H", "muzzles", ["Rifleman"], 000, -1],
-    ["hlc_muzzle_556NATO_M42000", "muzzles", ["Rifleman"], 000, -1],
-    ["rhs_acc_dtk3", "muzzles", ["Rifleman"], 000, -1],
-    ["rhs_acc_ak5", "muzzles", ["Rifleman"], 000, -1]
+    ["rhs_acc_dtkakm", "muzzles", ["Rifleman"], 1,50],
+    ["rhs_acc_dtk", "muzzles", ["Rifleman"], 2, 10],
+    ["rhs_acc_dtk3", "muzzles", ["Rifleman"], 3, 10],
+    ["rhs_acc_dtk4screws", "muzzles", ["Rifleman"], 4, 10],
+    ["hlc_muzzle_snds_ROTEX3P", "muzzles", ["Rifleman"], 5, 10],
+    ["rhs_acc_ak5", "muzzles", ["Rifleman"], 5, 20],
+    ["rhs_acc_pgs64", "muzzles", ["Rifleman"], 5, 20],
+    ["hlc_muzzle_556NATO_M42000", "muzzles", ["Rifleman"], 6, 10],
+    ["rhs_acc_pbs1", "muzzles", ["Rifleman"], 6, 10],
+    ["uk3cb_muzzle_snds_mp5", "muzzles", ["Rifleman"], 6, -1],
+    ["rhsusf_acc_rotex_mp7", "muzzles", ["Rifleman"], 6, -1],
+    ["rhs_acc_tgpv2", "muzzles", ["Rifleman"], 6, 20],//SVD supp
+    ["rhsusf_acc_aac_762sd_silencer", "muzzles", ["Rifleman"], 8, 20],//m110 supp
+    ["uk3cb_muzzle_snds_g3", "muzzles", ["Rifleman"], 8, 20], // SR supp
+    ["muzzle_snds_M", "muzzles", ["Rifleman"], 8, 20],
+    ["muzzle_snds_B_snd_F", "muzzles", ["Rifleman"], 8, 20],
+    ["hlc_muzzle_TiRant9S", "muzzles", ["Rifleman"], 8, 20],
+    ["rhsusf_acc_SR25S", "muzzles", ["Rifleman"], 8, 20],
+    ["hlc_muzzle_556NATO_rotexiiic_tan", "muzzles", ["Rifleman"], 000, 20],
+    ["muzzle_snds_m_snd_F", "muzzles", ["Rifleman"], 8, 20],
+    ["muzzle_snds_B", "muzzles", ["Rifleman"], 8, 20],
+    ["rhsgref_sdn6_suppressor", "muzzles", ["Rifleman"], 10, 20]
 ];
 
 GRLIB_arsenal_HandGrenade = [
@@ -411,40 +433,34 @@ GRLIB_arsenal_HandGrenade = [
 
 
 GRLIB_arsenal_explosives = [
-    ["SatchelCharge_Remote_Mag", "explosives", ["EOD"], 40, 10],
-    ["DemoCharge_Remote_Mag", "explosives", ["EOD"], 20, 20],
-    ["AMP_Breaching_Charge_Mag", "explosives", ["EOD"], 10, 20],
-    ["ATMine_Range_Mag", "explosives", ["EOD"], 50, 10],
-    ["APERSMine_Range_Mag", "explosives", ["EOD"], 000, -1],
-    ["rhsusf_mine_m14_mag", "explosives", ["EOD"], 000, -1],
-    ["APERSTripMine_Wire_Mag", "explosives", ["EOD"], 000, -1],
-    ["APERSBoundingMine_Range_Mag", "explosives", ["EOD"], 000, -1],
-    ["SLAMDirectionalMine_Wire_Mag", "explosives", ["EOD"], 000, -1],
-    ["ClaymoreDirectionalMine_Remote_Mag", "explosives", ["EOD"], 000, -1],
-    ["rhs_mine_M3_tripwire_mag", "explosives", ["EOD"], 10, 30]
+    ["SatchelCharge_Remote_Mag", "explosives", ["EOD"], 20, 10],
+    ["DemoCharge_Remote_Mag", "explosives", ["EOD"],10, 20],
+    ["AMP_Breaching_Charge_Mag", "explosives", ["EOD"], 5, 20],
+    ["ATMine_Range_Mag", "explosives", ["EOD"], 12, 10],
+    ["APERSMine_Range_Mag", "explosives", ["EOD"], 5, 0],
+    ["rhsusf_mine_m14_mag", "explosives", ["EOD"], 5, 0],
+    ["APERSTripMine_Wire_Mag", "explosives", ["EOD"], 3, 0],
+    ["APERSBoundingMine_Range_Mag", "explosives", ["EOD"], 5, 0],
+    ["SLAMDirectionalMine_Wire_Mag", "explosives", ["EOD"], 3, 0],
+    ["ClaymoreDirectionalMine_Remote_Mag", "explosives", ["EOD"], 5, 0],
+    ["rhs_mine_M3_tripwire_mag", "explosives", ["EOD"], 2, 30]
 ];
 
 
 GRLIB_arsenal_backpacks = [
-    // ["tfw_ilbe_whip_coy","backpacks",["Rifleman"],000,-1]
-    //,["tfw_ilbe_DD_coy","backpacks",["Rifleman"],000,-1]
-    //,["tfw_ilbe_blade_coy","backpacks",["Rifleman"],000,-1]
-    //,["eaf_private_bag","backpacks",["Rifleman"],000,-1]
-    //,["eaf_Engnieer_electronic_warfare_rf","backpacks",["Rifleman"],000,-1]
-    //,["eaf_Engnieer_electronic_warfare_gsm","backpacks",["Rifleman"],000,-1],
-    ["gear_assaultpack_SAKA_01", "backpacks", ["Rifleman"], 000, -1],
-    ["gear_assaultpack_SAKA_03", "backpacks", ["Rifleman"], 000, -1],
-    ["gear_assaultpack_SAKA_04", "backpacks", ["Rifleman"], 000, -1],
-    ["gear_assaultpack_SAKA_02", "backpacks", ["Rifleman"], 000, -1],
-    ["gear_FastPack_SAKA_03", "backpacks", ["Rifleman"], 000, -1],
-    ["gear_FastPack_SAKA_01", "backpacks", ["Rifleman"], 000, -1],
-    ["gear_Carryall_SAKA_02", "backpacks", ["Rifleman"], 000, -1],
-    ["gear_Carryall_SAKA_01", "backpacks", ["Rifleman"], 000, -1],
-    ["gear_FastPack_SAKA_04", "backpacks", ["Rifleman"], 000, -1],
-    ["gear_FastPack_SAKA_02", "backpacks", ["Rifleman"], 000, -1],
-    ["eaf_parachute_01_pack", "backpacks", ["Rifleman"], 000, -1],
-    ["Saka_tf_rt1523g_DES", "backpacks", ["Rifleman"], 000, -1],
-    ["Saka_tf_rt1523g_big_DES", "backpacks", ["Rifleman"], 000, -1]
+    ["gear_assaultpack_SAKA_01", "backpacks", ["Rifleman"], 5, 30],
+    ["gear_assaultpack_SAKA_03", "backpacks", ["Rifleman"], 5, 30],
+    ["gear_assaultpack_SAKA_04", "backpacks", ["Rifleman"], 5, 30],
+    ["gear_assaultpack_SAKA_02", "backpacks", ["Rifleman"], 5, 30],
+    ["gear_FastPack_SAKA_03", "backpacks", ["Rifleman"], 8, 20],
+    ["gear_FastPack_SAKA_01", "backpacks", ["Rifleman"], 8, 20],
+    ["gear_FastPack_SAKA_04", "backpacks", ["Rifleman"], 8, 20],
+    ["gear_FastPack_SAKA_02", "backpacks", ["Rifleman"], 8, 20],
+    ["gear_Carryall_SAKA_02", "backpacks", ["Rifleman"], 10, 15],
+    ["gear_Carryall_SAKA_01", "backpacks", ["Rifleman"], 10, 15],
+    ["eaf_parachute_01_pack", "backpacks", ["Rifleman"], 2, 10],
+    ["Saka_tf_rt1523g_DES", "backpacks", ["Rifleman"], 6, 10],
+    ["Saka_tf_rt1523g_big_DES", "backpacks", ["Rifleman"], 12, 15]
 ];
 
 GRLIB_arsenal_other = [
@@ -480,7 +496,6 @@ GRLIB_arsenal_other = [
     ["ACE_rope27", "others", ["Rifleman"], 12, 10],
     ["ACE_rope36", "others", ["Rifleman"], 15, 10],
     ["ACE_Tripod", "tools", ["Rifleman"], 15, 10],
-    ["tfw_rf3080Item", "tools", ["Rifleman"], 000, -1],
     ["ACE_elasticBandage", "medical", ["Medic"], 5, 100],
     ["kat_guedel", "medical", ["Medic"], 3, 100],
     ["ACE_packingBandage", "medical", ["Rifleman"], 4, 100],
