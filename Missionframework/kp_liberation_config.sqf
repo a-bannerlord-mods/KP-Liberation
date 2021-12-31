@@ -1172,8 +1172,18 @@ KP_liberation_qualifications = [
     ["Drone Operator","Skilled enough handling remote controlled vehicles",{_this setUnitTrait ["UAVHacker ", true];}],
     ["JTAC","Qualified enough to directs the action of combat aircraft engaged in close air support and other offensive air operations from a forward position",{}],
     ["Special Force","Qualified enough to operate in overt combat, front-line reconnaissance and raiding, rather than long range reconnaissance and unconventional warfare.",{}],
-    ["Officer","Qualified enough to lead teams on the battlefield",{}]
+    ["Officer","Qualified enough to lead teams on the battlefield",{player setUnitTrait ["officer", true,true];}]
 ];
+
+//C130 Halo 
+KPLIB_C130_halo_airplane_class = "EAF_C130";
+KPLIB_C130_halo_parachute_class = "eaf_parachuteClan_blk";
+KPLIB_C130_halo_param = 10;
+KPLIB_C130_halo_devices =  [ 
+    "MapBoard_altis_F",
+    "MapBoard_stratis_F",
+    "MapBoard_seismic_F"
+    ];
 
 //when the SAM Radars Active
 KP_Radars_Enable_On_Combat_Readiness_Above = 20;

@@ -138,5 +138,13 @@ KPLIB_objectInits = [
             };
         },
         true
+    ],
+     // add halo actions to halo devices
+    [
+        KPLIB_C130_halo_devices,
+        {
+            _this execVM "scripts\client\group_halo\add_helo_actions.sqf";
+        },
+        true
     ]
 ];

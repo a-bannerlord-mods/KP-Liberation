@@ -377,3 +377,32 @@ blufor_squad_para = [
 elite_vehicles = [
 
 ];
+
+
+/*
+    --- Elite vehicles ---
+    Classnames below have to be unlocked by capturing military bases.
+    Which base locks a vehicle is randomized on the first start of the campaign.
+*/
+C130_halo_allowed_vehicles = [
+    [FOB_box_typename,[],[],[]],
+    [KP_liberation_loadoutbox_classname,[],[],[]],
+    ["UK3CB_B_M151_Jeep_Closed_HIDF",[],[],[]],
+	["UK3CB_CW_US_B_EARLY_M151_Jeep_Open",[],[],[]],   
+    ["UK3CB_CW_US_B_EARLY_M151_Jeep_HMG",[],[],[]],   
+    ["UK3CB_CW_US_B_EARLY_M151_Jeep_TOW",[],[],[]],  
+    ["rhsusf_m998_d_4dr",[],[],[]],                                     
+    ["rhsusf_m998_d_2dr_fulltop",[],[],[]],                                
+    ["rhsusf_m998_d_4dr_halftop",[],[],[]],                             
+    
+	["rhsusf_m1043_d_s",[],[],[]],                                          
+	["rhsusf_m1043_d_s_m2",[],[],[]],                                    
+
+    ["rhsusf_m1151_usarmy_d",[],[],[]],                                 
+    ["rhsusf_m1151_m240_v1_usarmy_d",[],[],[]],                                      
+    ["rhsusf_m1151_m240_v2_usarmy_d",[],[],[]],                                
+	["rhsusf_m1151_m2_v1_usarmy_d",[],[],[]],                                         
+	["rhsusf_m1151_m2_v2_usarmy_d",[],[],[]],                                    
+    ["rhsusf_m1151_m2crows_usarmy_d",[],[],[]],                                 
+    ["rhsusf_m1151_m2_lras3_v1_usarmy_d",[],[],[]]                                    
+];
