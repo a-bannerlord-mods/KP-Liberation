@@ -225,7 +225,7 @@ addVehcileaction = {
     player addAction [format ["<t color='#0040ff' >Add to Halo</t>",gettext(configFile >> "Cfgvehicles" >> typeof _c130_flying_cargo >> "displayname")], {
 		params ["_target", "_caller", "_actionId", "_arguments"];
         _c130_flying_cargo =cursorObject;
-
+        _caller removeAction _actionId;
         _units = units _c130_flying_cargo;
         {
             _x action ["eject", _c130_flying_cargo];
@@ -240,7 +240,7 @@ addVehcileaction = {
         _c130_flying_cargo setvehicleVarName "c130_flying_cargo";
         c130_flying_cargo = _c130_flying_cargo;
         publicVariable "c130_flying_cargo";
-        _caller removeAction _actionId;
+        
         _c130_flying_cargo hideObjectglobal false;
 		
         
