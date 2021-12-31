@@ -20,7 +20,7 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=284;
+		nextID=307;
 	};
 	class Camera
 	{
@@ -21983,6 +21983,7 @@ class Mission
 					};
 					id=982;
 					type="Land_BottlePlastic_V2_F";
+					atlOffset=-0.13265991;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -22024,6 +22025,7 @@ class Mission
 					};
 					id=983;
 					type="Land_BottlePlastic_V2_F";
+					atlOffset=-0.13265991;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -22065,6 +22067,7 @@ class Mission
 					};
 					id=984;
 					type="Land_BottlePlastic_V2_F";
+					atlOffset=-0.13265991;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -34932,7 +34935,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={8387.708,302.03992,1982.5696};
-				angles[]={0,4.2068586,-0};
+				angles[]={0,4.2068586,0};
 			};
 			side="Empty";
 			flags=4;

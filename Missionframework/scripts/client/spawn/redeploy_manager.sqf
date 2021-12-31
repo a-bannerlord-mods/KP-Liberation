@@ -111,13 +111,15 @@ while {true} do {
         {
             KPLIB_respawnPositionsList = [[_basenamestr, getposATL startbase]];
             {
-                if !((getposATL startbase) isEqualTo _x) then {
+                if !(ceil(_x select 0) == ceil((getposATL startbase) select 0)
+                    && ceil(_x select 1)== ceil((getposATL startbase) select 1)
+                    && ceil(_x select 2)== ceil((getposATL startbase) select 2)) then {
                     KPLIB_respawnPositionsList pushBack [
                     format ["FOB %1 - %2", (military_alphabet select _forEachIndex), mapGridPosition _x],
                     _x
                 ];
                 };
-                
+                //bug
             } forEach GRLIB_all_fobs;
 
             if (KP_liberation_mobilerespawn) then {

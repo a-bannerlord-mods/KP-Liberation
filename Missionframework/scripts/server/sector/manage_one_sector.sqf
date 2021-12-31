@@ -39,8 +39,10 @@ active_sectors pushback _sector; publicVariable "active_sectors";
 
 private _opforcount = [] call KPLIB_fnc_getOpforCap;
 [_sector, _opforcount] call wait_to_spawn_sector;
-
-if ((!(_sector in blufor_sectors)) && (([markerPos _sector, [_opforcount] call KPLIB_fnc_getSectorRange, GRLIB_side_friendly,_sector] call KPLIB_fnc_getUnitsCount) > 0)) then {
+_range= [_opforcount] call KPLIB_fnc_getSectorRange;
+if ((!(_sector in blufor_sectors)) &&
+    (_sector in sectors_forced_spawn ||
+    (!(_sector in sectors_forced_despawn) && ([markerPos _sector, _range, GRLIB_side_friendly,_sector] call KPLIB_fnc_getUnitsCount) > 0))) then {
 
     if (_sector in sectors_bigtown) then {
         if (combat_readiness < 30) then {_infsquad = "militia";};
@@ -382,7 +384,7 @@ if ((!(_sector in blufor_sectors)) && (([markerPos _sector, [_opforcount] call K
                 _sector_despawn_tickets = BASE_TICKETS + _additionalTickets;
             };
 
-            if (_sector_despawn_tickets <= 0) then {
+            if ((_sector_despawn_tickets <= 0)||(_sector in sectors_forced_despawn && !(_sector in sectors_forced_spawn))) then {
                 {
                     if (_x isKindOf "Man") then {
                         deleteVehicle _x;

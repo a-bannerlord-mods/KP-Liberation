@@ -28,6 +28,10 @@ sectors_lightArtillery= [];
 sectors_heavyArtillery= [];
 sectors_longRange = [];
 sectors_destroyable = [];
+
+sectors_forced_spawn =[];
+sectors_forced_despawn =[];
+
 {
     switch (true) do {
         case (_x find "bigtown" == 0): {sectors_bigtown pushBack _x; sectors_allSectors pushBack _x;};
