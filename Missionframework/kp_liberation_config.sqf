@@ -1170,7 +1170,7 @@ KP_liberation_qualifications = [
     ["AT","Skilled enough handling anti-tank weapons",{}],
     ["AA","Skilled enough handling anti-air weapons",{}],
     ["Drone Operator","Skilled enough handling remote controlled vehicles",{_this setUnitTrait ["UAVHacker ", true];}],
-    ["JTAC","Qualified enough to directs the action of combat aircraft engaged in close air support and other offensive air operations from a forward position",{}],
+    ["JTAC","Qualified enough to directs the action of combat aircraft engaged in close air support and other offensive air operations from a forward position",{_this setUnitTrait ["JTAC ", true];}],
     ["Special Force","Qualified enough to operate in overt combat, front-line reconnaissance and raiding, rather than long range reconnaissance and unconventional warfare.",{}],
     ["Officer","Qualified enough to lead teams on the battlefield",{player setUnitTrait ["officer", true,true];}]
 ];

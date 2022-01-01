@@ -406,3 +406,22 @@ C130_halo_allowed_vehicles = [
     ["rhsusf_m1151_m2crows_usarmy_d",[],[],[]],                                 
     ["rhsusf_m1151_m2_lras3_v1_usarmy_d",[],[],[]]                                    
 ];
+
+blufor_transport_support_vehicles = [
+    ["EAF_CH47",50],
+    ["EAF_uh60",20],
+    ["EAFhmt",20],
+
+    [KP_liberation_truck_fuel_classname,10],
+    [KP_liberation_truck_ammo_classname,10],
+    [KP_liberation_truck_repair_classname,10], 
+    [KP_liberation_truck_classname,10],
+    ["B_Truck_01_Repair_F",10],
+    ["B_Truck_01_fuel_F",10],
+    ["B_Truck_01_Repair_F",10]
+];
+
+blufor_cas_support_vehicles = [
+    ["EAF_ka52",50],
+    ["EAF_ah64",60]
+];

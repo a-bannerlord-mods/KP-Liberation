@@ -1,6 +1,8 @@
 
 
 if (isClass(configFile >> "CfgPatches" >> "SSS")) exitwith {
-	kpsss_add_cas_helicopter_support = compile preprocessFileLineNumbers "compatibility\simplex_support_services\add_cas_helicopter_support.sqf";
-	kpsss_add_transport_support = compile preprocessFileLineNumbers "compatibility\simplex_support_services\add_transport_support.sqf";
+	sss_interaction_fnc_childactionstransportlandvehicle = compile preprocessFileLineNumbers "compatibility\simplex_support_services\sss_interaction_fnc_childactionstransportlandvehicle.sqf";
+	sss_interaction_fnc_childactionstransporthelicopter = compile preprocessFileLineNumbers "compatibility\simplex_support_services\sss_interaction_fnc_childactionstransporthelicopter.sqf";
+	sss_interaction_fnc_childactionstransportplane = compile preprocessFileLineNumbers "compatibility\simplex_support_services\sss_interaction_fnc_childactionstransportplane.sqf";
+	sss_interaction_fnc_childactionscashelicopter = compile preprocessFileLineNumbers "compatibility\simplex_support_services\sss_interaction_fnc_childactionscashelicopter.sqf";
 };
