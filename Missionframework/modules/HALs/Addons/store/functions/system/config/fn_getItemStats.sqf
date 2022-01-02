@@ -51,7 +51,15 @@ if (isNil "HALs_store_stats_weapons") exitWith {
 		selectMax (("true" configClasses (_x >> "ItemInfo" >> "OpticsModes")) apply {getNumber (_x >> "distanceZoomMax")})
 	};
 	private _statsOpticsMax = ("isClass (_x >> 'ItemInfo' >> 'OpticsModes')" configClasses (configFile >> "CfgWeapons")) apply {
-		selectMax (("true" configClasses (_x >> "ItemInfo" >> "OpticsModes")) apply {getNumber (_x >> "distanceZoomMax")})
+		selectMax (("true" configClasses (_x >> "ItemInfo" >> "OpticsModes")) 
+		apply {
+					getNumber (_x >> "distanceZoomMax");
+					if ( isNumber (_x >> "distanceZoomMax") ) then {
+						getNumber (_x >> "distanceZoomMax")
+					} else {
+						0
+					};
+				})
 	};
 	_statsOpticsMin =_statsOpticsMin select {_x > 0};
 	_statsOpticsMax = _statsOpticsMax select {_x > 0};

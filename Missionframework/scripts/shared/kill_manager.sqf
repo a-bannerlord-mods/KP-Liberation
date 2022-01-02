@@ -170,7 +170,7 @@ if (isServer) then {
     };
 };
 
-_attached_target = _this getVariable ["attached_target",objNull];
+_attached_target = _unit getVariable ["attached_target",objNull];
 if !(isnull _attached_target) then {
     deleteVehicle _attached_target;
 };

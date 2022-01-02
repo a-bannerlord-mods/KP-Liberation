@@ -1,14 +1,20 @@
 private _convoy_destinations_markers = [];
 private _load_box_fnc = compileFinal preprocessFileLineNumbers "scripts\client\ammoboxes\do_load_box.sqf";
+_trails = 0;
+while { _trails < 10 && count _convoy_destinations_markers < 4 } do { 
+    _spawnpoint =  [1200,4500 * ((count _convoy_destinations_markers)/2) ,false] call KPLIB_fnc_getOpforSpawnPoint;
+    _nearestRoad = [getMarkerPos _spawnpoint, 500] call BIS_fnc_nearestRoad;
+    if (!isnull _nearestRoad) then {
+        _convoy_destinations_markers pushback  (getposatl _nearestRoad);
+    };
+    _trails = _trails + 1;
 
-while { count _convoy_destinations_markers < 3 } do { _convoy_destinations_markers pushback ([2000,999999,false] call KPLIB_fnc_getOpforSpawnPoint); };
+};
 
 private _couldnt_spawn = false;
-{ if ( _x == "" ) exitWith { _couldnt_spawn = true; }; } foreach _convoy_destinations_markers;
-if ( _couldnt_spawn ) exitWith {["Could not find enough map positions for convoy hijack mission", "ERROR"] call KPLIB_fnc_log;};
 
 private _convoy_destinations = [];
-{ _convoy_destinations pushback (markerPos _x); } foreach _convoy_destinations_markers;
+{ _convoy_destinations pushback _x; } foreach _convoy_destinations_markers;
 
 private _spawnpos = _convoy_destinations select 0;
 [4, _spawnpos] remoteExec ["remote_call_intel"];
@@ -38,7 +44,7 @@ while { _boxes_loaded < _boxes_amount } do {
 
 sleep 0.5;
 
-private _troop_vehicle = [_spawnpos getPos [30, 180], opfor_transport_truck, true, true, false ] call KPLIB_fnc_spawnVehicle;
+private _troop_vehicle = [_spawnpos getPos [30, 180], opfor_transport_truck, true, true ] call KPLIB_fnc_spawnVehicle;
 
 sleep 0.5;
 

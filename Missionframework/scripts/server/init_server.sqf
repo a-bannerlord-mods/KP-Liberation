@@ -1,36 +1,36 @@
 // AI
-add_civ_waypoints = compileFinal preprocessFileLineNumbers "scripts\server\ai\add_civ_waypoints.sqf";
-add_defense_waypoints = compileFinal preprocessFileLineNumbers "scripts\server\ai\add_defense_waypoints.sqf";
-battlegroup_ai = compileFinal preprocessFileLineNumbers "scripts\server\ai\battlegroup_ai.sqf";
-building_defence_ai = compileFinal preprocessFileLineNumbers "scripts\server\ai\building_defence_ai.sqf";
-patrol_ai = compileFinal preprocessFileLineNumbers "scripts\server\ai\patrol_ai.sqf";
-prisonner_ai = compileFinal preprocessFileLineNumbers "scripts\server\ai\prisonner_ai.sqf";
-troup_transport = compileFinal preprocessFileLineNumbers "scripts\server\ai\troup_transport.sqf";
+add_civ_waypoints = compile preprocessFileLineNumbers "scripts\server\ai\add_civ_waypoints.sqf";
+add_defense_waypoints = compile preprocessFileLineNumbers "scripts\server\ai\add_defense_waypoints.sqf";
+battlegroup_ai = compile preprocessFileLineNumbers "scripts\server\ai\battlegroup_ai.sqf";
+building_defence_ai = compile preprocessFileLineNumbers "scripts\server\ai\building_defence_ai.sqf";
+patrol_ai = compile preprocessFileLineNumbers "scripts\server\ai\patrol_ai.sqf";
+prisonner_ai = compile preprocessFileLineNumbers "scripts\server\ai\prisonner_ai.sqf";
+troup_transport = compile preprocessFileLineNumbers "scripts\server\ai\troup_transport.sqf";
 
 // Battlegroup
-spawn_air = compileFinal preprocessFileLineNumbers "scripts\server\battlegroup\spawn_air.sqf";
-spawn_battlegroup = compileFinal preprocessFileLineNumbers "scripts\server\battlegroup\spawn_battlegroup.sqf";
+spawn_air = compile preprocessFileLineNumbers "scripts\server\battlegroup\spawn_air.sqf";
+spawn_battlegroup = compile preprocessFileLineNumbers "scripts\server\battlegroup\spawn_battlegroup.sqf";
 
 // Game
-check_victory_conditions = compileFinal preprocessFileLineNumbers "scripts\server\game\check_victory_conditions.sqf";
+check_victory_conditions = compile preprocessFileLineNumbers "scripts\server\game\check_victory_conditions.sqf";
 
 // Patrol
-manage_one_civilian_patrol = compileFinal preprocessFileLineNumbers "scripts\server\patrols\manage_one_civilian_patrol.sqf";
-manage_one_patrol = compileFinal preprocessFileLineNumbers "scripts\server\patrols\manage_one_patrol.sqf";
-reinforcements_manager = compileFinal preprocessFileLineNumbers "scripts\server\patrols\reinforcements_manager.sqf";
-send_paratroopers = compileFinal preprocessFileLineNumbers "scripts\server\patrols\send_paratroopers.sqf";
+manage_one_civilian_patrol = compile preprocessFileLineNumbers "scripts\server\patrols\manage_one_civilian_patrol.sqf";
+manage_one_patrol = compile preprocessFileLineNumbers "scripts\server\patrols\manage_one_patrol.sqf";
+reinforcements_manager = compile preprocessFileLineNumbers "scripts\server\patrols\reinforcements_manager.sqf";
+send_paratroopers = compile preprocessFileLineNumbers "scripts\server\patrols\send_paratroopers.sqf";
 
 // Secondary objectives
-fob_hunting = compileFinal preprocessFileLineNumbers "scripts\server\secondary\fob_hunting.sqf";
-convoy_hijack = compileFinal preprocessFileLineNumbers "scripts\server\secondary\convoy_hijack.sqf";
-search_and_rescue = compileFinal preprocessFileLineNumbers "scripts\server\secondary\search_and_rescue.sqf";
+fob_hunting = compile preprocessFileLineNumbers "scripts\server\secondary\fob_hunting.sqf";
+convoy_hijack = compile preprocessFileLineNumbers "scripts\server\secondary\convoy_hijack.sqf";
+search_and_rescue = compile preprocessFileLineNumbers "scripts\server\secondary\search_and_rescue.sqf";
 
 // Sector
-attack_in_progress_fob = compileFinal preprocessFileLineNumbers "scripts\server\sector\attack_in_progress_fob.sqf";
-attack_in_progress_sector = compileFinal preprocessFileLineNumbers "scripts\server\sector\attack_in_progress_sector.sqf";
-ied_manager = compileFinal preprocessFileLineNumbers "scripts\server\sector\ied_manager.sqf";
-manage_one_sector = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_one_sector.sqf";
-wait_to_spawn_sector = compileFinal preprocessFileLineNumbers "scripts\server\sector\wait_to_spawn_sector.sqf";
+attack_in_progress_fob = compile preprocessFileLineNumbers "scripts\server\sector\attack_in_progress_fob.sqf";
+attack_in_progress_sector = compile preprocessFileLineNumbers "scripts\server\sector\attack_in_progress_sector.sqf";
+ied_manager = compile preprocessFileLineNumbers "scripts\server\sector\ied_manager.sqf";
+manage_one_sector = compile preprocessFileLineNumbers "scripts\server\sector\manage_one_sector.sqf";
+wait_to_spawn_sector = compile preprocessFileLineNumbers "scripts\server\sector\wait_to_spawn_sector.sqf";
 
 // Globals
 active_sectors = []; publicVariable "active_sectors";
@@ -133,5 +133,5 @@ execVM "scripts\server\playerdata\player_data_events.sqf";
 [supplies_radio, "supplies"] spawn HALs_store_fnc_addTrader; 
 
 
-[] call compileFinal preprocessFileLineNumbers "compatibility\compatibility_server_init.sqf";
+[] call compile preprocessFileLineNumbers "compatibility\compatibility_server_init.sqf";
 

@@ -448,19 +448,21 @@ GRLIB_arsenal_explosives = [
 
 
 GRLIB_arsenal_backpacks = [
-    ["gear_assaultpack_SAKA_01", "backpacks", ["Rifleman"], 5, 30],
-    ["gear_assaultpack_SAKA_03", "backpacks", ["Rifleman"], 5, 30],
-    ["gear_assaultpack_SAKA_04", "backpacks", ["Rifleman"], 5, 30],
-    ["gear_assaultpack_SAKA_02", "backpacks", ["Rifleman"], 5, 30],
-    ["gear_FastPack_SAKA_03", "backpacks", ["Rifleman"], 8, 20],
-    ["gear_FastPack_SAKA_01", "backpacks", ["Rifleman"], 8, 20],
-    ["gear_FastPack_SAKA_04", "backpacks", ["Rifleman"], 8, 20],
-    ["gear_FastPack_SAKA_02", "backpacks", ["Rifleman"], 8, 20],
-    ["gear_Carryall_SAKA_02", "backpacks", ["Rifleman"], 10, 15],
-    ["gear_Carryall_SAKA_01", "backpacks", ["Rifleman"], 10, 15],
-    ["eaf_parachute_01_pack", "backpacks", ["Rifleman"], 2, 10],
-    ["Saka_tf_rt1523g_DES", "backpacks", ["Rifleman"], 6, 10],
-    ["Saka_tf_rt1523g_big_DES", "backpacks", ["Rifleman"], 12, 15]
+    ["eaf_private_bag", "backpacks", ["Rifleman"], 2, 40],
+    ["rhs_rpg_6b2", "backpacks", ["AT","AA"], 3, 40],
+    ["gear_assaultpack_SAKA_01", "backpacks", ["Special Force"], 5, 30],
+    ["gear_assaultpack_SAKA_03", "backpacks", ["Special Force"], 5, 30],
+    ["gear_assaultpack_SAKA_04", "backpacks", ["Special Force"], 5, 30],
+    ["gear_assaultpack_SAKA_02", "backpacks", ["Special Force"], 5, 30],
+    ["gear_FastPack_SAKA_03", "backpacks", ["EOD","Engineer","Medic"], 8, 20],
+    ["gear_FastPack_SAKA_01", "backpacks", ["EOD","Engineer","Medic"], 8, 20],
+    ["gear_FastPack_SAKA_04", "backpacks", ["EOD","Engineer","Medic"], 8, 20],
+    ["gear_FastPack_SAKA_02", "backpacks", ["EOD","Engineer","Medic"], 8, 20],
+    ["gear_Carryall_SAKA_02", "backpacks", ["EOD","Engineer","Medic"], 10, 15],
+    ["gear_Carryall_SAKA_01", "backpacks", ["EOD","Engineer","Medic"], 10, 15],
+    ["eaf_parachute_01_pack", "backpacks", ["EOD","Engineer","Medic"], 2, 10],
+    ["Saka_tf_rt1523g_DES", "backpacks", ["JTAC","Officer"], 6, 10],
+    ["Saka_tf_rt1523g_big_DES", "backpacks", ["JTAC","Officer"], 12, 15]
 ];
 
 GRLIB_arsenal_other = [

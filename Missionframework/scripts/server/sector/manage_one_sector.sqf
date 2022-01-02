@@ -238,6 +238,8 @@ if ((!(_sector in blufor_sectors)) &&
         _vehicle= objNull;
         if ( _sector in sectors_lightArtillery ||  _sector in sectors_heavyArtillery || _sector in sectors_SAM ) then {
             _vehicle = [_sectorpos, _x,false,true,_g] call KPLIB_fnc_spawnVehicle;
+            _vehicle allowCrewInImmobile true;
+            _vehicle setFuel 0;
         }else{
             _vehicle = [_sectorpos, _x] call KPLIB_fnc_spawnVehicle;
             [group ((crew _vehicle) select 0),_sectorpos] spawn add_defense_waypoints;
@@ -306,6 +308,7 @@ if ((!(_sector in blufor_sectors)) &&
                 _emptypos = selectRandom _top_positions;        
                 if (count _emptypos > 1 ) then {
                     _vehicle = [ [_emptypos select 0 , _emptypos select 1 ,(_emptypos select 2) +1.5] , _gun ,true,true,_g] call KPLIB_fnc_spawnVehicle;
+                    _vehicle allowCrewInImmobile true;
                     _managed_units pushback _vehicle;
                     {_managed_units pushback _x;} foreach (crew _vehicle);
                     sleep 1;
@@ -320,6 +323,7 @@ if ((!(_sector in blufor_sectors)) &&
                 _emptypos = selectRandom _top_positions;        
                 if (count _emptypos > 1 ) then {
                     _vehicle = [ [_emptypos select 0 , _emptypos select 1 ,(_emptypos select 2) +1.5] , _gun ,true,true,_g] call KPLIB_fnc_spawnVehicle;
+                    _vehicle allowCrewInImmobile true;
                     _managed_units pushback _vehicle;
                     {_managed_units pushback _x;} foreach (crew _vehicle);
                     sleep 1;
@@ -339,6 +343,7 @@ if ((!(_sector in blufor_sectors)) &&
                 _emptypos= _rndpos findEmptyPosition [0,30,_gun];
                 if (count _emptypos > 1 ) then {
                     _vehicle = [ [_emptypos select 0 , _emptypos select 1 ,(_emptypos select 2) +1.5] , _gun ,true,true,_g] call KPLIB_fnc_spawnVehicle;
+                    _vehicle allowCrewInImmobile true;
                     _managed_units pushback _vehicle;
                     {_managed_units pushback _x;} foreach (crew _vehicle);
                     _vehicle setDir ((_vehicle getRelDir _sectorpos) - 180);

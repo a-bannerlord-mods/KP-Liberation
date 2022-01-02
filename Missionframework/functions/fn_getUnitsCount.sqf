@@ -36,7 +36,7 @@ if (_sector!="") then {
     };
 };
 
-private _amount = _side countSide ((_pos nearEntities ["Man", _radius]) select {!(captive _x) && ((getpos _x) select 2 < _high)});
+private _amount = _side countSide ((_pos nearEntities ["Man", _radius]) select {!(_x getVariable["ACE_isUnconscious", false]) && !(captive _x) && ((getpos _x) select 2 < _high)});
 {
     _amount = _amount + (_side countSide (crew _x));
 } forEach ((_pos nearEntities [["Car", "Tank", "Air", "Boat"], _radius]) select {((getpos _x) select 2 < _high) && count (crew _x) > 0});
