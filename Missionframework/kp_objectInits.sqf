@@ -61,6 +61,19 @@ KPLIB_objectInits = [
             if (KPLIB_firstTime) then {
                 _this call jn_fnc_arsenal_addInitialArsenalItems;
             };
+
+            _t= createVehicle ["CBA_B_InvisibleTargetVehicle",getPosATL _this]; 
+            createVehicleCrew _t;
+            _t attachTo [_this, [0, 0, 0.5]];
+            _this setVariable ["attached_target",_t,true];
+            _this addMPEventHandler ["MPKilled", {
+                params ["_unit", "_killer", "_instigator", "_useEffects"];
+                _attached_target = _unit getVariable ["attached_target",objNull];
+                    if !(isnull _attached_target) then {
+                        deleteVehicle _attached_target;
+                    };
+                }];
+
             [_this, []] call jn_fnc_arsenal_initPersistent; 
         }
     ],

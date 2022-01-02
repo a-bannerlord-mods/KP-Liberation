@@ -12,7 +12,7 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=1584;
+		nextID=2411;
 	};
 	class MarkerIDProvider
 	{
@@ -20,14 +20,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=353;
+		nextID=364;
 	};
 	class Camera
 	{
-		pos[]={8270.2773,332.681,2094.2256};
-		dir[]={-0.56815201,-0.47327635,-0.67321086};
-		up[]={-0.30524307,0.88091397,-0.36168656};
-		aside[]={-0.76421851,-1.4901161e-008,0.64495736};
+		pos[]={8396.375,356.54477,2005.3108};
+		dir[]={-0.35767671,-0.56758511,0.74160534};
+		up[]={-0.24657223,0.82330918,0.51124281};
+		aside[]={0.90074253,-2.4330802e-008,0.43442848};
 	};
 };
 binarizationWanted=0;
@@ -84,13 +84,14 @@ addons[]=
 	"A3_Misc_F_Helpers",
 	"A3_Structures_F_Heli_VR_Helpers",
 	"EAF",
-	"A3_Structures_F_Civ_InfoBoards"
+	"A3_Structures_F_Civ_InfoBoards",
+	"CUP_Buildings_Config"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=25;
+		items=26;
 		class Item0
 		{
 			className="A3_Modules_F_Curator";
@@ -255,6 +256,11 @@ class AddonsMetaData
 		{
 			className="EAF";
 			name="EAF";
+		};
+		class Item25
+		{
+			className="CUP_Buildings_Config";
+			name="CUP_Buildings_Config";
 		};
 	};
 };
@@ -17527,7 +17533,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=119;
+		items=126;
 		class Item0
 		{
 			dataType="Trigger";
@@ -26421,7 +26427,7 @@ class Mission
 					name="Bar Gate";
 					class Entities
 					{
-						items=4;
+						items=6;
 						class Item0
 						{
 							dataType="Object";
@@ -26526,12 +26532,12 @@ class Mission
 						class Item3
 						{
 							dataType="Trigger";
-							position[]={10411.641,256.85999,6373.0254};
+							position[]={10411.641,256.86002,6373.0249};
 							angle=3.8752241;
 							class Attributes
 							{
 								name="gate_trigger_1";
-								onActivation="Gate_0 animate [""Door_1_rot"", 1]";
+								onActivation="Gate_1 animate [""Door_1_rot"", 1]";
 								onDeactivation="Gate_0 animate [""Door_1_rot"", 0]";
 								sizeA=5;
 								sizeB=10;
@@ -26542,14 +26548,75 @@ class Mission
 							};
 							id=1217;
 							type="EmptyDetectorArea10x10";
+							atlOffset=3.0517578e-005;
+						};
+						class Item4
+						{
+							dataType="Object";
+							class PositionInfo
+							{
+								position[]={8408.583,300.0903,1938.7017};
+								angles[]={0,4.3741236,-0};
+							};
+							side="Empty";
+							flags=5;
+							class Attributes
+							{
+								name="gate_2";
+							};
+							id=1584;
+							type="Land_BarGate_F";
+							class CustomAttributes
+							{
+								class Attribute0
+								{
+									property="allowDamage";
+									expression="_this allowdamage _value;";
+									class Value
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"BOOL"
+												};
+											};
+											value=0;
+										};
+									};
+								};
+								nAttributes=1;
+							};
+						};
+						class Item5
+						{
+							dataType="Trigger";
+							position[]={8408.583,296.04001,1938.702};
+							angle=4.3741269;
+							class Attributes
+							{
+								name="gate_trigger_2";
+								onActivation="Gate_2 animate [""Door_1_rot"", 1]";
+								onDeactivation="Gate_0 animate [""Door_1_rot"", 0]";
+								sizeA=5;
+								sizeB=10;
+								sizeC=5;
+								repeatable=1;
+								activationBy="WEST";
+								isRectangle=1;
+							};
+							id=1585;
+							type="EmptyDetectorArea10x10";
 						};
 					};
 					id=1141;
-					atlOffset=-192.65759;
+					atlOffset=-86.939911;
 				};
 			};
 			id=1144;
-			atlOffset=-192.65759;
+			atlOffset=-86.939911;
 		};
 		class Item68
 		{
@@ -34959,6 +35026,108 @@ class Mission
 			};
 			id=1583;
 			type="MapBoard_stratis_F";
+		};
+		class Item119
+		{
+			dataType="Layer";
+			name="[Prae] Forest Hostage Detention";
+			id=1977;
+			atlOffset=-610.15997;
+		};
+		class Item120
+		{
+			dataType="Layer";
+			name="Torture/prison warehouse";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Layer";
+					name="Decorations";
+					class Entities
+					{
+						items=1;
+						class Item0
+						{
+							dataType="Layer";
+							name="Interrogation/torture";
+							class Entities
+							{
+								items=1;
+								class Item0
+								{
+									dataType="Layer";
+									name="Torture house/prison";
+									id=1980;
+									atlOffset=-610.15997;
+								};
+							};
+							id=1979;
+							atlOffset=-610.15997;
+						};
+					};
+					id=1978;
+					atlOffset=-610.15997;
+				};
+			};
+			id=2236;
+			atlOffset=-610.15997;
+		};
+		class Item121
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={8202.7129,302.4494,2162.479};
+			};
+			side="Empty";
+			class Attributes
+			{
+			};
+			id=2238;
+			type="Land_Vysilac_FM2";
+			atlOffset=0.79302979;
+		};
+		class Item122
+		{
+			dataType="Group";
+			side="East";
+			class Attributes
+			{
+			};
+			id=2365;
+			atlOffset=2.2679243e+033;
+		};
+		class Item123
+		{
+			dataType="Group";
+			side="East";
+			class Attributes
+			{
+			};
+			id=2373;
+			atlOffset=2.2679243e+033;
+		};
+		class Item124
+		{
+			dataType="Group";
+			side="East";
+			class Attributes
+			{
+			};
+			id=2377;
+			atlOffset=2.2679243e+033;
+		};
+		class Item125
+		{
+			dataType="Group";
+			side="East";
+			class Attributes
+			{
+			};
+			id=2382;
+			atlOffset=2.2679243e+033;
 		};
 	};
 	class Connections

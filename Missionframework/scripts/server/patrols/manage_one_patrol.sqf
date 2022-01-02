@@ -41,7 +41,11 @@ while { GRLIB_endgame == 0 } do {
             _vehicle_object = [_sector_spawn_pos, [] call KPLIB_fnc_getAdaptiveVehicle] call KPLIB_fnc_spawnVehicle;
         };
         if ((_vehicle_object isKindOf "Tank")|| (_vehicle_object isKindOf "Car")) then {
-                    _vehicle_object forceFlagtexture opfor_flag_texture;
+                    if (typeOf _vehicle in  militia_vehicles) then {
+                        _vehicle forceFlagtexture opfor_flag_militia_texture;
+                    } else {
+                        _vehicle forceFlagtexture opfor_flag_texture;
+                    };
         };
 
         sleep 0.5;

@@ -22,7 +22,8 @@ params [
     ["_type", "army", [""]],
     ["_amount", 0, [0]],
     ["_positions", [], [[]]],
-    ["_sector", "", [""]]
+    ["_sector", "", [""]],
+    ["_grp", grpNull , [grpNull ]]
 ];
 
 if (_sector isEqualTo "") exitWith {["Empty string given"] call BIS_fnc_error; []};
@@ -36,7 +37,9 @@ if (_amount > floor ((count _positions) * GRLIB_defended_buildingpos_part)) then
 };
 
 // Spawn units
-private _grp = createGroup [GRLIB_side_enemy, true];
+if (isnull _grp) then {
+    _grp = createGroup [GRLIB_side_enemy, true];
+};
 private _pos = markerPos _sector;
 private _unit = objNull;
 private _units = [];

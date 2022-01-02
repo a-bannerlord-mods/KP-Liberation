@@ -136,7 +136,7 @@ KP_liberation_preset_blufor = 31;
 18 = CUP Chernarus Defense Force
 19 = CUP British Armed Forces (Desert)
 20 = CUP British Armed Forces (Woodland) */
-KP_liberation_preset_opfor = 4;
+KP_liberation_preset_opfor = 21;
 
 /* Resistance preset:
 0  = Custom (default vanilla FIA)
@@ -1195,3 +1195,5 @@ GRLIB_replaceRespawnButtonWithRedeploy =true;
 KPLIB_classnamesToSave = [];
 
 KPLIB_Tutorials_Articles = [];
+
+GRLIB_enable_capture_counter = false;

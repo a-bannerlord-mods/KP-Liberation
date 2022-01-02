@@ -170,6 +170,11 @@ if (isServer) then {
     };
 };
 
+_attached_target = _this getVariable ["attached_target",objNull];
+if !(isnull _attached_target) then {
+    deleteVehicle _attached_target;
+};
+
 // Body/Wreck deletion after cleanup delay
 if (isServer && !isplayer _unit) then {
     sleep GRLIB_cleanup_delay;

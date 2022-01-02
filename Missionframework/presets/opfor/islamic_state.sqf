@@ -176,3 +176,28 @@ opfor_light_artillery = [
 opfor_heavy_artillery = [
     "O_MBT_02_arty_F"
 ];
+
+
+// Enemy static guns
+opfor_static_guns = [
+    "LOP_ISTS_OPF_Static_DSHKM", 
+    "LOP_ISTS_OPF_Kord_High", 
+    "LOP_ISTS_OPF_Static_M2"
+];
+
+opfor_AT_static_guns = [
+    "LOP_ISTS_OPF_Static_AT4", 
+    "LOP_ISTS_OPF_Static_SPG9",
+    "rhs_Kornet_9M133_2_msv",
+    "LOP_IA_M119"
+];
+
+opfor_AA_static_guns = [
+    "LOP_ISTS_OPF_Igla_AA_pod", 
+    "LOP_TKA_ZU23"
+];
+
+opfor_heavy_static_guns =[
+    "LOP_TKA_ZU23",
+    "LOP_IA_M119"
+];

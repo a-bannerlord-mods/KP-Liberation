@@ -90,6 +90,7 @@ class KPLIB {
         class onPause                   {};
         class combatReadinessUpdated    {}; 
         class removeUselessSectorMarkers    {};
+        class getBuildingRooftopPositions {};
     };
     class functions_curator {
         file = "functions\curator";

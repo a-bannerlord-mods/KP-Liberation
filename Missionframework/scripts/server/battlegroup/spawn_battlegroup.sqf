@@ -52,10 +52,12 @@ if !(_spawn_marker isEqualTo "") then {
             _nextgrp = createGroup [GRLIB_side_enemy, true];
             _vehicle = [markerpos _spawn_marker, _x] call KPLIB_fnc_spawnVehicle;
 
-            _vehicle forceFlagtexture opfor_flag_texture;
-
             if ((_vehicle isKindOf "Tank")|| (_vehicle isKindOf "Car")) then {
-                    _vehicle forceFlagtexture opfor_flag_texture;
+                    if (typeOf _vehicle in  militia_vehicles) then {
+                        _vehicle forceFlagtexture opfor_flag_militia_texture;
+                    } else {
+                        _vehicle forceFlagtexture opfor_flag_texture;
+                    };
             };
             sleep 0.5;
 

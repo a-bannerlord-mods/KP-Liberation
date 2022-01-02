@@ -246,7 +246,11 @@ if ((!(_sector in blufor_sectors)) &&
         _managed_units pushback _vehicle;
         {_managed_units pushback _x;} foreach (crew _vehicle);
         if ((_vehicle isKindOf "Tank")|| (_vehicle isKindOf "Car")) then {
-                    _vehicle forceFlagtexture opfor_flag_texture;
+                    if (typeOf _vehicle in  militia_vehicles) then {
+                        _vehicle forceFlagtexture opfor_flag_militia_texture;
+                    } else {
+                        _vehicle forceFlagtexture opfor_flag_texture;
+                    };
         };
 
         sleep 0.25;
@@ -255,15 +259,98 @@ if ((!(_sector in blufor_sectors)) &&
     
 
     if (_building_ai_max > 0) then {
+        _largestB = objNull;
+        _largestBPos = 0;
         _allbuildings = (nearestObjects [_sectorpos, ["House"], _building_range]) select {alive _x};
         _buildingpositions = [];
         {
             _buildingpositions = _buildingpositions + ([_x] call BIS_fnc_buildingPositions);
+            if (count _buildingpositions > _largestBPos) then {
+                _largestBPos = count _buildingpositions;
+                _largestB = _x;
+            };
         } forEach _allbuildings;
+        if !(isNull _largestB) then {
+            _largestbuildingpositions =  ([_largestB] call BIS_fnc_buildingPositions);
+            _buildingpositions = _buildingpositions-_largestbuildingpositions;
+            _largestbuilding_top_positions = [_largestbuildingpositions] call KPLIB_fnc_getBuildingRooftopPositions;
+            _largestbuildingpositions = _largestbuildingpositions-_largestbuilding_top_positions;
+            
+            _grp = createGroup [GRLIB_side_enemy, true];
+            _officer_pos = selectRandom _largestbuildingpositions;
+            _unit = [opfor_officer, _officer_pos , _grp] call KPLIB_fnc_createManagedUnit;
+            _unit setDir (random 360);
+            _unit setPos _officer_pos;
+            [_unit, _sector] spawn building_defence_ai;
+            _managed_units = _managed_units + [_unit];
+            _largestbuildingpositions =_largestbuildingpositions- [_officer_pos];
+            _managed_units = _managed_units + ([_infsquad,count  _largestbuildingpositions, _largestbuildingpositions, _sector,_grp] call KPLIB_fnc_spawnBuildingSquad);
+            _largestB setVariable ["bis_disabled_Door_1", 1, true];
+
+        };
+
+        _top_positions = [_buildingpositions] call KPLIB_fnc_getBuildingRooftopPositions;
+        _buildingpositions = _buildingpositions-_top_positions;
         if (KP_liberation_sectorspawn_debug > 0) then {[format ["Sector %1 (%2) - manage_one_sector found %3 building positions", (markerText _sector), _sector, (count _buildingpositions)], "SECTORSPAWN"] remoteExecCall ["KPLIB_fnc_log", 2];};
         if (count _buildingpositions > _minimum_building_positions) then {
             _managed_units = _managed_units + ([_infsquad, _building_ai_max, _buildingpositions, _sector] call KPLIB_fnc_spawnBuildingSquad);
+
         };
+
+        if (count _top_positions > 0) then {
+            _g = createGroup [GRLIB_side_enemy, true];
+            _top_positions = [_top_positions] call CBA_fnc_Shuffle;
+            for "_i" from 0 to ((count _top_positions) min 3) do { 
+
+                _gun = selectRandom (opfor_static_guns  - opfor_heavy_static_guns);
+                _emptypos = selectRandom _top_positions;        
+                if (count _emptypos > 1 ) then {
+                    _vehicle = [ [_emptypos select 0 , _emptypos select 1 ,(_emptypos select 2) +1.5] , _gun ,true,true,_g] call KPLIB_fnc_spawnVehicle;
+                    _managed_units pushback _vehicle;
+                    {_managed_units pushback _x;} foreach (crew _vehicle);
+                    sleep 1;
+
+                    _vehicle setPosATL [ (getPosATL _vehicle) select 0 , (getPosATL _vehicle) select 1, ((getPosATL _vehicle) select 2) + 1]; 
+                    _vehicle setVectorUp surfaceNormal position _vehicle;
+                    _top_positions = _top_positions- [_emptypos];
+                };
+            };
+            for "_i" from 0 to ((count _top_positions) min 3) do { 
+                _gun = selectRandom ( opfor_AT_static_guns - opfor_heavy_static_guns);
+                _emptypos = selectRandom _top_positions;        
+                if (count _emptypos > 1 ) then {
+                    _vehicle = [ [_emptypos select 0 , _emptypos select 1 ,(_emptypos select 2) +1.5] , _gun ,true,true,_g] call KPLIB_fnc_spawnVehicle;
+                    _managed_units pushback _vehicle;
+                    {_managed_units pushback _x;} foreach (crew _vehicle);
+                    sleep 1;
+
+                    _vehicle setPosATL [ (getPosATL _vehicle) select 0 , (getPosATL _vehicle) select 1, ((getPosATL _vehicle) select 2) + 1]; 
+                    _vehicle setVectorUp surfaceNormal position _vehicle;
+                    _top_positions = _top_positions- [_emptypos];
+                };
+            };
+        };
+
+        for "_i" from 0 to 2 do { 
+                _gun = selectRandom (opfor_static_guns arrayIntersect opfor_heavy_static_guns);
+                _emptypos = _sectorpos findEmptyPosition [5,_building_range,_gun];
+                _gun = selectRandom (opfor_static_guns arrayIntersect opfor_heavy_static_guns); 
+                _rndpos = [[[_sectorpos,_building_range]],[]] call BIS_fnc_randomPos;
+                _emptypos= _rndpos findEmptyPosition [0,30,_gun];
+                if (count _emptypos > 1 ) then {
+                    _vehicle = [ [_emptypos select 0 , _emptypos select 1 ,(_emptypos select 2) +1.5] , _gun ,true,true,_g] call KPLIB_fnc_spawnVehicle;
+                    _managed_units pushback _vehicle;
+                    {_managed_units pushback _x;} foreach (crew _vehicle);
+                    _vehicle setDir ((_vehicle getRelDir _sectorpos) - 180);
+                    sleep 1;
+                    _vehicle setPosATL [ (getPosATL _vehicle) select 0 , (getPosATL _vehicle) select 1, ((getPosATL _vehicle) select 2) + 1]; 
+                    _vehicle setVectorUp surfaceNormal position _vehicle;
+                    
+                };
+        };
+        
+        _num = ceil(_building_ai_max*0.25) min (count _top_positions);
+        _managed_units = _managed_units + ([_infsquad,_num  , _top_positions, _sector] call KPLIB_fnc_spawnBuildingSquad);
     };
 
     _managed_units = _managed_units + ([_sectorpos] call KPLIB_fnc_spawnMilitaryPostSquad);
