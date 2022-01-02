@@ -12,7 +12,7 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=77;
+		nextID=78;
 	};
 	class MarkerIDProvider
 	{
@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={4830.2153,30,4608.1387};
-		dir[]={-7.7889708e-006,-0.70710683,0.70710683};
-		up[]={-7.7889708e-006,0.70710677,0.70710677};
-		aside[]={0.99999994,0,1.1015271e-005};
+		pos[]={4302.6958,8.0239582,4627.1069};
+		dir[]={-0.26458248,-0.675991,0.68781352};
+		up[]={-0.24270056,0.7369045,0.63092959};
+		aside[]={0.93335438,3.9951556e-007,0.35903475};
 	};
 };
 binarizationWanted=0;
@@ -37,13 +37,14 @@ addons[]=
 	"ace_explosives",
 	"A3_Structures_F_System",
 	"A3_Structures_F_Mil_Cargo",
-	"A3_Props_F_Enoch_Military_Camps"
+	"A3_Props_F_Enoch_Military_Camps",
+	"Static_Radios"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=8;
+		items=9;
 		class Item0
 		{
 			className="A3_Ui_F";
@@ -100,11 +101,17 @@ class AddonsMetaData
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
+		class Item8
+		{
+			className="Static_Radios";
+			name="Static_Radios";
+		};
 	};
 };
 dlcs[]=
 {
-	"Contact"
+	"Contact",
+	" Static_Radios"
 };
 randomSeed=1898175;
 class ScenarioData
@@ -132,7 +139,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=43;
+		items=44;
 		class Item0
 		{
 			dataType="Marker";
@@ -3012,6 +3019,23 @@ class Mission
 			type="o_art";
 			colorName="ColorEAST";
 			id=76;
+		};
+		class Item43
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4300.9229,5.9827857,4630.2437};
+				angles[]={-0,1.5838268,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				name="supplies_radio";
+			};
+			id=77;
+			type="Static_Radio_Black_3";
 		};
 	};
 	class Connections

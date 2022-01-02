@@ -25,9 +25,9 @@ class EditorData
 	class Camera
 	{
 		pos[]={8396.375,356.54477,2005.3108};
-		dir[]={-0.35767671,-0.56758511,0.74160534};
-		up[]={-0.24657223,0.82330918,0.51124281};
-		aside[]={0.90074253,-2.4330802e-008,0.43442848};
+		dir[]={-0.35766536,-0.56756699,0.74158162};
+		up[]={-0.24655938,0.82332718,0.51121503};
+		aside[]={0.90071309,0,0.43441457};
 	};
 };
 binarizationWanted=0;
@@ -17533,7 +17533,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=126;
+		items=122;
 		class Item0
 		{
 			dataType="Trigger";
@@ -35088,46 +35088,6 @@ class Mission
 			id=2238;
 			type="Land_Vysilac_FM2";
 			atlOffset=0.79302979;
-		};
-		class Item122
-		{
-			dataType="Group";
-			side="East";
-			class Attributes
-			{
-			};
-			id=2365;
-			atlOffset=2.2679243e+033;
-		};
-		class Item123
-		{
-			dataType="Group";
-			side="East";
-			class Attributes
-			{
-			};
-			id=2373;
-			atlOffset=2.2679243e+033;
-		};
-		class Item124
-		{
-			dataType="Group";
-			side="East";
-			class Attributes
-			{
-			};
-			id=2377;
-			atlOffset=2.2679243e+033;
-		};
-		class Item125
-		{
-			dataType="Group";
-			side="East";
-			class Attributes
-			{
-			};
-			id=2382;
-			atlOffset=2.2679243e+033;
 		};
 	};
 	class Connections
