@@ -285,15 +285,10 @@ eject_v = {
     _c130_flying_cargo = c130_flying_cargo; 
             c130_flying_cargo = objNull;
 	        publicVariable "c130_flying_cargo";
-
-            _c130_flying_cargo attachto [c130_flying_plane, [0, -1.5, -3] ];
-            sleep 0.3;
-            _c130_flying_cargo attachto [c130_flying_plane, [0, -2, -3] ];
-            sleep 0.3;
-            _c130_flying_cargo attachto [c130_flying_plane, [0, -2.5, -3] ];
-            sleep 0.3;
-            _c130_flying_cargo attachto [c130_flying_plane, [0, -35, -3] ];
-            sleep 0.3;
+            {
+                _c130_flying_cargo attachto [c130_flying_plane, [0, _x, -3] ];
+                sleep 0.1;
+            } forEach [-1.5,-2,-2.5,-3,-3.5,-4,-4.5,-5,-5.5,-6,-6.5];
             detach _c130_flying_cargo;
             _c130_flying_cargo setvelocity [0, -4, 0];
             

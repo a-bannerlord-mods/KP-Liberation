@@ -1160,17 +1160,17 @@ GRLIB_patrol_cap = GRLIB_patrol_cap * GRLIB_unitcap;
 
 KP_liberation_qualifications = [
     ["Rifleman","Qualified enough to carry a rifle in the battlefield",{}],
-    ["Medic","Qualified enough to provide emergency medical treatment at a point of wounding in a combat",{_this setUnitTrait ["Medic", true];}],
-    ["Engineer","Qualified enough to partially repair vehicles with toolkit",{_this setUnitTrait ["Engineer", true];}],
-    ["EOD","Qualified enough to defuse mines and handle all explosives",{_this setUnitTrait ["explosiveSpecialist", true];}],
+    ["Medic","Qualified enough to provide emergency medical treatment at a point of wounding in a combat",{player setUnitTrait ["Medic", true];}],
+    ["Engineer","Qualified enough to partially repair vehicles with toolkit",{player setUnitTrait ["Engineer", true];}],
+    ["EOD","Qualified enough to defuse mines and handle all explosives",{player setUnitTrait ["explosiveSpecialist", true];}],
     ["Marksman","Skilled enough in precision shooting using DMRs",{}],
     ["GL","Skilled enough in use GLs",{}],
     ["Sniper","Skilled enough in precision shooting using Snipers",{}],
     ["Autorifleman","Skilled enough handling heavy weapons",{}],
     ["AT","Skilled enough handling anti-tank weapons",{}],
     ["AA","Skilled enough handling anti-air weapons",{}],
-    ["Drone Operator","Skilled enough handling remote controlled vehicles",{_this setUnitTrait ["UAVHacker ", true];}],
-    ["JTAC","Qualified enough to directs the action of combat aircraft engaged in close air support and other offensive air operations from a forward position",{_this setUnitTrait ["JTAC ", true];}],
+    ["Drone Operator","Skilled enough handling remote controlled vehicles",{player setUnitTrait ["UAVHacker ", true];}],
+    ["JTAC","Qualified enough to directs the action of combat aircraft engaged in close air support and other offensive air operations from a forward position",{player setUnitTrait ["JTAC", true,true];}],
     ["Special Force","Qualified enough to operate in overt combat, front-line reconnaissance and raiding, rather than long range reconnaissance and unconventional warfare.",{}],
     ["Officer","Qualified enough to lead teams on the battlefield",{player setUnitTrait ["officer", true,true];}]
 ];
