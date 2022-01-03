@@ -11,7 +11,9 @@ while {GRLIB_endgame == 0} do {
 
     recalculate_sectors = false;
 
-    if (((count (allPlayers - entities "HeadlessClient_F")) > 0) && ((count KP_liberation_production) > 0)) then {
+    if (
+        //((count (allPlayers - entities "HeadlessClient_F")) > 0) &&
+        ((count KP_liberation_production) > 0)) then {
         waitUntil {sleep 0.5; !sectors_recalculating};
         sectors_recalculating = true;
 

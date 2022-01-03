@@ -61,8 +61,8 @@ if (isNil "HALs_store_stats_weapons") exitWith {
 					};
 				})
 	};
-	_statsOpticsMin =_statsOpticsMin select {_x > 0};
-	_statsOpticsMax = _statsOpticsMax select {_x > 0};
+	_statsOpticsMin =_statsOpticsMin select { !isNil { _x}  && _x > 0};
+	_statsOpticsMax = _statsOpticsMax select {!isNil { _x}  && _x > 0};
 	HALs_store_stats_optics = [selectMin _statsOpticsMin, selectMax _statsOpticsMax];
 };
 

@@ -38,6 +38,7 @@ active_sectors = []; publicVariable "active_sectors";
 execVM "scripts\server\base\startgame.sqf";
 execVM "scripts\server\base\huron_manager.sqf";
 execVM "scripts\server\base\startvehicle_spawn.sqf";
+
 [] call KPLIB_fnc_createSuppModules;
 execVM "scripts\server\battlegroup\counter_battlegroup.sqf";
 execVM "scripts\server\battlegroup\random_battlegroups.sqf";
@@ -116,6 +117,7 @@ execVM "scripts\server\asymmetric\init_module.sqf";
 
 // Groupcheck for deletion when empty
 execVM "scripts\server\offloading\group_diag.sqf";
+execVM "modules\convoy\convoyInit.sqf";
 
 {
     if ((_x != player) && (_x distance (markerPos GRLIB_respawn_marker) < 200 )) then {
