@@ -68,7 +68,7 @@ if ((!(_sector in blufor_sectors)) &&
         };
 
         _building_ai_max = round (50 * _popfactor);
-        _building_range = 200;
+        _building_range = 250;
         _local_capture_size = _local_capture_size * 1.4;
 
         if (KP_liberation_civ_rep < 0) then {
@@ -102,7 +102,7 @@ if ((!(_sector in blufor_sectors)) &&
         };
 
         _building_ai_max = round ((floor (18 + (round (combat_readiness / 10 )))) * _popfactor);
-        _building_range = 120;
+        _building_range = 200;
 
         if (KP_liberation_civ_rep < 0) then {
             _iedcount = round ((ceil (random 4)) * (round ((KP_liberation_civ_rep * -1) / 33)) * GRLIB_difficulty_modifier);
@@ -266,9 +266,11 @@ if ((!(_sector in blufor_sectors)) &&
         _allbuildings = (nearestObjects [_sectorpos, ["House"], _building_range]) select {alive _x};
         _buildingpositions = [];
         {
-            _buildingpositions = _buildingpositions + ([_x] call BIS_fnc_buildingPositions);
-            if (count _buildingpositions > _largestBPos) then {
-                _largestBPos = count _buildingpositions;
+            _thisBuildingpositions = ([_x] call BIS_fnc_buildingPositions);
+            _buildingpositions = _buildingpositions + _thisBuildingpositions;
+            _thisBuildingpositionsCount = count _thisBuildingpositions;
+            if (_thisBuildingpositionsCount > _largestBPos) then {
+                _largestBPos =  _thisBuildingpositionsCount;
                 _largestB = _x;
             };
         } forEach _allbuildings;
@@ -404,6 +406,21 @@ if ((!(_sector in blufor_sectors)) &&
     if (KP_liberation_sectorspawn_debug > 0) then {[format ["Sector %1 (%2) - populating done", (markerText _sector), _sector], "SECTORSPAWN"] remoteExecCall ["KPLIB_fnc_log", 2];};
 
     private _activationTime = time;
+    private _isFleeing = false;
+    private _orginalUnitcount = GRLIB_side_enemy countSide  (_managed_units select {
+        alive _x && !(_x getVariable["ACE_isUnconscious", false]) && !(captive _x)
+        });
+    
+    private _fleeCount = 0;
+    if ( _sector in sectors_lightArtillery || _sector in sectors_SAM) then {
+        _fleeCount = selectRandom [0,0,0,0,0,1,1,1,1,2];
+    } else {
+        _fleeCount = (ceil(_orginalUnitcount * 0.05) max 1) min 5 ;
+    };
+    if (_sector in sectors_heavyArtillery ) then {
+        _fleeCount = 0 ;
+    };
+    systemChat format ["Sector %3 Spawned Total %1 Fleeing at %2",str _orginalUnitcount, str _fleeCount,markerText  _sector];
     // sector lifetime loop
     while {!_stopit} do {
         
@@ -431,6 +448,20 @@ if ((!(_sector in blufor_sectors)) &&
                 alive _x 
                 && (toLower (typeof _x)) in (opfor_light_artillery apply {toLower (_x)}) 
             });
+        };
+        
+        _unitcount =   GRLIB_side_enemy countSide  (_managed_units select {
+        alive _x && !(_x getVariable["ACE_isUnconscious", false]) && !(captive _x)
+        });
+        if (_fleeCount >= _unitcount ) then {
+            systemChat format ["Enemy %2/%1 Fleeing from %3",str _unitcount, str _fleeCount,markerText  _sector];
+            _isFleeing= true;
+            {
+                if (_x isKindOf "Man" && !(captive _x)  && (side group _x )== GRLIB_side_enemy) then {
+                    [_x,_sector] call KPLIB_fnc_makeUnitFlee;
+                };
+                
+            } forEach _managed_units;
         };
         
         // sector was captured

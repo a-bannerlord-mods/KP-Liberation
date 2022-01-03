@@ -68,7 +68,7 @@ _this addAction [format ["<t color='#04ff00'>Give Order To %1 Take off</t>", get
     _dz hideObjectglobal true;
     _dz disableAI "move";
     _dz disableAI "TARGET";
-    _dz disableAI "AUtoTARGET";
+    _dz disableAI "AUTOTARGET";
     _dz disableAI "WEAPONAIM";
     _dz disableAI "ANIM";
     _plane = createvehicle [KPLIB_C130_halo_airplane_class, getmarkerPos "dz", [], 0, "NONE"];

@@ -1,4 +1,4 @@
-params ["_unit", ["_force_surrender", false]];
+params ["_unit", ["_force_surrender", false],["_remove_gear", true]];
 
 if ((!_force_surrender) && ((random 100) > GRLIB_surrender_chance)) exitWith {};
 
@@ -10,17 +10,20 @@ if ((_unit isKindOf "Man") && (alive _unit) && (side group _unit == GRLIB_side_e
 
     if (alive _unit) then {
 
-        removeAllWeapons _unit;
-        if (typeof _unit != pilot_classname) then {
-            removeHeadgear _unit;
+        if (_remove_gear) then {
+            removeAllWeapons _unit;
+            if (typeof _unit != pilot_classname) then {
+                removeHeadgear _unit;
+            };
+            removeBackpack _unit;
+            removeVest _unit;
+            _unit unassignItem "NVGoggles_OPFOR";
+            _unit removeItem "NVGoggles_OPFOR";
+            _unit unassignItem "NVGoggles_INDEP";
+            _unit removeItem "NVGoggles_INDEP";
+            _unit setUnitPos "UP";
         };
-        removeBackpack _unit;
-        removeVest _unit;
-        _unit unassignItem "NVGoggles_OPFOR";
-        _unit removeItem "NVGoggles_OPFOR";
-        _unit unassignItem "NVGoggles_INDEP";
-        _unit removeItem "NVGoggles_INDEP";
-        _unit setUnitPos "UP";
+        
         sleep 1;
         private _grp = createGroup [GRLIB_side_civilian, true];
         [_unit] joinSilent _grp;

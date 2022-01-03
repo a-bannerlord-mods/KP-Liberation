@@ -91,6 +91,8 @@ class KPLIB {
         class combatReadinessUpdated    {}; 
         class removeUselessSectorMarkers    {};
         class getBuildingRooftopPositions {};
+        class getNearestSectorOfType      {};
+        class makeUnitFlee                {};
     };
     class functions_curator {
         file = "functions\curator";
