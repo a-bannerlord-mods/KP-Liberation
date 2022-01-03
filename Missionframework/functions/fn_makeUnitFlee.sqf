@@ -36,7 +36,7 @@ if (_fleeSector=="") then {
 };
 
 if (vehicle _unit != _unit) then {
-	_unit = driver vehicle _unit;
+	_unit leaveVehicle (vehicle _unit)
 };
 _unit enableAI "PATH";
 _unit enableAI "MOVE"; 

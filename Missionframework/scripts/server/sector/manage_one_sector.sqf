@@ -420,7 +420,6 @@ if ((!(_sector in blufor_sectors)) &&
     if (_sector in sectors_heavyArtillery ) then {
         _fleeCount = 0 ;
     };
-    systemChat format ["Sector %3 Spawned Total %1 Fleeing at %2",str _orginalUnitcount, str _fleeCount,markerText  _sector];
     // sector lifetime loop
     while {!_stopit} do {
         
@@ -454,7 +453,6 @@ if ((!(_sector in blufor_sectors)) &&
         alive _x && !(_x getVariable["ACE_isUnconscious", false]) && !(captive _x)
         });
         if (_fleeCount >= _unitcount ) then {
-            systemChat format ["Enemy %2/%1 Fleeing from %3",str _unitcount, str _fleeCount,markerText  _sector];
             _isFleeing= true;
             {
                 if (_x isKindOf "Man" && !(captive _x)  && (side group _x )== GRLIB_side_enemy) then {
