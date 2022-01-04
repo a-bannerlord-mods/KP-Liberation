@@ -159,5 +159,13 @@ KPLIB_objectInits = [
             _this execVM "scripts\client\group_halo\add_helo_actions.sqf";
         },
         true
+    ],
+     // add map
+    [
+        ["Land_MapBoard_F"],
+        {
+            _this setObjectTextureGlobal [0, "res\map.paa"]; 
+        },
+        true
     ]
 ];

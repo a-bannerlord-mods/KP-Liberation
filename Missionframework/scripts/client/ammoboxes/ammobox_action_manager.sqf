@@ -14,7 +14,7 @@ while {true} do {
 
     if ([5] call KPLIB_fnc_hasPermission) then {
 
-        _nearammoboxes = ((getpos player) nearEntities [KPLIB_crates, 10]);
+        _nearammoboxes = ((getpos player) nearEntities [KPLIB_crates + [KP_liberation_loadoutbox_classname], 10]);
         _neartransporttrucks = ((getpos player) nearEntities [KPLIB_transport_classes, 10]);
         _nearstorageareas = nearestObjects [player, KPLIB_storageBuildings, 10];
 

@@ -148,7 +148,7 @@ KP_liberation_preset_opfor = 21;
 6  = Unsung
 7  = CUP Takistani Locals
 8  = CUP National Party of Chernarus */
-KP_liberation_preset_resistance = 3;
+KP_liberation_preset_resistance = 9;
 
 /* Civilians preset:
 0  = Custom (default vanilla)
@@ -1180,6 +1180,7 @@ KPLIB_C130_halo_airplane_class = "EAF_C130";
 KPLIB_C130_halo_parachute_class = "eaf_parachuteClan_blk";
 KPLIB_C130_halo_param = 10;
 KPLIB_C130_halo_devices =  [ 
+    "Land_MapBoard_F",
     "MapBoard_altis_F",
     "MapBoard_stratis_F",
     "MapBoard_seismic_F"

@@ -194,9 +194,7 @@ buildings = [
     ["Land_CampingChair_V1_F",0,0,0],
     ["Land_CampingChair_V2_F",0,0,0],
     ["Land_CampingTable_F",0,0,0],
-    ["MapBoard_altis_F",0,0,0],
-    ["MapBoard_stratis_F",0,0,0],
-    ["MapBoard_seismic_F",0,0,0],
+    ["Land_MapBoard_F",0,0,0],
     ["Land_Pallet_MilBoxes_F",0,0,0],
     ["Land_PaperBox_open_empty_F",0,0,0],
     ["Land_PaperBox_open_full_F",0,0,0],
@@ -242,6 +240,30 @@ buildings = [
     ["Land_Sign_WarningMilitaryVehicles_F",0,0,0],
     ["Land_Razorwire_F",0,0,0],
     ["Land_ClutterCutter_large_F",0,0,0]
+// "Land_Vez", 
+// "Land_Hlaska", 
+// "Land_Strazni_vez", 
+// "Land_Fort_Watchtower_EP1", 
+// "Land_fortified_nest_small", 
+// "Fort_Nest", 
+// "Land_fortified_nest_big", 
+// "Land_CamoNetVar_NATO_EP1", 
+// "WarfareBCamp", 
+// "TK_WarfareBBarrier10x_EP1", 
+// "US_WarfareBBarrier10xTall_EP1", 
+// "TK_WarfareBBarrier5x_EP1", 
+// "Land_fort_artillery_nest_EP1", 
+// "Land_CzechHedgehog_01_new_F", 
+// "Land_DragonsTeeth_01_4x2_new_F", 
+// "Land_LampAirport_F", 
+// "Land_ControlTower_01_F", 
+// "Land_GuardTower_01_F", 
+// "Land_SandbagBarricade_01_hole_F", 
+// "Land_SandbagBarricade_01_F", 
+// "Land_SandbagBarricade_01_half_F", 
+// "Land_Vez_svetla", 
+// "Land_jezekbeton", 
+// "Land_Airport_Tower_F"
 ];
 
 support_vehicles = [
@@ -424,4 +446,9 @@ blufor_transport_support_vehicles = [
 blufor_cas_support_vehicles = [
     ["EAF_ka52",50],
     ["EAF_ah64",60]
+];
+
+blufor_jet_support_vehicles = [
+    ["EAF_F16_1",180],
+    ["AMF_RAFALE_M_01_F",200]
 ];

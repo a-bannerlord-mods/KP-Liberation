@@ -77,6 +77,7 @@ switch (KP_liberation_preset_resistance) do {
     case  6: {[] call compile preprocessFileLineNumbers "presets\resistance\unsung.sqf";};
     case  7: {[] call compile preprocessFileLineNumbers "presets\resistance\CUP_TakiLocals.sqf";};
     case  8: {[] call compile preprocessFileLineNumbers "presets\resistance\CUP_NAPA.sqf";};
+    case  9: {[] call compile preprocessFileLineNumbers "presets\resistance\libyan_army.sqf";};
     default  {[] call compile preprocessFileLineNumbers "presets\resistance\custom.sqf";};
 };
 

@@ -226,7 +226,7 @@ while {true} do {
         if (count _lastPlayerGear == 0 && KPLIB_firstTimeRespawn) then{
             player forceAddUniform GRLIB_default_uniform;
         };
-
+        player setVariable ["deployed",true,true];
         KPLIB_firstTimeRespawn= false;        
     };
 

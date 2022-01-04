@@ -2,6 +2,7 @@ params ["_unit", ["_sector", ""]];
 
 _unit setUnitPos "UP";
 _unit disableAI "PATH";
+
 private _move_is_disabled = true;
 private _hostiles = 0;
 private _ratio = 0.4;
@@ -21,8 +22,9 @@ while {_move_is_disabled && local _unit && alive _unit && !(captive _unit)} do {
         {
             (_sector in blufor_sectors) ||
             {!(_hostiles isEqualTo [])} ||
-            {damage _unit > 0.25}
-        }
+            {damage _unit > 0.25} 
+
+        } && typeOf (leader group _unit) != opfor_officer
     ) then {
         _move_is_disabled = false;
         _unit enableAI "PATH";

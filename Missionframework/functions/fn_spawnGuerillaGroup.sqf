@@ -42,18 +42,27 @@ for "_i" from 1 to _amount do {
     removeAllWeapons _unit;
     removeAllItems _unit;
     removeAllAssignedItems _unit;
-    removeUniform _unit;
-    removeVest _unit;
+    if (count _uniforms > 0) then {
+        removeUniform _unit;
+        _unit forceAddUniform (selectRandom _uniforms);
+    };
+    if (count _vests > 0) then {
+        removeVest _unit;
+        _unit addVest (selectRandom _vests);
+    };
     removeBackpack _unit;
-    removeHeadgear _unit;
+    if (count _headgear > 0) then {
+        _unit addHeadgear (selectRandom _headgear);
+        removeHeadgear _unit;
+    };
     removeGoggles _unit;
 
     // Add uniform etc.
-    _unit forceAddUniform (selectRandom _uniforms);
+    
     _unit addItemToUniform "FirstAidKit";
     _unit addItemToUniform "MiniGrenade";
-    _unit addVest (selectRandom _vests);
-    _unit addHeadgear (selectRandom _headgear);
+    
+    
     if (_tier > 1) then {_unit addGoggles (selectRandom KP_liberation_guerilla_facegear);};
 
     // Add standard items

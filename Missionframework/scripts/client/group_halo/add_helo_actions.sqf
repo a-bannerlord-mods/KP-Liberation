@@ -1,4 +1,7 @@
 
+waitUntil {!isNil "save_is_loaded"};
+waitUntil {save_is_loaded};
+
 if(isnil "c130_flying_cargo" )then{
     c130_flying_cargo = objNull;
 };
@@ -287,10 +290,10 @@ eject_v = {
 	        publicVariable "c130_flying_cargo";
             {
                 _c130_flying_cargo attachto [c130_flying_plane, [0, _x, -3] ];
-                sleep 0.1;
-            } forEach [-1.5,-2,-2.5,-3,-3.5,-4,-4.5,-5,-5.5,-6,-6.5];
+                sleep 0.05;
+            } forEach [-1.5,-2,-2.5,-3,-3.5,-4,-4.5,-5,-5.5,-6,-6.5,-7,-7.5,-8,-8.5,-9,-9.5];
             detach _c130_flying_cargo;
-            _c130_flying_cargo setvelocity [0, -4, 0];
+            _c130_flying_cargo setvelocity [0, -7, 0];
             
             sleep 5;
             waitUntil {

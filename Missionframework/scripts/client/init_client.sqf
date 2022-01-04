@@ -1,4 +1,4 @@
-titleText ["Loading... ", "BLACK FADED", 600];
+
 
 [] call compileFinal preprocessFileLineNumbers "scripts\client\misc\init_markers.sqf";
 

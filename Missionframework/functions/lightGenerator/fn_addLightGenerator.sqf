@@ -1,3 +1,21 @@
+
+/*
+    File: fn_addLightGenerator.sqf
+    Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
+    Date: 2019-11-25
+    Last Update: 2020-04-09
+    License: MIT License - http://www.opensource.org/licenses/MIT
+
+    Description:
+        Checks if local player has the given qualification granted.
+
+    Parameter(s):
+        _unit - player  to set his traits based on qualifictions
+
+    Returns:
+        Nothing
+*/
+//[this,500] call KPLIB_fnc_addLightGenerator
 params ["_generator","_range"];
 
 _generator addEventHandler ["Killed", {

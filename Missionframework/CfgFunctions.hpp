@@ -106,6 +106,11 @@ class KPLIB {
         file = "functions\ui";
 
         class overlayUpdateResources    {};
+    }; 
+    class functions_lightGenerator {
+        file = "functions\lightGenerator";
+        class addLightGenerator    {};
+        class addLightSwich    {};
     };
     class functions_items {
         file = "functions\items";

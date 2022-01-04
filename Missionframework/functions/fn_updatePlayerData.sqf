@@ -18,6 +18,8 @@
 */
 params ["_player"];
 if (!((name _player) in ["HC0","HC1", "HC2", "HC3", "HC4", "HC5"])) then { 
+		if (_player getVariable ["deployed",false]) then {
+		
 		_playerUID = getPlayerUID _player; 
 		//_loadout =[_player] call KPLIB_fnc_getLoadout;
 
@@ -39,5 +41,6 @@ if (!((name _player) in ["HC0","HC1", "HC2", "HC3", "HC4", "HC5"])) then {
 			GRLIB_players_data set [_index, [_playerUID, _displayname, _data]]; 
 		} else { 
 			GRLIB_players_data pushback [_playerUID, _displayname, _data]; 
-		}; 
+		}; 	
+	};
 }; 

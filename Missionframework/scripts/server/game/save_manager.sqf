@@ -77,6 +77,8 @@ GRLIB_all_fobs = [(getposATL startbase)];
 GRLIB_permissions = [];
 // Player qualification data
 GRLIB_qualifications = [];
+//Virual support
+GRLIB_virual_support = [];
 // Player data
 GRLIB_players_data = [];
 // Vehicle unlock links
@@ -204,7 +206,7 @@ if (!isNil "_saveData") then {
         KPLIB_sectorTowers                          = _saveData param [21, []];
         GRLIB_qualifications                        = _saveData param [22, []];
         GRLIB_players_data                          = _saveData param [23, []];
-
+        GRLIB_virual_support                        = _saveData param [24, []];
 
         stats_ammo_produced                         = _stats select  0;
         stats_ammo_spent                            = _stats select  1;
@@ -518,6 +520,15 @@ if (!isNil "_saveData") then {
     {
         _x call KPLIB_fnc_createCrate;
     } forEach _allCrates;
+
+    {
+        if (_x select 0=="plane") then {
+            [_x select 1, "", _x select 2, 600, {}, GRLIB_side_friendly, blufor_cas_support_required_items, {
+            player getUnitTrait 'JTAC'
+            }] call sss_support_fnc_addcasplane;
+        };
+    }forEach GRLIB_virual_support;
+    
     ["Saved crates placed", "SAVE"] call KPLIB_fnc_log;
 } else {
     ["Save nil", "SAVE"] call KPLIB_fnc_log;

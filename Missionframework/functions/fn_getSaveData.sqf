@@ -211,5 +211,6 @@ private _weights = [
     _allCrates,
     KPLIB_sectorTowers,
     GRLIB_qualifications,
-    GRLIB_players_data
+    GRLIB_players_data,
+    GRLIB_virual_support
 ] // return
