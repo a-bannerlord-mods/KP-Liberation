@@ -5,6 +5,9 @@ repairable_vehicles = (support_vehicles + light_vehicles + heavy_vehicles + air_
 repair_vehicle = {
     params["_vehicle"];
     _hipoints = getAllHitPointsDamage _vehicle; 
+    _countOfallRepairs = count((_hipoints select 2) select {
+            _x > 0
+        });
 	_hipointsWithoutWheels1=[]; 
 	_hipointsWithoutWheels2 =[]; 
 	_hipointsWithoutWheels3 =[]; 
@@ -17,10 +20,10 @@ repair_vehicle = {
 	} 
 	forEach(_hipoints select 0); 
 	_hipointsWithoutWheels = [_hipointsWithoutWheels1,_hipointsWithoutWheels2,_hipointsWithoutWheels3];
-
-    if (count((_hipointsWithoutWheels select 2) select {
+    _countOfallRepairsWithoutWheels = count((_hipointsWithoutWheels select 2) select {
             _x > 0
-        }) > 0) then {
+        });
+    if (_countOfallRepairsWithoutWheels > 0) then {
 
         _avgdmage = ((_hipointsWithoutWheels select 2) select {
             _x > 0
@@ -81,7 +84,12 @@ repair_vehicle = {
             [format["Not Enough supplies (%1 supplies needed)", _cost], "Not Enough supplies", true, false] call BIS_fnc_guiMessage;
         };
     } else {
-        ["No Repairs Needed For Vehicle", "No Repairs Needed", true, false] call BIS_fnc_guiMessage;
+        if (_countOfallRepairsWithoutWheels==_countOfallRepairs) then {
+            ["No Repairs Needed For Vehicle", "No Repairs Needed", true, false] call BIS_fnc_guiMessage;
+        } else {
+            ["No Repairs Needed For Vehicle ,but you might need change wheels/tracks", "No Repairs Needed", true, false] call BIS_fnc_guiMessage;
+        };
+        
     };
 };
 
