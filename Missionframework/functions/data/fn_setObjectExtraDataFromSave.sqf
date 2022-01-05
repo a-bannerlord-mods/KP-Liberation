@@ -73,6 +73,17 @@ _class = toLower (typeOf _obj);
 	if ((_x select 0) == "forced_flag_texture") then {
 		_obj forceFlagtexture (_x select 1);
 	};
+
+	// fuel cargo
+	if ((_x select 0) == "ace_fuel_currentsupply") then {
+		[_obj, (_x select 1)] call ace_refuel_fnc_setFuel;
+	};
+
+	
+	// ammo cargo
+	if ((_x select 0) == "ace_rearm_currentsupply") then {
+        [_obj, (_x select 1)] call ace_rearm_fnc_setSupplyCount;
+	};
 	
 	// support group
 	if (isClass(configFile >> "CfgPatches" >> "SSS")) then {

@@ -84,6 +84,19 @@ if !(isnull (_obj getVariable['SSS_parentEntity', objNull])) then {
 	};
 };
 
+//rearm 
+_ace_rearm_storage = getNumber (configFile >> "CfgVehicles" >>  typeof _obj >> "ace_rearm_defaultSupply");
+if (_ace_rearm_storage>0) then {
+	_data pushBack ["ace_rearm_currentsupply",([_obj] call ace_rearm_fnc_getSupplyCount)];
+};
+
+//fuel
+_ace_fuel_storage = getNumber (configFile >> "CfgVehicles" >> typeof _obj >> "ace_refuel_fuelCargo");
+if (_ace_fuel_storage>0) then {
+	_ace_fuel_currentsupply = [_obj] call ace_refuel_fnc_getFuel;
+	_data pushBack ["ace_fuel_currentsupply",_ace_fuel_currentsupply];
+};
+
 //arsinal items
 _customname = _obj getVariable ["ace_cargo_customname",""];
 if (_customname!="") then {

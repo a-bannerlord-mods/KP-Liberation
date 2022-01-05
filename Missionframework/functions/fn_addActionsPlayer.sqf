@@ -438,8 +438,9 @@ _player addAction [
     "
 ];
 
-
 _player execVM "compatibility\add_compatibility_actions.sqf";
+
+[] call KPLIB_fnc_addLogisticsActions;
 
 
 true

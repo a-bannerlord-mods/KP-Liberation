@@ -278,11 +278,10 @@ support_vehicles = [
     [KP_liberation_heli_slot_building,250,0,0],
     [KP_liberation_plane_slot_building,500,0,0],
 	[KP_liberation_truck_classname,100,0,50],
-	[KP_liberation_truck_fuel_classname,200,0,500],
-	[KP_liberation_truck_ammo_classname,200,500,50],
-	[KP_liberation_truck_repair_classname,500,0,50],
+	[KP_liberation_truck_fuel_classname,200,0,50],
+	[KP_liberation_truck_ammo_classname,200,0,50],
     ["ACE_Wheel",10,0,0],
-    ["ACE_Track",10,0,0],
+    ["ACE_Track",20,0,0],
     ["USAF_missileCart_W_AGM114",50,150,0],                             // Missile Cart (AGM-114)
     ["USAF_missileCart_AGMMix",50,150,0],                               // Missile Cart (AGM-65 Mix)
     ["USAF_missileCart_AGM1",50,150,0],                                 // Missile Cart (AGM-65D)
@@ -296,10 +295,9 @@ support_vehicles = [
     ["USAF_missileCart_Gbu31",50,150,0],                                // Missile Cart (GBU31)
     ["USAF_missileCart_GBU39",50,150,0],                                // Missile Cart (GBU39)
     ["USAF_missileCart_Mk82",50,150,0],                                 // Missile Cart (Mk82)
-    ["B_Truck_01_Repair_F",800,0,100],                                   // HEMTT Repair
-    ["B_Truck_01_fuel_F",400,0,800],                                    // HEMTT Fuel
-    ["B_Truck_01_ammo_F",400,800,100],                                   // HEMTT Ammo
-    ["rhs_gaz66o_flat_vdv",100,0,50],
+    //["B_Truck_01_Repair_F",800,0,100],                                   // HEMTT Repair
+    ["B_Truck_01_fuel_F",400,0,100],                                    // HEMTT Fuel
+    ["B_Truck_01_ammo_F",400,0,100],                                   // HEMTT Ammo
     ["LOP_TAK_Civ_Hatchback",80,0,50],
     ["LOP_TAK_Civ_Landrover",100,0,50],
     ["LOP_TAK_Civ_Offroad",120,0,50]
@@ -436,7 +434,6 @@ blufor_transport_support_vehicles = [
 
     [KP_liberation_truck_fuel_classname,10],
     [KP_liberation_truck_ammo_classname,10],
-    [KP_liberation_truck_repair_classname,10], 
     [KP_liberation_truck_classname,10],
     ["B_Truck_01_Repair_F",10],
     ["B_Truck_01_fuel_F",10],

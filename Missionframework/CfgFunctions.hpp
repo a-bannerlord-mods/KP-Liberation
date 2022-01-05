@@ -116,6 +116,15 @@ class KPLIB {
         file = "functions\items";
         class calculateMagValue    {};
     };
+    class functions_cargo {
+        file = "functions\logistics";
+        class addLogisticsActions   {};
+        class addBuyAmmoActions     {};
+        class addBuyFuelActions     {};
+        class addRepairActions      {};
+        class addMoveFuelActions    {};
+        class addMoveAmmoActions    {};
+    };
     class functions_data {
         file = "functions\data";
 

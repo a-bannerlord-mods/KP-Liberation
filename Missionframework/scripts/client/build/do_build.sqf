@@ -313,9 +313,21 @@ while { true } do {
                     _vehicle forceFlagtexture blufor_flag_texture;
                 };
 
+                if (getNumber (configFile >> "CfgVehicles" >> typeof _vehicle >> "ace_refuel_fuelCargo") > 0) then {
+                    [_vehicle, 0] call ace_refuel_fnc_setFuel;
+                };
+
+
+
                 [_vehicle] call KPLIB_fnc_addObjectInit;
 
                 [_vehicle] call KPLIB_fnc_clearCargo;
+
+                _ace_rearm_storage = getNumber (configFile >> "CfgVehicles" >>  typeof _vehicle >> "ace_rearm_defaultSupply");
+                if (_ace_rearm_storage>0) then {
+                        [_vehicle, 0] call ace_rearm_fnc_setSupplyCount;
+                };
+
 
                 if (buildtype == 6 || buildtype == 99 || (toLower _classname) in KPLIB_storageBuildings || _classname isEqualTo KP_liberation_recycle_building || _classname isEqualTo KP_liberation_air_vehicle_building) then {
                     if (KP_vector) then {

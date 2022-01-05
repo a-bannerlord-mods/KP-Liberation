@@ -1,5 +1,11 @@
 if (!(isnil "acex_field_rations_enabled") && acex_field_rations_enabled) then {
 
+    if (KPLIB_acex_field_rations_enable_Effects) then {
+        execVM "compatibility\acex_field_rations\field_rations_effects.sqf";
+    };
+
+
+    
     drink_condition = {
         true
     };

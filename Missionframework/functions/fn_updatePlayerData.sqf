@@ -25,7 +25,10 @@ if (!((name _player) in ["HC0","HC1", "HC2", "HC3", "HC4", "HC5"])) then {
 
 		_loadout = getUnitLoadout _player;
 
-		_data = [getPosATL _player, _loadout,[]]; 
+		_rations_hunger= ACE_player getVariable ["acex_field_rations_hunger",-1];
+        _field_rations_thirst = ACE_player getVariable ["acex_field_rations_thirst",-1];
+		
+		_data = [getPosATL _player, _loadout,[_rations_hunger,_field_rations_thirst]]; 
 
 		private _displayname = ""; 
 		_all_players_uids =[]; 

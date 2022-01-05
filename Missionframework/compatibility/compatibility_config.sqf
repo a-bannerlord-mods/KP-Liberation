@@ -47,3 +47,9 @@ KPLIB_classnamesToSave append KPLIB_TFAR_Set_Default_Channels_Device;
 //Simplex Support Services
 
 blufor_cas_support_required_items =["ItemcTab","Saka_tf_rt1523g_big_DES","Saka_tf_rt1523g_DES"];
+
+
+//acex field rations
+KPLIB_acex_field_rations_enable_Effects = true;
+
+KPLIB_acex_field_rations_execluded_players = ["76561198028353187"];
