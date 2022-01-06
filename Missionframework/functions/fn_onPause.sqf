@@ -46,7 +46,7 @@ isNil {
             )then{
                 GRLIB_force_redeploy = true;
             }else{
-                hint 'You may only redeploy near base or FOB or Mobile Respawn';
+                hint 'You may only redeploy near (20m away) base or FOB or Mobile Respawn';
             };
             true
         "];

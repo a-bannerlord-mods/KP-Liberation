@@ -89,10 +89,13 @@ class KPLIB {
         class setUnitTraits             {};
         class onPause                   {};
         class combatReadinessUpdated    {}; 
-        class removeUselessSectorMarkers    {};
+        class removeUselessSectorMarkers  {};
         class getBuildingRooftopPositions {};
         class getNearestSectorOfType      {};
         class makeUnitFlee                {};
+        class applyCustomUnitSettings     {};
+        class isStartBase                 {};
+        class isPlayerNearToFob                  {};
     };
     class functions_curator {
         file = "functions\curator";

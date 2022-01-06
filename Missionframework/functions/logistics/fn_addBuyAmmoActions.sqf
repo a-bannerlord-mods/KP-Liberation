@@ -45,7 +45,7 @@ _player addAction [
         && 1200 > (cursorObject getVariable ['ace_rearm_currentsupply', 0])
         && {isNull (objectParent _originalTarget)}
         && {alive _originalTarget}  && {alive cursorObject}
-        && {_originalTarget getVariable ['KPLIB_fobDist', 99999] < (GRLIB_fob_range * 0.8)}
+        && [_originalTarget,0.8] call  KPLIB_fnc_isPlayerNearToFob
     "
 ];
 
@@ -70,7 +70,7 @@ _player addAction [
 		&& 1200 - (cursorObject getVariable ['ace_rearm_currentsupply', 0]) >= 600 
 		&& {isNull (objectParent _originalTarget)} 
 		&& {alive _originalTarget}   && {alive cursorObject}
-        && {_originalTarget getVariable ['KPLIB_fobDist', 99999] < (GRLIB_fob_range * 0.8)}
+        && [_originalTarget,0.8] call  KPLIB_fnc_isPlayerNearToFob
     "
 ];
 
@@ -96,7 +96,7 @@ _player addAction [
 		&& 1200 - (cursorObject getVariable ['ace_rearm_currentsupply', 0]) >= 300 
 		&& {isNull (objectParent _originalTarget)} 
 		&& {alive _originalTarget}  && {alive cursorObject}
-        && {_originalTarget getVariable ['KPLIB_fobDist', 99999] < (GRLIB_fob_range * 0.8)}
+        && [_originalTarget,0.8] call  KPLIB_fnc_isPlayerNearToFob
     "
 ];
 
@@ -123,6 +123,6 @@ _player addAction [
 		&& 1200 - (cursorObject getVariable ['ace_rearm_currentsupply', 0]) >= 100 
 		&& {isNull (objectParent _originalTarget)} 
 		&& {alive _originalTarget}  && {alive cursorObject}
-        && {_originalTarget getVariable ['KPLIB_fobDist', 99999] < (GRLIB_fob_range * 0.8)}
+        && [_originalTarget,0.8] call  KPLIB_fnc_isPlayerNearToFob
     "
 ];

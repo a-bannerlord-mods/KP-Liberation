@@ -118,7 +118,7 @@ _player addAction [
     "
         isNull (objectParent _originalTarget)
         && {alive _originalTarget}
-        && {_originalTarget getVariable ['KPLIB_fobDist', 99999] < (GRLIB_fob_range * 0.8)}
+        && [_originalTarget,0.8] call  KPLIB_fnc_isPlayerNearToFob
         && {
             _originalTarget getVariable ['KPLIB_hasDirectAccess', false]
             || {[3] call KPLIB_fnc_hasPermission}
@@ -255,7 +255,7 @@ _player addAction [
     "",
     "
         alive _originalTarget
-        && {_originalTarget getVariable ['KPLIB_fobDist', 99999] < (GRLIB_fob_range * 0.8)}
+        && [_originalTarget,0.8] call  KPLIB_fnc_isPlayerNearToFob
         && {build_confirmed isEqualTo 0}
     "
 ];
@@ -296,7 +296,7 @@ _player addAction [
         && {_originalTarget getVariable ['KPLIB_hasDirectAccess', false]}
         && {isNull (objectParent _originalTarget)}
         && {alive _originalTarget}
-        && {_originalTarget getVariable ['KPLIB_fobDist', 99999] < (GRLIB_fob_range * 0.8)}
+        && [_originalTarget,0.8] call  KPLIB_fnc_isPlayerNearToFob
         && {!(
             GRLIB_all_fobs isEqualTo []
             || KP_liberation_production isEqualTo []
@@ -433,14 +433,13 @@ _player addAction [
         _originalTarget getVariable ['KPLIB_hasDirectAccess', false]
         && {isNull (objectParent _originalTarget)}
         && {alive _originalTarget}
-        && {_originalTarget getVariable ['KPLIB_fobDist', 99999] < (GRLIB_fob_range * 0.8)}
+        && [_originalTarget,0.8] call  KPLIB_fnc_isPlayerNearToFob
         && {build_confirmed isEqualTo 0}
+        && !([_originalTarget getVariable ['KPLIB_fobPos', [0,0,0]]] call KPLIB_fnc_isStartBase)
     "
 ];
 
 _player execVM "compatibility\add_compatibility_actions.sqf";
 
 [] call KPLIB_fnc_addLogisticsActions;
-
-
 true

@@ -29,6 +29,19 @@ if (_class in KPLIB_b_allVeh_classes ||_class in KPLIB_o_allVeh_classes ) then {
 	_data pushBack ["fuel",fuel _obj];
 };
 
+//loadout
+if (_class in KPLIB_b_infantry_classes ) then {
+	_data pushBack ["loadout", getUnitLoadout _obj];
+};
+
+//task
+if (_class in KPLIB_b_infantry_classes ) then {
+	_task = _obj getVariable ["task",""];
+	if (_task!="") then {
+		_data pushBack ["task",_task];
+	};
+};
+
 //damage
 if (_class in KPLIB_b_allVeh_classes ||_class in KPLIB_o_allVeh_classes ) then {
 	_hitPoints =getAllHitPointsDamage _obj;
@@ -101,6 +114,19 @@ if (_ace_fuel_storage>0) then {
 _customname = _obj getVariable ["ace_cargo_customname",""];
 if (_customname!="") then {
 	_data pushBack ["ace_cargo_customname",_customname];
+};
+
+
+//captured
+_KPLIB_captured = _obj getVariable ["KPLIB_captured",false];
+if (_KPLIB_captured) then {
+	_data pushBack ["KPLIB_captured",true];
+};
+
+//seized
+_KPLIB_seized = _obj getVariable ["KPLIB_seized",false];
+if (_KPLIB_seized) then {
+	_data pushBack ["KPLIB_seized",true];
 };
 
 

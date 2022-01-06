@@ -48,6 +48,16 @@ _class = toLower (typeOf _obj);
 	if ((_x select 0) == "ace_cargo_customname") then {
 		_obj setVariable ["ace_cargo_customname", (_x select 1), true];
 	};
+
+	// KPLIB_seized
+	if ((_x select 0) == "KPLIB_seized") then {
+		_obj setVariable ["KPLIB_seized",(_x select 1) , true];
+	};
+
+	// KPLIB_captured
+	if ((_x select 0) == "KPLIB_captured") then {
+		_obj setVariable ["KPLIB_captured",(_x select 1) , true];
+	};		
 	
 	// driver_radio_settings
 	if ((_x select 0) == "driver_radio_settings") then {
@@ -79,7 +89,28 @@ _class = toLower (typeOf _obj);
 		[_obj, (_x select 1)] call ace_refuel_fnc_setFuel;
 	};
 
-	
+	// loadout
+	if ((_x select 0) == "loadout") then {
+		[_obj,(_x select 1)] spawn {
+			params ["_obj","_loadout"];
+			sleep 1;
+			_obj setUnitLoadout _loadout ;
+		};	
+	};
+
+	// task
+	if ((_x select 0) == "task") then {
+		_obj setVariable["task", (_x select 1), true];
+		switch ((_x select 1)) do {
+			case "guard": { 
+				_obj setUnitPos "UP";
+            	_obj disableAI "PATH";
+            	[_obj] joinSilent grpNull;
+			};
+			default { };
+		};
+	};
+
 	// ammo cargo
 	if ((_x select 0) == "ace_rearm_currentsupply") then {
         [_obj, (_x select 1)] call ace_rearm_fnc_setSupplyCount;

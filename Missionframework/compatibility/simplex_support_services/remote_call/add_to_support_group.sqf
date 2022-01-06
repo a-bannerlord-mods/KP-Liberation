@@ -2,23 +2,24 @@ params ["_target", "_type"];
 
 switch (_type) do {
     case "transport": {
-        _addonGrpname = createvehiclecrew _target;
-        _grpname = creategroup GRLIB_side_friendly;
-        {
-            [_x] joinSilent _grpname;
-        } forEach units _addonGrpname;
-        
+        // _addonGrpname = createvehiclecrew _target;
+        // _grpname = creategroup GRLIB_side_friendly;
+        // {
+        //     [_x] joinSilent _grpname;
+        // } forEach units _addonGrpname;
+        [_target] call KPLIB_fnc_forceBluforCrew;
         [_target, "", -1, {}, blufor_cas_support_required_items, {
             player getUnitTrait 'JTAC'
         }] call sss_support_fnc_addtransport;
     };
     case "cas": {
-        _addonGrpname = createvehiclecrew _target;
-        _grpname = creategroup GRLIB_side_friendly;
-        {
-            [_x] joinSilent _grpname;
-        } forEach units _addonGrpname;
-        
+        //_addonGrpname = createvehiclecrew _target;
+        // _grpname = creategroup GRLIB_side_friendly;
+        // {
+        //     [_x] joinSilent _grpname;
+        // } forEach units _addonGrpname;
+
+        [_target] call KPLIB_fnc_forceBluforCrew;
         [_target, "", -1, {}, blufor_cas_support_required_items, {
             player getUnitTrait 'JTAC'
         }] call sss_support_fnc_addcashelicopter;

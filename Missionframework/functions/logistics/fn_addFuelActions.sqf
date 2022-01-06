@@ -45,7 +45,7 @@ _player addAction [
         && getNumber (configFile >> 'CfgVehicles' >> typeof cursorObject >> 'ace_refuel_fuelCargo') > [cursorObject] call ace_refuel_fnc_getFuel
         && {isNull (objectParent _originalTarget)}
         && {alive _originalTarget} && {alive cursorObject}
-        && {_originalTarget getVariable ['KPLIB_fobDist', 99999] < (GRLIB_fob_range * 0.8)}
+        && [_originalTarget,0.8] call  KPLIB_fnc_isPlayerNearToFob
     "
 ];
 
@@ -70,7 +70,7 @@ _player addAction [
 		&& (getNumber (configFile >> 'CfgVehicles' >> typeof cursorObject >> 'ace_refuel_fuelCargo') - ([cursorObject] call ace_refuel_fnc_getFuel)) >= 900 
 		&& {isNull (objectParent _originalTarget)} 
 		&& {alive _originalTarget}  && {alive cursorObject}
-        && {_originalTarget getVariable ['KPLIB_fobDist', 99999] < (GRLIB_fob_range * 0.8)} 
+        && [_originalTarget,0.8] call  KPLIB_fnc_isPlayerNearToFob
     "
 ];
 
@@ -95,7 +95,7 @@ _player addAction [
 		&& (getNumber (configFile >> 'CfgVehicles' >> typeof cursorObject >> 'ace_refuel_fuelCargo') - ([cursorObject] call ace_refuel_fnc_getFuel)) >= 3000 
 		&& {isNull (objectParent _originalTarget)} 
 		&& {alive _originalTarget} && {alive cursorObject}
-		&& {_originalTarget getVariable ['KPLIB_fobDist', 99999] < (GRLIB_fob_range * 0.8)} 
+		&& [_originalTarget,0.8] call  KPLIB_fnc_isPlayerNearToFob
     "
 ];
 
@@ -120,6 +120,6 @@ _player addAction [
 		&& (getNumber (configFile >> 'CfgVehicles' >> typeof cursorObject >> 'ace_refuel_fuelCargo') - ([cursorObject] call ace_refuel_fnc_getFuel)) >= 6000 
 		&& {isNull (objectParent _originalTarget)} 
 		&& {alive _originalTarget}  && {alive cursorObject}
-		&& {_originalTarget getVariable ['KPLIB_fobDist', 99999] < (GRLIB_fob_range * 0.8)} 
+		&& [_originalTarget,0.8] call  KPLIB_fnc_isPlayerNearToFob
     "
 ];

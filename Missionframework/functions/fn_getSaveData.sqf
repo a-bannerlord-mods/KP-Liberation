@@ -36,9 +36,12 @@ private ["_fobPos", "_fobObjects", "_grpUnits", "_fobMines"];
 {
     _fobPos = _x;
     _range = GRLIB_fob_range;
-    if (_forEachIndex == 0) then {
-            _range = GRLIB_fob_range *2.5;
-        };
+    if (([_fobPos] call  KPLIB_fnc_isStartBase)) then {
+        _range = GRLIB_base_range ;
+    }else{
+        _range = GRLIB_fob_range;
+    };
+
     _fobObjects = (_fobPos nearObjects (_range * 1.3)) select {
         ((toLower (typeof _x)) in KPLIB_classnamesToSave) &&        // Exclude classnames which are not in the presets
         {alive _x} &&                                               // Exclude dead or broken objects
@@ -59,11 +62,13 @@ private ["_fobPos", "_fobObjects", "_grpUnits", "_fobMines"];
         // Get only living AI units of the group by excluding possible POWs currently in the player group
         _grpUnits = (units _x) select {!(isPlayer _x) && (alive _x) && !((typeOf _x) in KPLIB_o_inf_classes) && !((typeOf _x) in militia_squad)};
         // Add to save array
-        _aiGroups pushBack [getPosATL (leader _x), (_grpUnits apply {typeOf _x})];
-    } forEach (_allBlueGroups select {(_fobPos distance2D (leader _x)) < (GRLIB_fob_range * 1.2)});
+        _aiGroups pushBack [getPosATL (leader _x), (_grpUnits apply {
+            [typeOf _x, ([_x] call KPLIB_fnc_getObjectExtraDataToSave)] //
+            })];
+    } forEach (_allBlueGroups select {(_fobPos distance2D (leader _x)) < (_range)});
 
     // Save all mines around FOB
-    _fobMines = allMines inAreaArray [_fobPos, GRLIB_fob_range * 1.2, GRLIB_fob_range * 1.2];
+    _fobMines = allMines inAreaArray [_fobPos, _range, _range];
     _allMines append (_fobMines apply {[
         getPosWorld _x,
         [vectorDirVisual _x, vectorUpVisual _x],

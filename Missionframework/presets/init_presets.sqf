@@ -417,7 +417,10 @@ KPLIB_typeAirClasses   = +KPLIB_b_air_classes;
 } forEach (KPLIB_b_support_classes + [toLower huron_typename]);
 
 // Military alphabet used for FOBs and convois
-military_alphabet = ["StartBase","Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India", "Juliet", "Kilo", "Lima", "Mike", "November", "Oscar", "Papa", "Quebec", "Romeo", "Sierra", "Tango", "Uniform", "Victor", "Whiskey", "X-Ray", "Yankee", "Zulu"];
+if (isnil "military_alphabet") then {
+    military_alphabet = ["StartBase","Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India", "Juliet", "Kilo", "Lima", "Mike", "November", "Oscar", "Papa", "Quebec", "Romeo", "Sierra", "Tango", "Uniform", "Victor", "Whiskey", "X-Ray", "Yankee", "Zulu"];
+}; 
+
 
 // Misc variables
 markers_reset = [99999,99999,0];
@@ -426,5 +429,7 @@ KPLIB_sarWreck = "Land_Wreck_Heli_Attack_01_F";
 KPLIB_sarFire = "test_EmptyObjectForFireBig";
 
 KPLIB_initPresets = true;
+
+[] call compile preprocessFileLineNumbers "presets\custom_units.sqf";
 
 if (isServer) then {[format ["----- Preset initialization finished. Time needed: %1 seconds -----", diag_ticktime - _start], "PRESETS"] call KPLIB_fnc_log;};

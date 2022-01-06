@@ -27,6 +27,7 @@ params [
     ["_placement", 0, [0]]
 ];
 
+
 private ["_unit"];
 isNil {
     // Create temp group, as we need to let the unit join the "correct side group".
@@ -37,6 +38,8 @@ isNil {
     _unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
     _unit setRank _rank;
 
+    [_unit] call KPLIB_fnc_applyCustomUnitSettings;
+    
     // Join to target group to preserve Side
     [_unit] joinSilent _group;
     deleteGroup _groupTemp;

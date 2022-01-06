@@ -19,7 +19,10 @@
 params ["_player"];
 if (!((name _player) in ["HC0","HC1", "HC2", "HC3", "HC4", "HC5"])) then { 
 		if (_player getVariable ["deployed",false]) then {
-		
+		_originalPlayerUnit = _player getVariable['originalPlayerUnit', objNull];
+    	if !(isnull _originalPlayerUnit) then {
+        	_player = _originalPlayerUnit;
+    	};
 		_playerUID = getPlayerUID _player; 
 		//_loadout =[_player] call KPLIB_fnc_getLoadout;
 

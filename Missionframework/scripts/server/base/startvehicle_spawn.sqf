@@ -65,6 +65,9 @@ if (KPLIB_firstTime) then {
             if (((_veh isKindOf "Tank") || (_veh isKindOf "Car")) && _classname != KP_liberation_civ_car_classname) then {
                 _veh forceFlagtexture blufor_flag_texture;
             };
+            if (_classname in civilian_vehicles) then {
+                _veh setVariable ["KPLIB_seized",true , true];
+            };
             deleteVehicle _placeholder;
             sleep 0.5;
             _veh enableSimulationGlobal true;

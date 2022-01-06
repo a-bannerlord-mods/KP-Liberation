@@ -73,7 +73,8 @@ KPLIB_objectInits = [
                         deleteVehicle _attached_target;
                     };
                 }];
-
+            _this setMass 500;
+            if (KP_liberation_ace) then {[_this, true, [0, 1.5, 0], 0] remoteExec ["ace_dragging_fnc_setCarryable"];};
             [_this, []] call jn_fnc_arsenal_initPersistent; 
         }
     ],

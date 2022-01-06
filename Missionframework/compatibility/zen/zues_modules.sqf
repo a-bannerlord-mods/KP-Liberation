@@ -14,7 +14,7 @@
         };
     }] call zen_custom_modules_fnc_register;
     
-    ["Liberation", "Add blufor", {
+    ["Liberation", "Add blufor flag", {
         _ob = (_this select 1);
         if (!isNull _ob) then {
             _ob forceFlagtexture blufor_flag_texture;
@@ -25,6 +25,14 @@
         _ob = (_this select 1);
         if (!isNull _ob) then {
             _ob forceFlagtexture '';
+        };
+    }] call zen_custom_modules_fnc_register;
+
+    ["Liberation", "Add blufor Crew To", {
+        _ob = (_this select 1);
+        if (!isNull _ob) then {
+            //[_ob] call KPLIB_fnc_forceBluforCrew;
+            [_ob] remoteExec ["KPLIB_fnc_forceBluforCrew", 2];
         };
     }] call zen_custom_modules_fnc_register;
     

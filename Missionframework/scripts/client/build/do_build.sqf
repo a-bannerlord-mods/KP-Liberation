@@ -3,7 +3,16 @@
 private [ "_maxdist", "_truepos", "_built_object_remote", "_pos", "_grp", "_classname", "_idx", "_unitrank", "_posfob", "_ghost_spot", "_vehicle", "_dist", "_actualdir", "_near_objects", "_near_objects_25", "_debug_colisions" ];
 
 build_confirmed = 0;
-_maxdist = GRLIB_fob_range;
+
+getMaxDist = {
+    _KPLIB_fobPos = player getVariable ['KPLIB_fobPos', [0,0,0]];
+    if ([_KPLIB_fobPos] call  KPLIB_fnc_isStartBase ) then {
+	    GRLIB_base_range
+    } else {
+	    GRLIB_fob_range
+    };
+};
+
 _truepos = [];
 _debug_colisions = false;
 KP_vector = true;
@@ -23,6 +32,14 @@ if (isNil "repeatbuild" ) then { repeatbuild = false };
 if (isNil "build_rotation" ) then { build_rotation = 0 };
 if (isNil "build_elevation" ) then { build_elevation = 0 };
 
+init_unit = {
+        _this spawn {
+            sleep 1;
+            _this addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+            [_this] call KPLIB_fnc_addObjectInit;
+            [_this] call KPLIB_fnc_applyCustomUnitSettings;
+        };
+};
 waitUntil { sleep 0.2; !isNil "dobuild" };
 
 while { true } do {
@@ -40,7 +57,7 @@ while { true } do {
         _price_f = ((KPLIB_buildList select buildtype) select buildindex) select 3;
 
         _nearfob = [] call KPLIB_fnc_getNearestFob;
-        _storage_areas = (_nearfob nearobjects (GRLIB_fob_range * 2)) select {(_x getVariable ["KP_liberation_storage_type",-1]) == 0};
+        _storage_areas = (_nearfob nearobjects (([] call getMaxDist) * 2)) select {(_x getVariable ["KP_liberation_storage_type",-1]) == 0};
 
         [_price_s, _price_a, _price_f, _classname, buildtype, _storage_areas] remoteExec ["build_remote_call",2];
     };
@@ -51,7 +68,7 @@ while { true } do {
         if ( manned ) then {
             _grp = createGroup GRLIB_side_friendly;
         };
-        _classname createUnit [_pos, _grp,"this addMPEventHandler [""MPKilled"", {_this spawn kill_manager}]", 0.5, "private"];
+        _classname createUnit [_pos, _grp,"this call init_unit", 0.5, "private"];
         build_confirmed = 0;
     } else {
         if ( buildtype == 8 ) then {
@@ -64,9 +81,9 @@ while { true } do {
                 if(_idx == 0) then { _unitrank = "sergeant"; };
                 if(_idx == 1) then { _unitrank = "corporal"; };
                 if (_classname isEqualTo blufor_squad_para) then {
-                    _x createUnit [_pos, _grp,"this addMPEventHandler [""MPKilled"", {_this spawn kill_manager}]; removeBackpackGlobal this; this addBackpackGlobal ""B_parachute""", 0.5, _unitrank];
+                    _x createUnit [_pos, _grp," removeBackpackGlobal this; this addBackpackGlobal ""B_parachute"";this call init_unit;", 0.5, _unitrank];
                 } else {
-                    _x createUnit [_pos, _grp,"this addMPEventHandler [""MPKilled"", {_this spawn kill_manager}];", 0.5, _unitrank];
+                    _x createUnit [_pos, _grp,"this call init_unit", 0.5, _unitrank];
                 };
                 _idx = _idx + 1;
 
@@ -147,7 +164,7 @@ while { true } do {
 
                 if !(buildtype isEqualTo 99) then {
                     {
-                        _x setPos (_posfob getPos [GRLIB_fob_range, 10 * _forEachIndex])
+                        _x setPos (_posfob getPos [([] call getMaxDist), 10 * _forEachIndex])
                     } forEach _fob_spheres;
                 };
 
@@ -203,7 +220,7 @@ while { true } do {
                     GRLIB_conflicting_objects = [];
                 };
 
-                if (count _near_objects == 0 && ((_truepos distance _posfob) < _maxdist) && (  ((!surfaceIsWater _truepos) && (!surfaceIsWater getpos player)) || (_classname in boats_names) ) ) then {
+                if (count _near_objects == 0 && ((_truepos distance _posfob) < ([] call getMaxDist)) && (  ((!surfaceIsWater _truepos) && (!surfaceIsWater getpos player)) || (_classname in boats_names) ) ) then {
 
                     if ( ((buildtype == 6) || (buildtype == 99)) && ((gridmode % 2) == 1) ) then {
                         _vehicle setpos [round (_truepos select 0),round (_truepos select 1), _truepos select 2];
@@ -249,8 +266,8 @@ while { true } do {
                     if( ((surfaceIsWater _truepos) || (surfaceIsWater getpos player)) && !(_classname in boats_names)) then {
                         GRLIB_ui_notif = localize "STR_BUILD_ERROR_WATER";
                     };
-                    if((_truepos distance _posfob) > _maxdist) then {
-                        GRLIB_ui_notif = format [localize "STR_BUILD_ERROR_DISTANCE",_maxdist];
+                    if((_truepos distance _posfob) > ([] call getMaxDist)) then {
+                        GRLIB_ui_notif = format [localize "STR_BUILD_ERROR_DISTANCE",([] call getMaxDist)];
                     };
 
                 };
@@ -268,7 +285,7 @@ while { true } do {
                 _price_f = ((KPLIB_buildList select buildtype) select buildindex) select 3;
 
                 _nearfob = [] call KPLIB_fnc_getNearestFob;
-                _storage_areas = (_nearfob nearobjects (GRLIB_fob_range * 2)) select {(_x getVariable ["KP_liberation_storage_type",-1]) == 0};
+                _storage_areas = (_nearfob nearobjects (([] call getMaxDist) * 2)) select {(_x getVariable ["KP_liberation_storage_type",-1]) == 0};
 
                 _supplyCrates = ceil (_price_s / 100);
                 _ammoCrates = ceil (_price_a / 100);

@@ -17,6 +17,17 @@
 params [
     ["_obj", objNull, [objNull]]
 ];
+//fix bug its not working
+set_random_unit_name = {
+    params["_unit", "_fnames", "_snames"];
+    _firstname = selectRandom _fnames;
+    _secoundname = selectRandom _snames;
+    if (_firstname != _secoundname) then {
+        _unit setName[_firstname + " " + _secoundname, _firstname, _secoundname];
+    } else {
+        _unit call set_random_unit_name;
+    };
+};
 
 // Identify kind of placed object once
 private _unit = _obj in allUnits;
@@ -29,11 +40,48 @@ if !(_unit || _vehicle || _crate) exitWith {false};
 // For a vehicle apply clear cargo
 if (_vehicle) then {
     [_obj] call KPLIB_fnc_clearCargo;
-
+    if (side _x == GRLIB_side_friendly) then {
+        if (((_obj isKindOf "Tank") || (_obj isKindOf "Car")) && tolower(typeof _obj) != KP_liberation_civ_car_classname) then {
+                _obj forceFlagtexture blufor_flag_texture;
+            };
+    }else{
+        if ((_obj isKindOf "Tank")|| (_obj isKindOf "Car")) then {
+                    if (typeOf _obj in  militia_vehicles) then {
+                        _obj forceFlagtexture opfor_flag_militia_texture;
+                    } else {
+                        _obj forceFlagtexture opfor_flag_texture;
+                    };
+            };
+    };
     // Add kill manager and object init to possible crew units
     {
         _x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
         [_x] call KPLIB_fnc_addObjectInit;
+
+        if (side _x == GRLIB_side_friendly) then {
+            _unit = _x;
+            _loadout = [];
+            if ((!isnil "KPLIB_Units_Override_car_crew_Loadout") && _obj isKindOf "Car") then {
+                _loadout = KPLIB_Units_Override_car_crew_Loadout;
+            };
+            if ((!isnil "KPLIB_Units_Override_tank_crew_Loadout") && _obj isKindOf "Tank") then {
+                _loadout = KPLIB_Units_Override_tank_crew_Loadout;
+            };
+
+            if (count _loadout > 0) then {
+                _unit setUnitLoadout _loadout;
+            };
+
+            _fnames = KPLIB_Units_Override_crew_Names select 0;
+            _snames = KPLIB_Units_Override_crew_Names select 1;
+            if (count _fnames > 0 && count _snames > 0) then {
+                [_unit, _fnames, _snames] call set_random_unit_name;
+            };
+
+        }else{
+            [_x] call KPLIB_fnc_applyCustomUnitSettings;
+        };
+
     } forEach (crew _obj);
 };
 
@@ -47,6 +95,8 @@ if !(_crate) then {
     [_obj, true] call KPLIB_fnc_clearCargo;
     if (KP_liberation_ace) then {[_obj, true, [0, 1.5, 0], 0] remoteExec ["ace_dragging_fnc_setCarryable"];};
 };
+
+[_obj] call KPLIB_fnc_applyCustomUnitSettings;
 
 // Add object init codes
 [_obj] call KPLIB_fnc_addObjectInit;

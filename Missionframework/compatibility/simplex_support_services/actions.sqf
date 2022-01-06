@@ -38,7 +38,7 @@ if (isClass(configFile >> "CfgPatches" >> "SSS")) exitwith {
 			&& cursorObject distance player < 5 
 			&& isnull (cursorObject getVariable['SSS_parentEntity', objNull])
             && _originalTarget getVariable ['KPLIB_hasDirectAccess', false]
-            && {_originalTarget getVariable ['KPLIB_fobDist', 99999] < (GRLIB_fob_range * 1.3)}
+            && [_originalTarget,1.3] call  KPLIB_fnc_isPlayerNearToFob
             "
         ];
     };
@@ -80,7 +80,7 @@ if (isClass(configFile >> "CfgPatches" >> "SSS")) exitwith {
             && cursorObject distance player < 5
             && isnull (cursorObject getVariable['SSS_parentEntity', objNull])
             && _originalTarget getVariable ['KPLIB_hasDirectAccess', false]
-            && {_originalTarget getVariable ['KPLIB_fobDist', 99999] < (GRLIB_fob_range * 1.3)}
+            && [_originalTarget,1.3] call  KPLIB_fnc_isPlayerNearToFob
             "
         ];
     };
@@ -122,7 +122,7 @@ if (isClass(configFile >> "CfgPatches" >> "SSS")) exitwith {
             && cursorObject distance player < 5
             && isnull (cursorObject getVariable['SSS_parentEntity', objNull])
             && _originalTarget getVariable ['KPLIB_hasDirectAccess', false]
-            && {_originalTarget getVariable ['KPLIB_fobDist', 99999] < (GRLIB_fob_range * 1.3)}
+            && [_originalTarget,1.3] call  KPLIB_fnc_isPlayerNearToFob
             "
         ];
     };

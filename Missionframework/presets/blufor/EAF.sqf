@@ -20,6 +20,11 @@
     The same classnames for different purposes may cause various unpredictable issues with player actions.
     Or not, just don't try!
 */
+
+Custom_First_Names = ["Ahmed", "Mohamed", "Ziad", "Ibrahim", "Samy", "Ramy", "Hatem", "Hazem", "Adam", "Khaled", "Kareem", "Kamal", "Mahmoud", "Amir", "Islam", "Kamel", "Hassan", "Hussien", "Yasser", "Ali", "Mamdoh", "Amr", "Omar", "Marawan", "Waleed", "Ayman", "Nader"];
+Custom_Last_Names = Custom_First_Names + ["Nasser", "Abo El Nasr", "Abo El Magd", "Awad", "Ryaad", "Mazen", "El Helw", "El Eskandrany", "Abbas", "Farok", "Fayez", "Galal", "Hosni", "Abdul Hadi", "Abdul Wahhab"];
+
+
 blufor_flag_texture = "USP_flags\data\mideast\flag_egypt_co.paa";
 FOB_typename = "Land_Cargo_HQ_V1_F";                                    // This is the main FOB HQ building.
 FOB_box_typename = "B_Slingload_01_Cargo_F";                            // This is the FOB as a container.
@@ -61,7 +66,7 @@ KP_liberation_fuel_crate = "CargoNet_01_barrels_F";                     // This 
     IMPORTANT: The last element inside each array must have no comma at the end!
 */
 infantry_units = [
-    ["B_EGSAKA_Operator_D_01",200,0,0]                                    // Rifleman (Light)
+    ["B_EGSAKA_Operator_D_01",280,0,0]                                    // Rifleman (Light)
 ];
 
 light_vehicles = [
@@ -449,3 +454,6 @@ blufor_jet_support_vehicles = [
     ["EAF_F16_1",180],
     ["AMF_RAFALE_M_01_F",200]
 ];
+
+// Military alphabet used for FOBs and convois
+military_alphabet = [markerText "startbase_marker","Sadat", "Naser", "Tantawi", "Orabi", "Abo Ghazala", "Thawra", "Kahera", "25 Jan", "6 October", "Ghadab", "Zaied", "Matroh", "Allamen", "Haram", "Abo Hoal", "Sakr", "Asad", "Nemr", "Nesr", "Fahd", "Dab3", "Deeb"];

@@ -22,8 +22,17 @@ SendPlayerData = {
 
 addMissionEventHandler ["HandleDisconnect", {
     params ["_unit", "_id", "_uid", "_name"];
+    _originalPlayerUnit = _unit getVariable['originalPlayerUnit', objNull];
+  
+    if !(isnull _originalPlayerUnit) then {
+        _unit = _originalPlayerUnit;
+        _oldunit = objNull;
+    };
     [_unit] call KPLIB_fnc_updateplayerData;
     deleteVehicle _unit;
+    if (isnull _oldunit) then {
+        deleteVehicle _oldunit;
+    };
     true;
 }];
 

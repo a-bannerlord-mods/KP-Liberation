@@ -34,7 +34,7 @@ if (hasInterface) then {
 
 // All classnames of objects which should be saved
 KPLIB_classnamesToSave append [toLower FOB_typename, toLower huron_typename];
-
+//KPLIB_classnamesToSave append civilian_vehicles apply {toLower _x};
 /*
     --- Locals ---
     Variables which are only used inside the save_manager.sqf
@@ -495,7 +495,8 @@ if (!isNil "_saveData") then {
             _x params ["_spawnPos", "_units"];
             _grp = createGroup [GRLIB_side_friendly, true];
             {
-                [_x, [_spawnPos, _grp] select (_forEachIndex > 0), _grp] call KPLIB_fnc_createManagedUnit;
+                _cunit = [_x select 0, [_spawnPos, _grp] select (_forEachIndex > 0), _grp] call KPLIB_fnc_createManagedUnit;
+                [_cunit,_x select 1] call KPLIB_fnc_setObjectExtraDataFromSave;
             } forEach _units;
         } forEach _aiGroups;
     } else {
