@@ -320,6 +320,7 @@ do {
                                 _caller setUnitPos "UP";
                                 _caller disableAI "PATH";
                                 [_caller] joinSilent grpNull;
+                                [_caller, "WATCH", "FULL"] call BIS_fnc_ambientAnimCombat;
                                 _caller setVariable["task", "guard", true];
                             };
                         },

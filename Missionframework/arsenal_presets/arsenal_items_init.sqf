@@ -1,22 +1,22 @@
 
 switch (KP_liberation_arsenal) do {
-    case  1: {[] call compileFinal preprocessFileLineNumbers "arsenal_presets\custom.sqf";};
-    case  2: {[] call compileFinal preprocessFileLineNumbers "arsenal_presets\rhsusaf.sqf";};
-    case  3: {[] call compileFinal preprocessFileLineNumbers "arsenal_presets\3cbBAF.sqf";};
-    case  4: {[] call compileFinal preprocessFileLineNumbers "arsenal_presets\gm_west.sqf";};
-    case  5: {[] call compileFinal preprocessFileLineNumbers "arsenal_presets\gm_east.sqf";};
-    case  6: {[] call compileFinal preprocessFileLineNumbers "arsenal_presets\csat.sqf";};
-    case  7: {[] call compileFinal preprocessFileLineNumbers "arsenal_presets\unsung.sqf";};
-    case  8: {[] call compileFinal preprocessFileLineNumbers "arsenal_presets\sfp.sqf";};
-    case  9: {[] call compileFinal preprocessFileLineNumbers "arsenal_presets\bwmod.sqf";};
-    case  10: {[] call compileFinal preprocessFileLineNumbers "arsenal_presets\vanilla_nato_mtp.sqf";};
-    case  11: {[] call compileFinal preprocessFileLineNumbers "arsenal_presets\vanilla_nato_tropic.sqf";};
-    case  12: {[] call compileFinal preprocessFileLineNumbers "arsenal_presets\vanilla_nato_wdl.sqf";};
-    case  13: {[] call compileFinal preprocessFileLineNumbers "arsenal_presets\vanilla_csat_hex.sqf";};
-    case  14: {[] call compileFinal preprocessFileLineNumbers "arsenal_presets\vanilla_csat_ghex.sqf";};
-    case  15: {[] call compileFinal preprocessFileLineNumbers "arsenal_presets\vanilla_aaf.sqf";};
-    case  16: {[] call compileFinal preprocessFileLineNumbers "arsenal_presets\vanilla_ldf.sqf";};
-    case  17: {[] call compileFinal preprocessFileLineNumbers "arsenal_presets\eaf.sqf";};
+    case  1: {[] call compile preprocessFileLineNumbers "arsenal_presets\custom.sqf";};
+    case  2: {[] call compile preprocessFileLineNumbers "arsenal_presets\rhsusaf.sqf";};
+    case  3: {[] call compile preprocessFileLineNumbers "arsenal_presets\3cbBAF.sqf";};
+    case  4: {[] call compile preprocessFileLineNumbers "arsenal_presets\gm_west.sqf";};
+    case  5: {[] call compile preprocessFileLineNumbers "arsenal_presets\gm_east.sqf";};
+    case  6: {[] call compile preprocessFileLineNumbers "arsenal_presets\csat.sqf";};
+    case  7: {[] call compile preprocessFileLineNumbers "arsenal_presets\unsung.sqf";};
+    case  8: {[] call compile preprocessFileLineNumbers "arsenal_presets\sfp.sqf";};
+    case  9: {[] call compile preprocessFileLineNumbers "arsenal_presets\bwmod.sqf";};
+    case  10: {[] call compile preprocessFileLineNumbers "arsenal_presets\vanilla_nato_mtp.sqf";};
+    case  11: {[] call compile preprocessFileLineNumbers "arsenal_presets\vanilla_nato_tropic.sqf";};
+    case  12: {[] call compile preprocessFileLineNumbers "arsenal_presets\vanilla_nato_wdl.sqf";};
+    case  13: {[] call compile preprocessFileLineNumbers "arsenal_presets\vanilla_csat_hex.sqf";};
+    case  14: {[] call compile preprocessFileLineNumbers "arsenal_presets\vanilla_csat_ghex.sqf";};
+    case  15: {[] call compile preprocessFileLineNumbers "arsenal_presets\vanilla_aaf.sqf";};
+    case  16: {[] call compile preprocessFileLineNumbers "arsenal_presets\vanilla_ldf.sqf";};
+    case  17: {[] call compile preprocessFileLineNumbers "arsenal_presets\eaf.sqf";};
     default  {GRLIB_arsenal_weapons = [];GRLIB_arsenal_magazines = [];GRLIB_arsenal_items = [];GRLIB_arsenal_backpacks = [];};
 };
 
@@ -62,13 +62,13 @@ GRLIB_arsenal_weapons_handgun;
 });
 
 {
-    GRLIB_arsenal_uniforms pushBack [_x, "civilians items", [], 2, 5];
+    GRLIB_arsenal_uniforms pushBack [_x, "civiliansItems", [], 2, 5];
 } forEach KPLIB_civ_uniform;
 {
-    GRLIB_arsenal_headgear pushBack [_x, "civilians items", [], 2, 5];
+    GRLIB_arsenal_headgear pushBack [_x, "civiliansItems", [], 2, 5];
 } forEach KPLIB_civ_headwear;
 {
-    GRLIB_arsenal_backpacks pushBack [_x, "civilians items", [], 5, 5];
+    GRLIB_arsenal_backpacks pushBack [_x, "civiliansItems", [], 5, 5];
 } forEach KPLIB_civ_backbag;
 
 GRLIB_arsenal_all_dub= GRLIB_arsenal_weapons_primary + GRLIB_arsenal_weapons_secondary +

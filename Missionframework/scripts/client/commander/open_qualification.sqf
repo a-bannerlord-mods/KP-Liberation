@@ -11,23 +11,24 @@ color_authorized = [0,0.9,0,1];
 color_denied = [0.9,0,0,1];
 fontsize = 0.017 * safezoneH;
 
-private _modify_qualifications = +GRLIB_qualifications;
+private _modify_qualifications = + GRLIB_qualifications;
 
 disableSerialization;
 
 waitUntil { dialog };
 
+Qualifications_Count= count KP_liberation_qualifications;
 
 qualifications_create_activetext = compile '
 
-    params ["_idx", "_column", "_permission", "_text", "_tooltip"];
-
-    private _control = (findDisplay 5119) ctrlCreate ["RscActiveText", ((10 * _idx) + 111) + _column, (findDisplay 5119) displayCtrl 9969];
-    _control ctrlSetPosition [0.035 * _column * safeZoneW, (_idx * 0.025) * safezoneH, 0.035 * safeZoneW, 0.025  * safezoneH];
+    params ["_idx", "_column", "_qualification", "_text", "_tooltip"];
+    
+    private _control = (findDisplay 5119) ctrlCreate ["RscActiveText", ((Qualifications_Count * _idx) + 111) + _column, (findDisplay 5119) displayCtrl 9969];
+    _control ctrlSetPosition [0.038 * _column * safeZoneW, (_idx * 0.025) * safezoneH, 0.038 * safeZoneW, 0.025  * safezoneH];
     _control ctrlSetText _text;
     _control ctrlSetFontHeight fontsize;
     _control ctrlSetTooltip _tooltip;
-    buttonSetAction [((10 * _idx) + 111) + _column, format ["qualifications_playerid = %1; qualifications_toset = %2;", _idx, _permission]];
+    _control buttonSetAction (format ["qualifications_playerid = %1; qualifications_toset = %2;", _idx, _qualification]);
     _control ctrlSetTextColor color_denied;
     _control ctrlSetActiveColor color_denied;
     _control ctrlCommit 0;
@@ -77,7 +78,7 @@ _idx = _idx + 1;
         _control ctrlCommit 0;
     };
 
-    private _control = (findDisplay 5119) ctrlCreate ["RscText", (10 * _idx), (findDisplay 5119) displayCtrl 9969];
+    private _control = (findDisplay 5119) ctrlCreate ["RscText", (Qualifications_Count * _idx), (findDisplay 5119) displayCtrl 9969];
     _control ctrlSetPosition [0, (_idx * 0.025) * safezoneH, 0.072 * safeZoneW, 0.025  * safezoneH];
     _control ctrlSetText (_nextplayer select 1);
     _control ctrlSetFontHeight fontsize;
@@ -86,7 +87,6 @@ _idx = _idx + 1;
     {
         [_idx, _forEachIndex+1, _forEachIndex , _x select 0 , _x select 1] call qualifications_create_activetext;
     } forEach KP_liberation_qualifications;
-
 
 } foreach _players_array;
 
@@ -111,20 +111,6 @@ while {dialog && alive player} do {
 
             _player_idx = _player_uids find _player_uid;
 
-            if (qualifications_toset == 666) then {
-                _player_qualifications = [];
-                {
-                    _player_qualifications pushBack true;
-                    
-                } forEach KP_liberation_qualifications;
-            };
-            if (qualifications_toset == 999) then {
-                _player_qualifications = [];
-                {
-                    _player_qualifications pushBack false;
-                    
-                } forEach KP_liberation_qualifications;
-            };
 
             if (_player_idx == -1) then {
 
@@ -140,7 +126,7 @@ while {dialog && alive player} do {
             } else {
 
                 if (qualifications_toset != 666 && qualifications_toset != 999) then {
-
+ 
                     _player_qualifications = (_modify_qualifications select _player_idx) select 2;
 
                     private _idx = 0;
@@ -176,7 +162,7 @@ while {dialog && alive player} do {
                 private _player_qualifications = _x select 2;
 
                 {
-                    private _control = ((findDisplay 5119) displayCtrl ((10 * _idx) + _x + 111));
+                    private _control = ((findDisplay 5119) displayCtrl ((Qualifications_Count * _idx) + _x + 111));
                     if (_player_qualifications select (_x - 1)) then {
                         _control ctrlSetTextColor color_authorized;
                         _control ctrlSetActiveColor color_authorized;

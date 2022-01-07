@@ -18,7 +18,7 @@ if (!isServer) then {waitUntil {!isNil "KPLIB_initServer"};};
 [] call compile preprocessFileLineNumbers "kp_liberation_config.sqf";
 [] call compile preprocessFileLineNumbers "compatibility\compatibility_config.sqf";
 [] call compile preprocessFileLineNumbers "presets\init_presets.sqf";
-[] call compileFinal preprocessFileLineNumbers "arsenal_presets\arsenal_items_init.sqf";
+[] call compile preprocessFileLineNumbers "arsenal_presets\arsenal_items_init.sqf";
 [] call compile preprocessFileLineNumbers "kp_objectInits.sqf";
 
 [] call compile preprocessFileLineNumbers "scripts\shared\init_shared.sqf";

@@ -134,12 +134,16 @@ class cfgHALsStore {
 			displayName = "Others";
 			picture = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\compass_ca.paa";
 		};
+		class civiliansItems {
+			displayName = "Civilians Items";
+			picture = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\compass_ca.paa";
+		};
 	};
 
 	class stores {
 		class supplies {
 			displayName = "Supplies Store";
-			categories[] = {"assultRifle","dmr","sniper","smgs","mmgs","handguns","launchers","optics","underbarrel","pointers","muzzles","magazines","uniforms","vests","backpacks","headgear","facegear","navigation","handGrenade","explosives","drones","foods","engineering","communications","medical","tools","others"};
+			categories[] = {"assultRifle","dmr","sniper","smgs","mmgs","handguns","launchers","optics","underbarrel","pointers","muzzles","magazines","uniforms","vests","backpacks","headgear","facegear","navigation","handGrenade","explosives","drones","foods","engineering","communications","medical","tools","others","civiliansItems"};
 		};
 	};
 };

@@ -207,7 +207,7 @@ class Params {
         title = $STR_PARAMS_HIDEMARKERS;
         values[] = {0, 1};
         texts[] = {$STR_PARAMS_DISABLED, $STR_PARAMS_ENABLED};
-        default = 1;
+        default = 0;
     };
     class EnableSaveLoadout {
         title = $STR_PARAMS_SAVELOADOUT;
@@ -279,7 +279,7 @@ class Params {
         title = $STR_PARAM_CR_BUILDING;
         values[] = {1, 0};
         texts[] = {$STR_PARAM_CR_DAMAGED, $STR_PARAM_CR_DESTROYED};
-        default = 1;
+        default = 0;
     };
     class HaloJump {
         title = $STR_HALO_PARAM;
@@ -315,13 +315,13 @@ class Params {
         title = $STR_PARAM_LIMITEDZEUS;
         values[] = {1, 0};
         texts[] = {$STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED};
-        default = 1;
+        default = 0;
     };
     class ZeusAddEnemies {
         title = $STR_PARAM_ZEUSADDENEMIES;
         values[] = {1, 0};
         texts[] = {$STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED};
-        default = 0;
+        default = `;
     };
     class HighCommand {
         title = $STR_PARAM_HIGHCOMMAND;

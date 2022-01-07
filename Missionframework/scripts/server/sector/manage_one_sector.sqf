@@ -40,9 +40,7 @@ active_sectors pushback _sector; publicVariable "active_sectors";
 private _opforcount = [] call KPLIB_fnc_getOpforCap;
 [_sector, _opforcount] call wait_to_spawn_sector;
 _range= [_opforcount] call KPLIB_fnc_getSectorRange;
-if ((!(_sector in blufor_sectors)) &&
-    (_sector in sectors_forced_spawn ||
-    (!(_sector in sectors_forced_despawn) && ([markerPos _sector, _range, GRLIB_side_friendly,_sector] call KPLIB_fnc_getUnitsCount) > 0))) then {
+if ([_sector,_range] call KPLIB_fnc_sectorCanBeActivated) then {
 
     if (_sector in sectors_bigtown) then {
         if (combat_readiness < 30) then {_infsquad = "militia";};
@@ -288,7 +286,11 @@ if ((!(_sector in blufor_sectors)) &&
             [_unit, _sector] spawn building_defence_ai;
             _managed_units = _managed_units + [_unit];
             _largestbuildingpositions =_largestbuildingpositions- [_officer_pos];
+            _grp = createGroup [GRLIB_side_enemy, true];
             _managed_units = _managed_units + ([_infsquad,count  _largestbuildingpositions, _largestbuildingpositions, _sector,_grp] call KPLIB_fnc_spawnBuildingSquad);
+            {
+                [_x, _sector] spawn building_defence_ai;
+            } forEach units _grp;
             _largestB setVariable ["bis_disabled_Door_1", 1, true];
 
         };
@@ -297,8 +299,7 @@ if ((!(_sector in blufor_sectors)) &&
         _buildingpositions = _buildingpositions-_top_positions;
         if (KP_liberation_sectorspawn_debug > 0) then {[format ["Sector %1 (%2) - manage_one_sector found %3 building positions", (markerText _sector), _sector, (count _buildingpositions)], "SECTORSPAWN"] remoteExecCall ["KPLIB_fnc_log", 2];};
         if (count _buildingpositions > _minimum_building_positions) then {
-            _managed_units = _managed_units + ([_infsquad, _building_ai_max, _buildingpositions, _sector] call KPLIB_fnc_spawnBuildingSquad);
-
+            _managed_units = _managed_units + ([_infsquad, _building_ai_max * 2, _buildingpositions, _sector] call KPLIB_fnc_spawnBuildingSquad);
         };
 
         if (count _top_positions > 0) then {
@@ -356,7 +357,7 @@ if ((!(_sector in blufor_sectors)) &&
                 };
         };
         
-        _num = ceil(_building_ai_max*0.25) min (count _top_positions);
+        _num = ceil(_building_ai_max*0.4) min (count _top_positions);
         _managed_units = _managed_units + ([_infsquad,_num  , _top_positions, _sector] call KPLIB_fnc_spawnBuildingSquad);
     };
 
@@ -492,7 +493,7 @@ if ((!(_sector in blufor_sectors)) &&
                 };
             } forEach _managed_units;
         } else {
-            if (([_sectorpos, (([_opforcount] call KPLIB_fnc_getSectorRange) + 300), GRLIB_side_friendly,_sector] call KPLIB_fnc_getUnitsCount) == 0) then {
+            if (!(_sector in sectors_forced_spawn) && ([_sectorpos, (([_opforcount] call KPLIB_fnc_getSectorRange) + 300), GRLIB_side_friendly,_sector] call KPLIB_fnc_getUnitsCount) == 0) then {
                 _sector_despawn_tickets = _sector_despawn_tickets - 1;
             } else {
                 // start counting running minutes after ADDITIONAL_TICKETS_DELAY
@@ -522,7 +523,8 @@ if ((!(_sector in blufor_sectors)) &&
         };
         sleep SECTOR_TICK_TIME;
     };
-} else {
+} 
+else {
     sleep 40;
     active_sectors = active_sectors - [_sector]; publicVariable "active_sectors";
 };

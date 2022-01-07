@@ -106,6 +106,7 @@ _class = toLower (typeOf _obj);
 				_obj setUnitPos "UP";
             	_obj disableAI "PATH";
             	[_obj] joinSilent grpNull;
+				[_obj, "WATCH", "FULL"] call BIS_fnc_ambientAnimCombat;
 			};
 			default { };
 		};

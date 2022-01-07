@@ -3,6 +3,8 @@ params ["_unit", ["_sector", ""]];
 _unit setUnitPos "UP";
 _unit disableAI "PATH";
 
+[_unit, "WATCH", "FULL"] call BIS_fnc_ambientAnimCombat;
+
 private _move_is_disabled = true;
 private _hostiles = 0;
 private _ratio = 0.4;

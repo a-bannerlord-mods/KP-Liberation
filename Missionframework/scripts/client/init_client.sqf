@@ -1,6 +1,6 @@
 
 
-[] call compileFinal preprocessFileLineNumbers "scripts\client\misc\init_markers.sqf";
+[] call compile preprocessFileLineNumbers "scripts\client\misc\init_markers.sqf";
 
 
 if (typeOf player == "VirtualSpectator_F") exitWith {
@@ -16,12 +16,12 @@ if (typeOf player == "VirtualSpectator_F") exitWith {
 
 // This causes the script error with not defined variable _display in File A3\functions_f_bootcamp\Inventory\fn_arsenal.sqf [BIS_fnc_arsenal], line 2122
 // ["Preload"] call BIS_fnc_arsenal;
-spawn_camera = compileFinal preprocessFileLineNumbers "scripts\client\spawn\spawn_camera.sqf";
-cinematic_camera = compileFinal preprocessFileLineNumbers "scripts\client\ui\cinematic_camera.sqf";
-write_credit_line = compileFinal preprocessFileLineNumbers "scripts\client\ui\write_credit_line.sqf";
-do_load_box = compileFinal preprocessFileLineNumbers "scripts\client\ammoboxes\do_load_box.sqf";
-kp_fuel_consumption = compileFinal preprocessFileLineNumbers "scripts\client\misc\kp_fuel_consumption.sqf";
-kp_vehicle_permissions = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_permissions.sqf";
+spawn_camera = compile preprocessFileLineNumbers "scripts\client\spawn\spawn_camera.sqf";
+cinematic_camera = compile preprocessFileLineNumbers "scripts\client\ui\cinematic_camera.sqf";
+write_credit_line = compile preprocessFileLineNumbers "scripts\client\ui\write_credit_line.sqf";
+do_load_box = compile preprocessFileLineNumbers "scripts\client\ammoboxes\do_load_box.sqf";
+kp_fuel_consumption = compile preprocessFileLineNumbers "scripts\client\misc\kp_fuel_consumption.sqf";
+kp_vehicle_permissions = compile preprocessFileLineNumbers "scripts\client\misc\vehicle_permissions.sqf";
 
 execVM "scripts\client\actions\intel_manager.sqf";
 execVM "scripts\client\actions\recycle_manager.sqf";

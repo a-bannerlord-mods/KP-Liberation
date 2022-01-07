@@ -105,5 +105,11 @@ for [{
             _i = _i + 1
         }] do {
             _flag = missionNamespace getVariable(["flag_", _i] joinString "");
-            _flag forceFlagtexture blufor_flag_texture;
+            if (_flag isKindOf "FlagCarrier") then {
+                _flag forceFlagtexture blufor_flag_texture;
+            } else {
+                _flag setObjectTextureGlobal [0, blufor_flag_texture];
+            };
+            
+            
 };

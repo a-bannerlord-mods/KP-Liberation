@@ -81,12 +81,15 @@ if ((side _grp) != GRLIB_side_friendly) then {
     if (count _loadout > 0) then {
         _unit setUnitLoadout _loadout;
     };
-
-    _fnames = KPLIB_Units_Override_crew_Names select 0;
-    _snames = KPLIB_Units_Override_crew_Names select 1;
-    if (count _fnames > 0 && count _snames > 0) then {
-        [_unit, _fnames, _snames] call set_random_crew_name;
+    
+    if (!isnil "KPLIB_Units_Override_crew_Names") then {
+        _fnames = KPLIB_Units_Override_crew_Names select 0;
+        _snames = KPLIB_Units_Override_crew_Names select 1;
+        if (count _fnames > 0 && count _snames > 0) then {
+            [_unit, _fnames, _snames] call set_random_crew_name;
+        };
     };
+    
 
 }
 forEach(units _grp);
