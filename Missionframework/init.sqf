@@ -9,11 +9,16 @@ enableSaving [ false, false ];
 if (isDedicated) then {debug_source = "Server";} else {debug_source = name player;};
 
 if (hasInterface) then {
-    titleText ["Loading... ", "BLACK FADED", 600];
+    titleText ["Server Loading... ", "BLACK FADED", 600];
 };
 
 [] call KPLIB_fnc_initSectors;
 if (!isServer) then {waitUntil {!isNil "KPLIB_initServer"};};
+
+if (hasInterface) then {
+    titleText ["Loading... ", "BLACK FADED", 600];
+};
+
 [] call compile preprocessFileLineNumbers "scripts\shared\fetch_params.sqf";
 [] call compile preprocessFileLineNumbers "kp_liberation_config.sqf";
 [] call compile preprocessFileLineNumbers "compatibility\compatibility_config.sqf";
