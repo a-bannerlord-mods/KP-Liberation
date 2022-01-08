@@ -42,21 +42,40 @@ private _opforcount = [] call KPLIB_fnc_getOpforCap;
 _range= [_opforcount] call KPLIB_fnc_getSectorRange;
 if ([_sector,_range] call KPLIB_fnc_sectorCanBeActivated) then {
 
+    // vechile , squads , units in building
+    _chached_unit=[0,"",[],[],[]];
+
+    
+
     if (_sector in sectors_bigtown) then {
-        if (combat_readiness < 30) then {_infsquad = "militia";};
+        if (combat_readiness < 20) then {_infsquad = "militia";};
+        if((_chached_unit select 1) != _infsquad){
+             _chached_unit=[combat_readiness,_infsquad,[],[],[]];
+        };
 
-        _squad1 = ([_infsquad] call KPLIB_fnc_getSquadComp);
-        _squad2 = ([_infsquad] call KPLIB_fnc_getSquadComp);
-        if (GRLIB_unitcap >= 1) then {_squad3 = ([_infsquad] call KPLIB_fnc_getSquadComp);};
-        if (GRLIB_unitcap >= 1.5) then {_squad4 = ([_infsquad] call KPLIB_fnc_getSquadComp);};
-
-        _vehtospawn = [(selectRandom militia_vehicles),(selectRandom militia_vehicles)];
-        if ((random 100) > (66 / GRLIB_difficulty_modifier)) then {_vehtospawn pushback (selectRandom militia_vehicles);};
-        if ((random 100) > (50 / GRLIB_difficulty_modifier)) then {_vehtospawn pushback (selectRandom militia_vehicles);};
+        switch (true) do {
+            case (count (_chached_unit select 2) < 1): { _squad1 = ([_infsquad] call KPLIB_fnc_getSquadComp);};
+            case (count (_chached_unit select 2) < 2): { _squad2 = ([_infsquad] call KPLIB_fnc_getSquadComp);};
+            case (count (_chached_unit select 2) < 3): {if (GRLIB_unitcap >= 1) then {_squad3 = ([_infsquad] call KPLIB_fnc_getSquadComp);};};
+            case (count (_chached_unit select 2) < 4): {if (GRLIB_unitcap >= 1.5) then {_squad4 = ([_infsquad] call KPLIB_fnc_getSquadComp);};};
+        };
+  
         if (_infsquad == "army") then {
-            _vehtospawn pushback ([] call KPLIB_fnc_getAdaptiveVehicle);
-            _vehtospawn pushback ([] call KPLIB_fnc_getAdaptiveVehicle);
-            if ((random 100) > (33 / GRLIB_difficulty_modifier)) then {_vehtospawn pushback ([] call KPLIB_fnc_getAdaptiveVehicle);};
+            switch (true) do {
+                case (count (_chached_unit select 3) < 1): {_vehtospawn pushback ([] call KPLIB_fnc_getAdaptiveVehicle);};
+                case (count (_chached_unit select 3) < 2): {_vehtospawn pushback ([] call KPLIB_fnc_getAdaptiveVehicle);};
+                case (count (_chached_unit select 3) < 3): {_vehtospawn pushback ([] call KPLIB_fnc_getAdaptiveVehicle);};
+                case (count (_chached_unit select 3) < 4): {_vehtospawn pushback ([] call KPLIB_fnc_getAdaptiveVehicle);};
+                case (count (_chached_unit select 3) < 5): {if ((random 100) > (33 / GRLIB_difficulty_modifier)) then {_vehtospawn pushback ([] call KPLIB_fnc_getAdaptiveVehicle);};};
+            };
+        }else{
+            _vehtospawn = [];
+            switch (true) do {
+                case (count (_chached_unit select 3) < 1): {_vehtospawn pushback (selectRandom militia_vehicles);};
+                case (count (_chached_unit select 3) < 2): {_vehtospawn pushback (selectRandom militia_vehicles);};
+                case (count (_chached_unit select 3) < 3): {if ((random 100) > (66 / GRLIB_difficulty_modifier)) then {_vehtospawn pushback (selectRandom militia_vehicles);};};
+                case (count (_chached_unit select 3) < 4): {if ((random 100) > (50 / GRLIB_difficulty_modifier)) then {_vehtospawn pushback (selectRandom militia_vehicles);};};
+            };
         };
 
         _spawncivs = true;
@@ -65,7 +84,10 @@ if ([_sector,_range] call KPLIB_fnc_sectorCanBeActivated) then {
             _guerilla = true;
         };
 
-        _building_ai_max = round (50 * _popfactor);
+        _building_ai_max = round (100 * _popfactor);
+        if(count (_chached_unit select 4) < _building_ai_max ) then{
+                _building_ai_max = _building_ai_max - count (_chached_unit select 4);
+        };
         _building_range = 250;
         _local_capture_size = _local_capture_size * 1.4;
 
@@ -78,18 +100,39 @@ if ([_sector,_range] call KPLIB_fnc_sectorCanBeActivated) then {
     };
 
     if (_sector in sectors_capture) then {
-        if (combat_readiness < 50) then {_infsquad = "militia";};
+        if (combat_readiness < 35) then {_infsquad = "militia";};
+        if((_chached_unit select 1) != _infsquad){
+             _chached_unit=[combat_readiness,_infsquad,[],[],[]];
+        };
+        
+       
 
-        _squad1 = ([_infsquad] call KPLIB_fnc_getSquadComp);
-        if (GRLIB_unitcap >= 1.25) then {_squad2 = ([_infsquad] call KPLIB_fnc_getSquadComp);};
-
-        if ((random 100) > (66 / GRLIB_difficulty_modifier)) then {_vehtospawn pushback (selectRandom militia_vehicles);};
+        
         if ((random 100) > (33 / GRLIB_difficulty_modifier)) then {_vehtospawn pushback (selectRandom militia_vehicles);};
         if (_infsquad == "army") then {
-            _vehtospawn pushback (selectRandom militia_vehicles);
-            if ((random 100) > (33 / GRLIB_difficulty_modifier)) then {
-                _vehtospawn pushback ([] call KPLIB_fnc_getAdaptiveVehicle);
-                _squad3 = ([_infsquad] call KPLIB_fnc_getSquadComp);
+             switch (true) do {
+                case (count (_chached_unit select 2) < 1): { _squad1 = ([_infsquad] call KPLIB_fnc_getSquadComp);};
+                case (count (_chached_unit select 2) < 2): {  if (GRLIB_unitcap >= 1.25) then {_squad2 = ([_infsquad] call KPLIB_fnc_getSquadComp);};};
+                case (count (_chached_unit select 2) < 3): {if ((random 100) > (33 / GRLIB_difficulty_modifier)) then { _squad3 = ([_infsquad] call KPLIB_fnc_getSquadComp);};};        
+            };
+             _vehtospawn = [];
+            switch (true) do {
+                case (count (_chached_unit select 3) < 1): {_vehtospawn pushback (selectRandom militia_vehicles);};
+                case (count (_chached_unit select 3) < 2): {if ((random 100) > (33 / GRLIB_difficulty_modifier)) then {_vehtospawn pushback (selectRandom militia_vehicles);};};
+                case (count (_chached_unit select 3) < 3): {if ((random 100) > (66 / GRLIB_difficulty_modifier)) then {_vehtospawn pushback (selectRandom militia_vehicles);};};
+                case (count (_chached_unit select 3) < 4): {if ((random 100) > (33 / GRLIB_difficulty_modifier)) then {_vehtospawn pushback ([] call KPLIB_fnc_getAdaptiveVehicle);};};
+            };
+            
+        }else{
+            switch (true) do {
+                case (count (_chached_unit select 2) < 1): { _squad1 = ([_infsquad] call KPLIB_fnc_getSquadComp);};
+                case (count (_chached_unit select 2) < 2): {  if (GRLIB_unitcap >= 1.25) then {_squad2 = ([_infsquad] call KPLIB_fnc_getSquadComp);};};
+            };
+            _vehtospawn = [];
+            switch (true) do {
+                case (count (_chached_unit select 3) < 1): {_vehtospawn pushback (selectRandom militia_vehicles);};
+                case (count (_chached_unit select 3) < 2): {if ((random 100) > (33 / GRLIB_difficulty_modifier)) then {_vehtospawn pushback (selectRandom militia_vehicles);};};
+                case (count (_chached_unit select 3) < 3): {if ((random 100) > (66 / GRLIB_difficulty_modifier)) then {_vehtospawn pushback (selectRandom militia_vehicles);};};
             };
         };
 
@@ -99,7 +142,10 @@ if ([_sector,_range] call KPLIB_fnc_sectorCanBeActivated) then {
             _guerilla = true;
         };
 
-        _building_ai_max = round ((floor (18 + (round (combat_readiness / 10 )))) * _popfactor);
+        _building_ai_max = round ((floor (30 + (round (combat_readiness / 8 )))) * _popfactor);
+         if(count (_chached_unit select 4) < _building_ai_max ) then{
+                _building_ai_max = _building_ai_max - count (_chached_unit select 4);
+        };
         _building_range = 200;
 
         if (KP_liberation_civ_rep < 0) then {
@@ -124,7 +170,7 @@ if ([_sector,_range] call KPLIB_fnc_sectorCanBeActivated) then {
 
         _spawncivs = false;
 
-        _building_ai_max = round ((floor (18 + (round (combat_readiness / 4 )))) * _popfactor);
+        _building_ai_max = round ((floor (40 + (round (combat_readiness / 4 )))) * _popfactor);
         _building_range = 120;
     };
 
@@ -299,7 +345,7 @@ if ([_sector,_range] call KPLIB_fnc_sectorCanBeActivated) then {
         _buildingpositions = _buildingpositions-_top_positions;
         if (KP_liberation_sectorspawn_debug > 0) then {[format ["Sector %1 (%2) - manage_one_sector found %3 building positions", (markerText _sector), _sector, (count _buildingpositions)], "SECTORSPAWN"] remoteExecCall ["KPLIB_fnc_log", 2];};
         if (count _buildingpositions > _minimum_building_positions) then {
-            _managed_units = _managed_units + ([_infsquad, _building_ai_max * 2, _buildingpositions, _sector] call KPLIB_fnc_spawnBuildingSquad);
+            _managed_units = _managed_units + ([_infsquad, _building_ai_max , _buildingpositions, _sector] call KPLIB_fnc_spawnBuildingSquad);
         };
 
         if (count _top_positions > 0) then {
@@ -412,6 +458,8 @@ if ([_sector,_range] call KPLIB_fnc_sectorCanBeActivated) then {
         alive _x && !(_x getVariable["ACE_isUnconscious", false]) && !(captive _x)
         });
     
+
+    //set flee count
     private _fleeCount = 0;
     if ( _sector in sectors_lightArtillery || _sector in sectors_SAM) then {
         _fleeCount = selectRandom [0,0,0,0,0,1,1,1,1,2];
@@ -421,6 +469,8 @@ if ([_sector,_range] call KPLIB_fnc_sectorCanBeActivated) then {
     if (_sector in sectors_heavyArtillery ) then {
         _fleeCount = 0 ;
     };
+
+
     // sector lifetime loop
     while {!_stopit} do {
         
