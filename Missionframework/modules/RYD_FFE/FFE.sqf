@@ -71,7 +71,7 @@ foreach RydFFE_Other;
 
 
 [] call compile preprocessFile "modules\RYD_FFE\FFE_fnc.sqf";
-Shellview = compile preprocessFile "modules\RYD_FFE\Shellview.sqf";
+
 
 //_allArty = [_allArty] call RydFFE_AutoConfig;
 
@@ -112,9 +112,10 @@ Group_Can_See = {
 	} forEach units _group;
 	_FOs
 };
-
+_RydFFE_FO_atstart = RydFFE_FO;
 while {RydFFE_Active} do
 	{
+	RydFFE_FO= _RydFFE_FO_atstart;
 	if (RydFFE_Manual) then {waitUntil {sleep 0.1;((RydFFE_Fire) or not (RydFFE_Manual))};RydFFE_Fire = false};
 	waitUntil {sleep 3;(combat_readiness > RydFFE_Light_Artillery_Enable_On_Combat_Readiness_Above) or (combat_readiness > RydFFE_Heavy_Artillery_Enable_On_Combat_Readiness_Above) };
 	_allArty = [];
@@ -194,15 +195,16 @@ while {RydFFE_Active} do
 								if not (_gp in _friends) then
 									{
 									_friends pushBack _gp;
-									if ( ((count RydFFE_FOClass) == 0) or ((toLower (typeOf (leader _x))) in RydFFE_FOClass)) then
+									if ( ((count RydFFE_FOClass) == 0)  or 
+									count ((units _gp ) select {((toLower (typeOf (_x))) in RydFFE_FOClass)} ) > 0 ) then
 										{
-										//if ((count RydFFE_FO) > 0) then
-											//{
+										if ((count RydFFE_FO) > 0) then
+											{
 											if not (_gp in RydFFE_FO) then
 												{
 												RydFFE_FO pushBack _gp
 												}
-											//}
+											}
 										}
 									}
 								}

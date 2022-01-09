@@ -38,14 +38,16 @@ isNil {
     _unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
     _unit setRank _rank;
 
-    [_unit] call KPLIB_fnc_applyCustomUnitSettings;
+      // Process KP object init
+    _unit spawn {
+            sleep 1;
+            [_this] call KPLIB_fnc_applyCustomUnitSettings;
+            [_this] call KPLIB_fnc_addObjectInit;
+        };
     
     // Join to target group to preserve Side
     [_unit] joinSilent _group;
     deleteGroup _groupTemp;
-
-    // Process KP object init
-    [_unit] call KPLIB_fnc_addObjectInit;
 };
 
 _unit

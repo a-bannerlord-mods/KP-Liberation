@@ -317,8 +317,8 @@ KPLIB_o_allVeh_classes = KPLIB_o_allVeh_classes arrayIntersect KPLIB_o_allVeh_cl
 // All regular opfor soldier classnames
 KPLIB_o_inf_classes = [opfor_sentry, opfor_rifleman, opfor_grenadier, opfor_squad_leader, opfor_team_leader, opfor_marksman, opfor_machinegunner, opfor_heavygunner, opfor_medic, opfor_rpg, opfor_at, opfor_aa, opfor_officer, opfor_sharpshooter, opfor_sniper,opfor_engineer];
 KPLIB_o_inf_classes = KPLIB_o_inf_classes apply {toLower _x};
-
-
+RydFFE_FOClass = [toLower opfor_squad_leader,toLower opfor_team_leader ,toLower opfor_officer];
+RydFFE_FO = [grpNull];
 KPLIB_civ_factions = [];
 KPLIB_civ_uniform = [];
 KPLIB_civ_headwear = [];

@@ -17,3 +17,5 @@ RYD_CFF_Fire =  compile preprocessFile "modules\RYD_FFE\functions\RYD_CFF_Fire.s
 RydFFE_ShellsInRadius = compile preprocessFile "modules\RYD_FFE\functions\RydFFE_ShellsInRadius.sqf";
 
 RydFFE_AutoConfig  = compile preprocessFile "modules\RYD_FFE\functions\RydFFE_AutoConfig.sqf";
+
+Shellview = compile preprocessFile "modules\RYD_FFE\Shellview.sqf";
