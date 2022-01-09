@@ -439,6 +439,46 @@ _player addAction [
     "
 ];
 
+// interrogate
+_player addAction [
+    ["<t color='#FFFF00'>", "-- Interrogate", "</t>"] joinString "",
+    {
+        _intelValue =  cursorObject getVariable ['intel_value',0];
+        if (_intelValue>0) then {
+            resources_intel = resources_intel +_intelValue;
+            publicVariable "resources_intel";
+            hint "Here is what i know";
+        };
+        if (_intelValue<0) then {
+            KP_liberation_civ_rep = ceil( (KP_liberation_civ_rep+_intelValue) max (-100) );
+            publicVariable "KP_liberation_civ_rep";
+            hint "I am just an innocent";
+        };
+        cursorObject setVariable ["intel_value",0,true]; 
+    },
+    nil,
+    -850,
+    false,
+    true,
+    "",
+    "
+        isNull (objectParent _originalTarget)
+        && (!isNull cursorObject)
+        && (alive cursorObject)
+        && (cursorObject getVariable ['intel_value',0]) != 0
+        && cursorObject getVariable ['ace_captives_isHandcuffed', false] 
+        && {
+            _originalTarget getVariable ['KPLIB_hasDirectAccess', false]
+            || {[5] call KPLIB_fnc_hasPermission}
+        }
+        
+        && {alive _originalTarget}
+        && {build_confirmed isEqualTo 0}
+        && [_originalTarget getVariable ['KPLIB_fobPos', [0,0,0]]] call KPLIB_fnc_isStartBase
+    "
+];
+
+
 _player execVM "compatibility\add_compatibility_actions.sqf";
 
 [] call KPLIB_fnc_addLogisticsActions;

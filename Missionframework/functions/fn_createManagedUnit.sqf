@@ -44,7 +44,22 @@ isNil {
             [_this] call KPLIB_fnc_applyCustomUnitSettings;
             [_this] call KPLIB_fnc_addObjectInit;
         };
-    
+    _unit setVariable ["original_side",side _group];
+    if ((tolower _type ) in KPLIB_o_inf_classes) then {
+        _unit setVariable ["intel_value",random [1,2,3],true];
+    };
+    if ((tolower _type ) == tolower opfor_team_leader) then {
+        _unit setVariable ["intel_value",random [3,4,5],true];
+    };
+    if ((tolower _type ) == tolower opfor_squad_leader) then {
+        _unit setVariable ["intel_value",random [5,6,7],true];
+    };
+    if ((tolower _type ) == tolower opfor_officer) then {
+        _unit setVariable ["intel_value",10,true];
+    };
+    if ((tolower _type ) in (civilians apply{toLower _x})) then {
+        _unit setVariable ["intel_value",random [-5,-8,-10],true];
+    };
     // Join to target group to preserve Side
     [_unit] joinSilent _group;
     deleteGroup _groupTemp;
