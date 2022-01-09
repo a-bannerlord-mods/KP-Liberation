@@ -101,6 +101,8 @@ KP_liberation_production_markers = [];
 KPLIB_sectorTowers = [];
 // Sectors under attack
 KPLIB_sectorsUnderAttack = [];
+//cached sector units
+KP_liberation_Sector_Cache = [];
 // Global Intel resource
 resources_intel = 0;
 // State if the save is fully loaded

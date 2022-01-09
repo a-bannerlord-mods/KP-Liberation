@@ -10,7 +10,8 @@
 // Enemy infantry classes
 opfor_flag_texture = "\UK3CB_Factions\addons\UK3CB_Factions_ARD\Flag\ARD_flag_co.paa";
 opfor_flag_militia_texture = "po_main\data\UI\flags\flag_isis_co.paa";
-opfor_officer = "UK3CB_ARD_O_OFF";                                     // Officer (Warlord)
+opfor_officer = "UK3CB_ARD_O_OFF";                                     
+opfor_officer_cars = ["LOP_ISTS_OPF_M998_D_4DR","LOP_ISTS_OPF_M1025_W_M2"];                                     
 opfor_squad_leader = "UK3CB_ARD_O_JNR_OFF";                        // Squad Leader (Warlord)
 opfor_team_leader = "UK3CB_ARD_O_RADIO";                         // Team Leader (Chief)
 opfor_sentry = "UK3CB_ARD_O_RIF_2";                        // Rifleman (AKM)

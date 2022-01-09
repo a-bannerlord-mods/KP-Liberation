@@ -28,7 +28,7 @@ if !((toLower _type) in KPLIB_o_allVeh_classes) exitWith {false};
 
 if !(_veh getVariable ["KPLIB_captured", false]) then {
     _veh setVariable ["KPLIB_captured", true, true];
-
+    _veh forceFlagtexture blufor_flag_texture;
     [
         format ["%1 captured an enemy %2 (%3)", name player, getText (configFile >> "CfgVehicles" >> _type >> "displayName"), _type],
         "CAPTURED"
