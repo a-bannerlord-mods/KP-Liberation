@@ -27,6 +27,7 @@ if (hasInterface) then {
 [] call compile preprocessFileLineNumbers "kp_objectInits.sqf";
 
 [] call compile preprocessFileLineNumbers "scripts\shared\init_shared.sqf";
+[] call compile preprocessFileLineNumbers "kb_objectives.sqf";
 
 if (isServer) then {
     [] call compile preprocessFileLineNumbers "scripts\server\init_server.sqf";

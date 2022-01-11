@@ -37,7 +37,7 @@ private _maximum_additional_tickets = (KP_liberation_delayDespawnMax * 60 / SECT
 private _popfactor = 1;
 private _guerilla = false;
 // vechile , squads , units in building
-private  _sector_cache = [_sector,"", [], [], [], [], [], [], [], []];
+private  _sector_cache = [_sector,"", [], [], [], [], [], [], [], [],[]];
 
 _cached_index =  KP_liberation_Sector_Cache findif { (_x select 0) == _sector };
 if (_cached_index > -1) then {
@@ -51,6 +51,7 @@ private _cached_static_mg = _sector_cache select 6;
 private _cached_static_at = _sector_cache select 7;
 private _cached_static_mg_heavy = _sector_cache select 8;
 private _cached_static_aa_heavy = _sector_cache select 9;
+private _cached_objectives = _sector_cache select 10;
 
 if (GRLIB_unitcap < 1) then {
     _popfactor = GRLIB_unitcap;
@@ -642,51 +643,81 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         _buildingpositions  = _buildingpositions - (_cached_static_mg_heavy apply {_x select 0});
         _buildingpositions  = _buildingpositions - (_cached_static_aa_heavy apply {_x select 0});
         if !(isNull _largestB) then {
+
             _largestbuildingpositions = ([_largestB] call BIS_fnc_buildingPositions);
             _buildingpositions = _buildingpositions - _largestbuildingpositions;
             _largestbuilding_top_positions = [_largestbuildingpositions] call KPLIB_fnc_getBuildingRooftopPositions;
             _largestbuildingpositions = _largestbuildingpositions - _largestbuilding_top_positions;
+            if (_sector in (KP_Objectives apply {_x select 1}) ) then {
+                _units = [];
+                _objective_index = KP_Objectives findIf {_x select 1 == _sector};
+                _objective = KP_Objectives select _objective_index;
+                if (
+                    !((_objective select 0) in KP_liberation_failed_objectives) 
+                &&  !((_objective select 0) in KP_liberation_successful_objectives)
+                    ) then {
+                    _objective pushBack _largestB;
+                    _objective pushBack _largestbuildingpositions; 
+                    _objective pushBack _cached_objectives;
+                    switch (_objective select 2) do {
+                        case "capture": {                      
+                            _units = _objective call KPLIB_fnc_spawnCaptureObjectiveInSector;
+                            _managed_units = _managed_units + _units;
+                        };
+                        case "rescue": {     
+                            _units = _objective call KPLIB_fnc_spawnRescueObjectiveInSector;
+                            _managed_units = _managed_units + _units;
+                        };
+                        case "destroy": {     
+                            _units = _objective call KPLIB_fnc_spawnDestroyObjectiveInSector;
+                            _managed_units = _managed_units + _units;
+                        };
+                    };
+                };
+            } else {
 
-            _grp = createGroup[GRLIB_side_enemy, true];
-            _officer_pos = selectRandom _largestbuildingpositions;
-            _unit = [opfor_officer, _officer_pos, _grp] call KPLIB_fnc_createManagedUnit;
-            _unit setDir(random 360);
-            _unit setPos _officer_pos;
+                //spawn normal officer 
+                _grp = createGroup[GRLIB_side_enemy, true];
+                _officer_pos = selectRandom _largestbuildingpositions;
+                _unit = [opfor_officer, _officer_pos, _grp] call KPLIB_fnc_createManagedUnit;
+                _unit setDir(random 360);
+                _unit setPos _officer_pos;
 
-            if (count opfor_officer_cars > 0) then {
-                _nearestRoad = [getPosATL _largestB, 500] call BIS_fnc_nearestRoad;
-                _info = getRoadInfo _nearestRoad;
-                _dir = (_info select 6) getDir (_info select 7); 
-                if (!isnull _nearestRoad) then { 
-                    {
-                        _officer_vehicle = [(( getPosATL _nearestRoad) getPos [10 * _foreachindex , _dir] )  ,  _x, true] call KPLIB_fnc_spawnVehicle;
-                        _managed_units pushback _officer_vehicle; 
+                if (count opfor_officer_cars > 0) then {
+                    _nearestRoad = [getPosATL _largestB, 500] call BIS_fnc_nearestRoad;
+                    _info = getRoadInfo _nearestRoad;
+                    _dir = (_info select 6) getDir (_info select 7); 
+                    if (!isnull _nearestRoad) then { 
                         {
-                            [_x, _sector] spawn building_defence_ai;
-                            _managed_units pushback _x;
-                        }foreach(crew _officer_vehicle); 
-                        _officer_vehicle setdir _dir;
-                        _officer_vehicle forceFlagtexture opfor_flag_texture;
-                    } forEach opfor_officer_cars;
+                            _officer_vehicle = [(( getPosATL _nearestRoad) getPos [10 * _foreachindex , _dir] )  ,  _x, true] call KPLIB_fnc_spawnVehicle;
+                            _managed_units pushback _officer_vehicle; 
+                            {
+                                [_x, _sector] spawn building_defence_ai;
+                                _managed_units pushback _x;
+                            }foreach(crew _officer_vehicle); 
+                            _officer_vehicle setdir _dir;
+                            _officer_vehicle forceFlagtexture opfor_flag_texture;
+                        } forEach opfor_officer_cars;
+                    };
                 };
-            };
-            [_unit, _sector] spawn building_defence_ai;
-            _managed_units = _managed_units + [_unit];
-            _largestbuildingpositions = _largestbuildingpositions - [_officer_pos];
-            _grp = createGroup[GRLIB_side_enemy, true];
-            _managed_units = _managed_units + (['army', count _largestbuildingpositions, _largestbuildingpositions, _sector, _grp] call KPLIB_fnc_spawnBuildingSquad); {
-                [_x, _sector] spawn building_defence_ai;
-            }
-            forEach units _grp;
 
-            private _numberofdoors = getNumber(configFile >> "CfgVehicles" >> (typeOf _largestB) >> "numberOfDoors");
-            if(_numberofdoors != -1 and _numberofdoors != 0) then{ 
-                for "_i" from 1 to _numberOfDoors do {
-                    _largestB animate[format["door_%1_rot",_i],0];
-                    _largestB setVariable[format["bis_disabled_Door_%1",_i],1,true];
+                [_unit, _sector] spawn building_defence_ai;
+                _managed_units = _managed_units + [_unit];
+                _largestbuildingpositions = _largestbuildingpositions - [_officer_pos];
+                _grp = createGroup[GRLIB_side_enemy, true];
+                _managed_units = _managed_units + (['army', count _largestbuildingpositions, _largestbuildingpositions, _sector, _grp] call KPLIB_fnc_spawnBuildingSquad); {
+                [_x, _sector] spawn building_defence_ai;
+                }forEach units _grp;
+
+                private _numberofdoors = getNumber(configFile >> "CfgVehicles" >> (typeOf _largestB) >> "numberOfDoors");
+                if(_numberofdoors != -1 and _numberofdoors != 0) then{ 
+                        for "_i" from 1 to _numberOfDoors do {
+                            _largestB animate[format["door_%1_rot",_i],0];
+                            _largestB setVariable[format["bis_disabled_Door_%1",_i],1,true];
+                        };
+                    };
                 };
             };
-        };
 
         _top_positions = [_buildingpositions] call KPLIB_fnc_getBuildingRooftopPositions;
         _buildingpositions = _buildingpositions - _top_positions;
@@ -812,7 +843,11 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         } forEach _units;
                 _managed_units = _managed_units + _units;
     };
-
+    
+    {
+        _cached_objectives pushBackUnique _x;
+        
+    } forEach (_managed_units select { _x getVariable ["is_objective",false] });
     _managed_units = _managed_units + ([_sectorpos] call KPLIB_fnc_spawnMilitaryPostSquad);
 
     if (count _squad1 > 0) then {
@@ -853,9 +888,9 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
     };
 
     if (_cached_index > -1) then {
-        KP_liberation_Sector_Cache set  [_cached_index,[_sector,_infsquad,_cached_vehicles,_cached_squads,_cached_units_in_building,_cached_units_on_building,_cached_static_mg,_cached_static_at,_cached_static_mg_heavy,_cached_static_aa_heavy]];
+        KP_liberation_Sector_Cache set  [_cached_index,[_sector,_infsquad,_cached_vehicles,_cached_squads,_cached_units_in_building,_cached_units_on_building,_cached_static_mg,_cached_static_at,_cached_static_mg_heavy,_cached_static_aa_heavy,_cached_objectives]];
     } else {
-        KP_liberation_Sector_Cache pushBack [_sector,_infsquad,_cached_vehicles,_cached_squads,_cached_units_in_building,_cached_units_on_building,_cached_static_mg,_cached_static_at,_cached_static_mg_heavy,_cached_static_aa_heavy];
+        KP_liberation_Sector_Cache pushBack [_sector,_infsquad,_cached_vehicles,_cached_squads,_cached_units_in_building,_cached_units_on_building,_cached_static_mg,_cached_static_at,_cached_static_mg_heavy,_cached_static_aa_heavy,_cached_objectives];
     };
 
     
@@ -864,7 +899,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
 
     {
         deleteVehicle _x;
-    } forEach (_sectorpos nearEntities ["Logic",_building_range]);
+    } forEach (_sectorpos nearEntities ["Logic",1000]);
 
     if ((_sector in sectors_factory) || (_sector in sectors_capture) || (_sector in sectors_bigtown) || (_sector in sectors_military)) then {
         [_sector] remoteExec["reinforcements_remote_call", 2];
@@ -975,11 +1010,27 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
             {
                 if (_x isKindOf "Man") then {
                     if (side group _x != GRLIB_side_friendly) then {
-                        deleteVehicle _x;
+                        if (_x getVariable ["is_objective",false]) then {
+                            if ((_x distance _sectorpos) < 200) then {
+                                _x enableSimulation false;
+		                        _x hideObjectGlobal true;
+		                        _x hideObject true;
+                            };
+                        } else {
+                            deleteVehicle _x;
+                        };
                     };
                 } else {
                     if (!isNull _x) then {
-                        [_x] call KPLIB_fnc_cleanOpforVehicle;
+                        if (_x getVariable ["is_objective",false]) then {
+                                if ((_x distance _sectorpos) < 200) then {
+                                    _x enableSimulation false;
+		                            _x hideObjectGlobal true;
+		                            _x hideObject true;
+                                };
+                            } else {
+                                [_x] call KPLIB_fnc_cleanOpforVehicle;
+                            };
                     };
                 };
             }
@@ -1001,10 +1052,26 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
             if ((_sector_despawn_tickets <= 0) || (_sector in sectors_forced_despawn && !(_sector in sectors_forced_spawn))) then {
                 {
                     if (_x isKindOf "Man") then {
-                        deleteVehicle _x;
+                        if (_x getVariable ["is_objective",false]) then {
+                            if ((_x distance _sectorpos) < 200) then {
+                                _x enableSimulation false;
+		                        _x hideObjectGlobal true;
+		                        _x hideObject true;
+                            };
+                        } else {
+                            deleteVehicle _x;
+                        };
                     } else {
                         if (!isNull _x) then {
-                            [_x] call KPLIB_fnc_cleanOpforVehicle;
+                            if (_x getVariable ["is_objective",false]) then {
+                                if ((_x distance _sectorpos) < 200) then {
+                                    _x enableSimulation false;
+		                            _x hideObjectGlobal true;
+		                            _x hideObject true;
+                                };
+                            } else {
+                                [_x] call KPLIB_fnc_cleanOpforVehicle;
+                            };
                         };
                     };
                 }

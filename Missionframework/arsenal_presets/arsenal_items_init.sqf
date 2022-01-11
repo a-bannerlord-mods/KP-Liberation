@@ -26,9 +26,7 @@ GRLIB_arsenal_weapons_handgun;
 {
     _wmags = [(_x select 0)] call jn_fnc_arsenal_getCompatiblemagazines;
     {
-        if !(_x in (GRLIB_arsenal_magazines apply {
-            _x select 0
-        })) then {
+        if !((tolower _x) in (GRLIB_arsenal_magazines apply {tolower (_x select 0) })) then {
             _cost = [_x] call KPLIB_fnc_calculateMagValue;
             _cfgMagazine = configFile >> "Cfgmagazines" >> _x;
             _magazinecount = getNumber (_cfgMagazine >> "count");

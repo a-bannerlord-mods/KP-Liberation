@@ -72,8 +72,8 @@ GRLIB_arsenal_weapons_handgun = [
 // ["SatchelCharge_Remote_Mag","explosives",["Rifleman"],000,16]
 GRLIB_arsenal_magazines = [
     ["ACE_HuntIR_M203", "Magazine", ["Special Force"], 50, 5],
-    ["Vorona_HEAT", "Magazine", ["Rifleman"], 180, 2],
-    ["Vorona_HE", "Magazine", ["Rifleman"], 150, 4],
+    ["Vorona_HEAT", "Magazine", ["Rifleman"], 280, 2],
+    ["Vorona_HE", "Magazine", ["Rifleman"], 250, 4],
     ["rhs_30Rnd_762x39mm_bakelite","Magazine",["Rifleman"],4,6000],
     ["30Rnd_762x39_Mag_F","Magazine",["Rifleman"],11,6000],
     ["rhs_30Rnd_762x39mm_polymer","Magazine",["Rifleman"],4,6000],

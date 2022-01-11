@@ -51,6 +51,7 @@ execVM "scripts\server\game\manage_time.sqf";
 execVM "scripts\server\game\manage_weather.sqf";
 execVM "scripts\server\game\playtime.sqf";
 execVM "scripts\server\game\save_manager.sqf";
+execVM "scripts\server\game\init_objectives.sqf";
 execVM "scripts\server\game\spawn_radio_towers.sqf";
 execVM "scripts\server\game\synchronise_vars.sqf";
 execVM "scripts\server\game\synchronise_eco.sqf";

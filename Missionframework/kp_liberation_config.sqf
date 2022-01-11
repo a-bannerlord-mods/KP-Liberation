@@ -262,7 +262,7 @@ RydFFE_Active = true;                                                   //settin
 RydFFE_NoControl = [];                                                  //each arty group (battery) held inside this array will be excluded from FAW control;
 RydFFE_ArtyShells = 1;                                                  // Multiplier of default magazines loadout per kind per each artillery piece;
 RydFFE_Interval = 80;                                                   //time gap (in seconds) between each “seek for targets” cycle (each cycle each not busy battery on map looks for new fire mission opportunity);
-RydFFE_2PhWithoutFO = true;                                            //by default, if limited spotting is active, spotters will guide fire in two steps: 1/6 of salvo (rounded up) will be used as adjustment fire, and rest, with better accuracy, in next salvo as “fire for effect” (FFE). In unlimited spotting or if this variable is set as true, whole salvo will be fired at once as FFE;
+RydFFE_2PhWithoutFO = false;                                            //by default, if limited spotting is active, spotters will guide fire in two steps: 1/6 of salvo (rounded up) will be used as adjustment fire, and rest, with better accuracy, in next salvo as “fire for effect” (FFE). In unlimited spotting or if this variable is set as true, whole salvo will be fired at once as FFE;
 RydFFE_OnePhase = false;                                                //with this set as true also in unlimited spotting mode artillery fire will be conducted in two steps, as described above;
 RydFFE_Amount = 6;                                                      //this holds number of shells, that in summary should be fired in each fire mission. CLUSTER and GUIDED salvo amount is always divided by 3 (rounded up);
 RydFFE_Acc = 3.5;                                                         //multiplier of whole salvo drift radius. The bigger value, the bigger radius;
@@ -280,6 +280,9 @@ RydFFE_ShellView = false;                                               //if set
 
 RydFFE_Light_Artillery_Enable_On_Combat_Readiness_Above = 30;
 RydFFE_Heavy_Artillery_Enable_On_Combat_Readiness_Above = 90;
+
+RydFFE_Light_Artillery_Max_Range = 2000;
+RydFFE_Heavy_Artillery_Max_Range = 4500;
 
 // Array of worldName values.
 // When playing on this map, it'll create a clearance (remove terrain objects) in a 15m radius around the battlegroup/reinforcements spawnpoint.

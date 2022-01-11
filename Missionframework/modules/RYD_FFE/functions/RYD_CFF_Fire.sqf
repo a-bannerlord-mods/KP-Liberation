@@ -124,7 +124,17 @@ if (_bad) exitwith {
                     _pos = _this select 1;
                     _ammo = _this select 2;
 
-                    if (_pos inRangeOfArtillery[[_vh], _ammo]) then {
+                    _range= 0;
+                    if (typeof _vh in opfor_light_artillery) then {
+                        _range = RydFFE_Light_Artillery_Max_Range;
+                    };
+                    if (typeof _vh in opfor_heavy_artillery) then {
+                        _range = RydFFE_Heavy_Artillery_Max_Range;
+                    };
+                    _inRange = _pos inRangeOfArtillery[[_vh], _ammo];
+                    _inRange =  _inRange && ((_pos distance _vh) < _range);
+
+                    if (_inRange) then {
                         
                         if (_ammo in (getArtilleryAmmo[_vh])) then {
                             
@@ -144,9 +154,17 @@ if (_bad) exitwith {
                                 
                                 sleep((getNumber(configFile >> "cfgweapons" >> (currentWeapon _vh) >> "magazinereloadtime")) + 0.1)
                             };
-                            
-                            if (_pos inRangeOfArtillery[[_vh], _ammo]) then {
-                                   
+                            _range= 0;
+                            if (typeof _vh in opfor_light_artillery) then {
+                                _range = RydFFE_Light_Artillery_Max_Range;
+                            };
+                            if (typeof _vh in opfor_heavy_artillery) then {
+                                _range = RydFFE_Heavy_Artillery_Max_Range;
+                            };
+                            _inRange = _pos inRangeOfArtillery[[_vh], _ammo];
+                            _inRange =  _inRange && ((_pos distance _vh) < _range);
+
+                            if (_inRange) then {
                                 if (_ammo in (getArtilleryAmmo[_vh])) then {
                                     if (((toLower(typeOf _vh)) in ["uss_iowa_turret_c", "uss_iowa_turret_b", "uss_iowa_turret_a"]) or {
                                         RydFFE_Iowamode

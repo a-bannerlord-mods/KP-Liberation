@@ -3,10 +3,18 @@ params ["_unit", ["_sector", ""]];
 _unit setUnitPos "UP";
 _unit disableAI "PATH";
 
-if (vehicle _unit == _unit) then {
-    [_unit, "WATCH", "FULL"] call BIS_fnc_ambientAnimCombat;
+if (vehicle _unit == _unit ) then {
+    if ((tolower(typeOf _unit )) == (tolower opfor_officer)) then {
+        [_unit, "STAND_U1-3", "ASIS"] call BIS_fnc_ambientAnimCombat;
+    } else {
+        [_unit, "WATCH", "ASIS"] call BIS_fnc_ambientAnimCombat;
+    };
+
 };
 
+{
+    deleteVehicle _x;
+} forEach ((getpos _unit) nearEntities ["Logic",50]);
 
 private _move_is_disabled = true;
 private _hostiles = 0;
@@ -45,5 +53,5 @@ while {_move_is_disabled && local _unit && alive _unit && !(captive _unit)} do {
             _unit setdir (_newdir);
         };
     };
-    sleep 5;
+    sleep 10;
 };

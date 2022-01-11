@@ -12,7 +12,7 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=5926;
+		nextID=5961;
 	};
 	class MarkerIDProvider
 	{
@@ -20,14 +20,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=775;
+		nextID=880;
 	};
 	class Camera
 	{
-		pos[]={9128.9805,401.74066,1946.6718};
-		dir[]={0.72083414,-0.28065327,-0.63386422};
-		up[]={0.21082076,0.95978272,-0.18538477};
-		aside[]={-0.66039801,-5.3457916e-007,-0.75100708};
+		pos[]={3102.7402,103.07459,9892.5068};
+		dir[]={0.34175205,-0.77526724,0.5311932};
+		up[]={0.41946673,0.6316334,0.65198696};
+		aside[]={0.84098351,1.4901161e-008,-0.54106081};
 	};
 };
 binarizationWanted=0;
@@ -20358,7 +20358,6 @@ class Mission
 		{
 			dataType="Layer";
 			name="RadioTowers";
-			state=1;
 			class Entities
 			{
 				items=20;
@@ -23049,10 +23048,9 @@ class Mission
 		{
 			dataType="Layer";
 			name="Layer 477";
-			state=1;
 			class Entities
 			{
-				items=28;
+				items=34;
 				class Item0
 				{
 					dataType="Marker";
@@ -23264,13 +23262,13 @@ class Mission
 				class Item19
 				{
 					dataType="Marker";
-					position[]={8021.603,449.57959,6183.8999};
+					position[]={7921.8291,449.57959,6422.0747};
 					name="SAM_11";
 					text="SAM Site";
 					type="o_antiair";
 					colorName="ColorEAST";
 					id=1249;
-					atlOffset=-166.37915;
+					atlOffset=-78.21167;
 				};
 				class Item20
 				{
@@ -23358,9 +23356,75 @@ class Mission
 					id=1239;
 					atlOffset=20.80426;
 				};
+				class Item28
+				{
+					dataType="Marker";
+					position[]={1558.6816,455.47797,1084.394};
+					name="light_artillery_13";
+					text="Light Artillery";
+					type="o_mortar";
+					colorName="ColorEAST";
+					id=5955;
+					atlOffset=-3.6522522;
+				};
+				class Item29
+				{
+					dataType="Marker";
+					position[]={7515.7407,251.2088,7405.0723};
+					name="light_artillery_14";
+					text="Light Artillery";
+					type="o_mortar";
+					colorName="ColorEAST";
+					id=5956;
+					atlOffset=0.00018310547;
+				};
+				class Item30
+				{
+					dataType="Marker";
+					position[]={3959.6848,47.526363,10501.096};
+					name="light_artillery_15";
+					text="Light Artillery";
+					type="o_mortar";
+					colorName="ColorEAST";
+					id=5957;
+					atlOffset=3.0517578e-005;
+				};
+				class Item31
+				{
+					dataType="Marker";
+					position[]={11637.234,97.581657,11609.889};
+					name="light_artillery_16";
+					text="Light Artillery";
+					type="o_mortar";
+					colorName="ColorEAST";
+					id=5958;
+					atlOffset=-5.3405762e-005;
+				};
+				class Item32
+				{
+					dataType="Marker";
+					position[]={7695.9082,226.39981,11591.971};
+					name="light_artillery_17";
+					text="Light Artillery";
+					type="o_mortar";
+					colorName="ColorEAST";
+					id=5959;
+					atlOffset=-3.0517578e-005;
+				};
+				class Item33
+				{
+					dataType="Marker";
+					position[]={4967.9751,171.81187,8544.2197};
+					name="light_artillery_18";
+					text="Light Artillery";
+					type="o_mortar";
+					colorName="ColorEAST";
+					id=5960;
+					atlOffset=-1.5258789e-005;
+				};
 			};
 			id=2486;
-			atlOffset=75.066162;
+			atlOffset=44.60144;
 		};
 		class Item33
 		{
@@ -34948,7 +35012,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={3114.3086,61.184769,9919.4531};
+				position[]={3113.5771,61.198242,9924.3945};
 				angles[]={6.2813525,6.1033988,0.0012740904};
 			};
 			side="Empty";
@@ -34959,7 +35023,7 @@ class Mission
 			};
 			id=4156;
 			type="UK3CB_ARD_O_MAZ_543_SCUD";
-			atlOffset=-0.0023956299;
+			atlOffset=-0.0016326904;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -34989,7 +35053,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={3119.1733,61.20137,9920.5781};
+				position[]={3117.5291,61.209118,9928.1992};
 				angles[]={6.2813525,6.1033988,0.0012740904};
 			};
 			side="Empty";
@@ -35029,7 +35093,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={3123.7991,61.193443,9921.4834};
+				position[]={3122.7534,61.193443,9925.9229};
 				angles[]={6.2813525,6.1033988,0.0012740904};
 			};
 			side="Empty";
@@ -35040,7 +35104,7 @@ class Mission
 			};
 			id=4158;
 			type="UK3CB_ARD_O_MAZ_543_SCUD";
-			atlOffset=-0.0019721985;
+			atlOffset=-0.0092735291;
 			class CustomAttributes
 			{
 				class Attribute0

@@ -19,7 +19,7 @@ _amount = ceil _amount;
                 (_this select 0) setVariable["RydFFE_Shotfired2", ((_this select 0) getVariable["RydFFE_Shotfired2", 0]) + 1];
                 
                 if (typeof (_this select 0) in RydFFE_Ace_Mortar) then {
-                        systemChat "Rearming Mortar";
+                        //systemChat "Rearming Mortar";
                         (_this select 0) setVehicleAmmo 1;
                     };
 

@@ -91,7 +91,7 @@ if(isServer) then {
     GET_PARAM_BOOL(KPLIB_respawnOnAttackedSectors, "AttackedSectorRespawn", 0);
     GET_PARAM_BOOL(KP_liberation_ailogistics, "AiLogistics", 1);
     GET_PARAM_BOOL(KP_liberation_cr_param_buildings, "CR_Building", 0);
-    GET_PARAM(GRLIB_halo_param, "HaloJump", 1);
+    GET_PARAM(GRLIB_halo_param, "HaloJump", 0);
     GET_PARAM_BOOL(KP_liberation_clear_cargo, "ClearCargo", 1);
     GET_PARAM(KP_liberation_allowEnemiesInImmobile, "AllowEnemiesInImmobile", 50);
     GET_PARAM(KP_liberation_delayDespawnMax, "DelayDespawnMax", 5);

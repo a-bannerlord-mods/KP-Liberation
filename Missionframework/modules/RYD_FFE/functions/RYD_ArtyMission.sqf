@@ -18,6 +18,7 @@ _agp = [];
 _artyAv = [];
 _vehs = 0;
 _allammo = 0;
+_reasons = [];
 
 {
     _gp = _x;
@@ -207,9 +208,16 @@ _allammo = 0;
                             }
                         }
                     };
-                    
+
+                    _range= 0;
+                    if (typeof _vh in opfor_light_artillery) then {
+                        _range = RydFFE_Light_Artillery_Max_Range;
+                    };
+                    if (typeof _vh in opfor_heavy_artillery) then {
+                        _range = RydFFE_Heavy_Artillery_Max_Range;
+                    };
                     _inRange = _pos inRangeOfArtillery[[_vh], _ammo];
-                    
+                    _inRange =  _inRange && ((_pos distance _vh) < _range);
                     if (_inRange) then {
                         {
                             if ((_x select 0) in [_ammo]) then {
@@ -237,8 +245,8 @@ _allammo = 0;
         }
     };
     
-    if not(_hasammo < _amount && _ammo != "ACE_1Rnd_82mm_Mo_HE" ) exitwith {};
-    if not(_allammo < _amount && _ammo != "ACE_1Rnd_82mm_Mo_HE" ) exitwith {}
+    if not(_hasammo < _amount && _ammo != "ACE_1Rnd_82mm_Mo_HE" ) exitwith {_reasons pushBack "Not Enogh Ammo";};
+    if not(_allammo < _amount && _ammo != "ACE_1Rnd_82mm_Mo_HE" ) exitwith {_reasons pushBack "Not Enogh Ammo";};
 }
 forEach _arty;
 
@@ -338,8 +346,10 @@ if not((count _artyAv) == 0) then {
             forEach _battery
         }
     }
+}else{
+    _reasons pushBack "Not Enogh arty Av ";
 };
 
 // diag_log format ["AM: %1", [_possible, _battery, _agp, _ammoArr]];
 
-[_possible, _battery, _agp, _ammoArr, _allammo]
+[_possible, _battery, _agp, _ammoArr, _allammo,_reasons]

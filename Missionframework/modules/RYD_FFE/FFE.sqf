@@ -71,7 +71,7 @@ foreach RydFFE_Other;
 
 
 [] call compile preprocessFile "modules\RYD_FFE\FFE_fnc.sqf";
-
+Shellview = compile preprocessFile "modules\RYD_FFE\Shellview.sqf";
 
 //_allArty = [_allArty] call RydFFE_AutoConfig;
 
@@ -118,13 +118,23 @@ while {RydFFE_Active} do
 	RydFFE_FO= _RydFFE_FO_atstart;
 	if (RydFFE_Manual) then {waitUntil {sleep 0.1;((RydFFE_Fire) or not (RydFFE_Manual))};RydFFE_Fire = false};
 	waitUntil {sleep 3;(combat_readiness > RydFFE_Light_Artillery_Enable_On_Combat_Readiness_Above) or (combat_readiness > RydFFE_Heavy_Artillery_Enable_On_Combat_Readiness_Above) };
+	
 	_allArty = [];
 	if (combat_readiness > RydFFE_Light_Artillery_Enable_On_Combat_Readiness_Above) then {
 		_allArty = _allArty + opfor_light_artillery;
+		if (RydFFE_Debug) then {
+				systemChat "Light Artillery Request Ready";
+		};
+	
 	};
 	if (combat_readiness > RydFFE_Heavy_Artillery_Enable_On_Combat_Readiness_Above) then {
 		_allArty = _allArty + opfor_heavy_artillery;
+		if (RydFFE_Debug) then {
+				systemChat "Heavy Artillery Request Ready";
+		};
+		
 	};
+	
 	_allArty = [_allArty] call RydFFE_AutoConfig;
 	_allArty  = _allArty apply {toLower _x} ;
 		{

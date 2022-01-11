@@ -112,10 +112,19 @@ class KPLIB {
 
         class overlayUpdateResources    {};
     }; 
+    class functions_objectives {
+        file = "functions\objectives";
+        class spawnCaptureObjectiveInSector     {};
+        class spawnRescueObjectiveInSector      {};
+        class spawnDestroyObjectiveInSector     {};        
+        class captureObjective                  {};
+        class rescueObjective                   {};
+        class destroyObjective                  {};
+    }; 
     class functions_lightGenerator {
         file = "functions\lightGenerator";
-        class addLightGenerator    {};
-        class addLightSwich    {};
+        class addLightGenerator     {};
+        class addLightSwich         {};
     };
     class functions_items {
         file = "functions\items";

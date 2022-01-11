@@ -317,7 +317,7 @@ class FSM
                         name = "Set_all_completion";
                         itemno = 7;
                         init = /*%FSM<STATEINIT""">*/"private _fobComplete = {" \n
-                         "    !(GRLIB_all_fobs isEqualTo [])" \n
+                         "    !(GRLIB_all_fobs isEqualTo [(getposATL startbase)])" \n
                          "    ||" \n
                          "    {!(blufor_sectors isEqualTo [])}" \n
                          "};" \n
@@ -536,7 +536,7 @@ class FSM
                                         priority = 0.000000;
                                         to="Build_storage_ar";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"!(GRLIB_all_fobs isEqualTo [])"/*%FSM</CONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(GRLIB_all_fobs isEqualTo [(getposATL startbase)])"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
@@ -570,7 +570,7 @@ class FSM
                                         priority = 0.000000;
                                         to="Build_storage_ar";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"!(GRLIB_all_fobs isEqualTo [])"/*%FSM</CONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(GRLIB_all_fobs isEqualTo [(getposATL startbase)])"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/

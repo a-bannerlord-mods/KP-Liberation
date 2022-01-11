@@ -87,6 +87,13 @@ if (_classname in militia_vehicles) then {
     private _crew = units (createVehicleCrew _newvehicle);
     _crew joinSilent _grp;
     sleep 0.1;
+    {
+        _x spawn {
+            sleep 1;
+            [_this] call KPLIB_fnc_applyCustomUnitSettings;
+            [_this] call KPLIB_fnc_addObjectInit;
+        };
+    } forEach _crew;
     {_x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];} forEach _crew;
 };
 

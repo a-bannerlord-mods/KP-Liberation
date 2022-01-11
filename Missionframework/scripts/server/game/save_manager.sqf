@@ -57,7 +57,8 @@ private _weights = [];
 private _allMines = [];
 // All unclaimed crates from crate spawning sectors
 private _allCrates = [];
-
+// all objictives 
+private _objectives = [[],[]];
 /*
     --- Globals ---
     Initializes global variables which are used at several places in the framework
@@ -103,6 +104,10 @@ KPLIB_sectorTowers = [];
 KPLIB_sectorsUnderAttack = [];
 //cached sector units
 KP_liberation_Sector_Cache = [];
+//successful objectives
+KP_liberation_successful_objectives = [];
+//failed objectives
+KP_liberation_failed_objectives = [];
 // Global Intel resource
 resources_intel = 0;
 // State if the save is fully loaded
@@ -209,6 +214,7 @@ if (!isNil "_saveData") then {
         GRLIB_qualifications                        = _saveData param [22, []];
         GRLIB_players_data                          = _saveData param [23, []];
         GRLIB_virual_support                        = _saveData param [24, []];
+        _objectives                                 = _saveData param [25, []];
 
         stats_ammo_produced                         = _stats select  0;
         stats_ammo_spent                            = _stats select  1;
@@ -303,6 +309,9 @@ if (!isNil "_saveData") then {
     infantry_weight = _weights select 0;
     armor_weight = _weights select 1;
     air_weight = _weights select 2;
+    
+    KP_liberation_successful_objectives = _objectives select 0;
+    KP_liberation_failed_objectives     = _objectives select 1;
 
     // Set correct resistance standing
     private _resistanceEnemy = [0, 1] select (KP_liberation_civ_rep < 25);

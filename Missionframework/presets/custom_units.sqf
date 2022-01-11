@@ -5,6 +5,8 @@ KPLIB_Units_Override_tank_crew_Loadout = [["rhs_weap_akms","rhs_acc_dtkakm","rhs
 
 KPLIB_Units_Override_crew_Names = [Custom_First_Names,Custom_Last_Names];
 
+
+_farooqAliDrivers_loadout = [["uk3cb_weap_akmn_1p29_sup","rhs_acc_pbs1","","rhs_acc_1p29",["rhs_30Rnd_762x39mm",30],[],""],[],["UK3CB_BHP_sup","muzzle_snds_L","","",["UK3CB_BHP_9_13Rnd",13],[],""],["UK3CB_ARD_O_U_SF_Uniform_01",[["rhs_mag_rdg2_white",1,1],["rhs_mag_rdg2_black",1,1],["rhs_mag_rgd5",2,1],["UK3CB_BHP_9_13Rnd",1,13]]],["UK3CB_ARD_O_V_6b5_Desert",[["ACE_EarPlugs",1],["ACE_quikclot",2],["ACE_elasticBandage",2],["ACE_packingBandage",2],["ACE_tourniquet",2],["ACE_splint",2],["ACE_morphine",1],["ACE_epinephrine",1],["ACE_adenosine",1],["rhs_30Rnd_762x39mm",3,30]]],["UK3CB_ARD_O_B_LargePack_RIF",[["ACE_quikclot",2],["ACE_elasticBandage",2],["ACE_packingBandage",2],["ACE_tourniquet",2],["ACE_splint",2],["ACE_morphine",1],["ACE_epinephrine",1],["ACE_adenosine",1],["rhs_30Rnd_762x39mm",3,30],["UK3CB_BHP_9_13Rnd",1,13]]],"","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch","UK3CB_PVS5A"]];
 //[classname,customname,custom_first_names,custom_last_names,loadout]
 KPLIB_Units_Override = [
 	
@@ -17,7 +19,21 @@ KPLIB_Units_Override = [
 	//obfor
 	["UK3CB_ARD_O_JNR_OFF","",[],[],[["rhs_weap_ak74n_2","rhs_acc_dtk1983","","",["rhs_30Rnd_545x39_7N6M_plum_AK",30],[],""],[],["UK3CB_BHP","","","",["UK3CB_BHP_9_13Rnd",13],[],""],["UK3CB_ARD_O_U_CombatUniform_01",[["rhs_mag_rdg2_white",1,1],["rhs_mag_rdg2_black",1,1],["rhs_mag_rgd5",2,1],["UK3CB_BHP_9_13Rnd",1,13]]],["UK3CB_ARD_O_V_6b23_vydra_3m_TAN",[["ACE_EarPlugs",1],["ACE_quikclot",2],["ACE_elasticBandage",2],["ACE_packingBandage",2],["ACE_tourniquet",2],["ACE_splint",2],["ACE_morphine",1],["ACE_epinephrine",1],["ACE_adenosine",1],["rhs_30Rnd_545x39_7N6M_plum_AK",3,30]]],["UK3CB_ARD_O_B_Radio",[]],"UK3CB_ARD_O_H_Patrolcap","",[],["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch",""]]],
 	["UK3CB_ARD_O_OFF","",[],[],[[],[],["rhs_weap_rsp30_red","","","",["rhs_mag_rsp30_red",1],[],""],["UK3CB_ARD_O_U_CombatUniform_01",[["ACE_EarPlugs",1],["ACE_quikclot",2],["ACE_elasticBandage",1],["ACE_packingBandage",1],["ACE_tourniquet",1],["ACE_splint",1],["ACE_morphine",1],["ACE_epinephrine",1],["ACE_adenosine",1],["rhs_mag_rdg2_white",1,1],["UK3CB_BHP_9_13Rnd",2,13]]],["rhs_vest_pistol_holster",[]],["UK3CB_ARD_O_B_Radio",[]],"UK3CB_ARD_O_H_Beret_OFF","",["Binocular","","","",[],[],""],["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch",""]]],
-	["UK3CB_ARD_O_TL","",[],[],[["rhs_weap_ak74n_2","rhs_acc_dtk1983","","",["rhs_30Rnd_545x39_7N6M_plum_AK",30],[],""],[],["UK3CB_BHP","","","",["UK3CB_BHP_9_13Rnd",13],[],""],["UK3CB_ARD_O_U_CombatUniform_01",[["rhs_mag_rdg2_white",1,1],["rhs_mag_rdg2_black",1,1],["rhs_mag_rgd5",2,1],["UK3CB_BHP_9_13Rnd",1,13]]],["UK3CB_ARD_O_V_6b23_vydra_3m_TAN",[["ACE_EarPlugs",1],["ACE_quikclot",2],["ACE_elasticBandage",2],["ACE_packingBandage",2],["ACE_tourniquet",2],["ACE_splint",2],["ACE_morphine",1],["ACE_epinephrine",1],["ACE_adenosine",1],["rhs_30Rnd_545x39_7N6M_plum_AK",3,30]]],["UK3CB_ARD_O_B_Radio",[]],"UK3CB_ARD_O_H_Patrolcap","",["Binocular","","","",[],[],""],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]]]
-
-
+	["UK3CB_ARD_O_TL","",[],[],[["rhs_weap_ak74n_2","rhs_acc_dtk1983","","",["rhs_30Rnd_545x39_7N6M_plum_AK",30],[],""],[],["UK3CB_BHP","","","",["UK3CB_BHP_9_13Rnd",13],[],""],["UK3CB_ARD_O_U_CombatUniform_01",[["rhs_mag_rdg2_white",1,1],["rhs_mag_rdg2_black",1,1],["rhs_mag_rgd5",2,1],["UK3CB_BHP_9_13Rnd",1,13]]],["UK3CB_ARD_O_V_6b23_vydra_3m_TAN",[["ACE_EarPlugs",1],["ACE_quikclot",2],["ACE_elasticBandage",2],["ACE_packingBandage",2],["ACE_tourniquet",2],["ACE_splint",2],["ACE_morphine",1],["ACE_epinephrine",1],["ACE_adenosine",1],["rhs_30Rnd_545x39_7N6M_plum_AK",3,30]]],["UK3CB_ARD_O_B_Radio",[]],"UK3CB_ARD_O_H_Patrolcap","",["Binocular","","","",[],[],""],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]]],
+	
+	//Farooq Ali
+	["O_officer_F","",[],[],[[],[],[],["UK3CB_ARD_B_U_CombatUniform_01",[]],[],[],"rhs_beret_milp","",[],["ItemMap","","","ItemCompass","tf_microdagr",""]]],
+	//Farooq Ali Drivers 
+	["rhs_msv_driver_armored","",[],[],_farooqAliDrivers_loadout],
+	["rhs_msv_grenadier","",[],[],_farooqAliDrivers_loadout],
+	//Abu Nawaf 
+	["O_Officer_Parade_Veteran_F","",[],[],[["rhs_weap_MP44","","","",["rhsgref_30Rnd_792x33_SmE_StG",30],[],""],[],[],["UK3CB_TKM_B_U_06_B",[]],[],[],"UK3CB_H_Beret_Officer_Red","G_Aviator",[],["ItemMap","","","ItemCompass","tf_microdagr",""]]],
+	//Michael Cohen
+	["O_Officer_Parade_F","",[],[],[[],[],[],["U_C_FormalSuit_01_tshirt_black_F",[]],[],[],"","G_Aviator",[],["ItemMap","ItemGPS","tf_anprc148jem_2","ItemCompass","ItemWatch",""]]],
+	//Michael Cohen Bodyguard
+	["O_G_Soldier_universal_F","",[],[],[["rhs_weap_akmn_gp25","rhs_acc_pbs1","","",["rhs_30Rnd_762x39mm",30],[],""],[],["rhs_weap_pb_6p9","rhs_acc_6p9_suppressor","","",["rhs_mag_9x18_8_57N181S",8],[],""],["U_O_R_Gorka_01_black_F",[]],["UK3CB_TKP_I_V_6Sh92_Blk",[]],["UK3CB_B_Small_Pack",[]],"UK3CB_H_Beanie_02_BLK","G_Bandanna_blk",["Binocular","","","",[],[],""],["ItemMap","","tf_anprc148jem_2","ItemCompass","ItemWatch","NVGoggles_OPFOR"]]],
+	//Michael Cohen driver
+	["UK3CB_AAF_O_SF_RIF_1","",[],[],[["rhs_weap_akmn_gp25","rhs_acc_pbs1","","",["rhs_30Rnd_762x39mm",30],[],""],[],["rhs_weap_pb_6p9","rhs_acc_6p9_suppressor","","",["rhs_mag_9x18_8_57N181S",8],[],""],["U_O_R_Gorka_01_black_F",[]],["UK3CB_TKP_I_V_6Sh92_Blk",[]],["UK3CB_B_Small_Pack",[]],"UK3CB_H_Beanie_02_BLK","G_Bandanna_blk",["Binocular","","","",[],[],""],["ItemMap","","tf_anprc148jem_2","ItemCompass","ItemWatch","NVGoggles_OPFOR"]]],
+	//Haftar Jafar
+	["B_T_Officer_F","",[],[],[[],[],[],["LOP_U_Fatigue_BDU_ATACS_AU_02",[]],[],[],"rhssaf_beret_green","",[],["ItemMap","","","ItemCompass","tf_microdagr",""]]]
 ];

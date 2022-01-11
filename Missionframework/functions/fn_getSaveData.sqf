@@ -217,5 +217,6 @@ private _weights = [
     KPLIB_sectorTowers,
     GRLIB_qualifications,
     GRLIB_players_data,
-    GRLIB_virual_support
+    GRLIB_virual_support,
+    [KP_liberation_successful_objectives,KP_liberation_failed_objectives]
 ] // return

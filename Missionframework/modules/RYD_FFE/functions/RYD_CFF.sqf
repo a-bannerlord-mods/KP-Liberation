@@ -14,6 +14,9 @@ for "_i"
 from 1 to _CFFMissions do {
     _tgt = [_knEnemies] call RYD_CFF_TGT;
 
+    if (RydFFE_Debug) then {
+				systemChat format ["Artillery Command has %1 Artillery ready for firing and %2 knowen Enemies" ,str count _artG , str count _knEnemies];
+	};
     
 
     if not(isNull _tgt) then {
@@ -26,8 +29,9 @@ from 1 to _CFFMissions do {
         //if (_tgt in _enArmor) then {_ammo = "HE";_amnt = 6};
 
         _bArr = [(getPosATL _tgt), _artG, _ammo, _amnt, objNull] call RYD_ArtyMission;
-        //  _bArr = [(getPosATL ([artyknEnemies] call RYD_CFF_TGT)), artyGroups, "HE", 6, objNull] call RYD_ArtyMission;
+        
         _possible = _bArr select 0;
+
         if (_possible) then {
             {
                 if not(isNull _x) then {
@@ -35,6 +39,9 @@ from 1 to _CFFMissions do {
                 }
             }
             foreach(_bArr select 1);
+            if (RydFFE_Debug) then {
+				systemChat format ["Artillery requested on %1" ,name _tgt]; 
+		    };
             [_bArr select 1, _tgt, _bArr select 2, _bArr select 3, _friends, _Debug, _ammo, _amnt min(_bArr select 4)] spawn RYD_CFF_FFE
         }
         else {
@@ -59,7 +66,12 @@ from 1 to _CFFMissions do {
                     }
                 }
                 foreach(_bArr select 1);
+                if (RydFFE_Debug) then {
+				    systemChat format ["Artillery requested on %1" ,name _tgt]; 
+		        };
+                
                 [_bArr select 1, _tgt, _bArr select 2, _bArr select 3, _friends, _Debug, _ammo, _amnt min(_bArr select 4)] spawn RYD_CFF_FFE
+            }else{
             }
         }
     };
