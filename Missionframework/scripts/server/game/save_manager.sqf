@@ -312,7 +312,9 @@ if (!isNil "_saveData") then {
     
     KP_liberation_successful_objectives = _objectives select 0;
     KP_liberation_failed_objectives     = _objectives select 1;
-
+    
+    publicVariable "KP_liberation_successful_objectives";
+    publicVariable "KP_liberation_failed_objectives";
     // Set correct resistance standing
     private _resistanceEnemy = [0, 1] select (KP_liberation_civ_rep < 25);
     private _resistanceFriendly = [0, 1] select (KP_liberation_civ_rep >= -25);

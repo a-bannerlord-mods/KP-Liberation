@@ -897,9 +897,9 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
     
     sleep 10;
 
-    {
-        deleteVehicle _x;
-    } forEach (_sectorpos nearEntities ["Logic",1000]);
+    // {
+    //     deleteVehicle _x;
+    // } forEach (_sectorpos nearEntities ["Logic",1000]);
 
     if ((_sector in sectors_factory) || (_sector in sectors_capture) || (_sector in sectors_bigtown) || (_sector in sectors_military)) then {
         [_sector] remoteExec["reinforcements_remote_call", 2];

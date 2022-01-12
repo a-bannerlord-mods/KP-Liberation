@@ -22,8 +22,11 @@ if (count (_objectsToCapture select {!alive _x}) >= _failOnKilledObjectsCount) t
 	// fail
 	[_taskId, "FAILED"] call BIS_fnc_taskSetState;
 	KP_liberation_failed_objectives pushBackUnique  _taskId;
+    publicVariable "KP_liberation_failed_objectives";
 } else {
 	// success
 	[_taskId, "SUCCEEDED"] call BIS_fnc_taskSetState;
 	KP_liberation_successful_objectives pushBackUnique  _taskId;
+    publicVariable "KP_liberation_successful_objectives";
+
 };

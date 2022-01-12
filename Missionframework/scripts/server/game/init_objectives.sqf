@@ -14,6 +14,14 @@ waitUntil {save_is_loaded};
 
 [west, ["main_task"], ["El Mamar" , "El Mamar",""], objNull, 1, 3, true] call BIS_fnc_taskCreate;
 {
+	if (isnil "KP_liberation_successful_objectives") then {
+		KP_liberation_successful_objectives = [];
+	};
+
+	if (isnil "KP_liberation_failed_objectives") then {
+		KP_liberation_failed_objectives = [];
+	};
+
 	_status = "CREATED";
 	switch (true) do {
 		case ((_x select 0) in KP_liberation_successful_objectives): {

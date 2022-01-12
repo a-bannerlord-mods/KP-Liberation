@@ -5,3 +5,5 @@ waitUntil {count (_objectsToDestroy select {!alive _x }) >= _successOnKilledObje
 
 [_taskId, "SUCCEEDED"] call BIS_fnc_taskSetState;
 KP_liberation_successful_objectives pushBackUnique  _taskId;
+    
+publicVariable "KP_liberation_successful_objectives";
