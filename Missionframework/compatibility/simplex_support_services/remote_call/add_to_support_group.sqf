@@ -8,7 +8,8 @@ switch (_type) do {
         //     [_x] joinSilent _grpname;
         // } forEach units _addonGrpname;
         [_target] call KPLIB_fnc_forceBluforCrew;
-        [_target, "", -1, {}, blufor_cas_support_required_items, {
+        _customname = _target getVariable ["ace_cargo_customname",""];
+        [_target, _customname, -1, {}, blufor_cas_support_required_items, {
             player getUnitTrait 'JTAC'
         }] call sss_support_fnc_addtransport;
     };
@@ -29,10 +30,10 @@ switch (_type) do {
         _weaponset = (getPylonMagazines cursorObject) apply {getText (configFile >> "CfgMagazines" >> _x >> "pylonWeapon") };
         _weaponset = _weaponset select {_x != ""};
         _weaponset= _weaponset arrayIntersect _weaponset;
-
+        _customname = _target getVariable ["ace_cargo_customname",""];
         deletevehicle _target;
         GRLIB_virual_support pushback ["plane",_targettype,_weaponset];
-        [_targettype, "", _weaponset, 600, {}, GRLIB_side_friendly, blufor_cas_support_required_items, {
+        [_targettype, _customname, _weaponset, 600, {}, GRLIB_side_friendly, blufor_cas_support_required_items, {
             player getUnitTrait 'JTAC'
         }] call sss_support_fnc_addcasplane;
     };

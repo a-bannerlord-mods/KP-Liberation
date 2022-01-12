@@ -479,6 +479,37 @@ _player addAction [
 ];
 
 
+// Rename vehicle
+_player addAction [
+    ["<t color='#FFFF00'>", "-- Rename vehicle", "</t>"] joinString "",
+    {
+        params ["_trader", "_caller", "_actionId", "_arguments"];
+		    ace_cargo_interactionVehicle = cursorObject;
+            createDialog "ace_cargo_renameMenu";
+    },
+    nil,
+    -760,
+    false,
+    true,
+    "",
+    "
+        isNull (objectParent _originalTarget)
+        && {alive _originalTarget}
+        && {
+            _originalTarget getVariable ['KPLIB_fobDist', 99999] < 20
+            || {_originalTarget getVariable ['KPLIB_isNearStart', false]}
+        }
+        && {
+            _originalTarget getVariable ['KPLIB_hasDirectAccess', false]
+            || {[5] call KPLIB_fnc_hasPermission}
+        }
+        && {build_confirmed isEqualTo 0}
+        && (tolower typeof cursorObject) in KPLIB_b_allVeh_classes
+        && cursorObject distance player < 5
+    "
+];
+
+
 _player execVM "compatibility\add_compatibility_actions.sqf";
 
 [] call KPLIB_fnc_addLogisticsActions;

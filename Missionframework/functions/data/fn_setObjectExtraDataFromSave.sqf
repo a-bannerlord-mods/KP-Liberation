@@ -120,14 +120,15 @@ _class = toLower (typeOf _obj);
 	// support group
 	if (isClass(configFile >> "CfgPatches" >> "SSS")) then {
 		if ((_x select 0) == "support_group") then {
+			_customname = _obj getVariable ["ace_cargo_customname", ""];
 			switch ((_x select 1)) do {
 				case "transport": {
-					[_obj, "", -1, {}, blufor_cas_support_required_items, {
+					[_obj, _customname, -1, {}, blufor_cas_support_required_items, {
 						player getUnitTrait 'JTAC'
 					}] call sss_support_fnc_addtransport;
 				};
 				case "cas": {
-					[_obj, "", -1, {}, blufor_cas_support_required_items, {
+					[_obj, _customname, -1, {}, blufor_cas_support_required_items, {
 						player getUnitTrait 'JTAC'
 					}] call sss_support_fnc_addcashelicopter;
 				};

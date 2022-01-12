@@ -52,7 +52,7 @@ pr _subtractArrays = {
 };
 
 //name that needed to be loaded
-hint "Loading Default Gear For Rifleman step 1";
+hint "Loading Default Gear For Rifleman";
 
 pr _object = UINamespace getVariable "jn_object";
 pr _dataList = _object getVariable "jna_dataList";

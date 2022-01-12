@@ -65,6 +65,10 @@ KPLIB_objectInits = [
             _t= createVehicle ["CBA_B_InvisibleTargetVehicle",getPosATL _this]; 
             createVehicleCrew _t;
             _t attachTo [_this, [0, 0, 0.5]];
+            if (KP_liberation_ace) then {
+                [_t, false, [0, 1.5, 0], 0] remoteExec ["ace_dragging_fnc_setCarryable",0,true];
+                [_t, false, [0, 2, 0], 0] remoteExec ["ace_dragging_fnc_setDraggable",0,true];
+            };
             _this setVariable ["attached_target",_t,true];
             _this addMPEventHandler ["MPKilled", {
                 params ["_unit", "_killer", "_instigator", "_useEffects"];
@@ -74,7 +78,10 @@ KPLIB_objectInits = [
                     };
                 }];
             _this setMass 500;
-            if (KP_liberation_ace) then {[_this, true, [0, 1.5, 0], 0] remoteExec ["ace_dragging_fnc_setCarryable"];};
+            if (KP_liberation_ace) then {
+                [_this, true, [0, 1.5, 0], 0] remoteExec ["ace_dragging_fnc_setCarryable",0,true];
+                [_this, true, [0, 2, 0], 0] remoteExec ["ace_dragging_fnc_setDraggable",0,true];
+                };
             [_this, []] call jn_fnc_arsenal_initPersistent; 
         }
     ],

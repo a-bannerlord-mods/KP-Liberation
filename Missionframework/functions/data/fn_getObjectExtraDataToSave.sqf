@@ -86,6 +86,13 @@ if (_forcedFlagTexture!=  "" ) then {
 	_data pushBack ["forced_flag_texture",_forcedFlagTexture];
 };
 
+//cargo customname
+_customname = _obj getVariable ["ace_cargo_customname",""];
+if (_customname!="") then {
+	_data pushBack ["ace_cargo_customname",_customname];
+};
+
+
 if !(isnull (_obj getVariable['SSS_parentEntity', objNull])) then {
 	if (!isnil "blufor_transport_support_vehicles" &&
 		(typeof _obj ) in (blufor_transport_support_vehicles apply { _x select 0}) ) then {
@@ -109,13 +116,6 @@ if (_ace_fuel_storage>0) then {
 	_ace_fuel_currentsupply = [_obj] call ace_refuel_fnc_getFuel;
 	_data pushBack ["ace_fuel_currentsupply",_ace_fuel_currentsupply];
 };
-
-//arsinal items
-_customname = _obj getVariable ["ace_cargo_customname",""];
-if (_customname!="") then {
-	_data pushBack ["ace_cargo_customname",_customname];
-};
-
 
 //captured
 _KPLIB_captured = _obj getVariable ["KPLIB_captured",false];
