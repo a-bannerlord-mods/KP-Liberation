@@ -98,6 +98,8 @@ class KPLIB {
         class isStartBase                   {};
         class isPlayerNearToFob             {};       
         class sectorCanBeActivated          {};
+        class raiseAlarm                    {};
+        class turnOffAlarm                  {};
     };
     class functions_curator {
         file = "functions\curator";

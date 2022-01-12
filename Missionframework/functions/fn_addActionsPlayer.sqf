@@ -439,6 +439,49 @@ _player addAction [
     "
 ];
 
+
+// Trigger alarm
+_player addAction [
+    ["<t color='#FFFF00'>", "-- Trigger the Alarm", "</t>"] joinString "",
+    {
+        _nearfob = [] call KPLIB_fnc_getNearestFob;
+        [_nearfob] call KPLIB_fnc_raiseAlarm;
+    },
+    nil,
+    -850,
+    false,
+    true,
+    "",
+    "
+        isNull (objectParent _originalTarget)
+        && alive _originalTarget
+        && build_confirmed isEqualTo 0
+        && ((typeOf cursorObject) in ([KPLIB_alarm_speaker] + KP_liberation_Command_Devices))
+    "
+];
+
+
+// Turn Off alarm
+_player addAction [
+    ["<t color='#FFFF00'>", "-- Turn Off the Alarm", "</t>"] joinString "",
+    {
+        _nearfob = [] call KPLIB_fnc_getNearestFob;
+        [_nearfob] call KPLIB_fnc_turnOffAlarm;
+    },
+    nil,
+    -850,
+    false,
+    true,
+    "",
+    "
+        isNull (objectParent _originalTarget)
+        && alive _originalTarget
+        && build_confirmed isEqualTo 0
+        && ((typeOf cursorObject) in ([KPLIB_alarm_speaker] + KP_liberation_Command_Devices))
+    "
+];
+
+
 // interrogate
 _player addAction [
     ["<t color='#FFFF00'>", "-- Interrogate", "</t>"] joinString "",

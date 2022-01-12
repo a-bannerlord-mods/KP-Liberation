@@ -1065,6 +1065,8 @@ KP_liberation_suppMod_artyVeh = [
     "uns_Type55_mortar"
 ];
 
+KPLIB_alarm_speaker = "Land_Loudspeakers_F";
+
 // Objects which are spawned as intel objects for pickup
 KPLIB_intelObjectClasses = [
     "Land_File_research_F",

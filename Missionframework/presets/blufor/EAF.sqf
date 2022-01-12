@@ -178,7 +178,7 @@ buildings = [
     ["eaf_flag_airforce2",0,0,0],
     ["eaf_flag_airborne",0,0,0],
 
-
+    [KPLIB_alarm_speaker,0,0,0],
     ["Land_Medevac_house_V1_F",0,0,0],
     ["Land_Medevac_HQ_V1_F",0,0,0],
     ["Flag_RedCrystal_F",0,0,0],
