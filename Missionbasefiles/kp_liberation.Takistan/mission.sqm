@@ -12,7 +12,7 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=6471;
+		nextID=6481;
 	};
 	class MarkerIDProvider
 	{
@@ -24,10 +24,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={3367.4429,239.35178,8602.3037};
-		dir[]={0.52178091,-0.42930257,-0.73721594};
-		up[]={0.2480177,0.90315813,-0.3504208};
-		aside[]={-0.81625944,-1.3387762e-007,-0.57772624};
+		pos[]={2614.3206,434.69427,8659.3174};
+		dir[]={0.30879584,-0.67157888,-0.67353445};
+		up[]={0.27988607,0.74092984,-0.61047661};
+		aside[]={-0.90902358,-4.4424087e-007,-0.41676193};
 	};
 };
 binarizationWanted=0;
@@ -25665,7 +25665,7 @@ class Mission
 			name="Empty Points";
 			class Entities
 			{
-				items=250;
+				items=260;
 				class Item0
 				{
 					dataType="Marker";
@@ -27902,9 +27902,97 @@ class Mission
 					id=6470;
 					atlOffset=4.5776367e-005;
 				};
+				class Item250
+				{
+					dataType="Marker";
+					position[]={9669.248,180.37563,11290.396};
+					name="opfor_sniper_nest_109";
+					type="mil_triangle";
+					id=6471;
+					atlOffset=-7.6293945e-005;
+				};
+				class Item251
+				{
+					dataType="Marker";
+					position[]={10075.837,174.75459,11591.061};
+					name="opfor_sniper_nest_110";
+					type="mil_triangle";
+					id=6472;
+					atlOffset=4.5776367e-005;
+				};
+				class Item252
+				{
+					dataType="Marker";
+					position[]={12591.707,211.73776,10372.837};
+					name="opfor_sniper_nest_111";
+					type="mil_triangle";
+					id=6473;
+					atlOffset=0.00010681152;
+				};
+				class Item253
+				{
+					dataType="Marker";
+					position[]={11861.859,224.67317,10076.068};
+					name="opfor_sniper_nest_112";
+					type="mil_triangle";
+					id=6474;
+				};
+				class Item254
+				{
+					dataType="Marker";
+					position[]={4394.2729,86.912483,11563.617};
+					name="opfor_sniper_nest_113";
+					type="mil_triangle";
+					id=6475;
+				};
+				class Item255
+				{
+					dataType="Marker";
+					position[]={6331.8584,154.0696,12198.951};
+					name="opfor_sniper_nest_114";
+					type="mil_triangle";
+					id=6476;
+					atlOffset=-3.0517578e-005;
+				};
+				class Item256
+				{
+					dataType="Marker";
+					position[]={1716.0717,441.21756,8044.4097};
+					name="opfor_sniper_nest_115";
+					type="mil_triangle";
+					id=6477;
+					atlOffset=-6.1035156e-005;
+				};
+				class Item257
+				{
+					dataType="Marker";
+					position[]={1976.9868,481.8226,8197.5547};
+					name="opfor_sniper_nest_116";
+					type="mil_triangle";
+					id=6478;
+					atlOffset=0.00015258789;
+				};
+				class Item258
+				{
+					dataType="Marker";
+					position[]={2333.5215,442.99194,8394.1172};
+					name="opfor_sniper_nest_117";
+					type="mil_triangle";
+					id=6479;
+					atlOffset=6.1035156e-005;
+				};
+				class Item259
+				{
+					dataType="Marker";
+					position[]={2702.7556,406.99686,8686.9023};
+					name="opfor_sniper_nest_118";
+					type="mil_triangle";
+					id=6480;
+					atlOffset=0.00012207031;
+				};
 			};
 			id=1227;
-			atlOffset=37.043396;
+			atlOffset=25.919525;
 		};
 		class Item21
 		{
