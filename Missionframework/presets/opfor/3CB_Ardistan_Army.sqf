@@ -29,6 +29,9 @@ opfor_medic = "UK3CB_ARD_O_MD";                         // Combat Life Saver (Bo
 opfor_engineer = "UK3CB_ARD_O_ENG";                      // Engineer (Bomber)
 opfor_paratrooper = "UK3CB_ARD_O_SF_LAT";                               // Paratrooper (AKM PM-63)
 
+opfor_sf_sharpshooter = "UK3CB_ARD_O_SF_SPOT";                  // Sharpshooter (SVD)
+opfor_sf_sniper = "UK3CB_ARD_O_SF_SNI";                        // Sniper (SVD)
+
 // Enemy vehicles used by secondary objectives.
 opfor_mrap = "UK3CB_ARD_O_GAZ_Vodnik";                                    // Offroad
 opfor_mrap_armed = "UK3CB_ARD_O_GAZ_Vodnik_PKT";                           // Offroad (M2)
@@ -74,7 +77,6 @@ opfor_vehicles = [
 "UK3CB_ARD_O_Hilux_Dshkm", 
 "UK3CB_ARD_O_Hilux_Pkm", 
 "UK3CB_ARD_O_Hilux_Spg9", 
-"UK3CB_ARD_O_UAZ_AGS30", 
 "UK3CB_ARD_O_UAZ_MG", 
 "UK3CB_ARD_O_UAZ_SPG9", 
 "UK3CB_ARD_O_T55", 
@@ -88,8 +90,7 @@ opfor_vehicles_low_intensity = [
 "UK3CB_ARD_O_Hilux_GMG", 
 "UK3CB_ARD_O_Hilux_Dshkm", 
 "UK3CB_ARD_O_Hilux_Pkm", 
-"UK3CB_ARD_O_Hilux_Spg9", 
-"UK3CB_ARD_O_UAZ_AGS30", 
+"UK3CB_ARD_O_Hilux_Spg9",  
 "UK3CB_ARD_O_UAZ_MG", 
 "UK3CB_ARD_O_UAZ_SPG9", 
 "UK3CB_ARD_O_T55", 

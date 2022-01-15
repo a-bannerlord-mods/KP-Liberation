@@ -27,6 +27,7 @@ private _squad1 = [];
 private _squad2 = [];
 private _squad3 = [];
 private _squad4 = [];
+private _sniper_positions= [];
 private _static_mg = 0;
 private _static_at = 0;
 private _static_mg_heavy = 0;
@@ -452,6 +453,40 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
             _vehtospawn pushback([] call KPLIB_fnc_getAdaptiveVehicle);
         };
 
+
+        {
+            _offset1  =[-0.774414,0.594849,-23.8931];  
+            _offset2  =[0.463867,1.0481,-24.0858]; 
+            _offset3  =[0.569336,-1.17261,-24.1316]; 
+            _offset4  =[-0.764648,-1.20349,-23.9235]; 
+            _offsets = [selectRandom [_offset1,_offset2],selectRandom [_offset3,_offset4]];
+            _tower = _x;
+            { 
+                _sniper_positions pushBack [  
+                    ((getPosATL _tower) select 0) - (_x select 0),  
+                    ((getPosATL _tower) select 1) - (_x select 1),  
+                    ((getPosATL _tower) select 2) - (_x select 2)  
+                ];  
+            } forEach _offsets;
+        
+        } forEach (_sectorpos nearObjects ["Land_TTowerBig_2_F", 200]);
+        
+        {
+            _offset1  =[-1.80078,-1.89746,-22.1357];  
+            _offset2  =[2.20801,-1.54297,-22.0331]; 
+            _offset3  =[1.74023,2.06934,-21.9976]; 
+            _offset4  =[-1.79297,1.8916,-22.1355]; 
+            _offsets = [selectRandom [_offset1,_offset2],selectRandom [_offset3,_offset4]];
+            _tower = _x;
+            { 
+                _sniper_positions pushBack [  
+                    ((getPosATL _tower) select 0) - (_x select 0),  
+                    ((getPosATL _tower) select 1) - (_x select 1),  
+                    ((getPosATL _tower) select 2) - (_x select 2)  
+                ];  
+            } forEach _offsets;
+        
+        } forEach (_sectorpos nearObjects ["Land_TTowerBig_1_F", 200]);
         _spawncivs = false;
 
         _building_ai_max = 0;
@@ -626,7 +661,8 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         _allbuildings = (nearestObjects[_sectorpos, ["House"], _building_range]) select {
             alive _x
         };
-        _buildingpositions = []; {
+        _buildingpositions = []; 
+        {
             _thisBuildingpositions = ([_x] call BIS_fnc_buildingPositions);
             _buildingpositions = _buildingpositions + _thisBuildingpositions;
             _thisBuildingpositionsCount = count _thisBuildingpositions;
@@ -643,7 +679,6 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         _buildingpositions  = _buildingpositions - (_cached_static_mg_heavy apply {_x select 0});
         _buildingpositions  = _buildingpositions - (_cached_static_aa_heavy apply {_x select 0});
         if !(isNull _largestB) then {
-
             _largestbuildingpositions = ([_largestB] call BIS_fnc_buildingPositions);
             _buildingpositions = _buildingpositions - _largestbuildingpositions;
             _largestbuilding_top_positions = [_largestbuildingpositions] call KPLIB_fnc_getBuildingRooftopPositions;
@@ -719,8 +754,32 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
                 };
             };
 
+        
+        
+        
+        
         _top_positions = [_buildingpositions] call KPLIB_fnc_getBuildingRooftopPositions;
         _buildingpositions = _buildingpositions - _top_positions;
+        _top_positions = [_top_positions, [], { (_x select 2) }, "DESCEND"] call BIS_fnc_sortBy;
+        _good_sniper_positions = [];
+        {
+            _currentPos = _x;
+            if ((_x select 2) > 8 && count(_good_sniper_positions select {(_x distance _currentPos) < 20 } ) == 0) then {
+                _good_sniper_positions pushBackUnique _currentPos;
+            }; 
+        } forEach _top_positions;
+        for "_i"
+        from 0 to (5 min (count _good_sniper_positions)) do {
+            if (count _good_sniper_positions > 0) then {
+            _sniper_pos = selectRandom _good_sniper_positions;
+            _top_positions = _top_positions - [_sniper_pos];
+            _good_sniper_positions = _good_sniper_positions - [_sniper_pos];
+            _sniper_positions pushBack _sniper_pos;
+            };
+        };
+
+
+
         if (KP_liberation_sectorspawn_debug > 0) then {
             [format["Sector %1 (%2) - manage_one_sector found %3 building positions", (markerText _sector), _sector, (count _buildingpositions)], "SECTORSPAWN"] remoteExecCall["KPLIB_fnc_log", 2];
         };
@@ -853,25 +912,39 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
     if (count _squad1 > 0) then {
         _grp = [_sector, _squad1] call KPLIB_fnc_spawnRegularSquad;
         [_grp, _sectorpos] spawn add_defense_waypoints;
+        _grp setVariable ["lambs_danger_enableGroupReinforce", true, true];
         _managed_units = _managed_units + (units _grp);
     };
 
     if (count _squad2 > 0) then {
         _grp = [_sector, _squad2] call KPLIB_fnc_spawnRegularSquad;
         [_grp, _sectorpos] spawn add_defense_waypoints;
+        _grp setVariable ["lambs_danger_enableGroupReinforce", true, true];
         _managed_units = _managed_units + (units _grp);
     };
 
     if (count _squad3 > 0) then {
         _grp = [_sector, _squad3] call KPLIB_fnc_spawnRegularSquad;
         [_grp, _sectorpos] spawn add_defense_waypoints;
+        _grp setVariable ["lambs_danger_enableGroupReinforce", true, true];
         _managed_units = _managed_units + (units _grp);
     };
 
     if (count _squad4 > 0) then {
         _grp = [_sector, _squad4] call KPLIB_fnc_spawnRegularSquad;
         [_grp, _sectorpos] spawn add_defense_waypoints;
+        _grp setVariable ["lambs_danger_enableGroupReinforce", true, true];
         _managed_units = _managed_units + (units _grp);
+    };
+
+    if (count _sniper_positions > 0) then {
+        _grp = createGroup[GRLIB_side_enemy, true];
+        {
+            _unit = [opfor_sniper, _sectorpos, _grp] call KPLIB_fnc_createManagedUnit;
+            _unit setPosATL _x;
+            _managed_units = _managed_units + [_unit];
+            [_unit, _sector] spawn sniper_ai;
+        } forEach _sniper_positions;
     };
 
     if (_spawncivs && GRLIB_civilian_activity > 0) then {
@@ -893,7 +966,47 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         KP_liberation_Sector_Cache pushBack [_sector,_infsquad,_cached_vehicles,_cached_squads,_cached_units_in_building,_cached_units_on_building,_cached_static_mg,_cached_static_at,_cached_static_mg_heavy,_cached_static_aa_heavy,_cached_objectives];
     };
 
+    if (isnil "sectors_opfor_sniper_nests_active") then {
+        sectors_opfor_sniper_nests_active = [];
+    };
+
+    _sniper= "";
+    _spotter = "";
+    if (combat_readiness > 60) then {
+        _sniper = opfor_sf_sniper;
+        _spotter = opfor_sf_sharpshooter;
+    } else {
+        _sniper = opfor_sniper;
+        _spotter = opfor_sharpshooter;
+    };
+
+    {
+        _pos = getmarkerpos _x;
+
+        if !(_x in sectors_opfor_sniper_nests_active) then {
+            _grp = createGroup[GRLIB_side_enemy, true];
+            _unit = [_sniper, _sectorpos, _grp] call KPLIB_fnc_createManagedUnit;
+            _unit setPosATL _pos;
+            _unit doWatch _sectorpos;
+            _managed_units = _managed_units + [_unit];
+            [_unit, _sector] spawn sniper_ai;
+            _unit setVariable ["nest",_x,true];
+            _unitspotter = [_spotter, _sectorpos, _grp] call KPLIB_fnc_createManagedUnit;
+            _unitspotter setPosATL _pos;
+            _unitspotter doWatch _sectorpos;
+            _managed_units = _managed_units + [_unitspotter];
+            [_unitspotter,_unit, _sector] spawn spotter_ai;
+            _unitspotter setVariable ["nest",_x,true];
+        }else{
+            _managed_units = _managed_units + (nearestObjects[_pos, [_sniper,_spotter], 50]);
+        };
+
+        sectors_opfor_sniper_nests_active pushBack  _x;
+
+    } forEach (sectors_opfor_sniper_nests select { _sectorpos distance ( getmarkerpos _x) < 1200 });
     
+    
+
     
     sleep 10;
 
@@ -912,7 +1025,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
     private _activationTime = time;
     private _isFleeing = false;
     private _orginalUnitcount = GRLIB_side_enemy countSide(_managed_units select {
-        alive _x && !(_x getVariable["ACE_isUnconscious", false]) && !(captive _x)
+        alive _x && (_x getVariable ['nest', ""] == "") && !(_x getVariable["ACE_isUnconscious", false]) && !(captive _x)
     });
 
 
@@ -926,7 +1039,6 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
     if (_sector in sectors_heavyArtillery) then {
         _fleeCount = 0;
     };
-
 
     // sector lifetime loop
     while {
@@ -973,11 +1085,13 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         };
 
         _unitcount = GRLIB_side_enemy countSide(_managed_units select {
-            alive _x && !(_x getVariable["ACE_isUnconscious", false]) && !(captive _x)
+            alive _x && (_x getVariable ['nest', ""] == "") && !(_x getVariable["ACE_isUnconscious", false]) && !(captive _x)
         });
+
+        systemChat format ["Flee count for sector %1 current is %2 ", str  _fleeCount , str _unitcount];
         if (_fleeCount >= _unitcount) then {
             _isFleeing = true; {
-                if (_x isKindOf "Man" && !(captive _x) && (side group _x) == GRLIB_side_enemy) then {
+                if (_x isKindOf "Man" && alive _x  && !(captive _x) && (side group _x) == GRLIB_side_enemy && (_x getVariable ['nest', ""] == "") ) then {
                     [_x, _sector] call KPLIB_fnc_makeUnitFlee;
                 };
 
@@ -1033,8 +1147,11 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
 		                        _x hideObject true;
                             };
                         } else {
-                            if (!(captive _x) && !(_x getVariable ['ace_captives_isHandcuffed', false])) then {
-                                deleteVehicle _x;
+                            _nest = _x getVariable ['nest', ""];
+                                if (_nest == "" || !(_nest in  sectors_opfor_sniper_nests_active)) then {
+                                    if (!(captive _x) && !(_x getVariable ['ace_captives_isHandcuffed', false])) then {
+                                        deleteVehicle _x;
+                                    };
                             };
                         };
                     };
@@ -1068,6 +1185,10 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
             };
 
             if ((_sector_despawn_tickets <= 0) || (_sector in sectors_forced_despawn && !(_sector in sectors_forced_spawn))) then {
+
+                {
+                    sectors_opfor_sniper_nests_active  deleteAt (sectors_opfor_sniper_nests_active find _x);
+                } forEach (sectors_opfor_sniper_nests select { _sectorpos distance ( getmarkerpos _x) < 1200 });
                 {
                     if (_x isKindOf "Man") then {
                         if (_x getVariable ["is_objective",false]) then {
@@ -1077,8 +1198,11 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
 		                        _x hideObject true;
                             };
                         } else {
-                            if (!(captive _x) && !(_x getVariable ['ace_captives_isHandcuffed', false])) then {
-                                deleteVehicle _x;
+                            _nest = _x getVariable ['nest', ""];
+                            if (_nest == "" || !(_nest in  sectors_opfor_sniper_nests_active)) then {
+                                if (!(captive _x) && !(_x getVariable ['fleeing', false]) && !(_x getVariable ['ace_captives_isHandcuffed', false])) then {
+                                    deleteVehicle _x;
+                                };
                             };
                         };
                     } else {
@@ -1094,9 +1218,9 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
                             };
                         };
                     };
+                    
                 }
-                forEach _managed_units;
-
+                forEach _managed_units; 
                 _stopit = true;
                 active_sectors = active_sectors - [_sector];
                 publicVariable "active_sectors";

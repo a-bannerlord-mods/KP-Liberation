@@ -146,7 +146,7 @@ _player addAction[
     } 
     &&  (cursorObject isKindOf 'Helicopter')
     && [_originalTarget,1.5] call  KPLIB_fnc_isPlayerNearToFob
-    && count (cursorObject nearObjects [KP_liberation_heli_slot_building, 50]) > 0)
+    && count (cursorObject nearObjects [KP_liberation_heli_slot_building, 50]) > 0
     "
 ];
 

@@ -27,6 +27,15 @@
             _ob forceFlagtexture '';
         };
     }] call zen_custom_modules_fnc_register;
+    
+    ["Liberation", "Unflip vehicle", {
+        _ob = (_this select 1);
+        if (!isNull _ob) then {
+            _vehicle  = _ob;
+            _vehicle setPosATL[(getPosATL _vehicle) select 0, (getPosATL _vehicle) select 1, ((getPosATL _vehicle) select 2) + 1]; 
+            _vehicle setVectorUp surfaceNormal position _vehicle;
+        };
+    }] call zen_custom_modules_fnc_register;
 
     ["Liberation", "Add blufor Crew To", {
         _ob = (_this select 1);

@@ -21,7 +21,9 @@ params [
 ];
 
 
-_run = {
+_unit setVariable ["fleeing",true,true];
+
+flee_run = {
     params [
     "_unit",
     ["_sector",""]
@@ -68,13 +70,13 @@ _run = {
     _unit setskill ["general",0.1];
 
 
-    sleep 10 ; 
+    sleep 60; 
 
-    waitUntil { count ((allPlayers - _headlessClients) select {(_x distance _unit) <6 }) == 0 };
+    waitUntil { headgear _unit != "mgsr_headbag" && goggles _unit != "mgsr_headbag_goggles" &&  count ((allPlayers) select {(_x distance _unit) <12 }) == 0 };
     [_unit, false] call ACE_captives_fnc_setHandcuffed;
     _unit setCaptive false;
 
-    [_unit,_sector] spawn _run;
+    [_unit,_sector] spawn flee_run;
 
     
 };
@@ -96,4 +98,4 @@ _unit addEventHandler ["Hit", {
     };
 }];
 
-[_unit,_sector] spawn _run;
+[_unit,_sector] spawn flee_run;
