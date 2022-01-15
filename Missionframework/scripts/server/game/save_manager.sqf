@@ -108,6 +108,8 @@ KP_liberation_Sector_Cache = [];
 KP_liberation_successful_objectives = [];
 //failed objectives
 KP_liberation_failed_objectives = [];
+//Repair Workshops
+KP_repair_workshops = [];
 // Global Intel resource
 resources_intel = 0;
 // State if the save is fully loaded
@@ -312,7 +314,7 @@ if (!isNil "_saveData") then {
     
     KP_liberation_successful_objectives = _objectives select 0;
     KP_liberation_failed_objectives     = _objectives select 1;
-    
+
     publicVariable "KP_liberation_successful_objectives";
     publicVariable "KP_liberation_failed_objectives";
     // Set correct resistance standing

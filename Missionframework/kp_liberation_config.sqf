@@ -264,11 +264,11 @@ RydFFE_ArtyShells = 1;                                                  // Multi
 RydFFE_Interval = 80;                                                   //time gap (in seconds) between each “seek for targets” cycle (each cycle each not busy battery on map looks for new fire mission opportunity);
 RydFFE_2PhWithoutFO = false;                                            //by default, if limited spotting is active, spotters will guide fire in two steps: 1/6 of salvo (rounded up) will be used as adjustment fire, and rest, with better accuracy, in next salvo as “fire for effect” (FFE). In unlimited spotting or if this variable is set as true, whole salvo will be fired at once as FFE;
 RydFFE_OnePhase = false;                                                //with this set as true also in unlimited spotting mode artillery fire will be conducted in two steps, as described above;
-RydFFE_Amount = 6;                                                      //this holds number of shells, that in summary should be fired in each fire mission. CLUSTER and GUIDED salvo amount is always divided by 3 (rounded up);
+RydFFE_Amount = 4;                                                      //this holds number of shells, that in summary should be fired in each fire mission. CLUSTER and GUIDED salvo amount is always divided by 3 (rounded up);
 RydFFE_Acc = 3.5;                                                         //multiplier of whole salvo drift radius. The bigger value, the bigger radius;
 
 RydFFE_Safe = 270;                                                      //salvo will be not planned for coordinates located within this radius (in meters) around any allied group leader;
-RydFFE_Monogamy = true;                                                 // by default each enemy group can be a target for only one battery at the time. If set to false – there is no such limitation, so one target can be shelled by any number of batteries at the time;
+RydFFE_Monogamy = false;                                                 // by default each enemy group can be a target for only one battery at the time. If set to false – there is no such limitation, so one target can be shelled by any number of batteries at the time;
 
 RydFFE_FOAccGain = 0.8;                                                 //additional accuracy multiplier in second, FFE step of fire mission due to adjustments after first step. The lesser value, the greater accuracy, must be not negative. It is multiplied by spotter adjustments factor for FFE stage: (0.2 + (random 0.2)) that changes salvo drift radius; 
 RydFFE_FOClass =	[];                                                 //this array holds class names (lowercase only!) of leaders of groups, that will be automatically added to the RydFFE_FO array, if that array already is not empty (means if limited spotting is active);
@@ -283,6 +283,9 @@ RydFFE_Heavy_Artillery_Enable_On_Combat_Readiness_Above = 90;
 
 RydFFE_Light_Artillery_Max_Range = 2000;
 RydFFE_Heavy_Artillery_Max_Range = 4500;
+
+RydFFE_Light_Artillery_Min_Range = 800;
+RydFFE_Heavy_Artillery_Min_Range = 2000;
 
 // Array of worldName values.
 // When playing on this map, it'll create a clearance (remove terrain objects) in a 15m radius around the battlegroup/reinforcements spawnpoint.

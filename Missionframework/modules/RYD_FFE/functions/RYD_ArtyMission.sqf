@@ -210,14 +210,24 @@ _reasons = [];
                     };
 
                     _range= 0;
+                    _min_range= 0;
                     if (typeof _vh in opfor_light_artillery) then {
                         _range = RydFFE_Light_Artillery_Max_Range;
                     };
                     if (typeof _vh in opfor_heavy_artillery) then {
                         _range = RydFFE_Heavy_Artillery_Max_Range;
                     };
+
+                    if (typeof _vh in opfor_light_artillery) then {
+                        _min_range = RydFFE_Light_Artillery_Min_Range;
+                    };
+                    if (typeof _vh in opfor_heavy_artillery) then {
+                        _min_range = RydFFE_Heavy_Artillery_Min_Range;
+                    };
+
                     _inRange = _pos inRangeOfArtillery[[_vh], _ammo];
                     _inRange =  _inRange && ((_pos distance _vh) < _range);
+                    _inRange =  _inRange && ((_pos distance _vh) > _min_range);
                     if (_inRange) then {
                         {
                             if ((_x select 0) in [_ammo]) then {

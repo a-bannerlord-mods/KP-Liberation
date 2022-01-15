@@ -270,15 +270,17 @@ _player addAction [
     true,
     "",
     "
-        _originalTarget getVariable ['KPLIB_hasDirectAccess', false]
-        && {isNull (objectParent _originalTarget)}
-        && {alive _originalTarget}
-        && {!(KP_liberation_production isEqualTo [])}
-        && {
-            _originalTarget getVariable ['KPLIB_fobDist', 99999] < (GRLIB_fob_range * 0.8)
-            || {!(_originalTarget getVariable ['KPLIB_nearProd', []] isEqualTo [])}
-        }
-        && {build_confirmed isEqualTo 0}
+        ( 
+			(_originalTarget getVariable ['KPLIB_hasDirectAccess', false]) 
+			|| ([3] call KPLIB_fnc_hasPermission) 
+		) 
+		&& {alive _originalTarget} 
+		&& {!(KP_liberation_production isEqualTo [])} 
+		&& { 
+			([_originalTarget,0.8] call  KPLIB_fnc_isPlayerNearToFob) 
+			|| !(_originalTarget getVariable ['KPLIB_nearProd', []] isEqualTo []) 
+		} 
+		&& {build_confirmed isEqualTo 0}
     "
 ];
 
@@ -293,7 +295,10 @@ _player addAction [
     "",
     "
         KP_liberation_ailogistics
-        && {_originalTarget getVariable ['KPLIB_hasDirectAccess', false]}
+        && (
+            _originalTarget getVariable ['KPLIB_hasDirectAccess', false]
+            || {[3] call KPLIB_fnc_hasPermission}
+        )
         && {isNull (objectParent _originalTarget)}
         && {alive _originalTarget}
         && [_originalTarget,0.8] call  KPLIB_fnc_isPlayerNearToFob
@@ -353,7 +358,7 @@ _player addAction [
         }
         && {
             _originalTarget getVariable ['KPLIB_hasDirectAccess', false]
-            || {[5] call KPLIB_fnc_hasPermission}
+            || {[3] call KPLIB_fnc_hasPermission}
         }
         && {build_confirmed isEqualTo 0}
         && cursorObject == supplies_radio
@@ -538,13 +543,10 @@ _player addAction [
     "
         isNull (objectParent _originalTarget)
         && {alive _originalTarget}
-        && {
-            _originalTarget getVariable ['KPLIB_fobDist', 99999] < 20
-            || {_originalTarget getVariable ['KPLIB_isNearStart', false]}
-        }
+        &&  [_originalTarget,1.5] call  KPLIB_fnc_isPlayerNearToFob
         && {
             _originalTarget getVariable ['KPLIB_hasDirectAccess', false]
-            || {[5] call KPLIB_fnc_hasPermission}
+            || {[3] call KPLIB_fnc_hasPermission}
         }
         && {build_confirmed isEqualTo 0}
         && (tolower typeof cursorObject) in KPLIB_b_allVeh_classes

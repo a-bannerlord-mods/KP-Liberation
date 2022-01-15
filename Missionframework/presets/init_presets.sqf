@@ -303,6 +303,7 @@ KPLIB_o_allVeh_classes  = [];
     KPLIB_o_allVeh_classes append _x;
 } forEach [
     militia_vehicles,
+    opfor_officer_cars,
     opfor_vehicles,
     opfor_vehicles_low_intensity,
     opfor_battlegroup_vehicles,

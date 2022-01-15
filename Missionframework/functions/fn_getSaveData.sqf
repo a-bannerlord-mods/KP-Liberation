@@ -37,12 +37,18 @@ private ["_fobPos", "_fobObjects", "_grpUnits", "_fobMines"];
     _fobPos = _x;
     _range = GRLIB_fob_range;
     if (([_fobPos] call  KPLIB_fnc_isStartBase)) then {
-        _range = GRLIB_base_range ;
+        _range = GRLIB_base_range;
+        if (getMarkerType "startbase_range" == "") then {
+              _fobObjects = (_fobPos nearObjects (_range * 1.3));
+        } else {
+            _fobObjects = (allMissionObjects "All") inAreaArray "startbase_range";
+        };
     }else{
         _range = GRLIB_fob_range;
+        _fobObjects = (_fobPos nearObjects (_range * 1.3));
     };
 
-    _fobObjects = (_fobPos nearObjects (_range * 1.3)) select {
+    _fobObjects = _fobObjects select {
         ((toLower (typeof _x)) in KPLIB_classnamesToSave) &&        // Exclude classnames which are not in the presets
         {alive _x} &&                                               // Exclude dead or broken objects
         {getObjectType _x >= 8} &&                                  // Exclude preplaced terrain objects

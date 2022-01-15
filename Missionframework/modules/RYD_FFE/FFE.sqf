@@ -278,13 +278,10 @@ while {RydFFE_Active} do
 			_amount = RydFFE_Amount;
 
 			switch (true) do {
-				case (combat_readiness > 30): {_amount = _amount +1 };
 				case (combat_readiness > 40): {_amount = _amount +1 };
-				case (combat_readiness > 50): {_amount = _amount +1 };
 				case (combat_readiness > 60): {_amount = _amount +1 };
-				case (combat_readiness > 70): {_amount = _amount +1 };
 				case (combat_readiness > 80): {_amount = _amount +1 };
-				case (combat_readiness > 90): {_amount = _amount +1 };
+				case (combat_readiness >= 100): {_amount = _amount +1 };
 			};
 
 			[_artyGroups,_knEnemies,_enArmor,_friends,RydFFE_Debug,_amount] call RYD_CFF

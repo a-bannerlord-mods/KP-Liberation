@@ -75,7 +75,7 @@ class KPLIB {
         class setLoadableViV                {};
         class setLoadout                    {};
         class setVehicleCaptured            {};
-        class setVehicleSeized              {};
+        class setVehiclesSeized              {};
         class sortStorage                   {};
         class spawnBuildingSquad            {};
         class spawnBuildingSquadFromCache   {};

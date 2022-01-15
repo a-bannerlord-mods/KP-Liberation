@@ -151,7 +151,7 @@ opfor_SAM = [
 
 // Enemy light Artillery  (mortars)
 opfor_light_artillery = [
-    "UK3CB_NAP_O_2b14_82mm"
+    "rhsgref_tla_2b14"
 ];
 
 // Enemy heavy Artillery 

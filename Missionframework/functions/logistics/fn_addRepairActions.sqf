@@ -115,8 +115,63 @@ _player addAction[
     ) &&
     tolower (typeof cursorObject) in KPLIB_b_allVeh_classes && {
         isNull(objectParent _originalTarget)
+    } 
+    && !(cursorObject isKindOf 'Plane') && !(cursorObject isKindOf 'Helicopter')
+    && [_originalTarget,1.5] call  KPLIB_fnc_isPlayerNearToFob
+    && count (KP_repair_workshops select { (_x distance cursorObject) < 10 }) > 0
+    "
+];
+
+_player addAction[
+    ["<t color='#FFFF00'>", "-- Full Repair Helicopter", "</t>"] joinString "", {
+        [cursorObject] call repair_vehicle;
+    },
+    nil, -850,
+    false,
+    true,
+    "",
+    "
+    _originalTarget distance cursorObject < 10 && {
+        alive _originalTarget
     } && {
-        _originalTarget getVariable['KPLIB_fobDist', 99999] < (GRLIB_fob_range * 0.8)
-    }
+        alive cursorObject
+    } &&
+    (
+        _originalTarget getVariable['KPLIB_hasDirectAccess', false] || {
+            [3] call KPLIB_fnc_hasPermission
+        }
+    ) &&
+    tolower (typeof cursorObject) in KPLIB_b_allVeh_classes && {
+        isNull(objectParent _originalTarget)
+    } 
+    &&  (cursorObject isKindOf 'Helicopter')
+    && [_originalTarget,1.5] call  KPLIB_fnc_isPlayerNearToFob
+    && count (cursorObject nearObjects [KP_liberation_heli_slot_building, 50]) > 0)
+    "
+];
+
+_player addAction[
+    ["<t color='#FFFF00'>", "-- Full Repair Plane", "</t>"] joinString "", {
+        [cursorObject] call repair_vehicle;
+    },
+    nil, -850,
+    false,
+    true,
+    "",
+    "
+    _originalTarget distance cursorObject < 10 && { 
+    alive _originalTarget 
+    } && { 
+        alive cursorObject 
+    } && 
+    ( 
+        _originalTarget getVariable['KPLIB_hasDirectAccess', false] || { [3] call KPLIB_fnc_hasPermission     } 
+    ) 
+    && tolower (typeof cursorObject) in KPLIB_b_allVeh_classes 
+    && { isNull(objectParent _originalTarget) }  
+    && (cursorObject isKindOf 'Plane')  
+    && [_originalTarget,1.5] call  KPLIB_fnc_isPlayerNearToFob 
+    && (count (cursorObject nearObjects [KP_liberation_plane_slot_building, 200]) > 0  || 
+        count (KP_liberation_plane_slot_building_list select { (count (cursorObject nearObjects [_x, 200]) > 0) })>0)  
     "
 ];

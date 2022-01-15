@@ -1,5 +1,5 @@
 /*
-    File: fn_setVehicleSeized.sqf
+    File: fn_setVehiclesSeized.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2020-04-20
     Last Update: 2020-04-26
@@ -32,7 +32,6 @@ if !(_veh getVariable ["KPLIB_seized", false]) then {
     [KP_liberation_cr_vehicle_penalty, true] remoteExec ["F_cr_changeCR", 2];
     stats_civilian_vehicles_seized = stats_civilian_vehicles_seized + 1;
     publicVariable "stats_civilian_vehicles_seized";
-
     [
         format ["%1 seized a civilian %2 (%3)", name player, getText (configFile >> "CfgVehicles" >> _type >> "displayName"), _type],
         "CAPTURED"

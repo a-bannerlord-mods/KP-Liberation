@@ -113,3 +113,14 @@ for [{
             
             
 };
+
+for [{
+            _i = 0
+        }, {!isNil(["repair_workshop_", _i] joinString "")
+        }, {
+            _i = _i + 1
+        }] do {
+            _repair_workshop = missionNamespace getVariable(["repair_workshop_", _i] joinString "");
+            KP_repair_workshops pushBackUnique _repair_workshop;
+};
+publicVariable "KP_repair_workshops";

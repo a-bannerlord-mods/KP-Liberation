@@ -125,14 +125,23 @@ if (_bad) exitwith {
                     _ammo = _this select 2;
 
                     _range= 0;
+                    _min_range= 0;
                     if (typeof _vh in opfor_light_artillery) then {
                         _range = RydFFE_Light_Artillery_Max_Range;
                     };
                     if (typeof _vh in opfor_heavy_artillery) then {
                         _range = RydFFE_Heavy_Artillery_Max_Range;
                     };
+
+                    if (typeof _vh in opfor_light_artillery) then {
+                        _min_range = RydFFE_Light_Artillery_Min_Range;
+                    };
+                    if (typeof _vh in opfor_heavy_artillery) then {
+                        _min_range = RydFFE_Heavy_Artillery_Min_Range;
+                    };
                     _inRange = _pos inRangeOfArtillery[[_vh], _ammo];
                     _inRange =  _inRange && ((_pos distance _vh) < _range);
+                    _inRange =  _inRange && ((_pos distance _vh) > _min_range);
 
                     if (_inRange) then {
                         
@@ -155,14 +164,24 @@ if (_bad) exitwith {
                                 sleep((getNumber(configFile >> "cfgweapons" >> (currentWeapon _vh) >> "magazinereloadtime")) + 0.1)
                             };
                             _range= 0;
+                            _min_range = 0;
                             if (typeof _vh in opfor_light_artillery) then {
                                 _range = RydFFE_Light_Artillery_Max_Range;
                             };
                             if (typeof _vh in opfor_heavy_artillery) then {
                                 _range = RydFFE_Heavy_Artillery_Max_Range;
                             };
+
+                            if (typeof _vh in opfor_light_artillery) then {
+                                _min_range = RydFFE_Light_Artillery_Min_Range;
+                            };
+                            if (typeof _vh in opfor_heavy_artillery) then {
+                            _min_range = RydFFE_Heavy_Artillery_Min_Range;
+                            };
+
                             _inRange = _pos inRangeOfArtillery[[_vh], _ammo];
                             _inRange =  _inRange && ((_pos distance _vh) < _range);
+                            _inRange =  _inRange && ((_pos distance _vh) > _min_range);
 
                             if (_inRange) then {
                                 if (_ammo in (getArtilleryAmmo[_vh])) then {

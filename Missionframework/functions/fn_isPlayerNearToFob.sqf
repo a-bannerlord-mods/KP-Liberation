@@ -26,7 +26,13 @@ params [
 _KPLIB_fobPos = _player getVariable ['KPLIB_fobPos', [0,0,0]];
 
 if ([_KPLIB_fobPos] call  KPLIB_fnc_isStartBase ) then {
-	_player getVariable ['KPLIB_fobDist', 99999] < (GRLIB_base_range * _rangeMultib)
+    if (getMarkerType "startbase_range" == "") then {
+              _player getVariable ['KPLIB_fobDist', 99999] < (GRLIB_base_range * _rangeMultib)
+        } else {
+                _player inArea "startbase_range";
+        };
+	
+
 } else {
 	_player getVariable ['KPLIB_fobDist', 99999] < (GRLIB_fob_range * _rangeMultib)
 };

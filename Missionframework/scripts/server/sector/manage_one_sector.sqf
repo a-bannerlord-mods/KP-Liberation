@@ -326,10 +326,10 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         if (armor_weight>25) then {
              _static_at = (3 max ((combat_readiness * (armor_weight / _total))/5)) min 10;
         };
-        if (air_weight>25) then {
+        if (air_weight>30) then {
             _static_aa_heavy = 1;
         };
-        if (air_weight>30) then {
+        if (air_weight>35) then {
             _static_aa_heavy = 2;
         };
         _static_mg = _static_mg - count _cached_static_mg;
@@ -412,7 +412,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
              _static_at = (2 max ((combat_readiness * (armor_weight / _total))/5)) min 8;
         };
         if (air_weight>40) then {
-            _static_aa_heavy = 2;
+            _static_aa_heavy = 1;
         };
         _static_mg = _static_mg - count _cached_static_mg;
         _static_at = _static_at - count _cached_static_at;
@@ -992,13 +992,29 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
             } else {
                 [_sector] remoteExec["sector_liberated_remote_call", 2];
             };
-
+            
             _stopit = true;
 
             {
                 [_x] spawn prisonner_ai;
             }
             forEach((markerPos _sector) nearEntities[["Man"], _local_capture_size * 1.2]);
+
+            sleep 5;
+
+            _taskId= format ["task_destroy_%1",_sector];
+            _exists = [_taskId] call BIS_fnc_taskExists;
+            if (_exists) then {
+                [_taskId, "SUCCEEDED"] call BIS_fnc_taskSetState;
+                deleteMarker (format ["marker_task_liberate_%1",_sector]);
+            };
+
+            _taskId= format ["task_liberate_%1",_sector];
+            _exists = [_taskId] call BIS_fnc_taskExists;
+            if (_exists) then {
+                [_taskId, "SUCCEEDED"] call BIS_fnc_taskSetState;
+                deleteMarker (format ["marker_task_liberate_%1",_sector]);
+            };
 
             sleep 60;
 
@@ -1017,7 +1033,9 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
 		                        _x hideObject true;
                             };
                         } else {
-                            deleteVehicle _x;
+                            if (!(captive _x) && !(_x getVariable ['ace_captives_isHandcuffed', false])) then {
+                                deleteVehicle _x;
+                            };
                         };
                     };
                 } else {
@@ -1059,7 +1077,9 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
 		                        _x hideObject true;
                             };
                         } else {
-                            deleteVehicle _x;
+                            if (!(captive _x) && !(_x getVariable ['ace_captives_isHandcuffed', false])) then {
+                                deleteVehicle _x;
+                            };
                         };
                     } else {
                         if (!isNull _x) then {

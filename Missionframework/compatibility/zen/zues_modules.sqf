@@ -90,11 +90,11 @@
         ["", [1, 1, 1, 1]],
         {
             params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
-            _sector = [30, _position] call KPLIB_fnc_getNearestSector;
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
         },
         {
             params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
-            _sector = [30, _position] call KPLIB_fnc_getNearestSector;
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
             _sector != "" && !((_sector in blufor_sectors) && (_sector in sectors_destroyable))
         }
     ] call zen_context_menu_fnc_createaction;
@@ -105,7 +105,7 @@
         ["", [1, 1, 1, 1]],
         {
             params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
-            _sector = [30, _position] call KPLIB_fnc_getNearestSector;
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
         },
         {
             params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
@@ -113,13 +113,97 @@
         }
     ] call zen_context_menu_fnc_createaction;
     
+    private _sector_task_root_action = [
+        "SectorTasksRoot",
+        "Tasks",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            true
+        }
+    ] call zen_context_menu_fnc_createaction;
+
+    private _sector_liberate_task_root_action = [
+        "SectorCreateLiberateTaskRoot",
+        "Create Liberate Task",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
+            _name = markerText _sector;
+            _markerstr = createMarkerLocal [format ["marker_task_liberate_%1",_sector],getMarkerPos _sector];
+            _markerstr setMarkerShapeLocal "ICON";
+            _markerstr setMarkerType "SELECT"; 
+            [west, ["operation_task"], ["Operation" , "Operation",""], objNull, 1, 3, true] call BIS_fnc_taskCreate;
+            [west, [format ["task_liberate_%1",_sector],"operation_task"], ["" ,format ["Liberate %1",_name],""], _sector, "CREATED", 0, true,"attack"] call BIS_fnc_taskCreate;
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
+            (!(_sector in blufor_sectors) && !(_sector in sectors_destroyable))
+        }
+    ] call zen_context_menu_fnc_createaction;
+
+    private _sector_destroy_task_root_action = [
+        "SectorCreateDestroyTaskRoot",
+        "Create Destroy Task",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
+            _name = markerText _sector;
+            _markerstr = createMarkerLocal [format ["marker_task_liberate_%1",_sector],getMarkerPos _sector];
+            _markerstr setMarkerShapeLocal "ICON";
+            _markerstr setMarkerType "SELECT"; 
+            [west, ["operation_task"], ["Operation" , "Operation",""], objNull, 1, 3, true] call BIS_fnc_taskCreate;
+            [west, [format ["task_destroy_%1",_sector],"operation_task"], ["" ,format ["Destroy %1",_name],""], _sector, "CREATED", 0, true,"destroy"] call BIS_fnc_taskCreate;
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
+            (!(_sector in blufor_sectors) && (_sector in sectors_destroyable))
+        }
+    ] call zen_context_menu_fnc_createaction;
+    //scout
+    private _sector_remove_tasks_root_action = [
+        "SectorRemoveTasksRoot",
+        "Remove All Sector Tasks",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
+
+            _taskId= format ["task_destroy_%1",_sector];
+            _exists = [_taskId] call BIS_fnc_taskExists;
+            if (_exists) then {
+                [_taskId,west,true] call BIS_fnc_deleteTask;
+                deleteMarker (format ["marker_task_liberate_%1",_sector]);
+            };
+
+            _taskId= format ["task_liberate_%1",_sector];
+            _exists = [_taskId] call BIS_fnc_taskExists;
+            if (_exists) then {
+                [_taskId,west,true] call BIS_fnc_deleteTask;
+                deleteMarker (format ["marker_task_liberate_%1",_sector]);
+            };
+
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            true
+        }
+    ] call zen_context_menu_fnc_createaction;
+
     private _sector_control_auto_action = [
         "SectorspawnControlAuto",
         "Auto spawn",
         ["", [1, 1, 1, 1]],
         {
             params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
-            _sector = [30, _position] call KPLIB_fnc_getNearestSector;
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
             sectors_forced_despawn deleteAt (sectors_forced_despawn find _sector);
             sectors_forced_spawn deleteAt (sectors_forced_spawn find _sector);
             publicVariable "sectors_forced_spawn";
@@ -127,7 +211,7 @@
         },
         {
             params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
-            _sector = [30, _position] call KPLIB_fnc_getNearestSector;
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
             _sector != "" && !((_sector in blufor_sectors) && (_sector in sectors_destroyable))
             && (_sector in sectors_forced_despawn || _sector in sectors_forced_spawn)
         }
@@ -139,7 +223,7 @@
         ["", [1, 1, 1, 1]],
         {
             params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
-            _sector = [30, _position] call KPLIB_fnc_getNearestSector;
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
             sectors_forced_despawn pushBack _sector;
             sectors_forced_spawn deleteAt (sectors_forced_spawn find _sector);
             publicVariable "sectors_forced_spawn";
@@ -147,7 +231,7 @@
         },
         {
             params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
-            _sector = [30, _position] call KPLIB_fnc_getNearestSector;
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
             _sector != "" && !((_sector in blufor_sectors) && (_sector in sectors_destroyable))
             && !(_sector in sectors_forced_despawn)
         }
@@ -159,7 +243,7 @@
         ["", [1, 1, 1, 1]],
         {
             params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
-            _sector = [30, _position] call KPLIB_fnc_getNearestSector;
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
             sectors_forced_spawn pushBack _sector;
             sectors_forced_despawn deleteAt (sectors_forced_despawn find _sector);
             publicVariable "sectors_forced_spawn";
@@ -167,7 +251,7 @@
         },
         {
             params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
-            _sector = [30, _position] call KPLIB_fnc_getNearestSector;
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
             _sector != "" && !((_sector in blufor_sectors) && (_sector in sectors_destroyable))
             && !(_sector in sectors_forced_spawn)
         }
@@ -175,7 +259,13 @@
     
     [_sectror_control_root_action, [], 0] call zen_context_menu_fnc_addAction;
     [_sector_spawn_control_root_action, ["SectrorControlRoot"], 0] call zen_context_menu_fnc_addAction;
+    
     [_sector_control_auto_action, ["SectrorControlRoot", "SectorspawnControlRoot"], 0] call zen_context_menu_fnc_addAction;
     [_sector_control_forced_spawn_action, ["SectrorControlRoot", "SectorspawnControlRoot"], 0] call zen_context_menu_fnc_addAction;
     [_sector_control_forced_despawn_action, ["SectrorControlRoot", "SectorspawnControlRoot"], 0] call zen_context_menu_fnc_addAction;
+
+    [_sector_task_root_action, ["SectrorControlRoot"], 0] call zen_context_menu_fnc_addAction;
+    [_sector_liberate_task_root_action, ["SectrorControlRoot", "SectorTasksRoot"], 0] call zen_context_menu_fnc_addAction;
+    [_sector_destroy_task_root_action, ["SectrorControlRoot", "SectorTasksRoot"], 0] call zen_context_menu_fnc_addAction;
+    [_sector_remove_tasks_root_action, ["SectrorControlRoot", "SectorTasksRoot"], 0] call zen_context_menu_fnc_addAction;
 };
