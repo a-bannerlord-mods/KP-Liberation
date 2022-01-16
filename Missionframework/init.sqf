@@ -71,5 +71,7 @@ if (isServer) then {
 };
 
 
+[] execVM "modules\VAM_GUI\VAM_GUI_init.sqf";
+
 //AI artillery
 [] execVM "modules\RYD_FFE\FFE.sqf";

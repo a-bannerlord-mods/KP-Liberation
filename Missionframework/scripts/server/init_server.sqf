@@ -140,3 +140,4 @@ execVM "scripts\server\playerdata\player_data_events.sqf";
 
 [] call compile preprocessFileLineNumbers "compatibility\compatibility_server_init.sqf";
 
+execVM "custom\scripts\server\init_server.sqf";
