@@ -92,7 +92,7 @@ if (player isEqualTo ([] call KPLIB_fnc_getCommander)) then {
     };
 };
 
-
+[] execVM "modules\VAM_GUI\VAM_GUI_init.sqf";
 [] call compile preprocessFile "compatibility\compatibility_client_init.sqf";
 
 

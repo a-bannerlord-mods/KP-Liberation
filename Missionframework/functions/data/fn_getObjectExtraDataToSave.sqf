@@ -129,5 +129,11 @@ if (_KPLIB_seized) then {
 	_data pushBack ["KPLIB_seized",true];
 };
 
+if (_class in KPLIB_b_allVeh_classes ||_class in KPLIB_o_allVeh_classes ) then {
+	_s = [_obj] call BIS_fnc_getVehicleCustomization;
+	_data pushBack ["vehicle_customization",_s];
+};
+
+
 
 _data

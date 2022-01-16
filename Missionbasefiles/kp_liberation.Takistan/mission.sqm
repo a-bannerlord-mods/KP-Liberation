@@ -20,14 +20,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=1125;
+		nextID=1160;
 	};
 	class Camera
 	{
-		pos[]={2614.3206,434.69427,8659.3174};
-		dir[]={0.30879584,-0.67157888,-0.67353445};
-		up[]={0.27988607,0.74092984,-0.61047661};
-		aside[]={-0.90902358,-4.4424087e-007,-0.41676193};
+		pos[]={2606.6692,452.93924,8668.1543};
+		dir[]={0.29721263,-0.77284205,-0.56071544};
+		up[]={0.36194789,0.63459694,-0.68284273};
+		aside[]={-0.88355702,-5.6403223e-007,-0.46833938};
 	};
 };
 binarizationWanted=0;
@@ -155,13 +155,14 @@ addons[]=
 	"Jbad_A_BuildingWIP",
 	"Jbad_Ind_Oil_Mine",
 	"Jbad_trailers",
+	"emr_main",
 	"ace_logistics_wirecutter"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=73;
+		items=74;
 		class Item0
 		{
 			className="A3_Modules_F_Curator";
@@ -620,6 +621,13 @@ class AddonsMetaData
 			name="Jbad_trailers";
 		};
 		class Item72
+		{
+			className="emr_main";
+			name="Enhanced Movement Rework";
+			author="Simplex Team";
+			url="https://github.com/SceptreOfficial/Enhanced-Movement-Rework";
+		};
+		class Item73
 		{
 			className="ace_logistics_wirecutter";
 			name="ACE3 - Logistics Wire Cutter";
@@ -27364,7 +27372,7 @@ class Mission
 					name="opfor_sniper_nest_48";
 					type="mil_triangle";
 					id=6404;
-					atlOffset=0.00021362305;
+					atlOffset=0.00042724609;
 				};
 				class Item190
 				{
@@ -27625,7 +27633,7 @@ class Mission
 					name="opfor_sniper_nest_77";
 					type="mil_triangle";
 					id=6433;
-					atlOffset=0.00022888184;
+					atlOffset=0.00022125244;
 				};
 				class Item219
 				{
@@ -27909,7 +27917,7 @@ class Mission
 					name="opfor_sniper_nest_109";
 					type="mil_triangle";
 					id=6471;
-					atlOffset=-7.6293945e-005;
+					atlOffset=-4.5776367e-005;
 				};
 				class Item251
 				{

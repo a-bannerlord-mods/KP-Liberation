@@ -1087,7 +1087,6 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
             alive _x && (_x getVariable ['nest', ""] == "") && !(_x getVariable["ACE_isUnconscious", false]) && !(captive _x)
         });
 
-        systemChat format ["Flee count for sector %1 current is %2 ", str  _fleeCount , str _unitcount];
         if (_fleeCount >= _unitcount) then {
             _isFleeing = true; {
                 if (_x isKindOf "Man" && alive _x  && !(captive _x) && (side group _x) == GRLIB_side_enemy && (_x getVariable ['nest', ""] == "") ) then {

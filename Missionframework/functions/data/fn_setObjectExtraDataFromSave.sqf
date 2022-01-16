@@ -112,6 +112,11 @@ _class = toLower (typeOf _obj);
 		};
 	};
 
+	// vehicle customization
+	if ((_x select 0) == "vehicle_customization") then {
+		_s = (_x select 1);
+		[_obj,_s select 0 ,_s select 1] call BIS_fnc_initVehicle;
+	};
 	// ammo cargo
 	if ((_x select 0) == "ace_rearm_currentsupply") then {
         [_obj, (_x select 1)] call ace_rearm_fnc_setSupplyCount;
