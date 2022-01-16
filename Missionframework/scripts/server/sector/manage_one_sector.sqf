@@ -1003,9 +1003,8 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
 
         sectors_opfor_sniper_nests_active pushBack  _x;
 
-    } forEach (sectors_opfor_sniper_nests select { _sectorpos distance ( getmarkerpos _x) < 1200 });
-    
-    
+    } forEach (sectors_opfor_sniper_nests select { _sectorpos distance ( getmarkerpos _x) < 1200 });   
+    publicVariable "sectors_opfor_sniper_nests_active";
 
     
     sleep 10;
@@ -1189,6 +1188,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
                 {
                     sectors_opfor_sniper_nests_active  deleteAt (sectors_opfor_sniper_nests_active find _x);
                 } forEach (sectors_opfor_sniper_nests select { _sectorpos distance ( getmarkerpos _x) < 1200 });
+                publicVariable "sectors_opfor_sniper_nests_active";
                 {
                     if (_x isKindOf "Man") then {
                         if (_x getVariable ["is_objective",false]) then {

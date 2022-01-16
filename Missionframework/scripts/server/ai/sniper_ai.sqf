@@ -31,8 +31,9 @@ do {
     _Dtargets = []; {
         if ((_x distance2D _unit) < 1200 && (side _x == GRLIB_side_friendly) && (alive _x)) then {
             _unit_cansee = [_unit,_x,350] call Dlos;
-            if (_unit knowsAbout _x > 1.5 && _unit_cansee) then {
+            if (_unit knowsAbout _x >= 1.5 && _unit_cansee) then {
                 _Dtargets pushBack _x;
+                _unit reveal [_x,4];
             };
         }
     }
@@ -45,7 +46,7 @@ do {
             _unit enableAI "AIMINGERROR";
             _target_shoots = 0;
         };
-        if (_target_shoots >(15 /(_unit knowsAbout _Target))) then {
+        if (_target_shoots > 8) then {
             _unit disableAI "AIMINGERROR";
         };
 

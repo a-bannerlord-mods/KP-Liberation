@@ -227,7 +227,7 @@ GRLIB_civilians_amount = 10;                                            // Civil
 GRLIB_cleanup_delay = 1200;                                             // Time in seconds until bodies of dead soldiers are cleaned up.
 
 GRLIB_blufor_cap = 100;                                                 // Cap for BLUFOR.
-GRLIB_sector_cap = 180;                                                 // Cap for sector defenders.
+GRLIB_sector_cap = 240;                                                 // Cap for sector defenders.
 GRLIB_battlegroup_cap = 150;                                            // Cap for enemy battlegroups.
 GRLIB_patrol_cap = 150;                                                 // Cap for enemy patrols.
 
@@ -267,7 +267,7 @@ RydFFE_OnePhase = false;                                                //with t
 RydFFE_Amount = 4;                                                      //this holds number of shells, that in summary should be fired in each fire mission. CLUSTER and GUIDED salvo amount is always divided by 3 (rounded up);
 RydFFE_Acc = 3.5;                                                         //multiplier of whole salvo drift radius. The bigger value, the bigger radius;
 
-RydFFE_Safe = 270;                                                      //salvo will be not planned for coordinates located within this radius (in meters) around any allied group leader;
+RydFFE_Safe = 200;                                                      //salvo will be not planned for coordinates located within this radius (in meters) around any allied group leader;
 RydFFE_Monogamy = false;                                                 // by default each enemy group can be a target for only one battery at the time. If set to false – there is no such limitation, so one target can be shelled by any number of batteries at the time;
 
 RydFFE_FOAccGain = 0.8;                                                 //additional accuracy multiplier in second, FFE step of fire mission due to adjustments after first step. The lesser value, the greater accuracy, must be not negative. It is multiplied by spotter adjustments factor for FFE stage: (0.2 + (random 0.2)) that changes salvo drift radius; 
