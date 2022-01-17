@@ -114,9 +114,9 @@ while {dialog && (alive player)} do {
     ((findDisplay 75801) displayCtrl 758010) ctrlSetTextColor _color_actual;
     _color_actual = _color_neutral;
 
-    _supplyValue = ceil ((_selectedSector select 9) / 100);
-    _ammoValue = ceil ((_selectedSector select 10) / 100);
-    _fuelValue = ceil ((_selectedSector select 11) / 100);
+    _supplyValue = ceil ((_selectedSector select 9) / 500);
+    _ammoValue = ceil ((_selectedSector select 10) / 500);
+    _fuelValue = ceil ((_selectedSector select 11) / 500);
 
     if (_supplyValue == 1) then {_supplyValue = format [localize "STR_PRODUCTION_CRATE", _supplyValue];} else {_supplyValue = format [localize "STR_PRODUCTION_CRATES", _supplyValue];};
     if (_ammoValue == 1) then {_ammoValue = format [localize "STR_PRODUCTION_CRATE", _ammoValue];} else {_ammoValue = format [localize "STR_PRODUCTION_CRATES", _ammoValue];};

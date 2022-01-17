@@ -60,5 +60,5 @@ do {
         _target_shoots = _target_shoots + 1;
     };
 
-    sleep 7;
+    sleep 5;
 };

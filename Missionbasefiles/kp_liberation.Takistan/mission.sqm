@@ -25,9 +25,9 @@ class EditorData
 	class Camera
 	{
 		pos[]={8116.9458,315.27283,1880.6674};
-		dir[]={0.66939968,-0.5249573,0.52589977};
-		up[]={0.41287881,0.85104203,0.32437244};
-		aside[]={0.6178478,6.4502819e-007,-0.78642243};
+		dir[]={0.66931719,-0.52489251,0.52583492};
+		up[]={0.41274977,0.85116857,0.32426816};
+		aside[]={0.61778009,1.4901161e-008,-0.78635097};
 	};
 };
 binarizationWanted=0;
@@ -34025,7 +34025,7 @@ class Mission
 				{
 					dataType="Trigger";
 					position[]={8407.6904,296.04001,1939.0624};
-					angle=4.2812853;
+					angle=4.2812848;
 					class Attributes
 					{
 						name="gate_trigger_2";
@@ -48156,6 +48156,7 @@ class Mission
 					};
 					id=6350;
 					type="Land_LampAirport_F";
+					atlOffset=-3.0517578e-005;
 				};
 				class Item596
 				{
@@ -48303,6 +48304,7 @@ class Mission
 					};
 					id=7018;
 					type="Land_LampAirport_F";
+					atlOffset=-3.0517578e-005;
 				};
 				class Item605
 				{

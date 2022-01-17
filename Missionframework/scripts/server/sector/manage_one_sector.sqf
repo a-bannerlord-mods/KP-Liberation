@@ -795,17 +795,16 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
                         _emptypos = selectRandom _top_positions;
                         if (count _emptypos > 1) then {
                             _vehicle = [
-                                [_emptypos select 0, _emptypos select 1, (_emptypos select 2) + 1.5], _gun, true, true, _g
+                                [_emptypos select 0, _emptypos select 1, ((_emptypos select 2) + 0.8)], _gun, true, true, _g
                             ] call KPLIB_fnc_spawnVehicle;
                             _vehicle allowCrewInImmobile true;
                             _managed_units pushback _vehicle; {
                                 _managed_units pushback _x;
                             }
                             foreach(crew _vehicle);
-                            sleep 1;
-
-                            _vehicle setPosATL[(getPosATL _vehicle) select 0, (getPosATL _vehicle) select 1, ((getPosATL _vehicle) select 2) + 1];
-                            _vehicle setVectorUp surfaceNormal position _vehicle;
+                            //sleep 1;
+                            //_vehicle setPosATL[(getPosATL _vehicle) select 0, (getPosATL _vehicle) select 1, ((getPosATL _vehicle) select 2) + 0.5];
+                            //_vehicle setVectorUp surfaceNormal position _vehicle;
                             _top_positions = _top_positions - [_emptypos];
                             _cached_static_mg pushBack [_emptypos,_gun];
                         };
@@ -818,16 +817,16 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
                     _emptypos = selectRandom _top_positions;
                     if (count _emptypos > 1) then {
                         _vehicle = [
-                            [_emptypos select 0, _emptypos select 1, (_emptypos select 2) + 1.5], _gun, true, true, _g
+                            [_emptypos select 0, _emptypos select 1, (_emptypos select 2) + 0.8], _gun, true, true, _g
                         ] call KPLIB_fnc_spawnVehicle;
                         _vehicle allowCrewInImmobile true;
                         _managed_units pushback _vehicle; {
                             _managed_units pushback _x;
                         }
                         foreach(crew _vehicle);
-                        sleep 1;
-                        _vehicle setPosATL[(getPosATL _vehicle) select 0, (getPosATL _vehicle) select 1, ((getPosATL _vehicle) select 2) + 1];
-                        _vehicle setVectorUp surfaceNormal position _vehicle;
+                        //sleep 1;
+                        // _vehicle setPosATL[(getPosATL _vehicle) select 0, (getPosATL _vehicle) select 1, ((getPosATL _vehicle) select 2) + 1];
+                        // _vehicle setVectorUp surfaceNormal position _vehicle;
                         _top_positions = _top_positions - [_emptypos];
                         _cached_static_at pushBack [_emptypos,_gun];
                     };
@@ -848,7 +847,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
             _emptypos = _rndpos findEmptyPosition[0, 30, _gun];
             if (count _emptypos > 1) then {
                 _vehicle = [
-                    [_emptypos select 0, _emptypos select 1, (_emptypos select 2) + 1.5], _gun, true, true, _g
+                    [_emptypos select 0, _emptypos select 1, (_emptypos select 2) + 0.8], _gun, true, true, _g
                 ] call KPLIB_fnc_spawnVehicle;
                 _vehicle allowCrewInImmobile true;
                 _managed_units pushback _vehicle; {
@@ -856,9 +855,9 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
                 }
                 foreach(crew _vehicle);
                 _vehicle setDir((_vehicle getRelDir _sectorpos) - 180);
-                sleep 1;
-                _vehicle setPosATL[(getPosATL _vehicle) select 0, (getPosATL _vehicle) select 1, ((getPosATL _vehicle) select 2) + 1];
-                _vehicle setVectorUp surfaceNormal position _vehicle;
+                // sleep 1;
+                // _vehicle setPosATL[(getPosATL _vehicle) select 0, (getPosATL _vehicle) select 1, ((getPosATL _vehicle) select 2) + 1];
+                // _vehicle setVectorUp surfaceNormal position _vehicle;
                 _cached_static_mg_heavy pushBack [_emptypos,_gun];
             };
         };
@@ -876,7 +875,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
             _emptypos = _rndpos findEmptyPosition[0, 30, _gun];
             if (count _emptypos > 1) then {
                 _vehicle = [
-                    [_emptypos select 0, _emptypos select 1, (_emptypos select 2) + 1.5], _gun, true, true, _g
+                    [_emptypos select 0, _emptypos select 1, (_emptypos select 2) + 0.8], _gun, true, true, _g
                 ] call KPLIB_fnc_spawnVehicle;
                 _vehicle allowCrewInImmobile true;
                 _managed_units pushback _vehicle; {
@@ -884,9 +883,9 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
                 }
                 foreach(crew _vehicle);
                 _vehicle setDir((_vehicle getRelDir _sectorpos) - 180);
-                sleep 1;
-                _vehicle setPosATL[(getPosATL _vehicle) select 0, (getPosATL _vehicle) select 1, ((getPosATL _vehicle) select 2) + 1];
-                _vehicle setVectorUp surfaceNormal position _vehicle;
+                // sleep 1;
+                // _vehicle setPosATL[(getPosATL _vehicle) select 0, (getPosATL _vehicle) select 1, ((getPosATL _vehicle) select 2) + 1];
+                // _vehicle setVectorUp surfaceNormal position _vehicle;
                 _cached_static_aa_heavy pushBack [_emptypos,_gun];
             };
         };
