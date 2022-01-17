@@ -79,16 +79,14 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         };
 
         _total =   infantry_weight+  armor_weight+  air_weight;
-        _static_mg = (2 max ceil(((combat_readiness * (infantry_weight / _total))/5))) min 8;
+        _static_mg = ceil(4 + ((ceil(combat_readiness - 20)/20) * (1 + (infantry_weight/_total))));
         _static_mg_heavy = (4 max ceil(((combat_readiness * (infantry_weight / _total))/10))) min 8;
-        _static_at = 2;
-        if (armor_weight>25) then {
-             _static_at = (3 max ((combat_readiness * (armor_weight / _total))/5)) min 8;
-        };
-        if (air_weight>35) then {
+        _static_at = ceil(3 + ((ceil(combat_readiness - 20)/20) * (1 + (armor_weight/_total))));
+
+        if (air_weight>35 || combat_readiness > 50 ) then {
             _static_aa_heavy = 1;
         };
-        if (air_weight>40) then {
+        if (air_weight>40|| combat_readiness > 80) then {
             _static_aa_heavy = 2;
         };
         
@@ -193,13 +191,13 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
 
 
         _total =   infantry_weight+  armor_weight+  air_weight;
-        _static_mg = (2 max ceil(((combat_readiness * (infantry_weight / _total))/10))) min 6;
+        _static_mg = ceil(2 + ((ceil(combat_readiness - 30)/20) * (1 + (infantry_weight/_total))));
         _static_mg_heavy = (2 max ceil(((combat_readiness * (infantry_weight / _total))/10))) min 4;
-        _static_at = 1;
-        if (armor_weight>25) then {
-             _static_at = (2 max ((combat_readiness * (armor_weight / _total))/5)) min 8;
-        };
-        if (air_weight>40) then {
+
+
+         _static_at = ceil(1 + ((ceil(combat_readiness - 30)/20) * (1 + (armor_weight/_total))));
+
+        if (air_weight>40 || combat_readiness > 80) then {
             _static_aa_heavy = 1;
         };
         _static_mg = _static_mg - count _cached_static_mg;
@@ -283,7 +281,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
             _guerilla = true;
         };
 
-        _building_ai_max = round((floor(30 + (round(combat_readiness / 8)))) * _popfactor);
+        _building_ai_max = round((ceil(30 + (round(combat_readiness / 8)))) * _popfactor);
         if (count(_cached_units_in_building) < _building_ai_max) then {
             _building_ai_max = _building_ai_max - count(_cached_units_in_building);
         };
@@ -321,16 +319,14 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         };
         
         _total =   infantry_weight+  armor_weight+  air_weight;
-        _static_mg = (2 max ceil(((combat_readiness * (infantry_weight / _total))/5))) min 10;
+        _static_mg = ceil(3 + ((ceil(combat_readiness - 20)/20) * (1 + (infantry_weight/_total))));
         _static_mg_heavy = (4 max ceil(((combat_readiness * (infantry_weight / _total))/10))) min 10;
-        _static_at = 2;
-        if (armor_weight>25) then {
-             _static_at = (3 max ((combat_readiness * (armor_weight / _total))/5)) min 10;
-        };
-        if (air_weight>30) then {
+        _static_at = ceil(2 + ((ceil(combat_readiness - 30)/20) * (1 + (armor_weight/_total))));
+        
+        if (air_weight>30 || combat_readiness > 40) then {
             _static_aa_heavy = 1;
         };
-        if (air_weight>35) then {
+        if (air_weight>35 || combat_readiness > 80) then {
             _static_aa_heavy = 2;
         };
         _static_mg = _static_mg - count _cached_static_mg;
@@ -360,7 +356,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
 
         _spawncivs = false;
 
-        _building_ai_max = round((floor(40 + (round(combat_readiness / 4)))) * _popfactor);
+        _building_ai_max = round((ceil(40 + (round(combat_readiness / 4)))) * _popfactor);
         _building_range = 120;
     };
 
@@ -406,13 +402,12 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         };
         
         _total =   infantry_weight+  armor_weight+  air_weight;
-        _static_mg = (2 max ceil(((combat_readiness * (infantry_weight / _total))/10))) min 4;
+        _static_mg = ceil(1 + ((ceil(combat_readiness - 30)/20) * (1 + (infantry_weight/_total))));
         _static_mg_heavy = (2 max ceil(((combat_readiness * (infantry_weight / _total))/10))) min 4;
 
-        if (armor_weight>35) then {
-             _static_at = (2 max ((combat_readiness * (armor_weight / _total))/5)) min 8;
-        };
-        if (air_weight>40) then {
+         _static_at = ceil(2 + ((ceil(combat_readiness - 20)/20) * (1 + (armor_weight/_total))));
+
+        if (air_weight>40|| combat_readiness > 80) then {
             _static_aa_heavy = 1;
         };
         _static_mg = _static_mg - count _cached_static_mg;
@@ -427,7 +422,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
             _guerilla = true;
         };
 
-        _building_ai_max = round((floor(22 + (round(combat_readiness / 8)))) * _popfactor);
+        _building_ai_max = round((ceil(22 + (round(combat_readiness / 8)))) * _popfactor);
         _building_range = 120;
 
         if (KP_liberation_civ_rep < 0) then {
@@ -1008,10 +1003,6 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
 
     
     sleep 10;
-
-    // {
-    //     deleteVehicle _x;
-    // } forEach (_sectorpos nearEntities ["Logic",1000]);
 
     if ((_sector in sectors_factory) || (_sector in sectors_capture) || (_sector in sectors_bigtown) || (_sector in sectors_military)) then {
         [_sector] remoteExec["reinforcements_remote_call", 2];
