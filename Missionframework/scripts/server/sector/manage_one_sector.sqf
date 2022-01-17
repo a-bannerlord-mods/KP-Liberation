@@ -764,7 +764,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
             }; 
         } forEach _top_positions;
         for "_i"
-        from 0 to (5 min (count _good_sniper_positions)) do {
+        from 1 to (5 min (count _good_sniper_positions)) do {
             if (count _good_sniper_positions > 0) then {
             _sniper_pos = selectRandom _good_sniper_positions;
             _top_positions = _top_positions - [_sniper_pos];
@@ -789,7 +789,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
             _g = createGroup[GRLIB_side_enemy, true];
             _top_positions = [_top_positions] call CBA_fnc_Shuffle;
             for "_i"
-            from 0 to((count _top_positions) min _static_mg) do {
+            from 1 to((count _top_positions) min _static_mg) do {
                     _gun = selectRandom(opfor_static_guns - opfor_heavy_static_guns);
                     if (count _top_positions > 0 ) then {
                         _emptypos = selectRandom _top_positions;
@@ -812,7 +812,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
                     };
                 };
             for "_i"
-            from 0 to((count _top_positions) min _static_at) do {
+            from 1 to((count _top_positions) min _static_at) do {
                 _gun = selectRandom(opfor_AT_static_guns - opfor_heavy_static_guns);
                 if (count _top_positions > 0 ) then {
                     _emptypos = selectRandom _top_positions;
@@ -836,7 +836,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         };
 
         for "_i"
-        from 0 to _static_mg_heavy do {
+        from 1 to _static_mg_heavy do {
             _gun = selectRandom(opfor_static_guns arrayIntersect opfor_heavy_static_guns);
             _emptypos = _sectorpos findEmptyPosition[5, _building_range, _gun];
             _rndpos = [
@@ -864,7 +864,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         };
         //_static_aa_heavy
         for "_i"
-        from 0 to _static_aa_heavy do {
+        from 1 to _static_aa_heavy do {
             _gun = selectRandom(opfor_AA_static_guns arrayIntersect opfor_heavy_static_guns);
             _emptypos = _sectorpos findEmptyPosition[5, _building_range, _gun];
             _rndpos = [
