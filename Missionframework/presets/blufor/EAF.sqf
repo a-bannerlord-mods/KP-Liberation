@@ -319,21 +319,11 @@ blufor_squad_inf_light = [
     "B_EGSAKA_Operator_D_01",
     "B_EGSAKA_Operator_D_01",
     "B_EGSAKA_Operator_D_01",
-    "B_EGSAKA_Operator_D_01",
-    "B_EGSAKA_Operator_D_01",
-    "B_EGSAKA_Operator_D_01",
-    "B_EGSAKA_Operator_D_01",
-    "B_EGSAKA_Operator_D_01",
-    "B_EGSAKA_Operator_D_01",
     "B_EGSAKA_Operator_D_01"
 ];
 
 // Heavy infantry squad.
 blufor_squad_inf = [
-    "B_EGSAKA_Operator_D_01",
-    "B_EGSAKA_Operator_D_01",
-    "B_EGSAKA_Operator_D_01",
-    "B_EGSAKA_Operator_D_01",
     "B_EGSAKA_Operator_D_01",
     "B_EGSAKA_Operator_D_01",
     "B_EGSAKA_Operator_D_01",

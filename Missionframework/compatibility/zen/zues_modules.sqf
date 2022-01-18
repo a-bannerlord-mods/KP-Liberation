@@ -266,6 +266,349 @@
         }
     ] call zen_context_menu_fnc_createaction;
     
+
+    private _sector_attack_root_action = [
+        "SectorAttackRoot",
+        "Attack Sector",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
+            ((_sector in blufor_sectors) && !(_sector in sectors_destroyable))
+        }
+    ] call zen_context_menu_fnc_createaction;
+
+    private _sector_attack_infantry_root_action = [
+        "SectorAttackInfantryRoot",
+        "Attack Sector (Infantry only)",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
+            //["", true , getMarkerPos _sector] spawn spawn_battlegroup;
+            ["", true , getMarkerPos _sector] remoteExec ["spawn_battlegroup", 2];
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            true
+        }
+    ] call zen_context_menu_fnc_createaction;
+
+    private _sector_attack_sf_root_action = [
+        "SectorAttackInfantryRoot",
+        "Attack Sector (Special Forces only)",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
+            //["", true , getMarkerPos _sector] spawn spawn_battlegroup;
+            ["", true , getMarkerPos _sector,true] remoteExec ["spawn_battlegroup", 2];
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            true
+        }
+    ] call zen_context_menu_fnc_createaction;
+
+    private _sector_attack_armoured_root_action = [
+        "SectorAttackArmouredRoot",
+        "Attack Sector (Infantry and Armoured)",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
+            //["", false , getMarkerPos _sector] spawn spawn_battlegroup;
+            ["", false , getMarkerPos _sector]  remoteExec ["spawn_battlegroup", 2];
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            true
+        }
+    ] call zen_context_menu_fnc_createaction;
+
+    private _sector_attack_plane_root_action = [
+        "SectorAttackPlaneRoot",
+        "Attack Sector (Plane)",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
+            [getMarkerPos _sector,1]  remoteExec ["spawn_air", 2];
+
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            true
+        }
+    ] call zen_context_menu_fnc_createaction;
+
+    private _sector_attack_chopper_root_action = [
+        "SectorAttackChopperRoot",
+        "Attack Sector (Chopper)",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
+            [getMarkerPos _sector,1,true]  remoteExec ["spawn_air", 2];
+
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            true
+        }
+    ] call zen_context_menu_fnc_createaction;
+
+    private _sector_paratroopers_chopper_root_action = [
+        "SectorChopperParatroopersRoot",
+        "Paratroopers Sector (chopper)",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
+            [getMarkerPos _sector] remoteExec['send_paratroopers', 2];
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            true
+        }
+    ] call zen_context_menu_fnc_createaction;
+
+    private _sector_paratroopers_plane_root_action = [
+        "SectorPlaneParatroopersRoot",
+        "Paratroopers Sector (Plane)",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
+            [getMarkerPos _sector,objNull,true] remoteExec['send_paratroopers', 2];
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            true
+        }
+    ] call zen_context_menu_fnc_createaction;
+
+
+    private _sector_reinforce_root_action = [
+        "SectorReinforceRoot",
+        "Reinforce Sector",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
+            (!(_sector in blufor_sectors))
+        }
+    ] call zen_context_menu_fnc_createaction;
+
+    private _sector_reinforce_plane_root_action = [
+        "SectorReinforcementPlaneRoot",
+        "Reinforce Sector (Plane)",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
+            [getMarkerPos _sector,1]  remoteExec ["spawn_air", 2];
+
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            true
+        }
+    ] call zen_context_menu_fnc_createaction;
+
+    private _sector_reinforce_chopper_root_action = [
+        "SectorReinforcementChopperRoot",
+        "Reinforce Sector (Chopper)",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
+            [getMarkerPos _sector,1,true]  remoteExec ["spawn_air", 2];
+
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            true
+        }
+    ] call zen_context_menu_fnc_createaction;
+
+    private _sector_reinforce_paratroopers_chopper_root_action = [
+        "SectorChopperParatroopersRoot",
+        "Paratroopers Sector (chopper)",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
+            [getMarkerPos _sector] remoteExec['send_paratroopers', 2];
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            true
+        }
+    ] call zen_context_menu_fnc_createaction;
+
+    private _sector_reinforce_paratroopers_plane_root_action = [
+        "SectorPlaneParatroopersRoot",
+        "Paratroopers Sector (Plane)",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
+            [getMarkerPos _sector,objNull,true] remoteExec['send_paratroopers', 2];
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            true
+        }
+    ] call zen_context_menu_fnc_createaction;
+
+
+
+
+    private _fob_control_root_action = [
+        "FOBControlRoot",
+        "FOB Actions",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _nearfob = [_position] call KPLIB_fnc_getNearestFob;
+            ((_position distance _nearfob) < GRLIB_base_range) || ( getMarkerType "startbase_range" != "" && _position inArea "startbase_range")
+        }
+    ] call zen_context_menu_fnc_createaction;
+    
+    private _fob_attack_root_action = [
+        "FOBAttackRoot",
+        "Attack FOB",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+        }
+    ] call zen_context_menu_fnc_createaction;
+
+    private _fob_attack_infantry_root_action = [
+        "FOBAttackInfantryRoot",
+        "Attack FOB (Infantry only)",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _nearfob = [_position] call KPLIB_fnc_getNearestFob;
+            //["", true , _nearfob] spawn spawn_battlegroup;
+            ["", true , _nearfob] remoteExec ["spawn_battlegroup", 2];
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            true
+        }
+    ] call zen_context_menu_fnc_createaction;
+
+    private _fob_attack_sf_root_action = [
+        "FOBAttackInfantryRoot",
+        "Attack FOB (Special Forces only)",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _nearfob = [_position] call KPLIB_fnc_getNearestFob;
+            //["", true , _nearfob] spawn spawn_battlegroup;
+            ["", true , _nearfob,true] remoteExec ["spawn_battlegroup", 2];
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            true
+        }
+    ] call zen_context_menu_fnc_createaction;
+
+    private _fob_attack_armoured_root_action = [
+        "FOBAttackArmouredRoot",
+        "Attack FOB (Infantry and Armoured)",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _nearfob = [_position] call KPLIB_fnc_getNearestFob;
+            //["", false , _nearfob] spawn spawn_battlegroup;
+            ["", false , _nearfob] remoteExec ["spawn_battlegroup", 2];
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            true
+        }
+    ] call zen_context_menu_fnc_createaction;
+        private _fob_attack_plane_root_action = [
+        "FOBAttackPlaneRoot",
+        "Attack FOB (Plane)",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _nearfob = [_position] call KPLIB_fnc_getNearestFob;
+            [_nearfob,1]  remoteExec ["spawn_air", 2];
+
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            true
+        }
+    ] call zen_context_menu_fnc_createaction;
+
+    private _fob_attack_chopper_root_action = [
+        "FOBAttackChopperRoot",
+        "Attack FOB (Chopper)",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _nearfob = [_position] call KPLIB_fnc_getNearestFob;
+            [_nearfob,1,true]  remoteExec ["spawn_air", 2];
+
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            true
+        }
+    ] call zen_context_menu_fnc_createaction;
+
+    private _fob_paratroopers_chopper_root_action = [
+        "FOBChopperParatroopersRoot",
+        "Paratroopers FOB (chopper)",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _nearfob = [_position] call KPLIB_fnc_getNearestFob;
+            [_nearfob] remoteExec['send_paratroopers', 2];
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            true
+        }
+    ] call zen_context_menu_fnc_createaction;
+
+    private _fob_paratroopers_plane_root_action = [
+        "FOBPlaneParatroopersRoot",
+        "Paratroopers FOB (Plane)",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _nearfob = [_position] call KPLIB_fnc_getNearestFob;
+            [_nearfob,objNull,true] remoteExec['send_paratroopers', 2];
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            true
+        }
+    ] call zen_context_menu_fnc_createaction;
+
+
+
     [_sectror_control_root_action, [], 0] call zen_context_menu_fnc_addAction;
     [_sector_spawn_control_root_action, ["SectrorControlRoot"], 0] call zen_context_menu_fnc_addAction;
     
@@ -277,4 +620,30 @@
     [_sector_liberate_task_root_action, ["SectrorControlRoot", "SectorTasksRoot"], 0] call zen_context_menu_fnc_addAction;
     [_sector_destroy_task_root_action, ["SectrorControlRoot", "SectorTasksRoot"], 0] call zen_context_menu_fnc_addAction;
     [_sector_remove_tasks_root_action, ["SectrorControlRoot", "SectorTasksRoot"], 0] call zen_context_menu_fnc_addAction;
+
+    [_sector_attack_root_action, ["SectrorControlRoot"], 0] call zen_context_menu_fnc_addAction;
+    [_sector_attack_infantry_root_action, ["SectrorControlRoot", "SectorAttackRoot"], 0] call zen_context_menu_fnc_addAction;
+    [_sector_attack_sf_root_action, ["SectrorControlRoot", "SectorAttackRoot"], 0] call zen_context_menu_fnc_addAction;
+    [_sector_attack_armoured_root_action, ["SectrorControlRoot", "SectorAttackRoot"], 0] call zen_context_menu_fnc_addAction;
+    [_sector_attack_plane_root_action, ["SectrorControlRoot", "SectorAttackRoot"], 0] call zen_context_menu_fnc_addAction;
+    [_sector_attack_chopper_root_action, ["SectrorControlRoot", "SectorAttackRoot"], 0] call zen_context_menu_fnc_addAction;
+    [_sector_paratroopers_chopper_root_action, ["SectrorControlRoot", "SectorAttackRoot"], 0] call zen_context_menu_fnc_addAction;
+    [_sector_paratroopers_plane_root_action, ["SectrorControlRoot", "SectorAttackRoot"], 0] call zen_context_menu_fnc_addAction;
+
+    [_sector_reinforce_root_action, ["SectrorControlRoot"], 0] call zen_context_menu_fnc_addAction;
+    [_sector_reinforce_plane_root_action, ["SectrorControlRoot", "SectorReinforceRoot"], 0] call zen_context_menu_fnc_addAction;
+    [_sector_reinforce_chopper_root_action, ["SectrorControlRoot", "SectorReinforceRoot"], 0] call zen_context_menu_fnc_addAction;
+    [_sector_reinforce_paratroopers_chopper_root_action, ["SectrorControlRoot", "SectorReinforceRoot"], 0] call zen_context_menu_fnc_addAction;
+    [_sector_reinforce_paratroopers_plane_root_action, ["SectrorControlRoot", "SectorReinforceRoot"], 0] call zen_context_menu_fnc_addAction;
+
+    [_fob_control_root_action, [], 0] call zen_context_menu_fnc_addAction;
+    [_fob_attack_root_action, ["FOBControlRoot"], 0] call zen_context_menu_fnc_addAction;
+    [_fob_attack_infantry_root_action, ["FOBControlRoot", "FOBAttackRoot"], 0] call zen_context_menu_fnc_addAction;
+    [_fob_attack_sf_root_action, ["FOBControlRoot", "FOBAttackRoot"], 0] call zen_context_menu_fnc_addAction;
+    [_fob_attack_armoured_root_action, ["FOBControlRoot", "FOBAttackRoot"], 0] call zen_context_menu_fnc_addAction;
+    [_fob_attack_plane_root_action, ["FOBControlRoot", "FOBAttackRoot"], 0] call zen_context_menu_fnc_addAction;
+    [_fob_attack_chopper_root_action, ["FOBControlRoot", "FOBAttackRoot"], 0] call zen_context_menu_fnc_addAction;
+    [_fob_paratroopers_chopper_root_action, ["FOBControlRoot", "FOBAttackRoot"], 0] call zen_context_menu_fnc_addAction;
+    [_fob_paratroopers_plane_root_action, ["FOBControlRoot", "FOBAttackRoot"], 0] call zen_context_menu_fnc_addAction;
+    
 };

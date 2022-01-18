@@ -178,8 +178,9 @@ KPLIB_objectInits = [
     ],
     //special forces fixing
     [
-        ["UK3CB_ARD_O_SF_AA", "UK3CB_ARD_O_SF_AA_ASST", "UK3CB_ARD_O_SF_AT", "UK3CB_ARD_O_SF_AT_ASST", "UK3CB_ARD_O_SF_AR", "UK3CB_ARD_O_SF_DEM", "UK3CB_ARD_O_SF_ENG", "UK3CB_ARD_O_SF_GL", "UK3CB_ARD_O_SF_LAT", "UK3CB_ARD_O_SF_MG", "UK3CB_ARD_O_SF_MG_ASST", "UK3CB_ARD_O_SF_MK", "UK3CB_ARD_O_SF_MD", "UK3CB_ARD_O_SF_RIF_1", "UK3CB_ARD_O_SF_RIF_2"],
+        (KPLIB_o_sf_classes + ["UK3CB_ARD_O_SF_LAT"]),
         {
+            _this setSkill 1;
             _this addGoggles "G_Bandanna_tan"; 
             _this addHeadgear "PO_H_PASGT_M81_3"; 
             _this additem "UK3CB_ANPVS7";
@@ -187,4 +188,5 @@ KPLIB_objectInits = [
         },
         true
     ]
+
 ];

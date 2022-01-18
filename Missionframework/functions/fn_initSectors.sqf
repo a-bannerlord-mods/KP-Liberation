@@ -30,6 +30,9 @@ sectors_heavyArtillery= [];
 sectors_longRange = [];
 sectors_destroyable = [];
 
+sectors_airports = [];
+sectors_heliports = [];
+
 sectors_forced_spawn =[];
 sectors_forced_despawn =[];
 
@@ -63,5 +66,30 @@ sectors_forced_despawn =[];
             };
     };
 } forEach allMapMarkers;
+
+All_airfields = [];
+if (count allAirports > 0) then {
+                private _first = [getArray (configfile >> "CfgWorlds" >> worldname >> "ilsPosition"),getArray (configfile >> "CfgWorlds" >> worldname >> "ilsDirection")];
+                All_airfields pushbackunique _first;
+                private _next = [];
+                _sec = (configfile >> "CfgWorlds" >> worldname >> "SecondaryAirports");
+                for "_i" from 0 to (count _sec - 1) do
+                {
+                    All_airfields pushbackunique [getarray ((_sec select _i) >> "ilsPosition"),getarray ((_sec select _i) >> "ilsDirection")];
+                };
+};
+All_airfields = All_airfields apply {_x select 0};
+
+_heli_slot_building_list = ["Land_HelipadCircle_F","Land_HelipadCivil_F", "Land_HelipadRescue_F", "Land_HelipadSquare_F", "HeliH", "HeliHCivil", "Heli_H_civil", "HeliHEmpty", "HeliHRescue", "Heli_H_rescue"];
+{
+    _pos = getMarkerPos _x;
+    private _heliSlots = ({(typeOf _x) in _heli_slot_building_list;} count (_pos nearobjects 500));
+    if (count (All_airfields select { (_x distance2D _pos) < 1200 } )>0) then {
+        sectors_airports pushBack _x;
+    };
+    if (_heliSlots >0) then {
+        sectors_heliports pushBack _x;
+    };
+} forEach sectors_military;
 
 true

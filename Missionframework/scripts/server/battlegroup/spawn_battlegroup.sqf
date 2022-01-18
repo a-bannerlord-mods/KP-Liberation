@@ -1,12 +1,18 @@
 // TODO Refactor and create function
 params [
     ["_spawn_marker", "", [""]],
-    ["_infOnly", false, [false]]
+    ["_infOnly", false, [false]],
+    ["_pointToAttack", [0, 0, 0], [[]], [2, 3]],
+    ["_specialForces", false, [false]]
 ];
 
 if (GRLIB_endgame == 1) exitWith {};
+if (_pointToAttack isEqualTo [0,0,0]) then {
+    _spawn_marker = [[2000, 1000] select _infOnly, 3000, false, markerPos _spawn_marker] call KPLIB_fnc_getOpforSpawnPoint;
+}else{
+    _spawn_marker = [[2000, 1000] select _infOnly, 3000, false, _pointToAttack] call KPLIB_fnc_getOpforSpawnPoint;
+};
 
-_spawn_marker = [[2000, 1000] select _infOnly, 3000, false, markerPos _spawn_marker] call KPLIB_fnc_getOpforSpawnPoint;
 
 if !(_spawn_marker isEqualTo "") then {
     GRLIB_last_battlegroup_time = diag_tickTime;
@@ -24,8 +30,13 @@ if !(_spawn_marker isEqualTo "") then {
 
     if (_infOnly) then {
         // Infantry units to choose from
-        private _infClasses = [KPLIB_o_inf_classes, militia_squad] select (combat_readiness < 50);
-
+        private _infClasses = [KPLIB_o_inf_classes, militia_squad] select (combat_readiness < 30);
+        if (combat_readiness > 50) then {
+            _infClasses = [KPLIB_o_inf_classes, KPLIB_o_sf_classes] select ((round (random 100)) <  combat_readiness );
+        };
+        if (combat_readiness > 80 || _specialForces) then {
+            _infClasses = KPLIB_o_sf_classes;
+        };
         // Adjust target size for infantry
         _target_size = 12 max (_target_size * 4);
 
@@ -38,8 +49,10 @@ if !(_spawn_marker isEqualTo "") then {
             };
             [selectRandom _infClasses, markerPos _spawn_marker, _grp] call KPLIB_fnc_createManagedUnit;
         };
-        [_grp] spawn battlegroup_ai;
         _bg_groups pushBack _grp;
+        {
+            [_x,_pointToAttack] spawn battlegroup_ai;      
+        } forEach _bg_groups;
     } else {
         private _vehicle_pool = [opfor_battlegroup_vehicles, opfor_battlegroup_vehicles_low_intensity] select (combat_readiness < 50);
 
@@ -62,14 +75,14 @@ if !(_spawn_marker isEqualTo "") then {
             sleep 0.5;
 
             (crew _vehicle) joinSilent _nextgrp;
-            [_nextgrp] spawn battlegroup_ai;
+            [_nextgrp,_pointToAttack] spawn battlegroup_ai;
             _bg_groups pushback _nextgrp;
 
             if ((_x in opfor_troup_transports) && ([] call KPLIB_fnc_getOpforCap < GRLIB_battlegroup_cap)) then {
                 if (_vehicle isKindOf "Air") then {
-                    [[markerPos _spawn_marker] call KPLIB_fnc_getNearestBluforObjective, _vehicle] spawn send_paratroopers;
+                    [_pointToAttack, _vehicle] spawn send_paratroopers;
                 } else {
-                    [_vehicle] spawn troup_transport;
+                    [_vehicle,_pointToAttack] spawn troup_transport;
                 };
             };
         } forEach _selected_opfor_battlegroup;

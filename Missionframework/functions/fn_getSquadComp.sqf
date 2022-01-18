@@ -21,38 +21,69 @@ params [
 
 private _squadcomp = [];
 
-if (_type == "army") then {
-    private _selected = false;
-    private _randomchance = 0;
-    _squadcomp = KPLIB_o_squadStd;
+switch (_type) do {
+    case "army": {
+        private _selected = false;
+        private _randomchance = 0;
+        _squadcomp = KPLIB_o_squadStd;
 
-    if (armor_weight > 40 && !_selected) then {
-        _randomchance = (armor_weight - 35) * 1.4;
-        if ((random 100) < _randomchance) then {
-            _selected = true;
-            _squadcomp = KPLIB_o_squadTank;
+        if (armor_weight > 40 && !_selected) then {
+            _randomchance = (armor_weight - 35) * 1.4;
+            if ((random 100) < _randomchance) then {
+                _selected = true;
+                _squadcomp = KPLIB_o_squadTank;
+            };
+        };
+
+        if (air_weight > 40 && !_selected) then {
+            _randomchance = (air_weight - 35) * 1.4;
+            if ((random 100) < _randomchance) then {
+                _selected = true;
+                _squadcomp = KPLIB_o_squadAir;
+            };
+        };
+
+        if (infantry_weight > 40 && !_selected) then {
+            _randomchance = (infantry_weight - 35) * 1.4;
+            if ((random 100) < _randomchance) then {
+                _selected = true;
+                _squadcomp = KPLIB_o_squadInf;
+            };
         };
     };
+    case "specialForces" : {
+        private _selected = false;
+        private _randomchance = 0;
+        _squadcomp = KPLIB_o_sf_squadStd;
 
-    if (air_weight > 40 && !_selected) then {
-        _randomchance = (air_weight - 35) * 1.4;
-        if ((random 100) < _randomchance) then {
-            _selected = true;
-            _squadcomp = KPLIB_o_squadAir;
+        if (armor_weight > 40 && !_selected) then {
+            _randomchance = (armor_weight - 35) * 1.4;
+            if ((random 100) < _randomchance) then {
+                _selected = true;
+                _squadcomp = KPLIB_o_sf_squadTank;
+            };
+        };
+
+        if (air_weight > 40 && !_selected) then {
+            _randomchance = (air_weight - 35) * 1.4;
+            if ((random 100) < _randomchance) then {
+                _selected = true;
+                _squadcomp = KPLIB_o_sf_squadAir;
+            };
+        };
+
+        if (infantry_weight > 40 && !_selected) then {
+            _randomchance = (infantry_weight - 35) * 1.4;
+            if ((random 100) < _randomchance) then {
+                _selected = true;
+                _squadcomp = KPLIB_o_sf_squadInf;
+            };
         };
     };
-
-    if (infantry_weight > 40 && !_selected) then {
-        _randomchance = (infantry_weight - 35) * 1.4;
-        if ((random 100) < _randomchance) then {
-            _selected = true;
-            _squadcomp = KPLIB_o_squadInf;
-        };
+    case "militia" : {
+        private _multiplier = 1;
+        if (GRLIB_unitcap < 1) then {_multiplier = GRLIB_unitcap;};
+        while {count _squadcomp < (10 * _multiplier)} do {_squadcomp pushback (selectRandom militia_squad)};
     };
-} else {
-    private _multiplier = 1;
-    if (GRLIB_unitcap < 1) then {_multiplier = GRLIB_unitcap;};
-    while {count _squadcomp < (10 * _multiplier)} do {_squadcomp pushback (selectRandom militia_squad)};
 };
-
 _squadcomp

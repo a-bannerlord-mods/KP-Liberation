@@ -1,13 +1,34 @@
-params ["_first_objective"];
+params ["_first_objective",["_planes_number",-1],["_is_attack_chopper",false]];
 
 if (opfor_air isEqualTo []) exitWith {false};
 
-private _planes_number = ((floor linearConversion [40, 100, combat_readiness, 1, 3]) min 3) max 0;
+if (_planes_number == -1) then {
+    _planes_number = ((floor linearConversion [40, 100, combat_readiness, 1, 3]) min 3) max 0;
+};
 
 if (_planes_number < 1) exitWith {};
 
-private _class = selectRandom opfor_air;
+private _class = "";
+if (_is_attack_chopper) then {
+    _class = selectRandom opfor_choppers;
+    while {(_class in opfor_troup_transports)} do {
+        _class = selectRandom opfor_choppers;
+    };
+    
+}else{
+    _class = selectRandom opfor_air;
+    while {(_class in opfor_troup_transports)} do {
+        _class = selectRandom opfor_air;
+    };
+};
+
 private _spawnPoint = ([sectors_airspawn, [_first_objective], {(markerPos _x) distance _input0}, "ASCEND"] call BIS_fnc_sortBy) select 0;
+if (_is_attack_chopper) then {
+    _spawnPoint = ([(sectors_heliports select {!(_x in blufor_sectors)&& !(_x in active_sectors)}) , [_first_objective], {(markerpos _x) distance _input0}, "ASCEND"] call BIS_fnc_sortBy) select 0;
+} else {
+    _spawnPoint = ([(sectors_airports select {!(_x in blufor_sectors) && !(_x in active_sectors)}) , [_first_objective], {(markerpos _x) distance _input0}, "ASCEND"] call BIS_fnc_sortBy) select 0;
+};
+
 private _spawnPos = [];
 private _plane = objNull;
 private _grp = createGroup [GRLIB_side_enemy, true];

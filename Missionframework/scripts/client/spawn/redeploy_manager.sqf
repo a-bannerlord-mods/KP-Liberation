@@ -40,6 +40,7 @@ private _basenamestr = "Operation Base";
 
 KP_liberation_respawn_time = time;
 KP_liberation_respawn_mobile_done = false;
+_preciseDeployment = false;
 
 while {true} do {
     waitUntil {
@@ -53,7 +54,7 @@ while {true} do {
     _old_fullmap = 0;
 
     GRLIB_force_redeploy = false;
-    
+
 
 
     createDialog "liberation_deploy";
@@ -107,9 +108,11 @@ while {true} do {
 
         if (count _lastPlayerPos > 0 && KPLIB_firstTimeRespawn && GRLIB_enableSaveLocation) then {
             KPLIB_respawnPositionsList = [["Last Known Postion", _lastPlayerPos]];
+            _preciseDeployment = true;
         }
         else
         {
+            _preciseDeployment = false;
             KPLIB_respawnPositionsList = [[_basenamestr, getposATL startbase]];
             {
                 if !(ceil(_x select 0) == ceil((getposATL startbase) select 0)
@@ -214,7 +217,12 @@ while {true} do {
             KP_liberation_respawn_mobile_done = true;
         } else {
             private _destpos = ((KPLIB_respawnPositionsList select _idxchoice) select 1);
-            player setposATL [((_destpos select 0) + 5) - (random 10),((_destpos select 1) + 5) - (random 10),(_destpos select 2)];
+            if (_preciseDeployment) then {
+                player setposATL _destpos;
+            } else {
+                player setposATL [((_destpos select 0) + 5) - (random 10),((_destpos select 1) + 5) - (random 10),(_destpos select 2)];
+            };
+            
         };
 
         [player] call KPLIB_fnc_setUnitTraits;

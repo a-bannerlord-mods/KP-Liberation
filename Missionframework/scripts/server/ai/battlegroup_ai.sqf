@@ -1,5 +1,6 @@
 params [
-    ["_grp", grpNull, [grpNull]]
+    ["_grp", grpNull, [grpNull]],
+    ["_pointToAttack", [0, 0, 0], [[]], [2, 3]]
 ];
 
 if (isNull _grp) exitWith {};
@@ -7,7 +8,13 @@ if (isNil "reset_battlegroups_ai") then {reset_battlegroups_ai = false};
 
 sleep (5 + (random 5));
 
-private _objPos = [getPos (leader _grp)] call KPLIB_fnc_getNearestBluforObjective;
+private _objPos = [0,0,0];
+
+if (_pointToAttack isEqualTo [0,0,0]) then {
+    _objPos = [getPos (leader _grp)] call KPLIB_fnc_getNearestBluforObjective;
+} else {
+    _objPos = _pointToAttack;
+};
 
 [_objPos] remoteExec ["remote_call_incoming"];
 
@@ -21,10 +28,14 @@ while {((getPos (leader _grp)) distance _startpos) < 100} do {
 
     _startpos = getPos (leader _grp);
 
-    _waypoint = _grp addWaypoint [_objPos, 100];
+    _waypoint = _grp addWaypoint [_objPos, 300];
     _waypoint setWaypointType "MOVE";
     _waypoint setWaypointSpeed "NORMAL";
-    _waypoint setWaypointBehaviour "AWARE";
+    if (vehicle (leader _grp) == leader _grp) then {
+        _waypoint setWaypointBehaviour "AWARE";
+    } else {
+        _waypoint setWaypointBehaviour "SAFE";
+    };
     _waypoint setWaypointCombatMode "YELLOW";
     _waypoint setWaypointCompletionRadius 30;
 
@@ -37,7 +48,7 @@ while {((getPos (leader _grp)) distance _startpos) < 100} do {
     _waypoint = _grp addWaypoint [_objPos, 100];
     _waypoint setWaypointType "CYCLE";
 
-    sleep 90;
+    sleep 50;
 };
 
 waitUntil {
@@ -49,5 +60,5 @@ sleep (5 + (random 5));
 reset_battlegroups_ai = false;
 
 if (!((units _grp) isEqualTo []) && (GRLIB_endgame == 0)) then {
-    [_grp] spawn battlegroup_ai;
+    [_grp,_pointToAttack] spawn battlegroup_ai;
 };

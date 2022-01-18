@@ -66,7 +66,7 @@ private ["_fobPos", "_fobObjects", "_grpUnits", "_fobMines"];
     // Process all groups near this FOB
     {
         // Get only living AI units of the group by excluding possible POWs currently in the player group
-        _grpUnits = (units _x) select {!(isPlayer _x) && (alive _x) && !((typeOf _x) in KPLIB_o_inf_classes) && !((typeOf _x) in militia_squad)};
+        _grpUnits = (units _x) select {!(isPlayer _x) && (alive _x) && !((typeOf _x) in KPLIB_o_inf_classes)&& !((typeOf _x) in KPLIB_o_sf_classes) && !((typeOf _x) in militia_squad)};
         // Add to save array
         _aiGroups pushBack [getPosATL (leader _x), (_grpUnits apply {
             [typeOf _x, ([_x] call KPLIB_fnc_getObjectExtraDataToSave)] //

@@ -243,6 +243,11 @@ KPLIB_o_squadInf    = [opfor_squad_leader, opfor_medic, opfor_machinegunner, opf
 KPLIB_o_squadTank   = [opfor_squad_leader, opfor_medic, opfor_machinegunner, opfor_rpg, opfor_rpg, opfor_at, opfor_at, opfor_at];
 KPLIB_o_squadAir    = [opfor_squad_leader, opfor_medic, opfor_machinegunner, opfor_rpg, opfor_rpg, opfor_aa, opfor_aa, opfor_aa];
 
+KPLIB_o_sf_squadStd    = [opfor_sf_squad_leader, opfor_sf_medic, opfor_sf_machinegunner, opfor_sf_heavygunner, opfor_sf_medic, opfor_sf_marksman, opfor_sf_grenadier, opfor_sf_rpg];
+KPLIB_o_sf_squadInf    = [opfor_sf_squad_leader, opfor_sf_medic, opfor_sf_machinegunner, opfor_sf_heavygunner, opfor_sf_heavygunner, opfor_sf_marksman, opfor_sf_sharpshooter, opfor_sf_sniper];
+KPLIB_o_sf_squadTank   = [opfor_sf_squad_leader, opfor_sf_medic, opfor_sf_machinegunner, opfor_sf_rpg, opfor_sf_rpg, opfor_sf_at, opfor_sf_at, opfor_sf_at];
+KPLIB_o_sf_squadAir    = [opfor_sf_squad_leader, opfor_sf_medic, opfor_sf_machinegunner, opfor_sf_rpg, opfor_sf_rpg, opfor_sf_aa, opfor_sf_aa, opfor_sf_aa];
+
 /*
     Liberation specific collections
 */
@@ -318,6 +323,10 @@ KPLIB_o_allVeh_classes = KPLIB_o_allVeh_classes arrayIntersect KPLIB_o_allVeh_cl
 // All regular opfor soldier classnames
 KPLIB_o_inf_classes = [opfor_sentry, opfor_rifleman, opfor_grenadier, opfor_squad_leader, opfor_team_leader, opfor_marksman, opfor_machinegunner, opfor_heavygunner, opfor_medic, opfor_rpg, opfor_at, opfor_aa, opfor_officer, opfor_sharpshooter, opfor_sniper,opfor_engineer];
 KPLIB_o_inf_classes = KPLIB_o_inf_classes apply {toLower _x};
+
+KPLIB_o_sf_classes = [opfor_sf_sentry, opfor_sf_rifleman, opfor_sf_grenadier, opfor_sf_squad_leader, opfor_sf_team_leader, opfor_sf_marksman, opfor_sf_machinegunner, opfor_sf_heavygunner, opfor_sf_medic, opfor_sf_rpg, opfor_sf_at, opfor_sf_aa,  opfor_sf_sharpshooter, opfor_sf_sniper,opfor_sf_engineer];
+KPLIB_o_sf_classes = KPLIB_o_sf_classes apply {toLower _x};
+
 RydFFE_FOClass = [toLower opfor_squad_leader,toLower opfor_team_leader ,toLower opfor_officer];
 RydFFE_FO = [grpNull];
 KPLIB_civ_factions = [];
@@ -400,7 +409,7 @@ KPLIB_o_inf_backbags = [];
         };
     };
 }
-forEach KPLIB_o_inf_classes;
+forEach (KPLIB_o_inf_classes + KPLIB_o_sf_classes);
 
 
 /*

@@ -69,7 +69,7 @@ class Params {
         title = $STR_PARAM_SQUAD_SIZE;
         values[] = {0, 1, 2, 4, 6, 8, 10, 12, 16, 20, 24, 30, 36};
         texts[] = {0, 1, 2, 4, 6, 8, 10, 12, 16, 20, 24, 30, 36};
-        default = 12;
+        default = 6;
     };
     class BluforDefenders {
         title = $STR_PARAM_BLUFOR_DEFENDERS;

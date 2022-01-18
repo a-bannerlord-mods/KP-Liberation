@@ -45,8 +45,11 @@ isNil {
             [_this] call KPLIB_fnc_addObjectInit;
         };
     _unit setVariable ["original_side",side _group];
-    if ((tolower _type ) in KPLIB_o_inf_classes) then {
+    if ((tolower _type ) in KPLIB_o_inf_classes ) then {
         _unit setVariable ["intel_value",random [1,2,3],true];
+    };
+    if ((tolower _type ) in KPLIB_o_sf_classes ) then {
+        _unit setVariable ["intel_value",random [3,4,5],true];
     };
     if ((tolower _type ) == tolower opfor_team_leader) then {
         _unit setVariable ["intel_value",random [3,4,5],true];

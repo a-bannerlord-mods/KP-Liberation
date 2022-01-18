@@ -29,6 +29,23 @@ opfor_medic = "UK3CB_ARD_O_MD";                         // Combat Life Saver (Bo
 opfor_engineer = "UK3CB_ARD_O_ENG";                      // Engineer (Bomber)
 opfor_paratrooper = "UK3CB_ARD_O_SF_LAT";                               // Paratrooper (AKM PM-63)
 
+
+opfor_sf_squad_leader = "UK3CB_ARD_O_SF_SL";                        // Squad Leader (Warlord)
+opfor_sf_team_leader = "UK3CB_ARD_O_SF_TL";                         // Team Leader (Chief)
+opfor_sf_sentry = "UK3CB_ARD_O_SF_RIF_1";                        // Rifleman (AKM)
+opfor_sf_rifleman = "UK3CB_ARD_O_SF_RIF_2";                    // Rifleman (AK-74)
+opfor_sf_rpg = "UK3CB_ARD_O_SF_AT";                                 // Rifleman (RPG-7)
+opfor_sf_grenadier = "UK3CB_ARD_O_SF_GL";                           // Grenadier (AKM GP-25)
+opfor_sf_machinegunner = "UK3CB_ARD_O_SF_AR";                  // Autorifleman (AR_Asst)
+opfor_sf_heavygunner = "UK3CB_ARD_O_SF_MG";                         // Heavy Gunner (PKM)
+opfor_sf_marksman = "UK3CB_ARD_O_SF_MK";                    // Marksman (Lee Enfield)
+opfor_sf_at = "UK3CB_ARD_O_SF_AT";                                  // AT Specialist (RPG-7)
+opfor_sf_aa = "UK3CB_ARD_O_SF_AA";                                  // AA Specialist (RPG-7)
+opfor_sf_medic = "UK3CB_ARD_O_SF_MD";                         // Combat Life Saver (Bonesetter)
+opfor_sf_engineer = "UK3CB_ARD_O_SF_ENG";                      // Engineer (Bomber)
+
+
+
 opfor_sf_sharpshooter = "UK3CB_ARD_O_SF_SPOT";                  // Sharpshooter (SVD)
 opfor_sf_sniper = "UK3CB_ARD_O_SF_SNI";                        // Sniper (SVD)
 
@@ -146,6 +163,9 @@ opfor_battlegroup_vehicles_low_intensity = [
 /* All vehicles that spawn within battlegroups (see the above 2 arrays) and also hold 8 soldiers as passengers.
 If something in this array can't hold all 8 soldiers then buggy behaviours may occur.    */
 opfor_troup_transports = [
+"UK3CB_ARD_O_BRDM2", 
+"UK3CB_ARD_O_BRDM2_ATGM", 
+"UK3CB_ARD_O_MTLB_ZU23",
 "UK3CB_ARD_O_BMP1", 
 "UK3CB_ARD_O_BMP2", 
 "UK3CB_ARD_O_BMP2K", 
@@ -160,7 +180,10 @@ opfor_troup_transports = [
 "UK3CB_ARD_O_Ural", 
 "UK3CB_ARD_O_Ural_Open", 
 "UK3CB_ARD_O_Zil131_Open", 
-"UK3CB_ARD_O_Zil131_Covered"                                          // Mi-8MT (Cargo)
+"UK3CB_ARD_O_Zil131_Covered",
+"UK3CB_ARD_O_Mi8AMT", 
+"UK3CB_ARD_O_Mi8",
+"UK3CB_MDF_O_C130J"                                
 ];
 
 // Enemy rotary-wings that will need to spawn in flight.
@@ -168,17 +191,18 @@ opfor_choppers = [
     "UK3CB_ARD_O_Mi_24P", 
     "UK3CB_ARD_O_Mi_24V", 
     "UK3CB_ARD_O_Mi8AMTSh", 
-    "UK3CB_ARD_O_Mi8"
+    "UK3CB_ARD_O_Mi8AMT",
+    "UK3CB_ARD_O_Mi8"  
 ];
 
 // Enemy fixed-wings that will need to spawn in the air.
 opfor_air = [
     "UK3CB_ARD_O_MIG29S", 
     "UK3CB_ARD_O_MIG29SM", 
-    "UK3CB_ARD_O_Su25SM", 
     "UK3CB_ARD_O_Su25SM_CAS", 
     "UK3CB_ARD_O_Su25SM_Cluster", 
-    "UK3CB_ARD_O_Su25SM_KH29"
+    "UK3CB_ARD_O_Su25SM_KH29",
+    "UK3CB_MDF_O_C130J"
 ];
 
 // Enemy SAM sites 
