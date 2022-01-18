@@ -42,7 +42,7 @@ _player addAction [
 
 // HALO
 _player addAction [
-    ["<t color='#80FF80'>", localize "STR_HALO_ACTION", "</t><img size='2' image='res\ui_redeploy.paa'/>"] joinString "",
+    ["<t color='#80FF80'>", localize "STR_HALO_ACTION", "</t><img size='1' image='res\ui_redeploy.paa'/>"] joinString "",
     "scripts\client\spawn\do_halo.sqf",
     nil,
     -710,
@@ -67,7 +67,7 @@ _player addAction [
 if (!GRLIB_replaceRespawnButtonWithRedeploy) then {
 
     _player addAction [
-        ["<t color='#80FF80'>", localize "STR_DEPLOY_ACTION", "</t><img size='2' image='res\ui_redeploy.paa'/>"] joinString "",
+        ["<t color='#80FF80'>", localize "STR_DEPLOY_ACTION", "</t><img size='1' image='res\ui_redeploy.paa'/>"] joinString "",
         {GRLIB_force_redeploy = true;},
         nil,
         -720,
@@ -90,7 +90,7 @@ if (!GRLIB_replaceRespawnButtonWithRedeploy) then {
 
 // Squad management
 _player addAction [
-    ["<t color='#80FF80'>", localize "STR_SQUAD_MANAGEMENT_ACTION", "</t><img size='2' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/>"] joinString "",
+    ["<t color='#80FF80'>", localize "STR_SQUAD_MANAGEMENT_ACTION", "</t><img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/>"] joinString "",
     "scripts\client\ui\squad_management.sqf",
     nil,
     -730,
@@ -103,12 +103,31 @@ _player addAction [
         && {!((units group _originalTarget) isEqualTo [_originalTarget])}
         && {(leader group _originalTarget) isEqualTo _originalTarget}
         && {build_confirmed isEqualTo 0}
+        && [_originalTarget,1.5] call  KPLIB_fnc_isPlayerNearToFob
+    "
+];
+
+// Units management
+_player addAction [
+    ["<t color='#80FF80'>", "Units Management", "</t><img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/>"] joinString "",
+    "scripts\client\ui\squad_management.sqf",
+    nil,
+    -730,
+    false,
+    true,
+    "",
+    "
+        isNull (objectParent _originalTarget)
+        && {alive _originalTarget}
+        && [_originalTarget,1.5] call  KPLIB_fnc_isPlayerNearToFob
+        && {build_confirmed isEqualTo 0}
+        && _originalTarget getVariable ['KPLIB_hasDirectAccess', false]
     "
 ];
 
 // Build
 _player addAction [
-    ["<t color='#FFFF00'>", localize "STR_BUILD_ACTION", "</t><img size='2' image='res\ui_build.paa'/>"] joinString "",
+    ["<t color='#FFFF00'>", localize "STR_BUILD_ACTION", "</t><img size='1' image='res\ui_build.paa'/>"] joinString "",
     "scripts\client\build\open_build_menu.sqf",
     nil,
     -750,
@@ -370,7 +389,7 @@ _player addAction [
 
 // Permissions
 _player addAction [
-    ["<t color='#FF8000'>", localize "STR_COMMANDER_ACTION", "</t><img size='2' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/>"] joinString "",
+    ["<t color='#FF8000'>", localize "STR_COMMANDER_ACTION", "</t><img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/>"] joinString "",
     "scripts\client\commander\open_permissions.sqf",
     nil,
     -840,
@@ -391,7 +410,7 @@ _player addAction [
 
 // qualifications
 _player addAction [
-    ["<t color='#FF8000'>", localize "STR_QUALIFICATIONS_ACTION", "</t><img size='2' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/>"] joinString "",
+    ["<t color='#FF8000'>", localize "STR_QUALIFICATIONS_ACTION", "</t><img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/>"] joinString "",
     "scripts\client\commander\open_qualification.sqf",
     nil,
     -840,

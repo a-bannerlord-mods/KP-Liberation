@@ -29,23 +29,25 @@ _squad_camera camSetTarget _targetobject;
 _squad_camera camcommit 0;
 "rtt"
 setPiPEffect[0];
-
+getmembers = {
+    if (player getVariable ['KPLIB_hasDirectAccess', false]) then {
+        (allPlayers select {alive _x}) + (allUnits select {!(isPlayer _x) && ( player distance _x < 800) && (alive _x) && (side _x == GRLIB_side_friendly) && !((typeOf _x) in KPLIB_o_inf_classes) && !((typeOf _x) in militia_squad)})
+    }else{
+        ((units group player) select {alive _x})
+    };
+};
 while {
     dialog && alive player
 }
 do {
+    
 
-    if ({
-            alive _x
-        }
-        count(units group player) != _membercount) then {
+    if (count([] call getmembers) != _membercount) then {
+        
+        _membercount = count([] call getmembers);
 
-        _membercount = {
-            alive _x
-        }
-        count(units group player);
-
-        lbClear 101; {
+        lbClear 101;
+        {
             if (alive _x) then {
                 _unitname = format["%1. ", [_x] call KPLIB_fnc_getUnitPositionId];
                 _unitOriginalName = _x getVariable["originalUnitName", ""];
@@ -63,17 +65,19 @@ do {
                 lbAdd[101, _unitname];
             };
         }
-        foreach(units group player);
+        foreach([] call getmembers);
 
         if (_firstloop) then {
             lbSetCurSel[101, 0];
             _firstloop = false;
         };
-    };
+    };    
+
+
 
     _selectedmember = objNull;
-    if (lbCurSel 101 != -1 && (count(units group player) > lbCurSel 101)) then {
-        _selectedmember = (units group player) select(lbCurSel 101);
+    if (lbCurSel 101 != -1 && (count([] call getmembers) > lbCurSel 101)) then {
+        _selectedmember = ([] call getmembers) select(lbCurSel 101);
     };
 
     if (!(isNull _selectedmember)) then {

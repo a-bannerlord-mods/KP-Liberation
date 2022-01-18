@@ -25,7 +25,7 @@ if (isNil "FOB_build_in_progress") then {FOB_build_in_progress = false;};
 
 if ((typeOf _obj) isEqualTo FOB_typename) exitWith {
     _obj addAction [
-        ["<t color='#FFFF00'>", localize "STR_FOB_REPACKAGE", "</t> <img size='2' image='res\ui_deployfob.paa'/>"] joinString "",
+        ["<t color='#FFFF00'>", localize "STR_FOB_REPACKAGE", "</t> <img size='1' image='res\ui_deployfob.paa'/>"] joinString "",
         "scripts\client\actions\do_repackage_fob.sqf",
         nil,
         -754,
@@ -40,7 +40,7 @@ if ((typeOf _obj) isEqualTo FOB_typename) exitWith {
 
 if ((typeOf _obj) in [FOB_box_typename, FOB_truck_typename]) exitWith {
     _obj addAction [
-        ["<t color='#FFFF00'>", localize "STR_FOB_ACTION", "</t> <img size='2' image='res\ui_deployfob.paa'/>"] joinString "",
+        ["<t color='#FFFF00'>", localize "STR_FOB_ACTION", "</t> <img size='1' image='res\ui_deployfob.paa'/>"] joinString "",
         "scripts\client\build\do_build_fob.sqf",
         nil,
         -752,
