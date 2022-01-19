@@ -217,6 +217,7 @@ if (!isNil "_saveData") then {
         GRLIB_players_data                          = _saveData param [23, []];
         GRLIB_virual_support                        = _saveData param [24, []];
         _objectives                                 = _saveData param [25, []];
+        //KP_liberation_Sector_Cache                  = _saveData param [26, []];
 
         stats_ammo_produced                         = _stats select  0;
         stats_ammo_spent                            = _stats select  1;

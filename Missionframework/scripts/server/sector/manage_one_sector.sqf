@@ -37,6 +37,7 @@ private _sector_despawn_tickets = BASE_TICKETS;
 private _maximum_additional_tickets = (KP_liberation_delayDespawnMax * 60 / SECTOR_TICK_TIME);
 private _popfactor = 1;
 private _guerilla = false;
+private _buildingpositions = [];
 // vechile , squads , units in building
 private  _sector_cache = [_sector,"", [], [], [], [], [], [], [], [],[]];
 
@@ -942,7 +943,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
     };
 
     if (_spawncivs && GRLIB_civilian_activity > 0) then {
-        _managed_units = _managed_units + ([_sector] call KPLIB_fnc_spawnCivilians);
+        _managed_units = _managed_units + ([_sector,_buildingpositions] call KPLIB_fnc_spawnCivilians);
     };
 
     if (KP_liberation_asymmetric_debug > 0) then {

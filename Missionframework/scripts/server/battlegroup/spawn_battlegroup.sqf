@@ -14,6 +14,8 @@ if (_pointToAttack isEqualTo [0,0,0]) then {
 };
 
 
+
+
 if !(_spawn_marker isEqualTo "") then {
     GRLIB_last_battlegroup_time = diag_tickTime;
 
@@ -21,6 +23,7 @@ if !(_spawn_marker isEqualTo "") then {
     private _selected_opfor_battlegroup = [];
     private _target_size = (round (GRLIB_battlegroup_size * ([] call KPLIB_fnc_getOpforFactor) * (sqrt GRLIB_csat_aggressivity))) min 16;
     if (combat_readiness < 60) then {_target_size = round (_target_size * 0.65);};
+
 
     [_spawn_marker] remoteExec ["remote_call_battlegroup"];
 
@@ -54,7 +57,31 @@ if !(_spawn_marker isEqualTo "") then {
             [_x,_pointToAttack] spawn battlegroup_ai;      
         } forEach _bg_groups;
     } else {
+
+            
+
         private _vehicle_pool = [opfor_battlegroup_vehicles, opfor_battlegroup_vehicles_low_intensity] select (combat_readiness < 50);
+
+        
+        if (armor_weight > 0.4) then {
+            _tank_pool =  _vehicle_pool arrayIntersect opfor_tanks;
+            if ((count _tank_pool) > 0) then {
+                _selected_opfor_battlegroup pushback (selectRandom _tank_pool);
+                if (armor_weight > 0.6) then {
+                    _selected_opfor_battlegroup pushback (selectRandom _tank_pool);
+                };
+            };
+        };
+
+        if (air_weight > 0.4) then {
+            _aa_pool =  _vehicle_pool arrayIntersect opfor_aa_vehicles;
+            if ((count _aa_pool) > 0) then {
+                _selected_opfor_battlegroup pushback (selectRandom _aa_pool);
+                if (air_weight > 0.4) then {
+                    _selected_opfor_battlegroup pushback (selectRandom _aa_pool);
+                };
+            };
+        };
 
         while {count _selected_opfor_battlegroup < _target_size} do {
             _selected_opfor_battlegroup pushback (selectRandom _vehicle_pool);
@@ -63,7 +90,7 @@ if !(_spawn_marker isEqualTo "") then {
         private ["_nextgrp", "_vehicle"];
         {
             _nextgrp = createGroup [GRLIB_side_enemy, true];
-            _vehicle = [markerpos _spawn_marker, _x] call KPLIB_fnc_spawnVehicle;
+            _vehicle = [MarkerPos _spawn_marker, _x,false,true,grpNull,true] call KPLIB_fnc_spawnVehicle;
 
             if ((_vehicle isKindOf "Tank")|| (_vehicle isKindOf "Car")) then {
                     if (typeOf _vehicle in  militia_vehicles) then {
@@ -87,8 +114,22 @@ if !(_spawn_marker isEqualTo "") then {
             };
         } forEach _selected_opfor_battlegroup;
 
+
         if (GRLIB_csat_aggressivity > 0.9) then {
-            [[markerPos _spawn_marker] call KPLIB_fnc_getNearestBluforObjective] spawn spawn_air;
+            switch (true) do {
+                case (combat_readiness > 30 && combat_readiness < 60): {  
+                        [_pointToAttack,-1,true] spawn spawn_air; 
+                    };
+                case (combat_readiness >= 60 && combat_readiness < 80): {  
+                        [_pointToAttack,-1,false] spawn spawn_air;
+                    };
+                case (combat_readiness >= 80 ): {  
+                        [_pointToAttack,-1,false] spawn spawn_air;
+                        [_pointToAttack,-1,true] spawn spawn_air;
+                    };
+            };
+            
+            
         };
     };
 

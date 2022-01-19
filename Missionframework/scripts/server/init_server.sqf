@@ -9,6 +9,10 @@ patrol_ai = compile preprocessFileLineNumbers "scripts\server\ai\patrol_ai.sqf";
 prisonner_ai = compile preprocessFileLineNumbers "scripts\server\ai\prisonner_ai.sqf";
 troup_transport = compile preprocessFileLineNumbers "scripts\server\ai\troup_transport.sqf";
 
+execVM "scripts\shared\unconscious_manager.sqf";
+
+
+
 // Battlegroup
 spawn_air = compile preprocessFileLineNumbers "scripts\server\battlegroup\spawn_air.sqf";
 spawn_battlegroup = compile preprocessFileLineNumbers "scripts\server\battlegroup\spawn_battlegroup.sqf";

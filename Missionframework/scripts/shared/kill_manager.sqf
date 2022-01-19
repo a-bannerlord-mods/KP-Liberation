@@ -40,17 +40,38 @@ if (isServer) then {
         };
 
         // Weights adjustments depending on what vehicle the BLUFOR killer used
-        if (_killer isKindOf "Man") then {
-            infantry_weight = infantry_weight + 1;
-            armor_weight = armor_weight - 0.66;
-            air_weight = air_weight - 0.66;
-        } else {
-            if ((toLower (typeOf (vehicle _killer))) in KPLIB_allLandVeh_classes) then  {
+        _ace_killer_type  = _unit getVariable ["ace_killer_type",""];
+        switch (_ace_killer_type) do {
+            case "": { 
+                    if ((toLower (typeOf (vehicle _killer))) in KPLIB_allLandVeh_classes || (vehicle _ace_killer ) isKindOf "Tank") then  {
+                        infantry_weight = infantry_weight - 0.66;
+                        armor_weight = armor_weight + 1;
+                        air_weight = air_weight - 0.66;
+                    }else{
+                        if ((toLower (typeOf (vehicle _killer))) in KPLIB_allAirVeh_classes || (vehicle _ace_killer ) isKindOf "Plane" || (vehicle _ace_killer ) isKindOf "Helicopter"  ) then  {
+                            infantry_weight = infantry_weight - 0.66;
+                            armor_weight = armor_weight - 0.66;
+                            air_weight = air_weight + 1;
+                        }else{
+                            if (_killer isKindOf "Man") then {
+                                infantry_weight = infantry_weight + 1;
+                                armor_weight = armor_weight - 0.66;
+                                air_weight = air_weight - 0.66;
+                            };
+                        };
+                    };
+            };
+            case "man":{
+                infantry_weight = infantry_weight + 1;
+                armor_weight = armor_weight - 0.66;
+                air_weight = air_weight - 0.66;
+            };
+            case "land":{
                 infantry_weight = infantry_weight - 0.66;
                 armor_weight = armor_weight + 1;
                 air_weight = air_weight - 0.66;
             };
-            if ((toLower (typeOf (vehicle _killer))) in KPLIB_allAirVeh_classes) then  {
+            case "air":{
                 infantry_weight = infantry_weight - 0.66;
                 armor_weight = armor_weight - 0.66;
                 air_weight = air_weight + 1;
@@ -122,7 +143,7 @@ if (isServer) then {
         };
 
         // Civilian casualty
-        if (side (group _unit) == GRLIB_side_civilian) then {
+        if (side (group _unit) == GRLIB_side_civilian && _unit getVariable ["original_side",GRLIB_side_friendly] == GRLIB_side_civilian) then {
             stats_civilians_killed = stats_civilians_killed + 1;
 
             // Killed by BLUFOR
@@ -134,6 +155,8 @@ if (isServer) then {
 
             // Killed by a player
             if (isPlayer _killer) then {
+                _civkilled = _killer getVariable ["civ_killed",0];
+                _killer setVariable ["civ_killed",(_civkilled +1)];
                 stats_civilians_killed_by_players = stats_civilians_killed_by_players + 1;
             };
         };

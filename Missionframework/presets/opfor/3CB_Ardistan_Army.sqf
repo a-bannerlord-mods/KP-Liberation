@@ -103,87 +103,107 @@ opfor_vehicles = [
 
 // All enemy vehicles that can spawn as sector defenders and patrols but at a lower enemy combat readiness (aggression levels).
 opfor_vehicles_low_intensity = [
-"UK3CB_ARD_O_GAZ_Vodnik_PKT", 
-"UK3CB_ARD_O_Hilux_GMG", 
-"UK3CB_ARD_O_Hilux_Dshkm", 
-"UK3CB_ARD_O_Hilux_Pkm", 
-"UK3CB_ARD_O_Hilux_Spg9",  
-"UK3CB_ARD_O_UAZ_MG", 
-"UK3CB_ARD_O_UAZ_SPG9", 
-"UK3CB_ARD_O_T55", 
-"UK3CB_ARD_O_T34", 
-"UK3CB_ARD_O_BTR40", 
-"UK3CB_ARD_O_BTR40_MG"
+    "UK3CB_ARD_O_GAZ_Vodnik_PKT", 
+    "UK3CB_ARD_O_Hilux_GMG", 
+    "UK3CB_ARD_O_Hilux_Dshkm", 
+    "UK3CB_ARD_O_Hilux_Pkm", 
+    "UK3CB_ARD_O_Hilux_Spg9",  
+    "UK3CB_ARD_O_UAZ_MG", 
+    "UK3CB_ARD_O_UAZ_SPG9", 
+    "UK3CB_ARD_O_T55", 
+    "UK3CB_ARD_O_T34", 
+    "UK3CB_ARD_O_BTR40", 
+    "UK3CB_ARD_O_BTR40_MG"
 ];
 
 // All enemy vehicles that can spawn as battlegroups, either assaulting or as reinforcements, at high enemy combat readiness (aggression levels).
 opfor_battlegroup_vehicles = [
-"UK3CB_ARD_O_T72A", 
-"UK3CB_ARD_O_T72B", 
-"UK3CB_ARD_O_T72BM", 
-"UK3CB_ARD_O_T72BA", 
-"UK3CB_ARD_O_T72BB", 
-"UK3CB_ARD_O_T72BC", 
-"UK3CB_ARD_O_BMP2", 
-"UK3CB_ARD_O_BMP2K", 
-"UK3CB_ARD_O_BTR60", 
-"UK3CB_ARD_O_BTR70", 
-"UK3CB_ARD_O_BTR80", 
-"UK3CB_ARD_O_BTR80a",
-"UK3CB_ARD_O_2S6M_Tunguska", 
-"UK3CB_ARD_O_ZsuTank"
+    "UK3CB_ARD_O_T72A", 
+    "UK3CB_ARD_O_T72B", 
+    "UK3CB_ARD_O_T72BM", 
+    "UK3CB_ARD_O_T72BA", 
+    "UK3CB_ARD_O_T72BB", 
+    "UK3CB_ARD_O_T72BC", 
+    "UK3CB_ARD_O_BMP2", 
+    "UK3CB_ARD_O_BMP2K", 
+    "UK3CB_ARD_O_BTR60", 
+    "UK3CB_ARD_O_BTR70", 
+    "UK3CB_ARD_O_BTR80", 
+    "UK3CB_ARD_O_BTR80a",
+    "UK3CB_ARD_O_2S6M_Tunguska", 
+    "UK3CB_ARD_O_ZsuTank"
 ];
 
 // All enemy vehicles that can spawn as battlegroups, either assaulting or as reinforcements, at lower enemy combat readiness (aggression levels).
 opfor_battlegroup_vehicles_low_intensity = [
-"UK3CB_ARD_O_BRDM2", 
-"UK3CB_ARD_O_BRDM2_ATGM", 
-"UK3CB_ARD_O_GAZ_Vodnik_Cannon", 
-"UK3CB_ARD_O_GAZ_Vodnik_KVPT", 
-"UK3CB_ARD_O_Hilux_Zu23",
-"UK3CB_ARD_O_2S6M_Tunguska", 
-"UK3CB_ARD_O_MTLB_ZU23", 
-"UK3CB_ARD_O_BTR80a", 
-"UK3CB_ARD_O_BTR80", 
-"UK3CB_ARD_O_BTR70", 
-"UK3CB_ARD_O_BTR60", 
-"UK3CB_ARD_O_BMP2", 
-"UK3CB_ARD_O_T55", 
-"UK3CB_ARD_O_T34",
-"UK3CB_ARD_O_Ural", 
-"UK3CB_ARD_O_Ural_Open", 
-"UK3CB_ARD_O_Zil131_Open", 
-"UK3CB_ARD_O_Zil131_Covered" ,
-"UK3CB_ARD_O_BTR40", 
-"UK3CB_ARD_O_BTR40_MG",
-"UK3CB_ARD_O_MTLB_ZU23", 
-"UK3CB_ARD_O_Ural_Zu23"
+    "UK3CB_ARD_O_BRDM2", 
+    "UK3CB_ARD_O_BRDM2_ATGM", 
+    "UK3CB_ARD_O_GAZ_Vodnik_Cannon", 
+    "UK3CB_ARD_O_GAZ_Vodnik_KVPT", 
+    "UK3CB_ARD_O_Hilux_Zu23",
+    "UK3CB_ARD_O_2S6M_Tunguska", 
+    "UK3CB_ARD_O_MTLB_ZU23", 
+    "UK3CB_ARD_O_BTR80a", 
+    "UK3CB_ARD_O_BTR80", 
+    "UK3CB_ARD_O_BTR70", 
+    "UK3CB_ARD_O_BTR60", 
+    "UK3CB_ARD_O_BMP2", 
+    "UK3CB_ARD_O_T55", 
+    "UK3CB_ARD_O_T34",
+    "UK3CB_ARD_O_Ural", 
+    "UK3CB_ARD_O_Ural_Open", 
+    "UK3CB_ARD_O_Zil131_Open", 
+    "UK3CB_ARD_O_Zil131_Covered" ,
+    "UK3CB_ARD_O_BTR40", 
+    "UK3CB_ARD_O_BTR40_MG",
+    "UK3CB_ARD_O_MTLB_ZU23", 
+    "UK3CB_ARD_O_Ural_Zu23"
+];
+
+
+opfor_tanks = [
+    "UK3CB_ARD_O_T55", 
+    "UK3CB_ARD_O_T34",
+    "UK3CB_ARD_O_T72A", 
+    "UK3CB_ARD_O_T72B", 
+    "UK3CB_ARD_O_T72BM", 
+    "UK3CB_ARD_O_T72BA", 
+    "UK3CB_ARD_O_T72BB", 
+    "UK3CB_ARD_O_T72BC"
+];
+
+opfor_aa_vehicles = [
+    "UK3CB_ARD_O_2S6M_Tunguska", 
+    "UK3CB_ARD_O_ZsuTank",
+    "UK3CB_ARD_O_Hilux_Zu23",
+    "UK3CB_ARD_O_2S6M_Tunguska", 
+    "UK3CB_ARD_O_MTLB_ZU23"
 ];
 
 /* All vehicles that spawn within battlegroups (see the above 2 arrays) and also hold 8 soldiers as passengers.
 If something in this array can't hold all 8 soldiers then buggy behaviours may occur.    */
 opfor_troup_transports = [
-"UK3CB_ARD_O_BRDM2", 
-"UK3CB_ARD_O_BRDM2_ATGM", 
-"UK3CB_ARD_O_MTLB_ZU23",
-"UK3CB_ARD_O_BMP1", 
-"UK3CB_ARD_O_BMP2", 
-"UK3CB_ARD_O_BMP2K", 
-"UK3CB_ARD_O_BRM1K", 
-"UK3CB_ARD_O_BTR40", 
-"UK3CB_ARD_O_BTR40_MG", 
-"UK3CB_ARD_O_BTR60", 
-"UK3CB_ARD_O_BTR70", 
-"UK3CB_ARD_O_BTR80", 
-"UK3CB_ARD_O_BTR80a", 
-"UK3CB_ARD_O_MTLB_PKT", 
-"UK3CB_ARD_O_Ural", 
-"UK3CB_ARD_O_Ural_Open", 
-"UK3CB_ARD_O_Zil131_Open", 
-"UK3CB_ARD_O_Zil131_Covered",
-"UK3CB_ARD_O_Mi8AMT", 
-"UK3CB_ARD_O_Mi8",
-"UK3CB_MDF_O_C130J"                                
+    "UK3CB_ARD_O_BRDM2", 
+    "UK3CB_ARD_O_BRDM2_ATGM", 
+    "UK3CB_ARD_O_MTLB_ZU23",
+    "UK3CB_ARD_O_BMP1", 
+    "UK3CB_ARD_O_BMP2", 
+    "UK3CB_ARD_O_BMP2K", 
+    "UK3CB_ARD_O_BRM1K", 
+    "UK3CB_ARD_O_BTR40", 
+    "UK3CB_ARD_O_BTR40_MG", 
+    "UK3CB_ARD_O_BTR60", 
+    "UK3CB_ARD_O_BTR70", 
+    "UK3CB_ARD_O_BTR80", 
+    "UK3CB_ARD_O_BTR80a", 
+    "UK3CB_ARD_O_MTLB_PKT", 
+    "UK3CB_ARD_O_Ural", 
+    "UK3CB_ARD_O_Ural_Open", 
+    "UK3CB_ARD_O_Zil131_Open", 
+    "UK3CB_ARD_O_Zil131_Covered",
+    "UK3CB_ARD_O_Mi8AMT", 
+    "UK3CB_ARD_O_Mi8",
+    "UK3CB_MDF_O_C130J"                                
 ];
 
 // Enemy rotary-wings that will need to spawn in flight.
@@ -203,6 +223,11 @@ opfor_air = [
     "UK3CB_ARD_O_Su25SM_Cluster", 
     "UK3CB_ARD_O_Su25SM_KH29",
     "UK3CB_MDF_O_C130J"
+];
+
+opfor_air_fighter = [
+    "UK3CB_ARD_O_MIG29S", 
+    "UK3CB_ARD_O_MIG29SM"
 ];
 
 // Enemy SAM sites 

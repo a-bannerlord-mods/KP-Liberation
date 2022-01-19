@@ -3,7 +3,7 @@ params ["_first_objective",["_planes_number",-1],["_is_attack_chopper",false]];
 if (opfor_air isEqualTo []) exitWith {false};
 
 if (_planes_number == -1) then {
-    _planes_number = ((floor linearConversion [40, 100, combat_readiness, 1, 3]) min 3) max 0;
+    _planes_number = ((floor linearConversion [30, 100, combat_readiness, 1, 3]) min 3) max 0;
 };
 
 if (_planes_number < 1) exitWith {};
@@ -16,9 +16,16 @@ if (_is_attack_chopper) then {
     };
     
 }else{
-    _class = selectRandom opfor_air;
+    _opfor_air_bool =opfor_air;
+    if (air_weight > 0.4) then {
+        _opfor_air_bool =opfor_air arrayIntersect opfor_air_fighter;
+        if ((count _opfor_air_bool)==0) then {
+            _opfor_air_bool =opfor_air;
+        };
+    };
+    _class = selectRandom _opfor_air_bool;
     while {(_class in opfor_troup_transports)} do {
-        _class = selectRandom opfor_air;
+        _class = selectRandom _opfor_air_bool;
     };
 };
 
@@ -41,7 +48,9 @@ for "_i" from 1 to _planes_number do {
     _plane flyInHeight (120 + (random 180));
     _plane addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
     [_plane] call KPLIB_fnc_addObjectInit;
-    {_x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];} forEach (crew _plane);
+    {
+        _x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+    } forEach (crew _plane);
     (crew _plane) joinSilent _grp;
     sleep 1;
 };

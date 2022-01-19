@@ -16,7 +16,8 @@
 */
 
 params [
-    ["_sector", "", [""]]
+    ["_sector", "", [""]],
+    ["_buildingPos", []]
 ];
 
 if (_sector isEqualTo "") exitWith {["Empty string given"] call BIS_fnc_error; []};
@@ -46,7 +47,68 @@ for "_i" from 1 to _amount do {
         ] call KPLIB_fnc_createManagedUnit
     );
 
-    [_grp] call add_civ_waypoints;
+    [_grp,_buildingPos] call add_civ_waypoints;
+};
+
+for "_i" from 1 to (ceil(_amount/2)) do {
+    if ((count _buildingPos) > 0 ) then {
+        _grp = createGroup [GRLIB_side_civilian, true];
+        _pos = selectrandom  _buildingPos;
+        _civ = [selectRandom civilians,_pos, _grp] call KPLIB_fnc_createManagedUnit;
+
+        _civ disableAI "PATH";
+
+        _buildingPos = _buildingPos - [_pos];
+        _civs pushBack _civ;
+    };
+};
+
+if (KP_liberation_civ_rep < -20) then {
+    if (random 50 < (KP_liberation_civ_rep*-1)) then {
+        _grp = createGroup [GRLIB_side_civilian, true];
+        _suicide_bomber = (
+                [
+                    selectRandom civilians,
+                    [(((_sPos select 0) + (75 * _spread)) - (random (150 * _spread))), (((_sPos select 1) + (75 * _spread)) - (random (150 * _spread))), 0],
+                    _grp
+                ] call KPLIB_fnc_createManagedUnit
+            );
+        _suicide_bomber setVariable ["lambs_danger_disableAI", true,true];
+        [_suicide_bomber,10,false,true] spawn suicide_bomber;
+        _civs pushBack  _suicide_bomber;
+    };
+};
+
+if (KP_liberation_civ_rep < -60) then {
+    if (random 90 < (KP_liberation_civ_rep*-1)) then {
+        _grp = createGroup [GRLIB_side_civilian, true];
+        _suicide_bomber = (
+                [
+                    selectRandom civilians,
+                    [(((_sPos select 0) + (75 * _spread)) - (random (150 * _spread))), (((_sPos select 1) + (75 * _spread)) - (random (150 * _spread))), 0],
+                    _grp
+                ] call KPLIB_fnc_createManagedUnit
+            );
+        _suicide_bomber setVariable ["lambs_danger_disableAI", true,true];
+        [_suicide_bomber,10,false,true] spawn suicide_bomber;
+        _civs pushBack  _suicide_bomber;
+    };
+};
+
+if (KP_liberation_civ_rep < -90) then {
+    if (random 150 < (KP_liberation_civ_rep*-1)) then {
+        _grp = createGroup [GRLIB_side_civilian, true];
+        _suicide_bomber = (
+                [
+                    selectRandom civilians,
+                    [(((_sPos select 0) + (75 * _spread)) - (random (150 * _spread))), (((_sPos select 1) + (75 * _spread)) - (random (150 * _spread))), 0],
+                    _grp
+                ] call KPLIB_fnc_createManagedUnit
+            );
+        _suicide_bomber setVariable ["lambs_danger_disableAI", true,true];
+        [_suicide_bomber,10,false,true] spawn suicide_bomber;
+        _civs pushBack  _suicide_bomber;
+    };
 };
 
 _civs

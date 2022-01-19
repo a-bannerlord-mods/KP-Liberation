@@ -23,12 +23,15 @@ params [
     ["_classname", "", [""]],
     ["_precise", false, [false]],
     ["_rndDir", true, [false]],
-    ["_grp", grpNull, [grpNull]]
+    ["_grp", grpNull, [grpNull]],
+    ["_onNearestRoad", false, [false]]
 ];
 
 if (_pos isEqualTo [0, 0, 0]) exitWith {["No or zero pos given"] call BIS_fnc_error; objNull};
 if (_classname isEqualTo "") exitWith {["Empty string given"] call BIS_fnc_error; objNull};
 if (!canSuspend) exitWith {_this spawn KPLIB_fnc_spawnVehicle};
+
+
 
 private _newvehicle = objNull;
 private _spawnpos = [];
@@ -43,6 +46,19 @@ if (_precise) then {
         _i = _i + 1;
         _spawnpos = (_pos getPos [random 150, random 360]) findEmptyPosition [10, 100, _classname];
         if (_i isEqualTo 10) exitWith {};
+    };
+};
+
+
+if (_onNearestRoad) then {
+    _nearestRoads  = _pos nearRoads 500;
+    if ((count _nearestRoads) == 0) then {
+        _nearestRoads  = _pos nearRoads 1000;
+        if ((count _nearestRoads) > 0) then {
+            _spawnpos = getPosATL  (selectrandom _nearestRoads);
+        };
+    }else{
+        _spawnpos = getPosATL (selectrandom _nearestRoads);
     };
 };
 
@@ -94,11 +110,14 @@ if (_classname in militia_vehicles) then {
             [_this] call KPLIB_fnc_addObjectInit;
         };
     } forEach _crew;
-    {_x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];} forEach _crew;
+    {
+        _x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+    } forEach _crew;
 };
 
 // Add MPKilled and GetIn EHs and enable damage again
 _newvehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+
 sleep 0.1;
 [_newvehicle] spawn {
     params ["_newvehicle"];

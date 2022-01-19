@@ -266,6 +266,19 @@
         }
     ] call zen_context_menu_fnc_createaction;
     
+    private _sector_control__spawn_civ_action = [
+        "SectorspawnControlspawn",
+        "Spawn Civilians",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
+            [_sector]  remoteExec ["KPLIB_fnc_spawnCivilians", 2];
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+        }
+    ] call zen_context_menu_fnc_createaction;
 
     private _sector_attack_root_action = [
         "SectorAttackRoot",
@@ -615,6 +628,7 @@
     [_sector_control_auto_action, ["SectrorControlRoot", "SectorspawnControlRoot"], 0] call zen_context_menu_fnc_addAction;
     [_sector_control_forced_spawn_action, ["SectrorControlRoot", "SectorspawnControlRoot"], 0] call zen_context_menu_fnc_addAction;
     [_sector_control_forced_despawn_action, ["SectrorControlRoot", "SectorspawnControlRoot"], 0] call zen_context_menu_fnc_addAction;
+    [_sector_control__spawn_civ_action, ["SectrorControlRoot", "SectorspawnControlRoot"], 0] call zen_context_menu_fnc_addAction;
 
     [_sector_task_root_action, ["SectrorControlRoot"], 0] call zen_context_menu_fnc_addAction;
     [_sector_liberate_task_root_action, ["SectrorControlRoot", "SectorTasksRoot"], 0] call zen_context_menu_fnc_addAction;

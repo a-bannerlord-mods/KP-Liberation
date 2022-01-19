@@ -14,6 +14,7 @@ wait_to_spawn_sector = compile preprocessFileLineNumbers "scripts\server\sector\
 manage_asymIED = compile preprocessFileLineNumbers "scripts\server\asymmetric\ied\manage_asymIED.sqf";
 sector_guerilla = compile preprocessFileLineNumbers "scripts\server\asymmetric\random\sector_guerilla.sqf";
 asym_sector_ambush = compile preprocessFileLineNumbers "scripts\server\asymmetric\random\asym_sector_ambush.sqf";
+suicide_bomber = compile preprocessFileLineNumbers "scripts\server\asymmetric\suicide_bomber\suicide_bomber.sqf";
 civinfo_task = compile preprocessFileLineNumbers "scripts\server\civinformant\tasks\civinfo_task.sqf";
 
 execVM "scripts\client\misc\synchronise_vars.sqf";
