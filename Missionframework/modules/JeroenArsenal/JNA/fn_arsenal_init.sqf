@@ -81,7 +81,7 @@ if(hasInterface)then{
 
     //add arsenal button
     _id = _object addaction [
-		("Open Arsenal"),
+		["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\rifle_ca.paa'/><t color='#FF8000'>"," Open Arsenal", "</t>"] joinString "",
         {
             pr _object = _this select 0;
 
@@ -165,9 +165,7 @@ if(hasInterface)then{
 
     //add vehicle/box filling button
     _id = _object addaction [
-		(
-			"Unload From Arsenal"
-		),
+		["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\truck_ca.paa'/><t color='#FF8000'>"," Unload From Arsenal", "</t>"] joinString "",
         {
 			pr _object = _this select 0;
 			
@@ -258,7 +256,7 @@ if(hasInterface)then{
 	
 	//add Action to unload object
     _id = _object addaction [
-		("Load Into Arsenal"),
+		["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\truck_ca.paa'/><t color='#FF8000'>"," Load Into Arsenal", "</t>"] joinString "",
         {
 			pr _object = _this select 0;
 			
@@ -320,10 +318,10 @@ if(hasInterface)then{
 
 		//add Action to rearm 
     _id = _object addaction [
-		("Rearm Loadout"),
+		["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\rearm_ca.paa'/><t color='#FF8000'>"," Rearm Loadout", "</t>"] joinString "",
         {
 			pr _object = _this select 0;
-			[_object] execVM "modules\JeroenArsenal\JNA\fn_arsenal_RearmInventory.sqf";
+			[_object] call jn_fnc_arsenal_rearmInventory;
 			
 		},
         [],

@@ -2474,129 +2474,15 @@ switch _mode do {
 
     ///////////////////////////////////////////////////////////////////////////////////////////
     case "buttonDefaultGear":{
-        execVM "modules\JeroenArsenal\JNA\fn_arsenal_applyInventory.sqf";
-        // pr _object = UINamespace getVariable "jn_object";
-
-        // /////////////////////////////////////////////////////////////////////////////////
-        // // unifrom
-        // _itemsUnifrom = [];
-        // if(isClass(configFile >> "CfgPatches" >> "ace_main"))then{
-    
-        //     //ACE Basic medical system
-        //     //if (ace_medical_level == 1) then{
-        //         _itemsUnifrom pushBack ["ACE_fieldDressing",10];
-        //         _itemsUnifrom pushBack ["ACE_morphine",6];
-        //         _itemsUnifrom pushBack ["ACE_epinephrine",3];
-        //    // };
-
-        //     //ACE Advanced medical system
-        //     // if (ace_medical_level == 2) then{
-        //     //     _itemsUnifrom pushBack ["ACE_fieldDressing",4];
-        //     //     _itemsUnifrom pushBack ["ACE_elasticBandage",4];
-        //     //     _itemsUnifrom pushBack ["ACE_packingBandage",4];
-        //     //     _itemsUnifrom pushBack ["ACE_quikclot",4];
-        //     //     _itemsUnifrom pushBack ["ACE_morphine",1];
-        //     //     _itemsUnifrom pushBack ["ACE_epinephrine",1];
-        //     //     _itemsUnifrom pushBack ["ACE_tourniquet",1];
-        //     // };
-
-        //     _itemsUnifrom pushBack ["ACE_EarPlugs",1];
-        //     _itemsUnifrom pushBack ["ACE_MapTools",1];
-        //     _itemsUnifrom pushBack ["ACE_CableTie",3];
-
-        // }else{
-        //     _itemsUnifrom pushBack ["FirstAidKit",4];
-        // };
-
-        // //check items that already exist
-        // {
-        //     _itemsUnifrom = [_itemsUnifrom,_x] call jn_fnc_common_array_remove;
-        // } forEach (uniformItems player);
-
-        // //add non existing items to uniform
-        // {
-        //     _item = _x select 0;
-        //     _amount = _x select 1;
-        //     _amountAdded = 0;
-        //     while {(_amountAdded < _amount) && (player canAddItemToUniform _x)}do{
-        //         _amountAdded = _amountAdded + 1;
-        //         player addItemToUniform _item;
-        //     };
-
-        //     if(_amountAdded > 0)then{
-
-        //     };
-        // } forEach _itemsUnifrom;
-
-        // /////////////////////////////////////////////////////////////////////////////////
-        // // backpack stuff
-        // _itemsBackpack = [];
-
-        // if(player getUnitTrait "Medic")then{
-        //     if(isClass(configFile >> "CfgPatches" >> "ace_main"))then{
-        //         if (ace_medical_level == 1) then{ //ACE Basic medical system
-        //             _itemsBackpack pushBack ["ACE_fieldDressing",20];
-        //             _itemsBackpack pushBack ["ACE_morphine",10];
-        //             _itemsBackpack pushBack ["ACE_epinephrine",10];
-        //             _itemsBackpack pushBack ["ACE_bloodIV",6];
-        //         };
-        //         if (ace_medical_level == 2) then{ //ACE Advanced medical system
-        //             _itemsBackpack pushBack ["ACE_elasticBandage",15];
-        //             _itemsBackpack pushBack ["ACE_packingBandage",7];
-        //             _itemsBackpack pushBack ["ACE_tourniquet",3];
-        //             _itemsBackpack pushBack ["ACE_personalAidKit",1];
-        //         };
-        //     }else{
-        //         _itemsBackpack pushBack ["Medikit",1];
-        //         _itemsBackpack pushBack ["FirstAidKit",10];
-        //     };
-
-
-        // };
-
-        // //check items that already exist
-        // {
-        //     _itemsBackpack = [_itemsBackpack,_x] call jn_fnc_common_array_remove;
-        // } forEach (backpackitems player);
-
-        // //add non existing items
-        // {
-        //     _item = _x select 0;
-        //     _amount = _x select 1;
-        //     _amountAdded = 0;
-        //     while {(_amountAdded < _amount) && (player canAddItemToBackpack _x)}do{
-        //         _amountAdded = _amountAdded + 1;
-        //         player addItemToBackpack _item;
-        //     };
-
-        //     if(_amountAdded > 0)then{
-
-        //     };
-        // } forEach _itemsBackpack;
-
-        // /////////////////////////////////////////////////////////////////////////////////
-        // //assigned items
-        // {
-        //     pr _index = _x select 0;
-        //     pr _item = _x select 1;
-        //     _itemCurrent = ["ListCurSel",[_index]] call jn_fnc_arsenal;
-
-        //     if(_itemCurrent isEqualTo "")then{
-        //         player linkitem _item;
-
-        //         [_object, _index, _item]call jn_fnc_arsenal_removeItem;
-        //     };
-        // } forEach [
-        //     [IDC_RSCDISPLAYARSENAL_TAB_MAP,"ItemMap"],
-        //     [IDC_RSCDISPLAYARSENAL_TAB_RADIO,"tf_anprc152"],
-        //     [IDC_RSCDISPLAYARSENAL_TAB_COMPASS,"ItemCompass"],
-        //     [IDC_RSCDISPLAYARSENAL_TAB_WATCH,"ItemWatch"]
-        // ];
+        pr _inventory  = GRLIB_default_loadout;
+        ["Default Loadout",_inventory] call jn_fnc_arsenal_loadinventory;
     };
 
      ///////////////////////////////////////////////////////////////////////////////////////////
     case "buttonRearmGear":{
-        execVM "modules\JeroenArsenal\JNA\fn_arsenal_RearmInventory.sqf";
+         pr _object = uiNamespace getVariable "jn_object";
+
+        [_object] call jn_fnc_arsenal_rearmInventory;
         // pr _object = UINamespace getVariable "jn_object";
 
         // /////////////////////////////////////////////////////////////////////////////////
@@ -2818,7 +2704,7 @@ switch _mode do {
             _ctrlTemplateValue = _display displayctrl IDC_RSCDISPLAYARSENAL_TEMPLATE_VALUENAME;
             if ((_ctrlTemplateValue lbvalue lnbcurselrow _ctrlTemplateValue) >= 0) then {
                 _inventory = _ctrlTemplateValue lnbtext [lnbcurselrow _ctrlTemplateValue,0];
-                _inventory call jn_fnc_arsenal_loadinventory;
+                [_inventory] call jn_fnc_arsenal_loadinventory;
 
                 {
                     _ctrlList = _display displayctrl (IDC_RSCDISPLAYARSENAL_LIST + _x);

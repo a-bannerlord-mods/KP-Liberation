@@ -24,7 +24,7 @@ if (isNull _civ) exitWith {["Null object given"] call BIS_fnc_error; false};
 if (KP_liberation_civrep_debug > 0) then {[format ["ace_action called on: %1", debug_source], "CIVREP"] remoteExecCall ["KPLIB_fnc_log", 2];};
 
 _civ addAction [
-    "<t color='#FF0000'>" + localize "STR_CR_ACE_ACTION" + "</t>",
+    "<img size='1' image='a3\ui_f\data\map\vehicleicons\pictureheal_ca.paa'/><t color='#FF0000'> " + localize "STR_CR_ACE_ACTION" + "</t>",
     {
         params ["_target", "_caller"];
 

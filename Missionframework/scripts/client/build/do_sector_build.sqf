@@ -10,9 +10,9 @@ if (((_this select 3) select 0) == KP_liberation_small_storage_building) then {
 
     _sectorpos = markerPos ([100] call KPLIB_fnc_getNearestSector);
 
-    _idactcancel = player addAction ["<t color='#B0FF00'>" + localize "STR_CANCEL" + "</t> <img size='2' image='res\ui_cancel.paa'/>",{build_confirmed = 3;},"",-725,false,true,"","build_confirmed == 1"];
-    _idactplace = player addAction ["<t color='#B0FF00'>" + localize "STR_PLACEMENT" + "</t> <img size='2' image='res\ui_confirm.paa'/>",{build_confirmed = 2;},"",-775,false,true,"","build_invalid == 0 && build_confirmed == 1"];
-    _idactvector = player addAction ["<t color='#B0FF00'>" + localize "STR_VECACTION" + "</t>",{KP_vector = !KP_vector;},"",-800,false,false,"","build_confirmed == 1"];
+    _idactcancel = player addAction ["<img size='1' image='res\ui_cancel.paa'/><t color='#B0FF00'> " + localize "STR_CANCEL" + "</t> ",{build_confirmed = 3;},"",-725,false,true,"","build_confirmed == 1"];
+    _idactplace = player addAction ["<img size='1' image='res\ui_confirm.paa'/><t color='#B0FF00'> " + localize "STR_PLACEMENT" + "</t> ",{build_confirmed = 2;},"",-775,false,true,"","build_invalid == 0 && build_confirmed == 1"];
+    _idactvector = player addAction ["<t color='#B0FF00'> " + localize "STR_VECACTION" + "</t>",{KP_vector = !KP_vector;},"",-800,false,false,"","build_confirmed == 1"];
 
     _ghost_spot = (markerPos "ghost_spot") findEmptyPosition [0,100];
 

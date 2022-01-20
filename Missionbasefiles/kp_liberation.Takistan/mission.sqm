@@ -12,7 +12,7 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=7114;
+		nextID=7358;
 	};
 	class MarkerIDProvider
 	{
@@ -20,14 +20,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=1370;
+		nextID=1440;
 	};
 	class Camera
 	{
-		pos[]={8201.5342,397.84674,2020.4304};
-		dir[]={-0.029575879,-0.4810797,0.87618357};
-		up[]={-0.016230045,0.87667614,0.48080802};
-		aside[]={0.9994356,3.0494994e-007,0.033735864};
+		pos[]={8284.123,308.24286,2062.6467};
+		dir[]={-0.1741218,-0.55284423,-0.8149268};
+		up[]={-0.11551797,0.83327651,-0.5406428};
+		aside[]={-0.97796017,1.3701356e-007,0.20895532};
 	};
 };
 binarizationWanted=0;
@@ -40829,17 +40829,16 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={8153.7891,297.56213,2141.6047};
-						angles[]={0,2.544332,0};
+						position[]={8153.7891,296.31601,2141.6047};
+						angles[]={0.063916057,2.544332,0.020791067};
 					};
 					side="Empty";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 					};
 					id=6029;
 					type="Land_MobileRadar_01_generator_F";
-					atlOffset=1.2461243;
 				};
 				class Item271
 				{

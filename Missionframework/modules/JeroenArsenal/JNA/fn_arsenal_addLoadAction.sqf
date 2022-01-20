@@ -3,7 +3,7 @@
 params ["_interface","_object",["_actionName","Unload From Arsenal"]];
 
 _id = _interface addaction [
-			"Unload From Arsenal",
+			["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\truck_ca.paa'/><t color='#FF8000'>"," Unload From Arsenal", "</t>"] joinString "",
         {
 			params ["_target", "_caller", "_actionId", "_arguments"];
 			_object = _arguments select 0;

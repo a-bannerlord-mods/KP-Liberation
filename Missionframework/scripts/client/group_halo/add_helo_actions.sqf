@@ -9,7 +9,7 @@ if(isnil "c130_flying_plane" )then{
     c130_flying_plane = objNull;
 };
 
-_this addAction ["<t color='#00ffa6'>Select Drop Zone</t>", {
+_this addAction ["<img size='1' image='ca\air2\data\ui\icon_c130j_ca.paa'/><t color='#00ffa6'>Select Drop Zone</t>", {
     openMap true;
     hint 'Click on desired location.';
     onMapsingleClick {
@@ -37,7 +37,7 @@ _this addAction ["<t color='#00ffa6'>Select Drop Zone</t>", {
 ];
 
 
-_this addAction [format ["<t color='#04ff00'>Give Order To %1 Take off</t>", gettext(configFile >> "Cfgvehicles" >> KPLIB_C130_halo_airplane_class >> "displayname")], {
+_this addAction [format ["<img size='1' image='ca\air2\data\ui\icon_c130j_ca.paa'/><t color='#04ff00'>Give Order To %1 Take off</t>", gettext(configFile >> "Cfgvehicles" >> KPLIB_C130_halo_airplane_class >> "displayname")], {
     params ["_target", "_caller", "_actionId", "_arguments"];
     
     _plane_name = gettext(configFile >> "Cfgvehicles" >> KPLIB_C130_halo_airplane_class >> "displayname");
@@ -173,7 +173,7 @@ _this addAction [format ["<t color='#04ff00'>Give Order To %1 Take off</t>", get
 	""			// memoryPoint
 ];
 
-_this addAction [format ["<t color='#0040ff'>Board %1</t>", gettext(configFile >> "Cfgvehicles" >> KPLIB_C130_halo_airplane_class >> "displayname") ], {
+_this addAction [format ["<img size='1' image='ca\air2\data\ui\icon_c130j_ca.paa'/><t color='#0040ff'>Board %1</t>", gettext(configFile >> "Cfgvehicles" >> KPLIB_C130_halo_airplane_class >> "displayname") ], {
     cuttext ["", "BLACK OUT", 3];
     sleep 4;
     player attachto [c130_flying_plane, [0, 4, -4.5] ];
@@ -225,7 +225,7 @@ _this addAction [format ["<t color='#0040ff'>Board %1</t>", gettext(configFile >
 ];
 
 addVehcileaction = {
-    player addAction [format ["<t color='#0040ff' >Add to Halo</t>",gettext(configFile >> "Cfgvehicles" >> typeof _c130_flying_cargo >> "displayname")], {
+    player addAction [format ["<img size='1' image='ca\air2\data\ui\icon_c130j_ca.paa'/><t color='#0040ff' >Add to Halo</t>",gettext(configFile >> "Cfgvehicles" >> typeof _c130_flying_cargo >> "displayname")], {
 		params ["_target", "_caller", "_actionId", "_arguments"];
         _c130_flying_cargo =cursorObject;
         _caller removeAction _actionId;
@@ -248,7 +248,7 @@ addVehcileaction = {
 		
         
         
-        c130_flying_plane addAction [format ["<t color='#0040ff'>Drop %1</t>",_name], {
+        c130_flying_plane addAction [format ["<img size='1' image='ca\air2\data\ui\icon_c130j_ca.paa'/><t color='#0040ff'>Drop %1</t>",_name], {
             [] call eject_v;
         },
 	    nil,		// arguments

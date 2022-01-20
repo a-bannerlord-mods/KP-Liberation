@@ -20,7 +20,7 @@ params ["_switch","_range"];
 _switch setVariable ["isOn",true,true];
 _switch addAction
 [
-    "Turn Off",
+    ["<img size='1' image='mcc_sandbox_mod\data\iconintel.paa'/><t color='#FF8000'>"," Turn Off", "</t>"] joinString "",
     {
         params ["_target", "_caller", "_actionId", "_arguments"];
         _distancetoreach = 300;
@@ -48,7 +48,7 @@ _switch addAction
 
 _switch addAction
 [
-    "Turn On",
+    ["<img size='1' image='mcc_sandbox_mod\data\iconintel.paa'/><t color='#FF8000'>"," Turn On", "</t>"] joinString "",
     {
         params ["_target", "_caller", "_actionId", "_arguments"];
         _distancetoreach = 300;

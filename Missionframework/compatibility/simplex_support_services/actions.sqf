@@ -1,7 +1,7 @@
 if (isClass(configFile >> "CfgPatches" >> "SSS")) exitwith {
     if !(isnil "blufor_transport_support_vehicles") then {
         _this addAction [
-            ["<t color='#FFFF00'>", "-- Add to Transport Support Group", "</t>"] joinstring "",
+            ["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Radio_ca.paa'/><t color='#FFFF00'>", " Add to Transport Support Group", "</t>"] joinstring "",
             {
             
                 _cost = blufor_transport_support_vehicles select ((blufor_transport_support_vehicles apply {_x select 0}) find (typeOf cursorObject)) select 1;
@@ -44,7 +44,7 @@ if (isClass(configFile >> "CfgPatches" >> "SSS")) exitwith {
     };
     if !(isnil "blufor_cas_support_vehicles") then {
         _this addAction [
-            ["<t color='#FFFF00'>", "-- Add to CAS Support Group", "</t>"] joinstring "",
+            ["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Radio_ca.paa'/><t color='#FFFF00'>", " Add to CAS Support Group", "</t>"] joinstring "",
             {
                 _cost = blufor_cas_support_vehicles select ((blufor_cas_support_vehicles apply {_x select 0}) find (typeOf cursorObject)) select 1;
                 _nearfob = [] call KPLIB_fnc_getNearestFob;
@@ -86,7 +86,7 @@ if (isClass(configFile >> "CfgPatches" >> "SSS")) exitwith {
     };
     if !(isnil "blufor_jet_support_vehicles") then {
         _this addAction [
-            ["<t color='#FFFF00'>", "-- Add to Support Group", "</t>"] joinstring "",
+            ["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Radio_ca.paa'/><t color='#FFFF00'>", " Add to Support Group", "</t>"] joinstring "",
             {
                 _cost = blufor_jet_support_vehicles select ((blufor_jet_support_vehicles apply {_x select 0}) find (typeOf cursorObject)) select 1;
                 _nearfob = [] call KPLIB_fnc_getNearestFob;

@@ -26,7 +26,7 @@ if (isClass(configFile >> "CfgPatches" >> "task_force_radio") && KPLIB_Enable_TF
     };
 
 	_this addAction [
-    ["<t color='#FFFF00'>", localize "STR_SET_RADIO_CHANNELS_ACTION", "</t>"] joinString "",
+    ["<img size='1' image='a3\modules_f_curator\data\portraitradiochannelcreate_ca.paa'/> <t color='#FFFF00'> ", localize "STR_SET_RADIO_CHANNELS_ACTION", "</t>"] joinString "",
     {call set_default_radio_channels;},
     nil,
     -850,

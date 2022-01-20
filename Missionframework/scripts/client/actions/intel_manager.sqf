@@ -13,7 +13,7 @@ while {true} do {
         _near_intel = (getPosATL player) nearEntities [KPLIB_intelObjectClasses, 5];
         {
             if ((captive _x) && !(_x in _actionned_captive_units) && !((side group _x) == GRLIB_side_friendly) && !(_x getVariable ["ACE_isUnconscious", false])) then {
-                _x addAction ["<t color='#FFFF00'>" + localize "STR_SECONDARY_CAPTURE" + "</t>",{[_this select 0] join (group player);},"",-850,true,true,"","(vehicle player == player) && (side group _target != GRLIB_side_friendly) && (captive _target)"];
+                _x addAction ["<t color='#FFFF00'> " + localize "STR_SECONDARY_CAPTURE" + "</t>",{[_this select 0] join (group player);},"",-850,true,true,"","(vehicle player == player) && (side group _target != GRLIB_side_friendly) && (captive _target)"];
                 _actionned_captive_units pushback _x;
             };
         } forEach _near_people;
@@ -27,7 +27,7 @@ while {true} do {
 
         {
             if !(_x in _actionned_intel_items) then {
-                _x addAction ["<t color='#FFFF00'>" + localize "STR_INTEL" + "</t>",{[_this select 0] remoteExecCall ["intel_remote_call", 2];},"",-849,true,true,"","(vehicle player == player)"];
+                _x addAction ["<img size='1' image='a3\ui_f\data\igui\cfg\simpletasks\types\intel_ca.paa'/><t color='#FFFF00'> " + localize "STR_INTEL" + "</t>",{[_this select 0] remoteExecCall ["intel_remote_call", 2];},"",-849,true,true,"","(vehicle player == player)"];
                 _actionned_intel_items pushback _x;
             };
         } forEach _near_intel;

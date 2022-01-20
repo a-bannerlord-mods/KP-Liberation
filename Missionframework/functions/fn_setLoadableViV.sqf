@@ -29,7 +29,7 @@ private _loadFnc = {
 
 // Add "Load" action
 _object addAction [
-    "<t color='#FFFF00'>" + localize "STR_ACTION_LOAD_VIV" + "</t>",
+    "<img size='1' image='a3\data_f_destroyer\data\ui\igui\cfg\holdactions\holdaction_loadvehicle_ca.paa'/><t color='#FFFF00'> " + localize "STR_ACTION_LOAD_VIV" + "</t>",
     _loadFnc,
     nil,
     -991,
@@ -42,7 +42,7 @@ _object addAction [
 
 // Add "No transports nearby action"
 _object addAction [
-    "<t color='#FF0000'>" + localize "STR_ACTION_NOTRANSPORT_VIV" + "</t>",
+    "<img size='1' image='a3\ui_f\data\igui\cfg\actions\obsolete\ui_action_cancel_ca.paa'/><t color='#FF0000'> " + localize "STR_ACTION_NOTRANSPORT_VIV" + "</t>",
     {},
     nil,
     -991,
@@ -61,7 +61,7 @@ private _unloadFnc = {
 
 // Add "Unload" action
 _object addAction [
-    "<t color='#FFFF00'>" + localize "STR_ACTION_UNLOAD_VIV" + "</t>",
+    "<img size='1' image='a3\data_f_destroyer\data\ui\igui\cfg\holdactions\holdaction_unloadvehicle_ca.paa'/><t color='#FFFF00'> " + localize "STR_ACTION_UNLOAD_VIV" + "</t>",
     _unloadFnc,
     nil,
     -991,

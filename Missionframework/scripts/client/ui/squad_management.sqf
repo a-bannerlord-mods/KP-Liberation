@@ -288,7 +288,7 @@ do {
                     _selectedmember setVariable["originalPlayerUnit", player, true];
                     _selectedmember setVariable["originalUnitName", name _selectedmember];
                     GRLIB_switchActions pushback[(_selectedmember addAction[
-                        ["<t color='#FFFF00'>", "-- Switchback", "</t>"] joinString "", {
+                        ["<img size='1' image='DBUG\pictures\switchmode.paa'/><t color='#FFFF00'>", " Switchback", "</t>"] joinString "", {
                             params["_target", "_caller", "_actionId", "_arguments"]; {
                                 (_x select 1) removeAction(_x select 0);
                             }
@@ -310,7 +310,7 @@ do {
                     ]), _selectedmember];
 
                     GRLIB_switchActions pushback[(_selectedmember addAction[
-                        ["<t color='#FFFF00'>", "-- Task Guard", "</t>"] joinString "", {
+                        ["<img size='1' image='a3\ui_f\data\gui\cfg\communicationmenu\defend_ca.paa'/><t color='#FFFF00'>", " Task Guard", "</t>"] joinString "", {
                             params["_target", "_caller", "_actionId", "_arguments"]; {
                                 (_x select 1) removeAction(_x select 0);
                             }

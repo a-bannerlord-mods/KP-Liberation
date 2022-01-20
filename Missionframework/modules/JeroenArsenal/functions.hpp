@@ -40,7 +40,7 @@ class JN {
 		class arsenal_itemCount {};
 		class arsenal_itemType {};
 		class arsenal_loadInventory {};
-		class arsenal_applyInventory {};
+		class arsenal_rearmInventory {};
 		class arsenal_removeItem {};
 		class arsenal_requestOpen {};
 		class arsenal_requestClose {};

@@ -95,7 +95,7 @@ repair_vehicle = {
 
 //Repair actions
 _player addAction[
-    ["<t color='#FFFF00'>", "-- Full Repair Vehicle", "</t>"] joinString "", {
+    ["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\repair_ca.paa'/><t color='#FFFF00'>", " Full Repair Vehicle", "</t>"] joinString "", {
         [cursorObject] call repair_vehicle;
     },
     nil, -850,
@@ -123,7 +123,7 @@ _player addAction[
 ];
 
 _player addAction[
-    ["<t color='#FFFF00'>", "-- Full Repair Helicopter", "</t>"] joinString "", {
+    ["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\repair_ca.paa'/><t color='#FFFF00'>", " Full Repair Helicopter", "</t>"] joinString "", {
         [cursorObject] call repair_vehicle;
     },
     nil, -850,
@@ -151,7 +151,7 @@ _player addAction[
 ];
 
 _player addAction[
-    ["<t color='#FFFF00'>", "-- Full Repair Plane", "</t>"] joinString "", {
+    ["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\repair_ca.paa'/><t color='#FFFF00'>", " Full Repair Plane", "</t>"] joinString "", {
         [cursorObject] call repair_vehicle;
     },
     nil, -850,

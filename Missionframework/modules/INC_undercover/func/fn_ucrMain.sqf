@@ -382,7 +382,7 @@ switch (_operation) do {
 		_unit setVariable ["INC_switchUniformActionActive",true];
 
 		INC_switchUniformAction = _unit addAction [
-			"<t color='#33FF42'>Find new disguise nearby</t>", {
+			"<img size='1' image='rhsusf\addons\rhsusf_heavyweapons\bags\mapicon_backpack_ca.paa'/><t color='#33FF42'>Find new disguise nearby</t>", {
 				params ["_unit"];
 
 				private ["_success"];
@@ -435,7 +435,7 @@ switch (_operation) do {
 		_unit setVariable ["INC_swapActionActive",true];
 
 		INC_stealGear = _unit addAction [
-			"<t color='#33FF42'>Swap Gear</t>", {
+			"<img size='1' image='rhsusf\addons\rhsusf_heavyweapons\bags\mapicon_backpack_ca.paa'/><t color='#33FF42'>Swap Gear</t>", {
 				params ["_unit"];
 
 				private ["_success"];
@@ -489,7 +489,7 @@ switch (_operation) do {
 
 		//Can't do it in vehicles as it would mess everything up (can improve this later on)
 		INC_checkDisguise = _unit addAction [
-			"<t color='#47AF24'>Check Disguise</t>", {
+			"<img size='1' image='a3\modules_f\data\hideterrainobjects\icon_ca.paa'/><t color='#47AF24'>Check Disguise</t>", {
 				params ["_unit"];
 
 				[[_unit],"checkDisguise"] call INCON_ucr_fnc_gearHandler;

@@ -11,10 +11,10 @@ VAM_check_locality = compileFinal "
 		(group _target) setGroupOwner _caller;
 	};
 ";
-VAM_action = compileFinal "
+VAM_action = {
 	player addAction
 	[
-		'Vehicle Appearance',
+		["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Use_ca.paa'/><t color='#FFFF00'>",'Vehicle Appearance', "</t>"] joinString "",
 		{
 			if (VAM_cursor_condition) then {
 				VAM_targetvehicle = cursorObject;
@@ -29,7 +29,7 @@ VAM_action = compileFinal "
 		'VAM_condition_result && (VAM_cursor_condition || (!(player isEqualTo vehicle player) && (player isEqualTo driver vehicle player)))',
 		-1
 	];
-";
+};
 
 [] spawn VAM_action;
 

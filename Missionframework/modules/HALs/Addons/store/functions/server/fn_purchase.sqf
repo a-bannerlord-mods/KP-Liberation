@@ -67,7 +67,7 @@ try {
 			if ((_amt - 1) > 0) then {
 				// Can't add the additional items
 				if (_amtMax isEqualTo 0) then {
-					private _msg = format ["%1 %2", localize "STR_HALS_STORE_ITEM_NOCARGOSPACE", "for additional items!"];
+					private _msg = format ["%1 %2 ", localize "STR_HALS_STORE_ITEM_NOCARGOSPACE", "for additional items!"];
 
 					[_msg, "FD_CP_NOT_CLEAR_F"] remoteExecCall ["HALs_store_fnc_systemChat", _unit];
 				} else {

@@ -25,7 +25,7 @@ if (isNil "KP_liberation_resources_global") then {KP_liberation_resources_global
 
 // Tutorial
 _player addAction [
-    ["<t color='#80FF80'>", localize "STR_TUTO_ACTION", "</t>"] joinString "",
+    ["<img size='1' image='a3\3den\data\displays\display3den\toolbar\help_tutorial_ca.paa'/><t color='#80FF80'> ", localize "STR_TUTO_ACTION", "</t>"] joinString "",
     {howtoplay = 1;},
     nil,
     -700,
@@ -42,7 +42,7 @@ _player addAction [
 
 // HALO
 _player addAction [
-    ["<t color='#80FF80'>", localize "STR_HALO_ACTION", "</t><img size='1' image='res\ui_redeploy.paa'/>"] joinString "",
+    ["<img size='1' image='res\ui_redeploy.paa'/><t color='#80FF80'> ", localize "STR_HALO_ACTION", "</t>"] joinString "",
     "scripts\client\spawn\do_halo.sqf",
     nil,
     -710,
@@ -67,7 +67,7 @@ _player addAction [
 if (!GRLIB_replaceRespawnButtonWithRedeploy) then {
 
     _player addAction [
-        ["<t color='#80FF80'>", localize "STR_DEPLOY_ACTION", "</t><img size='1' image='res\ui_redeploy.paa'/>"] joinString "",
+        ["<img size='1' image='res\ui_redeploy.paa'/><t color='#80FF80'> ", localize "STR_DEPLOY_ACTION", "</t>"] joinString "",
         {GRLIB_force_redeploy = true;},
         nil,
         -720,
@@ -90,7 +90,7 @@ if (!GRLIB_replaceRespawnButtonWithRedeploy) then {
 
 // Squad management
 _player addAction [
-    ["<t color='#80FF80'>", localize "STR_SQUAD_MANAGEMENT_ACTION", "</t><img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/>"] joinString "",
+    ["<img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/><t color='#80FF80'> ", localize "STR_SQUAD_MANAGEMENT_ACTION", "</t>"] joinString "",
     "scripts\client\ui\squad_management.sqf",
     nil,
     -730,
@@ -99,17 +99,19 @@ _player addAction [
     "",
     "
         isNull (objectParent _originalTarget)
+        && (isNull cursorObject || _originalTarget distance cursorObject > 10 )
         && {alive _originalTarget}
         && {!((units group _originalTarget) isEqualTo [_originalTarget])}
         && {(leader group _originalTarget) isEqualTo _originalTarget}
         && {build_confirmed isEqualTo 0}
         && [_originalTarget,1.5] call  KPLIB_fnc_isPlayerNearToFob
+        && !(_originalTarget getVariable ['KPLIB_hasDirectAccess', false])
     "
 ];
 
 // Units management
 _player addAction [
-    ["<t color='#80FF80'>", "Units Management", "</t><img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/>"] joinString "",
+    ["<img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/> <t color='#80FF80'>", "Units Management", "</t>"] joinString "",
     "scripts\client\ui\squad_management.sqf",
     nil,
     -730,
@@ -118,6 +120,7 @@ _player addAction [
     "",
     "
         isNull (objectParent _originalTarget)
+        && (isNull cursorObject || _originalTarget distance cursorObject > 10 )
         && {alive _originalTarget}
         && [_originalTarget,1.5] call  KPLIB_fnc_isPlayerNearToFob
         && {build_confirmed isEqualTo 0}
@@ -127,7 +130,7 @@ _player addAction [
 
 // Build
 _player addAction [
-    ["<t color='#FFFF00'>", localize "STR_BUILD_ACTION", "</t><img size='1' image='res\ui_build.paa'/>"] joinString "",
+    ["<img size='1' image='res\ui_build.paa'/><t color='#FFFF00'> ", localize "STR_BUILD_ACTION", "</t>"] joinString "",
     "scripts\client\build\open_build_menu.sqf",
     nil,
     -750,
@@ -136,6 +139,7 @@ _player addAction [
     "",
     "
         isNull (objectParent _originalTarget)
+        && (isNull cursorObject || _originalTarget distance cursorObject > 10 )
         && {alive _originalTarget}
         && [_originalTarget,0.8] call  KPLIB_fnc_isPlayerNearToFob
         && {
@@ -148,7 +152,7 @@ _player addAction [
 
 // Secondary missions
 _player addAction [
-    ["<t color='#FFFF00'>", localize "STR_SECONDARY_OBJECTIVES", "</t>"] joinString "",
+    ["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\use_ca.paa'/><t color='#FFFF00'> ", localize "STR_SECONDARY_OBJECTIVES", "</t>"] joinString "",
     "scripts\client\ui\secondary_ui.sqf",
     nil,
     -760,
@@ -174,7 +178,7 @@ _player addAction [
 
 // Build sector storage
 _player addAction [
-    ["<t color='#FFFF00'>", localize "STR_SECSTORAGEBUILD_ACTION", "</t>"] joinString "",
+    ["<img size='1' image='res\ui_build.paa'/><t color='#FFFF00'><t color='#FFFF00'> ", localize "STR_SECSTORAGEBUILD_ACTION", "</t>"] joinString "",
     "scripts\client\build\do_sector_build.sqf",
     [KP_liberation_small_storage_building],
     -770,
@@ -196,7 +200,7 @@ _player addAction [
 
 // Build supply facility
 _player addAction [
-    ["<t color='#FFFF00'>", localize "STR_SECSUPPLYBUILD_ACTION", "</t>"] joinString "",
+    ["<img size='1' image='res\ui_build.paa'/><t color='#FFFF00'><t color='#FFFF00'> ", localize "STR_SECSUPPLYBUILD_ACTION", "</t>"] joinString "",
     "scripts\client\build\do_sector_build.sqf",
     ["supply"],
     -780,
@@ -219,7 +223,7 @@ _player addAction [
 
 // Build ammo facility
 _player addAction [
-    ["<t color='#FFFF00'>", localize "STR_SECAMMOBUILD_ACTION", "</t>"] joinString "",
+    ["<img size='1' image='res\ui_build.paa'/><t color='#FFFF00'><t color='#FFFF00'> ", localize "STR_SECAMMOBUILD_ACTION", "</t>"] joinString "",
     "scripts\client\build\do_sector_build.sqf",
     ["ammo"],
     -790,
@@ -242,7 +246,7 @@ _player addAction [
 
 // Build fuel facility
 _player addAction [
-    ["<t color='#FFFF00'>", localize "STR_SECFUELBUILD_ACTION", "</t>"] joinString "",
+    ["<img size='1' image='res\ui_build.paa'/><t color='#FFFF00'><t color='#FFFF00'> ", localize "STR_SECFUELBUILD_ACTION", "</t>"] joinString "",
     "scripts\client\build\do_sector_build.sqf",
     ["fuel"],
     -800,
@@ -265,7 +269,7 @@ _player addAction [
 
 // Switch global/local resources
 _player addAction [
-    ["<t color='#FFFF00'>", localize "STR_RESOURCE_GLOBAL_ACTION", "</t>"] joinString "",
+    ["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\container_ca.paa'/><t color='#FFFF00'><t color='#FFFF00'> ", localize "STR_RESOURCE_GLOBAL_ACTION", "</t>"] joinString "",
     {KP_liberation_resources_global = !KP_liberation_resources_global},
     nil,
     -810,
@@ -274,6 +278,7 @@ _player addAction [
     "",
     "
         alive _originalTarget
+        && (isNull cursorObject || _originalTarget distance cursorObject > 10 )
         && [_originalTarget,0.8] call  KPLIB_fnc_isPlayerNearToFob
         && {build_confirmed isEqualTo 0}
     "
@@ -281,7 +286,7 @@ _player addAction [
 
 // Production
 _player addAction [
-    ["<t color='#FF8000'>", localize "STR_PRODUCTION_ACTION", "</t>"] joinString "",
+    ["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\container_ca.paa'/><t color='#FF8000'> ", localize "STR_PRODUCTION_ACTION", "</t>"] joinString "",
     "scripts\client\commander\open_production.sqf",
     nil,
     -820,
@@ -305,7 +310,7 @@ _player addAction [
 
 // Logistic
 _player addAction [
-    ["<t color='#FF8000'>", localize "STR_LOGISTIC_ACTION", "</t>"] joinString "",
+    ["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\truck_ca.paa'/><t color='#FF8000'> ", localize "STR_LOGISTIC_ACTION", "</t>"] joinString "",
     "scripts\client\commander\open_logistic.sqf",
     nil,
     -830,
@@ -331,7 +336,7 @@ _player addAction [
 
 // Save progress
 _player addAction [
-    ["<t color='#FFFF00'>", localize "STR_SAVE_PROGRESS_ACTION", "</t>"] joinString "",
+    ["<img size='1' image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_saveas_ca.paa'/><t color='#FFFF00'> ", localize "STR_SAVE_PROGRESS_ACTION", "</t>"] joinString "",
     {[] remoteExec ["KPLIB_fnc_doSave", 2];},
     nil,
     -760,
@@ -358,7 +363,7 @@ _player addAction [
 
 // Resupply Store
 _player addAction [
-    ["<t color='#FFFF00'>", "-- Open Resupply Store", "</t>"] joinString "",
+    ["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\container_ca.paa'/><t color='#FFFF00'>", " Open Resupply Store", "</t>"] joinString "",
     {
         params ["_trader", "_caller", "_actionId", "_arguments"];
 		[cursorObject] call HALs_store_fnc_openStore;
@@ -389,7 +394,7 @@ _player addAction [
 
 // Permissions
 _player addAction [
-    ["<t color='#FF8000'>", localize "STR_COMMANDER_ACTION", "</t><img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/>"] joinString "",
+    ["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\use_ca.paa'/><t color='#FF8000'> ", localize "STR_COMMANDER_ACTION", "</t><img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/>"] joinString "",
     "scripts\client\commander\open_permissions.sqf",
     nil,
     -840,
@@ -410,7 +415,7 @@ _player addAction [
 
 // qualifications
 _player addAction [
-    ["<t color='#FF8000'>", localize "STR_QUALIFICATIONS_ACTION", "</t><img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/>"] joinString "",
+    ["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\use_ca.paa'/><t color='#FF8000'> ", localize "STR_QUALIFICATIONS_ACTION", "</t><img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/>"] joinString "",
     "scripts\client\commander\open_qualification.sqf",
     nil,
     -840,
@@ -429,7 +434,7 @@ _player addAction [
 // Reassign Zeus
 if (player == ([] call KPLIB_fnc_getCommander)) then {
     _player addAction [
-        ["<t color='#FF0000'>", localize "STR_REASSIGN_ZEUS", "</t>"] joinString "",
+        ["<t color='#FF0000'> ", localize "STR_REASSIGN_ZEUS", "</t>"] joinString "",
         {[] call KPLIB_fnc_requestZeus},
         nil,
         -870,
@@ -446,7 +451,7 @@ if (player == ([] call KPLIB_fnc_getCommander)) then {
 
 // Create FOB clearance
 _player addAction [
-    ["<t color='#FFFF00'>", localize "STR_CLEARANCE_ACTION", "</t>"] joinString "",
+    ["<img size='1' image='\A3\ui_f\data\map\mapcontrol\Rock_CA.paa'/><t color='#FFFF00'><t color='#FFFF00'> ", localize "STR_CLEARANCE_ACTION", "</t>"] joinString "",
     {[player getVariable ["KPLIB_fobPos", [0, 0, 0]], GRLIB_fob_range * 0.9, true] call KPLIB_fnc_createClearanceConfirm;},
     nil,
     -850,
@@ -466,7 +471,7 @@ _player addAction [
 
 // Trigger alarm
 _player addAction [
-    ["<t color='#FFFF00'>", "-- Trigger the Alarm", "</t>"] joinString "",
+    ["<img size='1' image='DBUG\pictures\sounds.paa'/><t color='#FFFF00'><t color='#FFFF00'>", " Trigger the Alarm", "</t>"] joinString "",
     {
         _nearfob = [] call KPLIB_fnc_getNearestFob;
         [_nearfob] call KPLIB_fnc_raiseAlarm;
@@ -487,7 +492,7 @@ _player addAction [
 
 // Turn Off alarm
 _player addAction [
-    ["<t color='#FFFF00'>", "-- Turn Off the Alarm", "</t>"] joinString "",
+    ["<img size='1' image='DBUG\pictures\sounds.paa'/><t color='#FFFF00'>", " Turn Off the Alarm", "</t>"] joinString "",
     {
         _nearfob = [] call KPLIB_fnc_getNearestFob;
         [_nearfob] call KPLIB_fnc_turnOffAlarm;
@@ -508,7 +513,7 @@ _player addAction [
 
 // interrogate
 _player addAction [
-    ["<t color='#FFFF00'>", "-- Interrogate", "</t>"] joinString "",
+    ["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Talk_ca.paa'/><t color='#FFFF00'>", " Interrogate", "</t>"] joinString "",
     {
         _intelValue =  cursorObject getVariable ['intel_value',0];
         if (_intelValue>0) then {
@@ -548,7 +553,7 @@ _player addAction [
 
 // Rename vehicle
 _player addAction [
-    ["<t color='#FFFF00'>", "-- Rename vehicle", "</t>"] joinString "",
+    ["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\truck_ca.paa'/><t color='#FFFF00'>", " Rename vehicle", "</t>"] joinString "",
     {
         params ["_trader", "_caller", "_actionId", "_arguments"];
 		    ace_cargo_interactionVehicle = cursorObject;

@@ -25,7 +25,7 @@ buy_fuel={
 
 //buy fuel actions
 _player addAction [
-    ["<t color='#FFFF00'>", "-- Buy Fuel to Fill Fuel Tank", "</t>"] joinString "",
+    ["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\refuel_ca.paa'/><t color='#FFFF00'>", " Buy Fuel to Fill Fuel Tank", "</t>"] joinString "",
     {
 		_amount = getNumber (configFile >> 'CfgVehicles' >> typeof cursorObject >> 'ace_refuel_fuelCargo') - ([cursorObject] call ace_refuel_fnc_getFuel);
     	[cursorObject,_amount] call buy_fuel;
@@ -50,7 +50,7 @@ _player addAction [
 ];
 
 _player addAction [
-    ["<t color='#FFFF00'>", "-- Buy 900 liter Fuel ", "</t>"] joinString "",
+    ["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\refuel_ca.paa'/><t color='#FFFF00'>", " Buy 900 liter Fuel ", "</t>"] joinString "",
     {
 		_amount = 900;
     	[cursorObject,_amount] call buy_fuel;
@@ -75,7 +75,7 @@ _player addAction [
 ];
 
 _player addAction [
-    ["<t color='#FFFF00'>", "-- Buy 3000 liter Fuel ", "</t>"] joinString "",
+    ["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\refuel_ca.paa'/><t color='#FFFF00'>", " Buy 3000 liter Fuel ", "</t>"] joinString "",
     {
 		_amount = 3000;
     	[cursorObject,_amount] call buy_fuel;
@@ -100,7 +100,7 @@ _player addAction [
 ];
 
 _player addAction [
-    ["<t color='#FFFF00'>", "-- Buy 6000 liter Fuel ", "</t>"] joinString "",
+    ["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\refuel_ca.paa'/><t color='#FFFF00'>", " Buy 6000 liter Fuel ", "</t>"] joinString "",
     {
 		_amount = 6000;
     	[cursorObject,_amount] call buy_fuel;

@@ -25,7 +25,7 @@ buy_ammo={
 
 //buy ammo actions
 _player addAction [
-    ["<t color='#FFFF00'>", "-- Buy Ammo to Fill vehicle", "</t>"] joinString "",
+    ["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\rearm_ca.paa'/><t color='#FFFF00'>", " Buy Ammo to Fill vehicle", "</t>"] joinString "",
     {
 		_amount = 1200 - (cursorObject getVariable ["ace_rearm_currentsupply", 0]);
     	[cursorObject,_amount] call buy_ammo;
@@ -50,7 +50,7 @@ _player addAction [
 ];
 
 _player addAction [
-    ["<t color='#FFFF00'>", "-- Buy 600 Ammo ", "</t>"] joinString "",
+    ["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\rearm_ca.paa'/><t color='#FFFF00'>", " Buy 600 Ammo ", "</t>"] joinString "",
     {
 		_amount = 600;
     	[cursorObject,_amount] call buy_ammo;
@@ -76,7 +76,7 @@ _player addAction [
 
 
 _player addAction [
-    ["<t color='#FFFF00'>", "-- Buy 300 Ammo ", "</t>"] joinString "",
+    ["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\rearm_ca.paa'/><t color='#FFFF00'>", " Buy 300 Ammo ", "</t>"] joinString "",
     {
 		_amount = 300;
     	[cursorObject,_amount] call buy_ammo;
@@ -103,7 +103,7 @@ _player addAction [
 
 
 _player addAction [
-    ["<t color='#FFFF00'>", "-- Buy 100 Ammo ", "</t>"] joinString "",
+    ["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\rearm_ca.paa'/><t color='#FFFF00'>", " Buy 100 Ammo ", "</t>"] joinString "",
     {
 		_amount = 100;
     	[cursorObject,_amount] call buy_ammo;
