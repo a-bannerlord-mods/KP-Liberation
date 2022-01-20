@@ -298,6 +298,7 @@ _player addAction [
 			(_originalTarget getVariable ['KPLIB_hasDirectAccess', false]) 
 			|| ([3] call KPLIB_fnc_hasPermission) 
 		) 
+        && (isNull cursorObject || _originalTarget distance cursorObject > 10 )
 		&& {alive _originalTarget} 
 		&& {!(KP_liberation_production isEqualTo [])} 
 		&& { 
@@ -323,6 +324,7 @@ _player addAction [
             _originalTarget getVariable ['KPLIB_hasDirectAccess', false]
             || {[3] call KPLIB_fnc_hasPermission}
         )
+        && (isNull cursorObject || _originalTarget distance cursorObject > 10 )
         && {isNull (objectParent _originalTarget)}
         && {alive _originalTarget}
         && [_originalTarget,0.8] call  KPLIB_fnc_isPlayerNearToFob

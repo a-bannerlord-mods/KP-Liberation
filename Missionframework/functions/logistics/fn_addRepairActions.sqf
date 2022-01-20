@@ -58,7 +58,7 @@ repair_vehicle = {
             _price = (repairable_vehicles select _itemIndex) select 1;
         };
 
-        _cost = _price * (_damage / 100);
+        _cost = (_price * (_damage / 100)) max 20 ;
         _nearfob = [] call KPLIB_fnc_getNearestFob;
         _actual_fob = KP_liberation_fob_resources select {
             ((_x select 0) distance _nearfob) < GRLIB_fob_range
@@ -113,7 +113,7 @@ _player addAction[
             [3] call KPLIB_fnc_hasPermission
         }
     ) &&
-    tolower (typeof cursorObject) in KPLIB_b_allVeh_classes && {
+    tolower (typeof cursorObject) in (KPLIB_b_allVeh_classes + KPLIB_o_allVeh_classes) && {
         isNull(objectParent _originalTarget)
     } 
     && !(cursorObject isKindOf 'Plane') && !(cursorObject isKindOf 'Helicopter')
@@ -141,7 +141,7 @@ _player addAction[
             [3] call KPLIB_fnc_hasPermission
         }
     ) &&
-    tolower (typeof cursorObject) in KPLIB_b_allVeh_classes && {
+    tolower (typeof cursorObject) in (KPLIB_b_allVeh_classes + KPLIB_o_allVeh_classes) && {
         isNull(objectParent _originalTarget)
     } 
     &&  (cursorObject isKindOf 'Helicopter')
@@ -167,7 +167,7 @@ _player addAction[
     ( 
         _originalTarget getVariable['KPLIB_hasDirectAccess', false] || { [3] call KPLIB_fnc_hasPermission     } 
     ) 
-    && tolower (typeof cursorObject) in KPLIB_b_allVeh_classes 
+    && tolower (typeof cursorObject) in (KPLIB_b_allVeh_classes + KPLIB_o_allVeh_classes) 
     && { isNull(objectParent _originalTarget) }  
     && (cursorObject isKindOf 'Plane')  
     && [_originalTarget,1.5] call  KPLIB_fnc_isPlayerNearToFob 

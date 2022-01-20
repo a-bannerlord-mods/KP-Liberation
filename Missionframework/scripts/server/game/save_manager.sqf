@@ -175,7 +175,7 @@ stats_vehicles_recycled = 0;
 
 // Prevent saving/duplication of objects placed in Eden
 {
-    _x setVariable ["KP_liberation_edenObject", true];
+    _x setVariable ["KP_liberation_edenObject", true,true];
 } forEach (allMissionObjects "");
 
 // Get possible save data

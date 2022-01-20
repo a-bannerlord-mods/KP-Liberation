@@ -31,7 +31,7 @@ _squad_camera camcommit 0;
 setPiPEffect[0];
 getmembers = {
     if (player getVariable ['KPLIB_hasDirectAccess', false]) then {
-        (allPlayers select {alive _x}) + (allUnits select {!(isPlayer _x) && ( player distance _x < 800) && (alive _x) && (side _x == GRLIB_side_friendly) && !((typeOf _x) in KPLIB_o_inf_classes)&& !((typeOf _x) in KPLIB_o_sf_classes) && !((typeOf _x) in militia_squad)})
+        (allPlayers select {alive _x}) + (allUnits select {!(isPlayer _x) && (_x isKindOf "man") && !(_x isKindOf "B_UAV_AI") && ( player distance _x < 800) && (alive _x) && (side _x == GRLIB_side_friendly) && !((typeOf _x) in KPLIB_o_inf_classes)&& !((typeOf _x) in KPLIB_o_sf_classes) && !((typeOf _x) in militia_squad)})
     }else{
         ((units group player) select {alive _x})
     };

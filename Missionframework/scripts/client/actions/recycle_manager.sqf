@@ -25,6 +25,7 @@ while {true} do {
             (toLower (typeOf _x)) in KPLIB_upgradeBuildings ||
             (typeOf _x) in KP_liberation_ace_crates) &&
             alive _x &&
+           // !(_x getVariable ["KP_liberation_edenObject",fasle]) &&
             (
                 // ignore null objects left by Advanced Towing
                 // see https://github.com/sethduda/AdvancedTowing/pull/46
