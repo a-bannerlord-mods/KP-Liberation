@@ -144,17 +144,22 @@ air_vehicles = [
 ];
 
 static_vehicles = [
-    ["B_HMG_01_F",25,40,0],                                             // Mk30A HMG .50
-    ["B_HMG_01_high_F",25,40,0],                                        // Mk30 HMG .50 (Raised)
-    ["B_HMG_01_A_F",35,40,0],                                           // Mk30 HMG .50 (Autonomous)
-    ["B_GMG_01_F",35,60,0],                                             // Mk32A GMG 20mm
-    ["B_GMG_01_high_F",35,60,0],                                        // Mk32 GMG 20mm (Raised)
-    ["B_GMG_01_A_F",45,60,0],                                           // Mk32 GMG 20mm (Autonomous)
-    ["B_static_AT_F",50,100,0],                                         // Static Titan Launcher (AT)
-    ["B_static_AA_F",50,100,0],                                         // Static Titan Launcher (AA)
-    ["B_Mortar_01_F",80,150,0],                                         // Mk6 Mortar
-    ["RHS_M119_WD",100,200,0],                                          // M119A2
-    ["B_SAM_System_03_F",250,500,0]                                     // MIM-145 Defender
+    ["B_SAM_System_03_F",2500,800,200],                                   
+    ["LOP_IA_Static_DSHKM", 100,50,0],
+    ["LOP_IA_M119", 250,80,0],
+    ["LOP_IA_Static_M2", 140,50,0],
+    ["LOP_IA_ZU23", 300,120,0],
+    ["RHS_Stinger_AA_pod_D", 200,80,0],
+    ["RHS_M2StaticMG_D", 160,60,0],
+    ["RHS_TOW_TriPod_D", 300,100,0],
+    ["UK3CB_O_SearchlightAA_CSAT_B", 20,0,0],
+    ["UK3CB_O_Searchlight_CSAT_B", 20,0,0],
+    ["LOP_IRA_Igla_AA_pod", 250,80,0],
+    ["rhssaf_army_o_metis_9k115", 300,100,0],
+    ["rhssaf_army_o_nsv_tripod", 120,50,0],
+    ["LOP_SYR_Kord_High", 140,60,0],
+    ["rhsgref_ins_SPG9M", 180,50,0],
+    ["UK3CB_NFA_O_PKM_nest_des",200,80,0]
 ];
 
 buildings = [

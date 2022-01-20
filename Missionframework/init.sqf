@@ -75,3 +75,5 @@ if (isServer) then {
 
 //AI artillery
 [] execVM "modules\RYD_FFE\FFE.sqf";
+
+execVM "custom\scripts\shared\init_shared.sqf";

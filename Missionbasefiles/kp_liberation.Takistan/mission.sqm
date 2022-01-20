@@ -12,7 +12,7 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=7358;
+		nextID=7385;
 	};
 	class MarkerIDProvider
 	{
@@ -20,14 +20,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=1440;
+		nextID=1475;
 	};
 	class Camera
 	{
-		pos[]={8284.123,308.24286,2062.6467};
-		dir[]={-0.1741218,-0.55284423,-0.8149268};
-		up[]={-0.11551797,0.83327651,-0.5406428};
-		aside[]={-0.97796017,1.3701356e-007,0.20895532};
+		pos[]={8343.5029,319.47821,2076.6162};
+		dir[]={0.38788,-0.41141957,-0.82484388};
+		up[]={0.17508778,0.91143376,-0.37233183};
+		aside[]={-0.90497464,5.9255399e-008,-0.42556071};
 	};
 };
 binarizationWanted=0;
@@ -155,7 +155,6 @@ addons[]=
 	"Jbad_A_BuildingWIP",
 	"Jbad_Ind_Oil_Mine",
 	"Jbad_trailers",
-	"emr_main",
 	"ace_logistics_wirecutter",
 	"UK3CB_Factions_Common_Editor",
 	"alive_main",
@@ -165,7 +164,7 @@ class AddonsMetaData
 {
 	class List
 	{
-		items=77;
+		items=76;
 		class Item0
 		{
 			className="A3_Modules_F_Curator";
@@ -625,32 +624,25 @@ class AddonsMetaData
 		};
 		class Item72
 		{
-			className="emr_main";
-			name="Enhanced Movement Rework";
-			author="Simplex Team";
-			url="https://github.com/SceptreOfficial/Enhanced-Movement-Rework";
-		};
-		class Item73
-		{
 			className="ace_logistics_wirecutter";
 			name="ACE3 - Logistics Wire Cutter";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item74
+		class Item73
 		{
 			className="UK3CB_Factions_Common";
 			name="3CB Factions - Common";
 			author="3 Commando Brigade";
 			url="www.3commandobrigade.com";
 		};
-		class Item75
+		class Item74
 		{
 			className="ALiVE_main";
 			name="alive_main";
 			author="ALiVE Mod Team";
 		};
-		class Item76
+		class Item75
 		{
 			className="ALiVE_sys_data";
 			name="alive_sys_data";
@@ -31397,7 +31389,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={8247.2295,296.91336,2124.7546};
+						position[]={8246.6162,296.91336,2124.9854};
 						angles[]={0,4.4312549,0};
 					};
 					side="Empty";
@@ -33799,7 +33791,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={7990.7964,298.7431,1999.8959};
+						position[]={7988.4126,298.7431,2000.9962};
 						angles[]={0.00060935668,4.2029018,0.0021528378};
 					};
 					side="Empty";
@@ -40740,18 +40732,18 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={8132.5366,299.46722,2102.8201};
-						angles[]={0,4.3685765,0};
+						position[]={8132.5366,300.33594,2102.8201};
+						angles[]={0.0032018756,4.3685765,0};
 					};
 					side="Empty";
-					flags=5;
+					flags=1;
 					class Attributes
 					{
 						name="Loudspeaker_1";
 					};
 					id=6010;
 					type="Land_Loudspeakers_F";
-					atlOffset=-0.066925049;
+					atlOffset=0.80178833;
 				};
 				class Item266
 				{

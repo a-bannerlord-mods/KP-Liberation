@@ -43,12 +43,12 @@ if (isServer) then {
         _ace_killer_type  = _unit getVariable ["ace_killer_type",""];
         switch (_ace_killer_type) do {
             case "": { 
-                    if ((toLower (typeOf (vehicle _killer))) in KPLIB_allLandVeh_classes || (vehicle _ace_killer ) isKindOf "Tank") then  {
+                    if ((toLower (typeOf (vehicle _killer))) in KPLIB_allLandVeh_classes || (vehicle _killer) isKindOf "Tank") then  {
                         infantry_weight = infantry_weight - 0.66;
                         armor_weight = armor_weight + 1;
                         air_weight = air_weight - 0.66;
                     }else{
-                        if ((toLower (typeOf (vehicle _killer))) in KPLIB_allAirVeh_classes || (vehicle _ace_killer ) isKindOf "Plane" || (vehicle _ace_killer ) isKindOf "Helicopter"  ) then  {
+                        if ((toLower (typeOf (vehicle _killer))) in KPLIB_allAirVeh_classes || (vehicle _killer) isKindOf "Plane" || (vehicle _killer) isKindOf "Helicopter"  ) then  {
                             infantry_weight = infantry_weight - 0.66;
                             armor_weight = armor_weight - 0.66;
                             air_weight = air_weight + 1;

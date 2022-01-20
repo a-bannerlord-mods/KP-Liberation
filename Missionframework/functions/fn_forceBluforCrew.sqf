@@ -69,24 +69,25 @@ if ((side _grp) != GRLIB_side_friendly) then {
 
 {
     _unit = _x;
+    if !(isplayer _unit) then {
+        _loadout = [];
+        if ((!isnil "KPLIB_Units_Override_tank_crew_Loadout") && _veh isKindOf "Tank") then {
+            _loadout = KPLIB_Units_Override_tank_crew_Loadout;
+        }else{
+            _loadout = KPLIB_Units_Override_car_crew_Loadout;
+        };
 
-    _loadout = [];
-    if ((!isnil "KPLIB_Units_Override_car_crew_Loadout") && _veh isKindOf "Car") then {
-        _loadout = KPLIB_Units_Override_car_crew_Loadout;
-    };
-    if ((!isnil "KPLIB_Units_Override_tank_crew_Loadout") && _veh isKindOf "Tank") then {
-        _loadout = KPLIB_Units_Override_tank_crew_Loadout;
-    };
-
-    if (count _loadout > 0) then {
-        _unit setUnitLoadout _loadout;
-    };
-    
-    if (!isnil "KPLIB_Units_Override_crew_Names") then {
-        _fnames = KPLIB_Units_Override_crew_Names select 0;
-        _snames = KPLIB_Units_Override_crew_Names select 1;
-        if (count _fnames > 0 && count _snames > 0) then {
-            [_unit, _fnames, _snames] call set_random_crew_name;
+        
+        if (count _loadout > 0) then {
+            _unit setUnitLoadout _loadout;
+        };
+        
+        if (!isnil "KPLIB_Units_Override_crew_Names") then {
+            _fnames = KPLIB_Units_Override_crew_Names select 0;
+            _snames = KPLIB_Units_Override_crew_Names select 1;
+            if (count _fnames > 0 && count _snames > 0) then {
+                [_unit, _fnames, _snames] call set_random_crew_name;
+            };
         };
     };
     

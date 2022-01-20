@@ -2,7 +2,13 @@
     params ["_unit", "_isUnconscious"];
     if (_isUnconscious) then {
         if (isplayer _unit) then {
-            _unit setVariable ["ace_medical_deathblocked", true, true ];
+            _unconscious_time= _unit getVariable ["unconscious_time",0];
+            if (_unconscious_time>3) then {
+                _unit setVariable ["ace_medical_deathblocked", false, true ];
+                _unit setVariable ["unconscious_time", 0, true ];
+            } else {
+                _unit setVariable ["unconscious_time", (_unconscious_time +1), true ];
+            };
         } else {
             if (isServer || (local _unit)) then {
                 _ace_killer  = _unit getVariable ["ace_medical_lastinstigator",objNull];
