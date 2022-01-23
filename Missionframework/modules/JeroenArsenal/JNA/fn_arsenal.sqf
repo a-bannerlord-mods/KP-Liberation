@@ -2480,7 +2480,7 @@ switch _mode do {
 
      ///////////////////////////////////////////////////////////////////////////////////////////
     case "buttonRearmGear":{
-         pr _object = uiNamespace getVariable "jn_object";
+        pr _object = uiNamespace getVariable "jn_object";
 
         [_object] call jn_fnc_arsenal_rearmInventory;
         // pr _object = UINamespace getVariable "jn_object";

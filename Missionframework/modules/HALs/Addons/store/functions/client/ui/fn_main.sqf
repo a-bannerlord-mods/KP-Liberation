@@ -555,12 +555,22 @@ switch (_mode) do {
 
 
 						_sell = cbChecked CTRL(IDC_CHECKBOX + 3);
+
+						_container = CTRLT(IDC_BUY_ITEM_COMBO) getVariable "container";
+						_dataList =  _container getVariable ["jna_datalist", []] ;
+						_stockAvl = 0 ; 
+						if ((count _dataList)>0) then {
+							private _indexAcc = _classname call jn_fnc_arsenal_itemType;
+							_stockAvl =  [_classname, _dataList select _indexAcc] call jn_fnc_arsenal_itemCount;
+						};
+
 						_stockText = format [
 							"<t shadow='2' font ='PuristaMedium' color='%1'>%2</t>%3",
-							["#DD2626", "#A0DF3B"] select (_stock > 0),
-							[[localize "STR_HALS_STORE_TEXT_NOSTOCK", localize "STR_HALS_STORE_TEXT_INSTOCK"] select (_stock > 0), "AVAILABLE"] select _sell,
-							["", ":  " + (_stock call HALs_fnc_numberToString)] select (_stock > 0)
+							["#DD2626", "#A0DF3B"] select (_stockAvl > 0),
+							[[localize "STR_HALS_STORE_TEXT_NOSTOCK", localize "STR_HALS_STORE_TEXT_INSTOCK"] select (_stockAvl > 0), "AVAILABLE"] select _sell,
+							["", ":  " + (_stockAvl call HALs_fnc_numberToString)] select (_stockAvl > 0)
 						];
+
 						_price = (_ctrlList lbValue _idx) * ([1, HALs_store_sellFactor min 1 max 0] select _sell);
 						
 						CTRLS(IDC_ITEM_PICTURE) ctrlSetText (_ctrlList lbPicture _idx);

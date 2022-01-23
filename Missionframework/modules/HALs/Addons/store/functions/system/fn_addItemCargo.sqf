@@ -31,3 +31,8 @@ switch ([_classname] call HALs_store_fnc_getItemType) do {
 	case 4: {_container addItemCargoGlobal [_classname, _amount]};
 	default {};
 };
+
+_dataList =  _container getVariable ["jna_datalist", []] ;
+if ((count _dataList)>0) then {
+	[_container,_container] call jn_fnc_arsenal_cargoToArsenal;
+};

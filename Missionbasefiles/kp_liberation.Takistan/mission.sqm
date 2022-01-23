@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={8106.2959,316.52789,1997.6125};
-		dir[]={-0.82068312,-0.51700532,0.24327949};
-		up[]={-0.49568504,0.85598218,0.14693856};
-		aside[]={0.28421092,0,0.95876193};
+		pos[]={8079.4585,410.39221,1863.8439};
+		dir[]={0.46824089,-0.53499085,0.70323789};
+		up[]={0.29650396,0.84485489,0.4453119};
+		aside[]={0.83237308,-1.5494879e-007,-0.55422372};
 	};
 };
 binarizationWanted=0;
@@ -738,7 +738,7 @@ class CustomAttributes
 								};
 								class value
 								{
-									items=391;
+									items=395;
 									class Item0
 									{
 										class data
@@ -6213,6 +6213,62 @@ class CustomAttributes
 											value="sss_setting_milsimmodelogistics";
 										};
 									};
+									class Item391
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"STRING"
+												};
+											};
+											value="cbrn_exposurecoughthreshold";
+										};
+									};
+									class Item392
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"STRING"
+												};
+											};
+											value="cbrn_exposurelimpthreshold";
+										};
+									};
+									class Item393
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"STRING"
+												};
+											};
+											value="cbrn_exposureknockoutthreshold";
+										};
+									};
+									class Item394
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"STRING"
+												};
+											};
+											value="cbrn_exposuredeaththreshold";
+										};
+									};
 								};
 							};
 						};
@@ -6229,7 +6285,7 @@ class CustomAttributes
 								};
 								class value
 								{
-									items=391;
+									items=395;
 									class Item0
 									{
 										class data
@@ -22569,7 +22625,7 @@ class CustomAttributes
 																"SCALAR"
 															};
 														};
-														value=65;
+														value=50;
 													};
 												};
 												class Item1
@@ -24100,6 +24156,186 @@ class CustomAttributes
 															};
 														};
 														value=1;
+													};
+												};
+												class Item1
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"SCALAR"
+															};
+														};
+														value=1;
+													};
+												};
+											};
+										};
+									};
+									class Item391
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"ARRAY"
+												};
+											};
+											class value
+											{
+												items=2;
+												class Item0
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"SCALAR"
+															};
+														};
+														value=5;
+													};
+												};
+												class Item1
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"SCALAR"
+															};
+														};
+														value=1;
+													};
+												};
+											};
+										};
+									};
+									class Item392
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"ARRAY"
+												};
+											};
+											class value
+											{
+												items=2;
+												class Item0
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"SCALAR"
+															};
+														};
+														value=10;
+													};
+												};
+												class Item1
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"SCALAR"
+															};
+														};
+														value=1;
+													};
+												};
+											};
+										};
+									};
+									class Item393
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"ARRAY"
+												};
+											};
+											class value
+											{
+												items=2;
+												class Item0
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"SCALAR"
+															};
+														};
+														value=20;
+													};
+												};
+												class Item1
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"SCALAR"
+															};
+														};
+														value=1;
+													};
+												};
+											};
+										};
+									};
+									class Item394
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"ARRAY"
+												};
+											};
+											class value
+											{
+												items=2;
+												class Item0
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"SCALAR"
+															};
+														};
+														value=0;
 													};
 												};
 												class Item1
