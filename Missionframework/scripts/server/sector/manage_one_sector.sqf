@@ -81,7 +81,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
 
         _total =   infantry_weight+  armor_weight+  air_weight;
         _static_mg = ceil(4 + ((ceil(combat_readiness - 20)/20) * (1 + (infantry_weight/_total))));
-        _static_mg_heavy = (4 max ceil(((combat_readiness * (infantry_weight / _total))/10))) min 8;
+        _static_mg_heavy = (2 max ceil(((combat_readiness * (infantry_weight / _total))/10))) min 4;
         _static_at = ceil(3 + ((ceil(combat_readiness - 20)/20) * (1 + (armor_weight/_total))));
 
         if (air_weight>35 || combat_readiness > 50 ) then {
@@ -321,7 +321,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         
         _total =   infantry_weight+  armor_weight+  air_weight;
         _static_mg = ceil(3 + ((ceil(combat_readiness - 20)/20) * (1 + (infantry_weight/_total))));
-        _static_mg_heavy = (4 max ceil(((combat_readiness * (infantry_weight / _total))/10))) min 10;
+        _static_mg_heavy = (2 max ceil(((combat_readiness * (infantry_weight / _total))/10))) min 5;
         _static_at = ceil(2 + ((ceil(combat_readiness - 30)/20) * (1 + (armor_weight/_total))));
         
         if (air_weight>30 || combat_readiness > 40) then {
@@ -1098,10 +1098,10 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
             
             _stopit = true;
 
-            {
-                [_x] spawn prisonner_ai;
-            }
-            forEach((markerPos _sector) nearEntities[["Man"], _local_capture_size * 1.2]);
+            // {
+            //     [_x] spawn prisonner_ai;
+            // }
+            // forEach((markerPos _sector) nearEntities[["Man"], _local_capture_size * 1.2]);
 
             sleep 5;
 

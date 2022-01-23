@@ -100,6 +100,7 @@ class KPLIB {
         class sectorCanBeActivated          {};
         class raiseAlarm                    {};
         class turnOffAlarm                  {};
+        class applyUnitAnimations           {};
     };
     class functions_curator {
         file = "functions\curator";

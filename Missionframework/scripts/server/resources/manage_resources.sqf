@@ -41,17 +41,18 @@ while {GRLIB_endgame == 0} do {
 
                     if ((_time - 1) < 1) then {
                         _time = KP_liberation_production_interval;
-
+                        _amountToProduce = 25;
                         if (((count (attachedObjects _storage)) < 12) && !((_x select 7) == 3)) then {
                             private _crateType = KP_liberation_supply_crate;
                             switch (_x select 7) do {
-                                case 1: {_crateType = KP_liberation_ammo_crate; stats_ammo_produced = stats_ammo_produced + 500;};
-                                case 2: {_crateType = KP_liberation_fuel_crate; stats_fuel_produced = stats_fuel_produced + 500;};
-                                default {_crateType = KP_liberation_supply_crate; stats_supplies_produced = stats_supplies_produced + 500;};
+                                case 1: {_crateType = KP_liberation_ammo_crate; stats_ammo_produced = stats_ammo_produced + _amountToProduce;};
+                                case 2: {_crateType = KP_liberation_fuel_crate; stats_fuel_produced = stats_fuel_produced + _amountToProduce;};
+                                default {_crateType = KP_liberation_supply_crate; stats_supplies_produced = stats_supplies_produced + _amountToProduce;};
                             };
 
-                            private _crate = [_crateType, 500, getPosATL _storage] call KPLIB_fnc_createCrate;
+                            private _crate = [_crateType, _amountToProduce, getPosATL _storage] call KPLIB_fnc_createCrate;
                             [_crate, _storage] call KPLIB_fnc_crateToStorage;
+                            [_storage] call KPLIB_fnc_sortStorage;
                         };
                     } else {
                         _time = _time - 1;

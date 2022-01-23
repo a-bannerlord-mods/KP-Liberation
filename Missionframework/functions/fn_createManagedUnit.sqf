@@ -44,6 +44,9 @@ isNil {
             [_this] call KPLIB_fnc_applyCustomUnitSettings;
             [_this] call KPLIB_fnc_addObjectInit;
         };
+
+    [_unit] call KPLIB_fnc_applyUnitAnimations;
+
     _unit setVariable ["original_side",side _group];
     if ((tolower _type ) in KPLIB_o_inf_classes ) then {
         _unit setVariable ["intel_value",random [1,2,3],true];

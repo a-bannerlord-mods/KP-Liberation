@@ -333,7 +333,10 @@ while { true } do {
                 if (getNumber (configFile >> "CfgVehicles" >> typeof _vehicle >> "ace_refuel_fuelCargo") > 0) then {
                     [_vehicle, 0] call ace_refuel_fnc_setFuel;
                 };
-
+                
+                if (_classname in civilian_vehicles) then {
+                    _vehicle setVariable ["KPLIB_seized", true,true];
+                };
 
 
                 [_vehicle] call KPLIB_fnc_addObjectInit;

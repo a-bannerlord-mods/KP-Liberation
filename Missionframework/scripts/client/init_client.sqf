@@ -62,6 +62,8 @@ player addEventHandler ["GetInMan", {[_this select 2] call kp_vehicle_permission
 player addEventHandler ["SeatSwitchedMan", {[_this select 2] call kp_vehicle_permissions;}];
 player addEventHandler ["HandleRating", {if ((_this select 1) < 0) then {0};}];
 
+[player] call KPLIB_fnc_applyUnitAnimations;
+
 // Disable stamina, if selected in parameter
 if (!GRLIB_fatigue) then {
     player enableStamina false;
@@ -75,6 +77,7 @@ if (!KPLIB_sway) then {
 };
 
 execVM "scripts\client\ui\intro.sqf";
+
 
 [player] joinSilent (createGroup [GRLIB_side_friendly, true]);
 

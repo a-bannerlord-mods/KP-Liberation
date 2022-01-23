@@ -6,10 +6,6 @@ class EditorData
 	scaleGridStep=1;
 	autoGroupingDist=10;
 	toggles=522;
-	mods[]=
-	{
-		"3denEnhanced"
-	};
 	class ItemIDProvider
 	{
 		nextID=7385;
@@ -20,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=1475;
+		nextID=1545;
 	};
 	class Camera
 	{
-		pos[]={8343.5029,319.47821,2076.6162};
-		dir[]={0.38786355,-0.41140223,-0.82480925};
-		up[]={0.17506966,0.9114539,-0.37229347};
-		aside[]={-0.90493798,1.4901161e-008,-0.42554379};
+		pos[]={8118.0586,352.43729,1591.8708};
+		dir[]={-0.21133341,-0.61029077,-0.76346779};
+		up[]={-0.16281039,0.7921775,-0.58817309};
+		aside[]={-0.96375853,0,0.26677522};
 	};
 };
 binarizationWanted=0;
@@ -155,6 +151,7 @@ addons[]=
 	"Jbad_A_BuildingWIP",
 	"Jbad_Ind_Oil_Mine",
 	"Jbad_trailers",
+	"emr_main",
 	"ace_logistics_wirecutter",
 	"UK3CB_Factions_Common_Editor",
 	"alive_main",
@@ -164,7 +161,7 @@ class AddonsMetaData
 {
 	class List
 	{
-		items=76;
+		items=77;
 		class Item0
 		{
 			className="A3_Modules_F_Curator";
@@ -624,25 +621,32 @@ class AddonsMetaData
 		};
 		class Item72
 		{
+			className="emr_main";
+			name="Enhanced Movement Rework";
+			author="Simplex Team";
+			url="https://github.com/SceptreOfficial/Enhanced-Movement-Rework";
+		};
+		class Item73
+		{
 			className="ace_logistics_wirecutter";
 			name="ACE3 - Logistics Wire Cutter";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item73
+		class Item74
 		{
 			className="UK3CB_Factions_Common";
 			name="3CB Factions - Common";
 			author="3 Commando Brigade";
 			url="www.3commandobrigade.com";
 		};
-		class Item74
+		class Item75
 		{
 			className="ALiVE_main";
 			name="alive_main";
 			author="ALiVE Mod Team";
 		};
-		class Item75
+		class Item76
 		{
 			className="ALiVE_sys_data";
 			name="alive_sys_data";
@@ -54394,7 +54398,7 @@ class Mission
 									"SCALAR"
 								};
 							};
-							value=75;
+							value=100;
 						};
 					};
 				};
@@ -54470,7 +54474,7 @@ class Mission
 									"BOOL"
 								};
 							};
-							value=0;
+							value=1;
 						};
 					};
 				};
@@ -54508,7 +54512,7 @@ class Mission
 									"BOOL"
 								};
 							};
-							value=0;
+							value=1;
 						};
 					};
 				};
@@ -54565,7 +54569,7 @@ class Mission
 									"BOOL"
 								};
 							};
-							value=0;
+							value=1;
 						};
 					};
 				};
@@ -54603,7 +54607,7 @@ class Mission
 									"BOOL"
 								};
 							};
-							value=1;
+							value=0;
 						};
 					};
 				};

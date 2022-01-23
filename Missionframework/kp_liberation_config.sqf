@@ -214,20 +214,20 @@ GRLIB_secondary_objective_impact = 0.6;                                 // The p
 GRLIB_recycling_percentage = 0.5;                                       // Percentage of resources you get back from recycling.
 KP_liberation_production_interval = 30;                                 // Time in minutes until a production process is finished, when resources multiplier is set to 1.
 
-GRLIB_sector_size = 1000;                                               // Range to activate a sector.
+GRLIB_sector_size = 1200;                                               // Range to activate a sector.
 GRLIB_long_range_sector_spawn_radius_multiplier = 3;                    // Range multiplier to activate long range sectors like SAM and mortar.
-GRLIB_capture_size = 175;                                               // Range to capture a sector.
-GRLIB_defended_buildingpos_part = 0.4;                                  // Multiplier for defenders in buildings.
+GRLIB_capture_size = 225;                                               // Range to capture a sector.
+GRLIB_defended_buildingpos_part = 0.6;                                  // Multiplier for defenders in buildings.
 GRLIB_battlegroup_size = 8;                                             // Size of enemy battlegroups.
 GRLIB_vulnerability_timer = 1200;                                       // Time in seconds how long a captured sector is vulnerable to enemy troops.
-GRLIB_radiotower_size = 2500;                                           // Radio Tower scanning range.
+GRLIB_radiotower_size = 2800;                                           // Radio Tower scanning range.
 GRLIB_surrender_chance = 80;                                            // Chance that enemy infantry will surrender after heavy losses are encountered.
 
-GRLIB_civilians_amount = 10;                                            // Civilian count multiplier.
+GRLIB_civilians_amount = 15;                                            // Civilian count multiplier.
 GRLIB_cleanup_delay = 1200;                                             // Time in seconds until bodies of dead soldiers are cleaned up.
 
 GRLIB_blufor_cap = 100;                                                 // Cap for BLUFOR.
-GRLIB_sector_cap = 240;                                                 // Cap for sector defenders.
+GRLIB_sector_cap = 250;                                                 // Cap for sector defenders.
 GRLIB_battlegroup_cap = 150;                                            // Cap for enemy battlegroups.
 GRLIB_patrol_cap = 150;                                                 // Cap for enemy patrols.
 
@@ -236,8 +236,8 @@ KP_liberation_cr_building_penalty = 3;                                  // Civil
 KP_liberation_cr_vehicle_penalty = 2;                                   // Civil Reputation penalty for stealing a civilian vehicle.
 KP_liberation_cr_resistance_penalty = 3;                                // Civil Reputation penalty for killing a friendly resistance soldier.
 KP_liberation_cr_sector_gain = 5;                                       // Civil Reputation gain for liberate a sector.
-KP_liberation_cr_wounded_chance = 35;                                   // Chance (0-100) that there are wounded civilians right after capturing a sector.
-KP_liberation_cr_wounded_gain = 2;                                      // Civil Reputation gain for providing medical assistance for wounded civilians.
+KP_liberation_cr_wounded_chance = 60;                                   // Chance (0-100) that there are wounded civilians right after capturing a sector.
+KP_liberation_cr_wounded_gain = 5;                                      // Civil Reputation gain for providing medical assistance for wounded civilians.
 
 KP_liberation_civinfo_min = 5400;                                       // Civil Informant minimum spawn time. (seconds)
 KP_liberation_civinfo_max = 10800;                                      // Civil Informant maximum spawn time. (seconds)
@@ -1160,7 +1160,7 @@ KP_liberation_small_storage_positions = [
 
 // DO NOT CHANGE (unless you know what you are doing).
 GRLIB_endgame = 0;
-KP_liberation_production_interval = (ceil (KP_liberation_production_interval / GRLIB_resources_multiplier)) * 10;
+KP_liberation_production_interval = (ceil (KP_liberation_production_interval / GRLIB_resources_multiplier));
 GRLIB_battlegroup_size = GRLIB_battlegroup_size * (sqrt GRLIB_unitcap) * (sqrt GRLIB_csat_aggressivity);
 GRLIB_civilians_amount = GRLIB_civilians_amount * GRLIB_civilian_activity;
 GRLIB_blufor_cap = (GRLIB_blufor_cap * GRLIB_unitcap) min 100;
@@ -1196,6 +1196,12 @@ KPLIB_C130_halo_devices =  [
     "MapBoard_stratis_F",
     "MapBoard_seismic_F"
     ];
+
+//animation config
+KPLIB_Allow_Player_Hit_Animations = true;
+KPLIB_Allow_AI_Hit_Animations = true;
+KPLIB_Allow_Player_Unconscious_Animations = true;
+KPLIB_Allow_AI_Unconscious_Animations = true;
 
 //when the SAM Radars Active
 KP_Radars_Enable_On_Combat_Readiness_Above = 20;
