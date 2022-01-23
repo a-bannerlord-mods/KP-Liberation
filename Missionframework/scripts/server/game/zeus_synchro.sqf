@@ -29,6 +29,7 @@ while {true} do {
             || {side (group _x) isEqualTo GRLIB_side_friendly}                                  // Player side if enemy adding is disabled
         }
         && {((str _x) find "BIS_SUPP_HQ_") isEqualTo -1}                                        // Not a HQ entity from support module
+        && !( _x isKindOf "B_TargetSoldier")                                    
     };
 
     // Add vehicles
@@ -48,14 +49,14 @@ while {true} do {
 
     {
         // Remove death or attached units
-        _toRemove = ((curatorEditableObjects _x) select {!(alive _x) || !(isNull (attachedTo _x))});
+        _toRemove = ((curatorEditableObjects _x) select {!(alive _x) || ( _x isKindOf "B_TargetSoldier") || !(isNull (attachedTo _x))});
 
         // Filter already added units of this curator
         _toAdd = _valids - (curatorEditableObjects _x);
-
+        _toAdd = _toAdd - _toRemove;
         // Add and remove units
         _x addCuratorEditableObjects [_toAdd, true];
         _x removeCuratorEditableObjects [_toRemove, true];
     } forEach allCurators;
-    sleep 9;
+    sleep 20;
 };

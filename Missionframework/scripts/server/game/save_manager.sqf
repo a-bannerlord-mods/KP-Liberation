@@ -125,6 +125,7 @@ KPLIB_classnamesToSave append KPLIB_o_allVeh_classes;
 KPLIB_classnamesToSave append civilian_vehicles;
 KPLIB_classnamesToSave append KP_liberation_Command_Devices;
 
+
 // Remove duplicates
 KPLIB_classnamesToSave = KPLIB_classnamesToSave arrayIntersect KPLIB_classnamesToSave;
 
@@ -402,6 +403,12 @@ if (!isNil "_saveData") then {
             // Add blufor crew, if it had crew or is a UAV
             if ((unitIsUAV _object) || _hascrew) then {
                 [_object] call KPLIB_fnc_forceBluforCrew;
+            };
+
+            if (_object isKindOf "LandVehicle"|| _object isKindOf "Air"  || _object isKindOf "Ship" ) then {
+                if !((typeof _object) in civilian_vehicles) then {
+                    [_object] call KPLIB_fnc_makeObjectDestroyable;
+                };
             };
 
             [_object,_extraData] call KPLIB_fnc_setObjectExtraDataFromSave;

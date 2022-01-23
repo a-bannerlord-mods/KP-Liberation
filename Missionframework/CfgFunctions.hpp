@@ -101,6 +101,7 @@ class KPLIB {
         class raiseAlarm                    {};
         class turnOffAlarm                  {};
         class applyUnitAnimations           {};
+        class makeObjectDestroyable         {};
     };
     class functions_curator {
         file = "functions\curator";

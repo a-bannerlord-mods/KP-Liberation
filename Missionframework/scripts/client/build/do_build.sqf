@@ -338,6 +338,11 @@ while { true } do {
                     _vehicle setVariable ["KPLIB_seized", true,true];
                 };
 
+                if (_vehicle isKindOf "LandVehicle"|| _vehicle isKindOf "Air"  || _vehicle isKindOf "Ship" ) then {
+                    if !(_classname in  civilian_vehicles) then {
+                        [_vehicle] call KPLIB_fnc_makeObjectDestroyable;
+                    };
+                };
 
                 [_vehicle] call KPLIB_fnc_addObjectInit;
 
