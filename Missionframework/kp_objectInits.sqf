@@ -188,5 +188,4 @@ KPLIB_objectInits = [
         },
         true
     ]
-
 ];

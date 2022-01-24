@@ -3,7 +3,7 @@
 if (isClass(configFile >> "CfgPatches" >> "task_force_radio") && KPLIB_Enable_TFAR_compatibility)  exitwith {
 
 _article =	format ["
-<br/><br/><t color='#00ff00'>Short Range:</t><br/>;                               
+<br/><br/><t color='#00ff00'>Short Range:</t><br/>                              
 -    %1 (Ch.1) :  %17 <br/>
 -    %2 (Ch.2) :  %18 <br/>
 -    %3 (Ch.3) :  %19 <br/>
@@ -12,7 +12,7 @@ _article =	format ["
 -    %6 (Ch.6) :  %22 <br/>
 -    %7 (Ch.7) :  %23 <br/>
 -    %8 (Ch.8) :  %24 <br/>
-<br/><br/><t color='#00ff00'>Long Range:</t><br/>;  
+<br/><br/><t color='#00ff00'>Long Range:</t><br/>
 -    %9  (Ch.1) :   %25 <br/>
 -    %10 (Ch.2) :	%26 <br/>  
 -    %11 (Ch.3) :	%27	<br/>

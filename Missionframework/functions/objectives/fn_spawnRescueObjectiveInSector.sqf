@@ -53,6 +53,7 @@ if (count _cached_objectives > 0 ) then {
     _unit disableAI "PATH";
     [_id,[_unit],1,getPos startbase] spawn KPLIB_fnc_captureObjective;
     _unit setVariable ["is_objective",true,true];
+    _unit setVariable["ace_medical_deathblocked", true, true];
     _managed_units = _managed_units + [_unit];
 };
 

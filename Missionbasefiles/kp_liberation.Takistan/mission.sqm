@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={8079.4585,410.39221,1863.8439};
-		dir[]={0.46824089,-0.53499085,0.70323789};
-		up[]={0.29650396,0.84485489,0.4453119};
-		aside[]={0.83237308,-1.5494879e-007,-0.55422372};
+		pos[]={8239.8955,300.577,2170.9636};
+		dir[]={0.28451693,-0.66302186,-0.69246596};
+		up[]={0.25198132,0.74858874,-0.61328143};
+		aside[]={-0.92499357,-1.2456439e-008,-0.38005733};
 	};
 };
 binarizationWanted=0;
@@ -63280,17 +63280,17 @@ class Mission
 							dataType="Object";
 							class PositionInfo
 							{
-								position[]={8241.5381,297.48929,2158.0212};
-								angles[]={0,2.801775,0};
+								position[]={8241.5459,297.48895,2157.967};
+								angles[]={0,2.8017771,0};
 							};
 							side="Empty";
 							class Attributes
 							{
-								init="call{ this attachTo [baseChair3];" \n " this setdir ((getdir baseChair3 +90));" \n "}";
+								init="call{ this attachTo [baseChair3];" \n " this setdir ((getdir baseChair3 +185));" \n " this setvariable [""gunner_radio_settings"",[0,7,[""40.1"",""41.1"",""42.1"",""43.1"",""44.1"",""45.1"",""46.1"",""47.1"",""48.1""],0,""_bluefor"",-1,0,false]];" \n "" \n "}";
 							};
 							id=7439;
 							type="vurtual_seat";
-							atlOffset=0.34234619;
+							atlOffset=0.3420105;
 							class CustomAttributes
 							{
 								class Attribute0
@@ -63382,7 +63382,7 @@ class Mission
 																			"SCALAR"
 																		};
 																	};
-																	value=0;
+																	value=1;
 																};
 															};
 														};
@@ -63400,17 +63400,17 @@ class Mission
 							dataType="Object";
 							class PositionInfo
 							{
-								position[]={8239.9482,297.48929,2157.3589};
-								angles[]={0,2.801775,0};
+								position[]={8239.96,297.48895,2157.3169};
+								angles[]={0,2.8017771,0};
 							};
 							side="Empty";
 							class Attributes
 							{
-								init="call{this attachTo [baseChair2];" \n "this setdir ((getdir baseChair2 +90));" \n "}";
+								init="call{this attachTo [baseChair2];" \n "this setdir ((getdir baseChair2 +187));" \n " this setvariable [""gunner_radio_settings"",[0,7,[""40.1"",""41.1"",""42.1"",""43.1"",""44.1"",""45.1"",""46.1"",""47.1"",""48.1""],0,""_bluefor"",-1,0,false]];" \n "" \n "}";
 							};
 							id=7440;
 							type="vurtual_seat";
-							atlOffset=0.34234619;
+							atlOffset=0.3420105;
 							class CustomAttributes
 							{
 								class Attribute0
@@ -63502,7 +63502,7 @@ class Mission
 																			"SCALAR"
 																		};
 																	};
-																	value=0;
+																	value=1;
 																};
 															};
 														};
@@ -63520,17 +63520,17 @@ class Mission
 							dataType="Object";
 							class PositionInfo
 							{
-								position[]={8237.7822,297.48929,2156.634};
-								angles[]={0,2.801775,0};
+								position[]={8237.6895,297.3989,2156.6936};
+								angles[]={0,2.8017771,0};
 							};
 							side="Empty";
 							class Attributes
 							{
-								init="call{ this attachTo [baseChair1];" \n " this setdir ((getdir baseChair1 +90));" \n "}";
+								init="call{ this attachTo [baseChair1];" \n " this setdir ((getdir baseChair1 +177));" \n " this setvariable [""gunner_radio_settings"",[0,7,[""40.1"",""41.1"",""42.1"",""43.1"",""44.1"",""45.1"",""46.1"",""47.1"",""48.1""],0,""_bluefor"",-1,0,false]];" \n "}";
 							};
 							id=7441;
 							type="vurtual_seat";
-							atlOffset=0.34234619;
+							atlOffset=0.25195313;
 							class CustomAttributes
 							{
 								class Attribute0
@@ -63622,7 +63622,7 @@ class Mission
 																			"SCALAR"
 																		};
 																	};
-																	value=0;
+																	value=1;
 																};
 															};
 														};
@@ -63640,18 +63640,17 @@ class Mission
 							dataType="Object";
 							class PositionInfo
 							{
-								position[]={8243.374,297.48929,2158.6772};
-								angles[]={0,2.801775,0};
+								position[]={8243.2998,297.50943,2158.8789};
+								angles[]={0,2.9089417,-0};
 							};
 							side="Empty";
 							class Attributes
 							{
-								init="call{ asd attachTo [baseChair4];" \n " asd setdir ((getdir baseChair4 +90));" \n "}";
-								name="asd";
+								init="call{ asd attachTo [baseChair4];" \n " asd setdir ((getdir baseChair4 +185));" \n " this setvariable [""gunner_radio_settings"",[0,7,[""40.1"",""41.1"",""42.1"",""43.1"",""44.1"",""45.1"",""46.1"",""47.1"",""48.1""],0,""_bluefor"",-1,0,false]];" \n "" \n "}";
 							};
 							id=7442;
 							type="vurtual_seat";
-							atlOffset=0.34234619;
+							atlOffset=0.36248779;
 							class CustomAttributes
 							{
 								class Attribute0
@@ -63743,7 +63742,7 @@ class Mission
 																			"SCALAR"
 																		};
 																	};
-																	value=0;
+																	value=1;
 																};
 															};
 														};
@@ -63761,7 +63760,7 @@ class Mission
 							dataType="Object";
 							class PositionInfo
 							{
-								position[]={8237.7617,296.43542,2156.7522};
+								position[]={8237.6543,296.43607,2156.8557};
 								angles[]={0,6.0098996,0};
 							};
 							side="Empty";
@@ -63772,7 +63771,6 @@ class Mission
 							};
 							id=7443;
 							type="CUP_office_chair";
-							atlOffset=-0.00064086914;
 						};
 						class Item28
 						{
@@ -63815,7 +63813,7 @@ class Mission
 							dataType="Object";
 							class PositionInfo
 							{
-								position[]={8243.4082,296.43542,2158.7781};
+								position[]={8243.2979,296.43542,2159.0256};
 								angles[]={0,6.0098996,0};
 							};
 							side="Empty";

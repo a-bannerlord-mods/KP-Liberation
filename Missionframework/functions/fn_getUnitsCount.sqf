@@ -23,6 +23,7 @@ params [
     ["_side", GRLIB_side_friendly, [sideEmpty]],
     ["_sector",""]
 ];
+_preventToSpawn=["I_soldier_F","B_soldier_AR_F","B_Soldier_F","O_Soldier_F","B_TargetSoldier","CBA_B_InvisibleTarget","CBA_B_InvisibleTargetVehicle","I_TargetSoldier","CBA_I_InvisibleTarget","CBA_I_InvisibleTargetVehicle"];
 _high = 200;
 if (_sector!="") then {
     if (_sector in sectors_longRange) then {
@@ -36,7 +37,7 @@ if (_sector!="") then {
     };
 };
 
-private _amount = _side countSide ((_pos nearEntities ["Man", _radius]) select {!(_x getVariable["ACE_isUnconscious", false]) && !(_x getVariable["fleeing", false]) && !(captive _x) && ((getpos _x) select 2 < _high)});
+private _amount = _side countSide ((_pos nearEntities ["Man", _radius]) select {!(isObjectHidden _x) && !(typeof _x in _preventToSpawn) && !(_x getVariable["ACE_isUnconscious", false]) && !(_x getVariable["fleeing", false]) && !(captive _x) && ((getpos _x) select 2 < _high)});
 {
     _amount = _amount + (_side countSide (crew _x));
 } forEach ((_pos nearEntities [["Car", "Tank", "Air", "Boat"], _radius]) select {((getpos _x) select 2 < _high) && count (crew _x) > 0});

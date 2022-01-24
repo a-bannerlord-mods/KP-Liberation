@@ -8,6 +8,7 @@
                     _unit setVariable["ace_medical_deathblocked", false, true];
                     _unit setVariable["unconscious_time", 0, true];
                 } else {
+                    _unit setVariable["ace_medical_deathblocked", true, true];
                     _unit setVariable["unconscious_time", (_unconscious_time + 1), true];
                 };
             } else {
