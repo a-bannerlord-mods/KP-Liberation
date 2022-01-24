@@ -18,6 +18,9 @@
 params [["_item","",[""]]];
 if(_item isEqualTo "")exitWith{diag_log "JNA Warning: empty item received in fnc_arsenal_itemType"};
 
+// if (_item in ["Binocular","rhsusf_bino_m24","Rangefinder","ACE_Vector","Laserdesignator","Nikon_DSLR_HUD"]) then {
+// 	IDC_RSCDISPLAYARSENAL_TAB_BINOCULARS
+// }
 // Try to perform lookup in hashmap first
 pr _hm = missionNamespace getVariable ["jna_itemTypeHashmap", locationNull];
 pr _return = _hm getVariable [_item, -1];

@@ -1582,20 +1582,20 @@ switch _mode do {
                     if (_item != "") then{
                         player addweapon _item;
                        // _magazines = getarray (configfile >> "cfgweapons" >> _item >> "magazines");
-                        _magazines = ([_item] call BIS_fnc_compatibleMagazines);;
-                        if (count _magazines > 0) then {
-                            _mag = (_magazines select 0);
-                            if([_dataList select IDC_RSCDISPLAYARSENAL_TAB_CARGOMAGALL, _mag] call jn_fnc_arsenal_itemCount > 0)then{
-                                if((player canAddItemToUniform _mag)||(player canAddItemToVest _mag)||(player canAddItemToBackpack _mag))then{
-                                    player addmagazine _mag;
-                                    [_object, IDC_RSCDISPLAYARSENAL_TAB_CARGOMAGALL, _mag]call jn_fnc_arsenal_removeItem;
-                                }else{
-                                    titleText["I can't take batteries, I have no space for it", "PLAIN"];
-                                };
-                            }else{
-                                titleText["Shit there are no more batteries", "PLAIN"];
-                            };
-                        };
+                        // _magazines = ([_item] call BIS_fnc_compatibleMagazines);;
+                        // if (count _magazines > 0) then {
+                        //     _mag = (_magazines select 0);
+                        //     if([_dataList select IDC_RSCDISPLAYARSENAL_TAB_CARGOMAGALL, _mag] call jn_fnc_arsenal_itemCount > 0)then{
+                        //         if((player canAddItemToUniform _mag)||(player canAddItemToVest _mag)||(player canAddItemToBackpack _mag))then{
+                        //             player addmagazine _mag;
+                        //             [_object, IDC_RSCDISPLAYARSENAL_TAB_CARGOMAGALL, _mag]call jn_fnc_arsenal_removeItem;
+                        //         }else{
+                        //             titleText["I can't take batteries, I have no space for it", "PLAIN"];
+                        //         };
+                        //     }else{
+                        //         titleText["Shit there are no more batteries", "PLAIN"];
+                        //     };
+                        // };
                         [_object, _index, _item]call jn_fnc_arsenal_removeItem;
                     };
                 };
