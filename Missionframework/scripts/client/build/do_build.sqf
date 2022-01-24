@@ -41,7 +41,6 @@ init_unit = {
         };
 };
 waitUntil { sleep 0.2; !isNil "dobuild" };
-
 while { true } do {
     waitUntil { sleep 0.2; dobuild != 0 };
 
@@ -124,8 +123,10 @@ while { true } do {
             _vehicle enableSimulationGlobal false;
             _vehicle setVariable ["KP_liberation_preplaced", true, true];
 
-            _dist = 0.6 * (sizeOf _classname);
-            if (_dist < 3.5) then { _dist = 3.5 };
+            Build_dist_mult = 0.4;
+            Build_dist_min = 1.5;
+            _dist = Build_dist_mult * (sizeOf _classname);
+            if (_dist < Build_dist_min) then { _dist = Build_dist_min};
             _dist = _dist + 1;
 
             for [{_i=0}, {_i<5}, {_i=_i+1}] do {
@@ -327,7 +328,9 @@ while { true } do {
                 };
 
                 if ((_vehicle isKindOf "Tank")  || (_vehicle isKindOf "Car")) then {
-                    _vehicle forceFlagtexture blufor_flag_texture;
+                    if !(_classname in  civilian_vehicles) then {
+                        _vehicle forceFlagtexture blufor_flag_texture;
+                    };
                 };
 
                 if (getNumber (configFile >> "CfgVehicles" >> typeof _vehicle >> "ace_refuel_fuelCargo") > 0) then {
@@ -340,7 +343,7 @@ while { true } do {
 
                 if (_vehicle isKindOf "LandVehicle"|| _vehicle isKindOf "Air"  || _vehicle isKindOf "Ship" ) then {
                     if !(_classname in  civilian_vehicles) then {
-                        [_vehicle] call KPLIB_fnc_makeObjectDestroyable;
+                        [_vehicle,KPLIB_blufor_vehicles_group] call KPLIB_fnc_makeObjectDestroyable;
                     };
                 };
 

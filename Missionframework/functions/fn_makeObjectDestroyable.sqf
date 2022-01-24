@@ -1,12 +1,13 @@
-params ["_object"];
+params ["_object","_grp"];
 
 _hx=  boundingBox _object;
 _targets = [];
 {
-_t= createVehicle ["CBA_B_InvisibleTargetVehicle",getPosATL _object];  
-createVehicleCrew _t; 
-_t attachTo [_object, [(_x select 0)/8 ,(_x select 1)/2,(_x select 2)/8 ]];
-_targets pushBack _t;
+	_t= createVehicle ["CBA_B_InvisibleTargetVehicle",getPosATL _object];  
+	createVehicleCrew _t; 
+	_t attachTo [_object, [(_x select 0)/8 ,(_x select 1)/2,(_x select 2)/8 ]];
+	_targets pushBack _t;
+	_t joinSilent _grp;
 }forEach (_hx select {typename _x == "ARRAY"});
 
 _object setVariable ["attached_targets",_targets,true];

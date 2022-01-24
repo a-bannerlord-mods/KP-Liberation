@@ -125,6 +125,7 @@ KPLIB_classnamesToSave append KPLIB_o_allVeh_classes;
 KPLIB_classnamesToSave append civilian_vehicles;
 KPLIB_classnamesToSave append KP_liberation_Command_Devices;
 
+KPLIB_blufor_vehicles_group = createGroup [GRLIB_side_friendly,false];
 
 // Remove duplicates
 KPLIB_classnamesToSave = KPLIB_classnamesToSave arrayIntersect KPLIB_classnamesToSave;
@@ -407,7 +408,8 @@ if (!isNil "_saveData") then {
 
             if (_object isKindOf "LandVehicle"|| _object isKindOf "Air"  || _object isKindOf "Ship" ) then {
                 if !((typeof _object) in civilian_vehicles) then {
-                    [_object] call KPLIB_fnc_makeObjectDestroyable;
+                    [_object,KPLIB_blufor_vehicles_group] call KPLIB_fnc_makeObjectDestroyable;
+
                 };
             };
 

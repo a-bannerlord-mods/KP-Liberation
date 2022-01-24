@@ -4001,7 +4001,7 @@
             <Czech>V blízkosti není volná skladovací plocha.</Czech>
         </Key>
         <Key ID="STR_ACTION_STORE_CRATE">
-            <Original>  STORE CRATE</Original>
+            <Original>  Store Crate</Original>
             <German>-- KISTE EINLAGERN</German>
             <Spanish>-- CAJA DE ALMACENAJE</Spanish>
             <Russian>-- ЗАГРУЗИТЬ НА СКЛАД</Russian>
