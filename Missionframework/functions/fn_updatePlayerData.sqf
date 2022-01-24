@@ -30,8 +30,10 @@ if (!((name _player) in ["HC0","HC1", "HC2", "HC3", "HC4", "HC5"])) then {
 
 		_rations_hunger= ACE_player getVariable ["acex_field_rations_hunger",-1];
         _field_rations_thirst = ACE_player getVariable ["acex_field_rations_thirst",-1];
-		
-		_data = [getPosATL _player, _loadout,[_rations_hunger,_field_rations_thirst]]; 
+
+		_extraData = [_player] call KPLIB_fnc_getObjectExtraDataToSave;
+
+		_data = [getPosATL _player, _loadout,_extraData]; 
 
 		private _displayname = ""; 
 		_all_players_uids =[]; 

@@ -135,5 +135,25 @@ if (_class in KPLIB_b_allVeh_classes ||_class in KPLIB_o_allVeh_classes ) then {
 };
 
 
+_acex_field_rations_hunger = _obj getVariable ["acex_field_rations_hunger",-1];
+if (_acex_field_rations_hunger!=-1) then {
+	_data pushBack ["acex_field_rations_hunger",_acex_field_rations_hunger];
+};
+
+_acex_field_rations_thirst = _obj getVariable ["acex_field_rations_thirst",-1];
+if (_acex_field_rations_thirst!=-1) then {
+	_data pushBack ["acex_field_rations_thirst",_acex_field_rations_thirst];
+};
+
+_total_spent = _obj getVariable ["total_spent",-1];
+if (_total_spent!=-1) then {
+	_data pushBack ["total_spent",_total_spent];
+};
+
+_civ_killed = _obj getVariable ["civ_killed",-1];
+if (_civ_killed!=-1) then {
+	_data pushBack ["civ_killed",_civ_killed];
+};
+
 
 _data

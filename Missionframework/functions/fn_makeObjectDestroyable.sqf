@@ -7,9 +7,10 @@ _targets = [];
 	createVehicleCrew _t; 
 	_t attachTo [_object, [(_x select 0)/8 ,(_x select 1)/2,(_x select 2)/8 ]];
 	_targets pushBack _t;
-	_t joinSilent _grp;
+
 }forEach (_hx select {typename _x == "ARRAY"});
 
+_targets joinSilent _grp;
 _object setVariable ["attached_targets",_targets,true];
 
 _object addMPEventHandler ["MPKilled", {

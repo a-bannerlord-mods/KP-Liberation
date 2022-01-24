@@ -195,6 +195,12 @@ switch _mode do {
         [] call jn_fnc_arsenal_getitemswithPermission;
         
         ["Open",[nil,_object,player,false]] call bis_fnc_arsenal;
+
+        _cost = [player] call jn_fnc_arsenal_calculateLoadoutCost; 
+
+        _totalCost = player getVariable ["total_spent",0];
+        player setVariable ["total_spent",(_totalCost - _cost ) max 0,true];
+
     };
 	
 	/////////////////////////////////////////////////////////////////////////////////////////// SaveTFAR function
@@ -2464,6 +2470,9 @@ switch _mode do {
 
         _cost = [player] call jn_fnc_arsenal_calculateLoadoutCost; 
         hint ("Your Current Loadout costs " + (str _cost )+ " Supply point");
+
+        _totalCost = player getVariable ["total_spent",0];
+        player setVariable ["total_spent",_totalCost + _cost ,true];
 
         //remove missing item message
         titleText["", "PLAIN"];

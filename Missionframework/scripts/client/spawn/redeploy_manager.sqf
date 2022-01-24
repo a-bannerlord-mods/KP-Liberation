@@ -27,7 +27,7 @@ _lastplayerjoineddata = missionNamespace getVariable [_playerVarName,[[],[],[]]]
 
 private _lastPlayerPos = _lastplayerjoineddata select 0;
 private _lastPlayerGear = _lastplayerjoineddata select 1;
-private _lastPlayerACEXValues = _lastplayerjoineddata select 2;
+private _extraData = _lastplayerjoineddata select 2;
 
 private _spawn_str = "";
 
@@ -236,17 +236,19 @@ while {true} do {
             player forceAddUniform GRLIB_default_uniform;
         };
 
-        if (count _lastPlayerACEXValues>1) then {
-            _rations_hunger=  _lastPlayerACEXValues select 0; 
-            _field_rations_thirst = _lastPlayerACEXValues select 1;
-            if (_rations_hunger < 25) then {
-                _rations_hunger = 25;
-            };
-            if (_field_rations_thirst < 25) then {
-                _field_rations_thirst = 25;
-            };
-            player setVariable ["acex_field_rations_hunger",_rations_hunger,true];
-            player setVariable ["acex_field_rations_thirst",_field_rations_thirst,true];
+        if (count _extraData>0) then {
+            
+            [player, _extraData] call KPLIB_fnc_setobjectextradatafromSave;
+            // _rations_hunger=  _lastPlayerACEXValues select 0; 
+            // _field_rations_thirst = _lastPlayerACEXValues select 1;
+            // if (_rations_hunger < 25) then {
+            //     _rations_hunger = 25;
+            // };
+            // if (_field_rations_thirst < 25) then {
+            //     _field_rations_thirst = 25;
+            // };
+            // player setVariable ["acex_field_rations_hunger",_rations_hunger,true];
+            // player setVariable ["acex_field_rations_thirst",_field_rations_thirst,true];
         };
         
 
