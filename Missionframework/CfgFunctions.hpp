@@ -102,6 +102,7 @@ class KPLIB {
         class turnOffAlarm                  {};
         class applyUnitAnimations           {};
         class makeObjectDestroyable         {};
+        class getHighestPos                 {};
     };
     class functions_curator {
         file = "functions\curator";

@@ -125,6 +125,7 @@ squads_names = [
 
 // Classnames of objects which should be ignored when building
 GRLIB_ignore_colisions_when_building = [
+    "Land_HelipadEmpty_F",
     "CUP_A2_Road_OA_asf10_W10_A0_286_R2000",
     "Land_HelipadSquare_F",
     "Land_TentHangar_V1_F",

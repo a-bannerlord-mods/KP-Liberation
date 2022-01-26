@@ -45,7 +45,7 @@ isNil {
             [_this] call KPLIB_fnc_addObjectInit;
         };
 
-    [_unit] call KPLIB_fnc_applyUnitAnimations;
+    [_unit] remoteExec ["KPLIB_fnc_applyUnitAnimations", [0, -2] select isDedicated , _unit];
 
     _unit setVariable ["original_side",side _group];
     if ((tolower _type ) in KPLIB_o_inf_classes ) then {

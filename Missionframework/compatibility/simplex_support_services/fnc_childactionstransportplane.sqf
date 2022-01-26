@@ -3,7 +3,7 @@ params["_target", "_player", "_entity"];
 [
     [
         ["SSS_RTB", "RTB", "z\SSS\addons\main\ui\icons\home.paa", {
-                (_this# 2) call SSS_support_fnc_requestTransportLandVehicle;
+                (_this# 2) call SSS_support_fnc_requestTransportPlane;
             }, {
                 (_this# 2# 0) getVariable "SSS_awayFromBase"
             }, {},
@@ -22,12 +22,22 @@ params["_target", "_player", "_entity"];
     ],
 
     [
-        ["SSS_MoveEngOff", "Move - Engine Off", "z\SSS\addons\main\ui\icons\move_eng_off.paa", {
+        ["SSS_Paradrop", "Paradrop", "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\supplydrop_ca.paa", {
                 _this call SSS_interaction_fnc_selectPosition;
             }, {
                 true
             }, {},
-            [_entity, "MOVE_ENG_OFF"]
+            [_entity, "PARADROP"]
+        ] call ace_interact_menu_fnc_createAction, [], _target
+    ],
+
+    [
+        ["SSS_Loiter", "Loiter", "z\SSS\addons\main\ui\icons\loiter.paa", {
+                _this call SSS_interaction_fnc_selectPosition;
+            }, {
+                true
+            }, {},
+            [_entity, "LOITER"]
         ] call ace_interact_menu_fnc_createAction, [], _target
     ],
 
@@ -36,6 +46,9 @@ params["_target", "_player", "_entity"];
             private _entity = _this# 2;
 
             ["Change Behavior", [
+                ["SLIDER", "Flying height", [
+                    [50, 2000, 0], _entity getVariable "SSS_flyingHeight"
+                ]],
                 ["COMBOBOX", "Speed Mode", [
                     ["LIMITED", "NORMAL", "FULL"], _entity getVariable "SSS_speedMode"
                 ]],
@@ -43,6 +56,7 @@ params["_target", "_player", "_entity"];
                     ["Fire At will", "Hold Fire"], _entity getVariable "SSS_combatMode"
                 ]],
                 ["CHECKBOX", "Headlight", _entity getVariable "SSS_lightsOn"],
+                ["CHECKBOX", "Collision lights", _entity getVariable "SSS_collisionLightsOn"],
                 ["BUTTON", "Shut up!", {
                     params["_entity"];
                     private _vehicle = _entity getVariable "SSS_vehicle"; {
@@ -63,10 +77,12 @@ params["_target", "_player", "_entity"];
         ["SSS_SITREP", "SITREP", "\A3\Ui_f\data\IGUI\Cfg\simpleTasks\types\intel_ca.paa", {
             private _entity = _this# 2;
             private _vehicle = _entity getVariable["SSS_vehicle", objNull];
-            _nearfob = [] call KPLIB_fnc_getNearestFob;
-            _fobDist = _vehicle distance2d _fobPos;
-            _nearfobtext = ["", ["Near FOB", [_nearfob] call KPLIB_fnc_getFobName] joinString " "] select (_fobDist < GRLIB_fob_range);
-        
+            _nearfobtext = "";
+            if !(isnil "KPLIB_fnc_getNearestFob") then {
+                _nearfob = [] call KPLIB_fnc_getNearestFob;
+                _fobDist = _vehicle distance2d _fobPos;
+                _nearfobtext = ["", ["Near FOB", [_nearfob] call KPLIB_fnc_getFobName] joinString " "] select (_fobDist < GRLIB_fob_range);
+            };
             private _message = format["Location: Grid %1 %3 <br />%2<br />Fuel: %4% <br /> Ammo:  %5%", mapGridPosition _vehicle,
                 switch true do {
                     case (!canMove _vehicle):{
@@ -79,6 +95,7 @@ params["_target", "_player", "_entity"];
                         "Status: Green"
                     };
                 },_nearfobtext, str ((fuel _vehicle) *100 ), str ((getAmmoCargo _vehicle) *100 )];
+
 
             [_entity, _message] call SSS_common_fnc_notify;
 

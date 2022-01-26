@@ -63,9 +63,12 @@ params["_target", "_player", "_entity"];
         ["SSS_SITREP", "SITREP", "\A3\Ui_f\data\IGUI\Cfg\simpleTasks\types\intel_ca.paa", {
             private _entity = _this# 2;
             private _vehicle = _entity getVariable["SSS_vehicle", objNull];
-            _nearfob = [] call KPLIB_fnc_getNearestFob;
-            _fobDist = _vehicle distance2d _fobPos;
-            _nearfobtext = ["", ["Near FOB", [_nearfob] call KPLIB_fnc_getFobName] joinString " "] select (_fobDist < GRLIB_fob_range);
+            _nearfobtext = "";
+            if !(isnil "KPLIB_fnc_getNearestFob") then {
+                _nearfob = [] call KPLIB_fnc_getNearestFob;
+                _fobDist = _vehicle distance2d _fobPos;
+                _nearfobtext = ["", ["Near FOB", [_nearfob] call KPLIB_fnc_getFobName] joinString " "] select (_fobDist < GRLIB_fob_range);
+            };
         
             private _message = format["Location: Grid %1 %3 <br />%2<br />Fuel: %4% <br /> Ammo:  %5%", mapGridPosition _vehicle,
                 switch true do {

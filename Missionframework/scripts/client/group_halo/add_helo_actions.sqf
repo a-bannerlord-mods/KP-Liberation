@@ -1,6 +1,7 @@
 
 waitUntil {!isNil "save_is_loaded"};
 waitUntil {save_is_loaded};
+ params ["_device"];
 
 if(isnil "c130_flying_cargo" )then{
     c130_flying_cargo = objNull;
@@ -9,7 +10,7 @@ if(isnil "c130_flying_plane" )then{
     c130_flying_plane = objNull;
 };
 
-_this addAction ["<img size='1' image='ca\air2\data\ui\icon_c130j_ca.paa'/><t color='#00ffa6'>Select Drop Zone</t>", {
+_device addAction ["<img size='1' image='ca\air2\data\ui\icon_c130j_ca.paa'/><t color='#00ffa6'>Select Drop Zone</t>", {
     openMap true;
     hint 'Click on desired location.';
     onMapsingleClick {
@@ -37,7 +38,7 @@ _this addAction ["<img size='1' image='ca\air2\data\ui\icon_c130j_ca.paa'/><t co
 ];
 
 
-_this addAction [format ["<img size='1' image='ca\air2\data\ui\icon_c130j_ca.paa'/><t color='#04ff00'>Give Order To %1 Take off</t>", gettext(configFile >> "Cfgvehicles" >> KPLIB_C130_halo_airplane_class >> "displayname")], {
+_device addAction [format ["<img size='1' image='ca\air2\data\ui\icon_c130j_ca.paa'/><t color='#04ff00'>Give Order To %1 Take off</t>", gettext(configFile >> "Cfgvehicles" >> KPLIB_C130_halo_airplane_class >> "displayname")], {
     params ["_target", "_caller", "_actionId", "_arguments"];
     
     _plane_name = gettext(configFile >> "Cfgvehicles" >> KPLIB_C130_halo_airplane_class >> "displayname");
@@ -111,6 +112,7 @@ _this addAction [format ["<img size='1' image='ca\air2\data\ui\icon_c130j_ca.paa
     
     _whitelight attachto [_plane, [0, 8, 100] ];
     _redlight attachto [_plane, [0, 3, 0] ];
+    //[_plane, 'ramp_bottom',1] remoteExec ['animate', 0]
     _plane animate ["ramp_bottom", 1];
     _plane animate ["ramp_top", 1];
 
@@ -173,7 +175,7 @@ _this addAction [format ["<img size='1' image='ca\air2\data\ui\icon_c130j_ca.paa
 	""			// memoryPoint
 ];
 
-_this addAction [format ["<img size='1' image='ca\air2\data\ui\icon_c130j_ca.paa'/><t color='#0040ff'>Board %1</t>", gettext(configFile >> "Cfgvehicles" >> KPLIB_C130_halo_airplane_class >> "displayname") ], {
+_device addAction [format ["<img size='1' image='ca\air2\data\ui\icon_c130j_ca.paa'/><t color='#0040ff'>Board %1</t>", gettext(configFile >> "Cfgvehicles" >> KPLIB_C130_halo_airplane_class >> "displayname") ], {
     cuttext ["", "BLACK OUT", 3];
     sleep 4;
     player attachto [c130_flying_plane, [0, 4, -4.5] ];
@@ -193,6 +195,11 @@ _this addAction [format ["<img size='1' image='ca\air2\data\ui\icon_c130j_ca.paa
 
     hint 'Standby for Green Light';
     waitUntil {plane_status=="Green" || isnull c130_flying_plane};
+    if !(isnull c130_flying_plane) then {
+        c130_flying_plane animate ["ramp_bottom", 1];
+        c130_flying_plane animate ["ramp_top", 1];
+    };
+
     hint 'Green Light';
 
     waitUntil {

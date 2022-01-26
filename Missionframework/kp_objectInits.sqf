@@ -164,7 +164,8 @@ KPLIB_objectInits = [
     [
         KPLIB_C130_halo_devices,
         {
-            _this execVM "scripts\client\group_halo\add_helo_actions.sqf";
+            [_this] remoteExec ["add_helo_actions", [0, -2] select isDedicated , _this];
+            //_this execVM "scripts\client\group_halo\add_helo_actions.sqf";
         },
         true
     ],

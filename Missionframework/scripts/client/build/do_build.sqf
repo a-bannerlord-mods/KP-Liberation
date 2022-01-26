@@ -351,6 +351,11 @@ while { true } do {
 
                 [_vehicle] call KPLIB_fnc_clearCargo;
 
+                for "_i" from 1 to 100 do { 
+                    _vehicle setPylonLoadout [_i, "", true]; 
+                };
+                _vehicle setVehicleAmmo 0;
+                
                 _ace_rearm_storage = getNumber (configFile >> "CfgVehicles" >>  typeof _vehicle >> "ace_rearm_defaultSupply");
                 if (_ace_rearm_storage>0) then {
                         [_vehicle, 0] call ace_rearm_fnc_setSupplyCount;

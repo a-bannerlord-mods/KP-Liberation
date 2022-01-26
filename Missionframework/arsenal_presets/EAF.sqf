@@ -41,7 +41,14 @@ GRLIB_arsenal_weapons_primary = [
     ["rhs_weap_m82a1", "sniper", ["Sniper"], 400, 0, true, true], //M82A1
     ["rhs_weap_t5000", "sniper", ["Sniper"], 200, 5, true, true], //T-5000
     ["rhs_weap_m32", "launchers", ["GL"], 80, 5, true, true], //M32 MGL
-    ["CUP_glaunch_6G30", "launchers", ["GL"], 60, 0, true, true] //6G30
+    ["CUP_glaunch_6G30", "launchers", ["GL"], 60, 0, true, true], //6G30
+
+    ["Tier1_MK46_Mod1_Savit_Desert", "mmgs", ["Autorifleman"], 150, 10, true, true], 
+    ["Tier1_MK46_Mod1_Savit", "mmgs", ["Autorifleman"], 150, 10, true, true], 
+    ["Tier1_SIG_MCX_115_Virtus_Black","assultRifle", ["Rifleman"], 120, 20, true, true],
+    ["Tier1_SIG_MCX_115_Virtus_Desert","assultRifle", ["Rifleman"], 120, 20, true, true],
+    ["Tier1_SIG_MCX_115_Virtus","assultRifle", ["Rifleman"], 120, 20, true, true],
+    ["Tier1_HK416D145_SMR_IMOD","assultRifle", ["Rifleman"], 120, 20, true, true]
 
 ];
 GRLIB_arsenal_weapons_secondary = [
@@ -149,19 +156,6 @@ GRLIB_arsenal_uniforms = [
     ["eaf_ltc_saka_uniform", "uniforms", ["Officer"], 6, 10],
     ["eaf_col_saka_uniform", "uniforms", ["Officer"], 6, 10],
     ["CAPPA_camo", "uniforms", ["Rifleman"], 10, 10],
-    ["CWU27P_EAF_AH64", "uniforms", ["Rifleman"], 10, 10],
-    ["CWU27P_EAF_BLACKHAWK", "uniforms", ["Rifleman"], 10, 10],
-    ["CWU27P_EAF_C130", "uniforms", ["Rifleman"], 10, 10],
-    ["CWU27P_EAF_CH47", "uniforms", ["Rifleman"], 10, 10],
-    ["CWU27P_EAF_F16", "uniforms", ["Rifleman"], 10, 10],
-    ["CSU13BP_EAF_F16", "uniforms", ["Rifleman"], 10, 10],
-    ["CWU27P_EAF_KA50", "uniforms", ["Rifleman"], 10, 10],
-    ["CWU27P_EAF_MI8", "uniforms", ["Rifleman"], 10, 10],
-    ["amf_pilot_01_f", "uniforms", ["Rifleman"], 10, 10],
-    ["AFWC_camo", "uniforms", ["Rifleman"], 10, 10],
-    ["AF_Unif_AIR", "uniforms", ["Rifleman"], 5, 10],
-    ["AF_Unif_AIR2", "uniforms", ["Rifleman"], 5, 10],
-    ["AF_Unif_AIR_c", "uniforms", ["Rifleman"], 5, 10],
     ["2LT_camo", "uniforms", ["Officer"], 5, 6],
     ["1LT_camo", "uniforms", ["Officer"], 5, 6],
     ["CAP_camo", "uniforms", ["Officer"], 5, 6],
@@ -175,7 +169,56 @@ GRLIB_arsenal_uniforms = [
     ["TB_Unif_saka2_j", "uniforms", ["Rifleman"], 8, 10],
     ["TB_Unif_saka_c", "uniforms", ["Rifleman"], 8, 10],
     ["TB_Unif_saka_cj", "uniforms", ["Rifleman"], 8, 10],
-    ["CSU13BP_EAF_F16", "uniforms", ["Rifleman"], 20, 10]
+    ["ade_item_wetsuit", "uniforms", ["Rifleman"], 8, 10],
+    ["999_camo_GCE", "uniforms", ["Rifleman"], 8, 10],
+    ["999_camo_rolled_GCE", "uniforms", ["Rifleman"], 8, 10],
+    ["999_camo_M81", "uniforms", ["Rifleman"], 8, 10],
+    ["999_camo_rolled_M81", "uniforms", ["Rifleman"], 8, 10],
+    ["999_camo_Black", "uniforms", ["Rifleman"], 8, 10],
+    ["999_camo_rolled_Black", "uniforms", ["Rifleman"], 8, 10],
+    ["999_camo_SG", "uniforms", ["Rifleman"], 8, 10],
+    ["999_camo_rolled_SG", "uniforms", ["Rifleman"], 8, 10],
+    ["CWU27P_Base", "uniforms", ["Rifleman"], 8, 10],
+    ["CWU27P_EAF_F16_Gloves", "uniforms", ["Rifleman"], 8, 10],
+    ["CWU27P_EAF_AH64_Gloves", "uniforms", ["Rifleman"], 8, 10],
+    ["CWU27P_EAF_CH47_Gloves", "uniforms", ["Rifleman"], 8, 10],
+    ["CWU27P_EAF_MI8_Gloves", "uniforms", ["Rifleman"], 8, 10],
+    ["CWU27P_EAF_C130_Gloves", "uniforms", ["Rifleman"], 8, 10],
+    ["CWU27P_EAF_KA50_Gloves", "uniforms", ["Rifleman"], 8, 10],
+    ["CWU27P_EAF_BLACKHAWK_Gloves", "uniforms", ["Rifleman"], 8, 10],
+    ["CWU27P_EAF_F16", "uniforms", ["Rifleman"], 8, 10],
+    ["CWU27P_EAF_AH64", "uniforms", ["Rifleman"], 8, 10],
+    ["CWU27P_EAF_CH47", "uniforms", ["Rifleman"], 8, 10],
+    ["CWU27P_EAF_MI8", "uniforms", ["Rifleman"], 8, 10],
+    ["CWU27P_EAF_C130", "uniforms", ["Rifleman"], 8, 10],
+    ["CWU27P_EAF_KA50", "uniforms", ["Rifleman"], 8, 10],
+    ["CWU27P_EAF_BLACKHAWK", "uniforms", ["Rifleman"], 8, 10],
+    ["CWU27P_EAF_F16_Raised", "uniforms", ["Rifleman"], 8, 10],
+    ["CWU27P_EAF_AH64_Raised", "uniforms", ["Rifleman"], 8, 10],
+    ["CWU27P_EAF_CH47_Raised", "uniforms", ["Rifleman"], 8, 10],
+    ["CWU27P_EAF_MI8_Raised", "uniforms", ["Rifleman"], 8, 10],
+    ["CWU27P_EAF_C130_Raised", "uniforms", ["Rifleman"], 8, 10],
+    ["CWU27P_EAF_KA50_Raised", "uniforms", ["Rifleman"], 8, 10],
+    ["CWU27P_EAF_BLACKHAWK_Raised", "uniforms", ["Rifleman"], 8, 10],
+    ["CSU13BP_Base", "uniforms", ["Rifleman"], 8, 10],
+    ["CSU13BP_EAF_F16", "uniforms", ["Rifleman"], 8, 10],
+    ["CWU27P_Base_NG", "uniforms", ["Rifleman"], 8, 10],
+    ["CWU27PTan_Base_NG", "uniforms", ["Rifleman"], 8, 10],
+    ["CWU27PTan_Base", "uniforms", ["Rifleman"], 8, 10],
+    ["CWU27P_Base_Rolled", "uniforms", ["Rifleman"], 8, 10],
+    ["CWU27PTan_Base_Rolled", "uniforms", ["Rifleman"], 8, 10],
+    ["CSU13BP_Base_Rolled", "uniforms", ["Rifleman"], 8, 10],
+    ["CSU13BPTan_Base", "uniforms", ["Rifleman"], 8, 10],
+    ["CSU13BPTan_Base_Rolled", "uniforms", ["Rifleman"], 8, 10],
+    ["CSU13BP_Base_NG", "uniforms", ["Rifleman"], 8, 10],
+    ["CSU13BPTan_Base_NG", "uniforms", ["Rifleman"], 8, 10],
+    ["CSU15BP_Base_NG", "uniforms", ["Rifleman"], 8, 10],
+    ["CSU15BPTan_Base_NG", "uniforms", ["Rifleman"], 8, 10],
+    ["CSU15BP_Base_FG", "uniforms", ["Rifleman"], 8, 10],
+    ["CSU15BP_Base_Rolled_FG", "uniforms", ["Rifleman"], 8, 10],
+    ["CSU15BPTan_Base_FG", "uniforms", ["Rifleman"], 8, 10],
+    ["CSU15BPTan_Base_Rolled_FG", "uniforms", ["Rifleman"], 8, 10],
+    ["amf_pilot_01_f", "uniforms", ["Rifleman"], 8, 10]
 ];
 
 GRLIB_arsenal_headgear = [
@@ -183,6 +226,7 @@ GRLIB_arsenal_headgear = [
     ["eaf_camo_helmet", "headgear", ["Rifleman"], 5, 40],
     ["SSO_Helmet_Basic_MARPAT", "headgear", ["Rifleman"], 10, 10],
     ["rhsusf_opscore_ut_pelt_nsw_cam", "headgear", ["Rifleman"], 15, 10],
+    ["VSM_fasthelmet_OD", "headgear", ["Rifleman"], 15, 10],
     ["rhsusf_opscore_ut_pelt", "headgear", ["Rifleman"], 12, 10],
     ["rhsusf_opscore_ut", "headgear", ["Rifleman"], 10, 20],
     ["eaf_inf_patrolcap", "headgear", ["Rifleman"], 2, 20],
@@ -194,9 +238,28 @@ GRLIB_arsenal_headgear = [
     ["gear_ballcap_SAKA_01", "headgear", ["Rifleman"],2 , 10],
     ["gear_patrolcap_SAKA_02", "headgear", ["Rifleman"], 2, 10],
     ["CFP_BoonieHat_DCU", "headgear", ["Rifleman"], 3, 10],
+    ["H_Booniehat_oli", "headgear", ["Rifleman"], 3, 10],
     ["beret", "headgear", ["Officer"], 4, 20],
     ["FIR_JHMCS", "headgear", ["Rifleman"], 20, 5],
-    ["rhsusf_cvc_ess", "headgear", ["Rifleman"], 8, 20]
+    ["rhsusf_cvc_ess", "headgear", ["Rifleman"], 8, 20],
+    ["JHMCS2_MBU20P","headgear", ["Rifleman"], 8, 10],
+    ["JHMCS2_MBU20P_Night","headgear", ["Rifleman"], 15, 10],
+    ["JHMCS_MBU20P","headgear", ["Rifleman"], 8, 10],
+    ["JHMCS2_MBU12P","headgear", ["Rifleman"], 8, 10],
+    ["JHMCS2_MBU12P_Night","headgear", ["Rifleman"], 15, 10],
+    ["JHMCS_MBU12P","headgear", ["Rifleman"], 8, 10],
+    ["JHMCS_MBU14P","headgear", ["Rifleman"], 8, 10],
+    ["JHMCS_MBU23P","headgear", ["Rifleman"], 8, 10],
+    ["JHMCS_MBU14P_VFA2","headgear", ["Rifleman"], 8, 10],
+    ["JHMCS_MBU23P_VFA2","headgear", ["Rifleman"], 8, 10],
+    ["JHMCS_MBU14P_VFA22","headgear", ["Rifleman"], 8, 10],
+    ["JHMCS_MBU23P_VFA22","headgear", ["Rifleman"], 8, 10],
+    ["JHMCS_MBU14P_VFA41","headgear", ["Rifleman"], 8, 10],
+    ["JHMCS_MBU23P_VFA41","headgear", ["Rifleman"], 8, 10],
+    ["JHMCS_MBU14P_VFA103","headgear", ["Rifleman"], 8, 10],
+    ["JHMCS_MBU23P_VFA103","headgear", ["Rifleman"], 8, 10],
+    ["JHMCS_MBU14P_VFA151","headgear", ["Rifleman"], 8, 10],
+    ["JHMCS_MBU23P_VFA151","headgear", ["Rifleman"], 8, 10]
 ];
 
 GRLIB_arsenal_vests = [
@@ -243,14 +306,28 @@ GRLIB_arsenal_vests = [
     ["VSM_CarrierRig_Breacher_OGA", "vests", ["Rifleman"], 35, 10],
     ["VSM_FAPC_Operator_OGA", "vests", ["Rifleman"], 25, 10],
     ["VSM_FAPC_MG_OGA", "vests", ["Rifleman"], 35, 10],
-    ["VSM_FAPC_Breacher_OGA", "vests", ["Rifleman"], 30, 10]
+    ["VSM_FAPC_Breacher_OGA", "vests", ["Rifleman"], 30, 10],
+
+    ["SRU21P","vests", ["Rifleman"], 10, 10],
+    ["SRU21P_LPU9P","vests", ["Rifleman"], 10, 10],
+    ["SRU21P_LPU9P_PCU15AP","vests", ["Rifleman"], 20, 10],
+    ["SRU21P_Alt","vests", ["Rifleman"], 10, 10],
+    ["SRU21P_LPU9P_Alt","vests", ["Rifleman"], 10, 10],
+    ["SRU21P_LPU9P_PCU15AP_Alt","vests", ["Rifleman"], 20, 10],
+    ["CMU33P","vests", ["Rifleman"], 10, 10],
+    ["CMU33PTan","vests", ["Rifleman"], 10, 10],
+    ["SV2B_LPU36P","vests", ["Rifleman"], 10, 10],
+    ["SV2B_LPU23P","vests", ["Rifleman"], 10, 10],
+    ["ade_item_rebreather","vests", ["Rifleman"], 10, 10]
 ];
 
 GRLIB_arsenal_facegear = [
     ["UK3CB_G_Balaclava2_DES", "facegear", ["Rifleman"], 3, 15],
     ["VSM_Balaclava2_tan_Goggles", "facegear", ["Rifleman"],3, 10],
     ["VSM_balaclava2_Black", "facegear", ["Rifleman"], 2, 10],
-    ["G_CBRN_M04_Hood", "facegear", ["Rifleman"], 3, 15]
+    ["VSM_FaceMask_olive", "facegear", ["Rifleman"], 3, 5],
+    ["G_CBRN_M04_Hood", "facegear", ["Rifleman"], 3, 15], 
+    ["ade_item_goggles", "facegear", ["Rifleman"], 3, 5]
 ];
 
 
@@ -274,11 +351,13 @@ GRLIB_arsenal_maps = [
 ];
 GRLIB_arsenal_watchs = [
     ["ItemWatch", "navigation", ["Rifleman"], 1, 100],
-    ["ACE_Altimeter", "navigation", ["Special Force"], 10, 10]
+    ["ACE_Altimeter", "navigation", ["Special Force"], 10, 10], 
+    ["ChemicalDetector_01_watch_F", "others", ["Special Force"], 10, 10]
 ];
 GRLIB_arsenal_terminal = [
     ["ItemGPS", "navigation", ["Rifleman"], 3, 100],
-    ["B_UavTerminal", "drones", ["Drone Operator"], 20, 10]
+    ["B_UavTerminal", "drones", ["Drone Operator"], 20, 10],
+    ["ade_item_DiveComputer", "drones", ["Drone Operator"], 10, 10]
 ];
 GRLIB_arsenal_radio = [
     ["tf_anprc152", "communications", ["Rifleman"], 2, 100]
@@ -462,7 +541,11 @@ GRLIB_arsenal_backpacks = [
     ["gear_Carryall_SAKA_01", "backpacks", ["EOD","Engineer","Medic"], 10, 15],
     ["eaf_parachute_01_pack", "backpacks", ["EOD","Engineer","Medic"], 2, 10],
     ["Saka_tf_rt1523g_DES", "backpacks", ["JTAC","Officer"], 6, 10],
-    ["Saka_tf_rt1523g_big_DES", "backpacks", ["JTAC","Officer"], 12, 15]
+    ["Saka_tf_rt1523g_big_DES", "backpacks", ["JTAC","Officer"], 12, 15] ,
+    ["tfw_ilbe_blade_coy", "backpacks", ["JTAC","Officer"], 15, 15] ,
+    ["tfw_ilbe_blade_mct", "backpacks", ["JTAC","Officer"], 15, 15] ,
+    ["tfw_ilbe_blade_black", "backpacks", ["JTAC","Officer"], 15, 15] ,
+    ["ade_item_bag", "backpacks", ["Special Force"], 35, 5]
 ];
 
 GRLIB_arsenal_other = [
@@ -478,10 +561,16 @@ GRLIB_arsenal_other = [
     ["ACE_Clacker", "engineering", ["EOD"], 50, 20],
     ["ItemAndroid", "communications", ["Special Force"], 20, 10],
     ["ItemcTab", "communications", ["Officer"], 50, 5],
+    ["tfw_rf3080Item", "communications",  ["JTAC","Officer"], 8, 5],
+    ["tfw_blade", "communications",  ["JTAC","Officer"], 3, 5],
+    ["tfw_whip", "communications",  ["JTAC","Officer"], 3, 5],
+    ["tfw_dd", "communications",  ["JTAC","Officer"], 3, 5],
     ["ACE_CableTie", "others", ["Rifleman"], 1, 100],
     ["ACE_UAVBattery", "drones", ["Drone Operator"], 5, 20],
     ["ITC_Land_B_AR2i_Packed", "drones", ["Drone Operator"], 600, 5],
     ["sps_black_hornet_01_Static_F", "drones", ["Drone Operator"], 200, 10],
+    ["Rev_darter_item", "drones", ["Drone Operator"], 600, 5],
+    ["Rev_demine_item", "drones", ["Drone Operator"], 400, 5],
     ["eaf_beef_can", "foods", ["Rifleman"], 3, 100],
     ["eaf_foul_can", "foods", ["Rifleman"], 2, 200],
     ["eaf_fig_jam", "foods", ["Rifleman"], 1, 200],
@@ -529,6 +618,7 @@ GRLIB_arsenal_other = [
     ["ACE_Kestrel4500", "tools", ["Sniper","Marksman"], 8, 5],
     ["ACE_IR_Strobe_Item", "tools", ["Rifleman"], 5, 20],
     ["ACE_adenosine", "medical", ["Medic"], 000,100],
+    ["ACE_ATNAA", "medical", ["Medic"], 000,100],
     ["kat_AED", "medical", ["Medic"], 000, 20],
     ["ItemcTabHCam", "tools", ["Special Force"], 12, 10],
     ["kat_stethoscope", "medical", ["Medic"], 000, 50],
@@ -539,5 +629,7 @@ GRLIB_arsenal_other = [
     ["MRH_FoldedSatcomAntenna", "tools", ["JTAC"], 50, 5],
     ["ITC_Land_B_RemoteGLTD_Packed", "tools", ["Special Force"], 50, 5],
     ["ACE_HuntIR_monitor", "tools", ["Special Force"], 100, 5],
-    ["MRH_BluForTransponder", "tools", ["Special Force"], 30, 5]
+    ["MRH_BluForTransponder", "tools", ["Special Force"], 30, 5],
+    ["ade_item_cylinder_single_6ltr_300bar_EAN28", "tools", ["Special Force"], 10, 5],
+    ["ade_item_cylinder_single_6ltr_300bar_EAN32", "tools", ["Special Force"], 12, 5]
 ];

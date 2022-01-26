@@ -487,7 +487,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
 
         _building_ai_max = 0;
     };
-
+    _samSystem = [];
     if (_sector in sectors_SAM && (count opfor_SAM) > 0) then {
         _samSystem = selectrandom opfor_SAM;
         if ((count _samSystem) == 2) then {
@@ -505,17 +505,6 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
 
             _spawncivs = false;
 
-            if (count(_cached_vehicles)==0) then {
-                //Radars
-                _vehtospawn pushBack(_samSystem select 0);
-                _vehtospawn pushBack(_samSystem select 0);
-
-                //launchers
-                _vehtospawn pushBack(_samSystem select 1);
-                _vehtospawn pushBack(_samSystem select 1);
-                _vehtospawn pushBack(_samSystem select 1);
-                _vehtospawn pushBack(_samSystem select 1);
-            };
             _building_ai_max = 0;
         };
     };
@@ -609,13 +598,13 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         
         _vehicle = objNull;
 
-        if (_sector in sectors_lightArtillery || _sector in sectors_heavyArtillery || _sector in sectors_SAM) then {
+        if (_sector in sectors_lightArtillery || _sector in sectors_heavyArtillery  ) then {
             _vehicle = [_sectorpos, _x, false, true, _g] call KPLIB_fnc_spawnVehicle;
             _vehicle allowCrewInImmobile true;
             _vehicle setFuel 0;
         } else {
-            _vehicle = [_sectorpos, _x] call KPLIB_fnc_spawnVehicle;
-            [group((crew _vehicle) select 0), _sectorpos] spawn add_defense_waypoints;
+                _vehicle = [_sectorpos, _x] call KPLIB_fnc_spawnVehicle;
+                [group((crew _vehicle) select 0), _sectorpos] spawn add_defense_waypoints;
 
         };
         _managed_units pushback _vehicle; {
@@ -633,6 +622,48 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         _cached_vehicles pushBack [getPosATL _vehicle , typeof _vehicle];
         sleep 0.25;
     } forEach _vehtospawn;
+
+    if (_sector in sectors_SAM) then {
+        if ((count _samSystem) == 2) then {     
+                //Radars
+                _hpos = ASLToATL  ([_sectorpos,100] call KPLIB_fnc_getHighestPos);
+                _vehicle = [ _hpos getPos [0,0]  , _samSystem select 0 , true, true, _g] call KPLIB_fnc_spawnVehicle;
+                _vehicle allowCrewInImmobile true;
+                _vehicle setFuel 0;
+                _managed_units pushback _vehicle; 
+                {_managed_units pushback _x; }foreach(crew _vehicle);
+
+                _vehicle = [ _hpos getPos [20,90] , _samSystem select 1 , true, true, _g] call KPLIB_fnc_spawnVehicle;
+                _vehicle allowCrewInImmobile true;
+                _vehicle  setdir 90;
+                _vehicle setFuel 0;
+                _managed_units pushback _vehicle; 
+                {_managed_units pushback _x; }foreach(crew _vehicle);
+
+                _vehicle = [ _hpos getPos [20,180] , _samSystem select 1 , true, true, _g] call KPLIB_fnc_spawnVehicle;
+                _vehicle allowCrewInImmobile true;
+                _vehicle  setdir 180;
+                _vehicle setFuel 0;
+                _managed_units pushback _vehicle; 
+                {_managed_units pushback _x; }foreach(crew _vehicle);
+
+                _vehicle = [ _hpos getPos [20,270] , _samSystem select 1 , true, true, _g] call KPLIB_fnc_spawnVehicle;
+                _vehicle allowCrewInImmobile true;
+                _vehicle  setdir 270;
+                _vehicle setFuel 0;
+                _managed_units pushback _vehicle; 
+                {_managed_units pushback _x; }foreach(crew _vehicle);
+
+                _vehicle = [ _hpos getPos [20,360] , _samSystem select 1 , true, true, _g] call KPLIB_fnc_spawnVehicle;
+                _vehicle allowCrewInImmobile true;
+                _vehicle  setdir 360;
+                _vehicle setFuel 0;
+                _managed_units pushback _vehicle; 
+                {_managed_units pushback _x; }foreach(crew _vehicle);
+
+            };
+
+    };
 
     _units = ([_cached_units_in_building] call KPLIB_fnc_spawnBuildingSquadFromCache);
     _managed_units = _managed_units + _units;
@@ -975,32 +1006,33 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         _spotter = opfor_sharpshooter;
     };
 
-    {
-        _pos = getmarkerpos _x;
+    if !(_sector in sectors_SAM) then {
+            {
+            _pos = getmarkerpos _x;
 
-        if !(_x in sectors_opfor_sniper_nests_active) then {
-            _grp = createGroup[GRLIB_side_enemy, true];
-            _unit = [_sniper, _sectorpos, _grp] call KPLIB_fnc_createManagedUnit;
-            _unit setPosATL _pos;
-            _unit doWatch _sectorpos;
-            _managed_units = _managed_units + [_unit];
-            [_unit, _sector] spawn sniper_ai;
-            _unit setVariable ["nest",_x,true];
-            _unitspotter = [_spotter, _sectorpos, _grp] call KPLIB_fnc_createManagedUnit;
-            _unitspotter setPosATL _pos;
-            _unitspotter doWatch _sectorpos;
-            _managed_units = _managed_units + [_unitspotter];
-            [_unitspotter,_unit, _sector] spawn spotter_ai;
-            _unitspotter setVariable ["nest",_x,true];
-        }else{
-            _managed_units = _managed_units + (nearestObjects[_pos, [_sniper,_spotter], 50]);
-        };
+            if !(_x in sectors_opfor_sniper_nests_active) then {
+                _grp = createGroup[GRLIB_side_enemy, true];
+                _unit = [_sniper, _sectorpos, _grp] call KPLIB_fnc_createManagedUnit;
+                _unit setPosATL _pos;
+                _unit doWatch _sectorpos;
+                _managed_units = _managed_units + [_unit];
+                [_unit, _sector] spawn sniper_ai;
+                _unit setVariable ["nest",_x,true];
+                _unitspotter = [_spotter, _sectorpos, _grp] call KPLIB_fnc_createManagedUnit;
+                _unitspotter setPosATL _pos;
+                _unitspotter doWatch _sectorpos;
+                _managed_units = _managed_units + [_unitspotter];
+                [_unitspotter,_unit, _sector] spawn spotter_ai;
+                _unitspotter setVariable ["nest",_x,true];
+            }else{
+                _managed_units = _managed_units + (nearestObjects[_pos, [_sniper,_spotter], 50]);
+            };
 
-        sectors_opfor_sniper_nests_active pushBack  _x;
+            sectors_opfor_sniper_nests_active pushBack  _x;
 
-    } forEach (sectors_opfor_sniper_nests select { _sectorpos distance ( getmarkerpos _x) < 1200 });   
-    publicVariable "sectors_opfor_sniper_nests_active";
-
+        } forEach (sectors_opfor_sniper_nests select { _sectorpos distance ( getmarkerpos _x) < 1200 });   
+        publicVariable "sectors_opfor_sniper_nests_active";
+    };
     
     sleep 10;
 

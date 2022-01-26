@@ -62,7 +62,7 @@ player addEventHandler ["GetInMan", {[_this select 2] call kp_vehicle_permission
 player addEventHandler ["SeatSwitchedMan", {[_this select 2] call kp_vehicle_permissions;}];
 player addEventHandler ["HandleRating", {if ((_this select 1) < 0) then {0};}];
 
-[player] call KPLIB_fnc_applyUnitAnimations;
+
 
 // Disable stamina, if selected in parameter
 if (!GRLIB_fatigue) then {
@@ -75,6 +75,10 @@ if (!KPLIB_sway) then {
     player setCustomAimCoef 0.1;
     player addEventHandler ["Respawn", {player setCustomAimCoef 0.1;}];
 };
+
+player addEventHandler ["Respawn", {
+    [player] remoteExec ["KPLIB_fnc_applyUnitAnimations", [0, -2] select isDedicated , player];
+}];
 
 execVM "scripts\client\ui\intro.sqf";
 

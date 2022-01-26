@@ -15,6 +15,7 @@
         Function reached the end [BOOL]
 */
 
+
 sectors_airspawn = [];
 sectors_allSectors = [];
 sectors_bigtown = [];
@@ -91,5 +92,6 @@ _heli_slot_building_list = ["Land_HelipadCircle_F","Land_HelipadCivil_F", "Land_
         sectors_heliports pushBack _x;
     };
 } forEach sectors_military;
+
 
 true

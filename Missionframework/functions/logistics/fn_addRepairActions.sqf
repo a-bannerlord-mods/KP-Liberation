@@ -103,7 +103,7 @@ _player addAction[
     true,
     "",
     "
-    _originalTarget distance cursorObject < 10 && {
+    _originalTarget distance cursorObject < 12 && {
         alive _originalTarget
     } && {
         alive cursorObject
@@ -131,7 +131,7 @@ _player addAction[
     true,
     "",
     "
-    _originalTarget distance cursorObject < 10 && {
+    _originalTarget distance cursorObject < 15 && {
         alive _originalTarget
     } && {
         alive cursorObject
@@ -146,7 +146,7 @@ _player addAction[
     } 
     &&  (cursorObject isKindOf 'Helicopter')
     && [_originalTarget,1.5] call  KPLIB_fnc_isPlayerNearToFob
-    && count (cursorObject nearObjects [KP_liberation_heli_slot_building, 50]) > 0
+    && count (cursorObject nearObjects [KP_liberation_heli_slot_building, 60]) > 0
     "
 ];
 
@@ -159,7 +159,7 @@ _player addAction[
     true,
     "",
     "
-    _originalTarget distance cursorObject < 10 && { 
+    _originalTarget distance cursorObject < 15 && { 
     alive _originalTarget 
     } && { 
         alive cursorObject 
@@ -172,6 +172,6 @@ _player addAction[
     && (cursorObject isKindOf 'Plane')  
     && [_originalTarget,1.5] call  KPLIB_fnc_isPlayerNearToFob 
     && (count (cursorObject nearObjects [KP_liberation_plane_slot_building, 200]) > 0  || 
-        count (KP_liberation_plane_slot_building_list select { (count (cursorObject nearObjects [_x, 200]) > 0) })>0)  
+        count (KP_liberation_plane_slot_building_list select { (count (cursorObject nearObjects [_x, 250]) > 0) })>0)  
     "
 ];

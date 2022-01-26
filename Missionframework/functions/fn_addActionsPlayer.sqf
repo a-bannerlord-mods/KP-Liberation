@@ -576,10 +576,47 @@ _player addAction [
         }
         && {build_confirmed isEqualTo 0}
         && (tolower typeof cursorObject) in KPLIB_b_allVeh_classes
-        && cursorObject distance player < 5
+        && cursorObject distance player < 12
     "
 ];
 
+_player addAction [
+    ["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\use_ca.paa'/><t color='#FF8000'> ", "Show/Hide SAM Ranges", "</t>"] joinString "",
+    {
+        if (isnil "SAM_Ranges_Markers") then {
+            SAM_Ranges_Markers = [];
+        };
+        if (count SAM_Ranges_Markers > 0) then {
+            {
+                deleteMarkerLocal _x;
+            }
+            forEach SAM_Ranges_Markers;
+            SAM_Ranges_Markers = [];
+        } else {
+            {
+                if !(_x in blufor_sectors) then {
+                    _markerstr = createMarkerLocal [_x +"_range", markerPos _x]; 
+                    _markerstr setMarkerShapeLocal "ELLIPSE"; 
+                    _markerstr setMarkerSizeLocal [3000, 3000];
+                    SAM_Ranges_Markers pushBack _markerstr;
+                };
+            }forEach sectors_SAM;
+        };
+    },
+    nil,
+    -840,
+    false,
+    true,
+    "",
+    "
+        GRLIB_permissions_param
+        && {[2] call KPLIB_fnc_hasPermission}
+        && {alive _originalTarget}
+        && {build_confirmed isEqualTo 0}
+        && typeof cursorObject in ['USMC_WarfareBUAVterminal']
+        && cursorObject distance player < 10
+    "
+];
 
 _player execVM "compatibility\add_compatibility_actions.sqf";
 

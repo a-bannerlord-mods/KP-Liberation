@@ -72,8 +72,8 @@ infantry_units = [
 light_vehicles = [
     ["UK3CB_B_M151_Jeep_Closed_HIDF",100,0,100],
 	["UK3CB_CW_US_B_EARLY_M151_Jeep_Open",100,0,100],   
-    ["UK3CB_CW_US_B_EARLY_M151_Jeep_HMG",100,100,100],   
-    ["UK3CB_CW_US_B_EARLY_M151_Jeep_TOW",100,200,100],  
+    ["UK3CB_CW_US_B_EARLY_M151_Jeep_HMG",100,0,100],   
+    ["UK3CB_CW_US_B_EARLY_M151_Jeep_TOW",100,0,100],  
 
 	    
     ["rhsusf_m998_d_4dr",150,0,100],                                        // M1025A2
@@ -84,45 +84,45 @@ light_vehicles = [
 	["rhsusf_m1043_d_s_m2",200,0,150],                                      // Hunter (GMG)
 
     ["rhsusf_m1151_usarmy_d",120,0,150],                                  // Quad Bike
-    ["rhsusf_m1151_m240_v1_usarmy_d",250,120,150],                                         // Prowler (AT)
-    ["rhsusf_m1151_m240_v2_usarmy_d",250,220,160],                                      // Hunter (HMG)
-	["rhsusf_m1151_m2_v1_usarmy_d",250,120,150],                                           // Hunter
-	["rhsusf_m1151_m2_v2_usarmy_d",250,120,160],                                           // Hunter
-    ["rhsusf_m1151_m2crows_usarmy_d",400,400,200],                                     // Prowler
-    ["rhsusf_m1151_m2_lras3_v1_usarmy_d",400,150,200],                                      // Prowler (HMG)
+    ["rhsusf_m1151_m240_v1_usarmy_d",250,0,150],                                         // Prowler (AT)
+    ["rhsusf_m1151_m240_v2_usarmy_d",250,0,160],                                      // Hunter (HMG)
+	["rhsusf_m1151_m2_v1_usarmy_d",250,0,150],                                           // Hunter
+	["rhsusf_m1151_m2_v2_usarmy_d",250,0,160],                                           // Hunter
+    ["rhsusf_m1151_m2crows_usarmy_d",400,0,200],                                     // Prowler
+    ["rhsusf_m1151_m2_lras3_v1_usarmy_d",400,0,200],                                      // Prowler (HMG)
 
     ["rhsusf_M1220_usarmy_d",400,0,250],                             
-    ["rhsusf_M1220_M2_usarmy_d",400,300,250],                            // M1220 (M2)
-    ["rhsusf_M1220_M153_M2_usarmy_d",700,400,300],                                // auto
+    ["rhsusf_M1220_M2_usarmy_d",400,0,250],                            // M1220 (M2)
+    ["rhsusf_M1220_M153_M2_usarmy_d",700,0,300],                                // auto
 
 	["rhsusf_M1232_usarmy_d",500,0,300],
-	["rhsusf_M1232_M2_usarmy_d",500,250,300],                                      // Eagle IV  
+	["rhsusf_M1232_M2_usarmy_d",500,0,300],                                      // Eagle IV  
 	
-    ["rhsusf_M1230_M2_usarmy_d",600,200,250],                                // M1220
+    ["rhsusf_M1230_M2_usarmy_d",600,0,250],                                // M1220
 	["rhsusf_M1230a1_usarmy_d",600,0,250],                          //  medical
-    ["rhsusf_M1237_M2_usarmy_d",600,200,250],                          // M1220 (Mk19)
+    ["rhsusf_M1237_M2_usarmy_d",600,0,250],                          // M1220 (Mk19)
 
-    ["rhsusf_M1117_D",600,250,250],                             // Eagle IV (FLW 100) 
-    ["UK3CB_B_MaxxPro_M2_US",500,300,250]                              // M1230A1 (MEDEVAC)
+    ["rhsusf_M1117_D",600,0,250],                             // Eagle IV (FLW 100) 
+    ["UK3CB_B_MaxxPro_M2_US",500,0,250]                              // M1230A1 (MEDEVAC)
     //["rhsgref_BRDM2_ins",0,0,0],                                // HEMTT Transport
     //["rhsusf_M1117_D",0,0,0]                                 // HEMTT Transport (Covered)                                         
 ];
 
 heavy_vehicles = [
-    ["rhsusf_m113d_usarmy_supply",500,300,400],                  // M1083A1P2 Transport
+    ["rhsusf_m113d_usarmy_supply",500,0,400],                  // M1083A1P2 Transport
     ["rhsusf_m113d_usarmy",500,0,800],                       // M1083A1P2 Transport (Covered)
-    ["rhsusf_m113d_usarmy_M240",600,300,400],               // M1083A1P2
+    ["rhsusf_m113d_usarmy_M240",600,0,400],               // M1083A1P2
     ["rhsusf_m113d_usarmy_medical",600,0,400],                          // M977A4 BKIT
-    ["rhsusf_m113d_usarmy_MK19",600,400,400],                      // M977A4 BKIT (HMG)
+    ["rhsusf_m113d_usarmy_MK19",600,0,400],                      // M977A4 BKIT (HMG)
     ["rhsusf_m113d_usarmy_unarmed",500,0,400],                                       // M1117 ASV
-    ["rhs_bmp1p_vdv",700,500,400],                                            // UGV StomperX
-    ["rhsusf_m1a1aimd_usarmy",1200,1000,800],                                      // UGV Stomper (RCWS)
-    ["UK3CB_B_M60A1_HIDF",800,500,500],                                 // Assault Boat
-    ["UK3CB_B_M60A3_HIDF",800,500,500],                            // Speedboat Minigun
-    ["LOP_IA_T55",700,500,500],                                      // Mk.V SOCOM
-    ["rhs_t80u",1000,600,600],                                         // SDV
-    ["rhs_t80uk",1000,700,600],                                           // SDV
-    ["rhs_t90sm_tv",1200,800,700]  
+    ["rhs_bmp1p_vdv",700,0,400],                                            // UGV StomperX
+    ["rhsusf_m1a1aimd_usarmy",1200,0,800],                                      // UGV Stomper (RCWS)
+    ["UK3CB_B_M60A1_HIDF",800,0,500],                                 // Assault Boat
+    ["UK3CB_B_M60A3_HIDF",800,0,500],                            // Speedboat Minigun
+    ["LOP_IA_T55",700,0,500],                                      // Mk.V SOCOM
+    ["rhs_t80u",1000,0,600],                                         // SDV
+    ["rhs_t80uk",1000,0,600],                                           // SDV
+    ["rhs_t90sm_tv",1200,0,700]  
 ];
 
 air_vehicles = [
@@ -133,33 +133,33 @@ air_vehicles = [
     // ["RHS_MELB_MH6M",0,0,0],                                     
     // ["RHS_MELB_AH6M",0,0,0],                                      
     // ["vtx_MH60M",0,0,0],                          
-    ["EAF_ah64",2500,800,1200],                  
-    ["EAF_ka52",2200,800,1000],                                  
+    ["EAF_ah64",2500,0,1200],                  
+    ["EAF_ka52",2200,0,1000],                                  
     ["EAFhmt",1800,0,800],                                        
     ["EAF_uh60",1500,0,800],                  
-    ["EAF_CH47",2000,500,1500],  
-    ["AMF_RAFALE_M_01_F",3000,1000,2000],     
-    ["EAF_F16_1",5000,1200,3000],     
+    ["EAF_CH47",2000,0,1500],  
+    ["AMF_RAFALE_M_01_F",3000,0,2000],     
+    ["EAF_F16_1",5000,0,3000],     
     ["EAF_C130",4000,0,3000]  
 ];
 
 static_vehicles = [
-    ["B_SAM_System_03_F",2500,800,200],                                   
-    ["LOP_IA_Static_DSHKM", 100,50,0],
-    ["LOP_IA_M119", 250,80,0],
-    ["LOP_IA_Static_M2", 140,50,0],
-    ["LOP_IA_ZU23", 300,120,0],
-    ["RHS_Stinger_AA_pod_D", 200,80,0],
-    ["RHS_M2StaticMG_D", 160,60,0],
-    ["RHS_TOW_TriPod_D", 300,100,0],
+    ["B_SAM_System_03_F",2500,0,200],                                   
+    ["LOP_IA_Static_DSHKM", 100,0,0],
+    ["LOP_IA_M119", 250,0,0],
+    ["LOP_IA_Static_M2", 140,0,0],
+    ["LOP_IA_ZU23", 300,0,0],
+    ["RHS_Stinger_AA_pod_D", 200,0,0],
+    ["RHS_M2StaticMG_D", 160,0,0],
+    ["RHS_TOW_TriPod_D", 300,0,0],
     ["UK3CB_O_SearchlightAA_CSAT_B", 20,0,0],
     ["UK3CB_O_Searchlight_CSAT_B", 20,0,0],
-    ["LOP_IRA_Igla_AA_pod", 250,80,0],
-    ["rhssaf_army_o_metis_9k115", 300,100,0],
-    ["rhssaf_army_o_nsv_tripod", 120,50,0],
-    ["LOP_SYR_Kord_High", 140,60,0],
-    ["rhsgref_ins_SPG9M", 180,50,0],
-    ["UK3CB_NFA_O_PKM_nest_des",200,80,0]
+    ["LOP_IRA_Igla_AA_pod", 250,0,0],
+    ["rhssaf_army_o_metis_9k115", 300,0,0],
+    ["rhssaf_army_o_nsv_tripod", 120,0,0],
+    ["LOP_SYR_Kord_High", 140,0,0],
+    ["rhsgref_ins_SPG9M", 180,0,0],
+    ["UK3CB_NFA_O_PKM_nest_des",200,0,0]
 ];
 
 buildings = [

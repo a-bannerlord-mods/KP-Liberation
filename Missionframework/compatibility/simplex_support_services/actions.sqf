@@ -35,7 +35,7 @@ if (isClass(configFile >> "CfgPatches" >> "SSS")) exitwith {
             "",
             "
             (typeOf cursorObject) in (blufor_transport_support_vehicles apply {_x select 0}) 
-			&& cursorObject distance player < 5 
+			&& cursorObject distance player < 12 
 			&& isnull (cursorObject getVariable['SSS_parentEntity', objNull])
             && _originalTarget getVariable ['KPLIB_hasDirectAccess', false]
             && [_originalTarget,1.3] call  KPLIB_fnc_isPlayerNearToFob
@@ -77,7 +77,7 @@ if (isClass(configFile >> "CfgPatches" >> "SSS")) exitwith {
             "",
             "
             (typeOf cursorObject) in (blufor_cas_support_vehicles apply {_x select 0})
-            && cursorObject distance player < 5
+            && cursorObject distance player < 12
             && isnull (cursorObject getVariable['SSS_parentEntity', objNull])
             && _originalTarget getVariable ['KPLIB_hasDirectAccess', false]
             && [_originalTarget,1.3] call  KPLIB_fnc_isPlayerNearToFob
@@ -119,7 +119,7 @@ if (isClass(configFile >> "CfgPatches" >> "SSS")) exitwith {
             "",
             "
             (typeOf cursorObject) in (blufor_jet_support_vehicles apply {_x select 0})
-            && cursorObject distance player < 5
+            && cursorObject distance player < 12
             && isnull (cursorObject getVariable['SSS_parentEntity', objNull])
             && _originalTarget getVariable ['KPLIB_hasDirectAccess', false]
             && [_originalTarget,1.3] call  KPLIB_fnc_isPlayerNearToFob
