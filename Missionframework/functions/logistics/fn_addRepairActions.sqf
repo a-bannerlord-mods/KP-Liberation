@@ -119,6 +119,7 @@ _player addAction[
     && !(cursorObject isKindOf 'Plane') && !(cursorObject isKindOf 'Helicopter')
     && [_originalTarget,1.5] call  KPLIB_fnc_isPlayerNearToFob
     && count (KP_repair_workshops select { (_x distance cursorObject) < 10 }) > 0
+    && {build_confirmed isEqualTo 0}
     "
 ];
 
@@ -131,6 +132,7 @@ _player addAction[
     true,
     "",
     "
+    
     _originalTarget distance cursorObject < 15 && {
         alive _originalTarget
     } && {
@@ -141,12 +143,12 @@ _player addAction[
             [3] call KPLIB_fnc_hasPermission
         }
     ) &&
-    tolower (typeof cursorObject) in (KPLIB_b_allVeh_classes + KPLIB_o_allVeh_classes) && {
-        isNull(objectParent _originalTarget)
-    } 
+    tolower (typeof cursorObject) in (KPLIB_b_allVeh_classes + KPLIB_o_allVeh_classes) 
+    && isNull(objectParent _originalTarget)
     &&  (cursorObject isKindOf 'Helicopter')
     && [_originalTarget,1.5] call  KPLIB_fnc_isPlayerNearToFob
     && count (cursorObject nearObjects [KP_liberation_heli_slot_building, 60]) > 0
+    && {build_confirmed isEqualTo 0}
     "
 ];
 
@@ -173,5 +175,6 @@ _player addAction[
     && [_originalTarget,1.5] call  KPLIB_fnc_isPlayerNearToFob 
     && (count (cursorObject nearObjects [KP_liberation_plane_slot_building, 200]) > 0  || 
         count (KP_liberation_plane_slot_building_list select { (count (cursorObject nearObjects [_x, 250]) > 0) })>0)  
+    && {build_confirmed isEqualTo 0}
     "
 ];

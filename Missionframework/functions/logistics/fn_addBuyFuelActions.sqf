@@ -46,6 +46,7 @@ _player addAction [
         && {isNull (objectParent _originalTarget)}
         && {alive _originalTarget} && {alive cursorObject}
         && [_originalTarget,0.8] call  KPLIB_fnc_isPlayerNearToFob
+        && {build_confirmed isEqualTo 0}
     "
 ];
 
@@ -71,6 +72,7 @@ _player addAction [
 		&& {isNull (objectParent _originalTarget)} 
 		&& {alive _originalTarget}  && {alive cursorObject}
         && [_originalTarget,0.8] call  KPLIB_fnc_isPlayerNearToFob
+        && {build_confirmed isEqualTo 0}
     "
 ];
 
@@ -96,6 +98,7 @@ _player addAction [
 		&& {isNull (objectParent _originalTarget)} 
 		&& {alive _originalTarget} && {alive cursorObject}
 		&& [_originalTarget,0.8] call  KPLIB_fnc_isPlayerNearToFob
+        && {build_confirmed isEqualTo 0}
     "
 ];
 
@@ -121,5 +124,6 @@ _player addAction [
 		&& {isNull (objectParent _originalTarget)} 
 		&& {alive _originalTarget}  && {alive cursorObject}
 		&& [_originalTarget,0.8] call  KPLIB_fnc_isPlayerNearToFob
+        && {build_confirmed isEqualTo 0}
     "
 ];

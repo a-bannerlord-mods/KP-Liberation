@@ -97,7 +97,8 @@ _device addAction [format ["<img size='1' image='ca\air2\data\ui\icon_c130j_ca.p
     _whitelight attachto [_plane, [0, 10, 4] ];
     
     hint (_plane_name + "in the air, Please board it");
-	_plane  animate ["hide_cargo", 1];
+	//_plane  animate ["hide_cargo", 1];
+    [_plane, ["hide_cargo",1]] remoteExec ["animate", 0];
     _actionid= [] call addVehcileaction;
     _plane hideObjectglobal false;
     
@@ -112,9 +113,12 @@ _device addAction [format ["<img size='1' image='ca\air2\data\ui\icon_c130j_ca.p
     
     _whitelight attachto [_plane, [0, 8, 100] ];
     _redlight attachto [_plane, [0, 3, 0] ];
-    //[_plane, 'ramp_bottom',1] remoteExec ['animate', 0]
-    _plane animate ["ramp_bottom", 1];
-    _plane animate ["ramp_top", 1];
+    // [_plane, 'ramp_bottom',1] remoteExec ['animate', 0];
+    // [_plane, 'ramp_top',1] remoteExec ['animate', 0];
+    //_plane animate ["ramp_bottom", 1];
+    //_plane animate ["ramp_top", 1];
+    [_plane, ["ramp_bottom",1]] remoteExec ["animate", 0];
+    [_plane, ["ramp_top",1]] remoteExec ["animate", 0];
 
 	plane_status = "Red";
     publicVariable "plane_status";
@@ -195,10 +199,10 @@ _device addAction [format ["<img size='1' image='ca\air2\data\ui\icon_c130j_ca.p
 
     hint 'Standby for Green Light';
     waitUntil {plane_status=="Green" || isnull c130_flying_plane};
-    if !(isnull c130_flying_plane) then {
-        c130_flying_plane animate ["ramp_bottom", 1];
-        c130_flying_plane animate ["ramp_top", 1];
-    };
+    // if !(isnull c130_flying_plane) then {
+    //     c130_flying_plane animate ["ramp_bottom", 1];
+    //     c130_flying_plane animate ["ramp_top", 1];
+    // };
 
     hint 'Green Light';
 
