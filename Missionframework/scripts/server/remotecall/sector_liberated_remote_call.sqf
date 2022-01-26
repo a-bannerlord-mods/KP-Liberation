@@ -2,13 +2,13 @@ params ["_liberated_sector"];
 
 private _combat_readiness_increase = 0;
 switch (true) do {
-    case (_liberated_sector in sectors_bigtown):            {_combat_readiness_increase = floor (random 10) * GRLIB_difficulty_modifier;};
-    case (_liberated_sector in sectors_capture):            {_combat_readiness_increase = floor (random 6) * GRLIB_difficulty_modifier;};
-    case (_liberated_sector in sectors_military):           {_combat_readiness_increase = 5 + (floor (random 11)) * GRLIB_difficulty_modifier;};
+    case (_liberated_sector in sectors_bigtown):            {_combat_readiness_increase = floor (random 15) * GRLIB_difficulty_modifier;};
+    case (_liberated_sector in sectors_capture):            {_combat_readiness_increase = floor (random 8) * GRLIB_difficulty_modifier;};
+    case (_liberated_sector in sectors_military):           {_combat_readiness_increase = 8 + (floor (random 11)) * GRLIB_difficulty_modifier;};
     case (_liberated_sector in sectors_factory):            {_combat_readiness_increase = 3 + (floor (random 7)) * GRLIB_difficulty_modifier;};
     case (_liberated_sector in sectors_tower):              {_combat_readiness_increase = floor (random 4);};
-    case (_liberated_sector in sectors_SAM):                {_combat_readiness_increase = 5 + (floor (random 11)) * GRLIB_difficulty_modifier;};
-    case (_liberated_sector in sectors_heavyArtillery):     {_combat_readiness_increase = floor (random 4);};
+    case (_liberated_sector in sectors_SAM):                {_combat_readiness_increase = 10 + (floor (random 11)) * GRLIB_difficulty_modifier;};
+    case (_liberated_sector in sectors_heavyArtillery):     {_combat_readiness_increase = floor (random 8);};
     case (_liberated_sector in sectors_lightArtillery):     {_combat_readiness_increase = floor (random 4);};
 };
 

@@ -31,9 +31,7 @@ if ( _status == 3 ) then {
 };
 
 { _x setMarkerColorLocal GRLIB_color_enemy; } foreach (sectors_allSectors - blufor_sectors);
-{ 
-    _x setMarkerColorLocal GRLIB_color_friendly; 
-    if (_sector in sectors_destroyable) then {
-        _x setMarkerAlphaLocal 0; 
-    };
-} foreach blufor_sectors;
+
+if (_sector in sectors_destroyable) then {
+        _sector setMarkerAlphaLocal 0; 
+};
