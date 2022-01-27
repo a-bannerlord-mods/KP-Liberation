@@ -4,6 +4,9 @@ if (isServer) then {
 
     if (KP_liberation_kill_debug > 0) then {[format ["Kill Manager executed - _unit: %1 (%2) - _killer: %3 (%4)", typeOf _unit, _unit, typeOf _killer, _killer], "KILL"] call KPLIB_fnc_log;};
 
+    if (toLower(animationState _unit ) in (["Acts_CivilInjuredHead_1","Acts_CivilInjuredChest_1","Acts_CivilInjuredArms_1","acts_civilinjuredlegs_1","Acts_CivilInjuredGeneral_1"] apply {toLower _x})) then {
+        [_unit, "DeadState"] remoteExec['switchMove', 0];
+    };
     // Get Killer, when ACE enabled, via lastDamageSource
     if (KP_liberation_ace) then {
         if (local _unit) then {

@@ -1189,7 +1189,7 @@ KP_liberation_qualifications = [
 //C130 Halo 
 KPLIB_C130_halo_airplane_class = "EAF_C130";
 KPLIB_C130_halo_parachute_class = "eaf_parachuteClan_blk";
-KPLIB_C130_halo_param = 10;
+KPLIB_C130_halo_param = 60;
 KPLIB_C130_halo_devices =  [ 
     "Land_MapBoard_F",
     "MapBoard_altis_F",

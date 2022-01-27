@@ -15,3 +15,10 @@ class End1 {
     description = $STR_COMMANDER_NOT_AUTHORIZED;
     pictureBackground = "";
 };
+
+class Backup_Restored {
+    title =	"Backup Restored";
+    subtitle = "";
+    description = "Backup Restored";
+    pictureBackground = "";
+};

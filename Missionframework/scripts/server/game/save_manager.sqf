@@ -20,6 +20,7 @@ if (hasInterface) then {
             if (!isServer) exitWith {};
             ["Player server exit. Saving mission data.", "SAVE"] call KPLIB_fnc_log;
             [] call KPLIB_fnc_doSave;
+            [false] call KPLIB_fnc_doBackupSave;
         }];
     };
 } else {
@@ -29,6 +30,7 @@ if (hasInterface) then {
         deleteVehicle _unit;
         ["Last player disconnected. Saving mission data.", "SAVE"] call KPLIB_fnc_log;
         [] call KPLIB_fnc_doSave;
+        [false] call KPLIB_fnc_doBackupSave;
     }];
 };
 
@@ -620,7 +622,7 @@ while {true} do {
     };
 
     [] call KPLIB_fnc_doSave;
-
+    [false] call KPLIB_fnc_doBackupSave;
     if (KP_liberation_savegame_debug > 0) then {[format ["Campaign saved - Time needed: %1 seconds", diag_tickTime - _start], "SAVE"] call KPLIB_fnc_log;};
 
     _saveTime = time + KP_liberation_save_interval;

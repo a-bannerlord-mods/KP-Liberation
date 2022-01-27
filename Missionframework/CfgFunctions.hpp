@@ -24,6 +24,8 @@ class KPLIB {
         class crGetMulti                    {};
         class crGlobalMsg                   {};
         class doSave                        {};
+        class doBackupSave                  {};
+        class doRestorPackupSave            {};
         class fillStorage                   {};
         class forceBluforCrew               {};
         class getAdaptiveVehicle            {};

@@ -2,6 +2,9 @@ waitUntil {!isNil "GRLIB_players_data"};
 waitUntil {!isNil "save_is_loaded"};
 waitUntil {save_is_loaded};
 
+GRLIB_Players_Disconnect_Vehicles = [];
+GRLIB_Players_Disconnect_SquadMate = [];
+
 
 SendPlayerData = {
     params ["_owner","_uid"];
@@ -22,12 +25,22 @@ SendPlayerData = {
 
 
 
-addMissionEventHandler ["playerConnected",
-    {
-        params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
+addMissionEventHandler ["HandleDisconnect", {
+        params ["_unit", "_id", "_uid", "_name"];
         if (_uid == "") exitwith {};
-        [_owner,_uid] call SendPlayerData;
-    }];
+        
+        if !(isNull (objectParent _unit)) then {
+            GRLIB_Players_Disconnect_Vehicles pushBack [_uid,vehicle _unit];
+        };
+        
+        _nearbyFriends = (units (group _unit)) select {(_x distance _unit ) <100};
+        if (count _nearbyFriends > 0) then {
+            GRLIB_Players_Disconnect_SquadMate pushBack [_uid,(_nearbyFriends select 0)];
+        };
+
+        [_unit,_uid] call SendPlayerData;
+        false
+}];
     
 if (count allplayers > 0) then {
         {

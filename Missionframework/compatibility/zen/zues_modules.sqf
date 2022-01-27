@@ -71,13 +71,33 @@
         }] call zen_custom_modules_fnc_register;
     };
     
-    ["Liberation", "Reinforce Sector (paratroopers)", {
-        _pos = (_this select 0);
-        _mark = [1000, _pos] call KPLIB_fnc_getNearestSector;
-        [_mark] remoteExec['send_paratroopers', 2];
-        // [_mark] spawn send_paratroopers;
+    ["Liberation", "Save Progress", {
+        [] remoteExec ["KPLIB_fnc_doSave", 2];
+    }] call zen_custom_modules_fnc_register;
+
+    ["Liberation", "Backup Save", {
+        [] remoteExec ["KPLIB_fnc_doBackupSave", 2];
     }] call zen_custom_modules_fnc_register;
     
+    ["Liberation", "Restor Backup", {
+            [] spawn {
+            private _result = ["Are you sure you want to restore Backup", "Confirm", true, true] call BIS_fnc_guiMessage; 
+            if (_result) then {
+                ["Backup Number", [
+                                        ["EDIT", "Number", ["",{}]]
+                                    ],
+                                    {
+                                        params ["_dialog", "_args"];
+                                        _dialog params ["_number"];
+                                        [_number] remoteExec ["KPLIB_fnc_doRestorPackupSave", 2];
+                                    }, {}, []
+                ] call zen_dialog_fnc_create;
+
+                    
+            };
+        };
+    }] call zen_custom_modules_fnc_register;
+
     ["Liberation", "Force Despawn All Sectors", {
         {
             sectors_forced_despawn pushBackUnique _x;
