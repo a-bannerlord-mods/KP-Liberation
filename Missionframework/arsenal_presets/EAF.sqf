@@ -43,13 +43,13 @@ GRLIB_arsenal_weapons_primary = [
     ["rhs_weap_m32", "launchers", ["GL"], 80, 5, true, true], //M32 MGL
     ["CUP_glaunch_6G30", "launchers", ["GL"], 60, 0, true, true], //6G30
 
-    ["Tier1_MK46_Mod1_Savit_Desert", "mmgs", ["Autorifleman"], 150, 10, true, true], 
-    ["Tier1_MK46_Mod1_Savit", "mmgs", ["Autorifleman"], 150, 10, true, true], 
-    ["Tier1_SIG_MCX_115_Virtus_Black","assultRifle", ["Rifleman"], 120, 20, true, true],
-    ["Tier1_SIG_MCX_115_Virtus_Desert","assultRifle", ["Rifleman"], 120, 20, true, true],
-    ["Tier1_SIG_MCX_115_Virtus","assultRifle", ["Rifleman"], 120, 20, true, true],
-    ["Tier1_HK416D145_SMR_IMOD","assultRifle", ["Rifleman"], 120, 20, true, true]
-
+    ["Tier1_MK46_Mod1_Savit_Desert", "mmgs", ["Autorifleman"], 220, 10, true, true], 
+    ["Tier1_MK46_Mod1_Savit", "mmgs", ["Autorifleman"], 220, 10, true, true], 
+    ["Tier1_SIG_MCX_115_Virtus_Black","assultRifle", ["Rifleman"], 180, 20, true, true],
+    ["Tier1_SIG_MCX_115_Virtus_Desert","assultRifle", ["Rifleman"], 180, 20, true, true],
+    ["Tier1_SIG_MCX_115_Virtus","assultRifle", ["Rifleman"], 180, 20, true, true],
+    ["Tier1_HK416D145_SMR_IMOD","assultRifle", ["Rifleman"], 180, 20, true, true],
+    ["Tier1_SR25","assultRifle", ["Rifleman"], 280, 20, true, true]
 ];
 GRLIB_arsenal_weapons_secondary = [
     ["rhs_weap_rpg7", "launchers", ["AT"], 100, 20, true, true],
@@ -450,7 +450,8 @@ GRLIB_arsenal_optics = [
  ["rhsusf_acc_nxs_3515x50f1_h58_sun", "optics", ["Rifleman"], 12, 10], //NXS 3.5-15x50 F1 (sunshade/H58)  (0.747234) 
  ["rhsusf_acc_nxs_5522x56_md", "optics", ["Rifleman"], 12, 10], //NXS 5.5-22x56 (mil-dot)  (0.747234) 
  ["optic_AMS", "optics", ["Rifleman"], 13, 10], //US Optics MR-10 (Black)  (0.831489) 
- ["ACE_optic_LRPS_PIP", "optics", ["Rifleman"], 15, 10] //Nightforce NXS (PIP)  (1) 
+ ["ACE_optic_LRPS_PIP", "optics", ["Rifleman"], 15, 10], //Nightforce NXS (PIP)  (1)
+ ["Tier1_LeupoldM3A_ADM_T2_Black", "optics", ["Rifleman"], 22, 5]
 ];
 
 GRLIB_arsenal_flashlaser = [
@@ -462,7 +463,9 @@ GRLIB_arsenal_flashlaser = [
     ["rhsusf_acc_anpeq15A", "pointers", ["Rifleman"], 6,20],
     ["rhsusf_acc_anpeq15", "pointers", ["Rifleman"], 8, 10],
     ["acc_pointer_IR", "pointers", ["Rifleman"], 8, 10],
-    ["hlc_acc_DBALPL", "pointers", ["Rifleman"], 5, 10]
+    ["hlc_acc_DBALPL", "pointers", ["Rifleman"], 5, 10],
+    ["Tier1_MCX_NGAL_Top", "pointers", ["Rifleman"],20, 5],
+    ["Tier1_SR25_LA5_Side", "pointers", ["Rifleman"],20, 5]
 ];
 
 GRLIB_arsenal_bipods = [
@@ -471,7 +474,9 @@ GRLIB_arsenal_bipods = [
     ["rhsusf_acc_grip3", "underbarrel", ["Rifleman"], 3, 10],
     ["bipod_01_F_snd", "underbarrel", ["Rifleman"], 4, 30],
     ["bipod_01_F_blk", "underbarrel", ["Rifleman"], 4, 30],
-    ["rhsusf_acc_saw_bipod", "underbarrel", ["Rifleman"], 4, 20]
+    ["rhsusf_acc_saw_bipod", "underbarrel", ["Rifleman"], 4, 20],
+    ["Tier1_BCM_Gunfighter_VG_Black", "underbarrel", ["Rifleman"], 16, 5],
+    ["Tier1_Harris_Bipod_Black", "underbarrel", ["Rifleman"], 15, 5]
 ];
 
 GRLIB_arsenal_muzzles = [
@@ -496,7 +501,8 @@ GRLIB_arsenal_muzzles = [
     ["hlc_muzzle_556NATO_rotexiiic_tan", "muzzles", ["Rifleman"], 000, 20],
     ["muzzle_snds_m_snd_F", "muzzles", ["Rifleman"], 8, 20],
     ["muzzle_snds_B", "muzzles", ["Rifleman"], 8, 20],
-    ["rhsgref_sdn6_suppressor", "muzzles", ["Rifleman"], 10, 20]
+    ["rhsgref_sdn6_suppressor", "muzzles", ["Rifleman"], 10, 20], 
+    ["rhsusf_acc_SR25S", "muzzles", ["Rifleman"], 20, 5]
 ];
 
 GRLIB_arsenal_HandGrenade = [
