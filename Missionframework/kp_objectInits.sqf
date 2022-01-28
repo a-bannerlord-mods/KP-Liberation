@@ -82,7 +82,7 @@ KPLIB_objectInits = [
                 [_this, true, [0, 1.5, 0], 0] remoteExec ["ace_dragging_fnc_setCarryable",0,true];
                 [_this, true, [0, 2, 0], 0] remoteExec ["ace_dragging_fnc_setDraggable",0,true];
                 };
-            [_this, []] call jn_fnc_arsenal_initPersistent; 
+            [_this] remoteExecCall ["jn_fnc_arsenal_init", 0,_this];
         }
     ],
 
