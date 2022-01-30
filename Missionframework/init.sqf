@@ -28,7 +28,7 @@ if (hasInterface) then {
 
 [] call compile preprocessFileLineNumbers "scripts\shared\init_shared.sqf";
 [] call compile preprocessFileLineNumbers "kb_objectives.sqf";
-
+[] call compile preprocessFile "modules\command_and_control_center\init.sqf";
 if (isServer) then {
     [] call compile preprocessFileLineNumbers "scripts\server\init_server.sqf";
     [] spawn KPLIB_fnc_removeUselessSectorMarkers;

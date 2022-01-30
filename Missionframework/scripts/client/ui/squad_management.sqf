@@ -27,8 +27,7 @@ camCreate(getpos player);
 _squad_camera cameraEffect["internal", "back", "rtt"];
 _squad_camera camSetTarget _targetobject;
 _squad_camera camcommit 0;
-"rtt"
-setPiPEffect[0];
+"rtt" setPiPEffect[0];
 getmembers = {
     if (player getVariable ['KPLIB_hasDirectAccess', false]) then {
         (allPlayers select {alive _x}) + (allUnits select {!(isPlayer _x) && (_x isKindOf "man") && !(_x isKindOf "B_UAV_AI") && ( player distance _x < 800) && (alive _x) && (side _x == GRLIB_side_friendly) && !((typeOf _x) in KPLIB_o_inf_classes)&& !((typeOf _x) in KPLIB_o_sf_classes) && !((typeOf _x) in militia_squad)})

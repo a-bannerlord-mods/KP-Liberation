@@ -161,3 +161,4 @@ class KPLIB {
     #include "scripts\client\CfgFunctions.hpp"
     #include "scripts\server\CfgFunctions.hpp"
 };
+#include "modules\userinputmenus\CfgFunctions.cpp"

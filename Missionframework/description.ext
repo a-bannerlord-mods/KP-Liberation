@@ -257,6 +257,18 @@ class CfgTaskDescriptions {
 #include "modules\VAM_GUI\VAM_GUI_controls.hpp"
 #include "modules\VAM_GUI\VAM_GUI_classes.hpp"
 
+#include "modules\userinputmenus\systems\_macros.inc"
+#include "modules\userinputmenus\systems\_defines.inc"
+#include "modules\userinputmenus\controls.cpp"
+#include "modules\userinputmenus\systems\displayColorPicker.cpp"
+#include "modules\userinputmenus\systems\displayGuiMessage.cpp"
+#include "modules\userinputmenus\systems\displayListbox.cpp"
+#include "modules\userinputmenus\systems\displayListboxMulti.cpp"
+#include "modules\userinputmenus\systems\displayProgressBar.cpp"
+#include "modules\userinputmenus\systems\displaySlider.cpp"
+#include "modules\userinputmenus\systems\displayText.cpp"
+#include "modules\userinputmenus\systems\displayTextMulti.cpp"
+
 class CfgRemoteExec
 {
     class Functions
