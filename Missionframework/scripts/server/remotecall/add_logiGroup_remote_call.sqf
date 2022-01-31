@@ -1,9 +1,9 @@
 if (!isServer) exitWith {};
 
-private _newID = [count KP_liberation_logistics] call KPLIB_fnc_getMilitaryId;
+private _newID = [(count KP_liberation_logistics) + 1] call KPLIB_fnc_getMilitaryId;
 
 KP_liberation_logistics append [[
-    _newID,         // ID
+    _newID + " logistics convoy",         // ID
     0,              // Truck Count
     [0,0,0],        // Position Point A
     [0,0,0],        // Position Point B

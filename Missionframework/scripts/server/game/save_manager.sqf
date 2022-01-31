@@ -112,6 +112,7 @@ KP_liberation_successful_objectives = [];
 KP_liberation_failed_objectives = [];
 //Repair Workshops
 KP_repair_workshops = [];
+KP_last_save_real_date = systemTime;
 // Global Intel resource
 resources_intel = 0;
 // State if the save is fully loaded
@@ -221,7 +222,8 @@ if (!isNil "_saveData") then {
         GRLIB_players_data                          = _saveData param [23, []];
         GRLIB_virual_support                        = _saveData param [24, []];
         _objectives                                 = _saveData param [25, []];
-        //KP_liberation_Sector_Cache                  = _saveData param [26, []];
+        KP_last_save_real_date                      = _saveData param [26, systemTime];
+        //KP_liberation_Sector_Cache                  = _saveData param [27, []];
 
         stats_ammo_produced                         = _stats select  0;
         stats_ammo_spent                            = _stats select  1;

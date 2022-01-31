@@ -224,6 +224,7 @@ private _weights = [
     GRLIB_qualifications,
     GRLIB_players_data,
     GRLIB_virual_support,
-    [KP_liberation_successful_objectives,KP_liberation_failed_objectives]
+    [KP_liberation_successful_objectives,KP_liberation_failed_objectives],
+    systemTime
     //,KP_liberation_Sector_Cache
 ] // return
