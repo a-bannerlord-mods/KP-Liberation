@@ -105,6 +105,7 @@ KPLIB_b_allSquads = [
 
 
 KP_liberation_Command_Devices =  [
+"Land_Laptop_03_black_F",
 "Land_MultiScreenComputer_01_black_F", 
 "Land_Laptop_03_olive_F", 
 "Land_Laptop_03_sand_F", 

@@ -7,7 +7,7 @@ if (!GRLIB_use_whitelist) exitWith {};
 waitUntil {alive player};
 sleep 1;
 
-if (player isEqualTo ([] call KPLIB_fnc_getCommander) && !(serverCommandAvailable "#kick")) then {
+if ( (player isEqualTo ([] call KPLIB_fnc_getCommander) || player isEqualTo ([] call KPLIB_fnc_getCommanderPlatoon)) && !(serverCommandAvailable "#kick")) then {
 
     private _match = false;
 

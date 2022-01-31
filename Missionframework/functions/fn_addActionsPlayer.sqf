@@ -35,7 +35,7 @@ _player addAction [
     "
         alive _originalTarget
         && {_originalTarget getVariable ['KPLIB_isNearStart', false]}
-        && typeof cursorObject in ['Land_Laptop_03_black_F']
+        && toLower(typeof cursorObject) in KP_liberation_Command_Devices
         && cursorObject distance player < 5
     "
 ];
@@ -58,7 +58,7 @@ _player addAction [
             || {_originalTarget getVariable ['KPLIB_isNearStart', false]}
         }
         && {build_confirmed isEqualTo 0}
-        && typeof cursorObject in ['Land_Laptop_03_black_F']
+        && toLower(typeof cursorObject) in KP_liberation_Command_Devices
         && cursorObject distance player < 5
     "
 ];
@@ -171,7 +171,7 @@ _player addAction [
             || {[5] call KPLIB_fnc_hasPermission}
         }
         && {build_confirmed isEqualTo 0}
-        && typeof cursorObject in ['Land_Laptop_03_black_F']
+        && toLower(typeof cursorObject) in KP_liberation_Command_Devices
         && cursorObject distance player < 5
     "
 ];
@@ -357,7 +357,7 @@ _player addAction [
             || {[5] call KPLIB_fnc_hasPermission}
         }
         && {build_confirmed isEqualTo 0}
-        && typeof cursorObject in ['Land_Laptop_03_black_F']
+        && toLower(typeof cursorObject) in KP_liberation_Command_Devices
         && cursorObject distance player < 5
     "
 ];
@@ -408,7 +408,7 @@ _player addAction [
         && {_originalTarget getVariable ['KPLIB_hasDirectAccess', false]}
         && {alive _originalTarget}
         && {build_confirmed isEqualTo 0}
-        && typeof cursorObject in ['Land_Laptop_03_black_F']
+        && toLower(typeof cursorObject) in KP_liberation_Command_Devices
         && cursorObject distance player < 5
     "
 ];
@@ -428,7 +428,61 @@ _player addAction [
         _originalTarget getVariable ['KPLIB_hasDirectAccess', false]
         && {alive _originalTarget}
         && {build_confirmed isEqualTo 0}
-        && typeof cursorObject in ['Land_Laptop_03_black_F']
+        && toLower(typeof cursorObject) in KP_liberation_Command_Devices
+        && cursorObject distance player < 5
+    "
+];
+
+//skip time
+_player addAction [
+    ["<img size='1' image='a3\modules_f_curator\data\iconskiptime_ca.paa'/><t color='#FF8000'> ", "Skip To night", "</t>"] joinString "",
+    {
+        private _result = ["Are you sure you want to skip to night, enemy readiness will increase?", "Confirm", true, true] call BIS_fnc_guiMessage;
+        if (_result) then {
+            [20] remoteExec ["KPLIB_fnc_skipTimeTo", 2];
+        };
+    },
+    nil,
+    -840,
+    false,
+    true,
+    "",
+    "
+        (
+            _originalTarget getVariable ['KPLIB_hasDirectAccess', false]
+            ||
+            ['Officer'] call KPLIB_fnc_hasQualification
+        )
+        && {alive _originalTarget}
+        && {build_confirmed isEqualTo 0}
+        && toLower(typeof cursorObject) in KP_liberation_Command_Devices
+        && cursorObject distance player < 5
+    "
+];
+
+_player addAction [
+    ["<img size='1' image='a3\modules_f_curator\data\iconskiptime_ca.paa'/><t color='#FF8000'> ", "Skip To morning", "</t>"] joinString "",
+    {
+        private _result = ["Are you sure you want to skip to morning, enemy readiness will increase?", "Confirm", true, true] call BIS_fnc_guiMessage;
+        if (_result) then {
+            [6] remoteExec ["KPLIB_fnc_skipTimeTo", 2];
+        };
+
+    },
+    nil,
+    -840,
+    false,
+    true,
+    "",
+    "
+        (
+            _originalTarget getVariable ['KPLIB_hasDirectAccess', false]
+            ||
+            ['Officer'] call KPLIB_fnc_hasQualification
+        )
+        && {alive _originalTarget}
+        && {build_confirmed isEqualTo 0}
+        && toLower(typeof cursorObject) in KP_liberation_Command_Devices
         && cursorObject distance player < 5
     "
 ];

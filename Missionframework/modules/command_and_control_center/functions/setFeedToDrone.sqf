@@ -35,7 +35,7 @@ _data = avldrones  apply {
         // systemChat format["_index: %1", _index];
         // systemChat format["_data: %1", _data];
         // systemChat format["_value: %1", _value];
-		if (_confirmed) then {
+		if (_confirmed && (count avldrones > 0)) then {
 			[fScreen,(avldrones select _index),fScreenIndex]  call CCC_connectDroneToScreen;
 		};
     },

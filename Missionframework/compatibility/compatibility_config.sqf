@@ -46,7 +46,7 @@ KPLIB_classnamesToSave append KPLIB_TFAR_Set_Default_Channels_Device;
 
 //Simplex Support Services
 
-blufor_cas_support_required_items =["ItemcTab","Saka_tf_rt1523g_big_DES","Saka_tf_rt1523g_DES"];
+blufor_cas_support_required_items =["ItemcTab","Saka_tf_rt1523g_big_DES","Saka_tf_rt1523g_DES","tfw_ilbe_blade_black","tfw_ilbe_blade_mct","tfw_ilbe_blade_coy"];
 
 
 //acex field rations

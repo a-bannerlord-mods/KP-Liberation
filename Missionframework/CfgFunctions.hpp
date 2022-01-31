@@ -31,6 +31,7 @@ class KPLIB {
         class getAdaptiveVehicle            {};
         class getBluforRatio                {};
         class getCommander                  {};
+        class getCommanderPlatoon           {};
         class getCrateHeight                {};
         class getFobName                    {};
         class getFobResources               {};
@@ -105,6 +106,7 @@ class KPLIB {
         class applyUnitAnimations           {};
         class makeObjectDestroyable         {};
         class getHighestPos                 {};
+        class skipTimeTo                    {};
     };
     class functions_curator {
         file = "functions\curator";

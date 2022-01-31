@@ -2,7 +2,7 @@ params ["_player"];
 
 
 _player addAction [
-    ["<img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/><t color='#80FF80'> ", "Turn on", "</t>"] joinString "",
+    ["<img size='1' image='DBUG\pictures\cam.paa'/><t color='#80FF80'> ", "Turn on", "</t>"] joinString "",
     {
 		[cursorObject] call CCC_turnOnScreen;
 		//[cursorObject] remoteExec ["CCC_turnOnScreen", [0, -2] select isDedicated];
@@ -26,7 +26,7 @@ _player addAction [
 
 // player cams
 _player addAction [
-    ["<img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/><t color='#80FF80'> ", "Set Feed To Unit", "</t>"] joinString "",
+    ["<img size='1' image='DBUG\pictures\cam.paa'/><t color='#80FF80'> ", "Set Feed To Unit", "</t>"] joinString "",
     {
 		[cursorObject] call CCC_setFeedToUnit;
 	},
@@ -46,7 +46,7 @@ _player addAction [
 ];
 
 _player addAction [
-    ["<img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/><t color='#80FF80'> ", "Set Feed To Unit (Screen 1)", "</t>"] joinString "",
+    ["<img size='1' image='DBUG\pictures\cam.paa'/><t color='#80FF80'> ", "Set Feed To Unit (Screen 1)", "</t>"] joinString "",
     {
 		[cursorObject,0] call CCC_setFeedToUnit;
 	},
@@ -66,7 +66,7 @@ _player addAction [
 ];
 
 _player addAction [
-    ["<img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/><t color='#80FF80'> ", "Set Feed To Unit (Screen 2)", "</t>"] joinString "",
+    ["<img size='1' image='DBUG\pictures\cam.paa'/><t color='#80FF80'> ", "Set Feed To Unit (Screen 2)", "</t>"] joinString "",
     {
 		[cursorObject,1] call CCC_setFeedToUnit;
 	},
@@ -86,7 +86,7 @@ _player addAction [
 ];
 
 _player addAction [
-    ["<img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/><t color='#80FF80'> ", "Set Feed To Unit (Screen 3)", "</t>"] joinString "",
+    ["<img size='1' image='DBUG\pictures\cam.paa'/><t color='#80FF80'> ", "Set Feed To Unit (Screen 3)", "</t>"] joinString "",
     {
 		[cursorObject,2] call CCC_setFeedToUnit;
 	},
@@ -109,7 +109,7 @@ _player addAction [
 //drones
 
 _player addAction [
-    ["<img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/><t color='#80FF80'> ", "Set Feed To Drone", "</t>"] joinString "",
+    ["<img size='1' image='DBUG\pictures\cam.paa'/><t color='#80FF80'> ", "Set Feed To Drone", "</t>"] joinString "",
     {
 		[cursorObject] call CCC_setFeedToDrone;
 	},
@@ -129,7 +129,7 @@ _player addAction [
 ];
 
 _player addAction [
-    ["<img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/><t color='#80FF80'> ", "Set Feed To Drone (Screen 1)", "</t>"] joinString "",
+    ["<img size='1' image='DBUG\pictures\cam.paa'/><t color='#80FF80'> ", "Set Feed To Drone (Screen 1)", "</t>"] joinString "",
     {
 		[cursorObject,0] call CCC_setFeedToDrone;
 	},
@@ -149,7 +149,7 @@ _player addAction [
 ];
 
 _player addAction [
-    ["<img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/><t color='#80FF80'> ", "Set Feed To Drone (Screen 2)", "</t>"] joinString "",
+    ["<img size='1' image='DBUG\pictures\cam.paa'/><t color='#80FF80'> ", "Set Feed To Drone (Screen 2)", "</t>"] joinString "",
     {
 		[cursorObject,1] call CCC_setFeedToDrone;
 	},
@@ -169,7 +169,7 @@ _player addAction [
 ];
 
 _player addAction [
-    ["<img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/><t color='#80FF80'> ", "Set Feed To Drone (Screen 3)", "</t>"] joinString "",
+    ["<img size='1' image='DBUG\pictures\cam.paa'/><t color='#80FF80'> ", "Set Feed To Drone (Screen 3)", "</t>"] joinString "",
     {
 		[cursorObject,2] call CCC_setFeedToDrone;
 	},
@@ -192,7 +192,7 @@ _player addAction [
 //zoom
 
 _player addAction [
-    ["<img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/><t color='#80FF80'> ", "Set Zoom Level", "</t>"] joinString "",
+    ["<img size='1' image='DBUG\pictures\cam.paa'/><t color='#80FF80'> ", "Set Zoom Level", "</t>"] joinString "",
     {
 		[cursorObject] call CCC_setZoomLevel;
 	},
@@ -212,7 +212,7 @@ _player addAction [
 ];
 
 _player addAction [
-    ["<img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/><t color='#80FF80'> ", "Set Zoom Level (Screen 1)", "</t>"] joinString "",
+    ["<img size='1' image='DBUG\pictures\cam.paa'/><t color='#80FF80'> ", "Set Zoom Level (Screen 1)", "</t>"] joinString "",
     {
 		[cursorObject,0] call CCC_setZoomLevel;
 	},
@@ -232,7 +232,7 @@ _player addAction [
 ];
 
 _player addAction [
-    ["<img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/><t color='#80FF80'> ", "Set Zoom Level (Screen 2)", "</t>"] joinString "",
+    ["<img size='1' image='DBUG\pictures\cam.paa'/><t color='#80FF80'> ", "Set Zoom Level (Screen 2)", "</t>"] joinString "",
     {
 		[cursorObject,1] call CCC_setZoomLevel;
 	},
@@ -252,7 +252,7 @@ _player addAction [
 ];
 
 _player addAction [
-    ["<img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/><t color='#80FF80'> ", "Set Zoom Level (Screen 3)", "</t>"] joinString "",
+    ["<img size='1' image='DBUG\pictures\cam.paa'/><t color='#80FF80'> ", "Set Zoom Level (Screen 3)", "</t>"] joinString "",
     {
 		[cursorObject,2] call CCC_setZoomLevel;
 	},
@@ -274,7 +274,7 @@ _player addAction [
 
 //normal 
 _player addAction [
-    ["<img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/><t color='#80FF80'> ", "Set Normal Vision Mode", "</t>"] joinString "",
+    ["<img size='1' image='a3\ui_f\data\gui\rsc\rscdisplayarsenal\nvgs_ca.paa'/><t color='#80FF80'> ", "Set Normal Vision Mode", "</t>"] joinString "",
     {
 		_screenIndex = 0;
 		_live_feed_texture = cursorObject getVariable [("live_feed_texture" + str _screenIndex) ,""];
@@ -296,7 +296,7 @@ _player addAction [
 ];
 
 _player addAction [
-    ["<img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/><t color='#80FF80'> ", "Set Normal Vision Mode (Screen 1)", "</t>"] joinString "",
+    ["<img size='1' image='a3\ui_f\data\gui\rsc\rscdisplayarsenal\nvgs_ca.paa'/><t color='#80FF80'> ", "Set Normal Vision Mode (Screen 1)", "</t>"] joinString "",
     {
 		_screenIndex = 0;
 		_live_feed_texture = cursorObject getVariable [("live_feed_texture" + str _screenIndex) ,""];
@@ -318,7 +318,7 @@ _player addAction [
 ];
 
 _player addAction [
-    ["<img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/><t color='#80FF80'> ", "Set Normal Vision Mode (Screen 2)", "</t>"] joinString "",
+    ["<img size='1' image='a3\ui_f\data\gui\rsc\rscdisplayarsenal\nvgs_ca.paa'/><t color='#80FF80'> ", "Set Normal Vision Mode (Screen 2)", "</t>"] joinString "",
     {
 		_screenIndex = 0;
 		_live_feed_texture = cursorObject getVariable [("live_feed_texture" + str _screenIndex) ,""];
@@ -340,7 +340,7 @@ _player addAction [
 ];
 
 _player addAction [
-    ["<img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/><t color='#80FF80'> ", "Set Normal Vision Mode (Screen 3)", "</t>"] joinString "",
+    ["<img size='1' image='a3\ui_f\data\gui\rsc\rscdisplayarsenal\nvgs_ca.paa'/><t color='#80FF80'> ", "Set Normal Vision Mode (Screen 3)", "</t>"] joinString "",
     {
 		_screenIndex = 0;
 		_live_feed_texture = cursorObject getVariable [("live_feed_texture" + str _screenIndex) ,""];
@@ -363,7 +363,7 @@ _player addAction [
 
 //NV
 _player addAction [
-    ["<img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/><t color='#80FF80'> ", "Set Night Vision Mode", "</t>"] joinString "",
+    ["<img size='1' image='a3\ui_f\data\gui\rsc\rscdisplayarsenal\nvgs_ca.paa'/><t color='#80FF80'> ", "Set Night Vision Mode", "</t>"] joinString "",
     {
 		_screenIndex = 0;
 		_live_feed_texture = cursorObject getVariable [("live_feed_texture" + str _screenIndex) ,""];
@@ -385,7 +385,7 @@ _player addAction [
 ];
 
 _player addAction [
-    ["<img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/><t color='#80FF80'> ", "Set Night Vision Mode (Screen 1)", "</t>"] joinString "",
+    ["<img size='1' image='a3\ui_f\data\gui\rsc\rscdisplayarsenal\nvgs_ca.paa'/><t color='#80FF80'> ", "Set Night Vision Mode (Screen 1)", "</t>"] joinString "",
     {
 		_screenIndex = 0;
 		_live_feed_texture = cursorObject getVariable [("live_feed_texture" + str _screenIndex) ,""];
@@ -407,7 +407,7 @@ _player addAction [
 ];
 
 _player addAction [
-    ["<img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/><t color='#80FF80'> ", "Set Night Vision Mode (Screen 2)", "</t>"] joinString "",
+    ["<img size='1' image='a3\ui_f\data\gui\rsc\rscdisplayarsenal\nvgs_ca.paa'/><t color='#80FF80'> ", "Set Night Vision Mode (Screen 2)", "</t>"] joinString "",
     {
 		_screenIndex = 0;
 		_live_feed_texture = cursorObject getVariable [("live_feed_texture" + str _screenIndex) ,""];
@@ -429,7 +429,7 @@ _player addAction [
 ];
 
 _player addAction [
-    ["<img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/><t color='#80FF80'> ", "Set Night Vision Mode (Screen 3)", "</t>"] joinString "",
+    ["<img size='1' image='a3\ui_f\data\gui\rsc\rscdisplayarsenal\nvgs_ca.paa'/><t color='#80FF80'> ", "Set Night Vision Mode (Screen 3)", "</t>"] joinString "",
     {
 		_screenIndex = 0;
 		_live_feed_texture = cursorObject getVariable [("live_feed_texture" + str _screenIndex) ,""];
@@ -452,7 +452,7 @@ _player addAction [
 
 //Thermal
 _player addAction [
-    ["<img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/><t color='#80FF80'> ", "Set Thermal Vision Mode", "</t>"] joinString "",
+    ["<img size='1' image='a3\ui_f\data\gui\rsc\rscdisplayarsenal\nvgs_ca.paa'/><t color='#80FF80'> ", "Set Thermal Vision Mode", "</t>"] joinString "",
     {
 		_screenIndex = 0;
 		_live_feed_texture = cursorObject getVariable [("live_feed_texture" + str _screenIndex) ,""];
@@ -474,7 +474,7 @@ _player addAction [
 ];
 
 _player addAction [
-    ["<img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/><t color='#80FF80'> ", "Set Night Vision Mode (Screen 1)", "</t>"] joinString "",
+    ["<img size='1' image='a3\ui_f\data\gui\rsc\rscdisplayarsenal\nvgs_ca.paa'/><t color='#80FF80'> ", "Set Night Vision Mode (Screen 1)", "</t>"] joinString "",
     {
 		_screenIndex = 0;
 		_live_feed_texture = cursorObject getVariable [("live_feed_texture" + str _screenIndex) ,""];
@@ -496,7 +496,7 @@ _player addAction [
 ];
 
 _player addAction [
-    ["<img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/><t color='#80FF80'> ", "Set Night Vision Mode (Screen 2)", "</t>"] joinString "",
+    ["<img size='1' image='a3\ui_f\data\gui\rsc\rscdisplayarsenal\nvgs_ca.paa'/><t color='#80FF80'> ", "Set Night Vision Mode (Screen 2)", "</t>"] joinString "",
     {
 		_screenIndex = 0;
 		_live_feed_texture = cursorObject getVariable [("live_feed_texture" + str _screenIndex) ,""];
@@ -518,7 +518,7 @@ _player addAction [
 ];
 
 _player addAction [
-    ["<img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/><t color='#80FF80'> ", "Set Night Vision Mode (Screen 3)", "</t>"] joinString "",
+    ["<img size='1' image='a3\ui_f\data\gui\rsc\rscdisplayarsenal\nvgs_ca.paa'/><t color='#80FF80'> ", "Set Night Vision Mode (Screen 3)", "</t>"] joinString "",
     {
 		_screenIndex = 0;
 		_live_feed_texture = cursorObject getVariable [("live_feed_texture" + str _screenIndex) ,""];

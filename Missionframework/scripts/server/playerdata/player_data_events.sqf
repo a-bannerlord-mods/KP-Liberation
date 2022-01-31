@@ -72,16 +72,18 @@ if (count allplayers > 0) then {
             _unit = _x;
             _uid = getPlayerUID _unit;
             if !(_uid=="") then {
-                if !(isNull (objectParent _unit)) then {
-                    GRLIB_Players_Disconnect_Vehicles set [_uid,vehicle _unit];
-                }else{
-                    GRLIB_Players_Disconnect_Vehicles set [_uid,objNull];
-                };
-                _nearbyFriends = (units (group _unit)) select {!(_x isEqualTo _unit )&&(_x distance _unit ) <100};
-                if (count _nearbyFriends > 0) then {
-                    GRLIB_Players_Disconnect_SquadMate set [_uid,(_nearbyFriends select 0)];
-                }else{
-                    GRLIB_Players_Disconnect_SquadMate set [_uid,objNull];
+                if (_unit getVariable ["deployed",false]) then {
+                    if !(isNull (objectParent _unit)) then {
+                        GRLIB_Players_Disconnect_Vehicles set [_uid,vehicle _unit];
+                    }else{
+                        GRLIB_Players_Disconnect_Vehicles set [_uid,objNull];
+                    };
+                    _nearbyFriends = (units (group _unit)) select {!(_x isEqualTo _unit )&&(_x distance _unit ) <100};
+                    if (count _nearbyFriends > 0) then {
+                        GRLIB_Players_Disconnect_SquadMate set [_uid,(_nearbyFriends select 0)];
+                    }else{
+                        GRLIB_Players_Disconnect_SquadMate set [_uid,objNull];
+                    };
                 };
             };   
         } forEach allplayers;
