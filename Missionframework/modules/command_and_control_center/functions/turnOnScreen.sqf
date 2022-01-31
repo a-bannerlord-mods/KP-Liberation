@@ -16,11 +16,11 @@ _screens_feed_units = _screen getVariable ["screens_feed_units",createHashMap];
 		_cam = "camera" camCreate [0,0,0]; 
 						
 		_screen setVariable [("live_feed_cam" + str _screenIndex) ,_cam];
-		_screen setVariable [("live_feed_texture" + str _screenIndex) ,_textureName];
+		
 		if (_unit isKindOf "man") then {	
 			_screen setVariable [("live_feed_cam_zoom" + str _screenIndex) ,1];
 		}else{	
-			_screen setVariable [("live_feed_cam_zoom" + str _screenIndex) ,1];
+			_screen setVariable [("live_feed_cam_zoom" + str _screenIndex) ,0.2];
 		};
 
 		addMissionEventHandler ["Draw3D", {
@@ -45,7 +45,8 @@ _screens_feed_units = _screen getVariable ["screens_feed_units",createHashMap];
 	_cam cameraEffect["internal", "back", _textureName];
 	_textureName setPiPEffect[0];
 	_screen setVariable [("live_feed_unit" + str _screenIndex) ,_unit];
-
+	_screen setVariable [("live_feed_texture" + str _screenIndex) ,_textureName];
+	
 	if (_unit isKindOf "man") then {
 
 		/* create _unit and make it fly */ 

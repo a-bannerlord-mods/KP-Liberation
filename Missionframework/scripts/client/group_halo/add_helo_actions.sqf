@@ -1,7 +1,8 @@
 
 waitUntil {!isNil "save_is_loaded"};
 waitUntil {save_is_loaded};
- params ["_device"];
+
+params ["_device"];
 
 if(isnil "c130_flying_cargo" )then{
     c130_flying_cargo = objNull;
@@ -37,37 +38,11 @@ _device addAction ["<img size='1' image='ca\air2\data\ui\icon_c130j_ca.paa'/><t 
 	""			// memoryPoint
 ];
 
-
-_device addAction [format ["<img size='1' image='ca\air2\data\ui\icon_c130j_ca.paa'/><t color='#04ff00'>Give Order To %1 Take off</t>", gettext(configFile >> "Cfgvehicles" >> KPLIB_C130_halo_airplane_class >> "displayname")], {
-    params ["_target", "_caller", "_actionId", "_arguments"];
+Take_off = {
     
-    _plane_name = gettext(configFile >> "Cfgvehicles" >> KPLIB_C130_halo_airplane_class >> "displayname");
-    _first_Avl_plane_after = 9999999999;
-    _plane =objNull;
-    
-    {
-        _last_halo_jump =_x getVariable ["last_halo_jump", -6000];
-        if (( _last_halo_jump + ( KPLIB_C130_halo_param * 60)) >= servertime) then {
-            _av_after= ceil ((( _last_halo_jump + ( KPLIB_C130_halo_param * 60)) - servertime ));
-            if (_first_Avl_plane_after > _av_after) then {
-                _first_Avl_plane_after = _av_after;
-            };
-        } else {
-            _plane = _x;
-        };
-    } forEach ((getPosATL _target) nearEntities [KPLIB_C130_halo_airplane_class, 400]);
-    
-    if (_first_Avl_plane_after == 9999999999 && isNull _plane) exitwith {
-        hint format ["No %1 available at all", _plane_name];
-    };
-    if (isNull _plane) exitwith {
-        hint format ["No %1 available at this moment, First %1 will available after %2 minutes", _plane_name, ceil(_first_Avl_plane_after/60)];
-    };
-    
-    _plane setVariable	["last_halo_jump", servertime, true];
-	plane_status = "White";
+    plane_status = "White";
     publicVariable "plane_status";
-    "dz" setmarkeralpha 1;  
+    _plane_name = gettext(configFile >> "Cfgvehicles" >> KPLIB_C130_halo_airplane_class >> "displayname");
     _dz = createvehicle ["O_diver_TL_F", getmarkerPos "dz", [], 0, "NONE"];
     _dz hideObjectglobal true;
     _dz disableAI "move";
@@ -76,13 +51,20 @@ _device addAction [format ["<img size='1' image='ca\air2\data\ui\icon_c130j_ca.p
     _dz disableAI "WEAPONAIM";
     _dz disableAI "ANIM";
     _plane = createvehicle [KPLIB_C130_halo_airplane_class, getmarkerPos "dz", [], 0, "NONE"];
-    _plane enableSimulationGlobal false;
     _plane allowdamage false;
+    [_plane, ["hide_cargo",1,true]] remoteExec ["animate", 0];
+
+    clearWeaponCargoGlobal _plane;
+    clearMagazineCargoGlobal _plane;
+    clearBackpackCargoGlobal _plane;
+    clearItemCargoGlobal _plane;
+
+    _plane enableSimulationGlobal false;
     _plane hideObjectglobal true;
     _plane attachto [_dz, [0, 0, 10000] ];
     _plane engineOn true;
     _plane flyinHeight 6000;
-    _plane setvehicleVarName "c130_flying_plane";
+
     c130_flying_plane = _plane;
     publicVariable "c130_flying_plane";
     _dz setvehicleVarName "dz";
@@ -98,16 +80,15 @@ _device addAction [format ["<img size='1' image='ca\air2\data\ui\icon_c130j_ca.p
     
     hint (_plane_name + "in the air, Please board it");
 	//_plane  animate ["hide_cargo", 1];
-    [_plane, ["hide_cargo",1]] remoteExec ["animate", 0];
-    _actionid= [] call addVehcileaction;
+    
     _plane hideObjectglobal false;
     
     _counter = 60;
     while {_counter>0} do {
         _counter =_counter-2;
         sleep 2;
-        _plane animate ["ramp_bottom", 0];
-        _plane animate ["ramp_top", 0];
+        //_plane animate ["ramp_bottom", 0];
+        //_plane animate ["ramp_top", 0];
     };
     
     
@@ -117,6 +98,7 @@ _device addAction [format ["<img size='1' image='ca\air2\data\ui\icon_c130j_ca.p
     // [_plane, 'ramp_top',1] remoteExec ['animate', 0];
     //_plane animate ["ramp_bottom", 1];
     //_plane animate ["ramp_top", 1];
+    _plane enableSimulationGlobal true;
     [_plane, ["ramp_bottom",1]] remoteExec ["animate", 0];
     [_plane, ["ramp_top",1]] remoteExec ["animate", 0];
 
@@ -150,7 +132,7 @@ _device addAction [format ["<img size='1' image='ca\air2\data\ui\icon_c130j_ca.p
             } forEach units group player;
         };
     };
-	player removeAction  _actionid;
+
     sleep 80;
 
     deletevehicle _plane;
@@ -161,7 +143,40 @@ _device addAction [format ["<img size='1' image='ca\air2\data\ui\icon_c130j_ca.p
     deleteMarker "dz";
     c130_flying_plane = objNull;
 	publicVariable "c130_flying_plane";
+};
 
+_device addAction [format ["<img size='1' image='ca\air2\data\ui\icon_c130j_ca.paa'/><t color='#04ff00'>Give Order To %1 Take off</t>", gettext(configFile >> "Cfgvehicles" >> KPLIB_C130_halo_airplane_class >> "displayname")], {
+    params ["_target", "_caller", "_actionId", "_arguments"];
+    
+    _plane_name = gettext(configFile >> "Cfgvehicles" >> KPLIB_C130_halo_airplane_class >> "displayname");
+    _first_Avl_plane_after = 9999999999;
+    _plane =objNull;
+    
+    {
+        _last_halo_jump =_x getVariable ["last_halo_jump", -6000];
+        if (( _last_halo_jump + ( KPLIB_C130_halo_param * 60)) >= servertime) then {
+            _av_after= ceil ((( _last_halo_jump + ( KPLIB_C130_halo_param * 60)) - servertime ));
+            if (_first_Avl_plane_after > _av_after) then {
+                _first_Avl_plane_after = _av_after;
+            };
+        } else {
+            _plane = _x;
+        };
+    } forEach ((getPosATL _target) nearEntities [KPLIB_C130_halo_airplane_class, 400]);
+    
+    if (_first_Avl_plane_after == 9999999999 && isNull _plane) exitwith {
+        hint format ["No %1 available at all", _plane_name];
+    };
+    if (isNull _plane) exitwith {
+        hint format ["No %1 available at this moment, First %1 will available after %2 minutes", _plane_name, ceil(_first_Avl_plane_after/60)];
+    };
+    
+    _plane setVariable	["last_halo_jump", servertime, true];
+
+    "dz" setmarkeralpha 1;  
+    
+    [] remoteExec ["Take_off", 2];
+    addVehcileactionId = [] call addVehcileaction;
     },
     nil,		// arguments
 	1.5,		// priority
@@ -181,9 +196,11 @@ _device addAction [format ["<img size='1' image='ca\air2\data\ui\icon_c130j_ca.p
 
 _device addAction [format ["<img size='1' image='ca\air2\data\ui\icon_c130j_ca.paa'/><t color='#0040ff'>Board %1</t>", gettext(configFile >> "Cfgvehicles" >> KPLIB_C130_halo_airplane_class >> "displayname") ], {
     cuttext ["", "BLACK OUT", 3];
+    player removeAction  addVehcileactionId;
     sleep 4;
     player attachto [c130_flying_plane, [0, 4, -4.5] ];
     player setDir 180;
+    c130_flying_plane enableSimulation true;
     detach player;
     {
         if !(isplayer _x) then {
@@ -205,11 +222,11 @@ _device addAction [format ["<img size='1' image='ca\air2\data\ui\icon_c130j_ca.p
     // };
 
     hint 'Green Light';
-
+    
+	
     waitUntil {
         istouchingGround player or (getPosASL player select 2) <2
     };
-    
     {
         if !(isplayer _x) then {
             waitUntil {

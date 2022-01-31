@@ -580,6 +580,8 @@ _player addAction [
     "
 ];
 
+
+
 _player addAction [
     ["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\use_ca.paa'/><t color='#FF8000'> ", "Show/Hide SAM Ranges", "</t>"] joinString "",
     {

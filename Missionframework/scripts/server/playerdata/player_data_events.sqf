@@ -28,33 +28,30 @@ SendPlayerData = {
 };
 
 
-
-addMissionEventHandler ["playerConnected",
-    {
-        params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
-        if (_uid == "") exitwith {};
-        [_owner,_uid] call SendPlayerData;
-}];
-
 addMissionEventHandler ["HandleDisconnect", {
 	params ["_unit", "_id", "_uid", "_name"];
-
-    [_unit,_uid] call KPLIB_fnc_updatePlayerData;
     
     if !(isNull (objectParent _unit)) then {
         GRLIB_Players_Disconnect_Vehicles pushBack [_uid,vehicle _unit];
-        GRLIB_Players_Disconnect_Vehicles = GRLIB_Players_Disconnect_Vehicles select {!(isNull _x)};
         publicVariable "GRLIB_Players_Disconnect_Vehicles";
     };
     
     _nearbyFriends = (units (group _unit)) select {!(_x isEqualTo _unit )&&(_x distance _unit ) <100};
     if (count _nearbyFriends > 0) then {
         GRLIB_Players_Disconnect_SquadMate pushBack [_uid,(_nearbyFriends select 0)];
-        GRLIB_Players_Disconnect_SquadMate= GRLIB_Players_Disconnect_SquadMate select {!(isNull _x)};
         publicVariable "GRLIB_Players_Disconnect_SquadMate";
     };
 
+    [_unit,_uid] call KPLIB_fnc_updatePlayerData;
+
     false
+}];
+
+addMissionEventHandler ["playerConnected",
+    {
+        params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
+        if (_uid == "") exitwith {};
+        [_owner,_uid] call SendPlayerData;
 }];
 
     

@@ -111,7 +111,6 @@ while {true} do {
             // Last vehicle 
 
             if !(isnil "GRLIB_Players_Disconnect_Vehicles") then { 
-                GRLIB_Players_Disconnect_Vehicles = GRLIB_Players_Disconnect_Vehicles select {!(isNull _x)}; 
                 _vi = GRLIB_Players_Disconnect_Vehicles findIf {(_x select 0) == (getPlayerUID player)}; 
                 if (_vi != -1) then { 
                     _v = (GRLIB_Players_Disconnect_Vehicles select _vi) select 1; 
@@ -127,7 +126,6 @@ while {true} do {
                 GRLIB_Players_Disconnect_Vehicles = []; 
             }; 
             if !(isnil "GRLIB_Players_Disconnect_SquadMate") then { 
-                GRLIB_Players_Disconnect_SquadMate = GRLIB_Players_Disconnect_SquadMate select {!(isNull _x)}; 
                 _vi = GRLIB_Players_Disconnect_SquadMate findIf {(_x select 0) == (getPlayerUID player)}; 
                 if (_vi != -1) then { 
                     _v = (GRLIB_Players_Disconnect_SquadMate select _vi) select 1; 

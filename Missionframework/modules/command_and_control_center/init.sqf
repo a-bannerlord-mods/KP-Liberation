@@ -4,3 +4,4 @@ CCC_setFeedToUnit = compile preprocessFile "modules\command_and_control_center\f
 CCC_setFeedToDrone = compile preprocessFile "modules\command_and_control_center\functions\setFeedToDrone.sqf";
 CCC_turnOnScreen = compile preprocessFile "modules\command_and_control_center\functions\turnOnScreen.sqf";
 CCC_setZoomLevel = compile preprocessFile "modules\command_and_control_center\functions\setZoomLevel.sqf";
+CCC_addPlayerActions  = compile preprocessFile "modules\command_and_control_center\functions\addPlayerActions.sqf";

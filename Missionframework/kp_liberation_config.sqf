@@ -297,15 +297,19 @@ KP_liberation_battlegroup_clearance = [
 The Steam UIDs entered in this array will allow corresponding players to access the commander actions (rights, production, etc.),
 even if they are not in the commander slot. */
 KP_liberation_commander_actions = [
-    "76561198028353187",
-    "76561198302624648"
+	"76561198028353187",
+	"76561198302624648",
+	"76561198037923505",
+	"76561198212119639"
 ];
 
 /* Whitelist for BI support framework access.
 Same format as for the commander actions. */
 KP_liberation_suppMod_whitelist = [
-    "76561198028353187",
-    "76561198302624648"
+	"76561198028353187",
+	"76561198302624648",
+	"76561198037923505",
+	"76561198212119639"
 ];
 
 /* Array of radio tower classnames to place at radio tower sectors.

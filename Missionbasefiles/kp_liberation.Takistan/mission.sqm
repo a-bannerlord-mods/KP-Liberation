@@ -8,7 +8,7 @@ class EditorData
 	toggles=2;
 	class ItemIDProvider
 	{
-		nextID=8032;
+		nextID=8070;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=2028;
+		nextID=2063;
 	};
 	class Camera
 	{
-		pos[]={8243.6807,299.20819,2119.6958};
-		dir[]={0.34520414,-0.51716548,0.78323328};
-		up[]={0.20858729,0.85586208,0.47326314};
-		aside[]={0.91509414,-3.115274e-007,-0.40332168};
+		pos[]={8315.5791,319.72861,1895.9105};
+		dir[]={0.8563506,-0.49837065,-0.13524257};
+		up[]={0.49226952,0.86696404,-0.077743612};
+		aside[]={-0.15599558,7.4505806e-009,-0.98775786};
 	};
 };
 binarizationWanted=0;
@@ -171,13 +171,15 @@ addons[]=
 	"alive_sys_data",
 	"A3_Props_F_Orange_Humanitarian_Supplies",
 	"rhsusf_c_props",
-	"A3_Props_F_Orange_Items_Tools"
+	"A3_Props_F_Orange_Items_Tools",
+	"mbg_killhouses_a3",
+	"opxbuildings"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=83;
+		items=85;
 		class Item0
 		{
 			className="A3_Modules_F_Curator";
@@ -703,6 +705,16 @@ class AddonsMetaData
 			name="RHSUSF Editor Props";
 			author="Red Hammer Studios";
 			url="http://www.rhsmods.org/";
+		};
+		class Item83
+		{
+			className="mbg_killhouses_a3";
+			name="mbg_killhouses_a3";
+		};
+		class Item84
+		{
+			className="opxbuildings";
+			name="opxbuildings";
 		};
 	};
 };
@@ -28467,7 +28479,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=125;
+		items=127;
 		class Item0
 		{
 			dataType="Trigger";
@@ -54520,7 +54532,6 @@ class Mission
 						angles[]={0,5.9492106,0};
 					};
 					side="Empty";
-					flags=4;
 					class Attributes
 					{
 						createAsSimpleObject=1;
@@ -54528,6 +54539,7 @@ class Mission
 					};
 					id=7946;
 					type="Land_MobilePhone_smart_F";
+					atlOffset=0.19265747;
 				};
 				class Item692
 				{
@@ -69248,7 +69260,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={8190.6685,307.78729,2151.0869};
-				angles[]={0,2.7228651,-0};
+				angles[]={0,2.7228651,0};
 			};
 			side="Empty";
 			flags=5;
@@ -69265,7 +69277,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={8247.3623,296.53674,2117.7227};
-				angles[]={0,2.836174,-0};
+				angles[]={0,2.836174,0};
 			};
 			side="Empty";
 			flags=4;
@@ -69351,7 +69363,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={8248.9883,296.73557,2118.4541};
-				angles[]={0,4.4428806,-0};
+				angles[]={0,4.4428806,0};
 			};
 			side="Empty";
 			flags=4;
@@ -69386,7 +69398,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={8245.291,296.5321,2117.0713};
-				angles[]={0,4.403348,-0};
+				angles[]={0,4.403348,0};
 			};
 			side="Empty";
 			flags=4;
@@ -69421,7 +69433,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={8245.9688,296.26996,2117.2693};
-				angles[]={0,1.2560863,-0};
+				angles[]={0,1.2560863,0};
 			};
 			side="Empty";
 			flags=4;
@@ -69439,7 +69451,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={8246.8721,296.91681,2117.2964};
-				angles[]={0,1.0850174,-0};
+				angles[]={0,1.0850174,0};
 			};
 			side="Empty";
 			flags=4;
@@ -69457,7 +69469,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={8244.585,296.37854,2116.7964};
-				angles[]={0,2.8419566,-0};
+				angles[]={0,2.8419566,0};
 			};
 			side="Empty";
 			flags=4;
@@ -69475,7 +69487,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={8251.0732,297.46506,2118.3625};
-				angles[]={0,3.9042075,-0};
+				angles[]={0,3.9042075,0};
 			};
 			side="Empty";
 			flags=4;
@@ -69491,7 +69503,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={8249.5273,296.42517,2118.4121};
-				angles[]={0,4.4530191,-0};
+				angles[]={0,4.4530191,0};
 			};
 			side="Empty";
 			flags=4;
@@ -69543,7 +69555,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={8247.165,296.97717,2117.5251};
-				angles[]={0,1.6402718,-0};
+				angles[]={0,1.6402718,0};
 			};
 			side="Empty";
 			flags=4;
@@ -69561,7 +69573,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={8247.8359,296.98816,2117.6104};
-				angles[]={0,1.6040111,-0};
+				angles[]={0,1.6040111,0};
 			};
 			side="Empty";
 			flags=4;
@@ -69579,7 +69591,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={8245.7314,297.0473,2117.2161};
-				angles[]={0,5.9066305,-0};
+				angles[]={0,5.9066305,0};
 			};
 			side="Empty";
 			class Attributes
@@ -69597,7 +69609,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={8245.2773,296.93881,2117.0664};
-				angles[]={0,0.75026882,-0};
+				angles[]={0,0.75026882,0};
 			};
 			side="Empty";
 			class Attributes
@@ -69625,6 +69637,38 @@ class Mission
 			id=8031;
 			type="Land_Matches_F";
 			atlOffset=0.85705566;
+		};
+		class Item125
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={7919.2837,297.04428,1875.6694};
+				angles[]={0,4.2166357,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=8052;
+			type="Land_MBG_Shoothouse_1";
+		};
+		class Item126
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={8291.7803,302.51532,1835.7959};
+				angles[]={0,5.7523451,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=8065;
+			type="Land_mosque3";
 		};
 	};
 	class Connections
