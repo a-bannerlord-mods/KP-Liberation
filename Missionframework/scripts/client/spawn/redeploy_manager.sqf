@@ -109,11 +109,10 @@ while {true} do {
         if (count _lastPlayerPos > 0 && KPLIB_firstTimeRespawn && GRLIB_enableSaveLocation) then {
             KPLIB_respawnPositionsList = [["Last Known Postion", _lastPlayerPos]];
             // Last vehicle 
-
-            if !(isnil "GRLIB_Players_Disconnect_Vehicles") then { 
-                _vi = GRLIB_Players_Disconnect_Vehicles findIf {(_x select 0) == (getPlayerUID player)}; 
-                if (_vi != -1) then { 
-                    _v = (GRLIB_Players_Disconnect_Vehicles select _vi) select 1; 
+            _uid = getPlayerUID player;
+            if !(isnil "GRLIB_Players_Disconnect_Vehicles") then {  
+                if ( _uid in GRLIB_Players_Disconnect_Vehicles) then { 
+                    _v = GRLIB_Players_Disconnect_Vehicles get _uid; 
                     if (!(isNull _v) && alive _v) then { 
                         KPLIB_respawnPositionsList pushBack [ 
                             format ["Last vehicle - %1 ", mapGridPosition getPosATL _v], 
@@ -122,13 +121,10 @@ while {true} do {
                         ]; 
                     }; 
                 };   
-            }else{ 
-                GRLIB_Players_Disconnect_Vehicles = []; 
             }; 
             if !(isnil "GRLIB_Players_Disconnect_SquadMate") then { 
-                _vi = GRLIB_Players_Disconnect_SquadMate findIf {(_x select 0) == (getPlayerUID player)}; 
-                if (_vi != -1) then { 
-                    _v = (GRLIB_Players_Disconnect_SquadMate select _vi) select 1; 
+                if ( _uid in GRLIB_Players_Disconnect_SquadMate) then { 
+                    _v = GRLIB_Players_Disconnect_SquadMate get _uid; 
                     if (!(isNull _v) && alive _v) then { 
                         KPLIB_respawnPositionsList pushBack [ 
                             format ["Near Last Squadmate (%1) - %2 ",name _v , mapGridPosition getPosATL _v], 
@@ -137,8 +133,6 @@ while {true} do {
                         ]; 
                     }; 
                 };   
-            }else{ 
-                GRLIB_Players_Disconnect_SquadMate = []; 
             }; 
             _preciseDeployment = true;
         }
@@ -261,15 +255,14 @@ while {true} do {
             
         };
 
-        _vi = GRLIB_Players_Disconnect_Vehicles findIf {(_x select 0) == (getPlayerUID player)};
-        if (_vi != -1) then {
-            GRLIB_Players_Disconnect_Vehicles deleteat _vi;
+        _uid = getPlayerUID player;
+        if ( _uid in GRLIB_Players_Disconnect_Vehicles) then { 
+            GRLIB_Players_Disconnect_Vehicles deleteat _uid;
             publicVariable "GRLIB_Players_Disconnect_Vehicles";
         };
 
-        _vi = GRLIB_Players_Disconnect_SquadMate findIf {(_x select 0) == (getPlayerUID player)};
-        if (_vi != -1) then {
-            GRLIB_Players_Disconnect_SquadMate deleteat _vi;
+        if ( _uid in GRLIB_Players_Disconnect_SquadMate) then { 
+            GRLIB_Players_Disconnect_SquadMate deleteat _uid;
             publicVariable "GRLIB_Players_Disconnect_SquadMate";
         };
 
