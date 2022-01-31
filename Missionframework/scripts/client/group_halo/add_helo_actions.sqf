@@ -10,6 +10,9 @@ if(isnil "c130_flying_cargo" )then{
 if(isnil "c130_flying_plane" )then{
     c130_flying_plane = objNull;
 };
+if (isnil "Plane_Drop_Height") then {
+    Plane_Drop_Height = 4000;
+};
 
 _device addAction ["<img size='1' image='ca\air2\data\ui\icon_c130j_ca.paa'/><t color='#00ffa6'>Select Drop Zone</t>", {
     openMap true;
@@ -38,8 +41,42 @@ _device addAction ["<img size='1' image='ca\air2\data\ui\icon_c130j_ca.paa'/><t 
 	""			// memoryPoint
 ];
 
+_device addAction ["<img size='1' image='ca\air2\data\ui\icon_c130j_ca.paa'/><t color='#00ffa6'>Select Drop Height</t>", {
+        [
+            [
+                [2000,10000],
+                Plane_Drop_Height,
+                [1,1]
+            ],
+            "Set Drop Height",
+            {format["%1 Meter",(round _position)]},
+            {
+                if _confirmed then {
+                    Plane_Drop_Height = (round _position);
+                };
+            },
+            "Set Height",
+            "Abort"
+        ] call CAU_UserInputMenus_fnc_slider;
+    },
+    nil,		// arguments
+	1.5,		// priority
+	true,		// showWindow
+	true,		// hideOnUse
+	"",			// shortcut
+	"
+    isNull c130_flying_plane
+    && !(getMarkerPos 'dz' isEqualTo [0,0,0])
+    && player getUnitTrait 'officer'
+    ", 	// condition
+	50,			// radius
+	false,		// unconscious
+	"",			// selection
+	""			// memoryPoint
+];
+
 Take_off = {
-    
+    params ["_planeDropHeight"];
     plane_status = "White";
     publicVariable "plane_status";
     _plane_name = gettext(configFile >> "Cfgvehicles" >> KPLIB_C130_halo_airplane_class >> "displayname");
@@ -61,9 +98,9 @@ Take_off = {
 
     _plane enableSimulationGlobal false;
     _plane hideObjectglobal true;
-    _plane attachto [_dz, [0, 0, 10000] ];
+    _plane attachto [_dz, [0, 0, _planeDropHeight] ];
     _plane engineOn true;
-    _plane flyinHeight 6000;
+    _plane flyinHeight _planeDropHeight;
 
     c130_flying_plane = _plane;
     publicVariable "c130_flying_plane";
@@ -175,7 +212,7 @@ _device addAction [format ["<img size='1' image='ca\air2\data\ui\icon_c130j_ca.p
 
     "dz" setmarkeralpha 1;  
     
-    [] remoteExec ["Take_off", 2];
+    [Plane_Drop_Height] remoteExec ["Take_off", 2];
     addVehcileactionId = [] call addVehcileaction;
     },
     nil,		// arguments
