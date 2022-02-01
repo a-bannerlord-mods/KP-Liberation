@@ -226,5 +226,5 @@ private _weights = [
     GRLIB_virual_support,
     [KP_liberation_successful_objectives,KP_liberation_failed_objectives],
     systemTime
-    //,KP_liberation_Sector_Cache
+    ,KP_liberation_Sector_Cache apply {[_x select 0,_x select 1,_x select 2,_x select 3,_x select 4,_x select 5,_x select 6,_x select 7,_x select 8,_x select 9,[]]}
 ] // return

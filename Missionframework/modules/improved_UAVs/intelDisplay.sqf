@@ -327,5 +327,6 @@ publicVariable "MIL_EUAVI_ConnectedUAVs";
 ];
 ["",-1,-1,1,0,0,"MIL_EUAVI_IntelA"] spawn BIS_fnc_dynamicText;
 ["",-1,-1,1,0,0,"MIL_EUAVI_PausedDisplay"] spawn BIS_fnc_dynamicText;
+["",-1,-1,1,0,0,"MIL_EUAVI_FollowDisplay"] spawn BIS_fnc_dynamicText;
 terminate _intelB;
 _uav setVariable [format["MIL_%1_IntelPaused",_uav],false];
