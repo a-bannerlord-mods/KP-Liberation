@@ -28,17 +28,22 @@ _screens_feed_units = _screen getVariable ["screens_feed_units",createHashMap];
 			_screenIndex = _thisArgs select 1;
 			_cam = _screen getVariable [("live_feed_cam" + str _screenIndex) ,objNull];
 			_unit = _screen getVariable [("live_feed_unit" + str _screenIndex) ,objNull];
+			_target = _unit setVariable ["MIL_targetCam",objNull];
+			// if !(isnull _target) then {
+			// 	_cam camSetTarget _target;
+			// } else {
+				if (!(isnull _unit) && !( _unit isKindOf "man")) then {
+					_dir = 
+						(_unit selectionPosition "PiP0_pos") 
+							vectorFromTo 
+						(_unit selectionPosition "PiP0_dir");
+					_cam setVectorDirAndUp [
+						_dir, 
+						_dir vectorCrossProduct [-(_dir select 1), _dir select 0, 0]
+					];
+				};
+			//};
 			
-			if (!(isnull _unit) && !( _unit isKindOf "man")) then {
-				_dir = 
-					(_unit selectionPosition "PiP0_pos") 
-						vectorFromTo 
-					(_unit selectionPosition "PiP0_dir");
-				_cam setVectorDirAndUp [
-					_dir, 
-					_dir vectorCrossProduct [-(_dir select 1), _dir select 0, 0]
-				];
-			};
 		},[_screen,_screenIndex]];
 
 	};
