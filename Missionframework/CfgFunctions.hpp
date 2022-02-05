@@ -4,6 +4,7 @@ class KPLIB {
 
         class addActionsFob                 {};
         class addActionsPlayer              {};
+        class addActionsPlayerWeaponWorkshop{};
         class addObjectInit                 {};
         class addRopeAttachEh               {};
         class allowCrewInImmobile           {};
@@ -108,6 +109,7 @@ class KPLIB {
         class makeObjectDestroyable         {};
         class getHighestPos                 {};
         class skipTimeTo                    {};
+
     };
     class functions_curator {
         file = "functions\curator";

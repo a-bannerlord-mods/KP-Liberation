@@ -51,14 +51,14 @@ GRLIB_arsenal_weapons_primary = [
 ];
 
 GRLIB_arsenal_weapons_colors_variant = [
-        [["rhs_weap_svdp_npz","Paint to Black"],["UK3CB_SVD_OLD_NPZ","Paint to Tan"]], 
-        [["Tier1_HK416D10_CTR","Paint to Black"],["Tier1_HK416D10_CTR_Desert","Paint to Tan"]],
-        [["Tier1_MK46_Mod1_Savit","Paint to Black"],["Tier1_MK46_Mod1_Savit_Desert","Paint to Tan"]],
-        [["Tier1_SIG_MCX_115_Virtus_Black","Paint to Black"],["Tier1_SIG_MCX_115_Virtus_Desert","Paint to Tan"]],
-        [["rhs_weap_sr25","Paint to Black"],["rhs_weap_sr25_d","Paint to Tan"]],
-        [["rhs_weap_sr25_ec","Paint to Black"],["rhs_weap_sr25_ec_d","Paint to Tan"]],
-        [["Tier1_SR25","Paint to Black"],["Tier1_SR25_tan","Paint to Tan"]],
-        [["JAS_SIG516_10_LMT_Blk","Paint to Black"],["JAS_SIG516_10_LMT_Tan","Paint to Tan"]]
+        [["rhs_weap_svdp_npz","Black"],["UK3CB_SVD_OLD_NPZ","Tan"]], 
+        [["Tier1_HK416D10_CTR","Black"],["Tier1_HK416D10_CTR_Desert","Tan"]],
+        [["Tier1_MK46_Mod1_Savit","Black"],["Tier1_MK46_Mod1_Savit_Desert","Tan"]],
+        [["Tier1_SIG_MCX_115_Virtus_Black","Black"],["Tier1_SIG_MCX_115_Virtus_Desert","Tan"]],
+        [["rhs_weap_sr25","Black"],["rhs_weap_sr25_d","Tan"]],
+        [["rhs_weap_sr25_ec","Black"],["rhs_weap_sr25_ec_d","Tan"]],
+        [["Tier1_SR25","Black"],["Tier1_SR25_tan","Tan"]],
+        [["JAS_SIG516_10_LMT_Blk","Black"],["JAS_SIG516_10_LMT_Tan","Tan"]]
 ];
 
 GRLIB_arsenal_weapons_secondary = [

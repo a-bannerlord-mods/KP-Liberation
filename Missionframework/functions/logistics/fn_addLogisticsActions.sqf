@@ -1,6 +1,10 @@
+params [
+    ["_player", player, [objNull]]
+];
 
-[] call KPLIB_fnc_addBuyFuelActions;
-[] call KPLIB_fnc_addBuyAmmoActions;
-[] call KPLIB_fnc_addRepairActions;
-[] call KPLIB_fnc_addMoveAmmoActions;
-[] call KPLIB_fnc_addMoveFuelActions;
+
+[_player] call KPLIB_fnc_addBuyFuelActions;
+[_player] call KPLIB_fnc_addBuyAmmoActions;
+[_player] call KPLIB_fnc_addRepairActions;
+[_player] call KPLIB_fnc_addMoveAmmoActions;
+[_player] call KPLIB_fnc_addMoveFuelActions;
