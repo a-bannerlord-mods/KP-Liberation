@@ -127,7 +127,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
                         _vehtospawn pushback([] call KPLIB_fnc_getAdaptiveVehicle);
                     };
                 case (count(_cached_vehicles) < 4):{
-                        _vehtospawn pushback([] call KPLIB_fnc_getAdaptiveVehicle);
+                        _vehtospawn pushback([true] call KPLIB_fnc_getAdaptiveVehicle);
                     };
                 case (count(_cached_vehicles) < 5):{
                         if ((random 100) > (33 / GRLIB_difficulty_modifier)) then {
@@ -341,11 +341,11 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
                         _vehtospawn pushback(selectRandom militia_vehicles);
                     };
             case (count(_cached_vehicles) < 2):{
-                            _vehtospawn pushback(selectRandom militia_vehicles);
+                            _vehtospawn pushback([true] call KPLIB_fnc_getAdaptiveVehicle);
                     };
             case (count(_cached_vehicles) < 3):{
                         if ((random 100) > (66 / GRLIB_difficulty_modifier)) then {
-                            _vehtospawn pushback(selectRandom militia_vehicles);
+                            _vehtospawn pushback([] call KPLIB_fnc_getAdaptiveVehicle);
                         };
                     };
             case (count(_cached_vehicles) < 4):{
@@ -392,12 +392,12 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
                     };
             case (count(_cached_vehicles) < 2):{
                     if ((random 100) > 66) then {
-                        _vehtospawn pushback([] call KPLIB_fnc_getAdaptiveVehicle);
+                        _vehtospawn pushback(selectRandom militia_vehicles);
                     };
                 };
             case (count(_cached_vehicles) < 3):{
                     if ((random 100) > 33) then {
-                        _vehtospawn pushback(selectRandom militia_vehicles);
+                        _vehtospawn pushback([] call KPLIB_fnc_getAdaptiveVehicle);
                     };
                 };
         };
@@ -448,7 +448,9 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         if ((random 100) > 95) then {
             _vehtospawn pushback([] call KPLIB_fnc_getAdaptiveVehicle);
         };
-
+        if (combat_readiness > 60) then {
+            _squad2 = ([true] call KPLIB_fnc_getAdaptiveVehicle);
+        };
 
         {
             _offset1  =[-0.774414,0.594849,-23.8931];  
@@ -545,6 +547,8 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
             //artillery
             _vehtospawn pushBack _heavy_artillerySystem;
             _vehtospawn pushBack _heavy_artillerySystem;
+            _vehtospawn pushback ([true] call KPLIB_fnc_getAdaptiveVehicle);
+            _vehtospawn pushback ([true] call KPLIB_fnc_getAdaptiveVehicle);
         };
 
         _building_ai_max = 0;
@@ -991,7 +995,8 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
     } else {
         KP_liberation_Sector_Cache pushBack [_sector,_infsquad,_cached_vehicles,_cached_squads,_cached_units_in_building,_cached_units_on_building,_cached_static_mg,_cached_static_at,_cached_static_mg_heavy,_cached_static_aa_heavy,_cached_objectives];
     };
-
+    publicVariable "KP_liberation_Sector_Cache";
+    
     if (isnil "sectors_opfor_sniper_nests_active") then {
         sectors_opfor_sniper_nests_active = [];
     };

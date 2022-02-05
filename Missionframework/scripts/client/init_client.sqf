@@ -82,13 +82,12 @@ player addEventHandler ["Respawn", {
     [player] remoteExec ["KPLIB_fnc_applyUnitAnimations", [0, -2] select isDedicated , player];
 }];
 
-execVM "scripts\client\ui\intro.sqf";
 
 
 [player] joinSilent (createGroup [GRLIB_side_friendly, true]);
 
 // Commander init
-if (player isEqualTo ([] call KPLIB_fnc_getCommander)) then {
+if (player isEqualTo ([] call KPLIB_fnc_getCommander) || player isEqualTo ([] call KPLIB_fnc_getCommandOfficer)) then {
     // Start tutorial
     if (KP_liberation_tutorial) then {
         [] call KPLIB_fnc_tutorial;
@@ -110,3 +109,6 @@ player setVariable ["isSneaky",true,true];
 [player] execVM "modules\INC_undercover\Scripts\initUCR.sqf";
 
 execVM "custom\scripts\client\init_client.sqf";
+
+
+execVM "scripts\client\ui\intro.sqf";

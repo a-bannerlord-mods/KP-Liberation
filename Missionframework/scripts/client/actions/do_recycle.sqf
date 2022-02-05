@@ -45,42 +45,54 @@ private _price_a = 0;
 private _price_f = 0;
 
 if ((toLower _type) in KPLIB_o_allVeh_classes) then {
-
+    
     private _currentAmmo = 0;
-    private _allAmmo = 0;
-    if (count (magazinesAmmo _vehToRecycle) > 0) then {
-        {
-            _currentAmmo = _currentAmmo + (_x select 1);
-            _allAmmo = _allAmmo + (getNumber(configFile >> "CfgMagazines" >> (_x select 0) >> "count"));
-        } forEach (magazinesAmmo _vehToRecycle);
-    } else {
-        _allAmmo = 1;
-    };
+	private _allAmmo = 0;
+	if (count (magazinesAmmo _vehToRecycle) > 0) then {
+		{
+			_currentAmmo = _currentAmmo + (_x select 1);
+			_allAmmo = _allAmmo + (getNumber(configFile >> "CfgMagazines" >> (_x select 0) >> "count"));
+		} forEach (magazinesAmmo _vehToRecycle);
+	} else {
+		_allAmmo = 1;
+	};
 
-    // _suppMulti = (((_vehToRecycle getHitPointDamage "HitEngine") - 1) * -1) * (((_vehToRecycle getHitPointDamage "HitHull") - 1) * -1);
-    // if (_type in boats_names) then {
-    //     _suppMulti = (((_vehToRecycle getHitPointDamage "HitEngine") - 1) * -1);
-    // };
-    _suppMulti = 1 - (damage _vehToRecycle);
+	// _suppMulti = (((_vehToRecycle getHitPointDamage "HitEngine") - 1) * -1) * (((_vehToRecycle getHitPointDamage "HitHull") - 1) * -1);
+	// if (_type in boats_names) then {
+	//	 _suppMulti = (((_vehToRecycle getHitPointDamage "HitEngine") - 1) * -1);
+	// };
+	_suppMulti = 1 - (damage _vehToRecycle);
 
-    _ammoMulti = _currentAmmo/_allAmmo;
-    _fuelMulti = fuel _vehToRecycle;
+	_ammoMulti = _currentAmmo/_allAmmo;
+	_fuelMulti = fuel _vehToRecycle;
+	_fuelCapacity = getNumber(configFile >> "Cfgvehicles" >> typeOf _vehToRecycle >> "fuelCapacity");
+	_armour =  getNumber(configFile >> "Cfgvehicles" >> typeOf _vehToRecycle >> "armor");
+	_size = sizeOf (typeOf _vehToRecycle) + count( getPylonMagazines _vehToRecycle) + count( allTurrets _vehToRecycle) + _armour/100 + (_vehToRecycle emptyPositions "cargo")/4;
+	_weapons = [];
+	{
+		_weapons = _weapons + (_vehToRecycle weaponsTurret [0]);
+		
+	} forEach (allTurrets _vehToRecycle);
+	if(count _weapons == 0) then {_weapons =allTurrets _vehToRecycle; };
+	_weaponsCount = count(_weapons) + count( getPylonMagazines _vehToRecycle);
+	
+	if (_vehToRecycle isKindOf "Car") then {
+		_price_s = round (10 * _size* _suppMulti);
+		_price_a = round ((40 * _weaponsCount)  * _ammoMulti);
+		_price_f = round ((_fuelCapacity*(2/3)) * _fuelMulti);
+	};
+	if (_vehToRecycle isKindOf "Tank") then {
+		_price_s = round (25 * _size * _suppMulti);
+		_price_a = round (((50 * _weaponsCount) max 250)  * _ammoMulti) ;
+		_price_f = round (((_fuelCapacity*(2/3)) max 300) * _fuelMulti)  ;
+	};
+	if (_vehToRecycle isKindOf "Air") then {
+		_price_s = round (40 * _size * _suppMulti);
+		_price_a = round (((60 *  _weaponsCount) max 400)  * _ammoMulti);
+		_price_f = round (((_fuelCapacity*(2/3)) max 600) * _fuelMulti);
+	};
 
-    if (_vehToRecycle isKindOf "Car") then {
-        _price_s = round (100 * _suppMulti);
-        _price_a = round (40 * _ammoMulti);
-        _price_f = round (80 * _fuelMulti);
-    };
-    if (_vehToRecycle isKindOf "Tank") then {
-        _price_s = round (400 * _suppMulti);
-        _price_a = round (120 * _ammoMulti);
-        _price_f = round (200 * _fuelMulti);
-    };
-    if (_vehToRecycle isKindOf "Air") then {
-        _price_s = round (800 * _suppMulti);
-        _price_a = round (200 * _ammoMulti);
-        _price_f = round (400 * _fuelMulti);
-    };
+
 } else {
     private _objectinfo = ((light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles + buildings) select {_type == (_x select 0)}) select 0;
     _price_s = round ((_objectinfo select 1) * GRLIB_recycling_percentage * _suppMulti);

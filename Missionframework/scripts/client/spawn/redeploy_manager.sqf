@@ -13,7 +13,7 @@ private _standard_map_pos = [];
 private _frame_pos = [];
 
 GRLIB_force_redeploy = false;
-
+GRLIB_force_spawn = false;
 waitUntil {!isNil "GRLIB_all_fobs"};
 waitUntil {!isNil "blufor_sectors"};
 waitUntil {!isNil "save_is_loaded"};
@@ -45,8 +45,9 @@ _preciseDeployment = false;
 while {true} do {
     waitUntil {
         sleep 0.2;
-        (GRLIB_force_redeploy || (player distance (markerPos GRLIB_respawn_marker) < 50)) && vehicle player == player && alive player && !dialog && howtoplay == 0
-    };
+        ((GRLIB_force_redeploy || (player distance (markerPos GRLIB_respawn_marker) < 250)) && vehicle player == player && alive player && !dialog && howtoplay == 0) ||
+        GRLIB_force_spawn
+        };
 
     private _backpack = backpack player;
 
@@ -54,7 +55,7 @@ while {true} do {
     _old_fullmap = 0;
 
     GRLIB_force_redeploy = false;
-
+    GRLIB_force_spawn = false;
 
 
     createDialog "liberation_deploy";

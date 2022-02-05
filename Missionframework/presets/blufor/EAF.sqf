@@ -290,6 +290,8 @@ support_vehicles = [
 	[KP_liberation_truck_classname,100,0,50],
 	[KP_liberation_truck_fuel_classname,200,0,50],
 	[KP_liberation_truck_ammo_classname,200,0,50],
+    ["MCC_crateAmmoBigWest",150,0,50],
+    ["MCC_crateFuelBigWest",150,0,50],
     ["ACE_Wheel",10,0,0],
     ["ACE_Track",20,0,0],
     ["USAF_missileCart_W_AGM114",50,150,0],                             // Missile Cart (AGM-114)

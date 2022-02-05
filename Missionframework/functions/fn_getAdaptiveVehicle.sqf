@@ -14,5 +14,12 @@
     Returns:
         Vehicle classname [STRING]
 */
+params [
+            ["_tanksOnly",false]
+        ];
+    if (_tanksOnly) then {
+        selectRandom ([opfor_vehicles arrayIntersect opfor_tanks , opfor_vehicles_low_intensity arrayIntersect opfor_tanks ] select (combat_readiness < 40))
+    } else {
+        selectRandom ([opfor_vehicles, opfor_vehicles_low_intensity] select (combat_readiness < 40))
+    };
 
-selectRandom ([opfor_vehicles, opfor_vehicles_low_intensity] select (combat_readiness < 40))

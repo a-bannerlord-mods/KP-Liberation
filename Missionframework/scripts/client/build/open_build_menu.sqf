@@ -13,7 +13,7 @@ _dialog = createDialog "liberation_build";
 waitUntil { dialog };
 
 _iscommandant = false;
-if (player == [] call KPLIB_fnc_getCommander) then {
+if (player == [] call KPLIB_fnc_getCommander || player == call KPLIB_fnc_getCommandOfficer)  then {
     _iscommandant = true;
 };
 
@@ -35,6 +35,17 @@ localize "STR_BUILD8"
 
 _nearfob = [] call KPLIB_fnc_getNearestFob;
 _actual_fob = KP_liberation_fob_resources select {((_x select 0) distance _nearfob) < GRLIB_fob_range};
+if ([_nearfob] call  KPLIB_fnc_isStartBase ) then {
+    if (getMarkerType "startbase_range" == "") then {
+            _actual_fob = KP_liberation_fob_resources select {((_x select 0) distance _nearfob) < GRLIB_base_range};
+        } else {
+            if ( _player inArea "startbase_range") then {
+                _actual_fob = KP_liberation_fob_resources select {[(_x select 0)] call  KPLIB_fnc_isStartBase };
+            };
+            
+        };
+};
+
 
 while {dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
     _build_list = KPLIB_buildList select buildtype;

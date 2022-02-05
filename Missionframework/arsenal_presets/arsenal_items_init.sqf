@@ -19,6 +19,32 @@ switch (KP_liberation_arsenal) do {
     case  17: {[] call compile preprocessFileLineNumbers "arsenal_presets\eaf.sqf";};
     default  {GRLIB_arsenal_weapons = [];GRLIB_arsenal_magazines = [];GRLIB_arsenal_items = [];GRLIB_arsenal_backpacks = [];};
 };
+_weapon_varinant = [];
+
+{
+    _weapon = _x select 0;
+    _weapon_data = _x ;
+    {
+        _indx= (_x apply { toLower (_x select 0) }) find  (toLower _weapon);
+        if (_indx!=-1) then {
+            
+            {
+                if (toLower (_x select 0) != (toLower _weapon)) then {
+                    _weapon_varinant pushBack [_x select 0 
+                        ,_weapon_data select 1
+                        ,_weapon_data select 2
+                        ,_weapon_data select 3
+                        ,_weapon_data select 4
+                        ,_weapon_data select 5
+                        ,_weapon_data select 6
+                    ];
+                };
+            } forEach _x;
+        };
+    } forEach GRLIB_arsenal_weapons_colors_variant;
+    
+} forEach GRLIB_arsenal_weapons_primary; 
+
 
 GRLIB_arsenal_all_weapons = GRLIB_arsenal_weapons_primary + GRLIB_arsenal_weapons_secondary +
 GRLIB_arsenal_weapons_handgun;

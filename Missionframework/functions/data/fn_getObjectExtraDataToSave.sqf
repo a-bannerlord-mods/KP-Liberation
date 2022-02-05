@@ -150,10 +150,26 @@ if (_total_spent!=-1) then {
 	_data pushBack ["total_spent",_total_spent];
 };
 
+_isHandcuffed = _obj getVariable ['ace_captives_isHandcuffed', false];
+if (_isHandcuffed) then {
+	_data pushBack ["ace_captives_isHandcuffed",true];
+};
+
 _civ_killed = _obj getVariable ["civ_killed",-1];
 if (_civ_killed!=-1) then {
 	_data pushBack ["civ_killed",_civ_killed];
 };
 
+//person name
+if (_obj isKindOf "man" && !(isplayer _obj)) then {
+	_person_name = name  _obj;
+	_data pushBack ["person_name",_person_name];
+};
+
+//rank
+if (_obj isKindOf "man") then {
+	_rank = rank _obj;
+	_data pushBack ["person_rank",_rank];
+};
 
 _data

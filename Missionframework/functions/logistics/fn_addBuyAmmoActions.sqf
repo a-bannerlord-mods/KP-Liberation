@@ -2,9 +2,19 @@ params [
     ["_player", player, [objNull]]
 ];
 
+getRearmCargo  = {
+    params ["_vehicle"];
+    _cargo = getNumber (configFile >> "CfgVehicles" >>  typeof _vehicle >> "ace_rearm_defaultSupply");
+    if (typeof _vehicle == "MCC_crateAmmoBigWest" ) then {
+        _cargo = 6000;
+    };
+    _cargo
+};
+
+
 buy_ammo={
 	params ["_vehicle","_amount"];
-	_cost = _amount*1.5;
+	_cost = _amount;
 	_nearfob = [] call KPLIB_fnc_getNearestFob;
     _actual_fob = KP_liberation_fob_resources select {((_x select 0) distance _nearfob) < GRLIB_fob_range};
     _ammoRes = (_actual_fob select 0) select 2;
@@ -27,7 +37,7 @@ buy_ammo={
 _player addAction [
     ["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\rearm_ca.paa'/><t color='#FFFF00'>", " Buy Ammo to Fill vehicle", "</t>"] joinString "",
     {
-		_amount = 1200 - (cursorObject getVariable ["ace_rearm_currentsupply", 0]);
+		_amount = ([cursorObject] call getRearmCargo) - (cursorObject getVariable ["ace_rearm_currentsupply", 0]);
     	[cursorObject,_amount] call buy_ammo;
     },
     nil,
@@ -42,7 +52,7 @@ _player addAction [
             || {[3] call KPLIB_fnc_hasPermission}
         )
         && (cursorObject getVariable ['ace_rearm_currentsupply', -1]) > -1
-        && 1200 > (cursorObject getVariable ['ace_rearm_currentsupply', 0])
+        && ([cursorObject] call getRearmCargo) > (cursorObject getVariable ['ace_rearm_currentsupply', 0])
         && {isNull (objectParent _originalTarget)}
         && {alive _originalTarget}  && {alive cursorObject}
         && [_originalTarget,0.8] call  KPLIB_fnc_isPlayerNearToFob
@@ -68,7 +78,7 @@ _player addAction [
 			|| {[3] call KPLIB_fnc_hasPermission} 
 		)
 		&& (cursorObject getVariable ['ace_rearm_currentsupply', -1]) > -1 
-		&& 1200 - (cursorObject getVariable ['ace_rearm_currentsupply', 0]) >= 600 
+		&& ([cursorObject] call getRearmCargo) - (cursorObject getVariable ['ace_rearm_currentsupply', 0]) >= 600 
 		&& {isNull (objectParent _originalTarget)} 
 		&& {alive _originalTarget}   && {alive cursorObject}
         && [_originalTarget,0.8] call  KPLIB_fnc_isPlayerNearToFob
@@ -95,7 +105,7 @@ _player addAction [
 			|| {[3] call KPLIB_fnc_hasPermission} 
 		)
 		&& (cursorObject getVariable ['ace_rearm_currentsupply', -1]) > -1
-		&& 1200 - (cursorObject getVariable ['ace_rearm_currentsupply', 0]) >= 300 
+		&& ([cursorObject] call getRearmCargo) - (cursorObject getVariable ['ace_rearm_currentsupply', 0]) >= 300 
 		&& {isNull (objectParent _originalTarget)} 
 		&& {alive _originalTarget}  && {alive cursorObject}
         && [_originalTarget,0.8] call  KPLIB_fnc_isPlayerNearToFob
@@ -123,7 +133,7 @@ _player addAction [
 			|| {[3] call KPLIB_fnc_hasPermission} 
 		)
 		&& (cursorObject getVariable ['ace_rearm_currentsupply', -1]) > -1
-		&& 1200 - (cursorObject getVariable ['ace_rearm_currentsupply', 0]) >= 100 
+		&& ([cursorObject] call getRearmCargo) - (cursorObject getVariable ['ace_rearm_currentsupply', 0]) >= 100 
 		&& {isNull (objectParent _originalTarget)} 
 		&& {alive _originalTarget}  && {alive cursorObject}
         && [_originalTarget,0.8] call  KPLIB_fnc_isPlayerNearToFob

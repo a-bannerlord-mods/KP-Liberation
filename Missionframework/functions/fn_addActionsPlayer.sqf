@@ -141,7 +141,7 @@ _player addAction [
         isNull (objectParent _originalTarget)
         && (isNull cursorObject || _originalTarget distance cursorObject > 10 )
         && {alive _originalTarget}
-        && [_originalTarget,0.8] call  KPLIB_fnc_isPlayerNearToFob
+        && [_originalTarget,1] call  KPLIB_fnc_isPlayerNearToFob
         && {
             _originalTarget getVariable ['KPLIB_hasDirectAccess', false]
             || {[3] call KPLIB_fnc_hasPermission}
@@ -488,7 +488,7 @@ _player addAction [
 ];
 
 // Reassign Zeus
-if (player == ([] call KPLIB_fnc_getCommander)) then {
+if (player == ([] call KPLIB_fnc_getCommander) || player == ([] call KPLIB_fnc_getCommandOfficer)) then {
     _player addAction [
         ["<t color='#FF0000'> ", localize "STR_REASSIGN_ZEUS", "</t>"] joinString "",
         {[] call KPLIB_fnc_requestZeus},

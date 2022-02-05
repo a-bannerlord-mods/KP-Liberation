@@ -31,6 +31,7 @@ class KPLIB {
         class getAdaptiveVehicle            {};
         class getBluforRatio                {};
         class getCommander                  {};
+        class getCommandOfficer             {};
         class getCommanderPlatoon           {};
         class getCrateHeight                {};
         class getFobName                    {};

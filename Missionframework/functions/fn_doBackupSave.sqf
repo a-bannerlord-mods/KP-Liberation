@@ -24,6 +24,9 @@ if (!KPLIB_init) exitWith {
     if (!isnil "commandant") then {
         "Framework is not initalized, skipping save!" remoteExec ["hint",commandant];
     };
+    if (!isnil "commandant_1") then {
+        "Framework is not initalized, skipping save!" remoteExec ["hint",commandant_1];
+    };
     false
 };
 

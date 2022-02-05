@@ -2,9 +2,10 @@ params [
     ["_player", player, [objNull]]
 ];
 
+
 buy_fuel={
 	params ["_vehicle","_amount"];
-	_cost = _amount/3;
+	_cost = _amount;
 	_nearfob = [] call KPLIB_fnc_getNearestFob;
     _actual_fob = KP_liberation_fob_resources select {((_x select 0) distance _nearfob) < GRLIB_fob_range};
     _fuelRes = (_actual_fob select 0) select 3;

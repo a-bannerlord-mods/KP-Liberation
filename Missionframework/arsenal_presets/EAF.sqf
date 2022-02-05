@@ -17,7 +17,8 @@ GRLIB_arsenal_weapons_primary = [
     ["UK3CB_MP5N_UGL", "smgs", ["GL"], 50, 15, true, true], //HK MP5N UGL
     ["UK3CB_MP5N", "smgs", ["Rifleman"], 30, 5, true, true], //HK MP5N
     ["rhsusf_weap_MP7A2_grip3", "smgs", ["Rifleman"], 40, 10, true, true], //MP7A2
-    // ["rhs_weap_hk416d10", "smgs", ["Rifleman"], -1, -1, true, true],
+    ["JAS_SIG516_10_LMT_Blk", "assultRifle", ["Rifleman"], 80, 10, true, true],
+    ["QIN_CZ_BREN2_556_14", "assultRifle", ["Rifleman"], 70, 10, true, true],
     // ["rhs_weap_hk416d10_m320", "smgs", ["Rifleman"], -1, -1, true, true],
     // ["rhs_weap_hk416d10_LMT", "smgs", ["Rifleman"], -1, -1, true, true],
     // ["rhs_weap_hk416d10_LMT_d", "smgs", ["Rifleman"], -1, -1, true, true],
@@ -28,10 +29,9 @@ GRLIB_arsenal_weapons_primary = [
     ["rhs_weap_svds_npz", "dmr", ["Marksman"], 35, 30, true, true], //SVDS (NPZ)
     ["rhs_weap_sr25", "dmr", ["Marksman"], 70, 10, true, true], //Mk 11 Mod 0
     ["rhs_weap_sr25_ec", "dmr", ["Marksman"], 80, 5, true, true], //Mk 11 Mod 0 (EC)
-    ["rhs_weap_sr25_ec_d", "dmr", ["Marksman"], 80, 5, true, true], //Mk 11 Mod 0 (EC/Desert)
-    ["rhs_weap_sr25_d", "dmr", ["Marksman"], 70, 10, true, true], //Mk 11 Mod 0 (Desert)
     ["UK3CB_PSG1A1_RIS", "dmr", ["Marksman"], 110, 20, true, true], //HK PSG1A1 (RIS)
     ["arifle_SPAR_03_blk_F", "dmr", ["Marksman"], 100, 10, true, true], //HK417A2 20"" (Black)
+    ["Tier1_M110k5", "dmr", ["Marksman"], 260, 5, true, true], //HK417A2 20"" (Black)
     ["rhs_weap_pkm", "mmgs", ["Autorifleman"], 35, 20, true, true], //PKM
     ["UK3CB_RPK", "mmgs", ["Autorifleman"], 50, 10, true, true], //RPK
     ["LMG_03_F", "mmgs", ["Autorifleman"], 50, 10, true, true], //FN Minimi SPW
@@ -42,15 +42,25 @@ GRLIB_arsenal_weapons_primary = [
     ["rhs_weap_t5000", "sniper", ["Sniper"], 200, 5, true, true], //T-5000
     ["rhs_weap_m32", "launchers", ["GL"], 80, 5, true, true], //M32 MGL
     ["CUP_glaunch_6G30", "launchers", ["GL"], 60, 0, true, true], //6G30
-
-    ["Tier1_MK46_Mod1_Savit_Desert", "mmgs", ["Autorifleman"], 220, 10, true, true], 
+    ["Tier1_HK416D10_CTR", "mmgs", ["Autorifleman"], 220, 10, true, true], 
     ["Tier1_MK46_Mod1_Savit", "mmgs", ["Autorifleman"], 220, 10, true, true], 
     ["Tier1_SIG_MCX_115_Virtus_Black","assultRifle", ["Rifleman"], 180, 20, true, true],
-    ["Tier1_SIG_MCX_115_Virtus_Desert","assultRifle", ["Rifleman"], 180, 20, true, true],
     ["Tier1_SIG_MCX_115_Virtus","assultRifle", ["Rifleman"], 180, 20, true, true],
     ["Tier1_HK416D145_SMR_IMOD","assultRifle", ["Rifleman"], 180, 20, true, true],
     ["Tier1_SR25","assultRifle", ["Rifleman"], 280, 20, true, true]
 ];
+
+GRLIB_arsenal_weapons_colors_variant = [
+        [["rhs_weap_svdp_npz","Paint to Black"],["UK3CB_SVD_OLD_NPZ","Paint to Tan"]], 
+        [["Tier1_HK416D10_CTR","Paint to Black"],["Tier1_HK416D10_CTR_Desert","Paint to Tan"]],
+        [["Tier1_MK46_Mod1_Savit","Paint to Black"],["Tier1_MK46_Mod1_Savit_Desert","Paint to Tan"]],
+        [["Tier1_SIG_MCX_115_Virtus_Black","Paint to Black"],["Tier1_SIG_MCX_115_Virtus_Desert","Paint to Tan"]],
+        [["rhs_weap_sr25","Paint to Black"],["rhs_weap_sr25_d","Paint to Tan"]],
+        [["rhs_weap_sr25_ec","Paint to Black"],["rhs_weap_sr25_ec_d","Paint to Tan"]],
+        [["Tier1_SR25","Paint to Black"],["Tier1_SR25_tan","Paint to Tan"]],
+        [["JAS_SIG516_10_LMT_Blk","Paint to Black"],["JAS_SIG516_10_LMT_Tan","Paint to Tan"]]
+];
+
 GRLIB_arsenal_weapons_secondary = [
     ["rhs_weap_rpg7", "launchers", ["AT"], 100, 20, true, true],
     ["rhs_weap_m72a7", "launchers", ["AT"], 20, 25, true, true],
@@ -498,7 +508,7 @@ GRLIB_arsenal_muzzles = [
     ["muzzle_snds_B_snd_F", "muzzles", ["Rifleman"], 8, 20],
     ["hlc_muzzle_TiRant9S", "muzzles", ["Rifleman"], 8, 20],
     ["rhsusf_acc_SR25S", "muzzles", ["Rifleman"], 8, 20],
-    ["hlc_muzzle_556NATO_rotexiiic_tan", "muzzles", ["Rifleman"], 000, 20],
+    ["hlc_muzzle_556NATO_rotexiiic_tan", "muzzles", ["Rifleman"], 8, 20],
     ["muzzle_snds_m_snd_F", "muzzles", ["Rifleman"], 8, 20],
     ["muzzle_snds_B", "muzzles", ["Rifleman"], 8, 20],
     ["rhsgref_sdn6_suppressor", "muzzles", ["Rifleman"], 10, 20], 
@@ -593,11 +603,11 @@ GRLIB_arsenal_other = [
     ["ACE_rope27", "others", ["Rifleman"], 12, 10],
     ["ACE_rope36", "others", ["Rifleman"], 15, 10],
     ["ACE_Tripod", "tools", ["Rifleman"], 15, 10],
-    ["ACE_elasticBandage", "medical", ["Medic"], 5, 150],
+    ["ACE_elasticBandage", "medical", ["Medic"], 3, 150],
     ["kat_guedel", "medical", ["Medic"], 3, 100],
-    ["ACE_packingBandage", "medical", ["Rifleman"], 4, 300],
-    ["ACE_quikclot", "medical", ["Rifleman"], 3, 200],
-    ["ACE_fieldDressing", "medical", ["Rifleman"], 2, 300],
+    ["ACE_packingBandage", "medical", ["Rifleman"], 2, 300],
+    ["ACE_quikclot", "medical", ["Rifleman"], 2, 200],
+    ["ACE_fieldDressing", "medical", ["Rifleman"], 1, 300],
     ["ACE_morphine", "medical", ["Medic"], 3, 200],
     ["ACE_epinephrine", "medical", ["Medic"], 3, 200],
     ["ACE_bloodIV", "medical", ["Medic"], 6, 100],
@@ -609,25 +619,25 @@ GRLIB_arsenal_other = [
     ["ACE_plasmaIV", "medical", ["Medic"], 6, 100],
     ["ACE_plasmaIV_250", "medical", ["Medic"], 1, 300],
     ["ACE_plasmaIV_500", "medical", ["Medic"], 3, 200],
-    ["kat_accuvac", "medical", ["Medic"], 000, 20],
-    ["kat_larynx", "medical", ["Medic"], 000, 50],
-    ["ACE_splint", "medical", ["Rifleman"], 3, 100],
+    ["kat_accuvac", "medical", ["Medic"], 5, 20],
+    ["kat_larynx", "medical", ["Medic"], 5, 50],
+    ["ACE_splint", "medical", ["Rifleman"], 2, 100],
     ["ACE_tourniquet", "medical", ["Rifleman"], 2, 100],
-    ["ACE_personalAidKit", "medical", ["Medic"], 000, 20],
-    ["ACE_surgicalKit", "medical", ["Medic"], 5, 100],
-    ["ACE_ATNAA", "medical", ["Medic"], 000, 20],
-    ["kat_X_AED", "medical", ["Medic"], 000, 20],
-    ["kat_chestSeal", "medical", ["Medic"], 000, 50],
-    ["kat_aatKit", "medical", ["Medic"], 000,50],
-    ["kat_Pulseoximeter", "medical", ["Medic"], 000,20],
+    ["ACE_personalAidKit", "medical", ["Medic"], 30, 20],
+    ["ACE_surgicalKit", "medical", ["Medic"], 20, 100],
+    ["ACE_ATNAA", "medical", ["Medic"], 2, 20],
+    ["kat_X_AED", "medical", ["Medic"], 40, 20],
+    ["kat_chestSeal", "medical", ["Medic"], 4, 50],
+    ["kat_aatKit", "medical", ["Medic"], 20,50],
+    ["kat_Pulseoximeter", "medical", ["Medic"], 20,20],
     ["ACE_ATragMX", "tools", ["Sniper","Marksman"], 10, 5],
     ["ACE_Kestrel4500", "tools", ["Sniper","Marksman"], 8, 5],
     ["ACE_IR_Strobe_Item", "tools", ["Rifleman"], 5, 20],
-    ["ACE_adenosine", "medical", ["Medic"], 000,100],
-    ["ACE_ATNAA", "medical", ["Medic"], 000,100],
-    ["kat_AED", "medical", ["Medic"], 000, 20],
+    ["ACE_adenosine", "medical", ["Medic"], 2,100],
+    ["ACE_ATNAA", "medical", ["Medic"], 2,100],
+    ["kat_AED", "medical", ["Medic"], 25, 20],
     ["ItemcTabHCam", "tools", ["Special Force"], 12, 10],
-    ["kat_stethoscope", "medical", ["Medic"], 000, 50],
+    ["kat_stethoscope", "medical", ["Medic"], 5, 50],
     ["MRH_TacticalDisplay", "tools", ["Officer"], 100, 5],
     ["tfw_blade", "tools", ["JTAC"], 5, 0],
     ["tfw_whip", "tools", ["JTAC"], 5, 0],

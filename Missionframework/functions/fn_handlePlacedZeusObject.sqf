@@ -40,7 +40,7 @@ if !(_unit || _vehicle || _crate) exitWith {false};
 // For a vehicle apply clear cargo
 if (_vehicle) then {
     [_obj] call KPLIB_fnc_clearCargo;
-    if (side _x == GRLIB_side_friendly) then {
+    if (side _obj == GRLIB_side_friendly) then {
         if (((_obj isKindOf "Tank") || (_obj isKindOf "Car")) && tolower(typeof _obj) != KP_liberation_civ_car_classname) then {
                 _obj forceFlagtexture blufor_flag_texture;
             };
@@ -83,6 +83,19 @@ if (_vehicle) then {
         };
 
     } forEach (crew _obj);
+
+    for "_i" from 1 to 100 do { 
+        _obj setPylonLoadout [_i, "", true]; 
+    };
+
+    _obj setVehicleAmmo 0;
+    _ace_rearm_storage = getNumber (configFile >> "CfgVehicles" >>  typeof _obj >> "ace_rearm_defaultSupply");
+    if (_ace_rearm_storage>0) then {
+        [_obj, 0] call ace_rearm_fnc_setSupplyCount;
+    };
+    if (getNumber (configFile >> "CfgVehicles" >> typeof _obj >> "ace_refuel_fuelCargo") > 0) then {
+        [_obj, 0] call ace_refuel_fnc_setFuel;
+    };
 };
 
 // Apply kill manager, if it's not a crate
@@ -96,7 +109,15 @@ if !(_crate) then {
     if (KP_liberation_ace) then {[_obj, true, [0, 1.5, 0], 0] remoteExec ["ace_dragging_fnc_setCarryable"];};
 };
 
-[_obj] call KPLIB_fnc_applyCustomUnitSettings;
+[_obj] spawn {
+    params [
+        ["_obj", objNull, [objNull]]
+    ];
+    sleep 3;
+    [_obj] call KPLIB_fnc_applyCustomUnitSettings;
+};
+
+
 
 // Add object init codes
 [_obj] call KPLIB_fnc_addObjectInit;

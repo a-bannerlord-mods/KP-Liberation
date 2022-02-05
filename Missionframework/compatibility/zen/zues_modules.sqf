@@ -54,7 +54,12 @@
             };
         }] call zen_custom_modules_fnc_register;
     };
-    
+    ["Liberation", "Add Limited Zues", {
+            _ob = (_this select 1);
+            if (!(isNull _ob) && isPlayer _ob) then {
+                [true, "KPLIB_createZeus", [_ob, true]] remoteExecCall ["BIS_fnc_callScriptedEventHandler", 2];
+            };
+    }] call zen_custom_modules_fnc_register;
     if (GRLIB_hideMarkers) then {
         ["Liberation", "Show Zues Markers", {
             {
@@ -314,6 +319,26 @@
         }
     ] call zen_context_menu_fnc_createaction;
 
+    private _sector_ambush_root_action = [
+        "SectorAmbushRoot",
+        "Setup Ambush",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
+            //["", true , getMarkerPos _sector] spawn spawn_battlegroup;
+            KP_liberation_asymmetric_sectors pushBack _sector;
+            publicVariable "KP_liberation_asymmetric_sectors";
+            
+            [_sector] remoteExec ["asym_sector_ambush", 2];
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            true
+        }
+    ] call zen_context_menu_fnc_createaction;
+    
+
     private _sector_attack_infantry_root_action = [
         "SectorAttackInfantryRoot",
         "Attack Sector (Infantry only)",
@@ -502,6 +527,54 @@
     ] call zen_context_menu_fnc_createaction;
 
 
+    private _sector_other_root_action = [
+        "SectorOtherRoot",
+        "Other",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
+            (_sector in sectors_allSectors)
+        }
+    ] call zen_context_menu_fnc_createaction;
+    
+    private _sector_copy_root_action = [
+        "SectorCopyRoot",
+        "Copy Sector Id",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
+            copyToClipboard _sector;
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            true
+        }
+    ] call zen_context_menu_fnc_createaction;
+
+    private _sector_clearcache_root_action = [
+        "SectorSectorCacheRoot",
+        "Clear Sector Cache",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
+            _cached_index =  KP_liberation_Sector_Cache findif { (_x select 0) == _sector };
+            if (_cached_index > -1) then {
+                KP_liberation_Sector_Cache deleteAt _cached_index;
+                publicVariable "KP_liberation_Sector_Cache";
+            };
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            true
+        }
+    ] call zen_context_menu_fnc_createaction;
+
 
 
     private _fob_control_root_action = [
@@ -657,6 +730,7 @@
 
     [_sector_attack_root_action, ["SectrorControlRoot"], 0] call zen_context_menu_fnc_addAction;
     [_sector_attack_infantry_root_action, ["SectrorControlRoot", "SectorAttackRoot"], 0] call zen_context_menu_fnc_addAction;
+    [_sector_ambush_root_action, ["SectrorControlRoot", "SectorAttackRoot"], 0] call zen_context_menu_fnc_addAction;
     [_sector_attack_sf_root_action, ["SectrorControlRoot", "SectorAttackRoot"], 0] call zen_context_menu_fnc_addAction;
     [_sector_attack_armoured_root_action, ["SectrorControlRoot", "SectorAttackRoot"], 0] call zen_context_menu_fnc_addAction;
     [_sector_attack_plane_root_action, ["SectrorControlRoot", "SectorAttackRoot"], 0] call zen_context_menu_fnc_addAction;
@@ -669,6 +743,9 @@
     [_sector_reinforce_chopper_root_action, ["SectrorControlRoot", "SectorReinforceRoot"], 0] call zen_context_menu_fnc_addAction;
     [_sector_reinforce_paratroopers_chopper_root_action, ["SectrorControlRoot", "SectorReinforceRoot"], 0] call zen_context_menu_fnc_addAction;
     [_sector_reinforce_paratroopers_plane_root_action, ["SectrorControlRoot", "SectorReinforceRoot"], 0] call zen_context_menu_fnc_addAction;
+
+    [_sector_other_root_action, ["SectrorControlRoot"], 0] call zen_context_menu_fnc_addAction;
+    [_sector_copy_root_action, ["SectrorControlRoot", "SectorOtherRoot"], 0] call zen_context_menu_fnc_addAction;
 
     [_fob_control_root_action, [], 0] call zen_context_menu_fnc_addAction;
     [_fob_attack_root_action, ["FOBControlRoot"], 0] call zen_context_menu_fnc_addAction;

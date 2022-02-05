@@ -184,7 +184,7 @@ joinUnassigned = 1;
 skipLobby = 0;
 
 // Defines if the map is shown after the mission starts.
-showMap = 1;
+showMap = 0;
 
 // Enable or disable availability of createVehicleLocal
 unsafeCVL = 1;
@@ -198,7 +198,7 @@ unsafeCVL = 1;
 taskManagement_markers2D = 1;
 
 // Use new 3D markers outside of the map by holding default J key.
-taskManagement_markers3D = 1;
+taskManagement_markers3D = 0;
 
 // Propagate shared tasks to subordinates.
 taskManagement_propagate = 1;

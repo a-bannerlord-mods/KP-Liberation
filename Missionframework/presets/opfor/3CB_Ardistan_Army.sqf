@@ -245,7 +245,7 @@ opfor_light_artillery = [
 
 // Enemy heavy Artillery 
 opfor_heavy_artillery = [
-    "O_MBT_02_arty_F"
+    "rhs_2s3_tv"
 ];
 
 

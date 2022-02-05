@@ -153,6 +153,11 @@ _class = toLower (typeOf _obj);
 			_obj setVariable ["acex_field_rations_thirst",(_x select 1)  , true];
 		};
 
+		//captives isHandcuffed
+		if ((_x select 0) == "ace_captives_isHandcuffed") then {
+			[_obj, (_x select 1), objNull] call ACE_captives_fnc_setHandcuffed;
+		};
+
 		//total supplies spent
 		if ((_x select 0) == "total_spent") then {
 			_obj setVariable ["total_spent",(_x select 1) , true];
@@ -161,6 +166,16 @@ _class = toLower (typeOf _obj);
 		//civ killed
 		if ((_x select 0) == "civ_killed") then {
 			_obj setVariable ["civ_killed",(_x select 1) , true];
+		};
+		
+		//person name
+		if ((_x select 0) == "person_name") then {
+			_obj setname (_x select 1);
+		};
+		
+		//person name
+		if ((_x select 0) == "person_rank") then {
+			_obj setRank (_x select 1);
 		};
 	};
 } forEach _data;

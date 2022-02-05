@@ -56,6 +56,14 @@ if (isServer) then {
             _zeus setCuratorCoef ["Edit", -1e8];
             _zeus setCuratorCoef ["Destroy", -1e8];
             _zeus setCuratorCoef ["Delete", 0];
+            {
+                (getAssignedCuratorLogic player) addEventHandler ["CuratorObjectPlaced", {[_this select 1] call KPLIB_fnc_handlePlacedZeusObject;}];
+                zen_context_menu_actions_copy = zen_context_menu_actions;
+                zen_context_menu_actions = [];
+                zen_custom_modules_modulesList_copy = zen_custom_modules_modulesList;
+                zen_custom_modules_modulesList = [];
+
+            } remoteExecCall ["call",_player];
         } else {
             _zeus setVariable ["Addons", 3, true];
             _zeus setVariable ["BIS_fnc_initModules_disableAutoActivation", false];
@@ -63,12 +71,28 @@ if (isServer) then {
             _zeus setCuratorCoef ["Place", 0];
             _zeus setCuratorCoef ["Delete", 0];
 
+            {
+                (getAssignedCuratorLogic player) addEventHandler ["CuratorObjectPlaced", {[_this select 1] call KPLIB_fnc_handlePlacedZeusObject;}];
+                if !(isnil "zen_context_menu_actions_copy") then {
+                    if (count zen_context_menu_actions_copy > 0) then {
+                        zen_context_menu_actions = zen_context_menu_actions_copy;
+                    };                  
+                };
+                if !(isnil "zen_custom_modules_modulesList_copy") then {
+                    if (count zen_custom_modules_modulesList_copy > 0) then {
+                        zen_custom_modules_modulesList = zen_custom_modules_modulesList_copy;
+                    };                  
+                };
+            } remoteExecCall ["call",_player];
+
             removeAllCuratorAddons _zeus;
         };
 
         _zeus setVariable ["KPLIB_limited", _limited];
 
         _player assignCurator _zeus;
+
+        
 
         [true, "KPLIB_zeusAssigned", [_zeus, _limited]] remoteExecCall ["BIS_fnc_callScriptedEventHandler", _player];
     }] call BIS_fnc_addScriptedEventHandler;
