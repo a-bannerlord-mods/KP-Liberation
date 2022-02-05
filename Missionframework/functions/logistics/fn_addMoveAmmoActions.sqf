@@ -11,7 +11,7 @@ if (hasinterface) then {
     };
 
 
-    _condition = {
+    _conditionAmmo = {
         params["_target", "_player", "_params"];
 
         (alive _target && locked _target != 2 && locked _target != 3 &&
@@ -21,13 +21,13 @@ if (hasinterface) then {
 
     };
 
-    _insertChildren = {
+    _insertChildrenAmmo = {
         params["_target", "_player", "_params"];
 
         _list = (ASLtoAGL getPosASL _target nearObjects 50) select {
 
             (alive _x && [(configFile >> "CfgVehicles" >>  typeof _x >> "ace_rearm_defaultSupply"), "NUMBER", -1] call CBA_fnc_getConfigEntry > 0) ||
-            _x isKindOf "MCC_crateFuelBigWest"
+            _x isKindOf "MCC_crateAmmoBigWest"
         };
 
         // Add children to this action
@@ -35,7 +35,7 @@ if (hasinterface) then {
             if (_x != _target) then {
                 private _childStatement = {
                     params["_target", "_player", "_params"];
-                    [_params, _target] call move_fuel;
+                    [_params, _target] call move_ammo;
 
                 };
                 _name = gettext(configFile >> "CfgVehicles" >> (typeOf _x) >> "displayname");
@@ -59,11 +59,11 @@ if (hasinterface) then {
         // _actionData set [1, format ["Give items: %1", count (items player)]];
     };
 
-    _action = ["MoveAmmo", "Move Ammo", "\a3\ui_f\data\igui\cfg\simpletasks\types\rearm_ca.paa", {}, _condition, _insertChildren, [123], "", 8, [false, false, false, true, false], _modifierFunc] call ace_interact_menu_fnc_createaction;
+    _action = ["MoveAmmo", "Move Ammo", "\a3\ui_f\data\igui\cfg\simpletasks\types\rearm_ca.paa", {}, _conditionAmmo, _insertChildrenAmmo, [123], "", 8, [false, false, false, true, false], _modifierFunc] call ace_interact_menu_fnc_createaction;
     ["All", 0, ["ACE_MainActions"], _action, true] call ace_interact_menu_fnc_addActiontoClass;
 
 
-    move_fuel = {
+    move_ammo = {
         params["_target", "_source"];
         [_target, _source] spawn {
             params["_target", "_source"];

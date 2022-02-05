@@ -19,11 +19,17 @@ if (GRLIB_all_fobs isEqualTo [(getposATL startbase)]) then {
         // Spawn FOB box and wait until the first FOB was built
         private _fobbox = objNull;
         while {GRLIB_all_fobs isEqualTo [(getposATL startbase)]} do {
-            _fobbox = ([FOB_box_typename, FOB_truck_typename] select KP_liberation_fob_vehicle) createVehicle (getposATL base_boxspawn);
-            _fobbox setdir getDir base_boxspawn;
-            _fobbox setposATL (getposATL base_boxspawn);
-            [_fobbox, true] call KPLIB_fnc_clearCargo;
-            [_fobbox] call KPLIB_fnc_addObjectInit;
+            _fobClass =([FOB_box_typename, FOB_truck_typename] select KP_liberation_fob_vehicle);
+            _nearFobs = (getposATL base_boxspawn) nearEntities [_fobClass, 50]; 
+            if ((count _nearFobs) > 0) then {
+                _fobbox = _nearFobs select 0;
+            } else {
+                _fobbox = _fobClass createVehicle (getposATL base_boxspawn);
+                _fobbox setdir getDir base_boxspawn;
+                _fobbox setposATL (getposATL base_boxspawn);
+                [_fobbox, true] call KPLIB_fnc_clearCargo;
+                [_fobbox] call KPLIB_fnc_addObjectInit;
+            };
 
             // If the FOB box has fallen into the sea or is destroyed, start again with spawning a new one
             waitUntil {

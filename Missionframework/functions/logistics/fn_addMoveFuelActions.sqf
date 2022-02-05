@@ -1,7 +1,7 @@
 if (hasinterface) then {
 
 
-    _condition = {
+    _conditionFuel = {
         params["_target", "_player", "_params"];
 
         (alive _target && locked _target != 2 && locked _target != 3 &&
@@ -11,7 +11,7 @@ if (hasinterface) then {
 
     };
 
-    _insertChildren = {
+    _insertChildrenFuel = {
         params["_target", "_player", "_params"];
 
         _list = (ASLtoAGL getPosASL _target nearObjects 50) select {
@@ -49,7 +49,7 @@ if (hasinterface) then {
         // _actionData set [1, format ["Give items: %1", count (items player)]];
     };
 
-    _action = ["MoveFuel", "Move Fuel", "\a3\ui_f\data\igui\cfg\simpletasks\types\refuel_ca.paa", {}, _condition, _insertChildren, [123], "", 8, [false, false, false, true, false], _modifierFunc] call ace_interact_menu_fnc_createaction;
+    _action = ["MoveFuel", "Move Fuel", "\a3\ui_f\data\igui\cfg\simpletasks\types\refuel_ca.paa", {}, _conditionFuel, _insertChildrenFuel, [124], "", 8, [false, false, false, true, false], _modifierFunc] call ace_interact_menu_fnc_createaction;
     ["All", 0, ["ACE_MainActions"], _action, true] call ace_interact_menu_fnc_addActiontoClass;
 
 
