@@ -548,7 +548,7 @@
         {
             params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
             _sector = [50, _position] call KPLIB_fnc_getNearestSector;
-            copyToClipboard _sector;
+            systemChat _sector;
         },
         {
             params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
@@ -574,7 +574,7 @@
             true
         }
     ] call zen_context_menu_fnc_createaction;
-
+    
 
 
     private _fob_control_root_action = [
@@ -746,6 +746,8 @@
 
     [_sector_other_root_action, ["SectrorControlRoot"], 0] call zen_context_menu_fnc_addAction;
     [_sector_copy_root_action, ["SectrorControlRoot", "SectorOtherRoot"], 0] call zen_context_menu_fnc_addAction;
+    [_sector_clearcache_root_action, ["SectrorControlRoot", "SectorOtherRoot"], 0] call zen_context_menu_fnc_addAction;
+
 
     [_fob_control_root_action, [], 0] call zen_context_menu_fnc_addAction;
     [_fob_attack_root_action, ["FOBControlRoot"], 0] call zen_context_menu_fnc_addAction;

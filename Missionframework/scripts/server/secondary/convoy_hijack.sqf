@@ -51,7 +51,7 @@ private _boxes_loaded = 0;
 while { _boxes_loaded < _boxes_amount } do {
     _boxes_loaded = _boxes_loaded + 1;
     sleep 0.5;
-    private _next_box = [KP_liberation_ammo_crate, 100, _spawnpos getPos [15, _dir - 135]] call KPLIB_fnc_createCrate;
+    private _next_box = [KP_liberation_ammo_crate, 500, _spawnpos getPos [15, _dir - 135]] call KPLIB_fnc_createCrate;
     sleep 0.5;
     [_next_box, 50] call _load_box_fnc;
 };
@@ -112,6 +112,8 @@ private _convoy_marker_wp1 = createMarkerLocal [ format [ "convoymarkerwp1%1", r
 private _convoy_marker_wp2 = createMarkerLocal [ format [ "convoymarkerwp2%1", round time], _convoy_destinations select 1];
 private _convoy_marker_wp3 = createMarkerLocal [ format [ "convoymarkerwp3%1", round time], _convoy_destinations select 2];
 private _convoy_marker_wp4 = createMarkerLocal [ format [ "convoymarkerwp3%1", round time], _convoy_destinations select 3];
+
+sleep 180;
 
 _handle = [
     [_convoy_marker_wp2,_convoy_marker_wp3,_convoy_marker_wp4],
