@@ -177,6 +177,14 @@ KPLIB_objectInits = [
         },
         true
     ],
+    // survivabl Crashes 
+    [
+        ["Helicopter","Plane"],
+        {
+            [_this] remoteExec ["r0ed_fnc_vehicleInit", 2];
+        },
+        true
+    ],
     //special forces fixing
     [
         (KPLIB_o_sf_classes + ["UK3CB_ARD_O_SF_LAT"]),

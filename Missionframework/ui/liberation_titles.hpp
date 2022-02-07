@@ -5,6 +5,12 @@ class CfgSounds {
         sound[] = {"res\c130.ogg", 1.0, 1};
         titles[] = {};
     };
+    class AutorotationWarn
+	{
+		name = "AutorotationWarn";
+		sound[]={"modules\r0ed_SurvivableCrashes\sounds\ACE_AutorotationWarning.ogg",4,1};
+		titles[]={};
+	};
 };
 
 class RscTitles {

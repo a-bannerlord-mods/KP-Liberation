@@ -153,6 +153,21 @@ _class = toLower (typeOf _obj);
 			_obj setVariable ["acex_field_rations_thirst",(_x select 1)  , true];
 		};
 
+		//markers
+		if !(isnil "mapShare_fnc_stringToMarker") then {
+			if ((_x select 0) == "markers") then {
+				if (isplayer _obj) then {
+					_markers = (_x select 1);
+					[_markers, 	
+						{
+							{
+							_x call mapShare_fnc_stringToMarker;
+							} forEach _this;
+						}
+					] remoteExec ["call", _obj];
+				};
+			};
+		};
 		//captives isHandcuffed
 		if ((_x select 0) == "ace_captives_isHandcuffed") then {
 			[_obj, (_x select 1), objNull] call ACE_captives_fnc_setHandcuffed;

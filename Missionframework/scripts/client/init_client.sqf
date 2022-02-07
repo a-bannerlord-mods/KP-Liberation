@@ -108,6 +108,8 @@ if (player isEqualTo ([] call KPLIB_fnc_getCommander) || player isEqualTo ([] ca
 player setVariable ["isSneaky",true,true];
 [player] execVM "modules\INC_undercover\Scripts\initUCR.sqf";
 
+execVM "modules\mapShare\init_client.sqf";
+
 execVM "custom\scripts\client\init_client.sqf";
 
 [player,"",0,1,0,1,5] spawn compile preprocessFile "modules\camo\activate_dynamic_camo.sqf";

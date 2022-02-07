@@ -605,7 +605,9 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         if (_sector in sectors_lightArtillery || _sector in sectors_heavyArtillery  ) then {
             _vehicle = [_sectorpos, _x, false, true, _g] call KPLIB_fnc_spawnVehicle;
             _vehicle allowCrewInImmobile true;
-            _vehicle setFuel 0;
+            if ((tolower _x) in opfor_heavy_artillery) then {
+                _vehicle setFuel 0;
+            };
         } else {
                 _vehicle = [_sectorpos, _x] call KPLIB_fnc_spawnVehicle;
                 [group((crew _vehicle) select 0), _sectorpos] spawn add_defense_waypoints;

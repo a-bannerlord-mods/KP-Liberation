@@ -160,6 +160,12 @@ if (_civ_killed!=-1) then {
 	_data pushBack ["civ_killed",_civ_killed];
 };
 
+//markers
+_markers = _obj getVariable ["markers",[]];
+if (count _markers> 0) then {
+	_data pushBack ["markers",_markers];
+};
+
 //person name
 if (_obj isKindOf "man" && !(isplayer _obj)) then {
 	_person_name = name  _obj;

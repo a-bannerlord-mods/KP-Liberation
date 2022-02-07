@@ -235,6 +235,7 @@ class CfgDiscordRichPresence {
 class CfgFunctions {
     #include "CfgFunctions.hpp"
     #include "modules\INC_undercover\cfgFunctions.hpp"
+    #include "modules\r0ed_SurvivableCrashes\cfgFunctions.hpp"
     #include "modules\JeroenArsenal\functions.hpp"
     #define HALs_DEF_FUNCTIONS
 	#include "modules\HALs\Addons\main\config.hpp"
