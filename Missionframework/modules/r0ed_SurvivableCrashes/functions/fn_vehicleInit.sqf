@@ -13,8 +13,8 @@ _isAllowed = false;
 } forEach _vehKindWhitelist;
 if (!(_isAllowed)) exitWith {};
 
-_veh setVariable ["r0ed_SurvivableCrashes", true];
-_veh setVariable ["r0ed_SurvivableCrashes_NotShotDown", true];
+_veh setVariable ["r0ed_SurvivableCrashes", true,true];
+_veh setVariable ["r0ed_SurvivableCrashes_NotShotDown", true,true];
 
 _veh addEventHandler ["HandleDamage", {
 	private ["_veh", "_part", "_dmg", "_index", "_health","_returnVal", "_isCrash"];
@@ -26,15 +26,16 @@ _veh addEventHandler ["HandleDamage", {
 	_returnVal = _dmg;
 	_health = 0;
 	
-	
+	_totaldamage = damage _veh;
 	if(_index == -1) then { 
 		_health = damage _veh;
 	} else { 
 		_health = _veh getHit _part; 
 	};
-	if(_health == 1) exitWith {};
-	if (_health + _dmg > 0.89) then { // this is wrong and needs to be fixed
-		if (_index == -1 or _part == "hull_hit") then {
+	
+	if!(alive _veh) exitWith {};
+	if (_health + _dmg > 0.89 or _totaldamage  > .87 ) then { // this is wrong and needs to be fixed
+		if (_index == -1 or _part == "hull_hit" or _part == "hullhit" or _part == "hull" or _totaldamage > .87 ) then {
 			_returnVal = 0;
 			_isCrash = true;
 		};
@@ -47,3 +48,4 @@ _veh addEventHandler ["HandleDamage", {
 	};
 	_returnVal
 }];
+

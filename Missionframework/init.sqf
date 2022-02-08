@@ -33,7 +33,7 @@ if (isServer) then {
     [] call compile preprocessFileLineNumbers "scripts\server\init_server.sqf";
     [] spawn KPLIB_fnc_removeUselessSectorMarkers;
 };
-
+[] execVM "modules\r0ed_SurvivableCrashes\functions\init\init_default.sqf";
 
 if (!isDedicated && !hasInterface && isMultiplayer) then {
     execVM "scripts\server\offloading\hc_manager.sqf";

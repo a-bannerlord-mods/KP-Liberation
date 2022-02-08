@@ -36,12 +36,12 @@ missionNamespace setVariable ["r0ed_SurvivableCrashesVar_VehicleRestCode", _vehi
 if(hasInterface) then {
 	[player] execVM "modules\r0ed_SurvivableCrashes\functions\fn_handleUnitDamage.sqf";
 };
-{
-    _unit = _x;
-    _veh = vehicle _x;
-	if(_veh != _unit && not (_veh isKindOf "Man")) then {
-		if(isServer or (hasInterface && _veh == vehicle player)) then {
-			[_veh] call r0ed_SurvivableCrashes_VehicleInit;
-		};
-	};
-} forEach allUnits;
+// {
+//     _unit = _x;
+//     _veh = vehicle _x;
+// 	if(_veh != _unit && not (_veh isKindOf "Man")) then {
+// 		if(isServer) then {
+// 			[_veh] call r0ed_SurvivableCrashes_VehicleInit;
+// 		};
+// 	};
+// } forEach allUnits;

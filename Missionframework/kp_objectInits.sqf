@@ -179,7 +179,7 @@ KPLIB_objectInits = [
     ],
     // survivabl Crashes 
     [
-        ["Helicopter","Plane"],
+        ["Air"],
         {
             [_this] remoteExec ["r0ed_fnc_vehicleInit", 2];
         },
