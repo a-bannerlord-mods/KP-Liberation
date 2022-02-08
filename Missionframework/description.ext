@@ -154,6 +154,7 @@ allowFunctionsRecompile = 1;
 // MOTD and admin say have exception and will show in global.
 // 0 Global, 1 Side, 2 Command, 3 Group, 4 Vehicle, 5 Direct, 6 System
 disableChannels[] = {0};
+//disableChannels[] ={{0,true,true},{1,true,true},{2,true,true}};
 
 // Multiplayer setting that removes all playable units which do not have a human player.
 // When AI is disabled, a player logging out will not have AI take control of his character.
@@ -237,6 +238,7 @@ class CfgFunctions {
     #include "modules\INC_undercover\cfgFunctions.hpp"
     #include "modules\r0ed_SurvivableCrashes\cfgFunctions.hpp"
     #include "modules\JeroenArsenal\functions.hpp"
+    #include "modules\grad-leaveNotes\cfgFunctions.hpp"
     #define HALs_DEF_FUNCTIONS
 	#include "modules\HALs\Addons\main\config.hpp"
 	#undef HALs_DEF_FUNCTIONS
@@ -253,6 +255,8 @@ class CfgTaskDescriptions {
 #include "ui\liberation_interface.hpp"
 #include "ui\liberation_notifications.hpp"
 #include "ui\mission_params.hpp"
+
+#include "modules\grad-leaveNotes\grad_leaveNotes.hpp"
 
 #include "modules\VAM_GUI\defines.hpp"
 #include "modules\VAM_GUI\VAM_GUI_controls.hpp"
@@ -278,4 +282,20 @@ class CfgRemoteExec
         jip = 1;
         #include "modules\INC_undercover\functionsWhitelist.hpp"
     };
+};
+
+class CfgSounds {
+    sounds[] = {};
+    class parasound	{
+        name = "parasound";
+        sound[] = {"res\c130.ogg", 1.0, 1};
+        titles[] = {};
+    };
+    class AutorotationWarn
+	{
+		name = "AutorotationWarn";
+		sound[]={"modules\r0ed_SurvivableCrashes\sounds\ACE_AutorotationWarning.ogg",4,1};
+		titles[]={};
+	};
+    #include "modules\grad-leaveNotes\cfgSounds.hpp"
 };

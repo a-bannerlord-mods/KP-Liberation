@@ -60,6 +60,23 @@
                 [true, "KPLIB_createZeus", [_ob, true]] remoteExecCall ["BIS_fnc_callScriptedEventHandler", 2];
             };
     }] call zen_custom_modules_fnc_register;
+    
+    ["Liberation", "Add Note/Document", {
+            _pos = (_this select 0);
+            ["Add Note", [
+                                        ["EDIT:MULTI", "Text", ["",{},10]],
+                                        ["COMBO", "Text", [["note","topSecret"],[["Note"],["Top Secret Document"]],0]]
+                                    ],
+                                    {
+                                        params ["_dialog", "_args"];
+                                        _dialog params ["_report","_type"];
+                                        _args params ["_pos"];
+                                        [_pos, 90, _report, ["",["","TahomaB"]],_type] remoteExec ["GRAD_leaveNotes_fnc_spawnNote", 2, false];
+                                    }, {}, [_pos]
+                ] call zen_dialog_fnc_create;
+    }] call zen_custom_modules_fnc_register;
+
+
     if (GRLIB_hideMarkers) then {
         ["Liberation", "Show Zues Markers", {
             {

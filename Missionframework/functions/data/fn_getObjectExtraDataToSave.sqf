@@ -166,6 +166,42 @@ if (count _markers> 0) then {
 	_data pushBack ["markers",_markers];
 };
 
+//notes and documents
+_notes = _obj getVariable ["GRAD_leaveNotes_notesInventory",[]];
+if (count _notes> 0) then {
+	_notesData=[];
+	_notesCount = _obj getVariable ["GRAD_leaveNotes_notesHandled", 0]; 
+	for "_i" from _notesCount to 0 step -1 do {
+		_nodeName = format ["GRAD_leaveNotes_myNotes_%1", _i];
+    	_message = _obj getVariable [_nodeName + "_message", ""];
+		if (_message in _notes) then {
+			_handwriting = _obj getVariable [_nodeName + "_handwriting",["",""]];
+    		_type  = _obj getVariable [_nodeName + "_type","note"];
+			_notesData pushBack [_message,_handwriting,_type];
+		};
+	};
+	_data pushBack ["GRAD_leaveNotes_notesInventory",_notesData];
+};
+
+//handwriting
+_handwriting = _obj getVariable ["GRAD_leaveNotes_handwriting",[]];
+if (count _handwriting> 0) then {
+	_data pushBack ["GRAD_leaveNotes_handwriting",_handwriting];
+};
+
+//stored notes
+_stored_notes= _obj getVariable ["GRAD_leaveNotes_stored_notes",[]];
+if (count _stored_notes> 0) then {
+	_data pushBack ["GRAD_leaveNotes_stored_notes",_stored_notes];
+};
+
+//note object data
+_noteData = _obj getVariable ["GRAD_leaveNotes_data",[]];
+if (count _noteData> 0) then {
+	_data pushBack ["GRAD_leaveNotes_data",_noteData];
+};
+
+
 //person name
 if (_obj isKindOf "man" && !(isplayer _obj)) then {
 	_person_name = name  _obj;

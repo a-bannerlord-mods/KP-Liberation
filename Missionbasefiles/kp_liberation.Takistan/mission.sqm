@@ -20,14 +20,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=2637;
+		nextID=2781;
 	};
 	class Camera
 	{
-		pos[]={8198.6748,343.76666,2091.2314};
-		dir[]={0.58469683,-0.49451834,0.64310288};
-		up[]={0.33266705,0.86916721,0.3658976};
-		aside[]={0.73990703,1.4901161e-008,-0.67270929};
+		pos[]={8226.2061,307.51434,2125.5972};
+		dir[]={-0.2440453,-0.38482857,0.89014691};
+		up[]={-0.10175165,0.92298478,0.37113503};
+		aside[]={0.96441787,-1.2631062e-008,0.26440823};
 	};
 };
 binarizationWanted=0;
@@ -33844,7 +33844,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={8246.6162,296.91336,2124.9854};
+						position[]={8246.8506,296.91336,2124.7324};
 						angles[]={0,4.4312549,0};
 					};
 					side="Empty";
@@ -33995,7 +33995,7 @@ class Mission
 				{
 					dataType="Trigger";
 					position[]={8217.6426,295.50238,2177.3569};
-					angle=2.7759452;
+					angle=2.7759454;
 					class Attributes
 					{
 						name="gate_trigger_0";
@@ -34005,7 +34005,8 @@ class Mission
 						sizeB=20;
 						sizeC=8;
 						repeatable=1;
-						activationBy="ANY";
+						activationType="NOT PRESENT";
+						activationBy="WEST";
 						isRectangle=1;
 					};
 					id=1143;
@@ -42731,14 +42732,13 @@ class Mission
 					dataType="Logic";
 					class PositionInfo
 					{
-						position[]={8240.7119,296.62326,2069.1799};
+						position[]={8240.4365,296.04001,2069.0425};
 						angles[]={0,6.2285333,0};
 					};
 					areaSize[]={5,-1,5};
 					flags=1;
 					id=4352;
 					type="ModuleHideTerrainObjects_F";
-					atlOffset=0.58325195;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -52019,7 +52019,7 @@ class Mission
 					};
 					id=7953;
 					type="Land_Canteen_F";
-					atlOffset=0.88137817;
+					atlOffset=1.0138245;
 				};
 				class Item641
 				{
@@ -52732,7 +52732,6 @@ class Mission
 						angles[]={0,5.9492106,0};
 					};
 					side="Empty";
-					flags=4;
 					class Attributes
 					{
 						createAsSimpleObject=1;
@@ -52740,6 +52739,7 @@ class Mission
 					};
 					id=7946;
 					type="Land_MobilePhone_smart_F";
+					atlOffset=0.19265747;
 				};
 				class Item685
 				{
@@ -53879,8 +53879,6 @@ class Mission
 					flags=4;
 					class Attributes
 					{
-						createAsSimpleObject=1;
-						disableSimulation=1;
 					};
 					id=7877;
 					type="Land_PortableCabinet_01_bookcase_black_F";
@@ -53915,8 +53913,6 @@ class Mission
 					flags=4;
 					class Attributes
 					{
-						createAsSimpleObject=1;
-						disableSimulation=1;
 					};
 					id=7929;
 					type="Land_PortableCabinet_01_bookcase_black_F";
@@ -53933,8 +53929,6 @@ class Mission
 					flags=4;
 					class Attributes
 					{
-						createAsSimpleObject=1;
-						disableSimulation=1;
 					};
 					id=7930;
 					type="Land_PortableCabinet_01_bookcase_black_F";

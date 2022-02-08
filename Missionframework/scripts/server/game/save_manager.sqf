@@ -128,6 +128,8 @@ KPLIB_classnamesToSave append KPLIB_o_allVeh_classes;
 KPLIB_classnamesToSave append civilian_vehicles;
 KPLIB_classnamesToSave append KP_liberation_Command_Devices;
 
+KPLIB_classnamesToSave append [toLower "Land_Notepad_F",toLower "Land_File1_F"];
+
 KPLIB_blufor_vehicles_group = createGroup [GRLIB_side_friendly,false];
 
 // Remove duplicates
