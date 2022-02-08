@@ -153,8 +153,8 @@ allowFunctionsRecompile = 1;
 // Disable specific channels for voice and text communication.
 // MOTD and admin say have exception and will show in global.
 // 0 Global, 1 Side, 2 Command, 3 Group, 4 Vehicle, 5 Direct, 6 System
-disableChannels[] = {0};
-//disableChannels[] ={{0,true,true},{1,true,true},{2,true,true}};
+//disableChannels[] = {0};
+disableChannels[] ={{0,true,true},{1,true,true},{2,true,true}};
 
 // Multiplayer setting that removes all playable units which do not have a human player.
 // When AI is disabled, a player logging out will not have AI take control of his character.
@@ -241,6 +241,7 @@ class CfgFunctions {
     #include "modules\grad-leaveNotes\cfgFunctions.hpp"
     #define HALs_DEF_FUNCTIONS
 	#include "modules\HALs\Addons\main\config.hpp"
+    #include "modules\grad-scoreboard\cfgFunctions.hpp"
 	#undef HALs_DEF_FUNCTIONS
 };
 
@@ -261,6 +262,8 @@ class CfgTaskDescriptions {
 #include "modules\VAM_GUI\defines.hpp"
 #include "modules\VAM_GUI\VAM_GUI_controls.hpp"
 #include "modules\VAM_GUI\VAM_GUI_classes.hpp"
+
+#include "modules\grad-scoreboard\grad_scoreboard.hpp"
 
 #include "modules\userinputmenus\systems\_macros.inc"
 #include "modules\userinputmenus\systems\_defines.inc"

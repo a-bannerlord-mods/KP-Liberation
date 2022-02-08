@@ -39,5 +39,9 @@ if (!canSuspend) exitWith {_this spawn KPLIB_fnc_handleHealCivTask};
 waitUntil {sleep 0.1; !(alive _obj && (damage _obj) > 0.4)};
 
 [_taskId, "SUCCEEDED"] call BIS_fnc_taskSetState;
-
+{
+    _total_missions = _x getVariable ["total_missions",0];
+    _x setVariable ["total_missions",_total_missions+1,true];
+    [_x] call KPLIB_fnc_updatePlayerStats;
+} forEach allPlayers;
 true

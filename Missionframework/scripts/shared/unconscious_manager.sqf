@@ -3,6 +3,11 @@
     if (local _unit) then {
         if (_isUnconscious) then {
             if (isplayer _unit) then {
+
+                _total_unconscious = _unit getVariable ["total_unconscious",0];
+                _unit setVariable ["total_unconscious",(_total_unconscious +1),true];
+                [_unit] call KPLIB_fnc_updatePlayerStats;
+
                 _unconscious_time = _unit getVariable["unconscious_time", 0];
                 if (_unconscious_time > 3) then {
                     _unit setVariable["ace_medical_deathblocked", false, true];

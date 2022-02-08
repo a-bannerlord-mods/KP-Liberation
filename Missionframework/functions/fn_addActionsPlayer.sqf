@@ -666,11 +666,42 @@ _player addAction [
     "",
     "
         GRLIB_permissions_param
-        && {[2] call KPLIB_fnc_hasPermission}
         && {alive _originalTarget}
         && {build_confirmed isEqualTo 0}
         && typeof cursorObject in ['USMC_WarfareBUAVterminal']
         && cursorObject distance player < 10
+    "
+];
+
+_player addAction [
+    ["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\use_ca.paa'/><t color='#FF8000'> ", "Show Players Stats", "</t>"] joinString "",
+    {
+
+        [player, 	
+						{
+                            _header = [["Name",  "Kills" , "Unconscious" , "KIA", "Total Equipment costs","Civilian Kills","Mission Completed","Time Played (min)"]];
+                            _allStats = _header + ( stats_players apply {
+                                [_x select 1 ,_x select 2,_x select 3,_x select 4,_x select 5,_x select 6,_x select 7,_x select 8]
+                            });
+							[_allStats, 	
+                                {
+                                    [-1,_this,"Statistics of Players",true] call grad_scoreboard_fnc_loadScoreboard;
+                                }
+                            ] remoteExec ["call", _this];
+						}
+		] remoteExec ["call", 2];
+        
+    },
+    nil,
+    -840,
+    false,
+    true,
+    "",
+    "
+        alive _originalTarget
+        && (build_confirmed isEqualTo 0)
+        && toLower(typeof cursorObject) in KP_liberation_Command_Devices
+        && cursorObject distance player < 5
     "
 ];
 

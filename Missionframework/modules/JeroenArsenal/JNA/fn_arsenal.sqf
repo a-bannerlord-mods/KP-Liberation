@@ -187,6 +187,10 @@ switch _mode do {
 		params["_jna_dataList"];
         diag_log "JNA open arsenal";
 		
+        _cost = [player] call jn_fnc_arsenal_calculateLoadoutCost; 
+        _totalCost = player getVariable ["total_spent",0];
+        player setVariable ["total_spent",(_totalCost - _cost ) max 0,true];
+
 		["SaveTFAR"] call jn_fnc_arsenal;
 		
 		pr _object = UINamespace getVariable "jn_object";
@@ -195,11 +199,6 @@ switch _mode do {
         [] call jn_fnc_arsenal_getitemswithPermission;
         
         ["Open",[nil,_object,player,false]] call bis_fnc_arsenal;
-
-        _cost = [player] call jn_fnc_arsenal_calculateLoadoutCost; 
-
-        _totalCost = player getVariable ["total_spent",0];
-        player setVariable ["total_spent",(_totalCost - _cost ) max 0,true];
 
     };
 	
@@ -2471,14 +2470,16 @@ switch _mode do {
         _cost = [player] call jn_fnc_arsenal_calculateLoadoutCost; 
         hint ("Your Current Loadout costs " + (str _cost )+ " Supply point");
 
-        _totalCost = player getVariable ["total_spent",0];
-        player setVariable ["total_spent",_totalCost + _cost ,true];
-
         //remove missing item message
         titleText["", "PLAIN"];
         ["SavetoServer",_object] call jn_fnc_arsenal;
         _display closedisplay 2;
         ["#(argb,8,8,3)color(0,0,0,1)",false,nil,0,[0,0.5]] call bis_fnc_textTiles;
+
+        _totalCost = player getVariable ["total_spent",0];
+        player setVariable ["total_spent",_totalCost + _cost ,true];
+        [player] call KPLIB_fnc_updatePlayerStats;
+        systemChat str (_totalCost + _cost);
     };
 
     ///////////////////////////////////////////////////////////////////////////////////////////

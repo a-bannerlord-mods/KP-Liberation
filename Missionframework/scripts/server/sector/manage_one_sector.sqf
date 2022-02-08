@@ -1148,6 +1148,11 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
             _exists = [_taskId] call BIS_fnc_taskExists;
             if (_exists) then {
                 [_taskId, "SUCCEEDED"] call BIS_fnc_taskSetState;
+                {
+                    _total_missions = _x getVariable ["total_missions",0];
+                    _x setVariable ["total_missions",_total_missions+1,true];
+                    [_x] call KPLIB_fnc_updatePlayerStats;
+                } forEach allPlayers;   
                 deleteMarker (format ["marker_task_liberate_%1",_sector]);
             };
 
@@ -1155,6 +1160,11 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
             _exists = [_taskId] call BIS_fnc_taskExists;
             if (_exists) then {
                 [_taskId, "SUCCEEDED"] call BIS_fnc_taskSetState;
+                {
+                    _total_missions = _x getVariable ["total_missions",0];
+                    _x setVariable ["total_missions",_total_missions+1,true];
+                    [_x] call KPLIB_fnc_updatePlayerStats;
+                } forEach allPlayers;  
                 deleteMarker (format ["marker_task_liberate_%1",_sector]);
             };
 

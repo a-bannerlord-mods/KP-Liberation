@@ -19,6 +19,7 @@ waitUntil {one_eco_done};
 private _fobPos = [0, 0, 0];
 private _fobDist = 99999;
 private _fobName = "";
+private _loginTime = time;
 
 while {true} do {
     // FOB distance, name and position
@@ -72,6 +73,13 @@ while {true} do {
 
     // Update state in Discord rich presence
     [] call KPLIB_fnc_setDiscordState;
+    
+    if (time - _loginTime > 60 ) then {
+        _loginTime = time;
+        _total_timespent = player getVariable ["total_timespent",0];
+		player setVariable ["total_timespent",_total_timespent+1,true];
+		[player] call KPLIB_fnc_updatePlayerStats;
+    };
 
     sleep 1;
 };

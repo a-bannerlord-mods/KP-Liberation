@@ -109,6 +109,7 @@ class KPLIB {
         class makeObjectDestroyable         {};
         class getHighestPos                 {};
         class skipTimeTo                    {};
+        class updatePlayerStats             {};
 
     };
     class functions_curator {

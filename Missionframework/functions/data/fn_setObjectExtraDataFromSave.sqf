@@ -174,22 +174,13 @@ _class = toLower (typeOf _obj);
 		if (_key == "ace_captives_isHandcuffed") then {
 			[_obj, _value, objNull] call ACE_captives_fnc_setHandcuffed;
 		};
-
-		//total supplies spent
-		if (_key == "total_spent") then {
-			_obj setVariable ["total_spent",_value , true];
-		};
-
+		
 		//stored notes
 		if (_key == "GRAD_leaveNotes_stored_notes") then {
 			_obj setVariable ["GRAD_leaveNotes_stored_notes",_value , true];
 		};
 
-		//civ killed
-		if (_key == "civ_killed") then {
-			_obj setVariable ["civ_killed",_value , true];
-		};
-		
+	
 		//person name
 		if (_key == "person_name") then {
 			_obj setname _value;
@@ -226,5 +217,35 @@ _class = toLower (typeOf _obj);
 			_obj setVariable ["type", _value select 2, true];
 			[_obj] remoteExec ["GRAD_leaveNotes_fnc_initNote", 0, true];
 		};
+
+		//player stats
+		if (_key == "total_KIA") then {
+			_obj setVariable ["total_KIA",_value , true];
+		};
+
+		if (_key == "total_unconscious") then {
+			_obj setVariable ["total_unconscious",_value , true];
+		};
+
+		if (_key == "total_kills") then {
+			_obj setVariable ["total_kills",_value , true];
+		};
+
+		if (_key == "total_timespent") then {
+			_obj setVariable ["total_timespent",_value , true];
+		};
+
+		if (_key == "total_missions") then {
+			_obj setVariable ["total_missions",_value , true];
+		};
+
+		if (_key == "total_spent") then {
+			_obj setVariable ["total_spent",_value , true];
+		};
+		
+		if (_key == "civ_killed") then {
+			_obj setVariable ["civ_killed",_value , true];
+		};
+
 	};
 } forEach _data;

@@ -82,8 +82,10 @@ GRLIB_permissions = [];
 GRLIB_qualifications = [];
 //Virual support
 GRLIB_virual_support = [];
-// Player data
+// Players data
 GRLIB_players_data = [];
+// Players stats
+stats_players =[];
 // Vehicle unlock links
 GRLIB_vehicle_to_military_base_links = [];
 // Enemy weight for anti infantry
@@ -226,6 +228,7 @@ if (!isNil "_saveData") then {
         _objectives                                 = _saveData param [25, []];
         KP_last_save_real_date                      = _saveData param [26, systemTime];
         KP_liberation_Sector_Cache                  = _saveData param [27, []];
+        stats_players                               = _saveData param [28, []];
 
         stats_ammo_produced                         = _stats select  0;
         stats_ammo_spent                            = _stats select  1;

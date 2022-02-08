@@ -90,6 +90,11 @@ if (isServer) then {
     // Player was killed
     if (isPlayer _unit) then {
         stats_player_deaths = stats_player_deaths + 1;
+
+        _total_KIA = _unit getVariable ["total_KIA",0];
+        _unit setVariable ["total_KIA",(_total_KIA +1),true];
+
+        [_unit] call KPLIB_fnc_updatePlayerStats;
         // Disconnect UAV from player on death
         _unit connectTerminalToUAV objNull;
         // Eject Player from vehicle
@@ -108,6 +113,9 @@ if (isServer) then {
 
             // Killed by a player
             if (isplayer _killer) then {
+                _total_kills = _killer getVariable ["total_kills",0];
+                _killer setVariable ["total_kills",(_total_kills +1),true];
+                [_killer] call KPLIB_fnc_updatePlayerStats;
                 stats_opfor_killed_by_players = stats_opfor_killed_by_players + 1;
             };
         };
@@ -140,6 +148,9 @@ if (isServer) then {
 
                 // Killed by a player
                 if (isplayer _killer) then {
+                    _total_kills = _killer getVariable ["total_kills",0];
+                    _killer setVariable ["total_kills",(_total_kills +1),true];
+                    [_killer] call KPLIB_fnc_updatePlayerStats;
                     stats_resistance_teamkills_by_players = stats_resistance_teamkills_by_players + 1;
                 };
             };
@@ -159,7 +170,8 @@ if (isServer) then {
             // Killed by a player
             if (isPlayer _killer) then {
                 _civkilled = _killer getVariable ["civ_killed",0];
-                _killer setVariable ["civ_killed",(_civkilled +1)];
+                _killer setVariable ["civ_killed",(_civkilled +1),true];
+                [_killer] call KPLIB_fnc_updatePlayerStats;
                 stats_civilians_killed_by_players = stats_civilians_killed_by_players + 1;
             };
         };

@@ -145,20 +145,12 @@ if (_acex_field_rations_thirst!=-1) then {
 	_data pushBack ["acex_field_rations_thirst",_acex_field_rations_thirst];
 };
 
-_total_spent = _obj getVariable ["total_spent",-1];
-if (_total_spent!=-1) then {
-	_data pushBack ["total_spent",_total_spent];
-};
-
 _isHandcuffed = _obj getVariable ['ace_captives_isHandcuffed', false];
 if (_isHandcuffed) then {
 	_data pushBack ["ace_captives_isHandcuffed",true];
 };
 
-_civ_killed = _obj getVariable ["civ_killed",-1];
-if (_civ_killed!=-1) then {
-	_data pushBack ["civ_killed",_civ_killed];
-};
+
 
 //markers
 _markers = _obj getVariable ["markers",[]];
@@ -213,5 +205,43 @@ if (_obj isKindOf "man") then {
 	_rank = rank _obj;
 	_data pushBack ["person_rank",_rank];
 };
+
+
+//player stats
+_total_spent = _obj getVariable ["total_spent",-1];
+if (_total_spent!=-1) then {
+	_data pushBack ["total_spent",_total_spent];
+};
+
+_civ_killed = _obj getVariable ["civ_killed",-1];
+if (_civ_killed!=-1) then {
+	_data pushBack ["civ_killed",_civ_killed];
+};
+
+_total_KIA = _player getVariable ["total_KIA",-1];
+if (_total_KIA!=-1) then {
+	_data pushBack ["total_KIA",_total_KIA];
+};
+
+_total_unconscious = _player getVariable ["total_unconscious",-1];
+if (_total_unconscious!=-1) then {
+	_data pushBack ["total_unconscious",_total_unconscious];
+};
+
+_total_kills =_player getVariable ["total_kills",-1];
+if (_total_kills!=-1) then {
+	_data pushBack ["total_kills",_total_kills];
+};
+
+_total_timespent =_player getVariable ["total_timespent",-1];
+if (_total_timespent!=-1) then {
+	_data pushBack ["total_timespent",_total_timespent];
+};
+
+_total_missions =_player getVariable ["total_missions",-1];
+if (_total_missions!=-1) then {
+	_data pushBack ["total_missions",_total_missions];
+};
+
 
 _data

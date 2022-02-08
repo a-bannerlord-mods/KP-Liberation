@@ -13,7 +13,7 @@
 
 params["_unit"];
 
-_items = [primaryWeapon _unit] + primaryWeaponItems _unit +  
+_items = ([primaryWeapon _unit] + primaryWeaponItems _unit +  
 [secondaryWeapon _unit] + secondaryWeaponItems _unit +  
 [handgunWeapon _unit] + handgunItems _unit +  
 [uniform _unit] +  
@@ -23,8 +23,8 @@ _items = [primaryWeapon _unit] + primaryWeaponItems _unit +
 [goggles _unit]+ 
 assignedItems _unit +  
 items _unit +  
-magazines _unit; 
- 
+magazines _unit) select {_x!=""}; 
+
 _itemsCost = 0; 
 { 
 	_item = tolower _x;
