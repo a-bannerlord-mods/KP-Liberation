@@ -247,5 +247,28 @@ _class = toLower (typeOf _obj);
 			_obj setVariable ["civ_killed",_value , true];
 		};
 
+		//ace cargo 
+		if (_key == "ace_cargo") then {
+			_cargo = _obj getVariable ["ace_cargo_loaded",[]];
+			{
+				[_x, _obj] call ace_cargo_fnc_removeCargoItem;
+			} forEach _cargo;
+
+			{
+				_v= createVehicle [_x select 0 ,[0,0,0]];
+				[_v, _x select 1] call KPLIB_fnc_setobjectextradatafromSave;
+
+				// Clear cargo, if enabled
+				[_v] call KPLIB_fnc_clearCargo;
+				// Process KP object init
+				[_v] call KPLIB_fnc_addObjectInit;
+
+				_done = [_v, _obj,true] call ace_cargo_fnc_loadItem;
+				if !(_done) then {
+					deleteVehicle _v;
+				};
+				
+			} forEach _value;
+		};
 	};
 } forEach _data;

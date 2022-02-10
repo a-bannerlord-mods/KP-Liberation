@@ -52,8 +52,8 @@ if (_class in KPLIB_b_allVeh_classes ||_class in KPLIB_o_allVeh_classes ) then {
 };
 
 //container items
-if (_class in KPLIB_b_allVeh_classes ||_class in KPLIB_o_allVeh_classes ) then {
-	_items = [_obj] call KPLIB_fnc_getContainersItems;
+_items = [_obj] call KPLIB_fnc_getContainersItems;
+if ( !(_obj isKindOf "man") && count _items > 0 ) then {
 	_data pushBack ["container_items",_items];
 };
 
@@ -218,30 +218,50 @@ if (_civ_killed!=-1) then {
 	_data pushBack ["civ_killed",_civ_killed];
 };
 
-_total_KIA = _player getVariable ["total_KIA",-1];
+_total_KIA = _obj getVariable ["total_KIA",-1];
 if (_total_KIA!=-1) then {
 	_data pushBack ["total_KIA",_total_KIA];
 };
 
-_total_unconscious = _player getVariable ["total_unconscious",-1];
+_total_unconscious = _obj getVariable ["total_unconscious",-1];
 if (_total_unconscious!=-1) then {
 	_data pushBack ["total_unconscious",_total_unconscious];
 };
 
-_total_kills =_player getVariable ["total_kills",-1];
+_total_kills =_obj getVariable ["total_kills",-1];
 if (_total_kills!=-1) then {
 	_data pushBack ["total_kills",_total_kills];
 };
 
-_total_timespent =_player getVariable ["total_timespent",-1];
+_total_timespent =_obj getVariable ["total_timespent",-1];
 if (_total_timespent!=-1) then {
 	_data pushBack ["total_timespent",_total_timespent];
 };
 
-_total_missions =_player getVariable ["total_missions",-1];
+_total_missions =_obj getVariable ["total_missions",-1];
 if (_total_missions!=-1) then {
 	_data pushBack ["total_missions",_total_missions];
 };
+
+_cargo = _obj getVariable ["ace_cargo_loaded",[]];
+if (count _cargo> 0) then {
+	_finalcargo = (_cargo apply { 
+		_r = [];
+		switch (typename _x) do {
+			case "OBJECT": {
+				//_r = [typeof _x,([_x] call KPLIB_fnc_getObjectExtraDataToSave)] 
+				_r = [typeof _x,[]];
+				};
+			case "STRING": {
+				_r = [_x,[]];
+			};
+			default {};
+		}; 
+		_r
+	});
+	_data pushBack ["ace_cargo",_finalcargo];
+};
+
 
 
 _data

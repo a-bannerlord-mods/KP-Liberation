@@ -29,6 +29,11 @@ if (_force || {!((typeOf _obj) in KP_liberation_ace_crates) && {KP_liberation_cl
     clearMagazineCargoGlobal _obj;
     clearBackpackCargoGlobal _obj;
     clearItemCargoGlobal _obj;
+    _cargo = _obj getVariable ["ace_cargo_loaded",[]];
+    {
+	    [_x, _obj] call ace_cargo_fnc_removeCargoItem;
+    } forEach _cargo;
 };
+
 
 true

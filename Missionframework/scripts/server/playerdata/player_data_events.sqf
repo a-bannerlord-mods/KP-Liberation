@@ -34,6 +34,8 @@ SendPlayerData = {
 addMissionEventHandler ["HandleDisconnect", {
 	params ["_unit", "_id", "_uid", "_name"];
     
+    [_unit,_uid] call KPLIB_fnc_updatePlayerData;
+
     if !(isNull (objectParent _unit)) then {
         GRLIB_Players_Disconnect_Vehicles set [_uid,vehicle _unit];
         publicVariable "GRLIB_Players_Disconnect_Vehicles";
@@ -44,9 +46,7 @@ addMissionEventHandler ["HandleDisconnect", {
         GRLIB_Players_Disconnect_SquadMate set [_uid,(_nearbyFriends select 0)];
         publicVariable "GRLIB_Players_Disconnect_SquadMate";
     };
-
-    [_unit,_uid] call KPLIB_fnc_updatePlayerData;
-
+    sleep 2 ;
     false
 }];
 

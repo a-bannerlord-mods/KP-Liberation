@@ -12,7 +12,7 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=3338;
+		nextID=3341;
 	};
 	class MarkerIDProvider
 	{
@@ -20,14 +20,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=1201;
+		nextID=1251;
 	};
 	class Camera
 	{
-		pos[]={5924.75,25.037004,287.74588};
-		dir[]={-0.78484976,-0.51369548,-0.3466357};
-		up[]={-0.46991292,0.85797083,-0.20754099};
-		aside[]={-0.40401459,2.8948853e-007,0.91476965};
+		pos[]={768.77191,47.300266,1267.8617};
+		dir[]={0.097791672,-0.52811658,0.84352219};
+		up[]={0.060818549,0.84917188,0.52460295};
+		aside[]={0.99334681,3.7252903e-009,-0.11516123};
 	};
 };
 binarizationWanted=0;
@@ -49,6 +49,7 @@ addons[]=
 	"A3_Structures_F_Mil_Shelters",
 	"A3_Structures_F_Households_Stone_Shed",
 	"A3_Structures_F_Ind_Transmitter_Tower",
+	"emr_main",
 	"ace_logistics_wirecutter",
 	"ace_concertina_wire",
 	"A3_Structures_F_Civ_Accessories",
@@ -79,7 +80,7 @@ class AddonsMetaData
 {
 	class List
 	{
-		items=21;
+		items=22;
 		class Item0
 		{
 			className="A3_Ui_F";
@@ -152,75 +153,82 @@ class AddonsMetaData
 		};
 		class Item10
 		{
+			className="emr_main";
+			name="Enhanced Movement Rework";
+			author="Simplex Team";
+			url="https://github.com/SceptreOfficial/Enhanced-Movement-Rework";
+		};
+		class Item11
+		{
 			className="ace_logistics_wirecutter";
 			name="ACE3 - Logistics Wire Cutter";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item11
+		class Item12
 		{
 			className="ace_concertina_wire";
 			name="ACE3 - Concertina Wire";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item12
+		class Item13
 		{
 			className="ace_sitting";
 			name="ACE3 - Sitting";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item13
+		class Item14
 		{
 			className="ace_dragging";
 			name="ACE3 - Dragging";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item14
+		class Item15
 		{
 			className="A3_Structures_F_EPA";
 			name="Arma 3 Survive Episode - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item15
+		class Item16
 		{
 			className="ace_field_rations";
 			name="ACE3 - Field Rations";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item16
+		class Item17
 		{
 			className="A3_Signs_F";
 			name="Arma 3 - Signs";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item17
+		class Item18
 		{
 			className="ace_interaction";
 			name="ACE3 - Interaction";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item18
+		class Item19
 		{
 			className="ace_cargo";
 			name="ACE3 - Cargo";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item19
+		class Item20
 		{
 			className="A3_Props_F_Enoch";
 			name="Arma 3 Contact Platform - Decorative and Mission Objects";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item20
+		class Item21
 		{
 			className="Static_Radios";
 			name="Static_Radios";
@@ -22500,7 +22508,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={5923.8013,24.616339,287.31345};
-				angles[]={-0,4.7327642,0};
+				angles[]={0,4.7327642,0};
 			};
 			side="Empty";
 			flags=4;
