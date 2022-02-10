@@ -301,4 +301,5 @@ class CfgSounds {
 		titles[]={};
 	};
     #include "modules\grad-leaveNotes\cfgSounds.hpp"
+    #include "modules\GRAD_fireworks\cfgSounds.hpp"
 };

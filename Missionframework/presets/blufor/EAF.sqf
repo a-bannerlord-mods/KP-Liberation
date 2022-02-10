@@ -33,7 +33,7 @@ Respawn_truck_typename = "B_Truck_01_medical_F";                        // This 
 huron_typename = "EAF_CH47";                       						// This is Spartan 01, a multipurpose mobile respawn as a helicopter.
 crewman_classname = "B_crew_F";                                         // This defines the crew for vehicles.
 pilot_classname = "EgyptPilot_EAF_BLACKHAWK_Gloves";                                      // This defines the pilot for helicopters.
-KP_liberation_little_bird_classname = "EAF_uh60";              // These are the little birds which spawn on the Freedom or at Chimera base.
+KP_liberation_little_bird_classname = "eaf_uh60m_slick";              // These are the little birds which spawn on the Freedom or at Chimera base.
 KP_liberation_boat_classname = "B_Boat_Transport_01_F";                 // These are the boats which spawn at the stern of the Freedom.
 KP_liberation_loadoutbox_classname = "B_supplyCrate_F";                 // These are the box contains loadout
 
@@ -133,13 +133,16 @@ air_vehicles = [
     // ["RHS_MELB_MH6M",0,0,0],                                     
     // ["RHS_MELB_AH6M",0,0,0],                                      
     // ["vtx_MH60M",0,0,0],                          
-    ["EAF_ah64",2500,0,1200],                  
-    ["EAF_ka52",2200,0,1000],                                  
+    ["EAF_ah64",2600,0,1200],                  
+    ["EAF_ka52",2000,0,1000],                                  
     ["EAFhmt",1800,0,800],                                        
-    ["EAF_uh60",1500,0,800],                  
+    ["eaf_uh60m_slick",1200,0,800], 
+    ["eaf_uh60m",1600,0,800],   
+    ["eaf_uh60m_armed",2000,0,800],
+    ["eaf_uh60m_pylons",2400,0,800],            
     ["EAF_CH47",2000,0,1500],  
-    ["AMF_RAFALE_M_01_F",3000,0,2000],     
-    ["EAF_F16_1",5000,0,3000],     
+    ["AMF_RAFALE_M_01_F",4000,0,2000],     
+    ["EAF_F16_1",6000,0,3000],     
     ["EAF_C130",4000,0,3000]  
 ];
 

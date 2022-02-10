@@ -188,6 +188,7 @@ GRLIB_arsenal_uniforms = [
     ["999_camo_rolled_Black", "uniforms", ["Rifleman"], 8, 10],
     ["999_camo_SG", "uniforms", ["Rifleman"], 8, 10],
     ["999_camo_rolled_SG", "uniforms", ["Rifleman"], 8, 10],
+    ["999_camo_rolled_Multicam", "uniforms", ["Rifleman"], 8, 10],
     ["CWU27P_Base", "uniforms", ["Rifleman"], 8, 10],
     ["CWU27P_EAF_F16_Gloves", "uniforms", ["Rifleman"], 8, 10],
     ["CWU27P_EAF_AH64_Gloves", "uniforms", ["Rifleman"], 8, 10],

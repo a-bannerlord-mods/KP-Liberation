@@ -110,6 +110,8 @@ player setVariable ["isSneaky",true,true];
 
 execVM "modules\mapShare\init_client.sqf";
 
+execVM "modules\GRAD_fireworks\init_client.sqf";
+
 execVM "custom\scripts\client\init_client.sqf";
 
 [player,"",0,1,0,1,5] spawn compile preprocessFile "modules\camo\activate_dynamic_camo.sqf";

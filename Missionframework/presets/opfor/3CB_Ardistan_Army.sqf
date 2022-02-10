@@ -233,8 +233,8 @@ opfor_air_fighter = [
 // Enemy SAM sites 
 opfor_SAM = [
     //["RadarClass","LauncherClass"]
-    //["O_Radar_System_02_F","O_SAM_System_3000_M"]
-    ["O_Radar_System_02_F","O_SAM_System_04_F"]
+    ["O_Radar_System_02_F","O_SAM_System_3000_M"]
+    //["O_Radar_System_02_F","O_SAM_System_04_F"]
 ];
 
 
