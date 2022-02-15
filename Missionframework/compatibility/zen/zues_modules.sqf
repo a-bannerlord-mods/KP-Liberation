@@ -450,6 +450,31 @@
         }
     ] call zen_context_menu_fnc_createaction;
     
+    private _sector_ied_root_action = [
+        "SectorIEDRoot",
+        "Setup IEDs",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
+            ["Add IEDs", [
+                                        ["EDIT", "IED Number", [10,{}]],
+                                        ["EDIT", "Range", [300,{}]]
+                                    ],
+                                    {
+                                        params ["_dialog", "_args"];
+                                        _dialog params ["_number","_range"];
+                                        _args params ["_sector"];                                   
+                                        [_sector, parseNumber _range, parseNumber _number] remoteExec ["ied_manager", 2];
+            }, {}, [_sector]] call zen_dialog_fnc_create;
+
+            
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            true
+        }
+    ] call zen_context_menu_fnc_createaction;
 
     private _sector_attack_infantry_root_action = [
         "SectorAttackInfantryRoot",
@@ -859,7 +884,7 @@
     [_sector_other_root_action, ["SectrorControlRoot"], 0] call zen_context_menu_fnc_addAction;
     [_sector_copy_root_action, ["SectrorControlRoot", "SectorOtherRoot"], 0] call zen_context_menu_fnc_addAction;
     [_sector_clearcache_root_action, ["SectrorControlRoot", "SectorOtherRoot"], 0] call zen_context_menu_fnc_addAction;
-
+    [_sector_ied_root_action, ["SectrorControlRoot", "SectorOtherRoot"], 0] call zen_context_menu_fnc_addAction;
 
     [_fob_control_root_action, [], 0] call zen_context_menu_fnc_addAction;
     [_fob_attack_root_action, ["FOBControlRoot"], 0] call zen_context_menu_fnc_addAction;
