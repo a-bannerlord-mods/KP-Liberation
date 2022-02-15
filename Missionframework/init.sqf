@@ -70,6 +70,8 @@ if (isServer) then {
     publicVariable "KPLIB_initServer";
 };
 
+[] execVM "modules\GRAD_fireworks\init.sqf";
+
 [] execVM "modules\r0ed_SurvivableCrashes\init.sqf";
 
 [] execVM "modules\VAM_GUI\VAM_GUI_init.sqf";

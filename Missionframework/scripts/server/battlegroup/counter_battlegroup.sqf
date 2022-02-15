@@ -16,7 +16,8 @@ while {GRLIB_csat_aggressivity >= 0.9 && GRLIB_endgame == 0} do {
     sleep _sleeptime;
 
     waitUntil {sleep 5;
-        combat_readiness >= 70 && {armor_weight >= 50 || air_weight >= 50}
+        (combat_readiness >= 70 && {armor_weight >= 50 || air_weight >= 50})
+        && GRLIB_enable_auto_counter_battlegroup
     };
 
     _target_player = objNull;

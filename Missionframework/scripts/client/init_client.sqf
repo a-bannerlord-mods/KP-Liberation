@@ -110,7 +110,6 @@ player setVariable ["isSneaky",true,true];
 
 execVM "modules\mapShare\init_client.sqf";
 
-execVM "modules\GRAD_fireworks\init_client.sqf";
 
 execVM "custom\scripts\client\init_client.sqf";
 

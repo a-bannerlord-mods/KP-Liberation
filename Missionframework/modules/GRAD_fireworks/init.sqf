@@ -2,5 +2,3 @@
 
 callFireworks = compile preprocessFileLineNumbers "modules\GRAD_fireworks\callFireworks.sqf";
 
-
-

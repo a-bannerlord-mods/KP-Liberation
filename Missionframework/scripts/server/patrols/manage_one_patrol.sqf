@@ -1,4 +1,4 @@
-params [ "_minimum_readiness", "_is_infantry" ];
+params [ "_minimum_readiness", "_is_infantry",["_sector_spawn_pos",[]]];
 private [ "_headless_client" ];
 
 waitUntil { !isNil "blufor_sectors" };
@@ -6,7 +6,7 @@ waitUntil { !isNil "combat_readiness" };
 
 while { GRLIB_endgame == 0 } do {
     waitUntil { sleep 0.3; count blufor_sectors >= 3; };
-    waitUntil { sleep 0.3; combat_readiness >= (_minimum_readiness / GRLIB_difficulty_modifier); };
+    waitUntil { sleep 0.3; GRLIB_enable_auto_opfor_patrol && (combat_readiness >= (_minimum_readiness / GRLIB_difficulty_modifier)); };
 
     sleep (random 30);
 
@@ -15,16 +15,16 @@ while { GRLIB_endgame == 0 } do {
     };
 
     _grp = grpNull;
-
-    _spawn_marker = "";
-    while { _spawn_marker == "" } do {
-        _spawn_marker = [2000,5000,true] call KPLIB_fnc_getOpforSpawnPoint;
-        if ( _spawn_marker == "" ) then {
-            sleep (150 + (random 150));
+    if (count _sector_spawn_pos < 2) then {
+        _spawn_marker = "";
+        while { _spawn_marker == "" } do {
+            _spawn_marker = [2000,5000,true] call KPLIB_fnc_getOpforSpawnPoint;
+            if ( _spawn_marker == "" ) then {
+                sleep (150 + (random 150));
+            };
         };
+        _sector_spawn_pos = [(((markerpos _spawn_marker) select 0) - 500) + (random 1000),(((markerpos _spawn_marker) select 1) - 500) + (random 1000),0];
     };
-
-    _sector_spawn_pos = [(((markerpos _spawn_marker) select 0) - 500) + (random 1000),(((markerpos _spawn_marker) select 1) - 500) + (random 1000),0];
 
     if (_is_infantry) then {
         _grp = createGroup [GRLIB_side_enemy, true];
@@ -70,7 +70,7 @@ while { GRLIB_endgame == 0 } do {
             _patrol_continue = false;
         } else {
             if ( time - _started_time > 900 ) then {
-                if ( [ getpos (leader _grp) , 4000 , GRLIB_side_friendly ] call KPLIB_fnc_getUnitsCount == 0 ) then {
+                if ( [ getpos (leader _grp) , 3000 , GRLIB_side_friendly ] call KPLIB_fnc_getUnitsCount == 0 ) then {
                     _patrol_continue = false;
                     {
                         if ( vehicle _x != _x ) then {

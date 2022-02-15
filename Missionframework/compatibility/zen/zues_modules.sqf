@@ -101,6 +101,78 @@
         [] remoteExec ["KPLIB_fnc_doBackupSave", 2];
     }] call zen_custom_modules_fnc_register;
     
+    ["Liberation", "Toggle Auto Civilian Patrol", {
+        GRLIB_enable_auto_civilian_patrol = !GRLIB_enable_auto_civilian_patrol;
+        if (GRLIB_enable_auto_civilian_patrol) then {
+            hint "Auto Civilian Patrol Enabled";
+        } else {
+            hint "Auto Civilian Patrol Disabled";
+        };
+        publicVariable "GRLIB_enable_auto_civilian_patrol";
+    }] call zen_custom_modules_fnc_register;
+
+    ["Liberation", "Add Civilian Patrol", {
+        _pos = (_this select 0);
+        ["Add Civilian Patrol", [
+                                        ["EDIT", "Civilians Number", [GRLIB_civilians_amount,{}]],
+                                        ["EDIT", "Range", [2500,{}]]
+                                    ],
+                                    {
+                                        params ["_dialog", "_args"];
+                                        _dialog params ["_number","_range"];
+                                        _args params ["_position"];
+                                        _rangeint = (parseNumber _range);
+
+                                        [[_number,_range,_position,_rangeint], 	
+                                        {
+                                            params ["_number","_range","_position","_rangeint"];
+                                            _usable_sectors = [];
+                                            { 
+                                                if (getMarkerPos _x distance  _position < _rangeint) then { 
+                                                    _usable_sectors pushback _x; 
+                                                };
+                                            } foreach ((sectors_bigtown + sectors_capture + sectors_factory) - (active_sectors));					 
+                                            for [ {_i=0}, {_i < (parseNumber _number)}, {_i=_i+1} ] do { [_usable_sectors,_rangeint] spawn manage_one_civilian_patrol; };
+                                        }
+                                        ] remoteExec ["call", 2];
+                                    }, {}, [_pos]] call zen_dialog_fnc_create;
+
+    }] call zen_custom_modules_fnc_register;
+
+
+
+    ["Liberation", "Toggle Auto Opfor Patrol", {
+        GRLIB_enable_auto_opfor_patrol = !GRLIB_enable_auto_opfor_patrol;
+        if (GRLIB_enable_auto_opfor_patrol) then {
+            hint "Auto Enemy Patrol Enabled";
+        } else {
+            hint "Auto Enemy Patrol Disabled";
+        };
+        publicVariable "GRLIB_enable_auto_civilian_patrol";
+    }] call zen_custom_modules_fnc_register;
+
+    ["Liberation", "Toggle Auto Opfor Random Battlegroup", {
+        GRLIB_enable_auto_random_battlegroup = !GRLIB_enable_auto_random_battlegroup;
+        if (GRLIB_enable_auto_random_battlegroup) then {
+            hint "Auto Enemy Random Battlegroup Enabled";
+        } else {
+            hint "Auto Enemy Random Battlegroup Disabled";
+        };
+        publicVariable "GRLIB_enable_auto_random_battlegroup";
+    }] call zen_custom_modules_fnc_register;
+
+
+    ["Liberation", "Toggle Auto Opfor Counter Battlegroup", {
+        GRLIB_enable_auto_counter_battlegroup = !GRLIB_enable_auto_counter_battlegroup;
+        if (GRLIB_enable_auto_counter_battlegroup) then {
+            hint "Auto Enemy Counter Battlegroup Enabled";
+        } else {
+            hint "Auto Enemy Counter Battlegroup Disabled";
+        };
+        publicVariable "GRLIB_enable_auto_counter_battlegroup";
+    }] call zen_custom_modules_fnc_register;
+
+
     ["Liberation", "Restor Backup", {
             [] spawn {
             private _result = ["Are you sure you want to restore Backup", "Confirm", true, true] call BIS_fnc_guiMessage; 
@@ -118,6 +190,29 @@
                     
             };
         };
+    }] call zen_custom_modules_fnc_register;
+
+    ["Liberation", "Start Fireworks", {
+            _pos = (_this select 0);
+            ["Backup Number", [
+                            ["EDIT", "Number", [40,{}]],
+                            ["EDIT", "Source", ["Land_Fire_barrel",{},10]]
+                        ],
+                        {
+                            params ["_dialog", "_args"];
+                            _dialog params ["_number","_objectClassName"];
+                            _args params ["_position"];
+                            [_number,_objectClassName,_position] spawn {
+                                params ["_number","_objectClassName","_position"];
+                                _source = _position nearObjects [_objectClassName,500]; 
+                                for "_i" from 1 to (parseNumber _number) do {  
+                                    sleep (.5 + random 2);
+                                    [[getPos (selectRandom _source) , 'random','random'] ,"callFireworks",true,true] spawn BIS_fnc_MP;                                            
+                                };  
+                            };
+                        }, {}, [_pos]
+            ] call zen_dialog_fnc_create;
+        
     }] call zen_custom_modules_fnc_register;
 
     ["Liberation", "Force Despawn All Sectors", {

@@ -1,24 +1,30 @@
 private [ "_spawnsector", "_grp", "_usable_sectors", "_spawntype", "_civnumber", "_vehdriver", "_spawnpos", "_civveh", "_sectors_patrol",
         "_patrol_startpos", "_waypoint", "_grpspeed", "_sectors_patrol_random", "_sectorcount", "_nextsector", "_nearestroad" ];
-
+params [["_usable_sectors" ,[]],["_range",-1]];
 _civveh = objNull;
+_manualy = false;
+if ( count _usable_sectors == 0 ) then {
+    sleep (150 + (random 150));
+}else{
+    _manualy = true;
+};
 
-sleep (150 + (random 150));
 _spawnsector = "";
 
 if ( isNil "active_sectors" ) then { active_sectors = [] };
 
-while { GRLIB_endgame == 0 } do {
+while { GRLIB_endgame == 0 && (!GRLIB_enable_auto_civilian_patrol || _manualy) } do {
 
     _spawnsector = "";
-    _usable_sectors = [];
-    {
-        if ((([markerPos _x, 1000, GRLIB_side_friendly] call KPLIB_fnc_getUnitsCount) == 0) && (count ([markerPos _x, 3500] call KPLIB_fnc_getNearbyPlayers) > 0)) then {
-            _usable_sectors pushback _x;
-        }
+    if ( count _usable_sectors == 0 && GRLIB_enable_auto_civilian_patrol) then {
+        
+        {
+            if ((([markerPos _x, 1000, GRLIB_side_friendly] call KPLIB_fnc_getUnitsCount) == 0) && (count ([markerPos _x, 3500] call KPLIB_fnc_getNearbyPlayers) > 0)) then {
+                _usable_sectors pushback _x;
+            }
 
-    } foreach ((sectors_bigtown + sectors_capture + sectors_factory) - (active_sectors));
-
+        } foreach ((sectors_bigtown + sectors_capture + sectors_factory) - (active_sectors));
+    };
     if ( count _usable_sectors > 0 ) then {
         _spawnsector = selectRandom _usable_sectors;
 
@@ -56,9 +62,16 @@ while { GRLIB_endgame == 0 } do {
         _sectors_patrol = [];
         _patrol_startpos = getpos (leader _grp);
         {
-            if ((_patrol_startpos distance (markerpos _x) < 5000) && (count ([markerPos _x, 4000] call KPLIB_fnc_getNearbyPlayers) > 0)) then {
-                _sectors_patrol pushback _x;
+            if (_range ==-1) then {
+                if ((_patrol_startpos distance (markerpos _x) < 5000) && (count ([markerPos _x, 4000] call KPLIB_fnc_getNearbyPlayers) > 0)) then {
+                    _sectors_patrol pushback _x;
+                };
+            } else {
+                if ((_patrol_startpos distance (markerpos _x) < _range)) then {
+                    _sectors_patrol pushback _x;
+                };
             };
+            
         } foreach (sectors_bigtown + sectors_capture + sectors_factory);
 
         _sectors_patrol_random = [];
@@ -67,7 +80,6 @@ while { GRLIB_endgame == 0 } do {
             _nextsector = selectRandom _sectors_patrol;
             _sectors_patrol_random pushback _nextsector;
             _sectors_patrol = _sectors_patrol - [_nextsector];
-
         };
 
         while {(count (waypoints _grp)) != 0} do {deleteWaypoint ((waypoints _grp) select 0);};
@@ -103,10 +115,9 @@ while { GRLIB_endgame == 0 } do {
         };
 
         if ( count (units _grp) > 0 ) then {
-            if (count ([getpos leader _grp, 4000] call KPLIB_fnc_getNearbyPlayers) == 0) then {
-
+            if ((count ([getpos leader _grp, 4000] call KPLIB_fnc_getNearbyPlayers) == 0) && !_manualy) then {
                 if ( !(isNull _civveh) ) then {
-                     if ( { ( alive _x ) && (side group _x == GRLIB_side_friendly ) } count (crew _civveh) == 0 ) then {
+                    if ( { ( alive _x ) && (side group _x == GRLIB_side_friendly ) } count (crew _civveh) == 0 ) then {
                         deleteVehicle _civveh
                     };
                 };
@@ -115,6 +126,9 @@ while { GRLIB_endgame == 0 } do {
             };
         };
     };
-
+    // if (count _usable_sectors == 0 && !GRLIB_enable_auto_civilian_patrol) exitwith {  };
+    if (_manualy==true) then {
+        _manualy = false;
+    };
     sleep 150 + (random (150));
 };

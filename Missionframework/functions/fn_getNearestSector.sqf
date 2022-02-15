@@ -18,10 +18,14 @@
 
 params [
     ["_radius", 1000, [0]],
-    ["_pos", getPos player, [[]], [2, 3]]
+    ["_pos", getPos player, [[]], [2, 3]],
+    ["_sectors", []]
 ];
+if (count _sectors ==0) then {
+    _sectors = sectors_allSectors - (blufor_sectors arrayIntersect sectors_destroyable);
+};
 
-private _sectors = sectors_allSectors select {((markerPos _x) distance2d _pos) < _radius};
+_sectors = _sectors select {((markerPos _x) distance2d _pos) < _radius};
 
 if (_sectors isEqualTo []) exitWith {""};
 

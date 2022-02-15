@@ -68,7 +68,6 @@ GRAD_Fireworks = {
 	_nul2 say3D [_bangSound,2000];
 
 
-
 		for [{_i=0},{_i < count _explosion_fragments_array},{_i=_i+1}] do 
 		{
 

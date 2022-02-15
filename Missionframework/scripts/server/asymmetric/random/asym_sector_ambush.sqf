@@ -1,4 +1,4 @@
-params ["_sector"];
+params ["_sector",["_forced",false]];
 
 if (KP_liberation_asymmetric_debug > 0) then {[format ["asym_sector_ambush.sqf for %1 spawned on: %2 - Time: %3", markerText _sector, debug_source, diag_tickTime], "ASYMMETRIC"] remoteExecCall ["KPLIB_fnc_log", 2];};
 
@@ -36,7 +36,7 @@ if (KP_liberation_asymmetric_debug > 0) then {[format ["asym_sector_ambush.sqf -
 
 private _attack = false;
 
-while {(_sector in KP_liberation_asymmetric_sectors) && (!isNull _grp)} do {
+while {((_sector in KP_liberation_asymmetric_sectors) || _forced) && (!isNull _grp)} do {
     private _blufor_near = {alive _x && side _x == GRLIB_side_friendly} count ((getpos (leader _grp)) nearEntities [["LAND"], 140]);
     if ((_blufor_near > 0) && !_attack) then {
         _attack = true;

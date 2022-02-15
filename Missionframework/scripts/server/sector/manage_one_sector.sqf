@@ -449,7 +449,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
             _vehtospawn pushback([] call KPLIB_fnc_getAdaptiveVehicle);
         };
         if (combat_readiness > 60) then {
-            _squad2 = ([true] call KPLIB_fnc_getAdaptiveVehicle);
+            _vehtospawn pushback([true] call KPLIB_fnc_getAdaptiveVehicle);
         };
 
         {

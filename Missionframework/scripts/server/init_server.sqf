@@ -36,6 +36,8 @@ attack_in_progress_sector = compile preprocessFileLineNumbers "scripts\server\se
 ied_manager = compile preprocessFileLineNumbers "scripts\server\sector\ied_manager.sqf";
 manage_one_sector = compile preprocessFileLineNumbers "scripts\server\sector\manage_one_sector.sqf";
 wait_to_spawn_sector = compile preprocessFileLineNumbers "scripts\server\sector\wait_to_spawn_sector.sqf";
+apply_training_scenario   = compile preprocessFileLineNumbers  "scripts\server\game\apply_training_scenario.sqf";
+
 
 // Globals
 active_sectors = []; publicVariable "active_sectors";
@@ -53,6 +55,7 @@ execVM "scripts\server\game\apply_default_qualifications.sqf";
 execVM "scripts\server\game\cleanup_vehicles.sqf";
 if (!KP_liberation_fog_param) then {execVM "scripts\server\game\fucking_set_fog.sqf";};
 execVM "scripts\server\game\manage_time.sqf";
+
 execVM "scripts\server\game\manage_weather.sqf";
 execVM "scripts\server\game\playtime.sqf";
 execVM "scripts\server\game\save_manager.sqf";

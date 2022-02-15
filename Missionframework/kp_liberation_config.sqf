@@ -1212,6 +1212,12 @@ KP_Radars_Enable_On_Combat_Readiness_Above = 20;
 
 //Technical Config 
 
+GRLIB_enable_auto_civilian_patrol =true;
+GRLIB_enable_auto_opfor_patrol=true;
+GRLIB_enable_auto_random_battlegroup=true;
+GRLIB_enable_auto_counter_battlegroup=true;
+GRLIB_enable_training_scenario = false;
+
 GRLIB_replaceRespawnButtonWithRedeploy =true;
 
 KPLIB_classnamesToSave = [];

@@ -16,6 +16,11 @@ if (random 100 < 12) then {
     _ultra_strong = true;
 };
 private _vehicle_trigger = 1;
+// ACE_ModuleExplosive_IEDLandBig_Range 
+// east revealMine _ied; //Red force
+// civilian revealMine _ied; //Civ population
+// resistance revealMine _ied; //Green force
+
 private _ied_type = selectRandom ["IEDLandBig_F","IEDLandSmall_F","IEDUrbanBig_F","IEDUrbanSmall_F"];
 private _ied_obj = objNull;
 private _roadobj = [(markerPos _sector) getPos [random _radius, random 360], _radius, []] call BIS_fnc_nearestRoad;

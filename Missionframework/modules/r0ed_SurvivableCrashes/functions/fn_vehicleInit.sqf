@@ -13,8 +13,8 @@ _isAllowed = false;
 } forEach _vehKindWhitelist;
 if (!(_isAllowed)) exitWith {};
 
-_veh setVariable ["r0ed_SurvivableCrashes", true,true];
-_veh setVariable ["r0ed_SurvivableCrashes_NotShotDown", true,true];
+_veh setVariable ["r0ed_SurvivableCrashes", true];
+_veh setVariable ["r0ed_SurvivableCrashes_NotShotDown", true];
 
 _veh addEventHandler ["HandleDamage", {
 	private ["_veh", "_part", "_dmg", "_index", "_health","_returnVal", "_isCrash"];

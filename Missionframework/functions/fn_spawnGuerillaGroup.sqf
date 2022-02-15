@@ -38,10 +38,7 @@ for "_i" from 1 to _amount do {
     // Create unit
     _unit = [selectRandom KP_liberation_guerilla_units, _pos, _grp, "PRIVATE", 5] call KPLIB_fnc_createManagedUnit;
 
-    // Clear inventory
-    removeAllWeapons _unit;
-    removeAllItems _unit;
-    removeAllAssignedItems _unit;
+    
     if (count _uniforms > 0) then {
         removeUniform _unit;
         _unit forceAddUniform (selectRandom _uniforms);
@@ -50,39 +47,46 @@ for "_i" from 1 to _amount do {
         removeVest _unit;
         _unit addVest (selectRandom _vests);
     };
-    removeBackpack _unit;
+
     if (count _headgear > 0) then {
         _unit addHeadgear (selectRandom _headgear);
         removeHeadgear _unit;
     };
-    removeGoggles _unit;
-
-    // Add uniform etc.
     
-    _unit addItemToUniform "FirstAidKit";
-    _unit addItemToUniform "MiniGrenade";
-    
-    
-    if (_tier > 1) then {_unit addGoggles (selectRandom KP_liberation_guerilla_facegear);};
+    // Clear inventory
+    if (count _weapons > 0) then {
+        removeAllWeapons _unit;
+        removeAllItems _unit;
+        removeAllAssignedItems _unit;
+        removeBackpack _unit;
+        removeGoggles _unit;
 
-    // Add standard items
-    _unit linkItem "ItemMap";
-    _unit linkItem "ItemCompass";
-    _unit linkItem "ItemWatch";
-    _unit linkItem "ItemRadio";
+        // Add uniform etc.
+        _unit addItemToUniform "FirstAidKit";
+        _unit addItemToUniform "MiniGrenade";
+        
+        
+        if (_tier > 1) then {_unit addGoggles (selectRandom KP_liberation_guerilla_facegear);};
 
-    // Add weapon
-    _weapon = selectRandom _weapons;
-    _unit addWeapon (_weapon select 0);
-    for "_i" from 1 to (_weapon select 2) do {_unit addItemToVest (_weapon select 1);};
-    _unit addPrimaryWeaponItem (_weapon select 3);
-    _unit addPrimaryWeaponItem (_weapon select 4);
+        // Add standard items
+        _unit linkItem "ItemMap";
+        _unit linkItem "ItemCompass";
+        _unit linkItem "ItemWatch";
+        _unit linkItem "ItemRadio";
 
-    // Add possible RPG launcher
-    if ((_tier > 1) && ((random 100) <= KP_liberation_resistance_at_chance)) then {
-        _unit addBackpack "B_FieldPack_cbr";
-        for "_i" from 1 to 3 do {_unit addItemToBackpack "RPG7_F";};
-        _unit addWeapon "launch_RPG7_F";
+        // Add weapon
+        _weapon = selectRandom _weapons;
+        _unit addWeapon (_weapon select 0);
+        for "_i" from 1 to (_weapon select 2) do {_unit addItemToVest (_weapon select 1);};
+        _unit addPrimaryWeaponItem (_weapon select 3);
+        _unit addPrimaryWeaponItem (_weapon select 4);
+
+        // Add possible RPG launcher
+        if ((_tier > 1) && ((random 100) <= KP_liberation_resistance_at_chance)) then {
+            _unit addBackpack "B_FieldPack_cbr";
+            for "_i" from 1 to 3 do {_unit addItemToBackpack "RPG7_F";};
+            _unit addWeapon "launch_RPG7_F";
+        };
     };
 };
 
