@@ -442,7 +442,7 @@
             KP_liberation_asymmetric_sectors pushBack _sector;
             publicVariable "KP_liberation_asymmetric_sectors";
             
-            [_sector] remoteExec ["asym_sector_ambush", 2];
+            [_sector,true] remoteExec ["asym_sector_ambush", 2];
         },
         {
             params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
@@ -465,7 +465,7 @@
                                         params ["_dialog", "_args"];
                                         _dialog params ["_number","_range"];
                                         _args params ["_sector"];                                   
-                                        [_sector, parseNumber _range, parseNumber _number] remoteExec ["ied_manager", 2];
+                                        [_sector, parseNumber _range, ceil((parseNumber _number)/3)] remoteExec ["ied_manager", 2];
             }, {}, [_sector]] call zen_dialog_fnc_create;
 
             

@@ -54,8 +54,8 @@ KP_liberation_heli_slot_building = "Land_HelipadSquare_F";              // The h
 KP_liberation_plane_slot_building = "Land_TentHangar_V1_F";             // The hangar used to increase the GLOBAL fixed-wing cap.
 KP_liberation_supply_crate = "CargoNet_01_box_F";                       // This defines the supply crates, as in resources.
 KP_liberation_ammo_crate = "B_CargoNet_01_ammo_F";                      // This defines the ammunition crates.
-KP_liberation_fuel_crate = "CargoNet_01_barrels_F";                     // This defines the fuel crates.
-
+KP_liberation_fuel_crate = "CargoNet_01_barrels_F";                    // This defines the fuel crates.
+//KP_liberation_guard_unit = "rhsusf_army_ocp_rifleman";
 
 /*
     --- Friendly classnames ---
@@ -66,7 +66,7 @@ KP_liberation_fuel_crate = "CargoNet_01_barrels_F";                     // This 
     IMPORTANT: The last element inside each array must have no comma at the end!
 */
 infantry_units = [
-    ["B_EGSAKA_Operator_D_01",280,0,0]                                    // Rifleman (Light)
+    ["rhsusf_army_ocp_rifleman",280,0,0]                                    // Rifleman (Light)
 ];
 
 light_vehicles = [

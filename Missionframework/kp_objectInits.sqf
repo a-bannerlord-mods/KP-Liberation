@@ -148,6 +148,15 @@ KPLIB_objectInits = [
         },
         true
     ],
+    // search light script
+    [
+        [opfor_search_light],
+        {
+            [_this] spawn search_light_ai;
+        },
+        true
+    ],
+
     // Disable enable Radars based on combat_readiness
     [
         (opfor_SAM apply {_x select 0}),

@@ -8,7 +8,7 @@ spotter_ai = compile preprocessFileLineNumbers "scripts\server\ai\spotter_ai.sqf
 patrol_ai = compile preprocessFileLineNumbers "scripts\server\ai\patrol_ai.sqf";
 prisonner_ai = compile preprocessFileLineNumbers "scripts\server\ai\prisonner_ai.sqf";
 troup_transport = compile preprocessFileLineNumbers "scripts\server\ai\troup_transport.sqf";
-
+search_light_ai = compile preprocessFileLineNumbers "scripts\server\ai\search_light_ai.sqf";
 
 
 

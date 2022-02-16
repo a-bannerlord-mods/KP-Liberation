@@ -12,7 +12,7 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=9219;
+		nextID=9586;
 	};
 	class MarkerIDProvider
 	{
@@ -20,14 +20,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=3218;
+		nextID=3447;
 	};
 	class Camera
 	{
-		pos[]={3145.0754,114.09402,9868.4404};
-		dir[]={-0.0330748,-0.72251427,0.69056797};
-		up[]={-0.034565255,0.69135582,0.72168696};
-		aside[]={0.99885738,-8.4583007e-010,0.047840338};
+		pos[]={7773.1021,514.5257,2815.9612};
+		dir[]={-0.20369589,-0.68749952,-0.69703299};
+		up[]={-0.19284421,0.72618467,-0.65989929};
+		aside[]={-0.95985478,1.6822014e-008,0.28050116};
 	};
 };
 binarizationWanted=0;
@@ -28486,7 +28486,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=103;
+		items=104;
 		class Item0
 		{
 			dataType="Logic";
@@ -73053,6 +73053,46 @@ class Mission
 				};
 				nAttributes=2;
 			};
+		};
+		class Item103
+		{
+			dataType="Layer";
+			name="S-400 Sam Site";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Layer";
+					name="S-400 Site";
+					class Entities
+					{
+						items=1;
+						class Item0
+						{
+							dataType="Layer";
+							name="S-400 Site_1";
+							class Entities
+							{
+								items=1;
+								class Item0
+								{
+									dataType="Layer";
+									name="S-400 Site_2";
+									id=9230;
+									atlOffset=-610.15997;
+								};
+							};
+							id=9229;
+							atlOffset=-610.15997;
+						};
+					};
+					id=9226;
+					atlOffset=-610.15997;
+				};
+			};
+			id=9581;
+			atlOffset=-610.15997;
 		};
 	};
 	class Connections

@@ -81,13 +81,14 @@ for "_i" from 1 to _amount do {
         _unit addPrimaryWeaponItem (_weapon select 3);
         _unit addPrimaryWeaponItem (_weapon select 4);
 
+    };
+
         // Add possible RPG launcher
-        if ((_tier > 1) && ((random 100) <= KP_liberation_resistance_at_chance)) then {
+        if ( ((random 100) <= (KP_liberation_resistance_at_chance * _tier) )) then {
             _unit addBackpack "B_FieldPack_cbr";
             for "_i" from 1 to 3 do {_unit addItemToBackpack "RPG7_F";};
             _unit addWeapon "launch_RPG7_F";
         };
-    };
 };
 
 _grp

@@ -23,6 +23,7 @@ KP_liberation_guerilla_units = [
 "UK3CB_TKM_I_RIF_1"
 ];
 
+
 // Armed vehicles
 KP_liberation_guerilla_vehicles = [
     "UK3CB_ADA_B_T55", 

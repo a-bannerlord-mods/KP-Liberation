@@ -110,6 +110,7 @@ class KPLIB {
         class getHighestPos                 {};
         class skipTimeTo                    {};
         class updatePlayerStats             {};
+        class spawnTemplate                 {};
 
     };
     class functions_curator {

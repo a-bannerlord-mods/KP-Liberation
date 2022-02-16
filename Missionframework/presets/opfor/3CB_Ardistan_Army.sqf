@@ -230,6 +230,21 @@ opfor_air_fighter = [
     "UK3CB_ARD_O_MIG29SM"
 ];
 
+opfor_military_AP_mine = [
+    "ModuleMine_APERSMine_F",
+    "rhs_mine_a200_dz35_module",
+    "rhs_mine_M7A2_module",
+    "rhs_mine_a200_bz_module",
+    "rhs_mine_pfm1_module",
+    "rhs_mine_pmn2_module"
+];
+
+opfor_military_AP_tripwires = [
+"ModuleMine_APERSTripMine_F",
+"rhs_mine_m2a3b_trip_module",
+"rhs_mine_M3_tripwire_module"
+];
+
 // Enemy SAM sites 
 opfor_SAM = [
     //["RadarClass","LauncherClass"]
@@ -237,6 +252,7 @@ opfor_SAM = [
     //["O_Radar_System_02_F","O_SAM_System_04_F"]
 ];
 
+opfor_search_light = "UK3CB_ARD_O_Searchlight";
 
 // Enemy light Artillery  (mortars)
 opfor_light_artillery = [
