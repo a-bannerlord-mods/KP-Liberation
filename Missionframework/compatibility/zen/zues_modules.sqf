@@ -788,7 +788,8 @@
             true
         }
     ] call zen_context_menu_fnc_createaction;
-        private _fob_attack_plane_root_action = [
+        
+    private _fob_attack_plane_root_action = [
         "FOBAttackPlaneRoot",
         "Attack FOB (Plane)",
         ["", [1, 1, 1, 1]],
@@ -850,7 +851,84 @@
         }
     ] call zen_context_menu_fnc_createaction;
 
+    private _spawn_template_root_action = [
+        "TemplateSpawnControlRoot",
+        "Spawn Template",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
 
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+        }
+    ] call zen_context_menu_fnc_createaction;
+
+    private _spawn_template_blufor_action = [
+        "TemplateSpawnBluforControlRoot",
+        "Blufor",
+        ["", [1, 1, 1, 1]],
+        {
+            _pos = (_this select 0);
+            _ids = [];
+            _names = [];
+            {
+                if ((_y select 4) == GRLIB_side_friendly ) then {
+                    _ids pushBack _x;
+                    _names pushBack (_y select 0)
+                };
+            } forEach GRLIB_Templates;
+            ["Spawn Blufor Template", [
+                                        ["LIST", "Templates", [_ids,_names,0]]
+                                    ],
+                                    {
+                                        params ["_dialog", "_args"];
+                                        _dialog params ["_template"];
+                                        _args params ["_position"];
+                                        //[_template,_position,0] call SpawnTemplate;     
+                                        [_template,_position,0] remoteExec ["SpawnTemplate", 2];                      
+                                    }, {}, [_pos]] call zen_dialog_fnc_create;
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            true
+        }
+    ] call zen_context_menu_fnc_createaction;
+
+    private _spawn_template_opfor_action = [
+        "TemplateSpawnOpforControlRoot",
+        "Opfor",
+        ["", [1, 1, 1, 1]],
+        {
+            _pos = (_this select 0);
+            _ids = [];
+            _names = [];
+            {
+                if ((_y select 4) == GRLIB_side_enemy ) then {
+                    _ids pushBack _x;
+                    _names pushBack (_y select 0)
+                };
+            } forEach GRLIB_Templates;
+            ["Spawn Blufor Template", [
+                                        ["LIST", "Templates", [_ids,_names,0]]
+                                    ],
+                                    {
+                                        params ["_dialog", "_args"];
+                                        _dialog params ["_template"];
+                                        _args params ["_position"];
+                                        //[_template,_position,0] call SpawnTemplate;     
+                                        [_template,_position,0] remoteExec ["SpawnTemplate", 2];                      
+                                    }, {}, [_pos]] call zen_dialog_fnc_create;
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            true
+        }
+    ] call zen_context_menu_fnc_createaction;
+
+    [_spawn_template_root_action, [], 0] call zen_context_menu_fnc_addAction;
+    [_spawn_template_blufor_action, ["TemplateSpawnControlRoot"], 0] call zen_context_menu_fnc_addAction;
+    [_spawn_template_opfor_action, ["TemplateSpawnControlRoot"], 0] call zen_context_menu_fnc_addAction;
 
     [_sectror_control_root_action, [], 0] call zen_context_menu_fnc_addAction;
     [_sector_spawn_control_root_action, ["SectrorControlRoot"], 0] call zen_context_menu_fnc_addAction;

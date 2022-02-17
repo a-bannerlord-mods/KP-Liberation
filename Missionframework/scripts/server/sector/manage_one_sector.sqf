@@ -38,8 +38,9 @@ private _maximum_additional_tickets = (KP_liberation_delayDespawnMax * 60 / SECT
 private _popfactor = 1;
 private _guerilla = false;
 private _buildingpositions = [];
+private _template = "";
 // vechile , squads , units in building
-private  _sector_cache = [_sector,"", [], [], [], [], [], [], [], [],[]];
+private  _sector_cache = [_sector,"", [], [], [], [], [], [], [], [],[],""];
 
 _cached_index =  KP_liberation_Sector_Cache findif { (_x select 0) == _sector };
 if (_cached_index > -1) then {
@@ -511,9 +512,9 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         };
     };
 
-    if (_sector in sectors_lightArtillery && (count opfor_light_artillery) > 0) then {
+    if (_sector in sectors_lightArtillery) then {
 
-        _light_artillerySystem = selectrandom opfor_light_artillery;
+        
         _squad1 = ([] call KPLIB_fnc_getSquadComp);
         if (combat_readiness > 60) then {
             _squad2 = ([] call KPLIB_fnc_getSquadComp);
@@ -527,12 +528,14 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         };
 
         _spawncivs = false;
-        if (count(_cached_vehicles)==0) then {
-            //artillery
-            _vehtospawn pushBack _light_artillerySystem;
-            _vehtospawn pushBack _light_artillerySystem;
-            _vehtospawn pushBack _light_artillerySystem;
-        };
+        // if (count(_cached_vehicles)==0) then {
+        //     //artillery
+        //     _vehtospawn pushBack _light_artillerySystem;
+        //     _vehtospawn pushBack _light_artillerySystem;
+        //     _vehtospawn pushBack _light_artillerySystem;
+        // };
+
+        _template = selectRandom ["camp_light_artillery_1","camp_light_artillery_2","camp_light_artillery_3","camp_light_artillery_4"];
 
         _building_ai_max = 0;
 
@@ -633,39 +636,41 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         if ((count _samSystem) == 2) then {     
                 //Radars
                 _hpos = ASLToATL  ([_sectorpos,100] call KPLIB_fnc_getHighestPos);
-                _vehicle = [ _hpos getPos [0,0]  , _samSystem select 0 , true, true, _g] call KPLIB_fnc_spawnVehicle;
-                _vehicle allowCrewInImmobile true;
-                _vehicle setFuel 0;
-                _managed_units pushback _vehicle; 
-                {_managed_units pushback _x; }foreach(crew _vehicle);
+                // _vehicle = [ _hpos getPos [0,0]  , _samSystem select 0 , true, true, _g] call KPLIB_fnc_spawnVehicle;
+                // _vehicle allowCrewInImmobile true;
+                // _vehicle setFuel 0;
+                // _managed_units pushback _vehicle; 
+                // {_managed_units pushback _x; }foreach(crew _vehicle);
 
-                _vehicle = [ _hpos getPos [20,90] , _samSystem select 1 , true, true, _g] call KPLIB_fnc_spawnVehicle;
-                _vehicle allowCrewInImmobile true;
-                _vehicle  setdir 90;
-                _vehicle setFuel 0;
-                _managed_units pushback _vehicle; 
-                {_managed_units pushback _x; }foreach(crew _vehicle);
+                // _vehicle = [ _hpos getPos [20,90] , _samSystem select 1 , true, true, _g] call KPLIB_fnc_spawnVehicle;
+                // _vehicle allowCrewInImmobile true;
+                // _vehicle  setdir 90;
+                // _vehicle setFuel 0;
+                // _managed_units pushback _vehicle; 
+                // {_managed_units pushback _x; }foreach(crew _vehicle);
 
-                _vehicle = [ _hpos getPos [20,180] , _samSystem select 1 , true, true, _g] call KPLIB_fnc_spawnVehicle;
-                _vehicle allowCrewInImmobile true;
-                _vehicle  setdir 180;
-                _vehicle setFuel 0;
-                _managed_units pushback _vehicle; 
-                {_managed_units pushback _x; }foreach(crew _vehicle);
+                // _vehicle = [ _hpos getPos [20,180] , _samSystem select 1 , true, true, _g] call KPLIB_fnc_spawnVehicle;
+                // _vehicle allowCrewInImmobile true;
+                // _vehicle  setdir 180;
+                // _vehicle setFuel 0;
+                // _managed_units pushback _vehicle; 
+                // {_managed_units pushback _x; }foreach(crew _vehicle);
 
-                _vehicle = [ _hpos getPos [20,270] , _samSystem select 1 , true, true, _g] call KPLIB_fnc_spawnVehicle;
-                _vehicle allowCrewInImmobile true;
-                _vehicle  setdir 270;
-                _vehicle setFuel 0;
-                _managed_units pushback _vehicle; 
-                {_managed_units pushback _x; }foreach(crew _vehicle);
+                // _vehicle = [ _hpos getPos [20,270] , _samSystem select 1 , true, true, _g] call KPLIB_fnc_spawnVehicle;
+                // _vehicle allowCrewInImmobile true;
+                // _vehicle  setdir 270;
+                // _vehicle setFuel 0;
+                // _managed_units pushback _vehicle; 
+                // {_managed_units pushback _x; }foreach(crew _vehicle);
 
-                _vehicle = [ _hpos getPos [20,360] , _samSystem select 1 , true, true, _g] call KPLIB_fnc_spawnVehicle;
-                _vehicle allowCrewInImmobile true;
-                _vehicle  setdir 360;
-                _vehicle setFuel 0;
-                _managed_units pushback _vehicle; 
-                {_managed_units pushback _x; }foreach(crew _vehicle);
+                // _vehicle = [ _hpos getPos [20,360] , _samSystem select 1 , true, true, _g] call KPLIB_fnc_spawnVehicle;
+                // _vehicle allowCrewInImmobile true;
+                // _vehicle  setdir 360;
+                // _vehicle setFuel 0;
+                // _managed_units pushback _vehicle; 
+                // {_managed_units pushback _x; }foreach(crew _vehicle);
+
+                _template = selectRandom ["site_SAM_1"];
 
             };
 
@@ -969,6 +974,11 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         _managed_units = _managed_units + (units _grp);
     };
 
+    if (_template!="") then {
+        _units = [_template,_sectorpos,0] call SpawnTemplate;
+        _managed_units = _managed_units + _units;
+    };
+
     if (count _sniper_positions > 0) then {
         _grp = createGroup[GRLIB_side_enemy, true];
         {
@@ -993,9 +1003,9 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
     };
 
     if (_cached_index > -1) then {
-        KP_liberation_Sector_Cache set  [_cached_index,[_sector,_infsquad,_cached_vehicles,_cached_squads,_cached_units_in_building,_cached_units_on_building,_cached_static_mg,_cached_static_at,_cached_static_mg_heavy,_cached_static_aa_heavy,_cached_objectives]];
+        KP_liberation_Sector_Cache set  [_cached_index,[_sector,_infsquad,_cached_vehicles,_cached_squads,_cached_units_in_building,_cached_units_on_building,_cached_static_mg,_cached_static_at,_cached_static_mg_heavy,_cached_static_aa_heavy,_cached_objectives,_template]];
     } else {
-        KP_liberation_Sector_Cache pushBack [_sector,_infsquad,_cached_vehicles,_cached_squads,_cached_units_in_building,_cached_units_on_building,_cached_static_mg,_cached_static_at,_cached_static_mg_heavy,_cached_static_aa_heavy,_cached_objectives];
+        KP_liberation_Sector_Cache pushBack [_sector,_infsquad,_cached_vehicles,_cached_squads,_cached_units_in_building,_cached_units_on_building,_cached_static_mg,_cached_static_at,_cached_static_mg_heavy,_cached_static_aa_heavy,_cached_objectives,_template];
     };
     publicVariable "KP_liberation_Sector_Cache";
     
@@ -1054,7 +1064,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
     private _activationTime = time;
     private _isFleeing = false;
     private _orginalUnitcount = GRLIB_side_enemy countSide(_managed_units select {
-        alive _x && (_x getVariable ['nest', ""] == "") && !(_x getVariable["ACE_isUnconscious", false]) && !(captive _x)
+        _x isKindOf "man" && alive _x && (_x getVariable ['nest', ""] == "") && !(_x getVariable["ACE_isUnconscious", false]) && !(captive _x)
     });
 
 
@@ -1114,7 +1124,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         };
 
         _unitcount = GRLIB_side_enemy countSide(_managed_units select {
-            alive _x && (_x getVariable ['nest', ""] == "") && !(_x getVariable["ACE_isUnconscious", false]) && !(captive _x)
+            _x isKindOf "man" && alive _x && (_x getVariable ['nest', ""] == "") && !(_x getVariable["ACE_isUnconscious", false]) && !(captive _x)
         });
 
         if (_fleeCount >= _unitcount) then {

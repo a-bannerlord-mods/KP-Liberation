@@ -20,14 +20,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=3447;
+		nextID=3582;
 	};
 	class Camera
 	{
-		pos[]={7773.1021,514.5257,2815.9612};
-		dir[]={-0.20369589,-0.68749952,-0.69703299};
-		up[]={-0.19284421,0.72618467,-0.65989929};
-		aside[]={-0.95985478,1.6822014e-008,0.28050116};
+		pos[]={7773.2051,525.15198,2826.7722};
+		dir[]={-0.20369616,-0.68749845,-0.69703209};
+		up[]={-0.19284429,0.72618586,-0.65989786};
+		aside[]={-0.95985365,1.4901161e-008,0.28050143};
 	};
 };
 binarizationWanted=0;
@@ -51914,6 +51914,7 @@ class Mission
 					};
 					id=7897;
 					type="Land_Can_V2_F";
+					atlOffset=0.039001465;
 				};
 				class Item637
 				{
@@ -51930,7 +51931,7 @@ class Mission
 					};
 					id=7952;
 					type="Land_Can_V2_F";
-					atlOffset=1.0270386;
+					atlOffset=1.06604;
 				};
 				class Item638
 				{
@@ -51965,7 +51966,7 @@ class Mission
 					};
 					id=7951;
 					type="Land_Can_V1_F";
-					atlOffset=1.0331726;
+					atlOffset=1.0732117;
 				};
 				class Item640
 				{
@@ -51983,7 +51984,7 @@ class Mission
 					};
 					id=7953;
 					type="Land_Canteen_F";
-					atlOffset=0.88137817;
+					atlOffset=1.0138245;
 				};
 				class Item641
 				{
@@ -52696,7 +52697,6 @@ class Mission
 						angles[]={0,5.9492106,0};
 					};
 					side="Empty";
-					flags=4;
 					class Attributes
 					{
 						createAsSimpleObject=1;
@@ -52704,6 +52704,7 @@ class Mission
 					};
 					id=7946;
 					type="Land_MobilePhone_smart_F";
+					atlOffset=0.19265747;
 				};
 				class Item685
 				{

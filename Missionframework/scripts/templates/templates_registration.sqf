@@ -15,6 +15,11 @@ GRLIB_Templates = createHashMap;
 ["opfor_templates\camp_light_artillery_3","camp_light_artillery_3"] call register_Template; 
 ["opfor_templates\camp_light_artillery_4","camp_light_artillery_4"] call register_Template; 
 
+["opfor_templates\site_SAM_1","site_SAM_1"] call register_Template; 
+
+["opfor_templates\road_checkpoint_1","road_checkpoint_1"] call register_Template; 
+["opfor_templates\road_checkpoint_2","road_checkpoint_2"] call register_Template; 
+
 SpawnTemplate = {
 	params ["_id","_pos","_dir"];
 	_data = GRLIB_Templates get _id;

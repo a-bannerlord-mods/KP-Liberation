@@ -13,14 +13,31 @@ if (_onnearestRoad) then {
 
 
 _objs = [_pos, _dir + _dirOffset , _template] call BIS_fnc_ObjectsMapper;
-_grpFriendly = createGroup GRLIB_side_friendly;
-_grpEnemy = createGroup GRLIB_side_enemy;
+_grp = grpNull;
+_vgrp = grpNull;
+switch (_side) do {
+    case GRLIB_side_friendly: {
+        _grp = createGroup GRLIB_side_friendly; 
+        _vgrp = createGroup GRLIB_side_friendly; 
+    };
+    case GRLIB_side_enemy: {
+        _grp = createGroup GRLIB_side_enemy; 
+        _vgrp = createGroup GRLIB_side_enemy;
+    };
+    case GRLIB_side_resistance: {
+        _grp = createGroup GRLIB_side_resistance;
+        _vgrp = createGroup GRLIB_side_resistance;
+    };
+    default { };
+};
+
 {
     _unit = _x;
     switch (typeof _unit) do {
         case "Sign_Arrow_Blue_F": { 
-            _funit = [(selectRandom infantry_units) select 0, getpos _unit, _grpfriendly] call KPLIB_fnc_createManagedUnit;
+            _funit = [(selectRandom infantry_units) select 0, getpos _unit, _grp] call KPLIB_fnc_createManagedUnit;
             _funit disableAI "PATH";
+            _funit setUnitPos "UP";	          
             _funit spawn {
                 sleep (random 5);
                 [_this, "WATCH", "FULL"] call BIS_fnc_ambientAnimCombat;
@@ -30,8 +47,9 @@ _grpEnemy = createGroup GRLIB_side_enemy;
         };
         case "Sign_Arrow_F": { 
             _class = selectRandom ([] call KPLIB_fnc_getSquadComp);
-            _funit = [_class, getpos _unit, _grpEnemy] call KPLIB_fnc_createManagedUnit;
+            _funit = [_class, getpos _unit, _grp] call KPLIB_fnc_createManagedUnit;
             _funit disableAI "PATH";
+            _funit setUnitPos "UP";	            
             // _funit spawn {
             //     sleep (random 5);
             //     [_this, "WATCH", "FULL"] call BIS_fnc_ambientAnimCombat;
@@ -40,12 +58,13 @@ _grpEnemy = createGroup GRLIB_side_enemy;
             deleteVehicle _unit;
         };
         case "Sign_Arrow_Green_F": { 
-            _funit = [(selectRandom infantry_units) select 0, getpos _unit, _grpfriendly] call KPLIB_fnc_createManagedUnit;
+            _funit = [(selectRandom infantry_units) select 0, getpos _unit, _grp] call KPLIB_fnc_createManagedUnit;
             _funit disableAI "PATH";
+            _funit setUnitPos "UP";	
             _funit spawn {
                 sleep (random 5);
                 [_this, "WATCH", "FULL"] call BIS_fnc_ambientAnimCombat;
-            };		
+            };
             _objects pushBack _funit;
             deleteVehicle _unit;
         };
@@ -60,14 +79,14 @@ _grpEnemy = createGroup GRLIB_side_enemy;
         };
         case "ACE_IEDUrbanBig_Range": {
             _ied_type =  selectrandom opfor_military_AP_mine;
-            _ied_obj = createVehicle [_ied_type, getpos _unit];
+            _ied_obj = createVehicle [_ied_type, getpos _unit,[],0,"CAN_COLLIDE"];
             _side revealMine _ied_obj;
             deleteVehicle _unit;
             _objects pushBack _ied_obj;
         }; 
         case "ACE_IEDLandBig_Range": {
             _ied_type =  selectrandom opfor_military_AP_mine;
-            _ied_obj = createVehicle [_ied_type, getpos _unit];
+            _ied_obj = createVehicle [_ied_type, getpos _unit,[],0,"CAN_COLLIDE"];
             _side revealMine _ied_obj;
             deleteVehicle _unit;
             _objects pushBack _ied_obj;
@@ -109,7 +128,7 @@ _grpEnemy = createGroup GRLIB_side_enemy;
                     {
                         _objects pushBack _x;	
                         _x disableAI "PATH";
-                        						
+                        [_x] joinSilent _vgrp;
                     } forEach (crew _unit);	
                     _unit allowCrewInImmobile false;	
             };
