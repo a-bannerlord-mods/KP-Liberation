@@ -10,7 +10,7 @@ if (_onnearestRoad) then {
         _pos = getpos _nearestRoad;
     };
 };
-
+[_pos, 50, false] remoteExecCall ["KPLIB_fnc_createClearance", 2];
 
 _objs = [_pos, _dir + _dirOffset , _template] call BIS_fnc_ObjectsMapper;
 _grp = grpNull;

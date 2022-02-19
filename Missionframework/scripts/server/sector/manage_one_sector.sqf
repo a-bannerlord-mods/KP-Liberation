@@ -632,15 +632,30 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         sleep 0.25;
     } forEach _vehtospawn;
 
+    if (_template!="") then {
+        _units = [_template,_sectorpos,0] call SpawnTemplate;
+        _managed_units = _managed_units + _units;
+    };
+
+
     if (_sector in sectors_SAM) then {
         if ((count _samSystem) == 2) then {     
                 //Radars
                 _hpos = ASLToATL  ([_sectorpos,100] call KPLIB_fnc_getHighestPos);
-                // _vehicle = [ _hpos getPos [0,0]  , _samSystem select 0 , true, true, _g] call KPLIB_fnc_spawnVehicle;
-                // _vehicle allowCrewInImmobile true;
-                // _vehicle setFuel 0;
-                // _managed_units pushback _vehicle; 
-                // {_managed_units pushback _x; }foreach(crew _vehicle);
+
+                _vehicle = [ _hpos getPos [0,0] , selectrandom opfor_cram_systems, false, false, _g] call KPLIB_fnc_spawnVehicle;
+                _vehicle allowCrewInImmobile true;
+                _vehicle setFuel 0;
+                _vehicle disableAI "AUTOCOMBAT";
+                _vehicle disableAI "TARGET";
+                _vehicle disableAI "AUTOTARGET";
+                _managed_units pushback _vehicle; 
+                {
+                    _managed_units pushback _x; 
+                    _x disableAI "AUTOCOMBAT";
+                    _x disableAI "TARGET";
+                    _x disableAI "AUTOTARGET";
+                }foreach(crew _vehicle);
 
                 // _vehicle = [ _hpos getPos [20,90] , _samSystem select 1 , true, true, _g] call KPLIB_fnc_spawnVehicle;
                 // _vehicle allowCrewInImmobile true;
@@ -676,6 +691,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
 
     };
 
+    
     _units = ([_cached_units_in_building] call KPLIB_fnc_spawnBuildingSquadFromCache);
     _managed_units = _managed_units + _units;
     _units = ([_cached_units_on_building] call KPLIB_fnc_spawnBuildingSquadFromCache);
@@ -974,10 +990,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         _managed_units = _managed_units + (units _grp);
     };
 
-    if (_template!="") then {
-        _units = [_template,_sectorpos,0] call SpawnTemplate;
-        _managed_units = _managed_units + _units;
-    };
+  
 
     if (count _sniper_positions > 0) then {
         _grp = createGroup[GRLIB_side_enemy, true];

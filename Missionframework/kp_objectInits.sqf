@@ -193,6 +193,15 @@ KPLIB_objectInits = [
             [_this] remoteExec ["r0ed_fnc_vehicleInit", 2];
         },
         true
+    ], 
+    // cram
+    [
+        ["O_AAA_System_01_F","UK3CB_ARD_O_2S6M_Tunguska", "UK3CB_ARD_O_Ural_Zu23", "UK3CB_ARD_O_ZsuTank"],
+        {
+            //remoteExec ["FSG_fnc_addCram", _this];
+            [_this, FSG_CRAMDIS]  call  FSG_fnc_addCram;
+        },
+        true
     ],
     //special forces fixing
     [

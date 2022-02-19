@@ -264,6 +264,9 @@ opfor_heavy_artillery = [
     "rhs_2s3_tv"
 ];
 
+opfor_cram_systems = [
+    "UK3CB_ARD_O_2S6M_Tunguska"
+];
 
 // Enemy static guns
 opfor_static_guns = [
