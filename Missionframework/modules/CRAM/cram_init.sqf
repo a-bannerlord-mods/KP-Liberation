@@ -1,5 +1,5 @@
 
-FSG_DEBUG = true;
+FSG_DEBUG = false;
 // Show debug info
 
 FSG_CURAtorS = [];

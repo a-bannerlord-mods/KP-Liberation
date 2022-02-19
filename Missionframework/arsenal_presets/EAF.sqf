@@ -47,7 +47,14 @@ GRLIB_arsenal_weapons_primary = [
     ["Tier1_SIG_MCX_115_Virtus_Black","assultRifle", ["Rifleman"], 180, 20, true, true],
     ["Tier1_SIG_MCX_115_Virtus","assultRifle", ["Rifleman"], 180, 20, true, true],
     ["Tier1_HK416D145_SMR_IMOD","assultRifle", ["Rifleman"], 180, 20, true, true],
-    ["Tier1_SR25","assultRifle", ["Rifleman"], 280, 20, true, true]
+    ["Tier1_SR25","assultRifle", ["Rifleman"], 280, 20, true, true],
+    ["Tier1_MK48_Mod0","mmgs", ["Autorifleman"], 280, 20, true, true], //Mk 48 Mod 0
+    ["Tier1_SR16_Carbine_Mod2_MFT_FDE","assultRifle", ["Rifleman"], 280, 20, true, true], //SR-16 Carbine Mod2 M-LOK (MFT) (FDE)
+    ["Tier1_MK48_Mod1_Desert_grip3","mmgs", ["Autorifleman"], 400, 20, true, true], //Mk 48 Mod 1 (Savit) (Desert)
+    ["rhs_weap_g36kv","assultRifle", ["Rifleman"], 280, 20, true, true], //HK G36KV
+    ["Tier1_M110k1_CTR","dmr", ["Marksman"], 280, 20, true, true], //M110k1 (CTR)
+    ["rhs_weap_mk18_grip2_KAC_bk","assultRifle", ["Rifleman"], 280, 20, true, true], //Mk 18 Mod 1 (AFG/SOPMOD Stock)
+    ["rhs_weap_m4a1_blockII_grip2_KAC","assultRifle", ["Rifleman"], 280, 20, true, true] //M4A1 Block II (AFG/SOPMOD Stock)
 ];
 
 GRLIB_arsenal_weapons_colors_variant = [
@@ -58,7 +65,9 @@ GRLIB_arsenal_weapons_colors_variant = [
         [["rhs_weap_sr25","Black"],["rhs_weap_sr25_d","Tan"]],
         [["rhs_weap_sr25_ec","Black"],["rhs_weap_sr25_ec_d","Tan"]],
         [["Tier1_SR25","Black"],["Tier1_SR25_tan","Tan"]],
-        [["JAS_SIG516_10_LMT_Blk","Black"],["JAS_SIG516_10_LMT_Tan","Tan"]]
+        [["JAS_SIG516_10_LMT_Blk","Black"],["JAS_SIG516_10_LMT_Tan","Tan"]], 
+        [["Tier1_MK48_Mod0","Black"],["Tier1_MK48_Mod0_Para_Desert","Tan"]],
+        [["Tier1_HK416D145_SMR_IMOD","Black"],["Tier1_HK416D145_MW13_MFT_Desert","Tan"]]
 ];
 
 GRLIB_arsenal_weapons_secondary = [
@@ -82,8 +91,8 @@ GRLIB_arsenal_weapons_handgun = [
     ["rhsusf_weap_m1911a1", "handguns", ["Rifleman"], 10, 30, true, true],
     ["rhsusf_weap_glock17g4", "handguns", ["Rifleman"],20, 20, true, true],
     ["rhs_weap_M320", "handguns", ["GL"], 30, 20, true, true],
-    ["hgun_Pistol_heavy_01_F", "handguns", ["Rifleman"], 30, 5, true, true]
-    //,["CUP_hgun_CZ75", "Weapons", ["Rifleman"], -1, -1, true, true]
+    ["hgun_Pistol_heavy_01_F", "handguns", ["Rifleman"], 30, 5, true, true],
+    ["Tier1_Glock19_WAR_TB", "handguns", ["Rifleman"], 35, 5, true, true]
 ];
 // [Classname,catagory",[array of permitted qualifications],cost (-1 for autocost),initial amount (-1 for infinite)]
 // ["SatchelCharge_Remote_Mag","explosives",["Rifleman"],000,16]
@@ -338,7 +347,9 @@ GRLIB_arsenal_facegear = [
     ["VSM_balaclava2_Black", "facegear", ["Rifleman"], 2, 10],
     ["VSM_FaceMask_olive", "facegear", ["Rifleman"], 3, 5],
     ["G_CBRN_M04_Hood", "facegear", ["Rifleman"], 3, 15], 
-    ["ade_item_goggles", "facegear", ["Rifleman"], 3, 5]
+    ["ade_item_goggles", "facegear", ["Rifleman"], 3, 5],
+    ["VSM_balaclava_Black_Skull", "facegear", ["Rifleman"], 3, 5],
+    ["VSM_balaclava_TAN_Skull", "facegear", ["Rifleman"], 3, 5]
 ];
 
 
@@ -378,6 +389,10 @@ GRLIB_arsenal_compass = [
 ];
 
 GRLIB_arsenal_optics = [
+ ["Tier1_MicroT2_Leap_G33_Riser_TanBlack_Up", "optics", ["Rifleman"],35, 5], //Eotech 551/L3/UTG 13/50 (Desert)  
+ ["Tier1_Eotech551_L3_Riser_Desert_Up", "optics", ["Rifleman"],35, 5], //Eotech 551/L3/UTG 13/50 (Desert)  
+ ["Tier1_MicroT2_3xMag_Riser_Tan_Up", "optics", ["Rifleman"],35, 5], //Micro T-2/3X/LT 5/8 (Desert) 
+ ["Tier1_Elcan_156_C2_ARD_FDE", "optics", ["Rifleman"],35, 5], //SpecterDR 1.5x/6x C2/ARD (FDE)
  ["rhsusf_acc_eotech_xps3", "optics", ["Rifleman"], 2, 30], //XPS3  (0.0731915) 
  ["rhsusf_acc_T1_low_fwd", "optics", ["Rifleman"], 2, 50], //SU-278/PVS LT661 (Forward)  (0.0310638) 
  ["optic_Aco", "optics", ["Rifleman"], 2, 30], //C-More Railway (Red)  (0.0731915) 
@@ -466,7 +481,13 @@ GRLIB_arsenal_optics = [
 ];
 
 GRLIB_arsenal_flashlaser = [
-    ["rhs_acc_perst3_2dp_light_h", "pointers", ["Rifleman"], 1, 100],
+    ["rhsusf_acc_anpeq15side_bk", "pointers", ["Rifleman"], 30, 100],
+    ["rhs_acc_perst3_2dp_light_h", "pointers", ["Rifleman"], 30, 100],
+    ["Tier1_M110_LA5_Top", "pointers", ["Rifleman"], 35, 100],
+    ["Tier1_URX4_LA5_M300C_Black", "pointers", ["Rifleman"], 30, 100],
+    ["Tier1_SIG_Romeo1", "pointers", ["Rifleman"], 30, 100], 
+    ["Tier1_MicroT1_Leap_Desert", "pointers", ["Rifleman"], 30, 100],
+    ["Tier1_M249_LA5_M600V_Black", "pointers", ["Rifleman"], 35, 100],
     ["acc_flashlight", "pointers", ["Rifleman"], 2, 50],
     ["rhs_acc_2dpZenit", "pointers", ["Rifleman"], 2, 20],
     ["rhs_acc_2dpZenit_ris", "pointers", ["Rifleman"], 3, 20],
@@ -476,21 +497,32 @@ GRLIB_arsenal_flashlaser = [
     ["acc_pointer_IR", "pointers", ["Rifleman"], 8, 10],
     ["hlc_acc_DBALPL", "pointers", ["Rifleman"], 5, 10],
     ["Tier1_MCX_NGAL_Top", "pointers", ["Rifleman"],20, 5],
-    ["Tier1_SR25_LA5_Side", "pointers", ["Rifleman"],20, 5]
+    ["Tier1_SR25_LA5_Side", "pointers", ["Rifleman"],20, 5],
+    ["Tier1_Mk48Mod0_LA5_M600V_Black", "pointers", ["Rifleman"],35, 5],
+    ["Tier1_MW_LA5_M300C_Black", "pointers", ["Rifleman"],35, 5], //LA-5B/M300C (Black) (Laser)
+    ["Tier1_M4BII_LA5_M300C_FL", "pointers", ["Rifleman"],35, 5], //M4BII // LA-5B/M300C (Tan) (Light)
 ];
 
 GRLIB_arsenal_bipods = [
     ["rhsusf_acc_grip1", "underbarrel", ["Rifleman"], 1, 20],
-    ["rhsusf_acc_grip2", "underbarrel", ["Rifleman"], 2, 15],
+    ["rhsusf_acc_harris_bipod", "underbarrel", ["Rifleman"], 25, 20],
+    ["Tier1_AFG_MLOK_FDE", "underbarrel", ["Rifleman"], 1, 20],
     ["rhsusf_acc_grip3", "underbarrel", ["Rifleman"], 3, 10],
     ["bipod_01_F_snd", "underbarrel", ["Rifleman"], 4, 30],
     ["bipod_01_F_blk", "underbarrel", ["Rifleman"], 4, 30],
     ["rhsusf_acc_saw_bipod", "underbarrel", ["Rifleman"], 4, 20],
     ["Tier1_BCM_Gunfighter_VG_Black", "underbarrel", ["Rifleman"], 16, 5],
-    ["Tier1_Harris_Bipod_Black", "underbarrel", ["Rifleman"], 15, 5]
+    ["Tier1_Harris_Bipod_Black", "underbarrel", ["Rifleman"], 15, 5],
+    ["Tier1_SAW_Bipod_DD_Desert", "underbarrel", ["Rifleman"], 15, 5],
+    ["rhsusf_acc_grip2", "underbarrel", ["Rifleman"], 15, 5],
+    ["Tier1_Harris_Bipod_MVG_MLOK_Black", "pointers", ["Rifleman"],35, 5] //Eotech 551/L3/UTG 13/50 (Desert)
 ];
 
 GRLIB_arsenal_muzzles = [
+    ["Tier1_Evo9", "muzzles", ["Rifleman"], 20,50], 
+    ["Tier1_SOCOM762_2_DE", "muzzles", ["Rifleman"], 20,50],
+    ["Tier1_SandmanS_Black", "muzzles", ["Rifleman"], 20,50],
+    ["Tier1_SOCOM556_2_DE", "muzzles", ["Rifleman"], 25,50],
     ["rhs_acc_dtkakm", "muzzles", ["Rifleman"], 1,50],
     ["rhs_acc_dtk", "muzzles", ["Rifleman"], 2, 10],
     ["rhs_acc_dtk3", "muzzles", ["Rifleman"], 3, 10],
@@ -513,7 +545,8 @@ GRLIB_arsenal_muzzles = [
     ["muzzle_snds_m_snd_F", "muzzles", ["Rifleman"], 8, 20],
     ["muzzle_snds_B", "muzzles", ["Rifleman"], 8, 20],
     ["rhsgref_sdn6_suppressor", "muzzles", ["Rifleman"], 10, 20], 
-    ["rhsusf_acc_SR25S", "muzzles", ["Rifleman"], 20, 5]
+    ["rhsusf_acc_SR25S", "muzzles", ["Rifleman"], 20, 5],
+    ["Tier1_SOCOM762MG_DE", "muzzles", ["Rifleman"], 15, 5]
 ];
 
 GRLIB_arsenal_HandGrenade = [
