@@ -500,7 +500,7 @@ GRLIB_arsenal_flashlaser = [
     ["Tier1_SR25_LA5_Side", "pointers", ["Rifleman"],20, 5],
     ["Tier1_Mk48Mod0_LA5_M600V_Black", "pointers", ["Rifleman"],35, 5],
     ["Tier1_MW_LA5_M300C_Black", "pointers", ["Rifleman"],35, 5], //LA-5B/M300C (Black) (Laser)
-    ["Tier1_M4BII_LA5_M300C_FL", "pointers", ["Rifleman"],35, 5], //M4BII // LA-5B/M300C (Tan) (Light)
+    ["Tier1_M4BII_LA5_M300C_FL", "pointers", ["Rifleman"],35, 5] //M4BII // LA-5B/M300C (Tan) (Light)
 ];
 
 GRLIB_arsenal_bipods = [

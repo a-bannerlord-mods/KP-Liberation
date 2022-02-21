@@ -38,6 +38,15 @@
                 };
 
             };
+        }else{
+            if !(isplayer _unit) then {
+                _ace_killer = _unit getVariable["ace_medical_lastinstigator", objNull];
+                if !(isnull _ace_killer) then {
+                    if (side _ace_killer != GRLIB_side_friendly) then {
+                        [2, false] spawn F_cr_changeCR;
+                    };
+                };
+            };
         };
     };
     [_unit, _isUnconscious] spawn {

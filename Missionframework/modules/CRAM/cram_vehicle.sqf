@@ -73,7 +73,7 @@ _null = [_cram, _range] spawn {
             };
         };
         if (count _incoming == 0) then {
-            sleep 1;
+            sleep 0.2;
         };
     };
 };

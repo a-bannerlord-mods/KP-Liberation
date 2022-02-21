@@ -127,7 +127,10 @@ KPLIB_objectInits = [
     // Make sure a slingloaded object is local to the helicopter pilot (avoid desync and rope break)
     [
         ["Helicopter"],
-        {if (isServer) then {[_this] call KPLIB_fnc_addRopeAttachEh;} else {[_this] remoteExecCall ["KPLIB_fnc_addRopeAttachEh", 2];};},
+        {
+            _this  setVariable ["unit_value",5,true];
+            if (isServer) then {[_this] call KPLIB_fnc_addRopeAttachEh;} else {[_this] remoteExecCall ["KPLIB_fnc_addRopeAttachEh", 2];};
+        },
         true
     ],
 
@@ -161,10 +164,41 @@ KPLIB_objectInits = [
     [
         (opfor_SAM apply {_x select 0}),
         {
+            _this  setVariable ["unit_value",25,true];
             if (combat_readiness > KP_Radars_Enable_On_Combat_Readiness_Above) then {
                 _this setvehicleRadar 1;
             } else {
                 _this setvehicleRadar 0;
+            };
+        },
+        true
+    ],
+     //set value of opfor SAM launchers
+    [
+        (opfor_SAM apply {_x select 1}),
+        {
+            _this  setVariable ["unit_value",15,true];
+        },
+        true
+    ],
+    [
+        opfor_vehicles_low_intensity,
+        {
+            if (toLower(typeof _this) in opfor_tanks) then {
+                _this  setVariable ["unit_value",4,true];
+            } else {
+                _this  setVariable ["unit_value",6,true];
+            };
+        },
+        true
+    ],
+    [
+        opfor_vehicles,
+        {
+            if (toLower(typeof _this) in opfor_tanks) then {
+                _this  setVariable ["unit_value",6,true];
+            } else {
+                _this  setVariable ["unit_value",8,true];
             };
         },
         true

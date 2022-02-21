@@ -10,6 +10,8 @@ private _positions = [];
     _positions = _positions + ([_x] call BIS_fnc_buildingPositions);
 } forEach _buildings;
 
+_ambush_managed_units = [];
+
 if (KP_liberation_asymmetric_debug > 0) then {[format ["asym_sector_ambush.sqf -> Found %1 suitable buildings in %2 - Time: %3", count _buildings, markerText _sector, diag_tickTime], "ASYMMETRIC"] remoteExecCall ["KPLIB_fnc_log", 2];};
 
 private _position_indexes = [];
@@ -28,11 +30,13 @@ private _idxposit = 0;
     _x setpos (_positions select (_position_indexes select _idxposit));
     _x setUnitPos "UP";
     doStop _x;
-
+    _ambush_managed_units pushBack _x;
     _idxposit = _idxposit + 1;
 } forEach (units _grp);
 
 if (KP_liberation_asymmetric_debug > 0) then {[format ["asym_sector_ambush.sqf -> Units spawned in %1 - Time: %2", markerText _sector, diag_tickTime], "ASYMMETRIC"] remoteExecCall ["KPLIB_fnc_log", 2];};
+
+missionNamespace setVariable [format ["%1_ambush_managed_units",_sector],_ambush_managed_units];
 
 private _attack = false;
 
@@ -70,5 +74,5 @@ if (!isNull _grp) then {
         };
     } forEach (units _grp);
 };
-
+missionNamespace setVariable [format ["%1_ambush_managed_units",_sector],_ambush_managed_units];
 if (KP_liberation_asymmetric_debug > 0) then {[format ["asym_sector_ambush.sqf -> Ambush dropped in %1 - Time: %2", markerText _sector, diag_tickTime], "ASYMMETRIC"] remoteExecCall ["KPLIB_fnc_log", 2];};

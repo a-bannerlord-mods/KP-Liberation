@@ -39,14 +39,15 @@ while {true} do {
     private _myfps = diag_fps;
     private _localgroups = {local _x} count allGroups;
     private _localunits = {local _x} count allUnits;
-    private _localenemyunits = {local _x && (side _x == GRLIB_side_enemy) } count allUnits;
+    private _localshownunits = {local _x && !(isObjectHidden _x)  } count allUnits;
+    private _localenemyunits = {local _x && !(isObjectHidden _x) && (side _x == GRLIB_side_enemy) } count allUnits;
 
     _myfpsmarker setMarkerColor "ColorGREEN";
     if (_myfps < 30) then {_myfpsmarker setMarkerColor "ColorYELLOW";};
     if (_myfps < 20) then {_myfpsmarker setMarkerColor "ColorORANGE";};
     if (_myfps < 10) then {_myfpsmarker setMarkerColor GRLIB_color_enemy_bright;};
 
-    _myfpsmarker setMarkerText format ["%1: %2 fps, %3 local groups, %5/%4 local units", _sourcestr, (round (_myfps * 100.0)) / 100.0, _localgroups, _localunits,_localenemyunits];
+    _myfpsmarker setMarkerText format ["%1: %2 fps, %3 local groups, visible opfor %5 , all %4/%6 visible/hidden local units", _sourcestr, (round (_myfps * 100.0)) / 100.0, _localgroups, _localshownunits,_localenemyunits,_localunits];
 
     sleep 15;
 };

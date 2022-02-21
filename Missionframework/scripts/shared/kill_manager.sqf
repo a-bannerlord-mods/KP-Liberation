@@ -41,43 +41,69 @@ if (isServer) then {
             stats_readiness_earned = stats_readiness_earned + (0.5 * GRLIB_difficulty_modifier);
             if (combat_readiness > 100.0 && GRLIB_difficulty_modifier < 2) then {combat_readiness = 100.0};
         };
-
+        _value = _unit getVariable ["unit_value",1];
         // Weights adjustments depending on what vehicle the BLUFOR killer used
         _ace_killer_type  = _unit getVariable ["ace_killer_type",""];
         switch (_ace_killer_type) do {
             case "": { 
                     if ((toLower (typeOf (vehicle _killer))) in KPLIB_allLandVeh_classes || (vehicle _killer) isKindOf "Tank") then  {
-                        infantry_weight = infantry_weight - 0.66;
-                        armor_weight = armor_weight + 1;
-                        air_weight = air_weight - 0.66;
+                        infantry_weight = infantry_weight - (0.66 * _value) ;
+                        armor_weight = armor_weight + (1 * _value);
+                        air_weight = air_weight - (0.66 * _value);
                     }else{
                         if ((toLower (typeOf (vehicle _killer))) in KPLIB_allAirVeh_classes || (vehicle _killer) isKindOf "Plane" || (vehicle _killer) isKindOf "Helicopter"  ) then  {
-                            infantry_weight = infantry_weight - 0.66;
-                            armor_weight = armor_weight - 0.66;
-                            air_weight = air_weight + 1;
+                            _air_weight_before =  air_weight;
+                            infantry_weight = infantry_weight - (0.66 * _value);
+                            armor_weight = armor_weight - (0.66 * _value);
+                            air_weight = air_weight + (1 * _value);
+                            if (air_weight > 40 && _air_weight_before < 40 && air_weight<50 ) then {
+                                [getpos _killer,1]  remoteExec ["spawn_air", 2];
+                            };
+                            if (air_weight > 50 && _air_weight_before < 50 && air_weight<60 ) then {
+                                [getpos _killer,1]  remoteExec ["spawn_air", 2];
+                            };
+                            if (air_weight > 60 && _air_weight_before < 60 && air_weight<70 ) then {
+                                [getpos _killer,2]  remoteExec ["spawn_air", 2];
+                            };
+                            if (air_weight > 70 && _air_weight_before < 70 && air_weight<80 ) then {
+                                [getpos _killer,2]  remoteExec ["spawn_air", 2];
+                            };
                         }else{
                             if (_killer isKindOf "Man") then {
-                                infantry_weight = infantry_weight + 1;
-                                armor_weight = armor_weight - 0.66;
-                                air_weight = air_weight - 0.66;
+                                infantry_weight = infantry_weight + (1 * _value);
+                                armor_weight = armor_weight - (0.66 * _value);
+                                air_weight = air_weight - (0.66 * _value);
                             };
                         };
                     };
             };
             case "man":{
-                infantry_weight = infantry_weight + 1;
-                armor_weight = armor_weight - 0.66;
-                air_weight = air_weight - 0.66;
+                infantry_weight = infantry_weight + (1 * _value);
+                armor_weight = armor_weight - (0.66 * _value);
+                air_weight = air_weight - (0.66 * _value);
             };
             case "land":{
-                infantry_weight = infantry_weight - 0.66;
-                armor_weight = armor_weight + 1;
-                air_weight = air_weight - 0.66;
+                infantry_weight = infantry_weight - (0.66 * _value);
+                armor_weight = armor_weight + (1 * _value);
+                air_weight = air_weight - (0.66 * _value);
             };
             case "air":{
-                infantry_weight = infantry_weight - 0.66;
-                armor_weight = armor_weight - 0.66;
-                air_weight = air_weight + 1;
+                _air_weight_before =  air_weight;
+                infantry_weight = infantry_weight - (0.66 * _value);
+                armor_weight = armor_weight - (0.66 * _value);
+                air_weight = air_weight + (1 * _value);
+                if (air_weight > 40 && _air_weight_before < 40 && air_weight<50 ) then {
+                    [getpos _killer,1]  remoteExec ["spawn_air", 2];
+                };
+                if (air_weight > 50 && _air_weight_before < 50 && air_weight<60 ) then {
+                    [getpos _killer,1]  remoteExec ["spawn_air", 2];
+                };
+                if (air_weight > 60 && _air_weight_before < 60 && air_weight<70 ) then {
+                    [getpos _killer,2]  remoteExec ["spawn_air", 2];
+                };
+                if (air_weight > 70 && _air_weight_before < 70 && air_weight<80 ) then {
+                    [getpos _killer,2]  remoteExec ["spawn_air", 2];
+                };
             };
         };
 

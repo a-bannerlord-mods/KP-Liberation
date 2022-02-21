@@ -338,18 +338,21 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
 
         _vehtospawn = [];
         switch (true) do {
-            case (count(_cached_vehicles) < 1):{
-                        _vehtospawn pushback(selectRandom militia_vehicles);
+            case (count(_cached_vehicles) < 2):{
+                        _vehtospawn pushback(selectrandom opfor_cram_systems);
                     };
             case (count(_cached_vehicles) < 2):{
-                            _vehtospawn pushback([true] call KPLIB_fnc_getAdaptiveVehicle);
+                        _vehtospawn pushback(selectRandom militia_vehicles);
                     };
             case (count(_cached_vehicles) < 3):{
+                            _vehtospawn pushback([true] call KPLIB_fnc_getAdaptiveVehicle);
+                    };
+            case (count(_cached_vehicles) < 4):{
                         if ((random 100) > (66 / GRLIB_difficulty_modifier)) then {
                             _vehtospawn pushback([] call KPLIB_fnc_getAdaptiveVehicle);
                         };
                     };
-            case (count(_cached_vehicles) < 4):{
+            case (count(_cached_vehicles) < 5):{
                         if ((random 100) > (33 / GRLIB_difficulty_modifier)) then {
                             _vehtospawn pushback([] call KPLIB_fnc_getAdaptiveVehicle);
                         };
@@ -357,7 +360,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
             };
 
         _spawncivs = false;
-
+        
         _building_ai_max = round((ceil(40 + (round(combat_readiness / 4)))) * _popfactor);
         _building_range = 120;
     };
@@ -573,69 +576,103 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
     
 
     //vehicles
-    
     {
-    
-        _vehicle = objNull;
-        if (_sector in sectors_lightArtillery || _sector in sectors_heavyArtillery || _sector in sectors_SAM) then {
-            _vehicle = [ _x select 0 , _x select 1 , false, true, _g] call KPLIB_fnc_spawnVehicle;
+        _class = _x select 1;
+        _pos = _x select 0;
+        if ((tolower _class) in (opfor_cram_systems apply {
+                toLower _x
+            })) then {
+            _vehicle = [_pos, _class, false, false, _g] call KPLIB_fnc_spawnVehicle;
             _vehicle allowCrewInImmobile true;
             _vehicle setFuel 0;
+            _vehicle disableAI "AUTOCOMBAT";
+            _vehicle disableAI "TARGET";
+            _vehicle disableAI "AUTOTARGET";
+            _managed_units pushback _vehicle; {
+                _managed_units pushback _x;
+                _x disableAI "AUTOCOMBAT";
+                _x disableAI "TARGET";
+                _x disableAI "AUTOTARGET";
+            }
+            foreach(crew _vehicle);
         } else {
-            _vehicle = [ _x select 0 ,  _x select 1 , true] call KPLIB_fnc_spawnVehicle;
-            [group((crew _vehicle) select 0), _sectorpos] spawn add_defense_waypoints;
-        };
-        _managed_units pushback _vehicle; 
-        {
-            _managed_units pushback _x;
-        }foreach(crew _vehicle);
-        if ((_vehicle isKindOf "Tank") || (_vehicle isKindOf "Car")) then {
-            if (typeOf _vehicle in militia_vehicles) then {
-                _vehicle forceFlagtexture opfor_flag_militia_texture;
+            _vehicle = objNull;
+            if (_sector in sectors_lightArtillery || _sector in sectors_heavyArtillery || _sector in sectors_SAM) then {
+                _vehicle = [ _pos, _class,false, true, _g] call KPLIB_fnc_spawnVehicle;
+                _vehicle allowCrewInImmobile true;
+                _vehicle setFuel 0;
             } else {
-                _vehicle forceFlagtexture opfor_flag_texture;
+                _vehicle = [_pos,_class,  true] call KPLIB_fnc_spawnVehicle;
+                [group((crew _vehicle) select 0), _sectorpos] spawn add_defense_waypoints;
+            };
+            _managed_units pushback _vehicle; 
+            {
+                _managed_units pushback _x;
+            }
+            foreach(crew _vehicle);
+            if ((_vehicle isKindOf "Tank") || (_vehicle isKindOf "Car")) then {
+                if (typeOf _vehicle in militia_vehicles) then {
+                    _vehicle forceFlagtexture opfor_flag_militia_texture;
+                } else {
+                    _vehicle forceFlagtexture opfor_flag_texture;
+                };
             };
         };
-
         sleep 0.25;
-        
-    } forEach _cached_vehicles;
+    }
+    forEach _cached_vehicles;
     
     {
-        
-        _vehicle = objNull;
 
-        if (_sector in sectors_lightArtillery || _sector in sectors_heavyArtillery  ) then {
-            _vehicle = [_sectorpos, _x, false, true, _g] call KPLIB_fnc_spawnVehicle;
+        _vehicle = objNull;
+        if ((tolower _x) in (opfor_cram_systems apply {toLower _x})) then {
+            _vehicle = [_sectorpos getPos[random 50, random 360], _x, false, false, _g] call KPLIB_fnc_spawnVehicle;
             _vehicle allowCrewInImmobile true;
-            if ((tolower _x) in opfor_heavy_artillery) then {
-                _vehicle setFuel 0;
-            };
+            _vehicle setFuel 0;
+            _vehicle disableAI "AUTOCOMBAT";
+            _vehicle disableAI "TARGET";
+            _vehicle disableAI "AUTOTARGET";
+            _managed_units pushback _vehicle; 
+            {
+                _managed_units pushback _x;
+                _x disableAI "AUTOCOMBAT";
+                _x disableAI "TARGET";
+                _x disableAI "AUTOTARGET";
+            }
+            foreach(crew _vehicle);
+            _cached_vehicles pushBack[getPosATL _vehicle, typeof _vehicle];
+
         } else {
+            if (_sector in sectors_lightArtillery || _sector in sectors_heavyArtillery) then {
+                _vehicle = [_sectorpos, _x, false, true, _g] call KPLIB_fnc_spawnVehicle;
+                _vehicle allowCrewInImmobile true;
+                if ((tolower _x) in opfor_heavy_artillery) then {
+                    _vehicle setFuel 0;
+                };
+            } else {
                 _vehicle = [_sectorpos, _x] call KPLIB_fnc_spawnVehicle;
                 [group((crew _vehicle) select 0), _sectorpos] spawn add_defense_waypoints;
 
-        };
-        _managed_units pushback _vehicle; {
-            _managed_units pushback _x;
-        }
-        foreach(crew _vehicle);
-        if ((_vehicle isKindOf "Tank") || (_vehicle isKindOf "Car")) then {
-            if (typeOf _vehicle in militia_vehicles) then {
-                _vehicle forceFlagtexture opfor_flag_militia_texture;
-            } else {
-                _vehicle forceFlagtexture opfor_flag_texture;
             };
+            _managed_units pushback _vehicle; {
+                _managed_units pushback _x;
+            }
+            foreach(crew _vehicle);
+            if ((_vehicle isKindOf "Tank") || (_vehicle isKindOf "Car")) then {
+                if (typeOf _vehicle in militia_vehicles) then {
+                    _vehicle forceFlagtexture opfor_flag_militia_texture;
+                } else {
+                    _vehicle forceFlagtexture opfor_flag_texture;
+                };
+            };
+
+            _cached_vehicles pushBack[getPosATL _vehicle, typeof _vehicle];
+            
         };
-
-        _cached_vehicles pushBack [getPosATL _vehicle , typeof _vehicle];
         sleep 0.25;
-    } forEach _vehtospawn;
-
-    if (_template!="") then {
-        _units = [_template,_sectorpos,0] call SpawnTemplate;
-        _managed_units = _managed_units + _units;
-    };
+    }
+    forEach _vehtospawn;
+    
 
 
     if (_sector in sectors_SAM) then {
@@ -691,7 +728,11 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
 
     };
 
-    
+    if (_template!="") then {
+        _units = [_template,_sectorpos,0] call SpawnTemplate;
+        _managed_units = _managed_units + _units;
+    };
+
     _units = ([_cached_units_in_building] call KPLIB_fnc_spawnBuildingSquadFromCache);
     _managed_units = _managed_units + _units;
     _units = ([_cached_units_on_building] call KPLIB_fnc_spawnBuildingSquadFromCache);
@@ -857,7 +898,10 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
                                 [_emptypos select 0, _emptypos select 1, ((_emptypos select 2) + 0.8)], _gun, true, true, _g
                             ] call KPLIB_fnc_spawnVehicle;
                             _vehicle allowCrewInImmobile true;
-                            _managed_units pushback _vehicle; {
+                            _managed_units pushback _vehicle; 
+                            {
+                                _x disableAI "PATH";
+                                _x disableAI "MOVE"; 
                                 _managed_units pushback _x;
                             }
                             foreach(crew _vehicle);
@@ -879,7 +923,10 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
                             [_emptypos select 0, _emptypos select 1, (_emptypos select 2) + 0.8], _gun, true, true, _g
                         ] call KPLIB_fnc_spawnVehicle;
                         _vehicle allowCrewInImmobile true;
-                        _managed_units pushback _vehicle; {
+                        _managed_units pushback _vehicle; 
+                        {
+                            _x disableAI "PATH";
+                            _x disableAI "MOVE"; 
                             _managed_units pushback _x;
                         }
                         foreach(crew _vehicle);
@@ -910,6 +957,8 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
                 ] call KPLIB_fnc_spawnVehicle;
                 _vehicle allowCrewInImmobile true;
                 _managed_units pushback _vehicle; {
+                    _x disableAI "PATH";
+                    _x disableAI "MOVE"; 
                     _managed_units pushback _x;
                 }
                 foreach(crew _vehicle);
@@ -937,7 +986,10 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
                     [_emptypos select 0, _emptypos select 1, (_emptypos select 2) + 0.8], _gun, true, true, _g
                 ] call KPLIB_fnc_spawnVehicle;
                 _vehicle allowCrewInImmobile true;
-                _managed_units pushback _vehicle; {
+                _managed_units pushback _vehicle; 
+                {
+                    _x disableAI "PATH";
+                    _x disableAI "MOVE"; 
                     _managed_units pushback _x;
                 }
                 foreach(crew _vehicle);
@@ -990,7 +1042,6 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         _managed_units = _managed_units + (units _grp);
     };
 
-  
 
     if (count _sniper_positions > 0) then {
         _grp = createGroup[GRLIB_side_enemy, true];
@@ -1064,6 +1115,8 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         publicVariable "sectors_opfor_sniper_nests_active";
     };
     
+    missionNamespace setVariable [format ["%1_managed_units",_sector],_managed_units];
+
     sleep 10;
 
     if ((_sector in sectors_factory) || (_sector in sectors_capture) || (_sector in sectors_bigtown) || (_sector in sectors_military)) then {
@@ -1231,6 +1284,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
                 };
             }
             forEach _managed_units;
+            missionNamespace setVariable [format ["%1_managed_units",_sector],_managed_units];
         } else {
             if (!(_sector in sectors_forced_spawn) && ([_sectorpos, (([_opforcount] call KPLIB_fnc_getSectorRange) + 300), GRLIB_side_friendly, _sector] call KPLIB_fnc_getUnitsCount) == 0) then {
                 _sector_despawn_tickets = _sector_despawn_tickets - 1;
@@ -1283,6 +1337,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
                     
                 }
                 forEach _managed_units; 
+                missionNamespace setVariable [format ["%1_managed_units",_sector],_managed_units];
                 _stopit = true;
                 active_sectors = active_sectors - [_sector];
                 publicVariable "active_sectors";

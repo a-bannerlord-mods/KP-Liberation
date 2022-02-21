@@ -124,16 +124,16 @@
                                         _rangeint = (parseNumber _range);
 
                                         [[_number,_range,_position,_rangeint], 	
-                                        {
-                                            params ["_number","_range","_position","_rangeint"];
-                                            _usable_sectors = [];
-                                            { 
-                                                if (getMarkerPos _x distance  _position < _rangeint) then { 
-                                                    _usable_sectors pushback _x; 
-                                                };
-                                            } foreach ((sectors_bigtown + sectors_capture + sectors_factory) - (active_sectors));					 
-                                            for [ {_i=0}, {_i < (parseNumber _number)}, {_i=_i+1} ] do { [_usable_sectors,_rangeint] spawn manage_one_civilian_patrol; };
-                                        }
+                                            {
+                                                params ["_number","_range","_position","_rangeint"];
+                                                _usable_sectors = [];
+                                                { 
+                                                    if (getMarkerPos _x distance  _position < _rangeint) then { 
+                                                        _usable_sectors pushback _x; 
+                                                    };
+                                                } foreach ((sectors_bigtown + sectors_capture + sectors_factory) - (active_sectors));					 
+                                                for [ {_i=0}, {_i < (parseNumber _number)}, {_i=_i+1} ] do { [_usable_sectors,_rangeint] spawn manage_one_civilian_patrol; };
+                                            }
                                         ] remoteExec ["call", 2];
                                     }, {}, [_pos]] call zen_dialog_fnc_create;
 
@@ -382,7 +382,80 @@
             && !(_sector in sectors_forced_despawn)
         }
     ] call zen_context_menu_fnc_createaction;
+
+    private _sector_control_show_action = [
+        "SectorShowUnits",
+        "Show Sector Units",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
+            [[_sector], 	
+                {
+                    params ["_sector"];
+                    _managed_units =  missionNamespace getVariable [format ["%1_managed_units",_sector],[]];
+                    if (count _managed_units > 0) then {
+                        {
+                            _x enableSimulation true;
+		                    _x hideObjectGlobal false;
+		                    _x hideObject false;
+                        } forEach _managed_units;
+                    };
+                }
+            ] remoteExec ["call"];
+            
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
+            _sector != ""  && (_sector in active_sectors)
+        }
+    ] call zen_context_menu_fnc_createaction;
     
+    
+    private _sector_control_hide_action = [
+        "SectorHideUnits",
+        "Hide Sector Units",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
+            [[_sector], 	
+                {
+                    params ["_sector"];
+                    _managed_units =  missionNamespace getVariable [format ["%1_managed_units",_sector],[]];
+                    _ambush_managed_units =  missionNamespace getVariable [format ["%1_ambush_managed_units",_sector],[]];
+
+                    if (count _managed_units > 0) then {
+                        {
+                            _type= tolower (typeof _x);
+                            _typev= tolower (typeof vehicle _x);
+                            if !(_type in KPLIB_strategic_vehiclesClasses && _typev in KPLIB_strategic_vehiclesClasses) then {
+                                _x enableSimulation false;
+		                        _x hideObjectGlobal true;
+		                        _x hideObject true;
+                            };
+                        } forEach _managed_units;
+                    };
+                    if (count _ambush_managed_units > 0) then {
+                        {
+                            _x enableSimulation false;
+		                    _x hideObjectGlobal true;
+		                    _x hideObject true;
+                        } forEach _ambush_managed_units;
+                    };
+                }
+            ] remoteExec ["call"];
+            
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _sector = [50, _position] call KPLIB_fnc_getNearestSector;
+            _sector != ""  && (_sector in active_sectors || _sector  in KP_liberation_asymmetric_sectors)
+        }
+    ] call zen_context_menu_fnc_createaction;
+    
+
     private _sector_control_forced_spawn_action = [
         "SectorspawnControlspawn",
         "force to spawn",
@@ -403,7 +476,7 @@
         }
     ] call zen_context_menu_fnc_createaction;
     
-    private _sector_control__spawn_civ_action = [
+    private _sector_control_spawn_civ_action = [
         "SectorspawnControlspawn",
         "Spawn Civilians",
         ["", [1, 1, 1, 1]],
@@ -936,7 +1009,9 @@
     [_sector_control_auto_action, ["SectrorControlRoot", "SectorspawnControlRoot"], 0] call zen_context_menu_fnc_addAction;
     [_sector_control_forced_spawn_action, ["SectrorControlRoot", "SectorspawnControlRoot"], 0] call zen_context_menu_fnc_addAction;
     [_sector_control_forced_despawn_action, ["SectrorControlRoot", "SectorspawnControlRoot"], 0] call zen_context_menu_fnc_addAction;
-    [_sector_control__spawn_civ_action, ["SectrorControlRoot", "SectorspawnControlRoot"], 0] call zen_context_menu_fnc_addAction;
+    [_sector_control_spawn_civ_action, ["SectrorControlRoot", "SectorspawnControlRoot"], 0] call zen_context_menu_fnc_addAction;
+    [_sector_control_show_action, ["SectrorControlRoot", "SectorspawnControlRoot"], 0] call zen_context_menu_fnc_addAction;
+    [_sector_control_hide_action, ["SectrorControlRoot", "SectorspawnControlRoot"], 0] call zen_context_menu_fnc_addAction;
 
     [_sector_task_root_action, ["SectrorControlRoot"], 0] call zen_context_menu_fnc_addAction;
     [_sector_liberate_task_root_action, ["SectrorControlRoot", "SectorTasksRoot"], 0] call zen_context_menu_fnc_addAction;

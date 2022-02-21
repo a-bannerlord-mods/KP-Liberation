@@ -11,6 +11,9 @@ _isAllowed = false;
         _isAllowed = true;
     };
 } forEach _vehKindWhitelist;
+if (_veh isKindOf "ParachuteBase") then {
+	_isAllowed = false;
+};
 if (!(_isAllowed)) exitWith {};
 
 _veh setVariable ["r0ed_SurvivableCrashes", true];

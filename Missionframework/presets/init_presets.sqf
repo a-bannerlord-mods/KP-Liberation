@@ -414,6 +414,8 @@ KPLIB_o_inf_backbags = [];
 }
 forEach (KPLIB_o_inf_classes + KPLIB_o_sf_classes);
 
+KPLIB_strategic_vehiclesClasses = opfor_light_artillery + opfor_heavy_artillery +opfor_cram_systems + (opfor_SAM apply {_x select 0 }) + (opfor_SAM apply {_x select 1 });
+KPLIB_strategic_vehiclesClasses = KPLIB_strategic_vehiclesClasses apply  {toLower _x};
 
 /*
     Vehicle type permission arrays
