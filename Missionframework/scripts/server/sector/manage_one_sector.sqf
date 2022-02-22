@@ -56,6 +56,18 @@ private _cached_static_mg_heavy = _sector_cache select 8;
 private _cached_static_aa_heavy = _sector_cache select 9;
 private _cached_objectives = _sector_cache select 10;
 
+
+private _vehicles_to_be_cached =[];
+private _squads_to_be_cached = [];
+private _units_in_building_to_be_cached =  [];
+private _units_on_building_to_be_cached =  [];
+private _static_mg_to_be_cached =  [];
+private _static_at_to_be_cached =  [];
+private _static_mg_heavy_to_be_cached =  [];
+private _static_aa_heavy_to_be_cached =  [];
+private _objectives_to_be_cached =  [];
+
+
 if (GRLIB_unitcap < 1) then {
     _popfactor = GRLIB_unitcap;
 };
@@ -588,8 +600,10 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
 
     //vehicles
     {
-        _class = _x select 1;
-        _pos = _x select 0;
+        _x params ["_pos","_class",["_dir",random 360]];
+        //_class = _x select 1;
+        //_pos = _x select 0;
+        _vehicle = objNull;
         if ((tolower _class) in (opfor_cram_systems apply {
                 toLower _x
             })) then {
@@ -629,12 +643,13 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
                 };
             };
         };
+        _vehicle setDir _dir;
+        _vehicles_to_be_cached pushBack _vehicle;
         sleep 0.25;
     }
     forEach _cached_vehicles;
     
     {
-
         _vehicle = objNull;
         if ((tolower _x) in (opfor_cram_systems apply {toLower _x})) then {
             _vehicle = [_sectorpos getPos[random 50, random 360], _x, false, false, _g] call KPLIB_fnc_spawnVehicle;
@@ -681,6 +696,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
             
         };
         sleep 0.25;
+        _vehicles_to_be_cached pushBack _vehicle;
     }
     forEach _vehtospawn;
     
@@ -745,20 +761,59 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
     };
 
     _units = ([_cached_units_in_building] call KPLIB_fnc_spawnBuildingSquadFromCache);
+    _units_in_building_to_be_cached = _units_in_building_to_be_cached + _units;
     _managed_units = _managed_units + _units;
     _units = ([_cached_units_on_building] call KPLIB_fnc_spawnBuildingSquadFromCache);
+    _units_on_building_to_be_cached = _units_on_building_to_be_cached + _units;
     _managed_units = _managed_units + _units;
 
     {
-        {
-            _vehicle = [ _x select 0 ,  _x select 1 , true] call KPLIB_fnc_spawnVehicle;
+            _x params ["_pos","_class",["_dir",random 360]];
+            _vehicle = [ _pos ,  _class , true] call KPLIB_fnc_spawnVehicle;
+            _vehicle setDir _dir;
             _managed_units pushback _vehicle; 
+            _static_mg_to_be_cached pushback _vehicle;
             {
                 _managed_units pushback _x;
             }foreach(crew _vehicle);
             sleep 0.25;   
-        } forEach _x;
-    } forEach [_cached_static_mg,_cached_static_at,_cached_static_mg_heavy,_cached_static_aa_heavy];
+    } forEach _cached_static_mg;
+
+    {
+            _x params ["_pos","_class",["_dir",random 360]];
+            _vehicle = [ _pos ,  _class , true] call KPLIB_fnc_spawnVehicle;
+            _vehicle setDir _dir;
+            _managed_units pushback _vehicle; 
+            _static_at_to_be_cached pushback _vehicle;
+            {
+                _managed_units pushback _x;
+            }foreach(crew _vehicle);
+            sleep 0.25;   
+    } forEach _cached_static_at;
+
+    {
+            _x params ["_pos","_class",["_dir",random 360]];
+            _vehicle = [ _pos ,  _class , true] call KPLIB_fnc_spawnVehicle;
+            _vehicle setDir _dir;
+            _managed_units pushback _vehicle; 
+            _static_mg_heavy_to_be_cached pushback _vehicle;
+            {
+                _managed_units pushback _x;
+            }foreach(crew _vehicle);
+            sleep 0.25;   
+    } forEach _cached_static_mg_heavy;
+
+    {
+            _x params ["_pos","_class",["_dir",random 360]];
+            _vehicle = [ _pos ,  _class , true] call KPLIB_fnc_spawnVehicle;
+            _vehicle setDir _dir;
+            _managed_units pushback _vehicle; 
+            _static_aa_heavy_to_be_cached pushback _vehicle;
+            {
+                _managed_units pushback _x;
+            }foreach(crew _vehicle);
+            sleep 0.25;   
+    } forEach _cached_static_aa_heavy;
 
     if (_building_ai_max > 0) then {
 
@@ -892,7 +947,8 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         if (count _buildingpositions > _minimum_building_positions) then {
             _units = ([_infsquad, _building_ai_max, _buildingpositions, _sector] call KPLIB_fnc_spawnBuildingSquad);
             {
-                _cached_units_in_building pushBack [getPosATL _x , typeof _x];
+                //_cached_units_in_building pushBack [getPosATL _x , typeof _x];
+                _units_in_building_to_be_cached pushBack _x;
             } forEach _units;
             _managed_units = _managed_units + _units;
         };
@@ -920,7 +976,9 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
                             //_vehicle setPosATL[(getPosATL _vehicle) select 0, (getPosATL _vehicle) select 1, ((getPosATL _vehicle) select 2) + 0.5];
                             //_vehicle setVectorUp surfaceNormal position _vehicle;
                             _top_positions = _top_positions - [_emptypos];
-                            _cached_static_mg pushBack [_emptypos,_gun];
+                            //_cached_static_mg pushBack [_emptypos,_gun];
+                            _cached_static_mg_heavy pushBack _vehicle;
+
                         };
                     };
                 };
@@ -945,7 +1003,8 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
                         // _vehicle setPosATL[(getPosATL _vehicle) select 0, (getPosATL _vehicle) select 1, ((getPosATL _vehicle) select 2) + 1];
                         // _vehicle setVectorUp surfaceNormal position _vehicle;
                         _top_positions = _top_positions - [_emptypos];
-                        _cached_static_at pushBack [_emptypos,_gun];
+                        //_cached_static_at pushBack [_emptypos,_gun];
+                        _static_at_to_be_cached pushBack _vehicle;
                     };
                 };
             };
@@ -977,7 +1036,8 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
                 // sleep 1;
                 // _vehicle setPosATL[(getPosATL _vehicle) select 0, (getPosATL _vehicle) select 1, ((getPosATL _vehicle) select 2) + 1];
                 // _vehicle setVectorUp surfaceNormal position _vehicle;
-                _cached_static_mg_heavy pushBack [_emptypos,_gun];
+                //_cached_static_mg_heavy pushBack [_emptypos,_gun];
+                _static_mg_heavy_to_be_cached pushBack _vehicle;
             };
         };
         //_static_aa_heavy
@@ -1008,15 +1068,17 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
                 // sleep 1;
                 // _vehicle setPosATL[(getPosATL _vehicle) select 0, (getPosATL _vehicle) select 1, ((getPosATL _vehicle) select 2) + 1];
                 // _vehicle setVectorUp surfaceNormal position _vehicle;
-                _cached_static_aa_heavy pushBack [_emptypos,_gun];
+                //_cached_static_aa_heavy pushBack [_emptypos,_gun];
+                _static_aa_heavy_to_be_cached pushBack _vehicle
             };
         };
         _num = ceil(_building_ai_max * 0.4) min (count _top_positions);
         _units = ([_infsquad, _num, _top_positions, _sector] call KPLIB_fnc_spawnBuildingSquad);
         {
-            _cached_units_on_building pushBack [getPosATL _x , typeof _x];
+            //_cached_units_on_building pushBack [getPosATL _x , typeof _x];
+            _units_on_building_to_be_cached pushBack _x;
         } forEach _units;
-                _managed_units = _managed_units + _units;
+        _managed_units = _managed_units + _units;
     };
     
     {
@@ -1077,12 +1139,6 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         [_sector] spawn sector_guerilla;
     };
 
-    if (_cached_index > -1) then {
-        KP_liberation_Sector_Cache set  [_cached_index,[_sector,_infsquad,_cached_vehicles,_cached_squads,_cached_units_in_building,_cached_units_on_building,_cached_static_mg,_cached_static_at,_cached_static_mg_heavy,_cached_static_aa_heavy,_cached_objectives,_template]];
-    } else {
-        KP_liberation_Sector_Cache pushBack [_sector,_infsquad,_cached_vehicles,_cached_squads,_cached_units_in_building,_cached_units_on_building,_cached_static_mg,_cached_static_at,_cached_static_mg_heavy,_cached_static_aa_heavy,_cached_objectives,_template];
-    };
-    publicVariable "KP_liberation_Sector_Cache";
     
     if (isnil "sectors_opfor_sniper_nests_active") then {
         sectors_opfor_sniper_nests_active = [];
@@ -1129,6 +1185,27 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
     missionNamespace setVariable [format ["%1_managed_units",_sector],_managed_units];
 
     sleep 10;
+
+    _cache_value = 
+    [
+        _sector
+        ,_infsquad
+        , (_vehicles_to_be_cached  apply { [getPos _x , typeof _x ,getDir _x ]})
+        , (_squads_to_be_cached   apply { [getPos _x , typeof _x,getDir _]})
+        , (_units_in_building_to_be_cached   apply { [getPos _x , typeof _x,getDir _x]})
+        , (_units_on_building_to_be_cached   apply { [getPos _x , typeof _x,getDir _x]})
+        , (_static_mg_to_be_cached   apply { [getPos _x , typeof _x,getDir _x]})
+        , (_static_at_to_be_cached   apply { [getPos _x , typeof _x,getDir _x]})
+        , (_static_mg_heavy_to_be_cached   apply { [getPos _x , typeof _x,getDir _x]})
+        , (_static_aa_heavy_to_be_cached   apply { [getPos _x , typeof _x,getDir _x]})
+        ,_cached_objectives
+        ,_template
+    ];
+    if (_cached_index > -1) then {
+        KP_liberation_Sector_Cache set  [_cached_index,_cache_value];
+    } else {
+        KP_liberation_Sector_Cache pushBack _cache_value;
+    };
 
     if ((_sector in sectors_factory) || (_sector in sectors_capture) || (_sector in sectors_bigtown) || (_sector in sectors_military)) then {
         [_sector] remoteExec["reinforcements_remote_call", 2];
@@ -1311,7 +1388,26 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
             };
 
             if ((_sector_despawn_tickets <= 0) || (_sector in sectors_forced_despawn && !(_sector in sectors_forced_spawn))) then {
-
+                _cache_value = 
+                    [_sector
+                    ,_infsquad
+                    , (_vehicles_to_be_cached  apply { [getPos _x , typeof _x ,getDir _x ]})
+                    , (_squads_to_be_cached   apply { [getPos _x , typeof _x,getDir _]})
+                    , (_units_in_building_to_be_cached   apply { [getPos _x , typeof _x,getDir _x]})
+                    , (_units_on_building_to_be_cached   apply { [getPos _x , typeof _x,getDir _x]})
+                    , (_static_mg_to_be_cached   apply { [getPos _x , typeof _x,getDir _x]})
+                    , (_static_at_to_be_cached   apply { [getPos _x , typeof _x,getDir _x]})
+                    , (_static_mg_heavy_to_be_cached   apply { [getPos _x , typeof _x,getDir _x]})
+                    , (_static_aa_heavy_to_be_cached   apply { [getPos _x , typeof _x,getDir _x]})
+                    ,_cached_objectives
+                    ,_template
+                ];
+                if (_cached_index > -1) then {
+                        KP_liberation_Sector_Cache set  [_cached_index,_cache_value];
+                } else {
+                        KP_liberation_Sector_Cache pushBack _cache_value;
+                };
+                publicVariable "KP_liberation_Sector_Cache";
                 {
                     sectors_opfor_sniper_nests_active  deleteAt (sectors_opfor_sniper_nests_active find _x);
                 } forEach (sectors_opfor_sniper_nests select { _sectorpos distance ( getmarkerpos _x) < 1200 });

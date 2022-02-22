@@ -28,15 +28,15 @@ private _units = [];
 // Spawn units
 _grp = createGroup [GRLIB_side_enemy, true];
 {
-
-    private _pos = _x select 0;
+    _x params ["_pos","_class",["_dir",random 360]];
+   // private _pos = _x select 0;
     private _unit = objNull;
         // Create new group, if current group has 10 units
     if (count (units _grp) >= 10) then {
         _grp = createGroup [GRLIB_side_enemy, true];
     };
-    _unit = [_x select 1, _pos, _grp] call KPLIB_fnc_createManagedUnit;
-    _unit setDir (random 360);
+    _unit = [_class, _pos, _grp] call KPLIB_fnc_createManagedUnit;
+    _unit setDir _dir;
     [_unit, _sector] spawn building_defence_ai;
     _units pushBack _unit;
 
