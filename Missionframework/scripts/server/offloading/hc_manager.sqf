@@ -5,6 +5,7 @@ building_defence_ai = compile preprocessFileLineNumbers "scripts\server\ai\build
 sniper_ai = compile preprocessFileLineNumbers "scripts\server\ai\sniper_ai.sqf";
 spotter_ai = compile preprocessFileLineNumbers "scripts\server\ai\spotter_ai.sqf";
 patrol_ai = compile preprocessFileLineNumbers "scripts\server\ai\patrol_ai.sqf";
+stationary_vehicle = compile preprocessFileLineNumbers "scripts\server\ai\stationary_vehicle.sqf";
 prisonner_ai = compile preprocessFileLineNumbers "scripts\server\ai\prisonner_ai.sqf";
 troup_transport = compile preprocessFileLineNumbers "scripts\server\ai\troup_transport.sqf";
 search_light_ai = compile preprocessFileLineNumbers "scripts\server\ai\search_light_ai.sqf";

@@ -176,7 +176,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
             _guerilla = true;
         };
 
-        _building_ai_max = round(100 * _popfactor);
+        _building_ai_max = round(60 * _popfactor);
         if (count(_cached_units_in_building) < _building_ai_max) then {
             _building_ai_max = _building_ai_max - count(_cached_units_in_building);
         }else{
@@ -296,7 +296,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
             _guerilla = true;
         };
 
-        _building_ai_max = round((ceil(30 + (round(combat_readiness / 8)))) * _popfactor);
+        _building_ai_max = round((ceil(20 + (round(combat_readiness / 8)))) * _popfactor);
         if (count(_cached_units_in_building) < _building_ai_max) then {
             _building_ai_max = _building_ai_max - count(_cached_units_in_building);
         }else{ 
@@ -377,7 +377,14 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
 
         _spawncivs = false;
         
-        _building_ai_max = round((ceil(40 + (round(combat_readiness / 4)))) * _popfactor);
+        _building_ai_max = round((ceil(30 + (round(combat_readiness / 4)))) * _popfactor);
+
+        if (count(_cached_units_in_building) < _building_ai_max) then {
+            _building_ai_max = _building_ai_max - count(_cached_units_in_building);
+        }else{ 
+			_building_ai_max =  0; 
+		};
+
         _building_range = 120;
     };
 
@@ -699,8 +706,29 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         _vehicles_to_be_cached pushBack _vehicle;
     }
     forEach _vehtospawn;
-    
 
+    //heli
+    
+    _heli_slot_building_list = ["Land_HelipadCircle_F","Land_HelipadCivil_F", "Land_HelipadRescue_F", "Land_HelipadSquare_F", "HeliH", "HeliHCivil", "Heli_H_civil", "HeliHEmpty", "HeliHRescue", "Heli_H_rescue"];
+    private _heliSlots = ((_sectorpos nearobjects _building_range) select {(typeOf _x) in _heli_slot_building_list;} );
+    {
+        _heligrp = createGroup[GRLIB_side_enemy, true];
+        _heliClass = selectRandom opfor_choppers;
+
+        _heli = [getpos _x , _heliClass,true ,true ,_heligrp,false,true] call KPLIB_fnc_spawnVehicle;
+        _heli setFuel 0;
+        _heli setdir ( getDir _x);
+        _managed_units pushback _heli; 
+
+        {
+            [_x] joinSilent _heligrp;
+            _managed_units pushback _x; 
+        }foreach(crew _heli);
+
+        [_heli] spawn stationary_vehicle;
+
+    } forEach _heliSlots;
+    
 
     if (_sector in sectors_SAM) then {
         if ((count _samSystem) == 2) then {     

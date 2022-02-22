@@ -24,7 +24,8 @@ params [
     ["_precise", false, [false]],
     ["_rndDir", true, [false]],
     ["_grp", grpNull, [grpNull]],
-    ["_onNearestRoad", false, [false]]
+    ["_onNearestRoad", false, [false]],
+    ["_onGround", false, [false]]
 ];
 
 if (_pos isEqualTo [0, 0, 0]) exitWith {["No or zero pos given"] call BIS_fnc_error; objNull};
@@ -69,7 +70,7 @@ if (_spawnPos isEqualTo zeroPos) exitWith {
 };
 
 // If it's a chopper, spawn it flying
-if (_classname in opfor_choppers) then {
+if (_classname in opfor_choppers && !_onGround) then {
     _newvehicle = createVehicle [_classname, _spawnpos, [], 0, 'FLY'];
     _newvehicle flyInHeight (80 + (random 120));
     _newvehicle allowDamage false;

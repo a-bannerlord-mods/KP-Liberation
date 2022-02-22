@@ -15,4 +15,4 @@
         Total opfor units [NUMBER]
 */
 
-GRLIB_side_enemy countSide allUnits
+GRLIB_side_enemy countSide (allUnits select {!(isObjectHidden _x)})

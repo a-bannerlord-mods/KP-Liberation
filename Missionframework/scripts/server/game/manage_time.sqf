@@ -52,19 +52,21 @@ _getTimeFactor = {
     // Return and exit
     [_dMul, _nMul, _riseSet select 0, _riseSet select 1]
 };
-
+IsNightTime = false;
 while {true} do { 
-    _timefactor = [];
+    TimeFactor = [];
     if (GRLIB_shorter_nights) then {
-        _timefactor = [GRLIB_time_factor,4] call _getTimeFactor;
+        TimeFactor = [GRLIB_time_factor,4] call _getTimeFactor;
     } else {
-        _timefactor = [GRLIB_time_factor,1] call _getTimeFactor;
+        TimeFactor = [GRLIB_time_factor,1] call _getTimeFactor;
     };
 
-    if ((daytime > (_timefactor select 3)) || (daytime < (_timefactor select 2))) then {
-        setTimeMultiplier (_timefactor select 1);
+    if ((daytime > (TimeFactor select 3)) || (daytime < (TimeFactor select 2))) then {
+        IsNightTime = true;
+        setTimeMultiplier (TimeFactor select 1);
     } else {
-        setTimeMultiplier (_timefactor select 0);
+        IsNightTime = false;
+        setTimeMultiplier (TimeFactor select 0);
     };
     sleep 10;
 };

@@ -1,4 +1,5 @@
 [] spawn {
+
     sleep 5;
     ["Liberation", "Add opfor flag", {
         _ob = (_this select 1);
@@ -1049,4 +1050,91 @@
     [_fob_paratroopers_chopper_root_action, ["FOBControlRoot", "FOBAttackRoot"], 0] call zen_context_menu_fnc_addAction;
     [_fob_paratroopers_plane_root_action, ["FOBControlRoot", "FOBAttackRoot"], 0] call zen_context_menu_fnc_addAction;
     
+
+    private _ai_root_action = [
+        "AIRoot",
+        "AI",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            count _objects > 0 || count _groups > 0
+        }
+    ] call zen_context_menu_fnc_createaction;
+
+    private _stationary_vehicle_root_action = [
+        "StationaryVehicle",
+        "Stationary Vehicle",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            {
+                [_x] spawn stationary_vehicle;
+            } forEach (_objects select { (_x isKindOf "LandVehicle" || _x isKindOf "Air") && (count (crew _x) > 0)});
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            (({ (_x isKindOf "LandVehicle" || _x isKindOf "Air") && (count (crew _x) > 0)} count _objects) > 0)
+        }
+    ] call zen_context_menu_fnc_createaction;
+
+    private _overwatch_sniper_root_action = [
+        "OverwatchSniper",
+        "Overwatch Sniper",
+        ["", [1, 1, 1, 1]],
+        {
+            _sector = [999999, _position] call KPLIB_fnc_getNearestSector;
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            {
+                [_x, _sector] spawn sniper_ai;
+            } forEach (_objects select {_x isKindOf "Man" && !(isPlayer _x)});
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            ({_x isKindOf "Man" && !(isPlayer _x) } count _objects) > 0
+        }
+    ] call zen_context_menu_fnc_createaction;
+
+    private _flee_root_action = [
+        "Flee",
+        "Flee",
+        ["", [1, 1, 1, 1]],
+        {
+            _sector = [999999, _position] call KPLIB_fnc_getNearestSector;
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            {
+                [_x,_sector] call KPLIB_fnc_makeUnitFlee;
+            } forEach (_objects select {_x isKindOf "Man" && (side _x == GRLIB_side_enemy) && !(isPlayer _x)});
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            ({_x isKindOf "Man" && (side _x == GRLIB_side_enemy) && !(isPlayer _x) } count _objects) > 0
+        }
+    ] call zen_context_menu_fnc_createaction;
+    
+    private _search_light_root_action = [
+        "SearchLight",
+        "Search Light",
+        ["", [1, 1, 1, 1]],
+        {
+            
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            {
+                [_x] spawn search_light_ai;
+            } forEach (_objects select { (_x isKindOf "LandVehicle") && (count (crew _x) > 0)});
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            (({ (_x isKindOf "LandVehicle") && (count (crew _x) > 0)} count _objects) > 0)
+        }
+    ] call zen_context_menu_fnc_createaction;
+
+    [_ai_root_action, [], 0] call zen_context_menu_fnc_addAction;
+    [_stationary_vehicle_root_action, ["AIRoot"], 0] call zen_context_menu_fnc_addAction;
+    [_overwatch_sniper_root_action, ["AIRoot"], 0] call zen_context_menu_fnc_addAction;
+    [_flee_root_action, ["AIRoot"], 0] call zen_context_menu_fnc_addAction;
+    [_search_light_root_action, ["AIRoot"], 0] call zen_context_menu_fnc_addAction;
 };
