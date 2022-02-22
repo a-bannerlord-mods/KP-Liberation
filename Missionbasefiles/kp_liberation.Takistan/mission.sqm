@@ -25,9 +25,9 @@ class EditorData
 	class Camera
 	{
 		pos[]={8217.2324,334.8187,2092.1663};
-		dir[]={0.11027216,-0.62103808,0.77602941};
-		up[]={0.087371521,0.78376973,0.61487329};
-		aside[]={0.99009156,-9.4994903e-008,-0.14068805};
+		dir[]={0.11026812,-0.62101638,0.77600235};
+		up[]={0.087367341,0.78379762,0.61484009};
+		aside[]={0.99005461,0,-0.14068444};
 	};
 };
 binarizationWanted=0;
@@ -51984,7 +51984,7 @@ class Mission
 					};
 					id=7953;
 					type="Land_Canteen_F";
-					atlOffset=0.88137817;
+					atlOffset=1.0138245;
 				};
 				class Item641
 				{
@@ -52697,7 +52697,6 @@ class Mission
 						angles[]={0,5.9492106,0};
 					};
 					side="Empty";
-					flags=4;
 					class Attributes
 					{
 						createAsSimpleObject=1;
@@ -52705,6 +52704,7 @@ class Mission
 					};
 					id=7946;
 					type="Land_MobilePhone_smart_F";
+					atlOffset=0.19265747;
 				};
 				class Item685
 				{

@@ -167,6 +167,8 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         _building_ai_max = round(100 * _popfactor);
         if (count(_cached_units_in_building) < _building_ai_max) then {
             _building_ai_max = _building_ai_max - count(_cached_units_in_building);
+        }else{
+            _building_ai_max =  0;
         };
         _building_range = 250;
         _local_capture_size = _local_capture_size * 1.4;
@@ -195,7 +197,6 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         _total =   infantry_weight+  armor_weight+  air_weight;
         _static_mg = ceil(2 + ((ceil(combat_readiness - 30)/20) * (1 + (infantry_weight/_total))));
         _static_mg_heavy = (2 max ceil(((combat_readiness * (infantry_weight / _total))/10))) min 4;
-
 
          _static_at = ceil(1 + ((ceil(combat_readiness - 30)/20) * (1 + (armor_weight/_total))));
 
@@ -286,7 +287,10 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         _building_ai_max = round((ceil(30 + (round(combat_readiness / 8)))) * _popfactor);
         if (count(_cached_units_in_building) < _building_ai_max) then {
             _building_ai_max = _building_ai_max - count(_cached_units_in_building);
-        };
+        }else{ 
+			_building_ai_max =  0; 
+		};
+
         _building_range = 200;
 
         if (KP_liberation_civ_rep < 0) then {
@@ -410,7 +414,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         _static_mg = ceil(1 + ((ceil(combat_readiness - 30)/20) * (1 + (infantry_weight/_total))));
         _static_mg_heavy = (2 max ceil(((combat_readiness * (infantry_weight / _total))/10))) min 4;
 
-         _static_at = ceil(2 + ((ceil(combat_readiness - 20)/20) * (1 + (armor_weight/_total))));
+        _static_at = ceil(2 + ((ceil(combat_readiness - 20)/20) * (1 + (armor_weight/_total))));
 
         if (air_weight>40|| combat_readiness > 80) then {
             _static_aa_heavy = 1;
@@ -428,6 +432,12 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         };
 
         _building_ai_max = round((ceil(22 + (round(combat_readiness / 8)))) * _popfactor);
+        
+        if (count(_cached_units_in_building) < _building_ai_max) then {
+            _building_ai_max = _building_ai_max - count(_cached_units_in_building);
+        }else{ 
+			_building_ai_max =  0; 
+		};
         _building_range = 120;
 
         if (KP_liberation_civ_rep < 0) then {
@@ -572,6 +582,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
     if (_building_ai_max > 0 && GRLIB_adaptive_opfor) then {
         _building_ai_max = round(_building_ai_max * ([] call KPLIB_fnc_getOpforFactor));
     };
+
     _g = createGroup[GRLIB_side_enemy, true]; 
     
 
