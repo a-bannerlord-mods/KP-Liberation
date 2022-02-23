@@ -32,6 +32,7 @@ private _static_mg = 0;
 private _static_at = 0;
 private _static_mg_heavy = 0;
 private _static_aa_heavy = 0;
+private _search_lights = 0;
 private _minimum_building_positions = 5;
 private _sector_despawn_tickets = BASE_TICKETS;
 private _maximum_additional_tickets = (KP_liberation_delayDespawnMax * 60 / SECTOR_TICK_TIME);
@@ -46,15 +47,20 @@ _cached_index =  KP_liberation_Sector_Cache findif { (_x select 0) == _sector };
 if (_cached_index > -1) then {
     _sector_cache = KP_liberation_Sector_Cache select _cached_index;
 };
-private _cached_vehicles =_sector_cache select 2;
-private _cached_squads = _sector_cache select 3;
-private _cached_units_in_building = _sector_cache select 4;
-private _cached_units_on_building = _sector_cache select 5;
-private _cached_static_mg = _sector_cache select 6;
-private _cached_static_at = _sector_cache select 7;
-private _cached_static_mg_heavy = _sector_cache select 8;
-private _cached_static_aa_heavy = _sector_cache select 9;
-private _cached_objectives = _sector_cache select 10;
+
+_sector_cache params ["_s","_d", 
+["_cached_vehicles",[]],
+["_cached_squads",[]],
+["_cached_units_in_building",[]],
+["_cached_units_on_building",[]],
+["_cached_static_mg",[]],
+["_cached_static_at",[]],
+["_cached_static_mg_heavy",[]],
+["_cached_static_aa_heavy",[]],
+["_cached_objectives",[]],
+["_template",""],
+["_cached_search_lights",[]]
+];
 
 
 private _vehicles_to_be_cached =[];
@@ -66,7 +72,7 @@ private _static_at_to_be_cached =  [];
 private _static_mg_heavy_to_be_cached =  [];
 private _static_aa_heavy_to_be_cached =  [];
 private _objectives_to_be_cached =  [];
-
+private _search_lights_be_cached =  [];
 
 if (GRLIB_unitcap < 1) then {
     _popfactor = GRLIB_unitcap;
@@ -96,7 +102,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         _static_mg = ceil(4 + ((ceil(combat_readiness - 20)/20) * (1 + (infantry_weight/_total))));
         _static_mg_heavy = (2 max ceil(((combat_readiness * (infantry_weight / _total))/10))) min 4;
         _static_at = ceil(3 + ((ceil(combat_readiness - 20)/20) * (1 + (armor_weight/_total))));
-
+        _search_lights = 4 - count _cached_search_lights;
         if (air_weight>35 || combat_readiness > 50 ) then {
             _static_aa_heavy = 1;
         };
@@ -176,7 +182,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
             _guerilla = true;
         };
 
-        _building_ai_max = round(60 * _popfactor);
+        _building_ai_max = round((60 + (round(combat_readiness / 6))) * _popfactor);
         if (count(_cached_units_in_building) < _building_ai_max) then {
             _building_ai_max = _building_ai_max - count(_cached_units_in_building);
         }else{
@@ -210,7 +216,9 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         _static_mg = ceil(2 + ((ceil(combat_readiness - 30)/20) * (1 + (infantry_weight/_total))));
         _static_mg_heavy = (2 max ceil(((combat_readiness * (infantry_weight / _total))/10))) min 4;
 
-         _static_at = ceil(1 + ((ceil(combat_readiness - 30)/20) * (1 + (armor_weight/_total))));
+        _static_at = ceil(1 + ((ceil(combat_readiness - 30)/20) * (1 + (armor_weight/_total))));
+
+        _search_lights = 2  - count _cached_search_lights;
 
         if (air_weight>40 || combat_readiness > 80) then {
             _static_aa_heavy = 1;
@@ -340,7 +348,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
         _static_mg = ceil(3 + ((ceil(combat_readiness - 20)/20) * (1 + (infantry_weight/_total))));
         _static_mg_heavy = (2 max ceil(((combat_readiness * (infantry_weight / _total))/10))) min 5;
         _static_at = ceil(2 + ((ceil(combat_readiness - 30)/20) * (1 + (armor_weight/_total))));
-        
+        _search_lights = 4  - count _cached_search_lights;
         if (air_weight>30 || combat_readiness > 40) then {
             _static_aa_heavy = 1;
         };
@@ -377,7 +385,7 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
 
         _spawncivs = false;
         
-        _building_ai_max = round((ceil(30 + (round(combat_readiness / 4)))) * _popfactor);
+        _building_ai_max = round((ceil(30 + (round(combat_readiness / 6)))) * _popfactor);
 
         if (count(_cached_units_in_building) < _building_ai_max) then {
             _building_ai_max = _building_ai_max - count(_cached_units_in_building);
@@ -843,6 +851,18 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
             sleep 0.25;   
     } forEach _cached_static_aa_heavy;
 
+    {
+            _x params ["_pos","_class",["_dir",random 360]];
+            _vehicle = [ _pos ,  _class , true] call KPLIB_fnc_spawnVehicle;
+            _vehicle setDir _dir;
+            _managed_units pushback _vehicle; 
+            _search_lights_be_cached pushback _vehicle;
+            {
+                _managed_units pushback _x;
+            }foreach(crew _vehicle);
+            sleep 0.25;   
+    } forEach  _cached_search_lights;
+
     if (_building_ai_max > 0) then {
 
         _largestB = objNull;
@@ -1033,6 +1053,32 @@ if ([_sector, _range] call KPLIB_fnc_sectorCanBeActivated) then {
                         _top_positions = _top_positions - [_emptypos];
                         //_cached_static_at pushBack [_emptypos,_gun];
                         _static_at_to_be_cached pushBack _vehicle;
+                    };
+                };
+            };
+            for "_i"
+            from 1 to((count _top_positions) min _search_lights) do {
+                _gun = opfor_search_light;
+                if (count _top_positions > 0 ) then {
+                    _emptypos = selectRandom _top_positions;
+                    if (count _emptypos > 1) then {
+                        _vehicle = [
+                            [_emptypos select 0, _emptypos select 1, (_emptypos select 2) + 0.8], _gun, true, true, _g
+                        ] call KPLIB_fnc_spawnVehicle;
+                        _vehicle allowCrewInImmobile true;
+                        _managed_units pushback _vehicle; 
+                        {
+                            _x disableAI "PATH";
+                            _x disableAI "MOVE"; 
+                            _managed_units pushback _x;
+                        }
+                        foreach(crew _vehicle);
+                        //sleep 1;
+                        // _vehicle setPosATL[(getPosATL _vehicle) select 0, (getPosATL _vehicle) select 1, ((getPosATL _vehicle) select 2) + 1];
+                        // _vehicle setVectorUp surfaceNormal position _vehicle;
+                        _top_positions = _top_positions - [_emptypos];
+                        //_cached_static_at pushBack [_emptypos,_gun];
+                        _search_lights_be_cached pushBack _vehicle;
                     };
                 };
             };

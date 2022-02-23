@@ -80,9 +80,9 @@
 				}];
 				waitUntil {
 					sleep 5;
-					(isNull _veh)  ||  ((damage _veh) > 0.75)
+					(isNull _veh)  || ((((getAllHitPointsDamage _veh) select 2) select { _x > 0  }) call BIS_fnc_arithmeticMean) <0.25
 				};
-				_this setDamage 1;
+				_fire setDamage 1;
 			};
 		};
 	};
