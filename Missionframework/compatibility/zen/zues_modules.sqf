@@ -1067,12 +1067,13 @@
 
     private _stationary_vehicle_root_action = [
         "StationaryVehicle",
-        "Stationary Vehicle",
+        "Stationary Vehicle AI",
         ["", [1, 1, 1, 1]],
         {
             params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
             {
-                [_x] spawn stationary_vehicle;
+                //[_x] spawn stationary_vehicle;
+                [_x]  remoteExec ["stationary_vehicle", _x];
             } forEach (_objects select { (_x isKindOf "LandVehicle" || _x isKindOf "Air") && (count (crew _x) > 0)});
         },
         {
@@ -1083,13 +1084,14 @@
 
     private _overwatch_sniper_root_action = [
         "OverwatchSniper",
-        "Overwatch Sniper",
+        "Overwatch Sniper AI",
         ["", [1, 1, 1, 1]],
         {
             _sector = [999999, _position] call KPLIB_fnc_getNearestSector;
             params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
             {
-                [_x, _sector] spawn sniper_ai;
+                //[_x, _sector] spawn sniper_ai;
+                [_x, _sector]  remoteExec ["sniper_ai", _x];
             } forEach (_objects select {_x isKindOf "Man" && !(isPlayer _x)});
         },
         {
@@ -1103,10 +1105,11 @@
         "Flee",
         ["", [1, 1, 1, 1]],
         {
-            _sector = [999999, _position] call KPLIB_fnc_getNearestSector;
             params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            _sector = [999999, _position] call KPLIB_fnc_getNearestSector;
             {
-                [_x,_sector] call KPLIB_fnc_makeUnitFlee;
+                //[_x,_sector] call KPLIB_fnc_makeUnitFlee;
+                [_x,_sector] remoteExec ["KPLIB_fnc_makeUnitFlee", _x];
             } forEach (_objects select {_x isKindOf "Man" && (side _x == GRLIB_side_enemy) && !(isPlayer _x)});
         },
         {
@@ -1115,15 +1118,34 @@
         }
     ] call zen_context_menu_fnc_createaction;
     
+    private _FO_root_action = [
+        "ForwardObservable",
+        "Forward Observable/JTAC AI",
+        ["", [1, 1, 1, 1]],
+        {
+            _sector = [999999, _position] call KPLIB_fnc_getNearestSector;
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            {
+                [_x]  remoteExec ["AI_Artillery_fnc_initFO", _x];
+                //[_x] spawn AI_Artillery_fnc_initFO;
+            } forEach (_objects select {_x isKindOf "Man" && (side _x == GRLIB_side_enemy) && !(isPlayer _x)});
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            ({_x isKindOf "Man" && (side _x == GRLIB_side_enemy) && !(isPlayer _x) } count _objects) > 0
+        }
+    ] call zen_context_menu_fnc_createaction;
+
     private _search_light_root_action = [
         "SearchLight",
-        "Search Light",
+        "Search Light AI",
         ["", [1, 1, 1, 1]],
         {
             
             params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
             {
-                [_x] spawn search_light_ai;
+                //[_x] spawn search_light_ai;
+                [_x]  remoteExec ["search_light_ai", _x];
             } forEach (_objects select { (_x isKindOf "LandVehicle") && (count (crew _x) > 0)});
         },
         {
@@ -1132,9 +1154,29 @@
         }
     ] call zen_context_menu_fnc_createaction;
 
+    private _CRAM_vehicle_root_action = [
+        "CRAMVehicle",
+        "CRAM Vehicle AI",
+        ["", [1, 1, 1, 1]],
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            {
+                //[_x] spawn stationary_vehicle;
+                [_x, FSG_CRAMDIS]  remoteExec ["FSG_fnc_addCram", _x];
+            } forEach (_objects select { (_x isKindOf "LandVehicle" || _x isKindOf "Air") && (count (crew _x) > 0)});
+        },
+        {
+            params["_position", "_objects", "_groups", "_waypoints", "_markers", "_hoveredEntity", "_args"];
+            (({ (_x isKindOf "LandVehicle" || _x isKindOf "Air") && (count (crew _x) > 0)} count _objects) > 0)
+        }
+    ] call zen_context_menu_fnc_createaction;
+
+    
     [_ai_root_action, [], 0] call zen_context_menu_fnc_addAction;
     [_stationary_vehicle_root_action, ["AIRoot"], 0] call zen_context_menu_fnc_addAction;
     [_overwatch_sniper_root_action, ["AIRoot"], 0] call zen_context_menu_fnc_addAction;
     [_flee_root_action, ["AIRoot"], 0] call zen_context_menu_fnc_addAction;
+    [_FO_root_action, ["AIRoot"], 0] call zen_context_menu_fnc_addAction;
     [_search_light_root_action, ["AIRoot"], 0] call zen_context_menu_fnc_addAction;
+    [_CRAM_vehicle_root_action, ["AIRoot"], 0] call zen_context_menu_fnc_addAction;
 };

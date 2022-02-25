@@ -78,7 +78,7 @@ if (isServer) then {
 [] execVM "modules\VAM_GUI\VAM_GUI_init.sqf";
 [] execVM "modules\CRAM\cram_init.sqf";
 //AI artillery
-[] execVM "modules\RYD_FFE\FFE.sqf";
+//[] execVM "modules\RYD_FFE\FFE.sqf";
 
 execVM "custom\scripts\shared\init_shared.sqf";
 

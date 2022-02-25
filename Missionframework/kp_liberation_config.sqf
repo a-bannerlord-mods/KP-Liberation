@@ -258,6 +258,8 @@ KP_liberation_resistance_ambush_chance = 25;                            // Chanc
 
 
 //AI artillery config
+AI_Artillery_enable = true;   
+
 RydFFE_Active = true;                                                   //setting this as false will terminate FAW
 RydFFE_NoControl = [];                                                  //each arty group (battery) held inside this array will be excluded from FAW control;
 RydFFE_ArtyShells = 1;                                                  // Multiplier of default magazines loadout per kind per each artillery piece;

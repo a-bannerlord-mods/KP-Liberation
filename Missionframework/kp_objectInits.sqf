@@ -248,5 +248,19 @@ KPLIB_objectInits = [
             _this assignitem "UK3CB_ANPVS7";
         },
         true
+    ],
+    [
+        (opfor_light_artillery + opfor_heavy_artillery),
+        {
+            [_this] call AI_Artillery_fnc_initArtillery;
+        },
+        true
+    ],
+    [
+        opfor_JTACs,
+        {
+            [_this] spawn AI_Artillery_fnc_initFO;
+        },
+        true
     ]
 ];

@@ -44,7 +44,7 @@ opfor_sf_aa = "UK3CB_ARD_O_SF_AA";                                  // AA Specia
 opfor_sf_medic = "UK3CB_ARD_O_SF_MD";                         // Combat Life Saver (Bonesetter)
 opfor_sf_engineer = "UK3CB_ARD_O_SF_ENG";                      // Engineer (Bomber)
 
-
+opfor_JTACs = [opfor_sf_squad_leader,opfor_sf_team_leader,opfor_officer];
 
 opfor_sf_sharpshooter = "UK3CB_ARD_O_SF_SPOT";                  // Sharpshooter (SVD)
 opfor_sf_sniper = "UK3CB_ARD_O_SF_SNI";                        // Sniper (SVD)
@@ -257,6 +257,23 @@ opfor_search_light = "UK3CB_ARD_O_Searchlight";
 // Enemy light Artillery  (mortars)
 opfor_light_artillery = [
     "rhsgref_tla_2b14"
+];
+
+opfor_artillery_ammo = createHashMap;
+
+opfor_artillery_ammo set ["rhsgref_tla_2b14",
+    [
+        ["rhs_mag_3vo18_10", "HE",600,3000,20]
+    ]
+];
+opfor_artillery_ammo set ["rhs_2s3_tv",
+    [
+        ["rhs_mag_HE_2a33", "HE",2500,5000,80],
+        ["rhs_mag_WP_2a33", "HE",2500,5000,80],
+        ["rhs_mag_LASER_2a33", "LASER",2500,5000,90],
+        ["rhs_mag_SMOKE_2a33", "SMOKE",2000,5000,30],
+        ["rhs_mag_ILLUM_2a33", "FLARE",2000,5000,10]
+    ]
 ];
 
 // Enemy heavy Artillery 

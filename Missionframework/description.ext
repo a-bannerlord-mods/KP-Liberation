@@ -239,6 +239,7 @@ class CfgFunctions {
     #include "modules\r0ed_SurvivableCrashes\cfgFunctions.hpp"
     #include "modules\JeroenArsenal\functions.hpp"
     #include "modules\grad-leaveNotes\cfgFunctions.hpp"
+    #include "modules\AI_Artillery\cfgFunctions.hpp"
     #define HALs_DEF_FUNCTIONS
 	#include "modules\HALs\Addons\main\config.hpp"
     #include "modules\grad-scoreboard\cfgFunctions.hpp"
